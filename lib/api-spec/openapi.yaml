@@ -1,0 +1,179 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: leads
+    description: Demo request leads
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /leads:
+    post:
+      operationId: createLead
+      tags: [leads]
+      summary: Create a new lead (partial — step 1)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateLeadInput"
+      responses:
+        "201":
+          description: Lead created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    get:
+      operationId: listLeads
+      tags: [leads]
+      summary: List all leads (admin)
+      responses:
+        "200":
+          description: List of leads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lead"
+  /leads/{id}:
+    patch:
+      operationId: updateLead
+      tags: [leads]
+      summary: Update a lead with additional form steps
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateLeadInput"
+      responses:
+        "200":
+          description: Lead updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        "404":
+          description: Lead not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    Lead:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        phone:
+          type: string
+          nullable: true
+        businessType:
+          type: string
+          nullable: true
+        businessDescription:
+          type: string
+          nullable: true
+        website:
+          type: string
+          nullable: true
+        demoNeeds:
+          type: string
+          nullable: true
+        demoType:
+          type: string
+          nullable: true
+        consentGiven:
+          type: boolean
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          nullable: true
+        updatedAt:
+          type: string
+          nullable: true
+      required:
+        - id
+        - email
+    CreateLeadInput:
+      type: object
+      properties:
+        email:
+          type: string
+        phone:
+          type: string
+      required:
+        - email
+    UpdateLeadInput:
+      type: object
+      properties:
+        phone:
+          type: string
+        businessType:
+          type: string
+        businessDescription:
+          type: string
+        website:
+          type: string
+        demoNeeds:
+          type: string
+        demoType:
+          type: string
+        consentGiven:
+          type: boolean
+        status:
+          type: string
