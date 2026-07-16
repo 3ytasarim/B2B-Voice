@@ -1,15 +1,14 @@
-# [Project name]
+# B2B Voice
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A multilingual B2B AI voice assistant landing page with lead capture, admin panel, and SEO/tracking management.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- **Frontend** (`artifacts/b2bvoice: web` workflow) — React/Vite landing page at `/`
+- **API** (`artifacts/api-server: API Server` workflow) — Express 5 API at `/api`
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `DATABASE_URL` is runtime-managed by Replit — no manual setup needed
 
 ## Stack
 
