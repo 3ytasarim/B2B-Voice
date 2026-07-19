@@ -11,10 +11,12 @@ import TermsOfService from "@/pages/terms-of-service";
 import LegalNotice from "@/pages/legal-notice";
 import DemoPage from "@/pages/demo";
 import { LanguageProvider } from "@/lib/LanguageContext";
+import { useGoogleTracking } from "@/lib/useGoogleTracking";
 
 const queryClient = new QueryClient();
 
 function Router() {
+  useGoogleTracking();
   return (
     <Switch>
       <Route path="/" component={Home} />
