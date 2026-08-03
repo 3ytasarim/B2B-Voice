@@ -638,19 +638,10 @@ const Hero = () => {
               </div>
 
               <div className="px-6 sm:px-8 pt-8 pb-6">
-                <div className="relative w-24 h-24 mb-6">
-                  <motion.span
-                    animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-                    className="absolute inset-0 rounded-full bg-primary/20"
-                  />
-                  <motion.span
-                    animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.7 }}
-                    className="absolute inset-0 rounded-full bg-primary/20"
-                  />
-                  <span className="absolute inset-2 rounded-full bg-primary/10" />
-                  <span className="absolute inset-4 rounded-full bg-primary flex items-center justify-center shadow-lg">
+                <div className="relative w-24 h-24 mb-6 group/phone">
+                  <span className="absolute inset-0 rounded-full bg-primary/5 transition-transform duration-300 group-hover/phone:scale-110" />
+                  <span className="absolute inset-2 rounded-full bg-primary/10 transition-transform duration-300 group-hover/phone:scale-110" />
+                  <span className="absolute inset-4 rounded-full bg-primary flex items-center justify-center shadow-lg transition-transform duration-300 group-hover/phone:scale-105">
                     <PhoneCall className="w-8 h-8 text-white" />
                   </span>
                 </div>
