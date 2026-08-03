@@ -5,8 +5,9 @@ import {
   Users, Mail, Phone, Building2, Globe, CheckSquare,
   Video, Mic, FileText, HelpCircle, Clock, TrendingUp,
   RefreshCw, ChevronDown, ChevronUp, Search, LogOut, Search as SearchIcon,
-  Tag, AlignLeft, Type, Save, CheckCircle2
+  Tag, AlignLeft, Type, Save, CheckCircle2, Newspaper
 } from "lucide-react";
+import BlogPanel from "@/components/BlogPanel";
 
 const TOKEN_KEY = "b2bvoice_admin_token";
 
@@ -471,7 +472,7 @@ export default function AdminPage() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "partial" | "complete">("all");
   const [refreshing, setRefreshing] = useState(false);
-  const [activeTab, setActiveTab] = useState<"leads" | "seo" | "google">("leads");
+  const [activeTab, setActiveTab] = useState<"leads" | "seo" | "google" | "blog">("leads");
 
   useEffect(() => {
     if (!localStorage.getItem(TOKEN_KEY)) {
@@ -555,6 +556,7 @@ export default function AdminPage() {
           { key: "leads",  label: "Demo Leads",    icon: <Users className="w-3.5 h-3.5" /> },
           { key: "seo",    label: "SEO Settings",  icon: <Tag className="w-3.5 h-3.5" /> },
           { key: "google", label: "Google & Tracking", icon: <Globe className="w-3.5 h-3.5" /> },
+          { key: "blog",   label: "Blog",           icon: <Newspaper className="w-3.5 h-3.5" /> },
         ] as const).map((tab) => (
           <button
             key={tab.key}
@@ -572,7 +574,9 @@ export default function AdminPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        {activeTab === "google" ? (
+        {activeTab === "blog" ? (
+          <BlogPanel />
+        ) : activeTab === "google" ? (
           <GooglePanel />
         ) : activeTab === "seo" ? (
           <SeoPanel />

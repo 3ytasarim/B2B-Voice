@@ -8,6 +8,8 @@ import AdminPage from "@/pages/admin";
 import AdminLogin from "@/pages/admin-login";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import CookiePolicy from "@/pages/cookie-policy";
+import BlogPage from "@/pages/blog";
+import BlogPostPage from "@/pages/blog-post";
 import TermsOfService from "@/pages/terms-of-service";
 import LegalNotice from "@/pages/legal-notice";
 import DemoPage from "@/pages/demo";
@@ -28,6 +30,8 @@ function Router() {
       <Route path="/terms-of-service" component={TermsOfService} />
       <Route path="/legal-notice" component={LegalNotice} />
       <Route path="/demo" component={DemoPage} />
+      <Route path="/blog" component={BlogPage} />
+      <Route path="/blog/:slug" component={BlogPostPage} />
       <Route component={NotFound} />
     </Switch>
   );

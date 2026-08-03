@@ -3,8 +3,6 @@ import { useLocation } from "wouter";
 import { motion, AnimatePresence, useAnimationFrame } from "framer-motion";
 import { Eye, EyeOff, Lock, User, PhoneCall } from "lucide-react";
 
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "B2BVoice2025!";
 const TOKEN_KEY = "b2bvoice_admin_token";
 
 const ORBIT_LABELS = ["NLP Engine", "Voice AI", "CRM Sync", "Call Router", "Analytics", "Auto-Schedule"];
@@ -134,19 +132,28 @@ export default function AdminLogin() {
     }
   }, [setLocation]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    setTimeout(() => {
-      if (username === ADMIN_USER && password === ADMIN_PASS) {
-        localStorage.setItem(TOKEN_KEY, btoa(`${username}:${Date.now()}`));
-        setLocation("/admin");
-      } else {
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      if (!res.ok) {
         setError("Invalid username or password.");
         setLoading(false);
+        return;
       }
-    }, 700);
+      const { token } = await res.json();
+      localStorage.setItem(TOKEN_KEY, token);
+      setLocation("/admin");
+    } catch {
+      setError("Could not reach the server. Please try again.");
+      setLoading(false);
+    }
   };
 
   return (
