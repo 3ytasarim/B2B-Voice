@@ -2,7 +2,7 @@ export type Lang = "en" | "de" | "es";
 
 export interface Translations {
   nav: { home: string; features: string; industries: string; howItWorks: string; faq: string; requestDemo: string; active: string };
-  hero: { badge: string; h1: string; h2: string; sub: string; cta1: string; cta2: string; liveCall: string; activeCall: string; savedToCRM: string; summarySent: string; connectingCall: string; listeningToCustomer: string; appointmentCreated: string };
+  hero: { badge: string; h1: string; h2: string; sub: string; cta1: string; cta2: string; liveCall: string; activeCall: string; savedToCRM: string; summarySent: string; connectingCall: string; listeningToCustomer: string; appointmentCreated: string; demoBadge: string; talkTitle: string; talkNow: string; talkDesc: string; tapToCall: string; dialNow: string };
   trust: { alwaysOn: string; languages: string; responseTime: string; integration: string };
   problem: { badge: string; heading: string; items: { title: string; desc: string }[] };
   solution: { badge: string; heading: string; sub: string; steps: { title: string; desc: string }[] };
@@ -74,6 +74,9 @@ export const T: Record<Lang, Translations> = {
       cta1: "Get Free Demo", cta2: "Listen to a Sample Call",
       liveCall: "Live Call", activeCall: "Active Call", savedToCRM: "SAVED TO CRM", summarySent: "SUMMARY SENT",
       connectingCall: "Connecting call...", listeningToCustomer: "Listening to customer...", appointmentCreated: "Appointment created",
+      demoBadge: "TRY THE LIVE DEMO", talkTitle: "Talk to Our AI", talkNow: "right now.",
+      talkDesc: "Ask what our AI can do for your business, explore its features, and schedule a meeting with our team.",
+      tapToCall: "TAP TO CALL", dialNow: "DIAL NOW",
     },
     trust: { alwaysOn: "Always On", languages: "Languages", responseTime: "Response Time", integration: "Integration" },
     problem: {
@@ -281,6 +284,9 @@ export const T: Record<Lang, Translations> = {
       cta1: "Kostenlose Demo", cta2: "Beispielanruf anhören",
       liveCall: "Live-Anruf", activeCall: "Aktiver Anruf", savedToCRM: "IM CRM GESPEICHERT", summarySent: "ZUSAMMENFASSUNG GESENDET",
       connectingCall: "Verbinde...", listeningToCustomer: "Höre zu...", appointmentCreated: "Termin erstellt",
+      demoBadge: "LIVE-DEMO TESTEN", talkTitle: "Sprechen Sie mit unserer KI", talkNow: "jetzt sofort.",
+      talkDesc: "Fragen Sie, was unsere KI für Ihr Unternehmen tun kann, entdecken Sie die Funktionen und vereinbaren Sie ein Meeting mit unserem Team.",
+      tapToCall: "ZUM ANRUFEN TIPPEN", dialNow: "JETZT ANRUFEN",
     },
     trust: { alwaysOn: "Immer verfügbar", languages: "Sprachen", responseTime: "Antwortzeit", integration: "Integration" },
     problem: {
@@ -488,6 +494,9 @@ export const T: Record<Lang, Translations> = {
       cta1: "Demo Gratuita", cta2: "Escuchar una Llamada de Muestra",
       liveCall: "Llamada en Vivo", activeCall: "Llamada Activa", savedToCRM: "GUARDADO EN CRM", summarySent: "RESUMEN ENVIADO",
       connectingCall: "Conectando...", listeningToCustomer: "Escuchando...", appointmentCreated: "Cita creada",
+      demoBadge: "PRUEBA LA DEMO EN VIVO", talkTitle: "Habla con Nuestra IA", talkNow: "ahora mismo.",
+      talkDesc: "Pregunta qué puede hacer nuestra IA por tu negocio, explora sus funciones y agenda una reunión con nuestro equipo.",
+      tapToCall: "TOCA PARA LLAMAR", dialNow: "LLAMA AHORA",
     },
     trust: { alwaysOn: "Siempre Activo", languages: "Idiomas", responseTime: "Tiempo de Respuesta", integration: "Integración" },
     problem: {

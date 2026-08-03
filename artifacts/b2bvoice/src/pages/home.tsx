@@ -533,19 +533,12 @@ const HeroDashboard = () => {
 };
 
 // --- Hero ---
+const DEMO_PHONE_DISPLAY = "+1 (XXX) XXX-XXXX";
+const DEMO_PHONE_TEL = "+1XXXXXXXXXX";
+
 const Hero = () => {
   const { open } = useDemoModal();
   const { t } = useLanguage();
-  const [callStatusIdx, setCallStatusIdx] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCallStatusIdx(i => (i + 1) % 3);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
-  const callStatus = [t.hero.connectingCall, t.hero.listeningToCustomer, t.hero.appointmentCreated][callStatusIdx];
 
   return (
     <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden flex items-center min-h-screen bg-gray-50">
@@ -632,46 +625,68 @@ const Hero = () => {
             className="relative"
           >
             <motion.div
-              animate={{ scale: [1, 1.015, 1] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="bg-white/80 backdrop-blur-xl border border-gray-200 p-4 sm:p-8 shadow-xl relative overflow-hidden rounded-none"
+              animate={{ rotate: [0, 0, -1, 1, -1, 1, 0, 0] }}
+              transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 4.5, ease: "easeInOut" }}
+              className="bg-white/90 backdrop-blur-xl border border-gray-200 shadow-xl relative overflow-hidden rounded-none"
+              data-testid="hero-call-card"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
 
-              <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 flex items-center justify-center rounded-none">
-                    <PhoneCall className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-gray-900 font-bold text-lg">{t.hero.liveCall}</h3>
-                    <div className="flex items-center gap-2 text-sm text-green-600">
-                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                      {t.hero.activeCall}
-                    </div>
-                  </div>
-                </div>
-                <div className="text-gray-400 text-sm font-mono">00:42</div>
+              <div className="flex items-center gap-2.5 px-6 sm:px-8 py-4 border-b border-gray-100">
+                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                <span className="text-[11px] font-bold tracking-[0.2em] text-gray-700 uppercase">{t.hero.demoBadge}</span>
               </div>
 
-              <div className="bg-gray-50 border border-gray-100 p-6 mb-6 rounded-none">
-                <Waveform />
+              <div className="px-6 sm:px-8 pt-8 pb-6">
+                <div className="relative w-24 h-24 mb-6">
+                  <motion.span
+                    animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                    className="absolute inset-0 rounded-full bg-primary/20"
+                  />
+                  <motion.span
+                    animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.7 }}
+                    className="absolute inset-0 rounded-full bg-primary/20"
+                  />
+                  <span className="absolute inset-2 rounded-full bg-primary/10" />
+                  <span className="absolute inset-4 rounded-full bg-primary flex items-center justify-center shadow-lg">
+                    <PhoneCall className="w-8 h-8 text-white" />
+                  </span>
+                </div>
+
+                <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">{t.hero.talkTitle}</h3>
+                <p className="text-2xl sm:text-3xl italic text-gray-400 font-serif mb-5">{t.hero.talkNow}</p>
+
+                <a
+                  href={`tel:${DEMO_PHONE_TEL}`}
+                  data-testid="hero-phone-number"
+                  className="block text-3xl sm:text-4xl font-black text-primary tracking-tight hover:underline underline-offset-4 mb-6"
+                >
+                  {DEMO_PHONE_DISPLAY}
+                </a>
+
+                <div className="border-t border-gray-100 pt-5">
+                  <p className="text-sm italic text-gray-500 leading-relaxed">{t.hero.talkDesc}</p>
+                </div>
               </div>
 
-              <div className="space-y-4">
-                <div className="bg-accent/10 border border-accent/20 px-4 py-3 text-primary font-medium text-center rounded-none" style={{ minHeight: 48 }}>
-                  {callStatus}
-                </div>
-                <div className="flex justify-center items-center gap-2 mt-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider border border-blue-200 rounded-none">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    {t.hero.summarySent}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 text-xs font-bold uppercase tracking-wider border border-green-200 rounded-none">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    {t.hero.savedToCRM}
-                  </span>
-                </div>
+              <div className="flex items-center justify-between border-t-2 border-primary px-6 sm:px-8 py-4">
+                <a
+                  href={`tel:${DEMO_PHONE_TEL}`}
+                  data-testid="hero-tap-to-call"
+                  className="text-xs font-bold tracking-[0.2em] text-gray-700 uppercase hover:text-primary transition-colors"
+                >
+                  {t.hero.tapToCall}
+                </a>
+                <a
+                  href={`tel:${DEMO_PHONE_TEL}`}
+                  data-testid="hero-dial-now"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] text-primary uppercase hover:underline underline-offset-4"
+                >
+                  {t.hero.dialNow}
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
               </div>
             </motion.div>
           </motion.div>
