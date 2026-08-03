@@ -642,12 +642,12 @@ const Hero = () => {
                   <motion.span
                     animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.15, 0.5] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-0 rounded-full bg-primary/10"
+                    className="absolute inset-0 rounded-full bg-accent/25"
                   />
                   <motion.span
                     animate={{ scale: [1, 1.08, 1], opacity: [0.7, 0.3, 0.7] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-                    className="absolute inset-2 rounded-full bg-primary/15"
+                    className="absolute inset-2 rounded-full bg-accent/35"
                   />
                   <span className="absolute inset-4 rounded-full bg-primary flex items-center justify-center shadow-lg transition-transform duration-300 group-hover/phone:scale-105">
                     <PhoneCall className="w-8 h-8 text-white" />
