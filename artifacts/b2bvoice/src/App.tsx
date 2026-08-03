@@ -7,6 +7,7 @@ import Home from "@/pages/home";
 import AdminPage from "@/pages/admin";
 import AdminLogin from "@/pages/admin-login";
 import PrivacyPolicy from "@/pages/privacy-policy";
+import CookiePolicy from "@/pages/cookie-policy";
 import TermsOfService from "@/pages/terms-of-service";
 import LegalNotice from "@/pages/legal-notice";
 import DemoPage from "@/pages/demo";
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin" component={AdminPage} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/cookie-policy" component={CookiePolicy} />
       <Route path="/terms-of-service" component={TermsOfService} />
       <Route path="/legal-notice" component={LegalNotice} />
       <Route path="/demo" component={DemoPage} />

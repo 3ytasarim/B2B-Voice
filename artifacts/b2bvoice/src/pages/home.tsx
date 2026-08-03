@@ -2530,6 +2530,7 @@ const Footer = () => {
   const { t, lang } = useLanguage();
   const links = [
     { label: lang === "de" ? "Datenschutz" : lang === "es" ? "Privacidad" : "Privacy Policy", href: "/privacy-policy" },
+    { label: lang === "de" ? "Cookie-Richtlinie" : lang === "es" ? "Política de Cookies" : "Cookie Policy", href: "/cookie-policy" },
     { label: lang === "de" ? "Nutzungsbedingungen" : lang === "es" ? "Términos de Uso" : "Terms of Service", href: "/terms-of-service" },
     { label: lang === "de" ? "Impressum" : lang === "es" ? "Aviso Legal" : "Legal Notice", href: "/legal-notice" },
   ];
