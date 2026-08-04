@@ -2603,118 +2603,112 @@ const Footer = () => {
     { label: "Blog", href: "/blog" },
   ];
   return (
-    <footer className="footer-light-bg border-t border-blue-100 py-10">
+    <footer className="footer-light-bg border-t border-blue-100 overflow-hidden">
       <style>{`
         @keyframes footerLightShift {
           0%   { background-position: 0% 50%; }
           50%  { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
+        @keyframes footerMarquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
         .footer-light-bg {
           background: linear-gradient(135deg, #e8f0fe 0%, #dbeafe 30%, #eff6ff 60%, #e0ecff 100%);
           background-size: 300% 300%;
           animation: footerLightShift 8s ease infinite;
         }
+        .footer-marquee-track {
+          animation: footerMarquee 28s linear infinite;
+          width: max-content;
+        }
       `}</style>
-      <div className="container mx-auto px-6 flex flex-col items-center gap-6">
-        {/* Logo */}
-        {lang === "de" ? (
-          <img src="/logo-de-footer.webp" alt="B2BVoice" className="h-20 w-auto" loading="lazy" />
-        ) : (
-          <div style={{ overflow: "hidden", height: 32 }}>
-            <img src="/logo-clean.webp" alt="B2BVoice" style={{ width: 170, height: "auto", display: "block", marginTop: -67 }} loading="lazy" />
-          </div>
-        )}
-
-        {/* Contact links — animated */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center gap-3"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
-        >
-          {/* Email pill */}
-          <motion.a
-            href="mailto:hello@b2b-voice.com"
-            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } }}
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            className="relative inline-flex items-center gap-3 px-5 py-2.5 bg-white border border-blue-100 shadow-md overflow-hidden group"
-            style={{ boxShadow: "0 2px 16px rgba(0,53,122,0.08)" }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-primary/5 to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            />
-            <motion.div
-              animate={{ scale: [1, 1.18, 1] }}
-              transition={{ repeat: Infinity, duration: 2.6, ease: "easeInOut" }}
-              className="relative w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"
-            >
-              <Mail className="w-4 h-4 text-primary" />
-            </motion.div>
-            <div className="relative flex flex-col items-start leading-none">
-              <span className="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-0.5">Email</span>
-              <span className="font-black text-sm text-gray-900 tracking-wide">hello@b2b-voice.com</span>
+      {/* Reference-style ticker */}
+      <div className="border-y border-primary/15 bg-white/35 py-3.5" aria-label="B2BVoice website">
+        <div className="footer-marquee-track flex items-center">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex items-center shrink-0">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <span key={`${copy}-${index}`} className="flex items-center">
+                  <span className="px-7 text-sm md:text-base font-black tracking-[0.2em] text-primary/75">
+                    B2BVOICE.COM
+                  </span>
+                  <span className="text-primary/35" aria-hidden="true">—</span>
+                </span>
+              ))}
             </div>
-          </motion.a>
-
-          {/* Instagram pill */}
-          <motion.a
-            href="https://www.instagram.com/b2bvoice"
-            target="_blank"
-            rel="noopener noreferrer"
-            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } }}
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            className="relative inline-flex items-center gap-3 px-5 py-2.5 bg-white border border-pink-100 shadow-md overflow-hidden group"
-            style={{ boxShadow: "0 2px 16px rgba(131,58,180,0.08)" }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            />
-            <motion.div
-              animate={{ rotate: [0, 8, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="relative w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: "linear-gradient(135deg, rgba(131,58,180,0.12) 0%, rgba(253,29,29,0.10) 50%, rgba(252,176,69,0.10) 100%)" }}
-            >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <defs>
-                  <linearGradient id="igGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#833ab4" />
-                    <stop offset="50%" stopColor="#fd1d1d" />
-                    <stop offset="100%" stopColor="#fcb045" />
-                  </linearGradient>
-                </defs>
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#igGrad2)"/>
-                <circle cx="12" cy="12" r="4.5" stroke="url(#igGrad2)"/>
-                <circle cx="17.5" cy="6.5" r="1" fill="url(#igGrad2)" stroke="none"/>
-              </svg>
-            </motion.div>
-            <div className="relative flex flex-col items-start leading-none">
-              <span className="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-0.5">Instagram</span>
-              <span className="font-black text-sm text-gray-900 tracking-wide">@b2bvoice</span>
-            </div>
-          </motion.a>
-        </motion.div>
-
-        {/* Legal links */}
-        <nav className="flex flex-wrap items-center justify-center gap-2 text-sm text-gray-500">
-          {links.map((link, i) => (
-            <span key={link.href} className="flex items-center gap-2">
-              {i > 0 && <span className="text-gray-300 select-none">|</span>}
-              <a href={link.href} className="hover:text-primary transition-colors">
-                {link.label}
-              </a>
-            </span>
           ))}
-        </nav>
+        </div>
+      </div>
 
-        {/* Copyright */}
-        <p className="text-xs text-gray-400">
-          &copy; {new Date().getFullYear()} B2BVoice. {t.footer.allRights}
-        </p>
+      <div className="container mx-auto px-6">
+        {/* Large centered logo; the space below is intentionally left open for now. */}
+        <div className="flex flex-col items-center pt-14 md:pt-20">
+          {lang === "de" ? (
+            <img src="/logo-de-footer.webp" alt="B2BVoice" className="h-24 md:h-28 w-auto object-contain" loading="lazy" />
+          ) : (
+            <div className="h-16 md:h-20 w-[280px] md:w-[360px] overflow-hidden" aria-label="B2BVoice">
+              <img
+                src="/logo-clean.webp"
+                alt="B2BVoice"
+                className="block w-full h-auto"
+                style={{ marginTop: "-44%" }}
+                loading="lazy"
+              />
+            </div>
+          )}
+          <div className="h-14 md:h-20" aria-hidden="true" />
+        </div>
+
+        <div className="mx-auto max-w-4xl border-t border-primary/15 py-10 md:py-12 grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-24">
+          {/* Legal links */}
+          <div>
+            <p className="mb-5 text-[10px] font-black uppercase tracking-[0.28em] text-primary/60">Legal</p>
+            <nav className="flex flex-col items-start gap-3 text-sm text-slate-600" aria-label="Legal">
+              {links.map((link) => (
+                <a key={link.href} href={link.href} className="hover:text-primary hover:translate-x-1 transition-all">
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Contact links */}
+          <div>
+            <p className="mb-5 text-[10px] font-black uppercase tracking-[0.28em] text-primary/60">Contact</p>
+            <div className="flex flex-col items-start gap-4 text-sm">
+              <a href="mailto:hello@b2b-voice.com" className="inline-flex items-center gap-3 text-slate-700 hover:text-primary transition-colors">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <span>hello@b2b-voice.com</span>
+              </a>
+              <a
+                href="https://www.instagram.com/b2bvoice"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 text-slate-700 hover:text-primary transition-colors"
+              >
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Instagram className="h-4 w-4" />
+                </span>
+                <span>@b2bvoice</span>
+              </a>
+              <a href="tel:+19297305505" className="inline-flex items-center gap-3 text-slate-700 hover:text-primary transition-colors">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <PhoneCall className="h-4 w-4" />
+                </span>
+                <span>+1 929 730 5505</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-primary/15 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+          <p>&copy; {new Date().getFullYear()} B2BVoice. {t.footer.allRights}</p>
+          <span className="font-semibold tracking-[0.16em] text-primary/50">B2BVOICE.COM</span>
+        </div>
       </div>
     </footer>
   );
