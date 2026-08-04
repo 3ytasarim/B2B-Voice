@@ -1337,6 +1337,23 @@ const LanguagesSection = () => {
 };
 
 // --- Industries ---
+const SECTOR_IMAGES = [
+  "/sector-health.webp",
+  "/sector-property-management.webp",
+  "/sector-home-field-services.webp",
+  "/sector-automotive-groups.webp",
+  "/sector-law-firms.webp",
+  "/sector-staffing-recruiting.webp",
+  "/sector-logistics-transportation.webp",
+  "/sector-insurance-providers.webp",
+  "/sector-hospitality-groups.webp",
+  "/sector-senior-care.webp",
+  "/sector-multi-location.webp",
+  "/sector-financial-services.webp",
+  "/sector-facilities-management.webp",
+  "/sector-manufacturing-distribution.webp",
+];
+/*
 const IND_CONFIG: { icon: React.ElementType; gradient: string; image?: string; imageBg?: string }[] = [
   { icon: Building,          gradient: "from-emerald-500 via-emerald-600 to-emerald-700" },
   { icon: Cross,             gradient: "from-sky-500 via-sky-600 to-sky-700",   image: "/industry-dental-clinics.png", imageBg: "#0b1e4a" },
@@ -1358,125 +1375,76 @@ const IND_CONFIG: { icon: React.ElementType; gradient: string; image?: string; i
   { icon: PawPrint,          gradient: "from-fuchsia-500 via-fuchsia-600 to-fuchsia-700" },
   { icon: Users,             gradient: "from-blue-600 via-blue-700 to-indigo-700", image: "/industry-recruitment.webp", imageBg: "#0b1e4a" },
   { icon: BookOpen,          gradient: "from-violet-600 via-purple-600 to-purple-700" },
-];
+]; */
 
 const IndustriesSection = () => {
   const { t } = useLanguage();
-  const [paused, setPaused] = useState(false);
   const industries = t.industries.items.map((item, i) => ({
     ...item,
-    icon: IND_CONFIG[i % IND_CONFIG.length].icon,
-    gradient: IND_CONFIG[i % IND_CONFIG.length].gradient,
-    image: IND_CONFIG[i % IND_CONFIG.length].image,
-    imageBg: IND_CONFIG[i % IND_CONFIG.length].imageBg,
+    image: SECTOR_IMAGES[i],
   }));
-  const doubled = [...industries, ...industries];
 
   return (
-    <section id="sektorler" className="py-14 md:py-20 bg-white overflow-hidden">
+    <section id="sektorler" className="py-16 md:py-24 bg-[#f8fafc] overflow-hidden">
       <div className="container mx-auto px-6">
-        <FadeInWhenVisible className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 bg-primary/5 text-xs font-bold uppercase tracking-widest text-primary mb-5 rounded-none">
+        <FadeInWhenVisible className="mb-10 md:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-primary/20 bg-white text-xs font-bold uppercase tracking-widest text-primary mb-5">
             {t.industries.badge}
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 leading-[1.05] mb-4">
             {t.industries.heading}{" "}
             <span style={{ color: "#00357a" }}>{t.industries.span}</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl">{t.industries.sub}</p>
+          <p className="text-gray-500 text-base md:text-lg max-w-2xl">{t.industries.sub}</p>
         </FadeInWhenVisible>
       </div>
 
-      {/* Carousel track — full bleed */}
-      <div
-        className="relative"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 h-full w-24 pointer-events-none z-10"
-          style={{ background: "linear-gradient(to right, white, transparent)" }} />
-        <div className="absolute right-0 top-0 h-full w-24 pointer-events-none z-10"
-          style={{ background: "linear-gradient(to left, white, transparent)" }} />
-
-        <motion.div
-          className="flex gap-5 px-6"
-          animate={{ x: paused ? undefined : [0, -(300 + 20) * industries.length] }}
-          transition={{ duration: industries.length * 3.5, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-          style={{ width: "max-content" }}
-        >
-          {doubled.map((ind, i) => {
-            const Icon = ind.icon;
-            return (
-              <div
-                key={i}
-                className={`shrink-0 ${ind.image ? "w-[200px] md:w-[220px]" : "w-[260px] md:w-[280px]"}`}
-              >
-                {/* Industry label above card */}
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 pl-1 truncate">
-                  {ind.title}
-                </p>
-
-                {/* Card */}
-                <motion.div
-                  className={`relative ${ind.image ? "h-[300px]" : "h-[230px]"} rounded-2xl ${ind.image ? "" : `bg-gradient-to-br ${ind.gradient}`} p-5 flex flex-col justify-between overflow-hidden cursor-default select-none`}
-                  style={ind.image ? { backgroundColor: ind.imageBg ?? "#111" } : undefined}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                >
-                  {/* Background image (if any) — object-contain so full image shows */}
-                  {ind.image && (
-                    <>
-                      <img
-                        src={ind.image}
-                        alt=""
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover object-center"
-                      />
-                      {/* Dark gradient overlay so chips are readable */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
-                    </>
-                  )}
-
-                  {/* Decorative circles — only when no image */}
-                  {!ind.image && (
-                    <>
-                      <div className="absolute -right-8 -top-8 w-36 h-36 rounded-full bg-white/10 pointer-events-none" />
-                      <div className="absolute -right-2 -top-2 w-20 h-20 rounded-full bg-white/8 pointer-events-none" />
-                    </>
-                  )}
-
-                  {/* Icon — hidden when image is present */}
-                  {!ind.image && (
-                    <div className="relative z-10 w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                  )}
-
-                  {/* Spacer to push chips to bottom when no icon */}
-                  {ind.image && <div />}
-
-                  {/* Feature chips */}
-                  <div className="relative z-10 flex flex-wrap gap-1.5">
-                    {ind.features.map((f, fi) => (
-                      <span
-                        key={fi}
-                        className="inline-block px-2.5 py-1 rounded-full text-white text-[10px] font-semibold whitespace-nowrap"
-                        style={{
-                          background: ind.image ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.2)",
-                          backdropFilter: ind.image ? "blur(6px)" : undefined,
-                          textShadow: ind.image ? "0 1px 4px rgba(0,0,0,0.7)" : undefined,
-                        }}
-                      >
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
+      {/* Horizontal sector gallery — swipeable on touch and scrollable with a mouse. */}
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-20 bg-gradient-to-r from-[#f8fafc] to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-20 bg-gradient-to-l from-[#f8fafc] to-transparent pointer-events-none z-10" />
+        <div className="flex gap-5 overflow-x-auto px-6 md:px-[max(1.5rem,calc((100vw-1200px)/2))] pb-5 snap-x snap-mandatory [scrollbar-width:thin] [scrollbar-color:#cbd5e1_transparent]">
+          {industries.map((ind, i) => (
+            <motion.article
+              key={`${ind.title}-${i}`}
+              className="group shrink-0 w-[min(86vw,440px)] bg-white border border-slate-200 shadow-sm snap-start overflow-hidden"
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 300, damping: 24 }}
+            >
+              <div className="relative aspect-[16/9] overflow-hidden bg-slate-200">
+                <img
+                  src={ind.image}
+                  alt={`${ind.title} — B2BVoice AI voice assistant`}
+                  loading={i < 3 ? "eager" : "lazy"}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#03132f]/45 via-transparent to-transparent pointer-events-none" />
+                <span className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-xs font-bold text-primary shadow-sm">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </div>
-            );
-          })}
-        </motion.div>
+              <div className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold leading-tight text-slate-900">
+                  {ind.title}
+                </h3>
+                <div className="mt-4 space-y-2.5">
+                  {ind.features.map((feature) => (
+                    <div key={feature} className="flex items-start gap-2.5 text-sm text-slate-500">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+      <div className="container mx-auto px-6 mt-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
+        <ArrowRight className="h-4 w-4 text-primary" />
+        <span>{t.industries.items.length} {t.industries.badge}</span>
+        <span className="h-px w-12 bg-slate-300" />
+        <span>{t.industries.scrollLabel}</span>
       </div>
     </section>
   );
