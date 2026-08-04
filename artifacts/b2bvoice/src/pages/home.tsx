@@ -2603,7 +2603,7 @@ const Footer = () => {
     { label: "Blog", href: "/blog" },
   ];
   return (
-    <footer className="footer-light-bg mx-2 md:mx-4 rounded-t-[28px] border-t border-blue-100 overflow-hidden">
+    <footer className="footer-light-bg rounded-t-[28px] overflow-hidden">
       <style>{`
         @keyframes footerLightShift {
           0%   { background-position: 0% 50%; }
@@ -2625,7 +2625,7 @@ const Footer = () => {
         }
       `}</style>
       {/* Reference-style ticker */}
-      <div className="border-y border-primary/15 bg-white/35 py-3.5" aria-label="B2BVoice website">
+      <div className="bg-white/35 py-3.5" aria-label="B2BVoice website">
         <div className="footer-marquee-track flex items-center">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex items-center shrink-0">
@@ -2643,7 +2643,7 @@ const Footer = () => {
       </div>
 
       <div className="container mx-auto px-6">
-        <div className="mx-auto max-w-5xl border-t border-primary/15 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-[1.2fr_0.8fr_1fr] gap-10 md:gap-16">
+        <div className="mx-auto max-w-5xl py-12 md:py-16 grid grid-cols-1 sm:grid-cols-[1.2fr_0.8fr_1fr] gap-10 md:gap-16">
           {/* Logo — left aligned like the reference; the area below intentionally stays empty. */}
           <div className="flex flex-col items-start">
             {lang === "de" ? (
@@ -2705,7 +2705,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary/15 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <div className="py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <p>&copy; {new Date().getFullYear()} B2BVoice. {t.footer.allRights}</p>
           <span className="font-semibold tracking-[0.16em] text-primary/50">B2BVOICE.COM</span>
         </div>
