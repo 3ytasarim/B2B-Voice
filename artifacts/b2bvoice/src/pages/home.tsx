@@ -536,6 +536,7 @@ const HeroDashboard = () => {
 // --- Hero ---
 const DEMO_PHONE_DISPLAY = "+1 (XXX) XXX-XXXX";
 const DEMO_PHONE_TEL = "+1XXXXXXXXXX";
+const CUSTOM_DEMO_PHONE_TEL = "+19297305505";
 
 const Hero = () => {
   const { open } = useDemoModal();
@@ -3093,10 +3094,16 @@ const PowerfulFeaturesSection = () => {
         {/* Card 2: Demo Call */}
         <FadeInWhenVisible delay={0.15}>
           <div className="bg-white border border-gray-200 p-6 h-full flex flex-col rounded-none hover:border-primary/30 hover:shadow-lg transition-all min-h-[300px] group">
-            <h3 className="text-base font-bold text-gray-900 mb-2">{t.powerful.card2.title}</h3>
-            <p className="text-gray-400 text-xs mb-6 leading-relaxed flex-1">
-              {t.powerful.card2.desc}
-            </p>
+            <a
+              href={`tel:${CUSTOM_DEMO_PHONE_TEL}`}
+              aria-label={t.powerful.card2.title}
+              className="flex-1 rounded-sm outline-none transition-colors hover:bg-primary/[0.03] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              <h3 className="text-base font-bold text-gray-900 mb-2">{t.powerful.card2.title}</h3>
+              <p className="text-gray-400 text-xs leading-relaxed">
+                {t.powerful.card2.desc}
+              </p>
+            </a>
             <DemoCallViz callLabel={t.powerful.callLabel} connected={t.powerful.connected} demoReady={t.powerful.demoReady} />
           </div>
         </FadeInWhenVisible>
