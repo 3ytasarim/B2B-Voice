@@ -2615,7 +2615,7 @@ const Footer = () => {
           to { transform: translateX(-50%); }
         }
         .footer-light-bg {
-          background: linear-gradient(135deg, #e8f0fe 0%, #dbeafe 30%, #eff6ff 60%, #e0ecff 100%);
+          background: linear-gradient(135deg, #cbd9ee 0%, #b9cbea 30%, #d9e5f5 60%, #c3d3eb 100%);
           background-size: 300% 300%;
           animation: footerLightShift 8s ease infinite;
         }
