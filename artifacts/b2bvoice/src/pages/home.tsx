@@ -2527,7 +2527,7 @@ const FinalCTA2 = () => {
   const { open } = useDemoModal();
   const { t } = useLanguage();
   return (
-    <section className="py-14 md:py-20 relative overflow-hidden bg-white border-b border-gray-200">
+    <section className="py-14 md:py-20 relative overflow-hidden bg-white">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-transparent to-white" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] hero-blob-1" />
