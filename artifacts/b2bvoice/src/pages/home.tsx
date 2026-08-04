@@ -569,8 +569,15 @@ const Hero = () => {
               {t.hero.badge}
             </div>
             
-            <h1 className="max-w-[12ch] text-[clamp(2.25rem,6vw,5.75rem)] font-bold tracking-tight mb-6 text-gray-900 leading-[1.02] text-balance">
-              {t.hero.h1}<br /><span className="text-primary">{t.hero.h2}</span>
+            <h1 className="max-w-[12ch] mb-7 text-[clamp(2.35rem,6vw,5.75rem)] font-bold tracking-[-0.045em] text-gray-900 leading-[0.98] text-balance">
+              <span className="block">{t.hero.h1}</span>
+              <span className="relative mt-2 block w-fit max-w-full text-primary italic font-black tracking-[-0.055em]">
+                <span className="relative z-10">{t.hero.h2}</span>
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-[0.04em] left-[2%] h-[0.12em] w-[96%] -rotate-[1.5deg] rounded-full bg-accent/80"
+                />
+              </span>
             </h1>
             
             <p className="text-xl text-gray-600 mb-10 leading-relaxed">
