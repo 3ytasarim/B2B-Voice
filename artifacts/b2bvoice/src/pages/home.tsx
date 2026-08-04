@@ -534,8 +534,8 @@ const HeroDashboard = () => {
 };
 
 // --- Hero ---
-const DEMO_PHONE_DISPLAY = "+1 (XXX) XXX-XXXX";
-const DEMO_PHONE_TEL = "+1XXXXXXXXXX";
+const DEMO_PHONE_DISPLAY = "+19297305505";
+const DEMO_PHONE_TEL = "+19297305505";
 const CUSTOM_DEMO_PHONE_TEL = "+19297305505";
 
 const Hero = () => {
@@ -624,12 +624,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative"
+            className="relative flex justify-center lg:justify-end"
           >
             <motion.div
               animate={{ rotate: [0, 0, -1, 1, -1, 1, 0, 0] }}
               transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 4.5, ease: "easeInOut" }}
-              className="bg-white/90 backdrop-blur-xl border border-gray-200 shadow-xl relative overflow-hidden rounded-none"
+              className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-[0_24px_70px_rgba(0,53,122,0.16)] relative overflow-hidden rounded-none w-full max-w-[390px] min-h-[520px] flex flex-col"
               data-testid="hero-call-card"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
@@ -639,30 +639,31 @@ const Hero = () => {
                 <span className="text-[11px] font-bold tracking-[0.2em] text-gray-700 uppercase">{t.hero.demoBadge}</span>
               </div>
 
-              <div className="px-6 sm:px-8 pt-8 pb-6">
-                <div className="relative w-24 h-24 mb-6 group/phone">
+              <div className="px-6 sm:px-8 pt-10 pb-8 flex-1">
+                <div className="relative w-32 h-32 mb-8 group/phone">
                   <motion.span
                     animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.15, 0.5] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-0 rounded-full bg-accent/25"
+                    className="absolute inset-0 rounded-full bg-violet-500/20"
                   />
                   <motion.span
                     animate={{ scale: [1, 1.08, 1], opacity: [0.7, 0.3, 0.7] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-                    className="absolute inset-2 rounded-full bg-accent/35"
+                    className="absolute inset-3 rounded-full bg-violet-500/25"
                   />
-                  <span className="absolute inset-4 rounded-full bg-primary flex items-center justify-center shadow-lg transition-transform duration-300 group-hover/phone:scale-105">
-                    <PhoneCall className="w-8 h-8 text-white" />
+                  <span className="absolute inset-5 rounded-full bg-gradient-to-br from-violet-600 to-primary flex items-center justify-center shadow-[0_10px_30px_rgba(109,40,217,0.35)] transition-transform duration-300 group-hover/phone:scale-105">
+                    <PhoneCall className="w-12 h-12 text-white" />
                   </span>
                 </div>
 
                 <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">{t.hero.talkTitle}</h3>
-                <p className="text-2xl sm:text-3xl italic text-gray-400 font-serif mb-5">{t.hero.talkNow}</p>
+                <p className="text-2xl sm:text-3xl italic text-gray-400 font-serif mb-6">{t.hero.talkNow}</p>
 
                 <a
                   href={`tel:${DEMO_PHONE_TEL}`}
                   data-testid="hero-phone-number"
-                  className="block text-3xl sm:text-4xl font-black text-primary tracking-tight hover:underline underline-offset-4 mb-6"
+                  aria-label={`Call B2BVoice at ${DEMO_PHONE_DISPLAY}`}
+                  className="block text-3xl sm:text-[2.6rem] font-black text-violet-700 tracking-tight hover:text-violet-900 hover:underline underline-offset-4 mb-7 whitespace-nowrap"
                 >
                   {DEMO_PHONE_DISPLAY}
                 </a>
