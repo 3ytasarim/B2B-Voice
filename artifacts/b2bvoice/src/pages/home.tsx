@@ -2603,7 +2603,7 @@ const Footer = () => {
     { label: "Blog", href: "/blog" },
   ];
   return (
-    <footer className="footer-light-bg border-t border-blue-100 overflow-hidden">
+    <footer className="footer-light-bg mx-2 md:mx-4 rounded-t-[28px] border-t border-blue-100 overflow-hidden">
       <style>{`
         @keyframes footerLightShift {
           0%   { background-position: 0% 50%; }
@@ -2643,25 +2643,25 @@ const Footer = () => {
       </div>
 
       <div className="container mx-auto px-6">
-        {/* Large centered logo; the space below is intentionally left open for now. */}
-        <div className="flex flex-col items-center pt-14 md:pt-20">
-          {lang === "de" ? (
-            <img src="/logo-de-footer.webp" alt="B2BVoice" className="h-24 md:h-28 w-auto object-contain" loading="lazy" />
-          ) : (
-            <div className="h-16 md:h-20 w-[280px] md:w-[360px] overflow-hidden" aria-label="B2BVoice">
-              <img
-                src="/logo-clean.webp"
-                alt="B2BVoice"
-                className="block w-full h-auto"
-                style={{ marginTop: "-44%" }}
-                loading="lazy"
-              />
-            </div>
-          )}
-          <div className="h-14 md:h-20" aria-hidden="true" />
-        </div>
+        <div className="mx-auto max-w-5xl border-t border-primary/15 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-[1.2fr_0.8fr_1fr] gap-10 md:gap-16">
+          {/* Logo — left aligned like the reference; the area below intentionally stays empty. */}
+          <div className="flex flex-col items-start">
+            {lang === "de" ? (
+              <img src="/logo-de-footer.webp" alt="B2BVoice" className="h-12 md:h-14 w-auto object-contain" loading="lazy" />
+            ) : (
+              <div className="h-10 md:h-12 w-[190px] md:w-[220px] overflow-hidden" aria-label="B2BVoice">
+                <img
+                  src="/logo-clean.webp"
+                  alt="B2BVoice"
+                  className="block w-full h-auto"
+                  style={{ marginTop: "-44%" }}
+                  loading="lazy"
+                />
+              </div>
+            )}
+            <div className="h-14 md:h-20" aria-hidden="true" />
+          </div>
 
-        <div className="mx-auto max-w-4xl border-t border-primary/15 py-10 md:py-12 grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-24">
           {/* Legal links */}
           <div>
             <p className="mb-5 text-[10px] font-black uppercase tracking-[0.28em] text-primary/60">Legal</p>
