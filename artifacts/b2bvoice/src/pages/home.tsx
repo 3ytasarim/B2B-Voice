@@ -6,6 +6,7 @@ import BackgroundShader from "@/components/ui/background-shader";
 import { PatternText } from "@/components/ui/pattern-text";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
+import { TextRoll } from "@/components/ui/text-roll";
 import { motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
@@ -698,7 +699,15 @@ const Hero = () => {
                 </a>
 
                 <div className="border-t border-gray-100 pt-5">
-                  <p className="text-sm italic text-gray-500 leading-relaxed">{t.hero.talkDesc}</p>
+                  <p className="text-sm italic text-gray-500 leading-relaxed">
+                    <TextRoll
+                      repeatDelay={5}
+                      duration={0.42}
+                      stagger={0.018}
+                    >
+                      {t.hero.talkDesc}
+                    </TextRoll>
+                  </p>
                 </div>
               </div>
 
