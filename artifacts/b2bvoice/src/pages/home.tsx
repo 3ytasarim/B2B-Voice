@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import type { Lang } from "@/lib/translations";
 import DemoRequestModal from "@/components/DemoRequestModal";
+import BackgroundShader from "@/components/ui/background-shader";
+import { ShinyButton } from "@/components/ui/shiny-button";
 import { motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
@@ -585,22 +587,22 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button
+              <ShinyButton
                 onClick={open}
                 data-testid="hero-primary-cta"
-                className="px-8 py-4 bg-primary text-white font-bold text-lg transition-all hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(0,53,122,0.2)] flex items-center justify-center gap-2 rounded-none"
+                className="w-full sm:w-auto"
               >
                 {t.hero.cta1}
                 <ArrowRight className="w-5 h-5" />
-              </button>
-              <a
+              </ShinyButton>
+              <ShinyButton
                 href="#demo"
                 data-testid="hero-secondary-cta"
-                className="px-8 py-4 border border-gray-200 text-gray-900 bg-white font-semibold text-lg transition-all hover:bg-gray-50 flex items-center justify-center gap-2 rounded-none shadow-sm"
+                className="w-full sm:w-auto"
               >
                 <Play className="w-5 h-5" />
                 {t.hero.cta2}
-              </a>
+              </ShinyButton>
             </div>
 
             <motion.a
@@ -639,14 +641,15 @@ const Hero = () => {
               className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-[0_24px_70px_rgba(0,53,122,0.16)] relative overflow-hidden rounded-none w-full max-w-[390px] min-h-[520px] flex flex-col"
               data-testid="hero-call-card"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+              <BackgroundShader />
+              <div className="absolute top-0 left-0 z-10 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
 
-              <div className="flex items-center gap-2.5 px-6 sm:px-8 py-4 border-b border-gray-100">
+              <div className="relative z-10 flex items-center gap-2.5 px-6 sm:px-8 py-4 border-b border-gray-100">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                 <span className="text-[11px] font-bold tracking-[0.2em] text-gray-700 uppercase">{t.hero.demoBadge}</span>
               </div>
 
-              <div className="px-6 sm:px-8 pt-10 pb-8 flex-1">
+              <div className="relative z-10 px-6 sm:px-8 pt-10 pb-8 flex-1">
                 <div className="relative w-32 h-32 mb-8 group/phone">
                   <motion.span
                     animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.15, 0.5] }}
@@ -680,7 +683,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between border-t-2 border-primary px-6 sm:px-8 py-4">
+              <div className="relative z-10 flex items-center justify-between border-t-2 border-primary px-6 sm:px-8 py-4">
                 <a
                   href={`tel:${DEMO_PHONE_TEL}`}
                   data-testid="hero-tap-to-call"

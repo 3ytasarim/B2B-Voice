@@ -1,1 +1,2 @@
 - [Sector gallery source](sector-gallery-source.md) — keep the uploaded 14-sector PDF order aligned with the matching sector image and translated copy.
+- [Shader preview fallback](shader-preview-fallback.md) — WebGL shader components need a non-WebGL fallback for the Replit preview browser.
