@@ -562,14 +562,14 @@ const Hero = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-2xl"
+            className="min-w-0 max-w-2xl lg:pr-4"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-gray-200 mb-8 text-xs font-semibold tracking-wider text-primary uppercase rounded-none shadow-sm">
               <span className="w-1.5 h-1.5 bg-accent animate-pulse" />
               {t.hero.badge}
             </div>
             
-            <h1 className="text-[2rem] sm:text-5xl lg:text-7xl font-bold tracking-tight mb-6 text-gray-900 leading-[1.1]">
+            <h1 className="max-w-[12ch] text-[clamp(2.25rem,6vw,5.75rem)] font-bold tracking-tight mb-6 text-gray-900 leading-[1.02] text-balance">
               {t.hero.h1}<br /><span className="text-primary">{t.hero.h2}</span>
             </h1>
             
@@ -644,14 +644,14 @@ const Hero = () => {
                   <motion.span
                     animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.15, 0.5] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-0 rounded-full bg-violet-500/20"
+                    className="absolute inset-0 rounded-full bg-emerald-500/20"
                   />
                   <motion.span
                     animate={{ scale: [1, 1.08, 1], opacity: [0.7, 0.3, 0.7] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-                    className="absolute inset-3 rounded-full bg-violet-500/25"
+                    className="absolute inset-3 rounded-full bg-emerald-500/25"
                   />
-                  <span className="absolute inset-5 rounded-full bg-gradient-to-br from-violet-600 to-primary flex items-center justify-center shadow-[0_10px_30px_rgba(109,40,217,0.35)] transition-transform duration-300 group-hover/phone:scale-105">
+                  <span className="absolute inset-5 rounded-full bg-gradient-to-br from-emerald-500 to-green-700 flex items-center justify-center shadow-[0_10px_30px_rgba(16,185,129,0.35)] transition-transform duration-300 group-hover/phone:scale-105">
                     <PhoneCall className="w-12 h-12 text-white" />
                   </span>
                 </div>
@@ -663,7 +663,7 @@ const Hero = () => {
                   href={`tel:${DEMO_PHONE_TEL}`}
                   data-testid="hero-phone-number"
                   aria-label={`Call B2BVoice at ${DEMO_PHONE_DISPLAY}`}
-                  className="block text-3xl sm:text-[2.6rem] font-black text-violet-700 tracking-tight hover:text-violet-900 hover:underline underline-offset-4 mb-7 whitespace-nowrap"
+                  className="block text-[clamp(1.9rem,4vw,2.6rem)] font-black text-emerald-600 tracking-tight hover:text-emerald-800 hover:underline underline-offset-4 mb-7 whitespace-nowrap"
                 >
                   {DEMO_PHONE_DISPLAY}
                 </a>
