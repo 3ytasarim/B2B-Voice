@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import type { Lang } from "@/lib/translations";
 import DemoRequestModal from "@/components/DemoRequestModal";
+import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 import BackgroundShader from "@/components/ui/background-shader";
 import { PatternText } from "@/components/ui/pattern-text";
 import { ShinyButton } from "@/components/ui/shiny-button";
@@ -545,6 +546,7 @@ const DEMO_PAGE_URL = "https://b2b-voice.com/demo";
 const Hero = () => {
   const { open } = useDemoModal();
   const { t } = useLanguage();
+  const heroHighlightMatch = t.hero.h2.match(/^(.*)\s(24\/7)$/);
 
   return (
     <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden flex items-center min-h-screen bg-gray-50">
@@ -574,19 +576,31 @@ const Hero = () => {
             </div>
             
             <h1 className="w-full max-w-[42rem] mb-7 text-gray-900 leading-[0.98] text-balance">
-              <span className="block text-[clamp(2.55rem,6.35vw,6.05rem)] font-bold tracking-[-0.045em]">
+              <span className="block text-[clamp(2.7rem,6.6vw,6.35rem)] font-bold tracking-[-0.025em] [word-spacing:0.06em]">
                 {t.hero.h1}
               </span>
-              <span className="relative mt-2 block w-fit max-w-full">
-                <PatternText
-                  text={t.hero.h2}
-                  className="!text-[clamp(2.75rem,6.75vw,6.45rem)] text-primary italic font-black tracking-[-0.055em]"
-                />
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-[0.04em] left-[2%] h-[0.12em] w-[96%] -rotate-[1.5deg] rounded-full bg-accent/80"
-                />
-              </span>
+              <AnimatedText
+                className="relative mt-2 block w-fit max-w-full pb-[0.04em]"
+                underlineClassName="text-emerald-500"
+              >
+                {heroHighlightMatch ? (
+                  <>
+                    <PatternText
+                      text={heroHighlightMatch[1]}
+                      className="!block !whitespace-nowrap !text-[clamp(2.35rem,5.45vw,5.55rem)] text-primary italic font-black tracking-[-0.04em] [word-spacing:0.06em] !leading-[0.95]"
+                    />
+                    <PatternText
+                      text={heroHighlightMatch[2]}
+                      className="!block !text-[clamp(3rem,6.8vw,6.75rem)] text-primary italic font-black tracking-[-0.04em] !leading-[0.9]"
+                    />
+                  </>
+                ) : (
+                  <PatternText
+                    text={t.hero.h2}
+                    className="!text-[clamp(2.35rem,5.45vw,5.55rem)] text-primary italic font-black tracking-[-0.04em] [word-spacing:0.06em]"
+                  />
+                )}
+              </AnimatedText>
             </h1>
             
             <p className="text-xl text-gray-600 mb-10 leading-relaxed">
@@ -642,10 +656,12 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end lg:-translate-x-4"
           >
-            <motion.div
+            <motion.a
+              href={`tel:${DEMO_PHONE_TEL}`}
+              aria-label={`Call B2BVoice at ${DEMO_PHONE_DISPLAY}`}
               animate={{ rotate: [0, 0, -1, 1, -1, 1, 0, 0] }}
               transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 4.5, ease: "easeInOut" }}
-              className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-[0_24px_70px_rgba(0,53,122,0.16)] relative overflow-hidden rounded-none w-full max-w-[430px] min-h-[520px] flex flex-col"
+              className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-[0_24px_70px_rgba(0,53,122,0.16)] relative overflow-hidden rounded-none w-full max-w-[430px] min-h-[520px] flex flex-col cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               data-testid="hero-call-card"
             >
               <BackgroundShader />
@@ -688,22 +704,35 @@ const Hero = () => {
                   />
                 </p>
 
-                <a
-                  href={`tel:${DEMO_PHONE_TEL}`}
+                <span
                   data-testid="hero-phone-number"
-                  aria-label={`Call B2BVoice at ${DEMO_PHONE_DISPLAY}`}
                   className="block text-[clamp(2.1rem,4.5vw,3rem)] font-black text-emerald-600 tracking-tight hover:text-emerald-800 hover:underline underline-offset-4 mb-2 whitespace-nowrap"
                 >
                   {DEMO_PHONE_DISPLAY}
-                </a>
+                </span>
 
                 <motion.div
-                  animate={{ scale: [1, 1.06, 1], opacity: [0.8, 1, 0.8] }}
-                  transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                  className="flex items-center justify-center gap-2 text-sm sm:text-base font-bold tracking-[0.18em] text-emerald-700 uppercase mb-7"
+                  animate={{
+                    scale: [1, 1.12, 1],
+                    y: [0, -3, 0],
+                    opacity: [0.78, 1, 0.78],
+                    boxShadow: [
+                      "0 0 0 rgba(16,185,129,0)",
+                      "0 0 22px rgba(16,185,129,0.28)",
+                      "0 0 0 rgba(16,185,129,0)",
+                    ],
+                  }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                  className="mx-auto mb-7 flex w-fit items-center justify-center gap-2 rounded-full bg-emerald-500/10 px-5 py-2 text-lg sm:text-xl font-black tracking-[0.22em] text-emerald-700 uppercase"
                   aria-label="Available 24/7"
                 >
-                  <Clock className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                  <motion.span
+                    animate={{ rotate: [0, -16, 16, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                    className="inline-flex"
+                  >
+                    <Clock className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
+                  </motion.span>
                   <span>24/7</span>
                 </motion.div>
 
@@ -713,23 +742,21 @@ const Hero = () => {
               </div>
 
               <div className="relative z-10 flex items-center justify-between border-t-2 border-primary px-6 sm:px-8 py-4">
-                <a
-                  href={`tel:${DEMO_PHONE_TEL}`}
+                <span
                   data-testid="hero-tap-to-call"
                   className="text-xs font-bold tracking-[0.2em] text-gray-700 uppercase hover:text-primary transition-colors"
                 >
                   {t.hero.tapToCall}
-                </a>
-                <a
-                  href={`tel:${DEMO_PHONE_TEL}`}
+                </span>
+                <span
                   data-testid="hero-dial-now"
                   className="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] text-primary uppercase hover:underline underline-offset-4"
                 >
                   {t.hero.dialNow}
                   <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </span>
               </div>
-            </motion.div>
+            </motion.a>
           </motion.div>
         </div>
       </div>
