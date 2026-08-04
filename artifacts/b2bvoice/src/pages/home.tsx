@@ -540,7 +540,7 @@ const HeroDashboard = () => {
 // --- Hero ---
 const DEMO_PHONE_DISPLAY = "+19297305505";
 const DEMO_PHONE_TEL = "+19297305505";
-const CUSTOM_DEMO_PHONE_TEL = "+19297305505";
+const DEMO_PAGE_URL = "https://b2b-voice.com/demo";
 
 const Hero = () => {
   const { open } = useDemoModal();
@@ -640,12 +640,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end"
+            className="relative flex justify-center lg:justify-end lg:-translate-x-4"
           >
             <motion.div
               animate={{ rotate: [0, 0, -1, 1, -1, 1, 0, 0] }}
               transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 4.5, ease: "easeInOut" }}
-              className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-[0_24px_70px_rgba(0,53,122,0.16)] relative overflow-hidden rounded-none w-full max-w-[390px] min-h-[520px] flex flex-col"
+              className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-[0_24px_70px_rgba(0,53,122,0.16)] relative overflow-hidden rounded-none w-full max-w-[430px] min-h-[520px] flex flex-col"
               data-testid="hero-call-card"
             >
               <BackgroundShader />
@@ -2841,7 +2841,14 @@ const DemoCallViz = ({ callLabel, connected, demoReady }: { callLabel: string; c
   });
 
   return (
-    <div className="w-full max-w-[200px] mx-auto bg-white border border-gray-200 shadow-lg p-4 select-none rounded-xl">
+    <a
+      href={DEMO_PAGE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={callLabel}
+      className="block w-full max-w-[200px] mx-auto rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+    >
+      <div className="w-full bg-white border border-gray-200 shadow-lg p-4 select-none rounded-xl transition-all hover:border-primary/40 hover:shadow-xl">
       <div className="flex items-center gap-2 mb-3">
         <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
           <PhoneCall className="w-4 h-4 text-primary" />
@@ -2882,7 +2889,8 @@ const DemoCallViz = ({ callLabel, connected, demoReady }: { callLabel: string; c
         <CheckCircle2 className="w-3 h-3" />
         {demoReady}
       </motion.div>
-    </div>
+      </div>
+    </a>
   );
 };
 
@@ -3119,7 +3127,9 @@ const PowerfulFeaturesSection = () => {
         <FadeInWhenVisible delay={0.15}>
           <div className="bg-white border border-gray-200 p-6 h-full flex flex-col rounded-none hover:border-primary/30 hover:shadow-lg transition-all min-h-[300px] group">
             <a
-              href={`tel:${CUSTOM_DEMO_PHONE_TEL}`}
+              href={DEMO_PAGE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={t.powerful.card2.title}
               className="flex-1 rounded-sm outline-none transition-colors hover:bg-primary/[0.03] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
