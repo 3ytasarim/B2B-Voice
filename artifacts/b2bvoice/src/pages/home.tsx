@@ -6,6 +6,7 @@ import { motion, useInView, useAnimationFrame, AnimatePresence } from "framer-mo
 import { Link } from "wouter";
 import {
   Menu, X, ChevronRight, ArrowRight,
+  ChevronLeft,
   PhoneCall, Clock, Calendar, CheckCircle2,
   PhoneMissed, Briefcase, FileText, Share2,
   Stethoscope, Cross, Smile, Globe, Building2,
@@ -1379,10 +1380,60 @@ const IND_CONFIG: { icon: React.ElementType; gradient: string; image?: string; i
 
 const IndustriesSection = () => {
   const { t } = useLanguage();
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const [activeSector, setActiveSector] = useState(0);
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
   const industries = t.industries.items.map((item, i) => ({
     ...item,
     image: SECTOR_IMAGES[i],
   }));
+
+  const scrollToSector = (index: number) => {
+    const gallery = galleryRef.current;
+    if (!gallery) return;
+
+    const cards = gallery.children;
+    const target = cards[index] as HTMLElement | undefined;
+    if (!target) return;
+
+    gallery.scrollTo({
+      left: Math.max(0, target.offsetLeft - 24),
+      behavior: "smooth",
+    });
+    setActiveSector(index);
+  };
+
+  useEffect(() => {
+    const gallery = galleryRef.current;
+    if (!gallery || industries.length < 2) return;
+
+    const updateActiveSector = () => {
+      const cards = Array.from(gallery.children) as HTMLElement[];
+      if (!cards.length) return;
+
+      const closestIndex = cards.reduce((closest, card, index) => {
+        const closestDistance = Math.abs(cards[closest].offsetLeft - gallery.scrollLeft - 24);
+        const cardDistance = Math.abs(card.offsetLeft - gallery.scrollLeft - 24);
+        return cardDistance < closestDistance ? index : closest;
+      }, 0);
+      setActiveSector(closestIndex);
+    };
+
+    gallery.addEventListener("scroll", updateActiveSector, { passive: true });
+    return () => gallery.removeEventListener("scroll", updateActiveSector);
+  }, [industries.length]);
+
+  useEffect(() => {
+    const gallery = galleryRef.current;
+    if (!gallery || isCarouselPaused || industries.length < 2) return;
+
+    const timer = window.setInterval(() => {
+      const nextIndex = activeSector >= industries.length - 1 ? 0 : activeSector + 1;
+      scrollToSector(nextIndex);
+    }, 4200);
+
+    return () => window.clearInterval(timer);
+  }, [activeSector, industries.length, isCarouselPaused]);
 
   return (
     <section id="sektorler" className="py-16 md:py-24 bg-[#f8fafc] overflow-hidden">
@@ -1399,11 +1450,42 @@ const IndustriesSection = () => {
         </FadeInWhenVisible>
       </div>
 
-      {/* Horizontal sector gallery — swipeable on touch and scrollable with a mouse. */}
-      <div className="relative">
+      {/* Auto-playing sector carousel — pauses during user interaction. */}
+      <div
+        className="relative"
+        onMouseEnter={() => setIsCarouselPaused(true)}
+        onMouseLeave={() => setIsCarouselPaused(false)}
+        onFocus={() => setIsCarouselPaused(true)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+            setIsCarouselPaused(false);
+          }
+        }}
+        onTouchStart={() => setIsCarouselPaused(true)}
+        onTouchEnd={() => setIsCarouselPaused(false)}
+      >
         <div className="absolute left-0 top-0 bottom-0 w-8 md:w-20 bg-gradient-to-r from-[#f8fafc] to-transparent pointer-events-none z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-8 md:w-20 bg-gradient-to-l from-[#f8fafc] to-transparent pointer-events-none z-10" />
-        <div className="flex gap-5 overflow-x-auto px-6 md:px-[max(1.5rem,calc((100vw-1200px)/2))] pb-5 snap-x snap-mandatory [scrollbar-width:thin] [scrollbar-color:#cbd5e1_transparent]">
+        <button
+          type="button"
+          aria-label="Previous sector"
+          onClick={() => scrollToSector(activeSector === 0 ? industries.length - 1 : activeSector - 1)}
+          className="absolute left-3 md:left-6 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-primary shadow-lg transition hover:bg-primary hover:text-white"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next sector"
+          onClick={() => scrollToSector(activeSector === industries.length - 1 ? 0 : activeSector + 1)}
+          className="absolute right-3 md:right-6 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-primary shadow-lg transition hover:bg-primary hover:text-white"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+        <div
+          ref={galleryRef}
+          className="flex gap-5 overflow-x-auto scroll-smooth px-6 md:px-[max(4.5rem,calc((100vw-1200px)/2))] pb-5 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {industries.map((ind, i) => (
             <motion.article
               key={`${ind.title}-${i}`}
@@ -1440,11 +1522,27 @@ const IndustriesSection = () => {
           ))}
         </div>
       </div>
-      <div className="container mx-auto px-6 mt-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
-        <ArrowRight className="h-4 w-4 text-primary" />
-        <span>{t.industries.items.length} {t.industries.badge}</span>
-        <span className="h-px w-12 bg-slate-300" />
-        <span>{t.industries.scrollLabel}</span>
+      <div className="container mx-auto px-6 mt-5 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
+          <ArrowRight className="h-4 w-4 text-primary" />
+          <span>{t.industries.items.length} {t.industries.badge}</span>
+          <span className="h-px w-12 bg-slate-300" />
+          <span>{t.industries.scrollLabel}</span>
+        </div>
+        <div className="flex items-center gap-1.5" aria-label="Sector carousel navigation">
+          {industries.map((ind, index) => (
+            <button
+              key={`${ind.title}-dot`}
+              type="button"
+              aria-label={`Go to sector ${index + 1}`}
+              aria-current={activeSector === index ? "true" : undefined}
+              onClick={() => scrollToSector(index)}
+              className={`h-1.5 rounded-full transition-all ${
+                activeSector === index ? "w-7 bg-primary" : "w-1.5 bg-slate-300 hover:bg-slate-400"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
