@@ -2662,7 +2662,7 @@ const Footer = () => {
               {Array.from({ length: 8 }).map((_, index) => (
                 <span key={`${copy}-${index}`} className="flex items-center">
                   <span className="px-7 text-sm md:text-base font-black tracking-[0.2em] text-primary/75">
-                    B2BVOICE.COM
+                    B2B-VOICE.COM
                   </span>
                   <span className="text-primary/35" aria-hidden="true">—</span>
                 </span>
