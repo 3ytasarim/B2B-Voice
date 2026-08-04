@@ -3,6 +3,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import type { Lang } from "@/lib/translations";
 import DemoRequestModal from "@/components/DemoRequestModal";
 import BackgroundShader from "@/components/ui/background-shader";
+import { PatternText } from "@/components/ui/pattern-text";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
@@ -571,10 +572,15 @@ const Hero = () => {
               {t.hero.badge}
             </div>
             
-            <h1 className="max-w-[12ch] mb-7 text-[clamp(2.35rem,6vw,5.75rem)] font-bold tracking-[-0.045em] text-gray-900 leading-[0.98] text-balance">
-              <span className="block">{t.hero.h1}</span>
-              <span className="relative mt-2 block w-fit max-w-full text-primary italic font-black tracking-[-0.055em]">
-                <span className="relative z-10">{t.hero.h2}</span>
+            <h1 className="w-full max-w-[42rem] mb-7 text-gray-900 leading-[0.98] text-balance">
+              <span className="block text-[clamp(2.35rem,6vw,5.75rem)] font-bold tracking-[-0.045em]">
+                {t.hero.h1}
+              </span>
+              <span className="relative mt-2 block w-fit max-w-full">
+                <PatternText
+                  text={t.hero.h2}
+                  className="!text-[clamp(2.35rem,6vw,5.75rem)] text-primary italic font-black tracking-[-0.055em]"
+                />
                 <span
                   aria-hidden="true"
                   className="absolute bottom-[0.04em] left-[2%] h-[0.12em] w-[96%] -rotate-[1.5deg] rounded-full bg-accent/80"

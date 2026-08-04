@@ -60,11 +60,18 @@
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
   --font-mono: var(--app-font-mono);
+  --animate-shadanim: shadanim 15s linear infinite;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+}
+
+@keyframes shadanim {
+  0% {
+    background-position: 100% -100%;
+  }
 }
 
 :root {
