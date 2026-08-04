@@ -5,6 +5,7 @@ import DemoRequestModal from "@/components/DemoRequestModal";
 import BackgroundShader from "@/components/ui/background-shader";
 import { PatternText } from "@/components/ui/pattern-text";
 import { ShinyButton } from "@/components/ui/shiny-button";
+import { SparklesText } from "@/components/ui/sparkles-text";
 import { motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
@@ -672,8 +673,20 @@ const Hero = () => {
                   </span>
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">{t.hero.talkTitle}</h3>
-                <p className="text-2xl sm:text-3xl italic text-gray-400 font-serif mb-6">{t.hero.talkNow}</p>
+                <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+                  <SparklesText
+                    text={t.hero.talkTitle}
+                    className="text-gray-900"
+                    sparklesCount={7}
+                  />
+                </h3>
+                <p className="text-2xl sm:text-3xl italic text-gray-400 font-serif mb-6">
+                  <SparklesText
+                    text={t.hero.talkNow}
+                    className="text-gray-400"
+                    sparklesCount={5}
+                  />
+                </p>
 
                 <a
                   href={`tel:${DEMO_PHONE_TEL}`}
