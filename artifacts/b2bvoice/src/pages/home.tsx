@@ -538,7 +538,7 @@ const HeroDashboard = () => {
 };
 
 // --- Hero ---
-const DEMO_PHONE_DISPLAY = "+19297305505";
+const DEMO_PHONE_DISPLAY = "+1 (929) 730-5505";
 const DEMO_PHONE_TEL = "+19297305505";
 const DEMO_PAGE_URL = "https://b2b-voice.com/demo";
 
@@ -574,13 +574,13 @@ const Hero = () => {
             </div>
             
             <h1 className="w-full max-w-[42rem] mb-7 text-gray-900 leading-[0.98] text-balance">
-              <span className="block text-[clamp(2.35rem,6vw,5.75rem)] font-bold tracking-[-0.045em]">
+              <span className="block text-[clamp(2.55rem,6.35vw,6.05rem)] font-bold tracking-[-0.045em]">
                 {t.hero.h1}
               </span>
               <span className="relative mt-2 block w-fit max-w-full">
                 <PatternText
                   text={t.hero.h2}
-                  className="!text-[clamp(2.35rem,6vw,5.75rem)] text-primary italic font-black tracking-[-0.055em]"
+                  className="!text-[clamp(2.75rem,6.75vw,6.45rem)] text-primary italic font-black tracking-[-0.055em]"
                 />
                 <span
                   aria-hidden="true"
@@ -653,7 +653,7 @@ const Hero = () => {
 
               <div className="relative z-10 flex items-center gap-2.5 px-6 sm:px-8 py-4 border-b border-gray-100">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-[11px] font-bold tracking-[0.2em] text-gray-700 uppercase">{t.hero.demoBadge}</span>
+                <span className="text-xs sm:text-sm font-bold tracking-[0.18em] text-gray-700 uppercase">{t.hero.demoBadge}</span>
               </div>
 
               <div className="relative z-10 px-6 sm:px-8 pt-10 pb-8 flex-1">
@@ -673,14 +673,14 @@ const Hero = () => {
                   </span>
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+                <h3 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
                   <SparklesText
                     text={t.hero.talkTitle}
                     className="text-gray-900"
                     sparklesCount={7}
                   />
                 </h3>
-                <p className="text-2xl sm:text-3xl italic text-gray-400 font-serif mb-6">
+                <p className="text-3xl sm:text-4xl italic text-gray-400 font-serif mb-6">
                   <SparklesText
                     text={t.hero.talkNow}
                     className="text-gray-400"
@@ -692,13 +692,23 @@ const Hero = () => {
                   href={`tel:${DEMO_PHONE_TEL}`}
                   data-testid="hero-phone-number"
                   aria-label={`Call B2BVoice at ${DEMO_PHONE_DISPLAY}`}
-                  className="block text-[clamp(1.9rem,4vw,2.6rem)] font-black text-emerald-600 tracking-tight hover:text-emerald-800 hover:underline underline-offset-4 mb-7 whitespace-nowrap"
+                  className="block text-[clamp(2.1rem,4.5vw,3rem)] font-black text-emerald-600 tracking-tight hover:text-emerald-800 hover:underline underline-offset-4 mb-2 whitespace-nowrap"
                 >
                   {DEMO_PHONE_DISPLAY}
                 </a>
 
+                <motion.div
+                  animate={{ scale: [1, 1.06, 1], opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                  className="flex items-center justify-center gap-2 text-sm sm:text-base font-bold tracking-[0.18em] text-emerald-700 uppercase mb-7"
+                  aria-label="Available 24/7"
+                >
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                  <span>24/7</span>
+                </motion.div>
+
                 <div className="border-t border-gray-100 pt-5">
-                  <p className="text-sm italic text-gray-500 leading-relaxed">{t.hero.talkDesc}</p>
+                  <p className="text-base sm:text-lg italic text-gray-500 leading-relaxed">{t.hero.talkDesc}</p>
                 </div>
               </div>
 
