@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import type { Lang } from "@/lib/translations";
 import DemoRequestModal from "@/components/DemoRequestModal";
@@ -7,6 +7,7 @@ import BackgroundShader from "@/components/ui/background-shader";
 import { PatternText } from "@/components/ui/pattern-text";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
+import { FooterRobot } from "@/components/ui/robot-hero";
 import { motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
@@ -2664,27 +2665,52 @@ const Footer = () => {
   const { t, lang } = useLanguage();
   const links = [
     { label: lang === "de" ? "Datenschutz" : lang === "es" ? "Privacidad" : "Privacy Policy", href: "/privacy-policy" },
+    { label: lang === "de" ? "Nutzungsbedingungen" : lang === "es" ? "Términos de Uso" : "Terms of Use", href: "/terms-of-use" },
     { label: lang === "de" ? "Cookie-Richtlinie" : lang === "es" ? "Política de Cookies" : "Cookie Policy", href: "/cookie-policy" },
-    { label: lang === "de" ? "Nutzungsbedingungen" : lang === "es" ? "Términos de Uso" : "Terms of Service", href: "/terms-of-service" },
-    { label: lang === "de" ? "Impressum" : lang === "es" ? "Aviso Legal" : "Legal Notice", href: "/legal-notice" },
     { label: "Blog", href: "/blog" },
   ];
+
+  // "Design by" stays put (bottom-right, static). Instead we nudge the
+  // Legal+Contact block itself so the phone number's right edge lands
+  // exactly under the credit line's left edge — measured live, not guessed.
+  const phoneLinkRef = useRef<HTMLAnchorElement>(null);
+  const creditRef = useRef<HTMLAnchorElement>(null);
+  const legalContactWrapRef = useRef<HTMLDivElement>(null);
+  // Robot floats (absolute, adds no height) centered over the Legal+Contact
+  // menu block, so it stays lined up with it instead of the footer growing.
+  const footerContentRef = useRef<HTMLDivElement>(null);
+  const robotWrapRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const align = () => {
+      const wrap = legalContactWrapRef.current;
+      const phone = phoneLinkRef.current;
+      const credit = creditRef.current;
+      if (!wrap || !phone || !credit) return;
+
+      wrap.style.transform = "";
+      if (window.innerWidth < 640) return;
+
+      const phoneRight = phone.getBoundingClientRect().right;
+      const creditLeftX = credit.getBoundingClientRect().left;
+      const nudgeLeft = 70; // shifted further left to give the (now nowrap) email room before the robot
+      const delta = creditLeftX - phoneRight - nudgeLeft;
+      wrap.style.transform = `translateX(${delta}px)`;
+    };
+    align();
+    window.addEventListener("resize", align);
+    return () => window.removeEventListener("resize", align);
+  }, []);
+
   return (
-    <footer className="footer-light-bg rounded-t-[28px] overflow-hidden">
+    <footer className="footer-dark-bg rounded-t-[28px] overflow-hidden">
       <style>{`
-        @keyframes footerLightShift {
-          0%   { background-position: 0% 50%; }
-          50%  { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
         @keyframes footerMarquee {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
         }
-        .footer-light-bg {
-          background: linear-gradient(135deg, #cbd9ee 0%, #b9cbea 30%, #d9e5f5 60%, #c3d3eb 100%);
-          background-size: 300% 300%;
-          animation: footerLightShift 8s ease infinite;
+        .footer-dark-bg {
+          background: hsl(var(--primary));
         }
         .footer-marquee-track {
           animation: footerMarquee 28s linear infinite;
@@ -2692,16 +2718,16 @@ const Footer = () => {
         }
       `}</style>
       {/* Reference-style ticker */}
-      <div className="bg-white/35 py-3.5" aria-label="B2BVoice website">
+      <div className="bg-white/5 border-b border-white/10 py-3.5" aria-label="B2BVoice website">
         <div className="footer-marquee-track flex items-center">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex items-center shrink-0">
               {Array.from({ length: 8 }).map((_, index) => (
                 <span key={`${copy}-${index}`} className="flex items-center">
-                  <span className="px-7 text-sm md:text-base font-black tracking-[0.2em] text-primary/75">
+                  <span className="px-7 text-sm md:text-base font-black tracking-[0.2em] text-white/70">
                     B2B-VOICE.COM
                   </span>
-                  <span className="text-primary/35" aria-hidden="true">—</span>
+                  <span className="text-white/25" aria-hidden="true">—</span>
                 </span>
               ))}
             </div>
@@ -2709,72 +2735,132 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6">
-        <div className="mx-auto max-w-5xl py-12 md:py-16 grid grid-cols-1 sm:grid-cols-[1.2fr_0.8fr_1fr] gap-10 md:gap-16">
-          {/* Logo — left aligned like the reference; the area below intentionally stays empty. */}
+      <div ref={footerContentRef} className="container mx-auto px-6 relative">
+        <div className="max-w-5xl py-12 md:py-16 grid grid-cols-1 sm:grid-cols-[1.2fr_1.8fr] gap-10 md:gap-16">
+          {/* Logo + tagline — same left edge as the copyright line below (both sit at the container's own inset, no offset math). */}
           <div className="flex flex-col items-start">
             {lang === "de" ? (
-              <img src="/logo-de-footer.webp" alt="B2BVoice" className="h-12 md:h-14 w-auto object-contain" loading="lazy" />
+              <img src="/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
             ) : (
-              <div className="h-10 md:h-12 w-[190px] md:w-[220px] overflow-hidden" aria-label="B2BVoice">
-                <img
-                  src="/logo-clean.webp"
-                  alt="B2BVoice"
-                  className="block w-full h-auto"
-                  style={{ marginTop: "-44%" }}
-                  loading="lazy"
-                />
-              </div>
+              <img src="/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
             )}
-            <div className="h-14 md:h-20" aria-hidden="true" />
+            <p className="mt-6 !text-[clamp(1.75rem,3.4vw,2.75rem)] font-black italic uppercase tracking-[-0.03em] leading-[0.95] text-white">
+              Let's build your
+              <br />
+              AI voice system.
+            </p>
           </div>
 
-          {/* Legal links */}
-          <div>
-            <p className="mb-5 text-[10px] font-black uppercase tracking-[0.28em] text-primary/60">Legal</p>
-            <nav className="flex flex-col items-start gap-3 text-sm text-slate-600" aria-label="Legal">
-              {links.map((link) => (
-                <a key={link.href} href={link.href} className="hover:text-primary hover:translate-x-1 transition-all">
-                  {link.label}
+          {/* Legal + Contact — position corrected live so the phone number's right edge meets the credit line's left edge. */}
+          <div ref={legalContactWrapRef} className="grid grid-cols-2 gap-10 md:gap-16 sm:ml-16 md:ml-24 lg:ml-32">
+            {/* Legal links */}
+            <div>
+              <p className="mb-5 text-sm md:text-base font-black uppercase tracking-[0.28em] text-white">Legal</p>
+              <nav className="flex flex-col items-start gap-3 text-base md:text-lg font-semibold text-white/75 whitespace-nowrap" aria-label="Legal">
+                {links.map((link) => (
+                  <a key={link.href} href={link.href} className="hover:text-white hover:translate-x-1 transition-all">
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Contact links */}
+            <div>
+              <p className="mb-5 text-sm md:text-base font-black uppercase tracking-[0.28em] text-white">Contact</p>
+              <div className="flex flex-col items-start gap-4 text-base md:text-lg font-semibold whitespace-nowrap">
+                <a href="mailto:hello@b2b-voice.com" className="inline-flex items-center gap-3 text-white/75 hover:text-white transition-colors">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white">
+                    <Mail className="h-4 w-4" />
+                  </span>
+                  <span>hello@b2b-voice.com</span>
                 </a>
-              ))}
-            </nav>
-          </div>
-
-          {/* Contact links */}
-          <div>
-            <p className="mb-5 text-[10px] font-black uppercase tracking-[0.28em] text-primary/60">Contact</p>
-            <div className="flex flex-col items-start gap-4 text-sm">
-              <a href="mailto:hello@b2b-voice.com" className="inline-flex items-center gap-3 text-slate-700 hover:text-primary transition-colors">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Mail className="h-4 w-4" />
-                </span>
-                <span>hello@b2b-voice.com</span>
-              </a>
-              <a
-                href="https://www.instagram.com/b2bvoice"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-slate-700 hover:text-primary transition-colors"
-              >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Instagram className="h-4 w-4" />
-                </span>
-                <span>@b2bvoice</span>
-              </a>
-              <a href="tel:+19297305505" className="inline-flex items-center gap-3 text-slate-700 hover:text-primary transition-colors">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <PhoneCall className="h-4 w-4" />
-                </span>
-                <span>+1 929 730 5505</span>
-              </a>
+                <a
+                  href="https://www.instagram.com/b2bvoice"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-white/75 hover:text-white transition-colors"
+                >
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white">
+                    <Instagram className="h-4 w-4" />
+                  </span>
+                  <span>@b2bvoice</span>
+                </a>
+                <a ref={phoneLinkRef} href="tel:+19297305505" className="inline-flex items-center gap-3 text-white/75 hover:text-white transition-colors">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white">
+                    <PhoneCall className="h-4 w-4" />
+                  </span>
+                  <span>+1 929 730 5505</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <div
+          ref={robotWrapRef}
+          className="hidden sm:block absolute -right-10 bottom-16 md:bottom-20 pointer-events-none"
+        >
+          <FooterRobot className="pointer-events-auto h-56 w-56 md:h-72 md:w-72 lg:h-80 lg:w-80" />
+        </div>
+
+        <div className="py-5 flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-white/40">
           <p>&copy; {new Date().getFullYear()} B2BVoice. {t.footer.allRights}</p>
-          <span className="font-semibold tracking-[0.16em] text-primary/50">B2BVOICE.COM</span>
+          <style>{`
+            @keyframes creditShimmer {
+              0%   { background-position: -200% center; }
+              100% { background-position: 200% center; }
+            }
+            .credit-shimmer {
+              background-image: linear-gradient(
+                90deg,
+                rgba(255,255,255,0.35) 0%,
+                rgba(255,255,255,0.35) 40%,
+                #ffffff 50%,
+                rgba(255,255,255,0.35) 60%,
+                rgba(255,255,255,0.35) 100%
+              );
+              background-size: 220% auto;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+              animation: creditShimmer 3s linear infinite;
+            }
+            @keyframes creditStarTwinkle {
+              0%, 100% { transform: scale(0.75) rotate(0deg); opacity: 0.4; }
+              50%      { transform: scale(1.1) rotate(20deg); opacity: 1; }
+            }
+            .credit-star {
+              animation: creditStarTwinkle 1.8s ease-in-out infinite;
+            }
+            .credit-star--delay {
+              animation-delay: 0.9s;
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .credit-shimmer {
+                animation: none;
+                background-image: none;
+                -webkit-background-clip: initial;
+                background-clip: initial;
+                color: rgba(255, 255, 255, 0.45);
+              }
+              .credit-star {
+                animation: none;
+                opacity: 0.7;
+              }
+            }
+          `}</style>
+          <a
+            ref={creditRef}
+            href="https://bleibsichtbar.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-semibold tracking-[0.16em]"
+          >
+            <Star className="credit-star h-3 w-3 text-white/70 fill-white/70" aria-hidden="true" />
+            <span className="credit-shimmer text-[11px] uppercase tracking-[0.2em]">Design by bleibsichtbar.com</span>
+            <Star className="credit-star credit-star--delay h-3 w-3 text-white/70 fill-white/70" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </footer>

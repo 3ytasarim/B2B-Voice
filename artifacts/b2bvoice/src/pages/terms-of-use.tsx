@@ -14,7 +14,7 @@ const UL = ({ items }: { items: React.ReactNode[] }) => (
   </ul>
 );
 
-export default function TermsOfService() {
+export default function TermsOfUse() {
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-6 py-16 max-w-3xl">
