@@ -2283,6 +2283,159 @@ const HowItWorks = () => {
   );
 };
 
+// --- Clients & Partners ---
+// Fallback content shown until the admin panel (Clients / Partners tabs) has
+// real rows in the database — keeps the section looking finished either way.
+const FALLBACK_CLIENT_LOGOS = [
+  { name: "Das Nudel Ding", src: "/clients/das-nudel-ding.png" },
+  { name: "Q", src: "/clients/q.png" },
+  { name: "Fratelli", src: "/clients/fratelli.png" },
+  { name: "Taverna", src: "/clients/taverna.png" },
+  { name: "Hotel", src: "/clients/hotel.png" },
+  { name: "Real Estate", src: "/clients/real-estate.png" },
+  { name: "Berliner Café Kette", src: "/clients/berliner-cafe-kette.png" },
+  { name: "SaaS Solutions AG", src: "/clients/saas-solutions-ag.png" },
+  { name: "After Work", src: "/clients/after-work.png" },
+  { name: "Selgros", src: "/clients/selgros.png" },
+  { name: "Eatcut", src: "/clients/eatcut.png" },
+  { name: "Ludwig", src: "/clients/ludwig.png" },
+  { name: "Autohaus", src: "/clients/autohaus-1.png" },
+  { name: "Bioladen", src: "/clients/bioladen.png" },
+  { name: "Ubereats", src: "/clients/ubereats.png" },
+];
+const FALLBACK_ROW_1 = FALLBACK_CLIENT_LOGOS.slice(0, 8);
+const FALLBACK_ROW_2 = FALLBACK_CLIENT_LOGOS.slice(8);
+
+const FALLBACK_PARTNERS = [
+  { name: "bleibsichtbar", href: "https://bleibsichtbar.com/", src: "" },
+  { name: "strom-strategen", href: "https://www.strom-strategen.de/", src: "/partners/strom-strategen.png" },
+  { name: "corventis", href: "https://www.corventis.info/", src: "/partners/corventis.png" },
+  { name: "rufschmiede", href: "https://rufschniede.com/", src: "/partners/rufschmiede.png" },
+];
+
+interface ReferenceLogo { id: number; clientName: string; company: string; logoUrl: string | null; websiteUrl: string | null; row: number; sortOrder: number; }
+interface PartnerLogo { id: number; name: string; imageUrl: string | null; websiteUrl: string | null; sortOrder: number; }
+
+const ClientsPartners = () => {
+  const [liveReferences, setLiveReferences] = useState<ReferenceLogo[] | null>(null);
+  const [livePartners, setLivePartners] = useState<PartnerLogo[] | null>(null);
+
+  useEffect(() => {
+    fetch("/api/references?published=true").then((r) => (r.ok ? r.json() : null)).then((data) => {
+      if (Array.isArray(data) && data.length > 0) setLiveReferences(data);
+    }).catch(() => {});
+    fetch("/api/partners").then((r) => (r.ok ? r.json() : null)).then((data) => {
+      if (Array.isArray(data) && data.length > 0) setLivePartners(data);
+    }).catch(() => {});
+  }, []);
+
+  const clientRow1 = liveReferences
+    ? liveReferences.filter((r) => (r.row ?? 1) === 1).sort((a, b) => a.sortOrder - b.sortOrder).map((r) => ({ name: r.company, src: r.logoUrl || "" }))
+    : FALLBACK_ROW_1;
+  const clientRow2 = liveReferences
+    ? liveReferences.filter((r) => (r.row ?? 1) === 2).sort((a, b) => a.sortOrder - b.sortOrder).map((r) => ({ name: r.company, src: r.logoUrl || "" }))
+    : FALLBACK_ROW_2;
+  const partnersToShow = livePartners
+    ? [...livePartners].sort((a, b) => a.sortOrder - b.sortOrder).map((p) => ({ name: p.name, href: p.websiteUrl || "#", src: p.imageUrl || "" }))
+    : FALLBACK_PARTNERS;
+
+  // Repeat generously (not just x2) so the strip stays wider than any
+  // viewport — otherwise the loop shows a visible gap on wide screens
+  // and the row reads as "stuck on the left" instead of flowing edge-to-edge.
+  // Copy count MUST be even: the CSS keyframe shifts by exactly -50%, which
+  // only lands on an identical repeating frame (seamless loop, no jump) when
+  // that 50% is a whole number of copies.
+  const repeatToFill = <T,>(items: T[], minCount = 24): T[] => {
+    if (items.length === 0) return items;
+    let copies = Math.max(2, Math.ceil(minCount / items.length));
+    if (copies % 2 !== 0) copies += 1;
+    return Array.from({ length: copies }, () => items).flat();
+  };
+  const row1 = repeatToFill(clientRow1);
+  const row2 = repeatToFill(clientRow2);
+
+  return (
+    <section className="py-14 md:py-20 bg-white border-y border-gray-200">
+      <div className="container mx-auto px-6">
+        <FadeInWhenVisible className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 bg-primary/5 text-xs font-bold uppercase tracking-widest text-primary mb-4 rounded-none">
+            Trusted From Day One
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
+            Our Clients &amp; <span className="text-primary">Partners</span>
+          </h2>
+          <p className="text-gray-500 mt-4 max-w-lg mx-auto text-base">
+            Strong brands trust us — growing together toward your success.
+          </p>
+        </FadeInWhenVisible>
+      </div>
+
+      <div className="relative overflow-hidden mb-14">
+        <div className="absolute left-0 top-0 bottom-0 w-28 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, #ffffff, transparent)" }} />
+        <div className="absolute right-0 top-0 bottom-0 w-28 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, #ffffff, transparent)" }} />
+
+        {/* Row 1 — scrolling left */}
+        <div className="flex items-center mb-6 animate-marquee" style={{ width: "max-content" }}>
+          {row1.map((logo, i) => (
+            <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8">
+              <img src={logo.src} alt={logo.name} loading="lazy" draggable={false} className="h-14 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity select-none" />
+            </div>
+          ))}
+        </div>
+
+        {/* Row 2 — scrolling right */}
+        <div className="flex items-center animate-marquee-reverse" style={{ width: "max-content" }}>
+          {row2.map((logo, i) => (
+            <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8">
+              <img src={logo.src} alt={logo.name} loading="lazy" draggable={false} className="h-14 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity select-none" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6">
+        <div className="max-w-3xl mx-auto mb-14">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+            {partnersToShow.map((partner, i) => (
+              <a
+                key={`${partner.name}-${i}`}
+                href={partner.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center transition-transform duration-300 hover:-translate-y-1 hover:scale-105"
+              >
+                {partner.src ? (
+                  <img src={partner.src} alt={partner.name} loading="lazy" draggable={false} className="w-full h-auto max-h-16 sm:max-h-20 object-contain select-none" />
+                ) : (
+                  <span className="font-black text-lg sm:text-xl tracking-[0.18em] uppercase text-gray-800">
+                    {partner.name}
+                  </span>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-3xl mx-auto grid grid-cols-3 gap-3 sm:gap-5 text-center">
+          {[
+            { value: "50+", label: "Clients" },
+            { value: "4.9★", label: "Rating" },
+            { value: "5 Years", label: "Experience" },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="bg-white rounded-2xl px-2 py-4 sm:px-6 sm:py-6 shadow-sm border-2 border-gray-200 flex flex-col items-center hover:border-primary hover:shadow-[0_4px_20px_rgba(0,53,122,0.12)] transition-all duration-300"
+            >
+              <span className="text-lg sm:text-2xl font-bold text-gray-900 leading-tight">{stat.value}</span>
+              <span className="text-[10px] sm:text-xs text-gray-400 mt-1 font-medium leading-snug">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // --- Testimonials ---
 const AVATAR_COLORS = ["#00357a","#4f8ef7","#059669","#7c3aed","#dc2626","#d97706","#0891b2","#be185d"];
 
@@ -3962,6 +4115,7 @@ export default function Home() {
         <IndustriesSection />
         <SolutionSection />
         <OrbitalIntegrations />
+        <ClientsPartners />
         <Testimonials />
         {/* <ProblemSection /> */}
         {/* <DashboardMockup /> */}

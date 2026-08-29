@@ -5,9 +5,11 @@ import {
   Users, Mail, Phone, Building2, Globe, CheckSquare,
   Video, Mic, FileText, HelpCircle, Clock, TrendingUp,
   RefreshCw, ChevronDown, ChevronUp, Search, LogOut, Search as SearchIcon,
-  Tag, AlignLeft, Type, Save, CheckCircle2, Newspaper
+  Tag, AlignLeft, Type, Save, CheckCircle2, Newspaper, Handshake, Star
 } from "lucide-react";
 import BlogPanel from "@/components/BlogPanel";
+import ReferencesPanel from "@/components/ReferencesPanel";
+import PartnersPanel from "@/components/PartnersPanel";
 
 const TOKEN_KEY = "b2bvoice_admin_token";
 
@@ -472,7 +474,7 @@ export default function AdminPage() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "partial" | "complete">("all");
   const [refreshing, setRefreshing] = useState(false);
-  const [activeTab, setActiveTab] = useState<"leads" | "seo" | "google" | "blog">("leads");
+  const [activeTab, setActiveTab] = useState<"leads" | "seo" | "google" | "blog" | "references" | "partners">("leads");
 
   useEffect(() => {
     if (!localStorage.getItem(TOKEN_KEY)) {
@@ -557,6 +559,8 @@ export default function AdminPage() {
           { key: "seo",    label: "SEO Settings",  icon: <Tag className="w-3.5 h-3.5" /> },
           { key: "google", label: "Google & Tracking", icon: <Globe className="w-3.5 h-3.5" /> },
           { key: "blog",   label: "Blog",           icon: <Newspaper className="w-3.5 h-3.5" /> },
+          { key: "references", label: "Clients", icon: <Star className="w-3.5 h-3.5" /> },
+          { key: "partners", label: "Partners",  icon: <Handshake className="w-3.5 h-3.5" /> },
         ] as const).map((tab) => (
           <button
             key={tab.key}
@@ -576,6 +580,10 @@ export default function AdminPage() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {activeTab === "blog" ? (
           <BlogPanel />
+        ) : activeTab === "references" ? (
+          <ReferencesPanel />
+        ) : activeTab === "partners" ? (
+          <PartnersPanel />
         ) : activeTab === "google" ? (
           <GooglePanel />
         ) : activeTab === "seo" ? (
