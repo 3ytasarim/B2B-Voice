@@ -295,3 +295,19 @@ body {
 }
 .hero-blob-1 { animation: blob-1 8s ease-in-out infinite; will-change: transform, opacity; }
 .hero-blob-2 { animation: blob-2 10s ease-in-out 2s infinite; will-change: transform, opacity; }
+
+/* ------------------------------------------------------------------------
+   Blog articles (.blog-content) embed their own complete, scoped CSS
+   (see blogPosts.ts) authored against plain browser defaults. Tailwind's
+   Preflight reset strips list markers (and a few other UA defaults) sitewide,
+   which those article stylesheets never needed to compensate for. Restore
+   just the browser defaults Preflight removes, so embedded article CSS
+   renders exactly as it does when the source file is opened standalone.
+   ------------------------------------------------------------------------ */
+.blog-content ul,
+.blog-content ol {
+  list-style: revert;
+}
+.blog-content li {
+  display: revert;
+}
