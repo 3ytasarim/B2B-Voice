@@ -92,15 +92,17 @@ export default function BlogPage() {
                       </button>
                     </div>
 
-                    <Link href={`/${p.slug}`} className="block aspect-[16/9] bg-gray-100 overflow-hidden mb-6 group">
-                      <img
-                        src={p.coverImage}
-                        alt={p.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = "none"; }}
-                      />
-                    </Link>
+                    {p.coverImage && (
+                      <Link href={`/${p.slug}`} className="block aspect-[16/9] bg-gray-100 overflow-hidden mb-6 group">
+                        <img
+                          src={p.coverImage}
+                          alt={p.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = "none"; }}
+                        />
+                      </Link>
+                    )}
 
                     {p.excerpt && <p className="text-base text-gray-500 leading-relaxed mb-6">{p.excerpt}</p>}
 
@@ -138,15 +140,17 @@ export default function BlogPage() {
                 {latestPosts.map((p) => (
                   <li key={p.id}>
                     <Link href={`/${p.slug}`} className="flex items-center gap-3 group">
-                      <span className="shrink-0 w-14 h-14 bg-gray-100 overflow-hidden rounded-md">
-                        <img
-                          src={p.coverImage}
-                          alt={p.title}
-                          loading="lazy"
-                          className="w-full h-full object-cover"
-                          onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                        />
-                      </span>
+                      {p.coverImage && (
+                        <span className="shrink-0 w-14 h-14 bg-gray-100 overflow-hidden rounded-md">
+                          <img
+                            src={p.coverImage}
+                            alt={p.title}
+                            loading="lazy"
+                            className="w-full h-full object-cover"
+                            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                          />
+                        </span>
+                      )}
                       <span className="min-w-0">
                         <span className="block text-sm font-semibold text-gray-800 leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                           {p.title}
