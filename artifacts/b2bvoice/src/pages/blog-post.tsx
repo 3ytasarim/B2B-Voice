@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useParams } from "wouter";
-import { getPostBySlug, fmtDate } from "@/lib/blogPosts";
+import { getPostBySlug } from "@/lib/blogPosts";
 
 function setMeta(name: string, content: string) {
   let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
@@ -56,40 +56,30 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <article className="container mx-auto px-6 py-16 max-w-3xl">
-        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-primary font-semibold mb-10 hover:underline">
+      <article className="container mx-auto px-6 py-10 max-w-5xl">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-primary font-semibold mb-6 hover:underline">
           ← Back to Blog
         </Link>
-
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-400 mb-4">
-          <span className="font-semibold text-gray-600">{post.author}</span>
-          <span aria-hidden="true">·</span>
-          <span>{fmtDate(post.date)}</span>
-          <span aria-hidden="true">·</span>
-          <Link
-            href="/blog"
-            className="font-bold uppercase tracking-wide text-primary hover:underline"
-          >
-            {post.category}
-          </Link>
-        </div>
-
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-6" data-testid="blog-post-title">
-          {post.title}
-        </h1>
-        {post.excerpt && <p className="text-lg text-gray-500 mb-8">{post.excerpt}</p>}
 
         {post.coverImage && (
           <img
             src={post.coverImage}
             alt={post.title}
-            className="w-full rounded-xl mb-10 border border-gray-100"
+            className="w-full rounded-xl mb-6 border border-gray-100"
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
         )}
 
+        {/*
+          The article's own header/hero (kicker, breadcrumbs, h1, dek/deck,
+          meta row) is embedded verbatim in post.content — see blogPosts.ts.
+          data-testid kept here for existing test selectors; the actual
+          heading text comes from the injected HTML, not this element.
+        */}
+        <h1 className="sr-only" data-testid="blog-post-title">{post.title}</h1>
+
         <div
-          className="prose prose-gray max-w-none prose-headings:text-gray-900 prose-a:text-primary leading-relaxed blog-content"
+          className="max-w-none blog-content"
           dangerouslySetInnerHTML={{ __html: post.content }}
           data-testid="blog-post-content"
         />

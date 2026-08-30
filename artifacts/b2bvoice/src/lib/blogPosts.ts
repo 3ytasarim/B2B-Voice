@@ -1,8 +1,11 @@
 // Static blog content — no database/admin panel involved.
-// Each article's HTML body is embedded byte-for-byte from the source file,
-// together with that article's own original <style> block (scoped under
-// .blog-content so it never leaks onto the rest of the site), so the
-// rendered appearance matches the source file exactly.
+// Each article's HTML is embedded byte-for-byte from the source file,
+// INCLUDING that article's own header/hero section (kicker, breadcrumbs,
+// h1, dek/deck, meta row) and its own original <style> block (scoped
+// under .blog-content so it never leaks onto the rest of the site), so
+// the rendered page matches the source file exactly — the site's own
+// generic post-page chrome (blog-post.tsx) only adds the "Back to Blog"
+// link, an optional cover image and the tag pills at the bottom.
 
 export interface BlogPost {
   id: number;
@@ -245,7 +248,18 @@ const whatIsB2bVoiceContent = `
       }
     }
 </style>
-<section class="quick-answer" aria-label="Quick answer">
+<header>
+        <span class="eyebrow">B2B Voice Guide · Company Definition</span>
+        <h1>What Is B2B Voice and What Does It Do?</h1>
+        <p class="dek">
+          B2B Voice designs and builds custom AI voice agents and AI receptionists for businesses.
+          The important difference is not simply the technology — it is who turns that technology
+          into a working business system.
+        </p>
+        <p class="meta">Published August 12, 2026 · By B2B Voice</p>
+      </header>
+
+      <section class="quick-answer" aria-label="Quick answer">
         <strong class="label">Quick answer</strong>
         <p>
           <strong>B2B Voice is a custom AI voice-agent implementation company for business phone calls.</strong>
@@ -1064,7 +1078,19 @@ const reliabilityContent = `
       }
     }
 </style>
-<section class="quick-answer">
+<header>
+        <span class="eyebrow">Voice AI Reliability · Production Guide</span>
+        <h1>AI Voice Agent Reliability: Failure Modes, Fallbacks and Human Handoff</h1>
+        <p class="dek">
+          Reliability is not whether the demo call sounds good.
+          It is whether the system still behaves correctly when speech is unclear,
+          APIs fail, users change their minds, transfers do not answer and the network
+          leaves the system unsure whether an action actually succeeded.
+        </p>
+        <p class="meta">Published August 29, 2026 · By B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
         <span class="label">Quick answer</span>
         <p>
           <strong>A reliable AI voice agent must succeed across conversation, business actions, recovery, human handoff and observability.</strong>
@@ -2366,7 +2392,18 @@ const ivrContent = `
       }
     }
 </style>
-<section class="quick-answer">
+<header>
+        <span class="eyebrow">Voice AI Terminology · Comparison Guide</span>
+        <h1>AI Voice Agent vs AI Receptionist vs IVR: What’s the Difference?</h1>
+        <p class="dek">
+          These terms are often used as if they describe three competing products.
+          They do not. One is a broad technical category, one is a business role,
+          and one is an established telephony interaction pattern.
+        </p>
+        <p class="meta">Published August 29, 2026 · By B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
         <span class="label">Quick answer</span>
         <p>
           <strong>An AI voice agent is the broad technical category.</strong>
@@ -3583,7 +3620,19 @@ const howWorksContent = `
       }
     }
 </style>
-<section class="quick-answer">
+<header>
+        <span class="eyebrow">Voice AI Architecture · Technical Guide</span>
+        <h1>How AI Voice Agents Work: STT, Realtime Speech, LLMs, TTS, Telephony and Tool Calling</h1>
+        <p class="dek">
+          A production AI voice agent is not simply “ChatGPT connected to a phone.”
+          It is a realtime system where telephony, audio transport, conversation timing,
+          reasoning, business logic, tools, speech generation, monitoring and human handoff
+          have to work together.
+        </p>
+        <p class="meta">Published August 29, 2026 · By B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
         <strong class="label">Quick answer</strong>
         <p>
           <strong>An AI voice agent connects a live audio channel to a conversation system that can understand speech, maintain state, use knowledge or business tools, and return spoken responses in realtime.</strong>
@@ -5327,7 +5376,18 @@ const latencyContent = `
       }
     }
 </style>
-<section class="quick-answer">
+<header>
+        <span class="eyebrow">Voice AI Performance · Technical Guide</span>
+        <h1>Voice AI Latency: What Causes Delay and How Fast Should an AI Agent Respond?</h1>
+        <p class="dek">
+          A fast language model can still produce a slow phone conversation.
+          Voice AI latency is the combined result of turn detection, speech recognition,
+          reasoning, retrieval, tools, speech generation, networks and playback.
+        </p>
+        <p class="meta">Published August 29, 2026 · By B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
         <span class="label">Quick answer</span>
         <p>
           <strong>Voice AI latency is the delay between a user speaking and the system delivering the next audible response.</strong>
@@ -6239,6 +6299,12 @@ const whatIsAgentContent = `
 <style>
 :root{--ink:#172033;--muted:#5d687b;--line:#dce2ea;--soft:#f5f7fa;--accent:#2146d0;--accent-soft:#eef2ff;--green-soft:#eff9f3;--amber-soft:#fff8e8;--max:900px}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.72;text-rendering:optimizeLegibility}.blog-content a {color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}.blog-content .page {width:min(calc(100% - 36px),var(--max));margin:0 auto;padding:64px 0 80px}.blog-content .eyebrow {display:inline-block;margin-bottom:18px;padding:7px 11px;border:1px solid #cdd6ff;border-radius:999px;background:var(--accent-soft);color:#2741a8;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.blog-content h1, .blog-content h2, .blog-content h3 {color:#101827;letter-spacing:-.025em;line-height:1.18}.blog-content h1 {margin:0;max-width:860px;font-size:clamp(38px,6vw,62px)}.blog-content h2 {margin:52px 0 18px;font-size:31px}.blog-content h3 {margin:30px 0 12px;font-size:22px}.blog-content p {margin:0 0 18px}.blog-content .dek {max-width:820px;margin:22px 0 14px;color:#445066;font-size:21px;line-height:1.55}.blog-content .meta {color:var(--muted);font-size:14px;margin-bottom:36px}.blog-content .quick-answer {margin:34px 0 42px;padding:24px 26px;border:1px solid #ccd6ff;border-left:5px solid var(--accent);border-radius:12px;background:var(--accent-soft)}.blog-content .quick-answer strong.label {display:block;margin-bottom:8px;color:#243b9b;font-size:13px;letter-spacing:.08em;text-transform:uppercase}.blog-content .quick-answer p {margin:0;font-size:18px;line-height:1.65}.blog-content .key-takeaways {margin:32px 0 40px;padding:24px 26px;border:1px solid var(--line);border-radius:14px;background:#fbfcfe}.blog-content .key-takeaways h2 {margin:0 0 12px;font-size:22px}.blog-content ul, .blog-content ol {padding-left:24px;margin:12px 0 22px}.blog-content li {margin:7px 0}.blog-content .thesis {margin:30px 0;padding:22px 24px;border-radius:12px;background:var(--green-soft);border:1px solid #cfe9d8;font-size:20px;font-weight:750;line-height:1.5}.blog-content .warning {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--amber-soft);border:1px solid #f0dfa9}.blog-content .warning strong {display:block;margin-bottom:5px;color:#78570b}.blog-content .table-wrap {margin:26px 0 34px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}.blog-content table {width:100%;border-collapse:collapse;min-width:760px;font-size:15px;line-height:1.55}.blog-content th, .blog-content td {padding:15px 16px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}.blog-content th {background:var(--soft);color:#2a3548;font-weight:800}.blog-content tr:last-child td {border-bottom:0}.blog-content .architecture {margin:28px 0 34px;padding:24px;border:1px solid var(--line);border-radius:14px;background:#fafbfc}.blog-content .flow {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:stretch;margin:18px 0 8px}.blog-content .flow-step {padding:14px 10px;border-radius:10px;background:#fff;border:1px solid var(--line);text-align:center;font-size:13px;font-weight:800;line-height:1.35}.blog-content .card-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0 34px}.blog-content .card {padding:20px 21px;border:1px solid var(--line);border-radius:12px;background:#fff}.blog-content .card h3 {margin:0 0 8px;font-size:19px}.blog-content .card p {margin:0;color:#465167;font-size:15px}.blog-content .reality-test {margin:28px 0 38px;padding:26px;border-radius:16px;background:#111a2e;color:#fff}.blog-content .reality-test h2 {color:#fff;margin:0 0 10px;font-size:28px}.blog-content .reality-test p {color:#dce3ef}.blog-content .test-list {counter-reset:calls;list-style:none;padding:0;margin:22px 0 0}.blog-content .test-list li {counter-increment:calls;position:relative;margin:0 0 18px;padding:0 0 0 52px;color:#e8edf6}.blog-content .test-list li::before {content:counter(calls);position:absolute;left:0;top:0;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#111a2e;font-weight:900;font-size:13px}.blog-content .test-list strong {color:#fff;display:block;margin-bottom:2px}.blog-content .one-sentence {margin:42px 0;padding:27px 28px;border:1px solid #ccd6ff;border-radius:14px;background:#fafbff}.blog-content .one-sentence .label {color:#516079;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .one-sentence p {margin:8px 0 0;font-size:24px;line-height:1.45;font-weight:800;color:#13256e}.blog-content .faq {margin-top:18px;border-top:1px solid var(--line)}.blog-content .faq-item {padding:22px 0;border-bottom:1px solid var(--line)}.blog-content .faq-item h3 {margin:0 0 8px;font-size:20px}.blog-content .faq-item p {margin:0}.blog-content .cta {margin:54px 0 44px;padding:30px;border-radius:16px;background:#111a2e;color:#fff}.blog-content .cta h2 {color:#fff;margin:0 0 12px;font-size:29px}.blog-content .cta p {color:#d9dfeb}.blog-content .cta a.button {display:inline-block;margin-top:5px;padding:12px 17px;border-radius:9px;background:#fff;color:#111a2e;font-weight:800;text-decoration:none}.blog-content .sources {margin-top:52px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.blog-content .sources h2 {margin:0 0 12px;font-size:22px}.blog-content .sources ul {padding-left:20px}.blog-content .sources li {margin:9px 0;overflow-wrap:anywhere}.blog-content .tags {margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}.blog-content .tags-label {display:block;margin-bottom:12px;color:#6a7487;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .tag-list {display:flex;flex-wrap:wrap;gap:9px}.blog-content .tag {display:inline-block;padding:7px 11px;border-radius:999px;border:1px solid #d7ddea;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .next {margin-top:36px;padding-top:24px;border-top:1px dashed #cdd4df;color:var(--muted);font-size:15px}@media(max-width:760px){.blog-content .card-grid, .blog-content .flow {grid-template-columns:1fr}}@page{size:A4;margin:16mm 16mm 18mm}@media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap, .blog-content .architecture, .blog-content .reality-test {break-inside:avoid}.blog-content .cta, .blog-content .reality-test {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .reality-test h2, .blog-content .reality-test p, .blog-content .test-list li, .blog-content .test-list strong {color:#111}.blog-content .test-list li::before {border:1px solid #999}}
 </style>
+<header>
+  <span class="eyebrow">AI Voice Agents · Category Guide</span>
+  <h1>What Is an AI Voice Agent? A Complete Guide to Business Phone Automation</h1>
+  <p class="dek">An AI voice agent is more than a voice that talks. A useful one must listen in real time, understand what a person wants, decide what to do next, take the right action, and know when the conversation should move to a human.</p>
+  <p class="meta">Published August 29, 2026 · By B2B Voice</p>
+</header>
 <section class="quick-answer"><strong class="label">Quick answer</strong><p><strong>An AI voice agent is software that can conduct a real-time spoken conversation and use that conversation to complete a task.</strong> It can listen to a caller, understand intent and context, respond with speech, retrieve information, use connected tools or business systems, and follow rules for escalation or human handoff. Depending on the implementation, an AI voice agent may answer inbound calls, place outbound calls, book appointments, qualify leads, route requests, update a CRM, check account information, or summarize what happened after the call.</p></section>
 <section class="key-takeaways"><h2>Key takeaways</h2><ul>
 <li><strong>Voice is the interface; action is what makes the system useful.</strong></li>
@@ -6417,11 +6483,23 @@ const turnTakingContent = `
 @media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
 }
 </style>
+<div class="breadcrumbs"><a href="https://b2b-voice.com/">Home</a> / <a href="https://b2b-voice.com/blog">Blog</a> / How AI Voice Agents Handle Interruptions and Turn-Taking: VAD, End-of-Turn Detection and Barge-In</div>
+
+<section class="hero">
+  <div class="kicker">B2B Voice Technical Knowledge Base · Article #6</div>
+  <h1>How AI Voice Agents Handle Interruptions and Turn-Taking: VAD, End-of-Turn Detection and Barge-In</h1>
+  <p class="deck">A production voice agent has to solve a timing problem before it can solve a language problem: when should it keep listening, when should it answer, and what should happen if the caller starts speaking while the agent is still talking?</p>
+  <div class="meta"><span>Published August 30, 2026</span><span>~14 min read</span><span>Voice AI · Realtime Systems</span></div>
+</section>
+
 <div class="answer">
   <strong class="label">Quick answer</strong>
   <p>An AI voice agent usually decides when to respond using more than one timing signal. Voice activity detection can identify when speech starts or stops, while more advanced turn-detection systems can also estimate whether the speaker’s thought is complete. Interruptions add another problem: when a caller talks over the agent, the system may need to stop generation, clear unplayed audio and reconcile what the caller actually heard.</p>
+</div>
 
-<h2 id="speech-activity">Speech activity is not the same as turn completion</h2>
+<div class="layout">
+<article>
+  <h2 id="speech-activity">Speech activity is not the same as turn completion</h2>
   <p>One of the easiest mistakes to make in voice AI is to treat “the microphone became quiet” as equivalent to “the caller is finished.” Those are not the same event.</p>
   <p>A caller can pause because they are thinking, searching for a date, breathing, correcting themselves, listening for confirmation, or simply speaking slowly. In a phone conversation, even a short hesitation can carry meaning. If the system answers too early, it cuts the caller off. If it waits too long, the interaction feels sluggish.</p>
   <p>That is why production turn-taking is better understood as a sequence of decisions rather than a single detector. OpenAI’s current Realtime documentation, for example, distinguishes a silence-based <code>server_vad</code> mode from <code>semantic_vad</code>, which considers whether the user’s utterance appears complete based on the words they have spoken.<sup><a href="#source-1">1</a></sup> This is a vendor-specific implementation, but the distinction is broadly useful: detecting the end of acoustic activity and deciding that the conversational floor has been yielded are separate problems.</p>
@@ -6661,11 +6739,23 @@ const ragContent = `
 @media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
 }
 </style>
+<div class="breadcrumbs"><a href="https://b2b-voice.com/">Home</a> / <a href="https://b2b-voice.com/blog">Blog</a> / RAG vs Tool Calling vs Prompt Context: How AI Voice Agents Access Business Knowledge and Live Data</div>
+
+<section class="hero">
+  <div class="kicker">B2B Voice Technical Knowledge Base · Article #7</div>
+  <h1>RAG vs Tool Calling vs Prompt Context: How AI Voice Agents Access Business Knowledge and Live Data</h1>
+  <p class="deck">When a voice agent answers a business question, the important question is not simply whether it “knows.” It is where the answer came from, how fresh that source is, and whether the source is authoritative for the specific question.</p>
+  <div class="meta"><span>Published August 30, 2026</span><span>~15 min read</span><span>Voice AI · RAG · Business Data</span></div>
+</section>
+
 <div class="answer">
   <strong class="label">Quick answer</strong>
   <p>An AI voice agent can get information from four different places: the model’s existing knowledge, prompt/runtime context, retrieved company knowledge, and live business systems. These sources are not interchangeable. RAG is useful for finding relevant documents; live APIs are usually more appropriate for current authoritative state such as calendar availability or a customer record.</p>
+</div>
 
-<h2 id="four-sources">Four different sources can sit behind one spoken answer</h2>
+<div class="layout">
+<article>
+  <h2 id="four-sources">Four different sources can sit behind one spoken answer</h2>
   <p>“The AI knows our business” sounds simple, but it hides several technically different mechanisms. A production voice agent might answer one question from instructions placed directly in its runtime context, answer another from a retrieved policy document, and answer a third only after querying a calendar or CRM.</p>
   <p>Those sources have different strengths, failure modes and trust properties. Treating them as one undifferentiated “knowledge base” creates avoidable errors.</p>
 
@@ -6941,6 +7031,8 @@ const integrationsContent = `
 @media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
 }
 </style>
+<header><span class="eyebrow">Voice AI Integrations · Technical Guide</span><h1>How AI Voice Agents Connect to Business Systems: APIs, Webhooks, CRMs, Calendars and Workflow Automation</h1><p class="dek">How a phone conversation becomes a real appointment, CRM update or downstream workflow—and why a model requesting an action is not the same as the business system confirming it.</p><p class="meta">Published August 30, 2026 · By B2B Voice</p></header>
+
 <section class="quick"><span class="label">Quick answer</span><p><strong>AI voice agents normally connect to business systems through tools and application code.</strong> The model can identify an intent and request a function, but the backend authenticates, validates and executes the actual CRM, calendar, database or workflow operation. The external system—not the language model—should provide the authoritative result. That distinction is what separates a convincing conversation from a verified business action.</p></section>
 
 <section class="takeaways"><h2>Key takeaways</h2><ul>
@@ -7140,6 +7232,8 @@ const securityContent = `
 @media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
 }
 </style>
+<header><span class="eyebrow">Voice AI Security · Technical Guide</span><h1>AI Voice Agent Security: Prompt Injection, Tool Permissions, PII and Safe Business Actions</h1><p class="dek">Why caller speech should be treated as untrusted input—and how identity, permissions, validation, least privilege and audit controls protect the business systems behind a voice agent.</p><p class="meta">Published August 30, 2026 · By B2B Voice</p></header>
+
 <section class="quick"><span class="label">Quick answer</span><p><strong>The safest starting assumption is that caller speech is untrusted input.</strong> A voice agent should therefore not rely on prompts alone to protect business systems. Sensitive tools need narrow permissions, authentication and authorization, validated inputs, controlled writes, appropriate confirmation or human approval, and auditable execution. Security depends on the full architecture—not on whether the model sounds intelligent or returns structured JSON.</p></section>
 
 <section class="takeaways"><h2>Key takeaways</h2><ul>
@@ -7342,6 +7436,8 @@ const testingContent = `
 @media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
 }
 </style>
+<header><span class="eyebrow">Voice AI Testing · Production Readiness Guide</span><h1>How to Test an AI Voice Agent Before Production: Evals, Failure Injection and Regression Testing</h1><p class="dek">A serious testing framework for proving that a voice agent works beyond the demo—across conversation, realtime audio, tools, failure recovery, security and authoritative business outcomes.</p><p class="meta">Published August 30, 2026 · By B2B Voice</p></header>
+
 <section class="quick"><span class="label">Quick answer</span><p><strong>A production voice agent should be tested as a conversation system, a realtime audio system and a business transaction system.</strong> Good testing therefore covers not only what the agent says, but interruptions, noisy speech, tool arguments, API failures, security boundaries and whether the intended business action actually happened. A polished demo proves almost none of that on its own.</p></section>
 
 <section class="takeaways"><h2>Key takeaways</h2><ul>
