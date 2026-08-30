@@ -1,7 +1,8 @@
 // Static blog content — no database/admin panel involved.
-// To publish a real article: fill in a slot below (or add a new object) with
-// the HTML you have and drop the cover image file into
-// b2bvoice/public/blog/<slug>.jpg (or update coverImage to match).
+// Each article's HTML body is embedded byte-for-byte from the source file,
+// together with that article's own original <style> block (scoped under
+// .blog-content so it never leaks onto the rest of the site), so the
+// rendered appearance matches the source file exactly.
 
 export interface BlogPost {
   id: number;
@@ -17,10 +18,234 @@ export interface BlogPost {
   content: string;
 }
 
-// The same article, published 3 times (distinct slugs) per request — swap
-// each slot's content/metadata independently once real distinct posts arrive.
 const whatIsB2bVoiceContent = `
-      <section class="quick-answer" aria-label="Quick answer">
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --success-soft: #eef9f3;
+      --max: 860px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 800px;
+      font-size: clamp(38px, 6vw, 62px);
+    }.blog-content .dek {
+      max-width: 780px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 24px 26px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer strong.label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content h2 {
+      margin: 50px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--success-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: -16px;
+    }.blog-content .steps {
+      counter-reset: steps;
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }.blog-content .steps li {
+      counter-increment: steps;
+      position: relative;
+      padding: 0 0 23px 58px;
+      margin: 0;
+    }.blog-content .steps li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #152f91;
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+    }.blog-content .steps li strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #142038;
+    }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: #111a2e;
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta a.button {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .thesis, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap {
+        break-inside: avoid;
+      }.blog-content .cta {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button {
+        color: #111;
+      }.blog-content .cta a.button {
+        border: 1px solid #999;
+      }
+    }
+</style>
+<section class="quick-answer" aria-label="Quick answer">
         <strong class="label">Quick answer</strong>
         <p>
           <strong>B2B Voice is a custom AI voice-agent implementation company for business phone calls.</strong>
@@ -42,8 +267,8 @@ const whatIsB2bVoiceContent = `
       </p>
 
       <p>
-        But the clearest way to understand B2B Voice is not as "another place to create an AI bot."
-        The company's public positioning is based on a custom-build model: every assistant is prepared around
+        But the clearest way to understand B2B Voice is not as “another place to create an AI bot.”
+        The company’s public positioning is based on a custom-build model: every assistant is prepared around
         the specific business, its customers, its services, and the way its phone calls should actually be handled.
       </p>
 
@@ -131,14 +356,14 @@ const whatIsB2bVoiceContent = `
 
       <h3>2. Understand why the customer is calling</h3>
       <p>
-        The assistant can ask questions and identify the caller's need instead of forcing every caller through the same static menu.
+        The assistant can ask questions and identify the caller’s need instead of forcing every caller through the same static menu.
         A service inquiry, appointment request, lead, support question, urgent request, or routing need can follow a different path
         when the deployment is designed to do so.
       </p>
 
       <h3>3. Collect useful information during the conversation</h3>
       <p>
-        Depending on the workflow, the system can capture details such as the caller's name, phone number, service request,
+        Depending on the workflow, the system can capture details such as the caller’s name, phone number, service request,
         preferred time, urgency, or other information the business needs before the next step.
       </p>
 
@@ -152,7 +377,7 @@ const whatIsB2bVoiceContent = `
       <h3>5. Route the request or hand the conversation to a human</h3>
       <p>
         Not every call should end with the AI. A good phone workflow also needs rules for when a person, department, or other process
-        should take over. B2B Voice's setup process explicitly asks when the assistant should answer directly and when the conversation
+        should take over. B2B Voice’s setup process explicitly asks when the assistant should answer directly and when the conversation
         should be handed to a human. Its legal notice also states that callers interacting with a B2B Voice-powered assistant may request
         a human representative.
       </p>
@@ -175,14 +400,14 @@ const whatIsB2bVoiceContent = `
       <h3>8. Support multilingual conversations</h3>
       <p>
         B2B Voice also offers multilingual voice-assistant setups. The language mix is part of the custom configuration,
-        so the relevant question is not simply "how many languages exist?" but which languages the business actually needs
+        so the relevant question is not simply “how many languages exist?” but which languages the business actually needs
         for its customers and call flows.
       </p>
 
       <h2>What does a business need to do?</h2>
 
       <p>
-        "Done for you" does not mean the business provides no input. The company still knows its customers, rules, services,
+        “Done for you” does not mean the business provides no input. The company still knows its customers, rules, services,
         and edge cases better than anyone else. B2B Voice needs that business knowledge in order to build the right system.
       </p>
 
@@ -212,7 +437,7 @@ const whatIsB2bVoiceContent = `
       <ol class="steps">
         <li>
           <strong>Understand the business.</strong>
-          The starting point is not a blank prompt. It is the company's services, customers, phone traffic, rules, and desired outcomes.
+          The starting point is not a blank prompt. It is the company’s services, customers, phone traffic, rules, and desired outcomes.
         </li>
         <li>
           <strong>Define the call flow.</strong>
@@ -255,7 +480,7 @@ const whatIsB2bVoiceContent = `
         <li><strong>It is not just software access.</strong> The value proposition includes the design and implementation work around the software.</li>
         <li><strong>It is not a promise that every call should stay with AI.</strong> Human handoff rules are part of a responsible call flow.</li>
         <li><strong>It is not a static IVR menu.</strong> The system is designed for conversational call handling and workflow actions.</li>
-        <li><strong>It is not "magic AI."</strong> The quality of the system still depends on clear business information, rules, integrations, testing, and sensible boundaries.</li>
+        <li><strong>It is not “magic AI.”</strong> The quality of the system still depends on clear business information, rules, integrations, testing, and sensible boundaries.</li>
       </ul>
 
       <h2>Why choose a managed custom-build model?</h2>
@@ -291,7 +516,7 @@ const whatIsB2bVoiceContent = `
           <h3>Is B2B Voice a self-service AI agent builder?</h3>
           <p>
             B2B Voice is positioned primarily around custom implementation rather than simply giving the customer a generic builder.
-            The team learns the business requirements and builds the assistant around the company's call flow, services, questions, and systems.
+            The team learns the business requirements and builds the assistant around the company’s call flow, services, questions, and systems.
           </p>
         </div>
 
@@ -322,14 +547,14 @@ const whatIsB2bVoiceContent = `
           <h3>Can B2B Voice connect to a CRM or calendar?</h3>
           <p>
             Yes. B2B Voice currently lists CRM and calendar integration as part of its service, with specific tools and workflows selected according
-            to the customer's setup.
+            to the customer’s setup.
           </p>
         </div>
 
         <div class="faq-item">
           <h3>Can a caller be transferred to a human?</h3>
           <p>
-            Human handoff can be built into the call flow. B2B Voice's setup process specifically includes deciding when the assistant should answer
+            Human handoff can be built into the call flow. B2B Voice’s setup process specifically includes deciding when the assistant should answer
             and when a conversation should be handed to a person.
           </p>
         </div>
@@ -337,7 +562,7 @@ const whatIsB2bVoiceContent = `
         <div class="faq-item">
           <h3>Can I see how B2B Voice would work for my company before I start?</h3>
           <p>
-            B2B Voice currently offers a free custom demo designed around the prospective customer's business, services, and call flow.
+            B2B Voice currently offers a free custom demo designed around the prospective customer’s business, services, and call flow.
           </p>
         </div>
       </section>
@@ -354,21 +579,493 @@ const whatIsB2bVoiceContent = `
       <div class="next">
         <strong>Next in the B2B Voice knowledge series:</strong>
         <em>What Is an AI Voice Agent? A Complete Guide to Business Phone Automation.</em>
+        <!-- Add internal link to /blog/what-is-an-ai-voice-agent after Article #1 is published. -->
       </div>
-    `;
+`;
 
 const whatIsB2bVoiceMeta = {
-  title: "What Is B2B Voice and What Does It Do?",
-  author: "B2B Voice",
-  date: "2026-08-12",
-  category: "AI",
-  tags: ["AI Voice Agent", "AI Receptionist", "Business Phone Automation", "Conversational AI"],
-  excerpt: "B2B Voice designs and builds custom AI voice agents and AI receptionists for businesses. The important difference is not simply the technology — it is who turns that technology into a working business system.",
+  "title": "What Is B2B Voice and What Does It Do?",
+  "author": "B2B Voice",
+  "date": "2026-08-12",
+  "category": "AI",
+  "tags": [
+    "AI Voice Agent",
+    "AI Receptionist",
+    "Business Phone Automation",
+    "Conversational AI"
+  ],
+  "excerpt": "B2B Voice designs and builds custom AI voice agents and AI receptionists for businesses. The important difference is not simply the technology — it is who turns that technology into a working business system.",
+  "coverImage": "/blog-images/what-is-b2b-voice-cover.jpg"
 };
 
 const reliabilityContent = `
-      <section class="quick-answer" aria-label="Quick answer">
-        <strong class="label">Quick answer</strong>
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --red-soft: #fff2f2;
+      --purple-soft: #f5f1ff;
+      --cyan-soft: #eef9fc;
+      --dark: #111a2e;
+      --max: 930px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(38px, 6vw, 61px);
+    }.blog-content h2 {
+      margin: 52px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 850px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer .label, .blog-content .small-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .warning {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .warning strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #78570b;
+    }.blog-content .danger {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--red-soft);
+      border: 1px solid #f0cece;
+    }.blog-content .danger strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #8b2d2d;
+    }.blog-content .five-layer {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin: 28px 0 38px;
+    }.blog-content .reliability-layer {
+      min-height: 160px;
+      padding: 18px 13px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }.blog-content .reliability-layer .num {
+      display: grid;
+      place-items: center;
+      width: 31px;
+      height: 31px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: #17358f;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+    }.blog-content .reliability-layer strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #19263d;
+      font-size: 14px;
+    }.blog-content .reliability-layer p {
+      margin: 0;
+      color: #556176;
+      font-size: 13px;
+      line-height: 1.5;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 790px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .failure-path {
+      margin: 28px 0 38px;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fbfcfe;
+    }.blog-content .failure-flow {
+      display: grid;
+      gap: 8px;
+      max-width: 650px;
+      margin: 18px auto 0;
+    }.blog-content .failure-box {
+      padding: 14px 16px;
+      border: 1px solid #d8dfea;
+      border-radius: 10px;
+      background: white;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+    }.blog-content .failure-arrow {
+      text-align: center;
+      color: #7b8699;
+      font-weight: 900;
+      line-height: 1;
+    }.blog-content .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 15px;
+      margin: 25px 0 38px;
+    }.blog-content .card {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }.blog-content .card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }.blog-content .card p {
+      margin: 0;
+      color: #4d596f;
+      font-size: 14px;
+    }.blog-content .timeout-story {
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .timeout-story h3 {
+      margin: 0 0 9px;
+      color: #fff;
+    }.blog-content .timeout-story p {
+      color: #dce3ee;
+    }.blog-content .timeline {
+      margin-top: 19px;
+      display: grid;
+      gap: 9px;
+    }.blog-content .timeline-row {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 12px;
+      align-items: start;
+    }.blog-content .timeline-key {
+      padding: 4px 6px;
+      border-radius: 7px;
+      background: rgba(255,255,255,.1);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 900;
+      color: white;
+    }.blog-content .timeline-text {
+      color: #e3e9f3;
+      font-size: 14px;
+    }.blog-content .handoff {
+      margin: 28px 0 38px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }.blog-content .handoff-card {
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }.blog-content .handoff-card span {
+      display: inline-block;
+      margin-bottom: 9px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2b48aa;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .05em;
+    }.blog-content .handoff-card h3 {
+      margin: 0 0 7px;
+      font-size: 19px;
+    }.blog-content .handoff-card p {
+      margin: 0;
+      color: #4d596f;
+      font-size: 14px;
+    }.blog-content .control-stack {
+      margin: 28px 0 38px;
+      padding: 25px;
+      border: 1px solid #d7dcf0;
+      border-radius: 16px;
+      background: var(--purple-soft);
+    }.blog-content .control-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }.blog-content .control-item {
+      padding: 17px;
+      border-radius: 11px;
+      background: #fff;
+      border: 1px solid #dfd8f0;
+    }.blog-content .control-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #463582;
+    }.blog-content .control-item p {
+      margin: 0;
+      color: #5d5870;
+      font-size: 13px;
+    }.blog-content .testing-pyramid {
+      margin: 28px 0 38px;
+      display: grid;
+      gap: 8px;
+    }.blog-content .test-level {
+      margin: 0 auto;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 800;
+      color: #27344c;
+    }.blog-content .l1 { width: 45%; }.blog-content .l2 { width: 58%; }.blog-content .l3 { width: 70%; }.blog-content .l4 { width: 82%; }.blog-content .l5 { width: 94%; }.blog-content .observability {
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: var(--cyan-soft);
+      border: 1px solid #cde7ef;
+    }.blog-content .observability-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }.blog-content .obs {
+      padding: 16px;
+      border-radius: 11px;
+      background: #fff;
+      border: 1px solid #d7e8ed;
+      font-size: 13px;
+      font-weight: 750;
+      color: #355363;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }.blog-content .cta a.button {
+      display: inline-block;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .cta a.secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.42);
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul { padding-left: 20px; }.blog-content .sources li { margin: 9px 0; overflow-wrap: anywhere; }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 800px) {.blog-content .five-layer {
+        grid-template-columns: 1fr;
+      }.blog-content .two-col, .blog-content .control-grid, .blog-content .observability-grid, .blog-content .handoff {
+        grid-template-columns: 1fr;
+      }.blog-content .l1, .blog-content .l2, .blog-content .l3, .blog-content .l4, .blog-content .l5 {
+        width: 100%;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .danger, .blog-content .table-wrap, .blog-content .failure-path, .blog-content .timeout-story, .blog-content .control-stack, .blog-content .observability, .blog-content .one-sentence, .blog-content .cta {
+        break-inside: avoid;
+      }.blog-content .timeout-story, .blog-content .cta {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .timeout-story h3, .blog-content .timeout-story p, .blog-content .timeline-text, .blog-content .timeline-key, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {
+        color: #111;
+      }
+    }
+</style>
+<section class="quick-answer">
+        <span class="label">Quick answer</span>
         <p>
           <strong>A reliable AI voice agent must succeed across conversation, business actions, recovery, human handoff and observability.</strong>
           It should understand critical information well enough to avoid guessing, use authoritative tools for real business data, confirm important write actions, recover safely from timeouts and integration failures, escalate when the task should not remain automated, and leave enough logs and outcome data to explain what happened afterward.
@@ -390,7 +1087,7 @@ const reliabilityContent = `
         </ul>
       </section>
 
-      <h2>What does "reliable" mean for an AI voice agent?</h2>
+      <h2>What does “reliable” mean for an AI voice agent?</h2>
 
       <p>
         Reliability is often confused with uptime.
@@ -398,7 +1095,7 @@ const reliabilityContent = `
       </p>
 
       <p>
-        A production system can fail while remaining technically "available."
+        A production system can fail while remaining technically “available.”
       </p>
 
       <p>For example, it may:</p>
@@ -482,7 +1179,7 @@ const reliabilityContent = `
       </ul>
 
       <p>
-        If the model is uncertain about a critical entity, "best guess" is often the wrong behavior.
+        If the model is uncertain about a critical entity, “best guess” is often the wrong behavior.
       </p>
 
       <div class="two-col">
@@ -507,7 +1204,7 @@ const reliabilityContent = `
         A model may correctly infer:
       </p>
 
-      <p><strong>"The caller wants Tuesday at 3 PM."</strong></p>
+      <p><strong>“The caller wants Tuesday at 3 PM.”</strong></p>
 
       <p>
         But the external system still has to:
@@ -624,7 +1321,7 @@ const reliabilityContent = `
             </tr>
             <tr>
               <td>Calendar API fails</td>
-              <td>Saying "You're booked"</td>
+              <td>Saying “You’re booked”</td>
               <td>Explain temporary failure and offer a fallback path</td>
             </tr>
             <tr>
@@ -652,7 +1349,7 @@ const reliabilityContent = `
       </div>
 
       <div class="danger">
-        <strong>The dangerous sentence is: "I think it probably worked."</strong>
+        <strong>The dangerous sentence is: “I think it probably worked.”</strong>
         A production agent should not convert uncertainty about an external write into a confident customer-facing confirmation.
       </div>
 
@@ -663,7 +1360,7 @@ const reliabilityContent = `
       </p>
 
       <div class="timeout-story">
-        <h3>Example: the caller says "Book it."</h3>
+        <h3>Example: the caller says “Book it.”</h3>
 
         <div class="timeline">
           <div class="timeline-row">
@@ -715,8 +1412,8 @@ const reliabilityContent = `
       <h2>Fallbacks should be designed before launch</h2>
 
       <p>
-        "Fallback" should not mean one generic sentence such as:
-        <strong>"Sorry, I didn't understand."</strong>
+        “Fallback” should not mean one generic sentence such as:
+        <strong>“Sorry, I didn’t understand.”</strong>
       </p>
 
       <p>
@@ -815,7 +1512,7 @@ const reliabilityContent = `
       </ul>
 
       <p>
-        The right choice depends on the business workflow, but "transfer failed" should not be the end of the design.
+        The right choice depends on the business workflow, but “transfer failed” should not be the end of the design.
       </p>
 
       <h2>Context preservation matters during handoff</h2>
@@ -847,7 +1544,7 @@ const reliabilityContent = `
 
       <p>
         If a caller says:
-        <strong>"The AI booked the wrong appointment."</strong>
+        <strong>“The AI booked the wrong appointment.”</strong>
       </p>
 
       <p>
@@ -875,7 +1572,7 @@ const reliabilityContent = `
       <p>
         The last item is especially important.
         If the appointment system says no appointment was created, an LLM-generated call summary saying
-        <strong>"appointment booked"</strong> should not override the authoritative system of record.
+        <strong>“appointment booked”</strong> should not override the authoritative system of record.
       </p>
 
       <h2>Business outcome should outrank conversational confidence</h2>
@@ -1041,7 +1738,7 @@ const reliabilityContent = `
 
       <ul>
         <li>override agent instructions;</li>
-        <li>request another customer's information;</li>
+        <li>request another customer’s information;</li>
         <li>force an unauthorized tool call;</li>
         <li>manipulate a sensitive write;</li>
         <li>convince the system to bypass a required confirmation.</li>
@@ -1063,31 +1760,31 @@ const reliabilityContent = `
           </thead>
           <tbody>
             <tr>
-              <td>"The call sounded natural, so it worked."</td>
+              <td>“The call sounded natural, so it worked.”</td>
               <td>Conversation quality and business outcome are separate dimensions.</td>
             </tr>
             <tr>
-              <td>"If the model produced valid JSON, the action was safe."</td>
+              <td>“If the model produced valid JSON, the action was safe.”</td>
               <td>Valid structure does not prove correct identity, authorization or business semantics.</td>
             </tr>
             <tr>
-              <td>"If an API timed out, the operation failed."</td>
+              <td>“If an API timed out, the operation failed.”</td>
               <td>The operation may have succeeded while only the response was lost.</td>
             </tr>
             <tr>
-              <td>"Retrying is always safe."</td>
+              <td>“Retrying is always safe.”</td>
               <td>Side-effecting writes can create duplicates unless retry behavior is designed carefully.</td>
             </tr>
             <tr>
-              <td>"RAG means the agent cannot hallucinate."</td>
+              <td>“RAG means the agent cannot hallucinate.”</td>
               <td>Retrieval improves grounding but does not guarantee correctness.</td>
             </tr>
             <tr>
-              <td>"Human handoff means having a transfer button."</td>
+              <td>“Human handoff means having a transfer button.”</td>
               <td>Trigger logic, destination availability and context transfer are also part of handoff reliability.</td>
             </tr>
             <tr>
-              <td>"More tool access makes the agent better."</td>
+              <td>“More tool access makes the agent better.”</td>
               <td>Capability should be balanced with least privilege and controlled authority.</td>
             </tr>
           </tbody>
@@ -1190,64 +1887,486 @@ const reliabilityContent = `
       <section class="sources">
         <h2>Technical sources &amp; research basis</h2>
         <p>
-          This guide builds on B2B Voice's 2026 technical architecture research and current primary documentation covering tool execution, transfers, agent testing, post-call analysis, security controls and safe retry behavior. Recommended failure patterns are engineering guidance unless explicitly tied to a vendor implementation.
+          This guide builds on B2B Voice’s 2026 technical architecture research and current primary documentation covering tool execution, transfers, agent testing, post-call analysis, security controls and safe retry behavior. Recommended failure patterns are engineering guidance unless explicitly tied to a vendor implementation.
         </p>
         <ul>
           <li>
             <strong>OpenAI — Responses / Tool Calling:</strong>
             model tool calls and application-controlled tool execution.
-            <a href="https://developers.openai.com/api/reference/resources/responses/methods/create" target="_blank" rel="noopener noreferrer">developers.openai.com/api/reference/resources/responses/methods/create</a>
+            <a href="https://developers.openai.com/api/reference/resources/responses/methods/create">developers.openai.com/api/reference/resources/responses/methods/create</a>
           </li>
           <li>
             <strong>ElevenLabs — Transfer to Number:</strong>
             human-transfer conditions, external numbers/SIP, conference/blind/SIP REFER behavior and operator context messages.
-            <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/transfer-to-number" target="_blank" rel="noopener noreferrer">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/transfer-to-number</a>
+            <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/transfer-to-number">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/transfer-to-number</a>
           </li>
           <li>
             <strong>ElevenLabs — Agent Transfer:</strong>
             transfer conditions and preserved transcript/context across agent handoff.
-            <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/agent-transfer" target="_blank" rel="noopener noreferrer">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/agent-transfer</a>
+            <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/agent-transfer">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/agent-transfer</a>
           </li>
           <li>
             <strong>ElevenLabs — Agent Testing:</strong>
             expected tool calls, parameter validation and high-stakes tool test cases.
-            <a href="https://elevenlabs.io/docs/eleven-agents/customization/agent-testing" target="_blank" rel="noopener noreferrer">elevenlabs.io/docs/eleven-agents/customization/agent-testing</a>
+            <a href="https://elevenlabs.io/docs/eleven-agents/customization/agent-testing">elevenlabs.io/docs/eleven-agents/customization/agent-testing</a>
           </li>
           <li>
             <strong>ElevenLabs — Post-call Webhooks:</strong>
             post-call transcripts, analysis, metadata and failure-event workflows.
-            <a href="https://elevenlabs.io/docs/eleven-agents/workflows/post-call-webhooks" target="_blank" rel="noopener noreferrer">elevenlabs.io/docs/eleven-agents/workflows/post-call-webhooks</a>
+            <a href="https://elevenlabs.io/docs/eleven-agents/workflows/post-call-webhooks">elevenlabs.io/docs/eleven-agents/workflows/post-call-webhooks</a>
           </li>
           <li>
             <strong>Twilio — Warm Transfer:</strong>
             consult-before-transfer behavior in telephony.
-            <a href="https://www.twilio.com/docs/flex/end-user-guide/warm-transfer" target="_blank" rel="noopener noreferrer">twilio.com/docs/flex/end-user-guide/warm-transfer</a>
+            <a href="https://www.twilio.com/docs/flex/end-user-guide/warm-transfer">twilio.com/docs/flex/end-user-guide/warm-transfer</a>
           </li>
           <li>
             <strong>OWASP GenAI — Prompt Injection:</strong>
             least privilege, privilege controls, human approval for high-risk operations and adversarial testing.
-            <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer">genai.owasp.org/llmrisk/llm01-prompt-injection</a>
+            <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">genai.owasp.org/llmrisk/llm01-prompt-injection</a>
           </li>
           <li>
             <strong>Stripe — Idempotent Requests:</strong>
             an official example of safely retrying side-effecting API requests without accidentally duplicating an operation.
-            <a href="https://docs.stripe.com/api/idempotent_requests" target="_blank" rel="noopener noreferrer">docs.stripe.com/api/idempotent_requests</a>
+            <a href="https://docs.stripe.com/api/idempotent_requests">docs.stripe.com/api/idempotent_requests</a>
           </li>
         </ul>
       </section>
-    `;
+`;
 
 const reliabilityMeta = {
-  title: "AI Voice Agent Reliability: Failure Modes, Fallbacks and Human Handoff",
-  author: "B2B Voice",
-  date: "2026-08-29",
-  category: "AI",
-  tags: ["AI Voice Agent Reliability", "Human Handoff", "Failure Recovery", "Idempotency", "Tool Calling", "Observability", "AI Agent Testing"],
-  excerpt: "Reliability is not whether the demo call sounds good. It is whether the system still behaves correctly when speech is unclear, APIs fail, users change their minds, transfers do not answer and the network leaves the system unsure whether an action actually succeeded.",
+  "title": "AI Voice Agent Reliability: Failure Modes, Fallbacks and Human Handoff",
+  "author": "B2B Voice",
+  "date": "2026-08-29",
+  "category": "AI",
+  "tags": [
+    "AI Voice Agent Reliability",
+    "Human Handoff",
+    "Failure Recovery",
+    "Idempotency",
+    "Tool Calling",
+    "Observability",
+    "AI Agent Testing"
+  ],
+  "excerpt": "Reliability is not whether the demo call sounds good. It is whether the system still behaves correctly when speech is unclear, APIs fail, users change their minds, transfers do not answer and the network leaves the system unsure whether an action actually succeeded.",
+  "coverImage": ""
 };
 
 const ivrContent = `
-      <section class="quick-answer" aria-label="Quick answer">
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --purple-soft: #f5f1ff;
+      --red-soft: #fff3f3;
+      --cyan-soft: #eef9fc;
+      --dark: #111a2e;
+      --max: 920px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 880px;
+      font-size: clamp(38px, 6vw, 61px);
+    }.blog-content h2 {
+      margin: 52px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 825px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer .label, .blog-content .mini-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .nuance {
+      margin: 28px 0;
+      padding: 22px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .nuance strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #78570b;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .three-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+      margin: 28px 0 38px;
+    }.blog-content .term-card {
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 21px;
+      background: #fff;
+    }.blog-content .term-card.voice { background: var(--accent-soft); border-color: #ccd6ff; }.blog-content .term-card.reception { background: var(--green-soft); border-color: #cfe9d8; }.blog-content .term-card.ivr { background: var(--purple-soft); border-color: #ddd2ff; }.blog-content .term-card h3 {
+      margin: 0 0 9px;
+      font-size: 21px;
+    }.blog-content .term-card p {
+      margin: 0;
+      font-size: 15px;
+      color: #465167;
+    }.blog-content .taxonomy {
+      margin: 30px 0 38px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fafbfc;
+    }.blog-content .taxonomy-row {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }.blog-content .taxonomy-row:last-child { border-bottom: 0; }.blog-content .taxonomy-name {
+      font-weight: 850;
+      color: #1b2941;
+    }.blog-content .taxonomy-desc {
+      color: #465167;
+    }.blog-content .spectrum {
+      margin: 28px 0 38px;
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #e7edf7;
+    }.blog-content .spectrum h3 {
+      color: #fff;
+      margin: 0 0 8px;
+    }.blog-content .spectrum p {
+      color: #d5ddeb;
+    }.blog-content .spectrum-line {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 20px;
+    }.blog-content .spectrum-box {
+      min-height: 94px;
+      padding: 14px 10px;
+      border-radius: 11px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(255,255,255,.07);
+      text-align: center;
+      display: grid;
+      align-content: center;
+      font-size: 13px;
+      font-weight: 800;
+    }.blog-content .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 15px;
+      margin: 25px 0 38px;
+    }.blog-content .scenario {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 19px 20px;
+      background: #fff;
+    }.blog-content .scenario .who {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f0f3f8;
+      color: #4c5870;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }.blog-content .scenario strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #17243c;
+    }.blog-content .scenario p {
+      margin: 0;
+      color: #4a566c;
+      font-size: 15px;
+    }.blog-content .decision {
+      margin: 30px 0 40px;
+      padding: 26px;
+      border: 1px solid #d8e2ef;
+      border-radius: 16px;
+      background: #fbfdff;
+    }.blog-content .decision-step {
+      position: relative;
+      padding: 0 0 23px 48px;
+      margin: 0;
+    }.blog-content .decision-step:last-child { padding-bottom: 0; }.blog-content .decision-step::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 31px;
+      bottom: 0;
+      width: 1px;
+      background: #cfd8e6;
+    }.blog-content .decision-step:last-child::before { display: none; }.blog-content .decision-num {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #17358f;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+    }.blog-content .decision-step strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #17243c;
+    }.blog-content .decision-step p {
+      margin: 0;
+      color: #4a566c;
+    }.blog-content .myths {
+      display: grid;
+      gap: 12px;
+      margin: 25px 0 38px;
+    }.blog-content .myth {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }.blog-content .myth-top {
+      padding: 14px 17px;
+      background: var(--red-soft);
+      color: #7d2929;
+      font-weight: 850;
+    }.blog-content .myth-bottom {
+      padding: 14px 17px;
+      color: #3f4c62;
+      background: #fff;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }.blog-content .cta a.button {
+      display: inline-block;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .cta a.button.secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.45);
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul { padding-left: 20px; }.blog-content .sources li { margin: 9px 0; overflow-wrap: anywhere; }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 760px) {.blog-content .three-cards, .blog-content .scenario-grid, .blog-content .spectrum-line {
+        grid-template-columns: 1fr;
+      }.blog-content .taxonomy-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .nuance, .blog-content .table-wrap, .blog-content .taxonomy, .blog-content .spectrum, .blog-content .decision, .blog-content .one-sentence, .blog-content .cta {
+        break-inside: avoid;
+      }.blog-content .spectrum, .blog-content .cta {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .spectrum h3, .blog-content .spectrum p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.button.secondary {
+        color: #111;
+      }
+    }
+</style>
+<section class="quick-answer">
         <span class="label">Quick answer</span>
         <p>
           <strong>An AI voice agent is the broad technical category.</strong>
@@ -1264,7 +2383,7 @@ const ivrContent = `
           <li><strong>AI receptionist = role/use case.</strong></li>
           <li><strong>IVR = telephony interaction and routing pattern.</strong></li>
           <li>Traditional IVR is usually more predefined and menu-driven.</li>
-          <li>Modern conversational IVR can understand spoken language, so "IVR = press 1 only" is outdated.</li>
+          <li>Modern conversational IVR can understand spoken language, so “IVR = press 1 only” is outdated.</li>
           <li>An AI receptionist can be built using AI voice-agent technology.</li>
           <li>A voice agent can do many jobs beyond reception.</li>
           <li>The best way to compare products is by capabilities and workflow—not by label alone.</li>
@@ -1300,7 +2419,7 @@ const ivrContent = `
       </div>
 
       <div class="thesis">
-        The categories overlap because they answer different questions: "What technology is this?", "What job is it doing?" and "How is the phone interaction structured?"
+        The categories overlap because they answer different questions: “What technology is this?”, “What job is it doing?” and “How is the phone interaction structured?”
       </div>
 
       <h2>Why the terminology is confusing</h2>
@@ -1339,7 +2458,7 @@ const ivrContent = `
 
       <p>
         This is why buying software based on the label alone can be misleading.
-        Two products both called "AI receptionist" may have radically different capabilities.
+        Two products both called “AI receptionist” may have radically different capabilities.
       </p>
 
       <h2>What is an AI voice agent?</h2>
@@ -1423,7 +2542,7 @@ const ivrContent = `
 
       <div class="spectrum">
         <h3>A familiar IVR interaction</h3>
-        <p>"For sales, press 1. For billing, press 2. To hear these options again, press 9."</p>
+        <p>“For sales, press 1. For billing, press 2. To hear these options again, press 9.”</p>
         <div class="spectrum-line">
           <div class="spectrum-box">Caller enters menu</div>
           <div class="spectrum-box">DTMF or constrained speech</div>
@@ -1439,7 +2558,7 @@ const ivrContent = `
 
       <div class="nuance">
         <strong>Important nuance</strong>
-        Saying "IVR means press 1, press 2" is too simplistic. Traditional IVR is commonly menu-driven, but conversational IVR can accept spoken requests and use NLP. The difference between advanced conversational IVR and an AI voice agent can therefore become a spectrum rather than a hard technical boundary.
+        Saying “IVR means press 1, press 2” is too simplistic. Traditional IVR is commonly menu-driven, but conversational IVR can accept spoken requests and use NLP. The difference between advanced conversational IVR and an AI voice agent can therefore become a spectrum rather than a hard technical boundary.
       </div>
 
       <h2>Traditional IVR vs conversational IVR</h2>
@@ -1491,7 +2610,7 @@ const ivrContent = `
       <h2>AI voice agent vs IVR</h2>
 
       <p>
-        The strongest difference is usually not "AI versus no AI."
+        The strongest difference is usually not “AI versus no AI.”
         It is the degree of <strong>open-ended conversation, context and action flexibility</strong>.
       </p>
 
@@ -1546,7 +2665,7 @@ const ivrContent = `
 
       <p>
         Notice that IVR can also interact with backend systems.
-        A well-designed IVR is not inherently "dumb."
+        A well-designed IVR is not inherently “dumb.”
         The architectural distinction is about how the caller interacts with the system and how much conversational flexibility the system provides.
       </p>
 
@@ -1571,7 +2690,7 @@ const ivrContent = `
       </p>
 
       <p>
-        <strong>Caller:</strong> "Hi, I was wondering if you have anything available Friday afternoon for a consultation."
+        <strong>Caller:</strong> “Hi, I was wondering if you have anything available Friday afternoon for a consultation.”
       </p>
 
       <p>
@@ -1656,7 +2775,7 @@ const ivrContent = `
       </ol>
 
       <p>
-        In that deployment, asking whether the product is "IVR or AI receptionist" is the wrong question.
+        In that deployment, asking whether the product is “IVR or AI receptionist” is the wrong question.
         It may be both at different layers.
       </p>
 
@@ -1670,61 +2789,61 @@ const ivrContent = `
       <div class="scenario-grid">
         <div class="scenario">
           <span class="who">Scenario 1</span>
-          <strong>"Press 1 for sales, 2 for billing."</strong>
+          <strong>“Press 1 for sales, 2 for billing.”</strong>
           <p>Classic traditional IVR. A predefined menu is sufficient.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 2</span>
-          <strong>"Tell me briefly why you're calling."</strong>
+          <strong>“Tell me briefly why you’re calling.”</strong>
           <p>Could be conversational IVR or an AI voice agent depending on how intent detection and downstream logic are implemented.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 3</span>
-          <strong>"Can you book me a haircut tomorrow after four?"</strong>
+          <strong>“Can you book me a haircut tomorrow after four?”</strong>
           <p>Strong AI receptionist use case with calendar tool access.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 4</span>
-          <strong>"My order is late. Can you check where it is?"</strong>
+          <strong>“My order is late. Can you check where it is?”</strong>
           <p>AI voice agent or conversational self-service agent connected to live order data.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 5</span>
-          <strong>"I need to speak to billing."</strong>
+          <strong>“I need to speak to billing.”</strong>
           <p>Traditional IVR, conversational IVR or AI voice agent can all solve this.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 6</span>
-          <strong>"Actually, change that appointment from Friday to Monday morning."</strong>
+          <strong>“Actually, change that appointment from Friday to Monday morning.”</strong>
           <p>Multi-turn conversational context makes a modern AI voice agent especially suitable.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 7</span>
-          <strong>"Leave a message for Jennifer and email me the details."</strong>
+          <strong>“Leave a message for Jennifer and email me the details.”</strong>
           <p>AI receptionist with message capture and workflow integration.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 8</span>
-          <strong>"What are your opening hours?"</strong>
+          <strong>“What are your opening hours?”</strong>
           <p>Any of the three approaches can answer this. AI is not automatically necessary.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 9</span>
-          <strong>"I have a complicated complaint and want a person."</strong>
+          <strong>“I have a complicated complaint and want a person.”</strong>
           <p>The best outcome may be immediate human escalation regardless of the front-end technology.</p>
         </div>
 
         <div class="scenario">
           <span class="who">Scenario 10</span>
-          <strong>"I want to change two bookings and ask a question about your cancellation policy."</strong>
+          <strong>“I want to change two bookings and ask a question about your cancellation policy.”</strong>
           <p>A contextual voice agent with knowledge retrieval and booking tools is a better fit than a simple menu tree.</p>
         </div>
       </div>
@@ -1804,7 +2923,7 @@ const ivrContent = `
         <div class="decision-step">
           <div class="decision-num">3</div>
           <strong>Is the core job essentially front-desk work?</strong>
-          <p>If yes, "AI receptionist" is a useful role description.</p>
+          <p>If yes, “AI receptionist” is a useful role description.</p>
         </div>
 
         <div class="decision-step">
@@ -1836,7 +2955,7 @@ const ivrContent = `
       <p>A better evaluation asks:</p>
 
       <ul>
-        <li>Can it understand the caller's actual intent?</li>
+        <li>Can it understand the caller’s actual intent?</li>
         <li>Does it retain context after a correction?</li>
         <li>Can it interrupt and be interrupted naturally?</li>
         <li>Can it access the right knowledge?</li>
@@ -1851,27 +2970,27 @@ const ivrContent = `
 
       <div class="myths">
         <div class="myth">
-          <div class="myth-top">"IVR is always press 1, press 2."</div>
+          <div class="myth-top">“IVR is always press 1, press 2.”</div>
           <div class="myth-bottom">Traditional IVR commonly works that way, but modern IVR can use speech recognition and NLP.</div>
         </div>
 
         <div class="myth">
-          <div class="myth-top">"An AI receptionist is a completely different technology from an AI voice agent."</div>
+          <div class="myth-top">“An AI receptionist is a completely different technology from an AI voice agent.”</div>
           <div class="myth-bottom">AI receptionist is usually a role-specific implementation of the broader voice-agent category.</div>
         </div>
 
         <div class="myth">
-          <div class="myth-top">"AI voice agents make IVR obsolete."</div>
+          <div class="myth-top">“AI voice agents make IVR obsolete.”</div>
           <div class="myth-bottom">Simple, deterministic routing still has valid use cases, and hybrid systems can combine IVR and conversational AI.</div>
         </div>
 
         <div class="myth">
-          <div class="myth-top">"If it sounds natural, it is more advanced."</div>
+          <div class="myth-top">“If it sounds natural, it is more advanced.”</div>
           <div class="myth-bottom">Speech quality is only one dimension. Context, tool use, workflow accuracy, failure handling and observability matter too.</div>
         </div>
 
         <div class="myth">
-          <div class="myth-top">"Every business needs the most advanced voice AI available."</div>
+          <div class="myth-top">“Every business needs the most advanced voice AI available.”</div>
           <div class="myth-bottom">The right system should match the complexity of the actual phone workflow.</div>
         </div>
       </div>
@@ -1882,7 +3001,7 @@ const ivrContent = `
         Instead of asking only:
       </p>
 
-      <p><strong>"Is this an AI receptionist or IVR?"</strong></p>
+      <p><strong>“Is this an AI receptionist or IVR?”</strong></p>
 
       <p>
         ask:
@@ -1981,47 +3100,489 @@ const ivrContent = `
       <section class="sources">
         <h2>Technical sources &amp; research basis</h2>
         <p>
-          This comparison uses primary documentation for IVR and modern voice-agent capabilities. Terminology such as "AI receptionist" is a market and business-role label rather than a formal telecom standard, so the article deliberately separates product role from underlying architecture.
+          This comparison uses primary documentation for IVR and modern voice-agent capabilities. Terminology such as “AI receptionist” is a market and business-role label rather than a formal telecom standard, so the article deliberately separates product role from underlying architecture.
         </p>
         <ul>
           <li>
             <strong>Twilio — Interactive Voice Response (IVR):</strong>
-            <a href="https://www.twilio.com/docs/glossary/what-is-ivr" target="_blank" rel="noopener noreferrer">twilio.com/docs/glossary/what-is-ivr</a>
+            <a href="https://www.twilio.com/docs/glossary/what-is-ivr">twilio.com/docs/glossary/what-is-ivr</a>
           </li>
           <li>
             <strong>Twilio — Interactive Voice Response developer guide:</strong>
-            <a href="https://www.twilio.com/docs/voice/interactive-voice-response" target="_blank" rel="noopener noreferrer">twilio.com/docs/voice/interactive-voice-response</a>
+            <a href="https://www.twilio.com/docs/voice/interactive-voice-response">twilio.com/docs/voice/interactive-voice-response</a>
           </li>
           <li>
             <strong>OpenAI — Voice Agents:</strong>
-            <a href="https://developers.openai.com/api/docs/guides/voice-agents" target="_blank" rel="noopener noreferrer">developers.openai.com/api/docs/guides/voice-agents</a>
+            <a href="https://developers.openai.com/api/docs/guides/voice-agents">developers.openai.com/api/docs/guides/voice-agents</a>
           </li>
           <li>
             <strong>OpenAI — Realtime and Audio:</strong>
-            <a href="https://developers.openai.com/api/docs/guides/realtime" target="_blank" rel="noopener noreferrer">developers.openai.com/api/docs/guides/realtime</a>
+            <a href="https://developers.openai.com/api/docs/guides/realtime">developers.openai.com/api/docs/guides/realtime</a>
           </li>
           <li>
             <strong>ElevenLabs — ElevenAgents:</strong>
-            <a href="https://elevenlabs.io/docs/eleven-agents/overview/" target="_blank" rel="noopener noreferrer">elevenlabs.io/docs/eleven-agents/overview</a>
+            <a href="https://elevenlabs.io/docs/eleven-agents/overview/">elevenlabs.io/docs/eleven-agents/overview</a>
           </li>
           <li>
             <strong>ElevenLabs — System Tools:</strong>
-            <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools" target="_blank" rel="noopener noreferrer">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools</a>
+            <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools</a>
           </li>
         </ul>
       </section>
-    `;
+`;
 
 const ivrMeta = {
-  title: "AI Voice Agent vs AI Receptionist vs IVR: What's the Difference?",
-  author: "B2B Voice",
-  date: "2026-08-29",
-  category: "AI",
-  tags: ["AI Voice Agent", "AI Receptionist", "IVR", "Conversational IVR", "Voice AI", "Business Phone Automation", "Call Routing", "Conversational AI"],
-  excerpt: "These terms are often used as if they describe three competing products. They do not. One is a broad technical category, one is a business role, and one is an established telephony interaction pattern.",
+  "title": "AI Voice Agent vs AI Receptionist vs IVR: What's the Difference?",
+  "author": "B2B Voice",
+  "date": "2026-08-29",
+  "category": "AI",
+  "tags": [
+    "AI Voice Agent",
+    "AI Receptionist",
+    "IVR",
+    "Conversational IVR",
+    "Voice AI",
+    "Business Phone Automation",
+    "Call Routing",
+    "Conversational AI"
+  ],
+  "excerpt": "These terms are often used as if they describe three competing products. They do not. One is a broad technical category, one is a business role, and one is an established telephony interaction pattern.",
+  "coverImage": ""
 };
 
 const howWorksContent = `
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --red-soft: #fff3f3;
+      --purple-soft: #f5f1ff;
+      --dark: #111a2e;
+      --max: 940px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(38px, 6vw, 62px);
+    }.blog-content h2 {
+      margin: 54px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 31px 0 12px;
+      font-size: 22px;
+    }.blog-content h4 {
+      margin: 20px 0 8px;
+      font-size: 18px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 850px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer strong.label, .blog-content .kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .note {
+      margin: 28px 0;
+      padding: 20px 22px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fafbfc;
+    }.blog-content .warning {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .warning strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #78570b;
+    }.blog-content .research-note {
+      margin: 26px 0;
+      padding: 22px 23px;
+      border-radius: 12px;
+      background: var(--purple-soft);
+      border: 1px solid #ddd2ff;
+    }.blog-content .research-note strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #5539a8;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .diagram {
+      margin: 28px 0 36px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fbfcfe;
+    }.blog-content .diagram-title {
+      font-weight: 850;
+      color: #1d2a43;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }.blog-content .flow-vertical {
+      display: grid;
+      gap: 9px;
+      max-width: 620px;
+      margin: 0 auto;
+    }.blog-content .flow-box {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #d6deea;
+      background: #fff;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.35;
+    }.blog-content .arrow {
+      text-align: center;
+      color: #73809a;
+      font-weight: 900;
+      line-height: 1;
+    }.blog-content .architecture-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 24px 0 34px;
+    }.blog-content .arch-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }.blog-content .arch-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }.blog-content .arch-card p:last-child { margin-bottom: 0; }.blog-content .plane {
+      margin: 28px 0 36px;
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #e9edf5;
+    }.blog-content .plane h3 {
+      color: #fff;
+      margin: 0 0 8px;
+    }.blog-content .plane p { color: #d6ddeb; }.blog-content .plane-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }.blog-content .plane-box {
+      padding: 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+    }.blog-content .plane-box strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 4px;
+    }.blog-content .sequence {
+      margin: 30px 0;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }.blog-content .sequence-step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 13px;
+      align-items: start;
+      margin: 0 0 16px;
+    }.blog-content .sequence-step:last-child { margin-bottom: 0; }.blog-content .sequence-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #17358f;
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+    }.blog-content .sequence-step strong {
+      display: block;
+      margin-bottom: 2px;
+      color: #17243c;
+    }.blog-content .code-card {
+      margin: 24px 0 34px;
+      padding: 22px;
+      border-radius: 14px;
+      background: #101827;
+      color: #e7ecf5;
+      overflow-x: auto;
+      border: 1px solid #293653;
+    }.blog-content .code-card pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }.blog-content .waterfall {
+      margin: 28px 0 36px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fafbfc;
+    }.blog-content .waterfall-track {
+      display: grid;
+      gap: 9px;
+      margin-top: 15px;
+    }.blog-content .waterfall-row {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 12px;
+      align-items: center;
+    }.blog-content .waterfall-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #42506a;
+    }.blog-content .waterfall-bar {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #d9e1ff 0%, #9bb0ff 50%, #5c78df 100%);
+      position: relative;
+      overflow: hidden;
+    }.blog-content .waterfall-bar.short { width: 34%; }.blog-content .waterfall-bar.medium { width: 56%; }.blog-content .waterfall-bar.long { width: 78%; }.blog-content .waterfall-bar.full { width: 100%; }.blog-content .misconceptions {
+      margin: 28px 0 38px;
+      display: grid;
+      gap: 13px;
+    }.blog-content .myth {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }.blog-content .myth-title {
+      padding: 15px 17px;
+      background: #fff4f4;
+      font-weight: 850;
+      color: #7f2727;
+    }.blog-content .myth-fix {
+      padding: 15px 17px;
+      background: #fff;
+      color: #39465c;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta a.button {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul {
+      padding-left: 20px;
+    }.blog-content .sources li {
+      margin: 9px 0;
+      overflow-wrap: anywhere;
+    }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 760px) {.blog-content .architecture-grid, .blog-content .plane-grid {
+        grid-template-columns: 1fr;
+      }.blog-content .waterfall-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }.blog-content .waterfall-bar, .blog-content .waterfall-bar.short, .blog-content .waterfall-bar.medium, .blog-content .waterfall-bar.long, .blog-content .waterfall-bar.full {
+        width: 100%;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .research-note, .blog-content .diagram, .blog-content .plane, .blog-content .sequence, .blog-content .code-card, .blog-content .waterfall, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap {
+        break-inside: avoid;
+      }.blog-content .plane, .blog-content .cta, .blog-content .code-card {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .plane h3, .blog-content .plane p, .blog-content .plane-box strong, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .code-card {
+        color: #111;
+      }
+    }
+</style>
 <section class="quick-answer">
         <strong class="label">Quick answer</strong>
         <p>
@@ -3298,10 +4859,474 @@ const howWorksMeta = {
     "RAG",
     "SIP"
   ],
-  "excerpt": "A production AI voice agent is not simply \"ChatGPT connected to a phone.\" It is a realtime system where telephony, audio transport, conversation timing, reasoning, business logic, tools, speech generation, monitoring and human handoff have to work together."
+  "excerpt": "A production AI voice agent is not simply \"ChatGPT connected to a phone.\" It is a realtime system where telephony, audio transport, conversation timing, reasoning, business logic, tools, speech generation, monitoring and human handoff have to work together.",
+  "coverImage": ""
 };
 
 const latencyContent = `
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --red-soft: #fff2f2;
+      --purple-soft: #f5f1ff;
+      --cyan-soft: #eef9fc;
+      --dark: #111a2e;
+      --max: 920px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 890px;
+      font-size: clamp(38px, 6vw, 61px);
+    }.blog-content h2 {
+      margin: 52px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 830px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer .label, .blog-content .small-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .warning {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .warning strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #78570b;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .waterfall {
+      margin: 28px 0 38px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fafbfc;
+    }.blog-content .waterfall h3 {
+      margin: 0 0 6px;
+    }.blog-content .waterfall-sub {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .wf-row {
+      display: grid;
+      grid-template-columns: 175px 1fr;
+      gap: 13px;
+      align-items: center;
+      margin: 10px 0;
+    }.blog-content .wf-label {
+      color: #465268;
+      font-size: 13px;
+      font-weight: 800;
+    }.blog-content .wf-bar {
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e2e8ff, #8ea6ff, #4d6ddc);
+    }.blog-content .w1 { width: 36%; }.blog-content .w2 { width: 25%; }.blog-content .w3 { width: 48%; }.blog-content .w4 { width: 72%; }.blog-content .w5 { width: 31%; }.blog-content .w6 { width: 43%; }.blog-content .w7 { width: 100%; background: linear-gradient(90deg, #d8e1ff, #405fc9); }.blog-content .equation {
+      margin: 28px 0 38px;
+      padding: 27px;
+      border-radius: 15px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .equation .small-label {
+      color: #aab8f7;
+    }.blog-content .equation-main {
+      font-size: 20px;
+      line-height: 1.65;
+      font-weight: 800;
+      margin-bottom: 11px;
+    }.blog-content .equation-note {
+      margin: 0;
+      color: #d3dbe9;
+      font-size: 14px;
+    }.blog-content .six-stage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 26px 0 38px;
+    }.blog-content .stage {
+      padding: 19px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }.blog-content .stage-num {
+      width: 31px;
+      height: 31px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #17358f;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+    }.blog-content .stage strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #18253d;
+    }.blog-content .stage p {
+      margin: 0;
+      color: #4b576d;
+      font-size: 14px;
+    }.blog-content .tradeoff {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 15px;
+      align-items: center;
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: var(--purple-soft);
+      border: 1px solid #ddd2ff;
+    }.blog-content .trade-card {
+      padding: 18px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid #e0daef;
+    }.blog-content .trade-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }.blog-content .trade-card p {
+      margin: 0;
+      color: #505a6e;
+      font-size: 14px;
+    }.blog-content .trade-vs {
+      font-weight: 900;
+      color: #6b53ae;
+      font-size: 13px;
+    }.blog-content .metric-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 25px 0 38px;
+    }.blog-content .metric {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }.blog-content .metric h3 {
+      margin: 0 0 7px;
+      font-size: 19px;
+    }.blog-content .metric p {
+      margin: 0;
+      color: #4a566c;
+      font-size: 14px;
+    }.blog-content .benchmark-box {
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: var(--cyan-soft);
+      border: 1px solid #cde7ef;
+    }.blog-content .benchmark-box h3 {
+      margin: 0 0 8px;
+    }.blog-content .benchmark-number {
+      display: block;
+      margin: 13px 0 4px;
+      font-size: 36px;
+      line-height: 1;
+      font-weight: 900;
+      color: #153f6a;
+    }.blog-content .benchmark-caption {
+      color: #466174;
+      font-size: 14px;
+    }.blog-content .debug-framework {
+      margin: 30px 0 40px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }.blog-content .debug-head {
+      padding: 23px 25px;
+      background: var(--dark);
+      color: white;
+    }.blog-content .debug-head h3 {
+      margin: 0 0 6px;
+      color: white;
+    }.blog-content .debug-head p {
+      margin: 0;
+      color: #d6deeb;
+    }.blog-content .debug-row {
+      display: grid;
+      grid-template-columns: 125px 1fr 1fr;
+      gap: 15px;
+      padding: 17px 20px;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }.blog-content .debug-row:last-child { border-bottom: 0; }.blog-content .debug-stage {
+      font-weight: 900;
+      color: #18326f;
+    }.blog-content .debug-question {
+      color: #26334a;
+      font-weight: 700;
+    }.blog-content .debug-signal {
+      color: #566176;
+      font-size: 14px;
+    }.blog-content .percentile {
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: #fbfcfe;
+      border: 1px solid var(--line);
+    }.blog-content .percentile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }.blog-content .percentile-card {
+      padding: 17px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }.blog-content .percentile-card strong {
+      display: block;
+      font-size: 22px;
+      color: #18326f;
+    }.blog-content .percentile-card span {
+      color: #59657a;
+      font-size: 13px;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }.blog-content .cta a.button {
+      display: inline-block;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .cta a.secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.42);
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul { padding-left: 20px; }.blog-content .sources li { margin: 9px 0; overflow-wrap: anywhere; }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 760px) {.blog-content .six-stage, .blog-content .metric-cards, .blog-content .percentile-grid {
+        grid-template-columns: 1fr;
+      }.blog-content .tradeoff {
+        grid-template-columns: 1fr;
+      }.blog-content .trade-vs {
+        text-align: center;
+      }.blog-content .wf-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }.blog-content .wf-bar, .blog-content .w1, .blog-content .w2, .blog-content .w3, .blog-content .w4, .blog-content .w5, .blog-content .w6, .blog-content .w7 {
+        width: 100%;
+      }.blog-content .debug-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .waterfall, .blog-content .equation, .blog-content .tradeoff, .blog-content .benchmark-box, .blog-content .debug-framework, .blog-content .percentile, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap {
+        break-inside: avoid;
+      }.blog-content .equation, .blog-content .cta, .blog-content .debug-head {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .equation .small-label, .blog-content .equation-main, .blog-content .equation-note, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary, .blog-content .debug-head h3, .blog-content .debug-head p {
+        color: #111;
+      }
+    }
+</style>
 <section class="quick-answer">
         <span class="label">Quick answer</span>
         <p>
@@ -4206,10 +6231,14 @@ const latencyMeta = {
     "Realtime Voice AI",
     "Voice AI Performance"
   ],
-  "excerpt": "A fast language model can still produce a slow phone conversation. Voice AI latency is the combined result of turn detection, speech recognition, reasoning, retrieval, tools, speech generation, networks and playback."
+  "excerpt": "A fast language model can still produce a slow phone conversation. Voice AI latency is the combined result of turn detection, speech recognition, reasoning, retrieval, tools, speech generation, networks and playback.",
+  "coverImage": ""
 };
 
 const whatIsAgentContent = `
+<style>
+:root{--ink:#172033;--muted:#5d687b;--line:#dce2ea;--soft:#f5f7fa;--accent:#2146d0;--accent-soft:#eef2ff;--green-soft:#eff9f3;--amber-soft:#fff8e8;--max:900px}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.72;text-rendering:optimizeLegibility}.blog-content a {color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}.blog-content .page {width:min(calc(100% - 36px),var(--max));margin:0 auto;padding:64px 0 80px}.blog-content .eyebrow {display:inline-block;margin-bottom:18px;padding:7px 11px;border:1px solid #cdd6ff;border-radius:999px;background:var(--accent-soft);color:#2741a8;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.blog-content h1, .blog-content h2, .blog-content h3 {color:#101827;letter-spacing:-.025em;line-height:1.18}.blog-content h1 {margin:0;max-width:860px;font-size:clamp(38px,6vw,62px)}.blog-content h2 {margin:52px 0 18px;font-size:31px}.blog-content h3 {margin:30px 0 12px;font-size:22px}.blog-content p {margin:0 0 18px}.blog-content .dek {max-width:820px;margin:22px 0 14px;color:#445066;font-size:21px;line-height:1.55}.blog-content .meta {color:var(--muted);font-size:14px;margin-bottom:36px}.blog-content .quick-answer {margin:34px 0 42px;padding:24px 26px;border:1px solid #ccd6ff;border-left:5px solid var(--accent);border-radius:12px;background:var(--accent-soft)}.blog-content .quick-answer strong.label {display:block;margin-bottom:8px;color:#243b9b;font-size:13px;letter-spacing:.08em;text-transform:uppercase}.blog-content .quick-answer p {margin:0;font-size:18px;line-height:1.65}.blog-content .key-takeaways {margin:32px 0 40px;padding:24px 26px;border:1px solid var(--line);border-radius:14px;background:#fbfcfe}.blog-content .key-takeaways h2 {margin:0 0 12px;font-size:22px}.blog-content ul, .blog-content ol {padding-left:24px;margin:12px 0 22px}.blog-content li {margin:7px 0}.blog-content .thesis {margin:30px 0;padding:22px 24px;border-radius:12px;background:var(--green-soft);border:1px solid #cfe9d8;font-size:20px;font-weight:750;line-height:1.5}.blog-content .warning {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--amber-soft);border:1px solid #f0dfa9}.blog-content .warning strong {display:block;margin-bottom:5px;color:#78570b}.blog-content .table-wrap {margin:26px 0 34px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}.blog-content table {width:100%;border-collapse:collapse;min-width:760px;font-size:15px;line-height:1.55}.blog-content th, .blog-content td {padding:15px 16px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}.blog-content th {background:var(--soft);color:#2a3548;font-weight:800}.blog-content tr:last-child td {border-bottom:0}.blog-content .architecture {margin:28px 0 34px;padding:24px;border:1px solid var(--line);border-radius:14px;background:#fafbfc}.blog-content .flow {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:stretch;margin:18px 0 8px}.blog-content .flow-step {padding:14px 10px;border-radius:10px;background:#fff;border:1px solid var(--line);text-align:center;font-size:13px;font-weight:800;line-height:1.35}.blog-content .card-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0 34px}.blog-content .card {padding:20px 21px;border:1px solid var(--line);border-radius:12px;background:#fff}.blog-content .card h3 {margin:0 0 8px;font-size:19px}.blog-content .card p {margin:0;color:#465167;font-size:15px}.blog-content .reality-test {margin:28px 0 38px;padding:26px;border-radius:16px;background:#111a2e;color:#fff}.blog-content .reality-test h2 {color:#fff;margin:0 0 10px;font-size:28px}.blog-content .reality-test p {color:#dce3ef}.blog-content .test-list {counter-reset:calls;list-style:none;padding:0;margin:22px 0 0}.blog-content .test-list li {counter-increment:calls;position:relative;margin:0 0 18px;padding:0 0 0 52px;color:#e8edf6}.blog-content .test-list li::before {content:counter(calls);position:absolute;left:0;top:0;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#111a2e;font-weight:900;font-size:13px}.blog-content .test-list strong {color:#fff;display:block;margin-bottom:2px}.blog-content .one-sentence {margin:42px 0;padding:27px 28px;border:1px solid #ccd6ff;border-radius:14px;background:#fafbff}.blog-content .one-sentence .label {color:#516079;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .one-sentence p {margin:8px 0 0;font-size:24px;line-height:1.45;font-weight:800;color:#13256e}.blog-content .faq {margin-top:18px;border-top:1px solid var(--line)}.blog-content .faq-item {padding:22px 0;border-bottom:1px solid var(--line)}.blog-content .faq-item h3 {margin:0 0 8px;font-size:20px}.blog-content .faq-item p {margin:0}.blog-content .cta {margin:54px 0 44px;padding:30px;border-radius:16px;background:#111a2e;color:#fff}.blog-content .cta h2 {color:#fff;margin:0 0 12px;font-size:29px}.blog-content .cta p {color:#d9dfeb}.blog-content .cta a.button {display:inline-block;margin-top:5px;padding:12px 17px;border-radius:9px;background:#fff;color:#111a2e;font-weight:800;text-decoration:none}.blog-content .sources {margin-top:52px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.blog-content .sources h2 {margin:0 0 12px;font-size:22px}.blog-content .sources ul {padding-left:20px}.blog-content .sources li {margin:9px 0;overflow-wrap:anywhere}.blog-content .tags {margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}.blog-content .tags-label {display:block;margin-bottom:12px;color:#6a7487;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .tag-list {display:flex;flex-wrap:wrap;gap:9px}.blog-content .tag {display:inline-block;padding:7px 11px;border-radius:999px;border:1px solid #d7ddea;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .next {margin-top:36px;padding-top:24px;border-top:1px dashed #cdd4df;color:var(--muted);font-size:15px}@media(max-width:760px){.blog-content .card-grid, .blog-content .flow {grid-template-columns:1fr}}@page{size:A4;margin:16mm 16mm 18mm}@media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap, .blog-content .architecture, .blog-content .reality-test {break-inside:avoid}.blog-content .cta, .blog-content .reality-test {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .reality-test h2, .blog-content .reality-test p, .blog-content .test-list li, .blog-content .test-list strong {color:#111}.blog-content .test-list li::before {border:1px solid #999}}
+</style>
 <section class="quick-answer"><strong class="label">Quick answer</strong><p><strong>An AI voice agent is software that can conduct a real-time spoken conversation and use that conversation to complete a task.</strong> It can listen to a caller, understand intent and context, respond with speech, retrieve information, use connected tools or business systems, and follow rules for escalation or human handoff. Depending on the implementation, an AI voice agent may answer inbound calls, place outbound calls, book appointments, qualify leads, route requests, update a CRM, check account information, or summarize what happened after the call.</p></section>
 <section class="key-takeaways"><h2>Key takeaways</h2><ul>
 <li><strong>Voice is the interface; action is what makes the system useful.</strong></li>
@@ -4370,10 +6399,24 @@ const whatIsAgentMeta = {
     "Business Phone Automation",
     "Voice AI"
   ],
-  "excerpt": "An AI voice agent is more than a voice that talks. A useful one must listen in real time, understand what a person wants, decide what to do next, take the right action, and know when the conversation should move to a human."
+  "excerpt": "An AI voice agent is more than a voice that talks. A useful one must listen in real time, understand what a person wants, decide what to do next, take the right action, and know when the conversation should move to a human.",
+  "coverImage": ""
 };
 
 const turnTakingContent = `
+<style>
+:root{
+  --ink:#111827;--muted:#5b6472;--line:#e5e7eb;--soft:#f7f8fa;--accent:#111827;
+  --blue:#2563eb;--blue-soft:#eef4ff;--amber:#92400e;--amber-soft:#fff7ed;--green:#166534;
+  --green-soft:#f0fdf4;--max:1120px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}.blog-content a {color:#174ea6;text-decoration-thickness:1px;text-underline-offset:3px}.blog-content a:hover {color:#0f3f8c}.blog-content .wrap {width:min(var(--max),calc(100% - 40px));margin:0 auto}.blog-content header.site {border-bottom:1px solid var(--line);padding:18px 0;background:#fff}.blog-content .brand {font-weight:800;letter-spacing:-.02em;text-decoration:none;color:var(--ink);font-size:20px}.blog-content .breadcrumbs {font-size:14px;color:var(--muted);margin:30px 0 14px}.blog-content .hero {padding:8px 0 38px}.blog-content .kicker {text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:#4b5563}.blog-content h1 {font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.04em;max-width:1000px;margin:12px 0 18px}.blog-content .deck {font-size:clamp(19px,2.2vw,25px);line-height:1.5;color:#374151;max-width:900px;margin:0}.blog-content .meta {display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;color:var(--muted);font-size:14px}.blog-content .answer {margin:8px 0 42px;padding:26px 28px;border:1px solid #c9d7f3;background:var(--blue-soft);border-radius:18px}.blog-content .answer strong.label {display:block;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:#174ea6;margin-bottom:8px}.blog-content .answer p {font-size:20px;line-height:1.55;margin:0}.blog-content .layout {display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:64px;align-items:start}.blog-content article {min-width:0}.blog-content article h2 {font-size:34px;line-height:1.2;letter-spacing:-.025em;margin:56px 0 16px}.blog-content article h3 {font-size:24px;line-height:1.3;letter-spacing:-.015em;margin:34px 0 10px}.blog-content article p {font-size:17.5px;margin:0 0 18px}.blog-content article ul, .blog-content article ol {padding-left:24px;margin:8px 0 22px}.blog-content article li {margin:8px 0;font-size:17px}.blog-content aside.toc {position:sticky;top:24px;border-left:1px solid var(--line);padding-left:20px}.blog-content .toc b {font-size:13px;text-transform:uppercase;letter-spacing:.08em}.blog-content .toc a {display:block;color:#4b5563;text-decoration:none;font-size:14px;line-height:1.35;margin:10px 0}.blog-content .toc a:hover {color:#111827}.blog-content .callout {border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:28px 0;background:#fff}.blog-content .callout.note {background:var(--soft)}.blog-content .callout.misconception {background:var(--amber-soft);border-color:#fed7aa}.blog-content .callout.engineering {background:var(--green-soft);border-color:#bbf7d0}.blog-content .callout .eyebrow {font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:12px;margin-bottom:7px}.blog-content .diagram {margin:28px 0;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfbfc;overflow:auto}.blog-content .diagram-title {font-weight:800;margin-bottom:16px}.blog-content .flow {display:flex;align-items:stretch;gap:10px;min-width:760px}.blog-content .node {flex:1;border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:14px;text-align:center}.blog-content .node b {display:block;margin-bottom:5px}.blog-content .arrow {display:flex;align-items:center;font-weight:800;color:#9ca3af}.blog-content .stack {display:grid;gap:10px}.blog-content .stack .row {border:1px solid #d1d5db;border-radius:12px;padding:14px 16px;background:white}.blog-content .stack .row b {display:inline-block;min-width:180px}.blog-content table {width:100%;border-collapse:collapse;margin:26px 0;font-size:15.5px}.blog-content th, .blog-content td {text-align:left;vertical-align:top;padding:13px 12px;border-bottom:1px solid var(--line)}.blog-content th {font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#4b5563;background:#fafafa}.blog-content .qa {border-top:1px solid var(--line);padding:22px 0}.blog-content .qa h3 {font-size:20px;margin:0 0 8px}.blog-content .sources {margin-top:60px;padding-top:28px;border-top:1px solid var(--line)}.blog-content .sources ol {padding-left:22px}.blog-content .sources li {font-size:14px;color:#4b5563;margin:10px 0}.blog-content .tags {display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 10px}.blog-content .tag {display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:13px;color:#4b5563;background:#fafafa}.blog-content .next {margin:48px 0 20px;padding:24px;border-radius:18px;background:#111827;color:white}.blog-content .next a {color:white}.blog-content footer {border-top:1px solid var(--line);margin-top:60px;padding:28px 0 50px;color:#6b7280;font-size:14px}.blog-content sup a {text-decoration:none;font-weight:700}
+@media(max-width:900px){.blog-content .layout {grid-template-columns:1fr}.blog-content aside.toc {position:static;order:-1;border-left:0;border:1px solid var(--line);padding:18px;border-radius:14px}.blog-content .toc a {display:inline-block;margin:7px 12px 7px 0}
+}
+@media(max-width:640px){.blog-content .wrap {width:min(100% - 26px,var(--max))}.blog-content h1 {font-size:42px}.blog-content article h2 {font-size:29px}.blog-content .answer {padding:20px}.blog-content .answer p {font-size:18px}.blog-content table {display:block;overflow-x:auto;white-space:normal}
+}
+@media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
+}
+</style>
 <div class="answer">
   <strong class="label">Quick answer</strong>
   <p>An AI voice agent usually decides when to respond using more than one timing signal. Voice activity detection can identify when speech starts or stops, while more advanced turn-detection systems can also estimate whether the speaker’s thought is complete. Interruptions add another problem: when a caller talks over the agent, the system may need to stop generation, clear unplayed audio and reconcile what the caller actually heard.</p>
@@ -4600,10 +6643,24 @@ const turnTakingMeta = {
     "Realtime AI",
     "Conversational AI"
   ],
-  "excerpt": "A production voice agent has to solve a timing problem before it can solve a language problem: when should it keep listening, when should it answer, and what should happen if the caller starts speaking while the agent is still talking?"
+  "excerpt": "A production voice agent has to solve a timing problem before it can solve a language problem: when should it keep listening, when should it answer, and what should happen if the caller starts speaking while the agent is still talking?",
+  "coverImage": ""
 };
 
 const ragContent = `
+<style>
+:root{
+  --ink:#111827;--muted:#5b6472;--line:#e5e7eb;--soft:#f7f8fa;--accent:#111827;
+  --blue:#2563eb;--blue-soft:#eef4ff;--amber:#92400e;--amber-soft:#fff7ed;--green:#166534;
+  --green-soft:#f0fdf4;--max:1120px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}.blog-content a {color:#174ea6;text-decoration-thickness:1px;text-underline-offset:3px}.blog-content a:hover {color:#0f3f8c}.blog-content .wrap {width:min(var(--max),calc(100% - 40px));margin:0 auto}.blog-content header.site {border-bottom:1px solid var(--line);padding:18px 0;background:#fff}.blog-content .brand {font-weight:800;letter-spacing:-.02em;text-decoration:none;color:var(--ink);font-size:20px}.blog-content .breadcrumbs {font-size:14px;color:var(--muted);margin:30px 0 14px}.blog-content .hero {padding:8px 0 38px}.blog-content .kicker {text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:#4b5563}.blog-content h1 {font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.04em;max-width:1000px;margin:12px 0 18px}.blog-content .deck {font-size:clamp(19px,2.2vw,25px);line-height:1.5;color:#374151;max-width:900px;margin:0}.blog-content .meta {display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;color:var(--muted);font-size:14px}.blog-content .answer {margin:8px 0 42px;padding:26px 28px;border:1px solid #c9d7f3;background:var(--blue-soft);border-radius:18px}.blog-content .answer strong.label {display:block;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:#174ea6;margin-bottom:8px}.blog-content .answer p {font-size:20px;line-height:1.55;margin:0}.blog-content .layout {display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:64px;align-items:start}.blog-content article {min-width:0}.blog-content article h2 {font-size:34px;line-height:1.2;letter-spacing:-.025em;margin:56px 0 16px}.blog-content article h3 {font-size:24px;line-height:1.3;letter-spacing:-.015em;margin:34px 0 10px}.blog-content article p {font-size:17.5px;margin:0 0 18px}.blog-content article ul, .blog-content article ol {padding-left:24px;margin:8px 0 22px}.blog-content article li {margin:8px 0;font-size:17px}.blog-content aside.toc {position:sticky;top:24px;border-left:1px solid var(--line);padding-left:20px}.blog-content .toc b {font-size:13px;text-transform:uppercase;letter-spacing:.08em}.blog-content .toc a {display:block;color:#4b5563;text-decoration:none;font-size:14px;line-height:1.35;margin:10px 0}.blog-content .toc a:hover {color:#111827}.blog-content .callout {border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:28px 0;background:#fff}.blog-content .callout.note {background:var(--soft)}.blog-content .callout.misconception {background:var(--amber-soft);border-color:#fed7aa}.blog-content .callout.engineering {background:var(--green-soft);border-color:#bbf7d0}.blog-content .callout .eyebrow {font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:12px;margin-bottom:7px}.blog-content .diagram {margin:28px 0;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfbfc;overflow:auto}.blog-content .diagram-title {font-weight:800;margin-bottom:16px}.blog-content .flow {display:flex;align-items:stretch;gap:10px;min-width:760px}.blog-content .node {flex:1;border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:14px;text-align:center}.blog-content .node b {display:block;margin-bottom:5px}.blog-content .arrow {display:flex;align-items:center;font-weight:800;color:#9ca3af}.blog-content .stack {display:grid;gap:10px}.blog-content .stack .row {border:1px solid #d1d5db;border-radius:12px;padding:14px 16px;background:white}.blog-content .stack .row b {display:inline-block;min-width:180px}.blog-content table {width:100%;border-collapse:collapse;margin:26px 0;font-size:15.5px}.blog-content th, .blog-content td {text-align:left;vertical-align:top;padding:13px 12px;border-bottom:1px solid var(--line)}.blog-content th {font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#4b5563;background:#fafafa}.blog-content .qa {border-top:1px solid var(--line);padding:22px 0}.blog-content .qa h3 {font-size:20px;margin:0 0 8px}.blog-content .sources {margin-top:60px;padding-top:28px;border-top:1px solid var(--line)}.blog-content .sources ol {padding-left:22px}.blog-content .sources li {font-size:14px;color:#4b5563;margin:10px 0}.blog-content .tags {display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 10px}.blog-content .tag {display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:13px;color:#4b5563;background:#fafafa}.blog-content .next {margin:48px 0 20px;padding:24px;border-radius:18px;background:#111827;color:white}.blog-content .next a {color:white}.blog-content footer {border-top:1px solid var(--line);margin-top:60px;padding:28px 0 50px;color:#6b7280;font-size:14px}.blog-content sup a {text-decoration:none;font-weight:700}
+@media(max-width:900px){.blog-content .layout {grid-template-columns:1fr}.blog-content aside.toc {position:static;order:-1;border-left:0;border:1px solid var(--line);padding:18px;border-radius:14px}.blog-content .toc a {display:inline-block;margin:7px 12px 7px 0}
+}
+@media(max-width:640px){.blog-content .wrap {width:min(100% - 26px,var(--max))}.blog-content h1 {font-size:42px}.blog-content article h2 {font-size:29px}.blog-content .answer {padding:20px}.blog-content .answer p {font-size:18px}.blog-content table {display:block;overflow-x:auto;white-space:normal}
+}
+@media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
+}
+</style>
 <div class="answer">
   <strong class="label">Quick answer</strong>
   <p>An AI voice agent can get information from four different places: the model’s existing knowledge, prompt/runtime context, retrieved company knowledge, and live business systems. These sources are not interchangeable. RAG is useful for finding relevant documents; live APIs are usually more appropriate for current authoritative state such as calendar availability or a customer record.</p>
@@ -4868,10 +6925,22 @@ const ragMeta = {
     "Business Data",
     "Retrieval"
   ],
-  "excerpt": "When a voice agent answers a business question, the important question is not simply whether it \"knows.\" It is where the answer came from, how fresh that source is, and whether the source is authoritative for the specific question."
+  "excerpt": "When a voice agent answers a business question, the important question is not simply whether it \"knows.\" It is where the answer came from, how fresh that source is, and whether the source is authoritative for the specific question.",
+  "coverImage": ""
 };
 
 const integrationsContent = `
+<style>
+:root{
+  --ink:#172033;--muted:#5d687b;--line:#dce2ea;--soft:#f5f7fa;
+  --accent:#2146d0;--accent-soft:#eef2ff;--green:#eef9f3;--amber:#fff8e8;
+  --red:#fff2f2;--purple:#f5f1ff;--cyan:#eef9fc;--dark:#111a2e;--max:930px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.72}.blog-content a {color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}.blog-content .page {width:min(calc(100% - 36px),var(--max));margin:0 auto;padding:64px 0 80px}.blog-content .eyebrow {display:inline-block;margin-bottom:18px;padding:7px 11px;border:1px solid #cdd6ff;border-radius:999px;background:var(--accent-soft);color:#2741a8;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {color:#101827;letter-spacing:-.025em;line-height:1.18}.blog-content h1 {margin:0;max-width:900px;font-size:clamp(38px,6vw,61px)}.blog-content h2 {margin:52px 0 18px;font-size:31px}.blog-content h3 {margin:30px 0 12px;font-size:22px}.blog-content p {margin:0 0 18px}.blog-content .dek {max-width:850px;margin:22px 0 14px;color:#445066;font-size:21px;line-height:1.55}.blog-content .meta {color:var(--muted);font-size:14px;margin-bottom:36px}.blog-content .quick {margin:34px 0 42px;padding:25px 27px;border:1px solid #ccd6ff;border-left:5px solid var(--accent);border-radius:12px;background:var(--accent-soft)}.blog-content .label {display:block;margin-bottom:8px;color:#243b9b;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:800}.blog-content .quick p {margin:0;font-size:18px;line-height:1.65}.blog-content .takeaways {margin:30px 0 42px;padding:25px 27px;border:1px solid var(--line);border-radius:14px;background:#fbfcfe}.blog-content .takeaways h2 {margin:0 0 12px;font-size:22px}.blog-content ul, .blog-content ol {padding-left:24px;margin:12px 0 22px}.blog-content li {margin:7px 0}.blog-content .thesis {margin:30px 0;padding:22px 24px;border-radius:12px;background:var(--green);border:1px solid #cfe9d8;font-size:20px;font-weight:750;line-height:1.5}.blog-content .note {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--amber);border:1px solid #f0dfa9}.blog-content .note strong {display:block;margin-bottom:6px;color:#78570b}.blog-content .danger {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--red);border:1px solid #f0cece}.blog-content .danger strong {display:block;margin-bottom:6px;color:#8b2d2d}.blog-content .table-wrap {margin:26px 0 34px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}.blog-content table {width:100%;border-collapse:collapse;min-width:780px;font-size:15px;line-height:1.55}.blog-content th, .blog-content td {padding:15px 16px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}.blog-content th {background:var(--soft);color:#2a3548;font-weight:800}.blog-content tr:last-child td {border-bottom:0}.blog-content .flow {margin:28px 0 38px;padding:25px;border:1px solid var(--line);border-radius:16px;background:#fbfcfe}.blog-content .flow-grid {display:grid;gap:8px;max-width:700px;margin:16px auto 0}.blog-content .flow-box {padding:14px 16px;border:1px solid #d8dfea;border-radius:10px;background:#fff;text-align:center;font-size:14px;font-weight:800}.blog-content .arrow {text-align:center;color:#7b8699;font-weight:900;line-height:1}.blog-content .cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:25px 0 38px}.blog-content .card {padding:20px;border:1px solid var(--line);border-radius:13px;background:#fff}.blog-content .card h3 {margin:0 0 7px;font-size:19px}.blog-content .card p {margin:0;color:#4d596f;font-size:14px}.blog-content .darkbox {margin:28px 0 38px;padding:26px;border-radius:16px;background:var(--dark);color:white}.blog-content .darkbox h3 {color:white;margin:0 0 9px}.blog-content .darkbox p {color:#dce3ee}.blog-content .pills {display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.blog-content .pill {padding:7px 11px;border:1px solid #d7ddea;border-radius:999px;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .framework {display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 38px}.blog-content .fw {padding:18px;border:1px solid var(--line);border-radius:12px;background:#fff}.blog-content .fw strong {display:block;margin-bottom:5px}.blog-content .fw p {margin:0;color:#556176;font-size:13px}.blog-content .one {margin:42px 0;padding:27px 28px;border:1px solid #ccd6ff;border-radius:14px;background:#fafbff}.blog-content .one span {color:#516079;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .one p {margin:8px 0 0;font-size:24px;line-height:1.45;font-weight:800;color:#13256e}.blog-content .faq {margin-top:18px;border-top:1px solid var(--line)}.blog-content .faq-item {padding:22px 0;border-bottom:1px solid var(--line)}.blog-content .faq-item h3 {margin:0 0 8px;font-size:20px}.blog-content .faq-item p {margin:0}.blog-content .cta {margin:54px 0 44px;padding:30px;border-radius:16px;background:var(--dark);color:#fff}.blog-content .cta h2 {color:white;margin:0 0 12px;font-size:29px}.blog-content .cta p {color:#d9dfeb}.blog-content .cta-links {display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.blog-content .cta a.button {display:inline-block;padding:12px 17px;border-radius:9px;background:#fff;color:#111a2e;font-weight:800;text-decoration:none}.blog-content .cta a.secondary {background:transparent;color:#fff;border:1px solid rgba(255,255,255,.42)}.blog-content .sources {margin-top:52px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.blog-content .sources h2 {margin:0 0 12px;font-size:22px}.blog-content .sources li {margin:9px 0;overflow-wrap:anywhere}.blog-content .tags {margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}.blog-content .tags-label {display:block;margin-bottom:12px;color:#6a7487;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .tag-list {display:flex;flex-wrap:wrap;gap:9px}.blog-content .tag {display:inline-block;padding:7px 11px;border-radius:999px;border:1px solid #d7ddea;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .next {margin-top:36px;padding-top:24px;border-top:1px dashed #cdd4df;color:var(--muted);font-size:15px}
+@media(max-width:760px){.blog-content .cards, .blog-content .framework {grid-template-columns:1fr}}
+@page{size:A4;margin:16mm 16mm 18mm}
+@media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
+}
+</style>
 <section class="quick"><span class="label">Quick answer</span><p><strong>AI voice agents normally connect to business systems through tools and application code.</strong> The model can identify an intent and request a function, but the backend authenticates, validates and executes the actual CRM, calendar, database or workflow operation. The external system—not the language model—should provide the authoritative result. That distinction is what separates a convincing conversation from a verified business action.</p></section>
 
 <section class="takeaways"><h2>Key takeaways</h2><ul>
@@ -5055,10 +7124,22 @@ const integrationsMeta = {
     "Idempotency",
     "Business Automation"
   ],
-  "excerpt": "How a phone conversation becomes a real appointment, CRM update or downstream workflow—and why a model requesting an action is not the same as the business system confirming it."
+  "excerpt": "How a phone conversation becomes a real appointment, CRM update or downstream workflow—and why a model requesting an action is not the same as the business system confirming it.",
+  "coverImage": ""
 };
 
 const securityContent = `
+<style>
+:root{
+  --ink:#172033;--muted:#5d687b;--line:#dce2ea;--soft:#f5f7fa;
+  --accent:#2146d0;--accent-soft:#eef2ff;--green:#eef9f3;--amber:#fff8e8;
+  --red:#fff2f2;--purple:#f5f1ff;--cyan:#eef9fc;--dark:#111a2e;--max:930px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.72}.blog-content a {color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}.blog-content .page {width:min(calc(100% - 36px),var(--max));margin:0 auto;padding:64px 0 80px}.blog-content .eyebrow {display:inline-block;margin-bottom:18px;padding:7px 11px;border:1px solid #cdd6ff;border-radius:999px;background:var(--accent-soft);color:#2741a8;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {color:#101827;letter-spacing:-.025em;line-height:1.18}.blog-content h1 {margin:0;max-width:900px;font-size:clamp(38px,6vw,61px)}.blog-content h2 {margin:52px 0 18px;font-size:31px}.blog-content h3 {margin:30px 0 12px;font-size:22px}.blog-content p {margin:0 0 18px}.blog-content .dek {max-width:850px;margin:22px 0 14px;color:#445066;font-size:21px;line-height:1.55}.blog-content .meta {color:var(--muted);font-size:14px;margin-bottom:36px}.blog-content .quick {margin:34px 0 42px;padding:25px 27px;border:1px solid #ccd6ff;border-left:5px solid var(--accent);border-radius:12px;background:var(--accent-soft)}.blog-content .label {display:block;margin-bottom:8px;color:#243b9b;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:800}.blog-content .quick p {margin:0;font-size:18px;line-height:1.65}.blog-content .takeaways {margin:30px 0 42px;padding:25px 27px;border:1px solid var(--line);border-radius:14px;background:#fbfcfe}.blog-content .takeaways h2 {margin:0 0 12px;font-size:22px}.blog-content ul, .blog-content ol {padding-left:24px;margin:12px 0 22px}.blog-content li {margin:7px 0}.blog-content .thesis {margin:30px 0;padding:22px 24px;border-radius:12px;background:var(--green);border:1px solid #cfe9d8;font-size:20px;font-weight:750;line-height:1.5}.blog-content .note {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--amber);border:1px solid #f0dfa9}.blog-content .note strong {display:block;margin-bottom:6px;color:#78570b}.blog-content .danger {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--red);border:1px solid #f0cece}.blog-content .danger strong {display:block;margin-bottom:6px;color:#8b2d2d}.blog-content .table-wrap {margin:26px 0 34px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}.blog-content table {width:100%;border-collapse:collapse;min-width:780px;font-size:15px;line-height:1.55}.blog-content th, .blog-content td {padding:15px 16px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}.blog-content th {background:var(--soft);color:#2a3548;font-weight:800}.blog-content tr:last-child td {border-bottom:0}.blog-content .flow {margin:28px 0 38px;padding:25px;border:1px solid var(--line);border-radius:16px;background:#fbfcfe}.blog-content .flow-grid {display:grid;gap:8px;max-width:700px;margin:16px auto 0}.blog-content .flow-box {padding:14px 16px;border:1px solid #d8dfea;border-radius:10px;background:#fff;text-align:center;font-size:14px;font-weight:800}.blog-content .arrow {text-align:center;color:#7b8699;font-weight:900;line-height:1}.blog-content .cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:25px 0 38px}.blog-content .card {padding:20px;border:1px solid var(--line);border-radius:13px;background:#fff}.blog-content .card h3 {margin:0 0 7px;font-size:19px}.blog-content .card p {margin:0;color:#4d596f;font-size:14px}.blog-content .darkbox {margin:28px 0 38px;padding:26px;border-radius:16px;background:var(--dark);color:white}.blog-content .darkbox h3 {color:white;margin:0 0 9px}.blog-content .darkbox p {color:#dce3ee}.blog-content .pills {display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.blog-content .pill {padding:7px 11px;border:1px solid #d7ddea;border-radius:999px;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .framework {display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 38px}.blog-content .fw {padding:18px;border:1px solid var(--line);border-radius:12px;background:#fff}.blog-content .fw strong {display:block;margin-bottom:5px}.blog-content .fw p {margin:0;color:#556176;font-size:13px}.blog-content .one {margin:42px 0;padding:27px 28px;border:1px solid #ccd6ff;border-radius:14px;background:#fafbff}.blog-content .one span {color:#516079;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .one p {margin:8px 0 0;font-size:24px;line-height:1.45;font-weight:800;color:#13256e}.blog-content .faq {margin-top:18px;border-top:1px solid var(--line)}.blog-content .faq-item {padding:22px 0;border-bottom:1px solid var(--line)}.blog-content .faq-item h3 {margin:0 0 8px;font-size:20px}.blog-content .faq-item p {margin:0}.blog-content .cta {margin:54px 0 44px;padding:30px;border-radius:16px;background:var(--dark);color:#fff}.blog-content .cta h2 {color:white;margin:0 0 12px;font-size:29px}.blog-content .cta p {color:#d9dfeb}.blog-content .cta-links {display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.blog-content .cta a.button {display:inline-block;padding:12px 17px;border-radius:9px;background:#fff;color:#111a2e;font-weight:800;text-decoration:none}.blog-content .cta a.secondary {background:transparent;color:#fff;border:1px solid rgba(255,255,255,.42)}.blog-content .sources {margin-top:52px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.blog-content .sources h2 {margin:0 0 12px;font-size:22px}.blog-content .sources li {margin:9px 0;overflow-wrap:anywhere}.blog-content .tags {margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}.blog-content .tags-label {display:block;margin-bottom:12px;color:#6a7487;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .tag-list {display:flex;flex-wrap:wrap;gap:9px}.blog-content .tag {display:inline-block;padding:7px 11px;border-radius:999px;border:1px solid #d7ddea;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .next {margin-top:36px;padding-top:24px;border-top:1px dashed #cdd4df;color:var(--muted);font-size:15px}
+@media(max-width:760px){.blog-content .cards, .blog-content .framework {grid-template-columns:1fr}}
+@page{size:A4;margin:16mm 16mm 18mm}
+@media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
+}
+</style>
 <section class="quick"><span class="label">Quick answer</span><p><strong>The safest starting assumption is that caller speech is untrusted input.</strong> A voice agent should therefore not rely on prompts alone to protect business systems. Sensitive tools need narrow permissions, authentication and authorization, validated inputs, controlled writes, appropriate confirmation or human approval, and auditable execution. Security depends on the full architecture—not on whether the model sounds intelligent or returns structured JSON.</p></section>
 
 <section class="takeaways"><h2>Key takeaways</h2><ul>
@@ -5245,10 +7326,22 @@ const securityMeta = {
     "Agent Security",
     "Voice AI"
   ],
-  "excerpt": "Why caller speech should be treated as untrusted input—and how identity, permissions, validation, least privilege and audit controls protect the business systems behind a voice agent."
+  "excerpt": "Why caller speech should be treated as untrusted input—and how identity, permissions, validation, least privilege and audit controls protect the business systems behind a voice agent.",
+  "coverImage": ""
 };
 
 const testingContent = `
+<style>
+:root{
+  --ink:#172033;--muted:#5d687b;--line:#dce2ea;--soft:#f5f7fa;
+  --accent:#2146d0;--accent-soft:#eef2ff;--green:#eef9f3;--amber:#fff8e8;
+  --red:#fff2f2;--purple:#f5f1ff;--cyan:#eef9fc;--dark:#111a2e;--max:930px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.72}.blog-content a {color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}.blog-content .page {width:min(calc(100% - 36px),var(--max));margin:0 auto;padding:64px 0 80px}.blog-content .eyebrow {display:inline-block;margin-bottom:18px;padding:7px 11px;border:1px solid #cdd6ff;border-radius:999px;background:var(--accent-soft);color:#2741a8;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {color:#101827;letter-spacing:-.025em;line-height:1.18}.blog-content h1 {margin:0;max-width:900px;font-size:clamp(38px,6vw,61px)}.blog-content h2 {margin:52px 0 18px;font-size:31px}.blog-content h3 {margin:30px 0 12px;font-size:22px}.blog-content p {margin:0 0 18px}.blog-content .dek {max-width:850px;margin:22px 0 14px;color:#445066;font-size:21px;line-height:1.55}.blog-content .meta {color:var(--muted);font-size:14px;margin-bottom:36px}.blog-content .quick {margin:34px 0 42px;padding:25px 27px;border:1px solid #ccd6ff;border-left:5px solid var(--accent);border-radius:12px;background:var(--accent-soft)}.blog-content .label {display:block;margin-bottom:8px;color:#243b9b;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:800}.blog-content .quick p {margin:0;font-size:18px;line-height:1.65}.blog-content .takeaways {margin:30px 0 42px;padding:25px 27px;border:1px solid var(--line);border-radius:14px;background:#fbfcfe}.blog-content .takeaways h2 {margin:0 0 12px;font-size:22px}.blog-content ul, .blog-content ol {padding-left:24px;margin:12px 0 22px}.blog-content li {margin:7px 0}.blog-content .thesis {margin:30px 0;padding:22px 24px;border-radius:12px;background:var(--green);border:1px solid #cfe9d8;font-size:20px;font-weight:750;line-height:1.5}.blog-content .note {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--amber);border:1px solid #f0dfa9}.blog-content .note strong {display:block;margin-bottom:6px;color:#78570b}.blog-content .danger {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--red);border:1px solid #f0cece}.blog-content .danger strong {display:block;margin-bottom:6px;color:#8b2d2d}.blog-content .table-wrap {margin:26px 0 34px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}.blog-content table {width:100%;border-collapse:collapse;min-width:780px;font-size:15px;line-height:1.55}.blog-content th, .blog-content td {padding:15px 16px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}.blog-content th {background:var(--soft);color:#2a3548;font-weight:800}.blog-content tr:last-child td {border-bottom:0}.blog-content .flow {margin:28px 0 38px;padding:25px;border:1px solid var(--line);border-radius:16px;background:#fbfcfe}.blog-content .flow-grid {display:grid;gap:8px;max-width:700px;margin:16px auto 0}.blog-content .flow-box {padding:14px 16px;border:1px solid #d8dfea;border-radius:10px;background:#fff;text-align:center;font-size:14px;font-weight:800}.blog-content .arrow {text-align:center;color:#7b8699;font-weight:900;line-height:1}.blog-content .cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:25px 0 38px}.blog-content .card {padding:20px;border:1px solid var(--line);border-radius:13px;background:#fff}.blog-content .card h3 {margin:0 0 7px;font-size:19px}.blog-content .card p {margin:0;color:#4d596f;font-size:14px}.blog-content .darkbox {margin:28px 0 38px;padding:26px;border-radius:16px;background:var(--dark);color:white}.blog-content .darkbox h3 {color:white;margin:0 0 9px}.blog-content .darkbox p {color:#dce3ee}.blog-content .pills {display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.blog-content .pill {padding:7px 11px;border:1px solid #d7ddea;border-radius:999px;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .framework {display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 38px}.blog-content .fw {padding:18px;border:1px solid var(--line);border-radius:12px;background:#fff}.blog-content .fw strong {display:block;margin-bottom:5px}.blog-content .fw p {margin:0;color:#556176;font-size:13px}.blog-content .one {margin:42px 0;padding:27px 28px;border:1px solid #ccd6ff;border-radius:14px;background:#fafbff}.blog-content .one span {color:#516079;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .one p {margin:8px 0 0;font-size:24px;line-height:1.45;font-weight:800;color:#13256e}.blog-content .faq {margin-top:18px;border-top:1px solid var(--line)}.blog-content .faq-item {padding:22px 0;border-bottom:1px solid var(--line)}.blog-content .faq-item h3 {margin:0 0 8px;font-size:20px}.blog-content .faq-item p {margin:0}.blog-content .cta {margin:54px 0 44px;padding:30px;border-radius:16px;background:var(--dark);color:#fff}.blog-content .cta h2 {color:white;margin:0 0 12px;font-size:29px}.blog-content .cta p {color:#d9dfeb}.blog-content .cta-links {display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.blog-content .cta a.button {display:inline-block;padding:12px 17px;border-radius:9px;background:#fff;color:#111a2e;font-weight:800;text-decoration:none}.blog-content .cta a.secondary {background:transparent;color:#fff;border:1px solid rgba(255,255,255,.42)}.blog-content .sources {margin-top:52px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.blog-content .sources h2 {margin:0 0 12px;font-size:22px}.blog-content .sources li {margin:9px 0;overflow-wrap:anywhere}.blog-content .tags {margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}.blog-content .tags-label {display:block;margin-bottom:12px;color:#6a7487;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .tag-list {display:flex;flex-wrap:wrap;gap:9px}.blog-content .tag {display:inline-block;padding:7px 11px;border-radius:999px;border:1px solid #d7ddea;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .next {margin-top:36px;padding-top:24px;border-top:1px dashed #cdd4df;color:var(--muted);font-size:15px}
+@media(max-width:760px){.blog-content .cards, .blog-content .framework {grid-template-columns:1fr}}
+@page{size:A4;margin:16mm 16mm 18mm}
+@media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
+}
+</style>
 <section class="quick"><span class="label">Quick answer</span><p><strong>A production voice agent should be tested as a conversation system, a realtime audio system and a business transaction system.</strong> Good testing therefore covers not only what the agent says, but interruptions, noisy speech, tool arguments, API failures, security boundaries and whether the intended business action actually happened. A polished demo proves almost none of that on its own.</p></section>
 
 <section class="takeaways"><h2>Key takeaways</h2><ul>
@@ -5434,7 +7527,8 @@ const testingMeta = {
     "Production Readiness",
     "Voice AI Metrics"
   ],
-  "excerpt": "A serious testing framework for proving that a voice agent works beyond the demo—across conversation, realtime audio, tools, failure recovery, security and authoritative business outcomes."
+  "excerpt": "A serious testing framework for proving that a voice agent works beyond the demo—across conversation, realtime audio, tools, failure recovery, security and authoritative business outcomes.",
+  "coverImage": ""
 };
 
 export const blogPosts: BlogPost[] = [
@@ -5442,78 +7536,66 @@ export const blogPosts: BlogPost[] = [
     id: 1,
     slug: "what-is-b2b-voice",
     ...whatIsB2bVoiceMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: whatIsB2bVoiceContent,
   },
   {
     id: 2,
     slug: "ai-voice-agent-reliability",
     ...reliabilityMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: reliabilityContent,
   },
   {
     id: 3,
     slug: "ai-voice-agent-vs-ai-receptionist-vs-ivr",
     ...ivrMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: ivrContent,
   },
-
   {
     id: 4,
     slug: "how-ai-voice-agents-work",
     ...howWorksMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: howWorksContent,
   },
   {
     id: 5,
     slug: "voice-ai-latency",
     ...latencyMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: latencyContent,
   },
   {
     id: 6,
     slug: "what-is-an-ai-voice-agent",
     ...whatIsAgentMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: whatIsAgentContent,
   },
   {
     id: 7,
     slug: "ai-voice-agent-turn-taking-interruptions",
     ...turnTakingMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: turnTakingContent,
   },
   {
     id: 8,
     slug: "rag-vs-tool-calling-vs-prompt-context",
     ...ragMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: ragContent,
   },
   {
     id: 9,
     slug: "ai-voice-agent-integrations",
     ...integrationsMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: integrationsContent,
   },
   {
     id: 10,
     slug: "ai-voice-agent-security",
     ...securityMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: securityContent,
   },
   {
     id: 11,
     slug: "how-to-test-an-ai-voice-agent",
     ...testingMeta,
-    coverImage: "/blog-images/what-is-b2b-voice-cover.jpg",
     content: testingContent,
   },
 ];

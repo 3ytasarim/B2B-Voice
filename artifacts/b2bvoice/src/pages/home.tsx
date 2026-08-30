@@ -2378,7 +2378,7 @@ const ClientsPartners = () => {
         <div className="flex items-center mb-6 animate-marquee" style={{ width: "max-content" }}>
           {row1.map((logo, i) => (
             <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8">
-              <img src={logo.src} alt={logo.name} loading="lazy" draggable={false} className="h-14 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity select-none" />
+              <img src={logo.src} alt={logo.name} loading="lazy" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2387,7 +2387,7 @@ const ClientsPartners = () => {
         <div className="flex items-center animate-marquee-reverse" style={{ width: "max-content" }}>
           {row2.map((logo, i) => (
             <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8">
-              <img src={logo.src} alt={logo.name} loading="lazy" draggable={false} className="h-14 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity select-none" />
+              <img src={logo.src} alt={logo.name} loading="lazy" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
