@@ -56,8 +56,8 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <article className="container mx-auto px-6 py-10 max-w-5xl">
-        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-primary font-semibold mb-6 hover:underline">
+      <div className="container mx-auto px-6 pt-8">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:underline">
           ← Back to Blog
         </Link>
 
@@ -65,35 +65,38 @@ export default function BlogPostPage() {
           <img
             src={post.coverImage}
             alt={post.title}
-            className="w-full rounded-xl mb-6 border border-gray-100"
+            className="w-full max-w-5xl mx-auto rounded-xl mt-6 border border-gray-100"
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
         )}
+      </div>
 
-        {/*
-          The article's own header/hero (kicker, breadcrumbs, h1, dek/deck,
-          meta row) is embedded verbatim in post.content — see blogPosts.ts.
-          data-testid kept here for existing test selectors; the actual
-          heading text comes from the injected HTML, not this element.
-        */}
-        <h1 className="sr-only" data-testid="blog-post-title">{post.title}</h1>
+      {/*
+        The article's own <main class="page"|"wrap"> wrapper — including its
+        header/hero (kicker, breadcrumbs, h1, dek/deck, meta row) — is
+        embedded verbatim in post.content, see blogPosts.ts. Its own CSS
+        controls its own max-width/centering exactly like the standalone
+        source file, so nothing here constrains its width.
+        data-testid kept here for existing test selectors; the actual
+        heading text comes from the injected HTML, not this element.
+      */}
+      <h1 className="sr-only" data-testid="blog-post-title">{post.title}</h1>
 
-        <div
-          className="max-w-none blog-content"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-          data-testid="blog-post-content"
-        />
+      <article
+        className="blog-content"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+        data-testid="blog-post-content"
+      />
 
-        {post.tags.length > 0 && (
-          <div className="mt-12 pt-6 border-t border-gray-100 flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span key={tag} className="px-2.5 py-1 bg-primary/5 border border-primary/15 text-primary text-[11px] font-semibold rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-      </article>
+      {post.tags.length > 0 && (
+        <div className="container mx-auto px-6 max-w-5xl mt-4 pt-6 pb-16 border-t border-gray-100 flex flex-wrap gap-2">
+          {post.tags.map((tag) => (
+            <span key={tag} className="px-2.5 py-1 bg-primary/5 border border-primary/15 text-primary text-[11px] font-semibold rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

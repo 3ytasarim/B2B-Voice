@@ -1,11 +1,13 @@
 // Static blog content — no database/admin panel involved.
 // Each article's HTML is embedded byte-for-byte from the source file,
-// INCLUDING that article's own header/hero section (kicker, breadcrumbs,
-// h1, dek/deck, meta row) and its own original <style> block (scoped
-// under .blog-content so it never leaks onto the rest of the site), so
-// the rendered page matches the source file exactly — the site's own
-// generic post-page chrome (blog-post.tsx) only adds the "Back to Blog"
-// link, an optional cover image and the tag pills at the bottom.
+// INCLUDING its own <main class="page"|"wrap"> width-constraining wrapper
+// (so the article's own CSS controls its own max-width/centering exactly
+// like the standalone source file — blog-post.tsx imposes no width of its
+// own on the injected content), its own header/hero section (kicker,
+// breadcrumbs, h1, dek/deck, meta row), and its own original <style> block
+// (scoped under .blog-content so it never leaks onto the rest of the
+// site). blog-post.tsx's own chrome is limited to the "Back to Blog" link,
+// an optional cover image, and the tag pills at the bottom.
 
 export interface BlogPost {
   id: number;
@@ -248,7 +250,9 @@ const whatIsB2bVoiceContent = `
       }
     }
 </style>
-<header>
+<main class="page">
+    <article>
+      <header>
         <span class="eyebrow">B2B Voice Guide · Company Definition</span>
         <h1>What Is B2B Voice and What Does It Do?</h1>
         <p class="dek">
@@ -595,6 +599,8 @@ const whatIsB2bVoiceContent = `
         <em>What Is an AI Voice Agent? A Complete Guide to Business Phone Automation.</em>
         <!-- Add internal link to /blog/what-is-an-ai-voice-agent after Article #1 is published. -->
       </div>
+    </article>
+  </main>
 `;
 
 const whatIsB2bVoiceMeta = {
@@ -1078,7 +1084,9 @@ const reliabilityContent = `
       }
     }
 </style>
-<header>
+<main class="page">
+    <article>
+      <header>
         <span class="eyebrow">Voice AI Reliability · Production Guide</span>
         <h1>AI Voice Agent Reliability: Failure Modes, Fallbacks and Human Handoff</h1>
         <p class="dek">
@@ -1958,6 +1966,24 @@ const reliabilityContent = `
           </li>
         </ul>
       </section>
+
+      <section class="tags" aria-label="Article tags">
+        <span class="tags-label">Tags</span>
+        <div class="tag-list">
+          <span class="tag">AI Voice Agent Reliability</span>
+          <span class="tag">Voice AI</span>
+          <span class="tag">Human Handoff</span>
+          <span class="tag">Failure Recovery</span>
+          <span class="tag">Fallbacks</span>
+          <span class="tag">Tool Calling</span>
+          <span class="tag">Idempotency</span>
+          <span class="tag">AI Agent Testing</span>
+          <span class="tag">Observability</span>
+          <span class="tag">AI Agent Security</span>
+        </div>
+      </section>
+    </article>
+  </main>
 `;
 
 const reliabilityMeta = {
@@ -2392,7 +2418,9 @@ const ivrContent = `
       }
     }
 </style>
-<header>
+<main class="page">
+    <article>
+      <header>
         <span class="eyebrow">Voice AI Terminology · Comparison Guide</span>
         <h1>AI Voice Agent vs AI Receptionist vs IVR: What’s the Difference?</h1>
         <p class="dek">
@@ -3166,6 +3194,22 @@ const ivrContent = `
           </li>
         </ul>
       </section>
+
+      <section class="tags" aria-label="Article tags">
+        <span class="tags-label">Tags</span>
+        <div class="tag-list">
+          <span class="tag">AI Voice Agent</span>
+          <span class="tag">AI Receptionist</span>
+          <span class="tag">IVR</span>
+          <span class="tag">Conversational IVR</span>
+          <span class="tag">Voice AI</span>
+          <span class="tag">Business Phone Automation</span>
+          <span class="tag">Call Routing</span>
+          <span class="tag">Conversational AI</span>
+        </div>
+      </section>
+    </article>
+  </main>
 `;
 
 const ivrMeta = {
@@ -3620,7 +3664,9 @@ const howWorksContent = `
       }
     }
 </style>
-<header>
+<main class="page">
+    <article>
+      <header>
         <span class="eyebrow">Voice AI Architecture · Technical Guide</span>
         <h1>How AI Voice Agents Work: STT, Realtime Speech, LLMs, TTS, Telephony and Tool Calling</h1>
         <p class="dek">
@@ -4889,6 +4935,24 @@ Agent:
           <li><strong>OWASP GenAI — Prompt Injection:</strong> <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">genai.owasp.org/llmrisk/llm01-prompt-injection</a></li>
         </ul>
       </section>
+
+      <section class="tags" aria-label="Article tags">
+        <span class="tags-label">Tags</span>
+        <div class="tag-list">
+          <span class="tag">AI Voice Agent</span>
+          <span class="tag">Voice AI</span>
+          <span class="tag">Speech-to-Text</span>
+          <span class="tag">Realtime Speech</span>
+          <span class="tag">LLM</span>
+          <span class="tag">Text-to-Speech</span>
+          <span class="tag">Telephony</span>
+          <span class="tag">Tool Calling</span>
+          <span class="tag">RAG</span>
+          <span class="tag">SIP</span>
+        </div>
+      </section>
+    </article>
+  </main>
 `;
 
 const howWorksMeta = {
@@ -5376,7 +5440,9 @@ const latencyContent = `
       }
     }
 </style>
-<header>
+<main class="page">
+    <article>
+      <header>
         <span class="eyebrow">Voice AI Performance · Technical Guide</span>
         <h1>Voice AI Latency: What Causes Delay and How Fast Should an AI Agent Respond?</h1>
         <p class="dek">
@@ -6272,6 +6338,24 @@ const latencyContent = `
           </li>
         </ul>
       </section>
+
+      <section class="tags" aria-label="Article tags">
+        <span class="tags-label">Tags</span>
+        <div class="tag-list">
+          <span class="tag">Voice AI Latency</span>
+          <span class="tag">AI Voice Agent</span>
+          <span class="tag">TTFA</span>
+          <span class="tag">TTFT</span>
+          <span class="tag">Turn Detection</span>
+          <span class="tag">VAD</span>
+          <span class="tag">Speech-to-Text</span>
+          <span class="tag">Text-to-Speech</span>
+          <span class="tag">Realtime Voice AI</span>
+          <span class="tag">Voice AI Performance</span>
+        </div>
+      </section>
+    </article>
+  </main>
 `;
 
 const latencyMeta = {
@@ -6299,6 +6383,7 @@ const whatIsAgentContent = `
 <style>
 :root{--ink:#172033;--muted:#5d687b;--line:#dce2ea;--soft:#f5f7fa;--accent:#2146d0;--accent-soft:#eef2ff;--green-soft:#eff9f3;--amber-soft:#fff8e8;--max:900px}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.72;text-rendering:optimizeLegibility}.blog-content a {color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}.blog-content .page {width:min(calc(100% - 36px),var(--max));margin:0 auto;padding:64px 0 80px}.blog-content .eyebrow {display:inline-block;margin-bottom:18px;padding:7px 11px;border:1px solid #cdd6ff;border-radius:999px;background:var(--accent-soft);color:#2741a8;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.blog-content h1, .blog-content h2, .blog-content h3 {color:#101827;letter-spacing:-.025em;line-height:1.18}.blog-content h1 {margin:0;max-width:860px;font-size:clamp(38px,6vw,62px)}.blog-content h2 {margin:52px 0 18px;font-size:31px}.blog-content h3 {margin:30px 0 12px;font-size:22px}.blog-content p {margin:0 0 18px}.blog-content .dek {max-width:820px;margin:22px 0 14px;color:#445066;font-size:21px;line-height:1.55}.blog-content .meta {color:var(--muted);font-size:14px;margin-bottom:36px}.blog-content .quick-answer {margin:34px 0 42px;padding:24px 26px;border:1px solid #ccd6ff;border-left:5px solid var(--accent);border-radius:12px;background:var(--accent-soft)}.blog-content .quick-answer strong.label {display:block;margin-bottom:8px;color:#243b9b;font-size:13px;letter-spacing:.08em;text-transform:uppercase}.blog-content .quick-answer p {margin:0;font-size:18px;line-height:1.65}.blog-content .key-takeaways {margin:32px 0 40px;padding:24px 26px;border:1px solid var(--line);border-radius:14px;background:#fbfcfe}.blog-content .key-takeaways h2 {margin:0 0 12px;font-size:22px}.blog-content ul, .blog-content ol {padding-left:24px;margin:12px 0 22px}.blog-content li {margin:7px 0}.blog-content .thesis {margin:30px 0;padding:22px 24px;border-radius:12px;background:var(--green-soft);border:1px solid #cfe9d8;font-size:20px;font-weight:750;line-height:1.5}.blog-content .warning {margin:28px 0;padding:21px 23px;border-radius:12px;background:var(--amber-soft);border:1px solid #f0dfa9}.blog-content .warning strong {display:block;margin-bottom:5px;color:#78570b}.blog-content .table-wrap {margin:26px 0 34px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}.blog-content table {width:100%;border-collapse:collapse;min-width:760px;font-size:15px;line-height:1.55}.blog-content th, .blog-content td {padding:15px 16px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}.blog-content th {background:var(--soft);color:#2a3548;font-weight:800}.blog-content tr:last-child td {border-bottom:0}.blog-content .architecture {margin:28px 0 34px;padding:24px;border:1px solid var(--line);border-radius:14px;background:#fafbfc}.blog-content .flow {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:stretch;margin:18px 0 8px}.blog-content .flow-step {padding:14px 10px;border-radius:10px;background:#fff;border:1px solid var(--line);text-align:center;font-size:13px;font-weight:800;line-height:1.35}.blog-content .card-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0 34px}.blog-content .card {padding:20px 21px;border:1px solid var(--line);border-radius:12px;background:#fff}.blog-content .card h3 {margin:0 0 8px;font-size:19px}.blog-content .card p {margin:0;color:#465167;font-size:15px}.blog-content .reality-test {margin:28px 0 38px;padding:26px;border-radius:16px;background:#111a2e;color:#fff}.blog-content .reality-test h2 {color:#fff;margin:0 0 10px;font-size:28px}.blog-content .reality-test p {color:#dce3ef}.blog-content .test-list {counter-reset:calls;list-style:none;padding:0;margin:22px 0 0}.blog-content .test-list li {counter-increment:calls;position:relative;margin:0 0 18px;padding:0 0 0 52px;color:#e8edf6}.blog-content .test-list li::before {content:counter(calls);position:absolute;left:0;top:0;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#111a2e;font-weight:900;font-size:13px}.blog-content .test-list strong {color:#fff;display:block;margin-bottom:2px}.blog-content .one-sentence {margin:42px 0;padding:27px 28px;border:1px solid #ccd6ff;border-radius:14px;background:#fafbff}.blog-content .one-sentence .label {color:#516079;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .one-sentence p {margin:8px 0 0;font-size:24px;line-height:1.45;font-weight:800;color:#13256e}.blog-content .faq {margin-top:18px;border-top:1px solid var(--line)}.blog-content .faq-item {padding:22px 0;border-bottom:1px solid var(--line)}.blog-content .faq-item h3 {margin:0 0 8px;font-size:20px}.blog-content .faq-item p {margin:0}.blog-content .cta {margin:54px 0 44px;padding:30px;border-radius:16px;background:#111a2e;color:#fff}.blog-content .cta h2 {color:#fff;margin:0 0 12px;font-size:29px}.blog-content .cta p {color:#d9dfeb}.blog-content .cta a.button {display:inline-block;margin-top:5px;padding:12px 17px;border-radius:9px;background:#fff;color:#111a2e;font-weight:800;text-decoration:none}.blog-content .sources {margin-top:52px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.blog-content .sources h2 {margin:0 0 12px;font-size:22px}.blog-content .sources ul {padding-left:20px}.blog-content .sources li {margin:9px 0;overflow-wrap:anywhere}.blog-content .tags {margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}.blog-content .tags-label {display:block;margin-bottom:12px;color:#6a7487;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.blog-content .tag-list {display:flex;flex-wrap:wrap;gap:9px}.blog-content .tag {display:inline-block;padding:7px 11px;border-radius:999px;border:1px solid #d7ddea;background:#f8f9fb;color:#364258;font-size:13px;font-weight:700}.blog-content .next {margin-top:36px;padding-top:24px;border-top:1px dashed #cdd4df;color:var(--muted);font-size:15px}@media(max-width:760px){.blog-content .card-grid, .blog-content .flow {grid-template-columns:1fr}}@page{size:A4;margin:16mm 16mm 18mm}@media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap, .blog-content .architecture, .blog-content .reality-test {break-inside:avoid}.blog-content .cta, .blog-content .reality-test {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .reality-test h2, .blog-content .reality-test p, .blog-content .test-list li, .blog-content .test-list strong {color:#111}.blog-content .test-list li::before {border:1px solid #999}}
 </style>
+<main class="page"><article>
 <header>
   <span class="eyebrow">AI Voice Agents · Category Guide</span>
   <h1>What Is an AI Voice Agent? A Complete Guide to Business Phone Automation</h1>
@@ -6450,6 +6535,8 @@ const whatIsAgentContent = `
 <li><strong>OpenAI — Realtime voice models:</strong> direct realtime voice interaction, reasoning, interruptions, tool calling, recovery behavior, and speech-based agent workflows. <a href="https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api/">openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api</a></li>
 <li><strong>ElevenLabs — Guardrails documentation:</strong> response constraints, input validation, escalation, streaming vs. blocking tradeoffs, and testing production behavior. <a href="https://elevenlabs.io/docs/eleven-agents/best-practices/guardrails">elevenlabs.io/docs/eleven-agents/best-practices/guardrails</a></li>
 </ul></section>
+<section class="tags" aria-label="Article tags"><span class="tags-label">Tags</span><div class="tag-list"><span class="tag">AI Voice Agent</span><span class="tag">AI Phone Agent</span><span class="tag">AI Receptionist</span><span class="tag">Conversational AI</span><span class="tag">Business Phone Automation</span><span class="tag">Voice AI</span></div></section>
+</article></main>
 `;
 
 const whatIsAgentMeta = {
@@ -6483,6 +6570,7 @@ const turnTakingContent = `
 @media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
 }
 </style>
+<main class="wrap">
 <div class="breadcrumbs"><a href="https://b2b-voice.com/">Home</a> / <a href="https://b2b-voice.com/blog">Blog</a> / How AI Voice Agents Handle Interruptions and Turn-Taking: VAD, End-of-Turn Detection and Barge-In</div>
 
 <section class="hero">
@@ -6706,6 +6794,11 @@ const turnTakingContent = `
 <p>Vendor-specific behaviors are identified as examples rather than universal standards. The engineering frameworks in this article are B2B Voice editorial models built from the cited primary sources and research.</p>
 <ol><li id="source-1"><a href="https://developers.openai.com/api/docs/guides/realtime-vad" rel="noopener">OpenAI — Voice activity detection (VAD), Realtime API</a>. Official documentation for <code>server_vad</code>, <code>semantic_vad</code>, speech events and turn-detection controls.</li><li id="source-2"><a href="https://openai.github.io/openai-agents-python/realtime/guide/" rel="noopener">OpenAI — Agents SDK Realtime guide</a> and <a href="https://openai.github.io/openai-agents-js/guides/voice-agents/build/" rel="noopener">Building Realtime Agents</a>. Official SDK documentation for interruption events, playback tracking and truncating interrupted audio to heard playback.</li><li id="source-3"><a href="https://ai.google.dev/api/live" rel="noopener">Google — Gemini Live API WebSockets reference</a>. Official documentation for activity handling, barge-in, automatic activity detection, silence duration and the <code>interrupted</code> playback signal.</li><li id="source-4"><a href="https://arxiv.org/abs/2603.26515" rel="noopener">Yang et al. — JAL-Turn: Joint Acoustic-Linguistic Modeling for Real-Time and Robust Turn-Taking Detection in Full-Duplex Spoken Dialogue Systems</a>, arXiv, 2026.</li><li id="source-5"><a href="https://arxiv.org/abs/2410.00037" rel="noopener">Défossez et al. — Moshi: a speech-text foundation model for real-time dialogue</a>, arXiv, 2024. Used here specifically for the full-duplex / overlapping-speech distinction.</li></ol>
 </div>
+<div class="tags"><span class="tag">AI Voice Agents</span><span class="tag">Turn-Taking</span><span class="tag">VAD</span><span class="tag">Barge-In</span><span class="tag">Realtime AI</span><span class="tag">Conversational AI</span></div>
+<div class="next"><strong>Continue the series:</strong><br><a href="https://b2b-voice.com/rag-vs-tool-calling-vs-prompt-context">RAG vs Tool Calling vs Prompt Context: How AI Voice Agents Access Business Knowledge and Live Data →</a></div>
+</article>
+</div>
+</main>
 `;
 
 const turnTakingMeta = {
@@ -6739,6 +6832,7 @@ const ragContent = `
 @media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
 }
 </style>
+<main class="wrap">
 <div class="breadcrumbs"><a href="https://b2b-voice.com/">Home</a> / <a href="https://b2b-voice.com/blog">Blog</a> / RAG vs Tool Calling vs Prompt Context: How AI Voice Agents Access Business Knowledge and Live Data</div>
 
 <section class="hero">
@@ -7000,6 +7094,11 @@ const ragContent = `
 <p>Vendor-specific behaviors are identified as examples rather than universal standards. The engineering frameworks in this article are B2B Voice editorial models built from the cited primary sources and research.</p>
 <ol><li id="source-1"><a href="https://developers.openai.com/api/docs/guides/retrieval" rel="noopener">OpenAI — Retrieval</a>. Official documentation for semantic search, vector stores, relevant chunks, similarity scores and source files.</li><li id="source-2"><a href="https://developers.openai.com/api/docs/guides/function-calling" rel="noopener">OpenAI — Function calling</a>. Official documentation showing the model-to-application tool-calling lifecycle and application-side execution.</li><li id="source-3"><a href="https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-how-to-configure-freshness" rel="noopener">Microsoft — Configure freshness-aware retrieval in Azure AI Search</a>. Official documentation illustrating freshness as a separate retrieval-ranking concern; the cited feature is a Microsoft preview implementation.</li><li id="source-4"><a href="https://developers.google.com/workspace/calendar/api/v3/reference/freebusy" rel="noopener">Google — Calendar API FreeBusy</a>. Official reference for querying current free/busy information from calendars.</li><li id="source-5"><a href="https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/" rel="noopener">OWASP GenAI Security Project — Vector and Embedding Weaknesses</a>. Security guidance on RAG/vector risks including unauthorized access and data leakage.</li></ol>
 </div>
+<div class="tags"><span class="tag">AI Voice Agents</span><span class="tag">RAG</span><span class="tag">Tool Calling</span><span class="tag">Knowledge Bases</span><span class="tag">Business Data</span><span class="tag">Retrieval</span></div>
+<div class="next"><strong>Continue the series:</strong><br><a href="https://b2b-voice.com/ai-voice-agent-integrations">How AI Voice Agents Connect to Business Systems: APIs, Webhooks, CRMs, Calendars and Workflow Automation →</a></div>
+</article>
+</div>
+</main>
 `;
 
 const ragMeta = {
@@ -7031,6 +7130,7 @@ const integrationsContent = `
 @media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
 }
 </style>
+<main class="page"><article>
 <header><span class="eyebrow">Voice AI Integrations · Technical Guide</span><h1>How AI Voice Agents Connect to Business Systems: APIs, Webhooks, CRMs, Calendars and Workflow Automation</h1><p class="dek">How a phone conversation becomes a real appointment, CRM update or downstream workflow—and why a model requesting an action is not the same as the business system confirming it.</p><p class="meta">Published August 30, 2026 · By B2B Voice</p></header>
 
 <section class="quick"><span class="label">Quick answer</span><p><strong>AI voice agents normally connect to business systems through tools and application code.</strong> The model can identify an intent and request a function, but the backend authenticates, validates and executes the actual CRM, calendar, database or workflow operation. The external system—not the language model—should provide the authoritative result. That distinction is what separates a convincing conversation from a verified business action.</p></section>
@@ -7198,6 +7298,9 @@ const integrationsContent = `
 <li><strong>HubSpot Webhooks:</strong> event-driven delivery to subscribed endpoints. <a href="https://developers.hubspot.com/docs/apps/developer-platform/add-features/configure-webhooks">developers.hubspot.com</a></li>
 <li><strong>Stripe — Error Handling:</strong> connection failures, retry considerations and idempotency examples. <a href="https://docs.stripe.com/error-handling">docs.stripe.com</a></li>
 </ul></section>
+
+<section class="tags"><span class="tags-label">Tags</span><div class="tag-list"><span class="tag">AI Voice Agent Integrations</span><span class="tag">Tool Calling</span><span class="tag">APIs</span><span class="tag">Webhooks</span><span class="tag">CRM Integration</span><span class="tag">Calendar Integration</span><span class="tag">Workflow Automation</span><span class="tag">Idempotency</span><span class="tag">Business Automation</span></div></section>
+</article></main>
 `;
 
 const integrationsMeta = {
@@ -7232,6 +7335,7 @@ const securityContent = `
 @media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
 }
 </style>
+<main class="page"><article>
 <header><span class="eyebrow">Voice AI Security · Technical Guide</span><h1>AI Voice Agent Security: Prompt Injection, Tool Permissions, PII and Safe Business Actions</h1><p class="dek">Why caller speech should be treated as untrusted input—and how identity, permissions, validation, least privilege and audit controls protect the business systems behind a voice agent.</p><p class="meta">Published August 30, 2026 · By B2B Voice</p></header>
 
 <section class="quick"><span class="label">Quick answer</span><p><strong>The safest starting assumption is that caller speech is untrusted input.</strong> A voice agent should therefore not rely on prompts alone to protect business systems. Sensitive tools need narrow permissions, authentication and authorization, validated inputs, controlled writes, appropriate confirmation or human approval, and auditable execution. Security depends on the full architecture—not on whether the model sounds intelligent or returns structured JSON.</p></section>
@@ -7402,6 +7506,9 @@ const securityContent = `
 <li><strong>OpenAI — Realtime API with WebRTC:</strong> browser/server credential separation and realtime connection patterns. <a href="https://developers.openai.com/api/docs/guides/realtime-webrtc">developers.openai.com</a></li>
 <li><strong>OpenAI — Data Controls:</strong> provider-specific retention and data-control behavior. <a href="https://developers.openai.com/api/docs/guides/your-data">developers.openai.com</a></li>
 </ul></section>
+
+<section class="tags"><span class="tags-label">Tags</span><div class="tag-list"><span class="tag">AI Voice Agent Security</span><span class="tag">Prompt Injection</span><span class="tag">Least Privilege</span><span class="tag">PII</span><span class="tag">Tool Permissions</span><span class="tag">Authorization</span><span class="tag">RAG Security</span><span class="tag">Agent Security</span><span class="tag">Voice AI</span></div></section>
+</article></main>
 `;
 
 const securityMeta = {
@@ -7436,6 +7543,7 @@ const testingContent = `
 @media print{.blog-content body {font-size:10.5pt;line-height:1.55;color:#111}.blog-content .page {width:100%;padding:0}.blog-content h1 {font-size:27pt}.blog-content h2 {font-size:18pt;break-after:avoid}.blog-content h3 {font-size:13pt;break-after:avoid}.blog-content a {color:inherit;text-decoration:none}.blog-content .quick, .blog-content .takeaways, .blog-content .thesis, .blog-content .note, .blog-content .danger, .blog-content .table-wrap, .blog-content .flow, .blog-content .darkbox, .blog-content .one, .blog-content .cta {break-inside:avoid}.blog-content .darkbox, .blog-content .cta {background:#f3f4f6;color:#111;border:1px solid #d1d5db}.blog-content .darkbox h3, .blog-content .darkbox p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {color:#111}
 }
 </style>
+<main class="page"><article>
 <header><span class="eyebrow">Voice AI Testing · Production Readiness Guide</span><h1>How to Test an AI Voice Agent Before Production: Evals, Failure Injection and Regression Testing</h1><p class="dek">A serious testing framework for proving that a voice agent works beyond the demo—across conversation, realtime audio, tools, failure recovery, security and authoritative business outcomes.</p><p class="meta">Published August 30, 2026 · By B2B Voice</p></header>
 
 <section class="quick"><span class="label">Quick answer</span><p><strong>A production voice agent should be tested as a conversation system, a realtime audio system and a business transaction system.</strong> Good testing therefore covers not only what the agent says, but interruptions, noisy speech, tool arguments, API failures, security boundaries and whether the intended business action actually happened. A polished demo proves almost none of that on its own.</p></section>
@@ -7606,6 +7714,9 @@ const testingContent = `
 <li><strong>τ-Voice (2026):</strong> benchmark for realistic full-duplex voice-agent tasks, audio conditions and task completion. <a href="https://arxiv.org/abs/2603.13686">arxiv.org</a></li>
 <li><strong>OWASP GenAI — Prompt Injection:</strong> adversarial testing, least privilege and human approval for high-risk operations. <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">genai.owasp.org</a></li>
 </ul></section>
+
+<section class="tags"><span class="tags-label">Tags</span><div class="tag-list"><span class="tag">AI Voice Agent Testing</span><span class="tag">Agent Evals</span><span class="tag">Failure Injection</span><span class="tag">Regression Testing</span><span class="tag">Voice AI Benchmarks</span><span class="tag">Tool Testing</span><span class="tag">Production Readiness</span><span class="tag">Voice AI Metrics</span></div></section>
+</article></main>
 `;
 
 const testingMeta = {
