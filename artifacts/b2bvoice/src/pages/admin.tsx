@@ -13,6 +13,13 @@ import PartnersPanel from "@/components/PartnersPanel";
 
 const TOKEN_KEY = "b2bvoice_admin_token";
 
+function adminAuthHeaders(): Record<string, string> {
+  const token = localStorage.getItem(TOKEN_KEY);
+  return token
+    ? { Authorization: `Bearer ${token}` }
+    : {};
+}
+
 type Lead = {
   id: number;
   email: string;
@@ -207,7 +214,7 @@ function GooglePanel() {
   const handleSave = async () => {
     setSaving(true); setSaved(false);
     try {
-      await fetch("/api/tracking", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+      await fetch("/api/tracking", { method: "PUT", headers: { "Content-Type": "application/json", ...adminAuthHeaders() }, body: JSON.stringify(data) });
       setSaved(true); setTimeout(() => setSaved(false), 2500);
     } finally { setSaving(false); }
   };
@@ -340,7 +347,7 @@ function SeoPanel() {
     try {
       await fetch("/api/seo", {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...adminAuthHeaders() },
         body: JSON.stringify({ lang: activeLang, ...data[activeLang] }),
       });
       setSaved(true);
@@ -491,7 +498,7 @@ export default function AdminPage() {
     if (!silent) setLoading(true);
     else setRefreshing(true);
     try {
-      const res = await fetch("/api/leads");
+      const res = await fetch("/api/leads", { headers: adminAuthHeaders() });
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
       setLeads(data);
@@ -524,7 +531,7 @@ export default function AdminPage() {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <img src="/logo-new.jpg" alt="B2BVoice" style={{ width: 160, height: "auto" }} />
+          <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-new.jpg" alt="B2BVoice" style={{ width: 160, height: "auto" }} />
           <div className="w-px h-6 bg-gray-200" />
           <div>
             <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Admin Panel</p>

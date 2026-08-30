@@ -175,7 +175,7 @@ export default function AdminLogin() {
 
         <div className="relative z-10 p-10">
           <img
-            src="/logo-transparent.webp"
+            src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-transparent.webp"
             alt="B2BVoice"
             className="brightness-0 invert drop-shadow-lg"
             style={{ width: 180, height: "auto" }}
@@ -209,7 +209,7 @@ export default function AdminLogin() {
         >
           {/* Mobile logo */}
           <div className="lg:hidden mb-8">
-            <img src="/logo-new.jpg" alt="B2BVoice" style={{ width: 160, height: "auto" }} />
+            <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-new.jpg" alt="B2BVoice" style={{ width: 160, height: "auto" }} />
           </div>
 
           <div className="mb-8">

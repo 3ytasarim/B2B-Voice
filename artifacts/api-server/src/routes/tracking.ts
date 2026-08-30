@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
 import { trackingSettingsTable, upsertTrackingSchema } from "@workspace/db/schema";
+import { requireAdmin } from "../lib/adminAuth";
 
 const router = Router();
 
@@ -14,7 +15,7 @@ router.get("/tracking", async (_req, res) => {
   res.json({ searchConsoleCode, analyticsId, adsId, adsConversionLabel });
 });
 
-router.put("/tracking", async (req, res) => {
+router.put("/tracking", requireAdmin, async (req, res) => {
   const parse = upsertTrackingSchema.safeParse(req.body);
   if (!parse.success) {
     res.status(400).json({ error: "Validation error", details: parse.error.issues });

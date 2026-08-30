@@ -2,6 +2,7 @@ import { Router } from "express";
 import { db } from "@workspace/db";
 import { seoSettingsTable, upsertSeoSchema } from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
+import { requireAdmin } from "../lib/adminAuth";
 
 const router = Router();
 
@@ -20,7 +21,7 @@ router.get("/seo", async (_req, res) => {
   res.json(result);
 });
 
-router.put("/seo", async (req, res) => {
+router.put("/seo", requireAdmin, async (req, res) => {
   const parse = upsertSeoSchema.safeParse(req.body);
   if (!parse.success) {
     res.status(400).json({ error: "Validation error", details: parse.error.issues });

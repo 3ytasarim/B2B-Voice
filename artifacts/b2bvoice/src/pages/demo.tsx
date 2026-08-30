@@ -171,7 +171,7 @@ export default function DemoPage() {
           <ArrowLeft className="w-4 h-4" /> Back to Home
         </Link>
         <div style={{ overflow: "hidden", height: 28 }}>
-          <img src="/logo-clean.webp" alt="B2BVoice" style={{ width: 150, height: "auto", display: "block", marginTop: -63 }} />
+          <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-clean.webp" alt="B2BVoice" style={{ width: 150, height: "auto", display: "block", marginTop: -63 }} />
         </div>
       </div>
 

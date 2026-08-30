@@ -1,4 +1,4 @@
-const B = "/agents";
+const B = "https://b2b-voice-media.fsn1.your-objectstorage.com/site/agents";
 
 export interface AgentInfo {
   id: number;

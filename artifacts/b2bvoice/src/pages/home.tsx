@@ -234,7 +234,7 @@ const Navbar = () => {
   const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    ["/logo-de.webp"].forEach(src => { const img = new Image(); img.src = src; });
+    ["https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-de.webp"].forEach(src => { const img = new Image(); img.src = src; });
   }, []);
 
   useEffect(() => {
@@ -265,7 +265,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <img
-            src={lang === "de" ? "/logo-de.webp" : "/logo-clean.webp"}
+            src={lang === "de" ? "https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-de.webp" : "https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-clean.webp"}
             alt="B2BVoice"
             className="w-[168px] sm:w-52"
             style={{ height: "auto", opacity: 0.95, mixBlendMode: lang === "de" ? "multiply" : "normal" }}
@@ -1408,42 +1408,42 @@ const LanguagesSection = () => {
 
 // --- Industries ---
 const SECTOR_IMAGES = [
-  "/sector-health.webp",
-  "/sector-property-management.webp",
-  "/sector-home-field-services.webp",
-  "/sector-automotive-groups.webp",
-  "/sector-law-firms.webp",
-  "/sector-staffing-recruiting.webp",
-  "/sector-logistics-transportation.webp",
-  "/sector-insurance-providers.webp",
-  "/sector-hospitality-groups.webp",
-  "/sector-senior-care.webp",
-  "/sector-multi-location.webp",
-  "/sector-financial-services.webp",
-  "/sector-facilities-management.webp",
-  "/sector-manufacturing-distribution.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-health.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-property-management.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-home-field-services.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-automotive-groups.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-law-firms.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-staffing-recruiting.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-logistics-transportation.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-insurance-providers.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-hospitality-groups.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-senior-care.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-multi-location.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-financial-services.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-facilities-management.webp",
+  "https://b2b-voice-media.fsn1.your-objectstorage.com/site/sector-manufacturing-distribution.webp",
 ];
 /*
 const IND_CONFIG: { icon: React.ElementType; gradient: string; image?: string; imageBg?: string }[] = [
   { icon: Building,          gradient: "from-emerald-500 via-emerald-600 to-emerald-700" },
-  { icon: Cross,             gradient: "from-sky-500 via-sky-600 to-sky-700",   image: "/industry-dental-clinics.png", imageBg: "#0b1e4a" },
+  { icon: Cross,             gradient: "from-sky-500 via-sky-600 to-sky-700",   image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-dental-clinics.png", imageBg: "#0b1e4a" },
   { icon: Scissors,          gradient: "from-violet-500 via-violet-600 to-violet-700" },
   { icon: Smile,             gradient: "from-pink-500 via-pink-600 to-pink-700" },
-  { icon: Scale,             gradient: "from-slate-600 via-slate-700 to-slate-800", image: "/industry-law-firms.webp", imageBg: "#0b1e4a" },
-  { icon: HeartPulse,        gradient: "from-red-500 via-red-600 to-red-700", image: "/industry-medical-clinics.webp", imageBg: "#0b1e4a" },
-  { icon: HomeIcon,          gradient: "from-orange-500 via-orange-600 to-orange-700", image: "/industry-home-services-new.webp", imageBg: "#1a1535" },
-  { icon: Car,               gradient: "from-zinc-600 via-zinc-700 to-zinc-800", image: "/industry-automotive.webp", imageBg: "#0b1e4a" },
-  { icon: Building2,         gradient: "from-teal-500 via-teal-600 to-teal-700", image: "/industry-property-management.webp", imageBg: "#0b1e4a" },
-  { icon: Shield,            gradient: "from-indigo-500 via-indigo-600 to-indigo-700", image: "/industry-insurance.webp", imageBg: "#0b1e4a" },
-  { icon: BarChart3,         gradient: "from-amber-500 via-amber-600 to-amber-700", image: "/industry-accounting.webp", imageBg: "#0b1e4a" },
+  { icon: Scale,             gradient: "from-slate-600 via-slate-700 to-slate-800", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-law-firms.webp", imageBg: "#0b1e4a" },
+  { icon: HeartPulse,        gradient: "from-red-500 via-red-600 to-red-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-medical-clinics.webp", imageBg: "#0b1e4a" },
+  { icon: HomeIcon,          gradient: "from-orange-500 via-orange-600 to-orange-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-home-services-new.webp", imageBg: "#1a1535" },
+  { icon: Car,               gradient: "from-zinc-600 via-zinc-700 to-zinc-800", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-automotive.webp", imageBg: "#0b1e4a" },
+  { icon: Building2,         gradient: "from-teal-500 via-teal-600 to-teal-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-property-management.webp", imageBg: "#0b1e4a" },
+  { icon: Shield,            gradient: "from-indigo-500 via-indigo-600 to-indigo-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-insurance.webp", imageBg: "#0b1e4a" },
+  { icon: BarChart3,         gradient: "from-amber-500 via-amber-600 to-amber-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-accounting.webp", imageBg: "#0b1e4a" },
   { icon: Activity,          gradient: "from-lime-500 via-lime-600 to-lime-700" },
   { icon: UtensilsCrossed,   gradient: "from-rose-500 via-rose-600 to-rose-700" },
-  { icon: Hotel,             gradient: "from-cyan-500 via-cyan-600 to-cyan-700", image: "/industry-hospitality.webp", imageBg: "#0b1e4a" },
+  { icon: Hotel,             gradient: "from-cyan-500 via-cyan-600 to-cyan-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-hospitality.webp", imageBg: "#0b1e4a" },
   { icon: ShoppingCart,      gradient: "from-purple-500 via-purple-600 to-purple-700" },
-  { icon: Sparkles,          gradient: "from-green-500 via-green-600 to-green-700", image: "/industry-cleaning.webp", imageBg: "#0b1e4a" },
-  { icon: Truck,             gradient: "from-yellow-500 via-yellow-600 to-yellow-700", image: "/industry-moving.webp", imageBg: "#0b1e4a" },
+  { icon: Sparkles,          gradient: "from-green-500 via-green-600 to-green-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-cleaning.webp", imageBg: "#0b1e4a" },
+  { icon: Truck,             gradient: "from-yellow-500 via-yellow-600 to-yellow-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-moving.webp", imageBg: "#0b1e4a" },
   { icon: PawPrint,          gradient: "from-fuchsia-500 via-fuchsia-600 to-fuchsia-700" },
-  { icon: Users,             gradient: "from-blue-600 via-blue-700 to-indigo-700", image: "/industry-recruitment.webp", imageBg: "#0b1e4a" },
+  { icon: Users,             gradient: "from-blue-600 via-blue-700 to-indigo-700", image: "https://b2b-voice-media.fsn1.your-objectstorage.com/site/industry-recruitment.webp", imageBg: "#0b1e4a" },
   { icon: BookOpen,          gradient: "from-violet-600 via-purple-600 to-purple-700" },
 ]; */
 
@@ -2893,9 +2893,9 @@ const Footer = () => {
           {/* Logo + tagline — same left edge as the copyright line below (both sit at the container's own inset, no offset math). */}
           <div className="flex flex-col items-start">
             {lang === "de" ? (
-              <img src="/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
+              <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
             ) : (
-              <img src="/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
+              <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
             )}
             <p className="mt-6 !text-[clamp(1.75rem,3.4vw,2.75rem)] font-black italic uppercase tracking-[-0.03em] leading-[0.95] text-white">
               Let's build your

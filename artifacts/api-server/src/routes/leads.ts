@@ -2,6 +2,7 @@ import { Router } from "express";
 import { db } from "@workspace/db";
 import { leadsTable, updateLeadSchema } from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
+import { requireAdmin } from "../lib/adminAuth";
 
 const router = Router();
 
@@ -41,7 +42,7 @@ router.patch("/leads/:id", async (req, res) => {
   res.json(lead);
 });
 
-router.get("/leads", async (_req, res) => {
+router.get("/leads", requireAdmin, async (_req, res) => {
   const leads = await db.select().from(leadsTable).orderBy(leadsTable.createdAt);
   res.json(leads.reverse());
 });
