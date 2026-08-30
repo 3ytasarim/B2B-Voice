@@ -47,4 +47,18 @@ router.get("/leads", requireAdmin, async (_req, res) => {
   res.json(leads.reverse());
 });
 
+router.delete("/leads/:id", requireAdmin, async (req, res) => {
+  const id = parseInt(req.params.id as string, 10);
+  if (isNaN(id)) {
+    res.status(400).json({ error: "Invalid id" });
+    return;
+  }
+  const [lead] = await db.delete(leadsTable).where(eq(leadsTable.id, id)).returning();
+  if (!lead) {
+    res.status(404).json({ error: "Lead not found" });
+    return;
+  }
+  res.json({ ok: true, id });
+});
+
 export default router;

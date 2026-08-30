@@ -5,7 +5,7 @@ import {
   Users, Mail, Phone, Building2, Globe, CheckSquare,
   Video, Mic, FileText, HelpCircle, Clock, TrendingUp,
   RefreshCw, ChevronDown, ChevronUp, Search, LogOut, Search as SearchIcon,
-  Tag, AlignLeft, Type, Save, CheckCircle2, Newspaper, Handshake, Star
+  Tag, AlignLeft, Type, Save, CheckCircle2, Newspaper, Handshake, Star, Trash2
 } from "lucide-react";
 import BlogPanel from "@/components/BlogPanel";
 import ReferencesPanel from "@/components/ReferencesPanel";
@@ -77,10 +77,11 @@ function StatusBadge({ status }: { status?: string | null }) {
   );
 }
 
-function LeadRow({ lead, expanded, onToggle }: {
+function LeadRow({ lead, expanded, onToggle, onDelete }: {
   lead: Lead;
   expanded: boolean;
   onToggle: () => void;
+  onDelete: (id: number) => void;
 }) {
   const needs = lead.demoNeeds ? JSON.parse(lead.demoNeeds) as string[] : [];
 
@@ -189,6 +190,19 @@ function LeadRow({ lead, expanded, onToggle }: {
                       {lead.createdAt ? new Date(lead.createdAt).toLocaleString() : "—"}
                     </div>
                   </div>
+                </div>
+                <div className="px-8 pb-4 flex justify-end">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (window.confirm(`Delete lead #${lead.id} (${lead.email})? This cannot be undone.`)) {
+                        onDelete(lead.id);
+                      }
+                    }}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 hover:text-red-700 hover:underline"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" /> Delete lead
+                  </button>
                 </div>
               </motion.div>
             </td>
@@ -513,6 +527,18 @@ export default function AdminPage() {
 
   useEffect(() => { fetchLeads(); }, []);
 
+  const handleDeleteLead = async (id: number) => {
+    const prev = leads;
+    setLeads((ls) => ls.filter((l) => l.id !== id));
+    try {
+      const res = await fetch(`/api/leads/${id}`, { method: "DELETE", headers: adminAuthHeaders() });
+      if (!res.ok) throw new Error("Failed to delete");
+    } catch {
+      setLeads(prev);
+      setError("Could not delete lead. Please try again.");
+    }
+  };
+
   const filtered = leads.filter((l) => {
     const matchSearch =
       l.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -682,6 +708,7 @@ export default function AdminPage() {
                         lead={lead}
                         expanded={expandedId === lead.id}
                         onToggle={() => setExpandedId(expandedId === lead.id ? null : lead.id)}
+                        onDelete={handleDeleteLead}
                       />
                     ))}
                   </tbody>
