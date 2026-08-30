@@ -7,14 +7,19 @@ import { requireAdmin } from "../lib/adminAuth";
 const router = Router();
 
 router.post("/leads", async (req, res) => {
-  const { email, phone } = req.body as { email?: string; phone?: string };
+  const { email, phone, scenario } = req.body as { email?: string; phone?: string; scenario?: string };
   if (!email || typeof email !== "string" || !email.includes("@")) {
     res.status(400).json({ error: "Valid email is required" });
     return;
   }
   const [lead] = await db
     .insert(leadsTable)
-    .values({ email: email.trim(), phone: phone?.trim() || null, status: "partial" })
+    .values({
+      email: email.trim(),
+      phone: phone?.trim() || null,
+      scenario: scenario?.trim() || null,
+      status: "partial",
+    })
     .returning();
   res.status(201).json(lead);
 });

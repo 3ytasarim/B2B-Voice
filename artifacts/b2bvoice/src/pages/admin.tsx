@@ -24,6 +24,7 @@ type Lead = {
   id: number;
   email: string;
   phone?: string | null;
+  scenario?: string | null;
   businessType?: string | null;
   businessDescription?: string | null;
   website?: string | null;
@@ -159,6 +160,10 @@ function LeadRow({ lead, expanded, onToggle, onDelete }: {
                   <div className="min-w-0">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Business Description</div>
                     <div className="text-sm text-gray-700 break-all">{lead.businessDescription || "—"}</div>
+                  </div>
+                  <div className="col-span-2 min-w-0">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Call Scenario</div>
+                    <div className="text-sm text-gray-700 break-all whitespace-pre-wrap">{lead.scenario || "—"}</div>
                   </div>
                   <div className="col-span-2 min-w-0">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Demo Needs</div>
