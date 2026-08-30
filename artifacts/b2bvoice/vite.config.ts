@@ -66,11 +66,19 @@ export default defineConfig({
     minify: "esbuild",
     rollupOptions: {
       output: {
-        entryFileNames: "assets/app.js",
-        chunkFileNames: "assets/[name].js",
+        // Content-hashed filenames: nginx serves /assets/ with a 1-year
+        // "immutable" Cache-Control header (see the site's nginx config).
+        // Fixed, unhashed names (e.g. "app.js") mean every deploy reuses
+        // the same URL, so browsers that already cached it never see the
+        // update — sometimes for up to a year. Hashing the filename gives
+        // each build a new URL, so the aggressive cache is safe: old
+        // bundles stay validly cached, new ones are fetched fresh because
+        // index.html points at a new filename.
+        entryFileNames: "assets/app-[hash].js",
+        chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith(".css")) return "assets/app.css";
-          return "assets/[name][extname]";
+          if (assetInfo.name?.endsWith(".css")) return "assets/app-[hash].css";
+          return "assets/[name]-[hash][extname]";
         },
         manualChunks: {
           "vendor-react": ["react", "react-dom"],
