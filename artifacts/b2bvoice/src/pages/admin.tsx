@@ -155,16 +155,16 @@ function LeadRow({ lead, expanded, onToggle }: {
                       ) : "—"}
                     </div>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Business Description</div>
-                    <div className="text-sm text-gray-700">{lead.businessDescription || "—"}</div>
+                    <div className="text-sm text-gray-700 break-all">{lead.businessDescription || "—"}</div>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-2 min-w-0">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Demo Needs</div>
                     {needs.length > 0 ? (
                       <div className="flex flex-wrap gap-1">
                         {needs.map((n, i) => (
-                          <span key={i} className="text-[10px] px-2 py-0.5 bg-primary/10 text-primary font-medium border border-primary/15">
+                          <span key={i} className="text-[10px] px-2 py-0.5 bg-primary/10 text-primary font-medium border border-primary/15 max-w-full break-all">
                             {n}
                           </span>
                         ))}
