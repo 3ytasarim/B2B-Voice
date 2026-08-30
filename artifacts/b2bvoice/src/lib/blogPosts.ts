@@ -615,7 +615,7 @@ const whatIsB2bVoiceMeta = {
     "Conversational AI"
   ],
   "excerpt": "B2B Voice designs and builds custom AI voice agents and AI receptionists for businesses. The important difference is not simply the technology — it is who turns that technology into a working business system.",
-  "coverImage": "https://b2b-voice-media.fsn1.your-objectstorage.com/site/blog/what-is-b2b-voice-cover.jpg"
+  "coverImage": ""
 };
 
 const reliabilityContent = `
