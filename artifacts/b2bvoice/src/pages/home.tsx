@@ -2395,7 +2395,10 @@ const ClientsPartners = () => {
 
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto mb-14">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+          {/* flex + justify-center (not a fixed-column grid) so this centers as
+              a group regardless of how many partners exist — a grid with empty
+              trailing columns left a lone partner looking stuck on the left. */}
+          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 sm:gap-x-14">
             {partnersToShow.map((partner, i) => (
               <a
                 key={`${partner.name}-${i}`}
@@ -2405,9 +2408,9 @@ const ClientsPartners = () => {
                 className="flex items-center justify-center transition-transform duration-300 hover:-translate-y-1 hover:scale-105"
               >
                 {partner.src ? (
-                  <img src={partner.src} alt={partner.name} loading="lazy" draggable={false} className="w-full h-auto max-h-16 sm:max-h-20 object-contain select-none" />
+                  <img src={partner.src} alt={partner.name} loading="lazy" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
                 ) : (
-                  <span className="font-black text-xs sm:text-xl tracking-[0.06em] sm:tracking-[0.18em] uppercase text-gray-800 text-center break-words w-full">
+                  <span className="font-black text-sm sm:text-xl tracking-[0.1em] sm:tracking-[0.18em] uppercase text-gray-800 whitespace-nowrap">
                     {partner.name}
                   </span>
                 )}
