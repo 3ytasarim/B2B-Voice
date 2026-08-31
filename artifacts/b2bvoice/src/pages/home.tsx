@@ -2407,7 +2407,7 @@ const ClientsPartners = () => {
                 {partner.src ? (
                   <img src={partner.src} alt={partner.name} loading="lazy" draggable={false} className="w-full h-auto max-h-16 sm:max-h-20 object-contain select-none" />
                 ) : (
-                  <span className="font-black text-lg sm:text-xl tracking-[0.18em] uppercase text-gray-800">
+                  <span className="font-black text-xs sm:text-xl tracking-[0.06em] sm:tracking-[0.18em] uppercase text-gray-800 text-center break-words w-full">
                     {partner.name}
                   </span>
                 )}
@@ -2921,12 +2921,12 @@ const Footer = () => {
             {/* Contact links */}
             <div>
               <p className="mb-5 text-sm md:text-base font-black uppercase tracking-[0.28em] text-white">Contact</p>
-              <div className="flex flex-col items-start gap-4 text-base md:text-lg font-semibold whitespace-nowrap">
-                <a href="mailto:hello@b2b-voice.com" className="inline-flex items-center gap-3 text-white/75 hover:text-white transition-colors">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white">
+              <div className="flex flex-col items-start gap-4 text-base md:text-lg font-semibold sm:whitespace-nowrap">
+                <a href="mailto:hello@b2b-voice.com" className="inline-flex items-center gap-3 text-white/75 hover:text-white transition-colors max-w-full">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
                     <Mail className="h-4 w-4" />
                   </span>
-                  <span>hello@b2b-voice.com</span>
+                  <span className="break-all sm:whitespace-nowrap">hello@b2b-voice.com</span>
                 </a>
                 <a
                   href="https://www.instagram.com/b2bvoice"
