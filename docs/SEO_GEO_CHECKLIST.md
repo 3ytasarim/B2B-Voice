@@ -18,7 +18,7 @@ Branch: `seo/ssg-overhaul`. Status legend: done / code-ready (needs deploy) / op
 | 11 | Schema in first HTML | done (`src/seo/jsonLd.ts`); FAQPage intentionally omitted |
 | 12 | Image semantics | done – see rules below |
 | 13 | Image performance (srcset, AVIF, per-page OG) | done for local images; sector/agent photos live on the CDN bucket (open) |
-| 14 | Internal linking | partial – no service/sector pages yet |
+| 14 | Internal linking | done except service/sector pages (content decision pending); `check:links` audits broken links + orphans |
 | 15 | Keep URL structure | done |
 | 16 | Compression, cache, code splitting | partial – main bundle still large |
 | 17 | Mobile/a11y (viewport zoom fixed) | partial – labels/targets/contrast audit open |
@@ -59,3 +59,11 @@ admin panel descriptive.
 - Nothing on the home page is preloaded or `fetchpriority=high`: the LCP element is text (the H1), not an image. Below-the-fold images are `loading="lazy"`.
 - `scripts/prerender.mjs` generates a 1200x630 social card per page into `dist/public/og/` (title on the brand background) and writes `og:image:width/height/alt`. Falls back to `opengraph.jpg` if sharp fails.
 - Still open: sector and agent photos are served from the object-storage CDN (no variants). Re-encode them into the bucket to get srcset/AVIF there too.
+
+## Internal linking (item 14)
+
+- Demo CTAs (navbar, hero, pricing, two final CTAs) are real `<a href="/demo">` instead of `onClick` buttons, so crawlers can follow them.
+- Footer now links every public page: Privacy, Terms, Cookies, Blog and Legal Notice (which was previously an orphan).
+- Blog list "Continue Reading" links carry the article title as screen-reader text; every article ends with Related Articles (4), a demo CTA and a link back to the home page; articles without their own breadcrumb get a visible one.
+- `pnpm --filter @workspace/b2bvoice run check:links` scans `dist/public` for broken internal links/assets, non-canonical links (trailing slash, `.html`) and sitemap orphans. Run after `pnpm build`.
+- Article bodies are intentionally untouched (they are embedded byte-for-byte), so contextual in-text links to other articles are not injected.

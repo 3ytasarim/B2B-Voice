@@ -98,7 +98,7 @@ export default function BlogPage() {
                       href={`/${p.slug}`}
                       className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-5 py-2 text-xs font-bold uppercase tracking-wider text-primary hover:bg-primary hover:text-white transition-colors mb-6"
                     >
-                      Continue Reading
+                      Continue Reading<span className="sr-only">: {p.title}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
 

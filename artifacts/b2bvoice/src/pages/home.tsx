@@ -352,15 +352,15 @@ const Navbar = () => {
           </div>
 
           {/* CTA — "FOR DEMO" on mobile, full text on sm+ */}
-          <button
-            onClick={open}
+          <a
+            href="/demo"
             data-testid="nav-cta"
-            className="flex items-center justify-center bg-primary text-white font-bold hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(0,53,122,0.3)] transition-all rounded-none
+            className="text-center flex items-center justify-center bg-primary text-white font-bold hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(0,53,122,0.3)] transition-all rounded-none
               h-10 min-w-[72px] px-2 sm:min-w-0 sm:px-5 sm:py-2.5 sm:text-sm sm:uppercase sm:tracking-wide"
           >
             <span className="text-[9px] font-black uppercase tracking-widest sm:hidden whitespace-nowrap">{lang === "de" ? "ZUR DEMO" : lang === "es" ? "PARA DEMO" : "FOR DEMO"}</span>
             <span className="hidden sm:inline whitespace-nowrap">{t.nav.requestDemo}</span>
-          </button>
+          </a>
         </div>
       </div>
     </nav>
@@ -637,7 +637,7 @@ const Hero = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <ShinyButton
-                onClick={open}
+                href="/demo"
                 data-testid="hero-primary-cta"
                 className="w-full sm:w-auto"
               >
@@ -2603,9 +2603,9 @@ const PricingCTASection = () => {
             {t.pricing.sub}
           </p>
           
-          <button onClick={open} className="px-10 py-5 bg-primary text-white font-bold text-lg hover:bg-primary/90 hover:shadow-lg transition-all mb-8 rounded-none">
+          <a href="/demo" className="inline-block text-center px-10 py-5 bg-primary text-white font-bold text-lg hover:bg-primary/90 hover:shadow-lg transition-all mb-8 rounded-none">
             {t.pricing.cta}
-          </button>
+          </a>
 
           <div className="flex flex-wrap justify-center gap-8 text-sm font-semibold text-gray-500">
             {t.pricing.features.map((f, i) => (
@@ -2780,16 +2780,16 @@ const FinalCTA = () => {
           </div>
 
           <div className="flex flex-col items-center gap-4 mb-8">
-            <button
-              onClick={open}
-              className="w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold text-base hover:bg-primary/90 hover:shadow-lg transition-all rounded-none uppercase tracking-wide"
+            <a
+              href="/demo"
+              className="text-center w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold text-base hover:bg-primary/90 hover:shadow-lg transition-all rounded-none uppercase tracking-wide"
             >
               {lang === "de"
                 ? "KOSTENLOSE INDIVIDUELLE DEMO ANFORDERN →"
                 : lang === "es"
                   ? "SOLICITA UNA DEMO PERSONALIZADA GRATIS →"
                   : "REQUEST A FREE CUSTOM DEMO →"}
-            </button>
+            </a>
           </div>
 
           <motion.div
@@ -2876,16 +2876,16 @@ const FinalCTA2 = () => {
           </div>
 
           <div className="flex flex-col items-center gap-4 mb-8">
-            <button
-              onClick={open}
-              className="w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold text-base hover:bg-primary/90 hover:shadow-lg transition-all rounded-none uppercase tracking-wide"
+            <a
+              href="/demo"
+              className="text-center w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold text-base hover:bg-primary/90 hover:shadow-lg transition-all rounded-none uppercase tracking-wide"
             >
               {lang === "de"
                 ? "KOSTENLOSE INDIVIDUELLE DEMO ANFORDERN →"
                 : lang === "es"
                   ? "SOLICITA UNA DEMO PERSONALIZADA GRATIS →"
                   : "REQUEST A FREE CUSTOM DEMO →"}
-            </button>
+            </a>
           </div>
 
           <motion.div
@@ -2995,6 +2995,7 @@ const Footer = () => {
     { label: lang === "de" ? "Nutzungsbedingungen" : lang === "es" ? "Términos de Uso" : "Terms of Use", href: "/terms-of-use" },
     { label: lang === "de" ? "Cookie-Richtlinie" : lang === "es" ? "Política de Cookies" : "Cookie Policy", href: "/cookie-policy" },
     { label: "Blog", href: "/blog" },
+    { label: lang === "de" ? "Impressum" : lang === "es" ? "Aviso Legal" : "Legal Notice", href: "/legal-notice" },
   ];
 
   // "Design by" stays put (bottom-right, static). Instead we nudge the
