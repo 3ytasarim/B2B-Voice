@@ -1911,6 +1911,7 @@ const OrbitalNode = ({ item, cx, cy }: {
   return (
     <motion.div
       ref={nodeRef}
+      suppressHydrationWarning // transform uses Math.cos/sin: last digits differ between Node and browser
       className="absolute flex flex-col items-center gap-1.5"
       style={{ left: 0, top: 0, transform: `translate(${cx + ring.r * Math.cos(angleRef.current) - ICON/2}px, ${cy + ring.r * Math.sin(angleRef.current) - ICON/2}px)`, willChange: "transform", pointerEvents: "auto", zIndex: 10 }}
       title={item.label}

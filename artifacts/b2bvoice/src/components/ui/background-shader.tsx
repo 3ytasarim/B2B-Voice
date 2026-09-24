@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { MeshGradient } from "@paper-design/shaders-react";
 
 function supportsWebGL() {
@@ -16,7 +17,12 @@ function supportsWebGL() {
 }
 
 export default function BackgroundShader() {
-  if (!supportsWebGL()) {
+  // Decided after mount so the server-rendered HTML (no WebGL) and the first
+  // client render match; the shader replaces the gradient right afterwards.
+  const [webgl, setWebgl] = useState(false);
+  useEffect(() => setWebgl(supportsWebGL()), []);
+
+  if (!webgl) {
     return (
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-45"

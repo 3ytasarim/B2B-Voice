@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type ComponentType } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -10,22 +10,35 @@ import { routeLoaders } from "@/routeLoaders";
 
 // Route-level code splitting: only the Home page ships in the entry bundle.
 // Blog articles (large static HTML), admin and legal pages load on demand.
-const NotFound = lazy(routeLoaders.notFound);
-const AdminPage = lazy(routeLoaders.admin);
-const AdminLogin = lazy(routeLoaders.adminLogin);
-const PrivacyPolicy = lazy(routeLoaders.privacy);
-const CookiePolicy = lazy(routeLoaders.cookies);
-const TermsOfUse = lazy(routeLoaders.terms);
-const LegalNotice = lazy(routeLoaders.legalNotice);
-const DemoPage = lazy(routeLoaders.demo);
-const BlogPage = lazy(routeLoaders.blog);
-const BlogPostPage = lazy(routeLoaders.blogPost);
+// Each lazy page carries its OWN Suspense boundary. Home must never sit inside
+// a shared boundary: components inside it (3D/WebGL) can suspend, and a shared
+// boundary would hide the whole page (display:none) and reset its animations.
+function lazyPage(loader: () => Promise<{ default: ComponentType }>) {
+  const Page = lazy(loader);
+  return function LazyPage() {
+    return (
+      <Suspense fallback={null}>
+        <Page />
+      </Suspense>
+    );
+  };
+}
+
+const NotFound = lazyPage(routeLoaders.notFound);
+const AdminPage = lazyPage(routeLoaders.admin);
+const AdminLogin = lazyPage(routeLoaders.adminLogin);
+const PrivacyPolicy = lazyPage(routeLoaders.privacy);
+const CookiePolicy = lazyPage(routeLoaders.cookies);
+const TermsOfUse = lazyPage(routeLoaders.terms);
+const LegalNotice = lazyPage(routeLoaders.legalNotice);
+const DemoPage = lazyPage(routeLoaders.demo);
+const BlogPage = lazyPage(routeLoaders.blog);
+const BlogPostPage = lazyPage(routeLoaders.blogPost);
 
 function Router() {
   useGoogleTracking();
   return (
-    <Suspense fallback={null}>
-      <Switch>
+    <Switch>
         <Route path="/" component={Home} />
         <Route path="/admin/login" component={AdminLogin} />
         <Route path="/admin" component={AdminPage} />
@@ -38,8 +51,7 @@ function Router() {
         <Route path="/404" component={NotFound} />
         <Route path="/:slug" component={BlogPostPage} />
         <Route component={NotFound} />
-      </Switch>
-    </Suspense>
+    </Switch>
   );
 }
 
