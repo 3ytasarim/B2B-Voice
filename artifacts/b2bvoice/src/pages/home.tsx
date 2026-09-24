@@ -37,6 +37,8 @@ import RU from "country-flag-icons/react/3x2/RU";
 import JP from "country-flag-icons/react/3x2/JP";
 import IT from "country-flag-icons/react/3x2/IT";
 import PT from "country-flag-icons/react/3x2/PT";
+import { HOME_META } from "@/seo/pageMeta";
+import { usePageMeta } from "@/seo/usePageMeta";
 
 // --- Helpers ---
 function FadeInWhenVisible({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -286,7 +288,9 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <img
-            src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-clean.webp"
+            src="/logo-clean-420.webp"
+            width={420}
+            height={420}
             alt="B2BVoice"
             className="w-[168px] sm:w-52"
             style={{ height: "auto", opacity: 0.95, mixBlendMode: "normal" }}
@@ -377,7 +381,7 @@ const OverviewTab = () => {
       {t.dashboard.stats.map(s => (
         <div key={s.label} className="bg-white border border-gray-100 rounded-lg p-2.5 shadow-sm">
           <div className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">{s.label}</div>
-          <div className="text-lg font-bold text-gray-900">{s.value}</div>
+          <div className="text-lg font-bold text-gray-900">{s.val}</div>
         </div>
       ))}
     </div>
@@ -1592,7 +1596,10 @@ const IndustriesSection = () => {
                 <img
                   src={ind.image}
                   alt={`${ind.title} — B2BVoice AI voice assistant`}
-                  loading={i < 3 ? "eager" : "lazy"}
+                  width={960}
+                  height={540}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#03132f]/45 via-transparent to-transparent pointer-events-none" />
@@ -1923,6 +1930,8 @@ const OrbitalNode = ({ item, cx, cy }: {
         <img
           src={item.image}
           alt={item.label}
+          width={32}
+          height={32}
           draggable={false}
           className="w-8 h-8 object-contain pointer-events-none select-none"
         />
@@ -2439,7 +2448,7 @@ const ClientsPartners = () => {
         <div className="flex items-center mb-6 animate-marquee" style={{ width: "max-content" }}>
           {row1.map((logo, i) => (
             <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8">
-              <img src={logo.src} alt={logo.name} loading="lazy" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
+              <img src={logo.src} alt={logo.name} height={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2448,7 +2457,7 @@ const ClientsPartners = () => {
         <div className="flex items-center animate-marquee-reverse" style={{ width: "max-content" }}>
           {row2.map((logo, i) => (
             <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8">
-              <img src={logo.src} alt={logo.name} loading="lazy" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
+              <img src={logo.src} alt={logo.name} height={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2469,7 +2478,7 @@ const ClientsPartners = () => {
                 className="flex items-center justify-center transition-transform duration-300 hover:-translate-y-1 hover:scale-105"
               >
                 {partner.src ? (
-                  <img src={partner.src} alt={partner.name} loading="lazy" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
+                  <img src={partner.src} alt={partner.name} height={80} loading="lazy" decoding="async" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
                 ) : (
                   <span className="font-black text-sm sm:text-xl tracking-[0.1em] sm:tracking-[0.18em] uppercase text-gray-800 whitespace-nowrap">
                     {partner.name}
@@ -2934,6 +2943,10 @@ const FinalCTA2 = () => {
                   <img
                     src="/ask-ai/chatgpt-512.png"
                     alt="ChatGPT"
+                    width={28}
+                    height={28}
+                    loading="lazy"
+                    decoding="async"
                     className="h-7 w-7 object-contain"
                   />
                 </a>
@@ -2949,6 +2962,10 @@ const FinalCTA2 = () => {
                   <img
                     src="/ask-ai/google-ai-512.png"
                     alt="Google AI"
+                    width={28}
+                    height={28}
+                    loading="lazy"
+                    decoding="async"
                     className="h-7 w-7 object-contain"
                   />
                 </a>
@@ -2964,6 +2981,10 @@ const FinalCTA2 = () => {
                   <img
                     src="/ask-ai/claude-512.png"
                     alt="Claude"
+                    width={28}
+                    height={28}
+                    loading="lazy"
+                    decoding="async"
                     className="h-7 w-7 object-contain"
                   />
                 </a>
@@ -3055,7 +3076,7 @@ const Footer = () => {
         <div className="max-w-5xl py-12 md:py-16 grid grid-cols-1 sm:grid-cols-[1.2fr_1.8fr] gap-10 md:gap-16">
           {/* Logo + tagline — same left edge as the copyright line below (both sit at the container's own inset, no offset math). */}
           <div className="flex flex-col items-start">
-            <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
+            <img src="/logo-footer-white-920.webp" width={920} height={160} alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" decoding="async" />
             <p className="mt-6 !text-[clamp(1.75rem,3.4vw,2.75rem)] font-black italic uppercase tracking-[-0.03em] leading-[0.95] text-white">
               {lang === "de" ? "Entwickeln wir Ihr" : lang === "es" ? "Construyamos tu" : "Let's build your"}
               <br />
@@ -3961,7 +3982,7 @@ const AgentCard = ({
         >
           <img
             src={agent.photo}
-            alt={agent.name}
+            alt={`${agent.name} — ${agent.industry} AI voice agent`}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover object-top"
@@ -4261,11 +4282,13 @@ function useSeoMeta() {
 }
 
 export default function Home() {
+  usePageMeta(HOME_META);
   useSeoMeta();
   return (
     <DemoModalCtx.Provider value={{ open: () => { window.location.href = "/demo"; } }}>
       <div className="min-h-screen bg-white text-gray-900 selection:bg-primary selection:text-white font-sans overflow-x-hidden">
         <Navbar />
+        <main>
         <Hero />
         <TrustStrip />
         {/* <FeaturesSection /> */}
@@ -4283,6 +4306,7 @@ export default function Home() {
         <SetupProcessSection />
         <FAQSection />
         <FinalCTA2 />
+        </main>
         <Footer />
         <ScrollProgressButton />
       </div>

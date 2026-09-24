@@ -1,19 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Search } from "lucide-react";
+import { STATIC_PAGES } from "@/seo/pageMeta";
+import { usePageMeta } from "@/seo/usePageMeta";
 import { blogPosts, fmtDate, getCategories } from "@/lib/blogPosts";
 
-function setMeta(name: string, content: string) {
-  let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-}
+const BLOG_META = STATIC_PAGES.find((p) => p.path === "/blog")!;
 
 export default function BlogPage() {
+  usePageMeta(BLOG_META);
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const categories = useMemo(() => getCategories(), []);
@@ -22,13 +17,6 @@ export default function BlogPage() {
     [],
   );
 
-  useEffect(() => {
-    document.title = "Blog | B2BVoice — AI Voice Assistant Insights";
-    setMeta(
-      "description",
-      "Insights, guides, and industry news about AI voice assistants, business automation, and customer communication from the B2BVoice team.",
-    );
-  }, []);
 
   const posts = useMemo(() => {
     const q = query.trim().toLowerCase();

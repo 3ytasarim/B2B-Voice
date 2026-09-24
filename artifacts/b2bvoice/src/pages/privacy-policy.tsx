@@ -1,4 +1,6 @@
 import { Link } from "wouter";
+import { STATIC_PAGES } from "@/seo/pageMeta";
+import { usePageMeta } from "@/seo/usePageMeta";
 
 const H2 = ({ children }: { children: React.ReactNode }) => (
   <h2 className="text-xl font-bold text-gray-800 mb-3">{children}</h2>
@@ -14,7 +16,10 @@ const UL = ({ items }: { items: React.ReactNode[] }) => (
   </ul>
 );
 
+const PAGE_META = STATIC_PAGES.find((p) => p.path === "/privacy-policy")!;
+
 export default function PrivacyPolicy() {
+  usePageMeta(PAGE_META);
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-6 py-16 max-w-3xl">

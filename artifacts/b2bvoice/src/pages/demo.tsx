@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, Check, Loader2 } from "lucide-react";
 import { useLanguage } from "../lib/LanguageContext";
 import { Link } from "wouter";
+import { STATIC_PAGES } from "@/seo/pageMeta";
+import { usePageMeta } from "@/seo/usePageMeta";
 
 type Step = 1 | 2 | 3 | 4 | 5;
 
@@ -54,7 +56,10 @@ function StepIndicator({ current, stepLabels }: { current: number; stepLabels: s
   );
 }
 
+const PAGE_META = STATIC_PAGES.find((p) => p.path === "/demo")!;
+
 export default function DemoPage() {
+  usePageMeta(PAGE_META);
   const { t } = useLanguage();
 
   const BUSINESS_TYPES = t.modal.businessTypes;

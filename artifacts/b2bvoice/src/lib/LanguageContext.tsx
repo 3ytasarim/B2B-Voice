@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { T, type Lang, type Translations } from "./translations";
 
 function detectBrowserLang(): Lang {
@@ -24,7 +24,12 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Lang>(detectBrowserLang);
+  // Always start in English so the server-rendered HTML and the first client
+  // render match (hydration); the visitor's language is applied right after.
+  const [lang, setLang] = useState<Lang>("en");
+  useEffect(() => {
+    setLang(detectBrowserLang());
+  }, []);
   return (
     <LanguageContext.Provider value={{ lang, setLang, t: T[lang] }}>
       {children}

@@ -1,58 +1,52 @@
-import { useEffect } from "react";
+import { useMemo } from "react";
 import { Link, useParams } from "wouter";
-import { getPostBySlug } from "@/lib/blogPosts";
+import { blogPosts, fmtDate, getPostBySlug, type BlogPost } from "@/lib/blogPosts";
+import { NOT_FOUND_META, postMeta } from "@/seo/pageMeta";
+import { usePageMeta } from "@/seo/usePageMeta";
 
-function setMeta(name: string, content: string) {
-  let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
+/** Turns the "Published August 30, 2026" text into a real <time datetime>. */
+function withTimeElement(html: string, isoDate: string): string {
+  return html.replace(
+    /Published ([A-Z][a-z]+ \d{1,2}, \d{4})/,
+    (_m, label: string) => `Published <time datetime="${isoDate}">${label}</time>`,
+  );
+}
+
+/** 3–5 related posts: most shared tags first, then most recent. */
+function relatedPosts(current: BlogPost, count = 4): BlogPost[] {
+  const tags = new Set(current.tags);
+  return blogPosts
+    .filter((p) => p.slug !== current.slug)
+    .map((p) => ({ p, score: p.tags.filter((t) => tags.has(t)).length }))
+    .sort((a, b) => b.score - a.score || +new Date(b.p.date) - +new Date(a.p.date))
+    .slice(0, count)
+    .map((x) => x.p);
 }
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
+  const meta = useMemo(() => (post ? postMeta(post) : NOT_FOUND_META), [post]);
+  usePageMeta(meta);
 
-  // SEO: title, description, keywords, JSON-LD Article schema
-  useEffect(() => {
-    if (!post) return;
-    document.title = `${post.title} | B2BVoice Blog`;
-    if (post.excerpt) setMeta("description", post.excerpt);
-    if (post.tags.length) setMeta("keywords", post.tags.join(", "));
-
-    const ld = document.createElement("script");
-    ld.type = "application/ld+json";
-    ld.id = "blog-jsonld";
-    ld.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: post.title,
-      description: post.excerpt || undefined,
-      keywords: post.tags.join(", ") || undefined,
-      articleSection: post.category,
-      datePublished: post.date,
-      dateModified: post.date,
-      image: post.coverImage ? `${window.location.origin}${post.coverImage}` : undefined,
-      author: { "@type": "Person", name: post.author },
-      publisher: { "@type": "Organization", name: "B2B Voice LLC", url: "https://b2b-voice.com" },
-      mainEntityOfPage: { "@type": "WebPage", "@id": window.location.href },
-    });
-    document.getElementById("blog-jsonld")?.remove();
-    document.head.appendChild(ld);
-    return () => { document.getElementById("blog-jsonld")?.remove(); };
-  }, [post]);
+  const content = useMemo(
+    () => (post ? withTimeElement(post.content, post.date) : ""),
+    [post],
+  );
 
   if (!post) {
     return (
       <div className="min-h-screen bg-white flex flex-col items-center justify-center gap-4">
-        <p className="text-gray-500">This article could not be found.</p>
+        <h1 className="text-2xl font-bold text-gray-900">404 – Page not found</h1>
+        <p className="text-gray-500">This page could not be found.</p>
         <Link href="/blog" className="text-primary font-semibold hover:underline">← Back to Blog</Link>
       </div>
     );
   }
+
+  const related = relatedPosts(post);
+  // Two of the articles already carry their own breadcrumb trail.
+  const hasOwnBreadcrumb = post.content.includes('class="breadcrumbs"');
 
   return (
     <div className="min-h-screen bg-white">
@@ -60,6 +54,18 @@ export default function BlogPostPage() {
         <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:underline">
           ← Back to Blog
         </Link>
+
+        {!hasOwnBreadcrumb && (
+          <nav aria-label="Breadcrumb" className="mt-4 text-sm text-gray-500">
+            <ol className="flex flex-wrap items-center gap-x-2">
+              <li><Link href="/" className="hover:underline">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href="/blog" className="hover:underline">Blog</Link></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="text-gray-700">{post.title}</li>
+            </ol>
+          </nav>
+        )}
 
         {post.coverImage && (
           <img
@@ -72,31 +78,47 @@ export default function BlogPostPage() {
       </div>
 
       {/*
-        The article's own <main class="page"|"wrap"> wrapper — including its
-        header/hero (kicker, breadcrumbs, h1, dek/deck, meta row) — is
-        embedded verbatim in post.content, see blogPosts.ts. Its own CSS
-        controls its own max-width/centering exactly like the standalone
-        source file, so nothing here constrains its width.
-        data-testid kept here for existing test selectors; the actual
-        heading text comes from the injected HTML, not this element.
+        The article's own <main> + <article> + <h1> header is embedded
+        verbatim in post.content (see blogPosts.ts) — this wrapper is a plain
+        <div> so each page has exactly one <main>, one <article> and one <h1>.
       */}
-      <h1 className="sr-only" data-testid="blog-post-title">{post.title}</h1>
-
-      <article
+      <div
         className="blog-content"
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: content }}
         data-testid="blog-post-content"
       />
 
-      {post.tags.length > 0 && (
-        <div className="container mx-auto px-6 max-w-5xl mt-4 pt-6 pb-16 border-t border-gray-100 flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
-            <span key={tag} className="px-2.5 py-1 bg-primary/5 border border-primary/15 text-primary text-[11px] font-semibold rounded-full">
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
+      <div className="container mx-auto px-6 max-w-5xl mt-4 pt-8 pb-16 border-t border-gray-100">
+        {post.tags.length > 0 && (
+          <ul className="flex flex-wrap gap-2 mb-10" aria-label="Topics">
+            {post.tags.map((tag) => (
+              <li key={tag} className="px-2.5 py-1 bg-primary/5 border border-primary/15 text-primary text-[11px] font-semibold rounded-full">
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <aside aria-labelledby="related-articles">
+          <h2 id="related-articles" className="text-2xl font-bold text-gray-900 mb-5">Related Articles</h2>
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {related.map((p) => (
+              <li key={p.slug} className="border border-gray-200 p-5 hover:border-primary/40 transition-colors">
+                <Link href={`/${p.slug}`} className="font-semibold text-gray-900 hover:text-primary leading-snug">
+                  {p.title}
+                </Link>
+                <p className="mt-2 text-xs text-gray-500">{fmtDate(p.date)}</p>
+              </li>
+            ))}
+          </ul>
+        </aside>
+
+        <p className="mt-10 text-gray-600">
+          Want to hear an AI voice agent handle your own calls?{" "}
+          <Link href="/demo" className="text-primary font-semibold hover:underline">Book a free B2BVoice demo</Link>{" "}
+          or read more about <Link href="/" className="text-primary font-semibold hover:underline">what B2BVoice builds for businesses</Link>.
+        </p>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,11 @@
 import { Link } from "wouter";
+import { STATIC_PAGES } from "@/seo/pageMeta";
+import { usePageMeta } from "@/seo/usePageMeta";
+
+const PAGE_META = STATIC_PAGES.find((p) => p.path === "/legal-notice")!;
 
 export default function LegalNotice() {
+  usePageMeta(PAGE_META);
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-6 py-16 max-w-3xl">
