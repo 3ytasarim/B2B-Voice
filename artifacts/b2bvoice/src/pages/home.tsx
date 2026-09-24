@@ -5,6 +5,7 @@ import DemoRequestModal from "@/components/DemoRequestModal";
 import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 import BackgroundShader from "@/components/ui/background-shader";
 import { PatternText } from "@/components/ui/pattern-text";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { FooterRobot } from "@/components/ui/robot-hero";
@@ -294,10 +295,8 @@ const Navbar = () => {
             alt="B2BVoice"
             className="w-[168px] sm:w-52"
             style={{ height: "auto", opacity: 0.95, mixBlendMode: "normal" }}
-            fetchPriority="high"
           />
         </Link>
-
         {/* Right: Language + CTA */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Language dropdown */}
@@ -1928,11 +1927,9 @@ const OrbitalNode = ({ item, cx, cy }: {
           overflow: "hidden",
         }}
       >
-        <img
+        <ResponsiveImage sizes="32px"
           src={item.image}
           alt=""
-          width={32}
-          height={32}
           draggable={false}
           className="w-8 h-8 object-contain pointer-events-none select-none"
         />
@@ -2449,7 +2446,7 @@ const ClientsPartners = () => {
         <div className="flex items-center mb-6 animate-marquee" style={{ width: "max-content" }}>
           {row1.map((logo, i) => (
             <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8" aria-hidden={i >= clientRow1.length ? true : undefined}>
-              <img src={logo.src} alt={i >= clientRow1.length ? "" : `${logo.name} logo`} height={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
+              <ResponsiveImage sizes="140px" src={logo.src} alt={i >= clientRow1.length ? "" : `${logo.name} logo`} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2458,7 +2455,7 @@ const ClientsPartners = () => {
         <div className="flex items-center animate-marquee-reverse" style={{ width: "max-content" }}>
           {row2.map((logo, i) => (
             <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8" aria-hidden={i >= clientRow2.length ? true : undefined}>
-              <img src={logo.src} alt={i >= clientRow2.length ? "" : `${logo.name} logo`} height={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
+              <ResponsiveImage sizes="140px" src={logo.src} alt={i >= clientRow2.length ? "" : `${logo.name} logo`} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2479,7 +2476,7 @@ const ClientsPartners = () => {
                 className="flex items-center justify-center transition-transform duration-300 hover:-translate-y-1 hover:scale-105"
               >
                 {partner.src ? (
-                  <img src={partner.src} alt={`${partner.name} logo`} height={80} loading="lazy" decoding="async" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
+                  <ResponsiveImage sizes="(min-width: 640px) 180px, 140px" src={partner.src} alt={`${partner.name} logo`} loading="lazy" decoding="async" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
                 ) : (
                   <span className="font-black text-sm sm:text-xl tracking-[0.1em] sm:tracking-[0.18em] uppercase text-gray-800 whitespace-nowrap">
                     {partner.name}
@@ -2941,17 +2938,14 @@ const FinalCTA2 = () => {
                   title="Ask ChatGPT"
                   className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
                 >
-                  <img
+                  <ResponsiveImage sizes="28px"
                     src="/ask-ai/chatgpt-512.png"
                     alt=""
-                    width={28}
-                    height={28}
                     loading="lazy"
                     decoding="async"
                     className="h-7 w-7 object-contain"
                   />
                 </a>
-
                 <a
                   href="https://www.google.com/search?udm=50&q=Please%20review%20https%3A%2F%2Fb2b-voice.com%2F%20and%20explain%20what%20B2B%20Voice%20does%20and%20how%20its%20AI%20phone%20agents%20can%20help%20a%20business.%20Summarize%20its%20inbound%2C%20outbound%2C%20and%20customer%20support%20capabilities%2C%20ideal%20industries%2C%20integrations%2C%20pricing%2C%20setup%20timeline%2C%20and%20custom%20demo%20process.%20Use%20the%20official%20B2B%20Voice%20website%20as%20the%20primary%20source%2C%20verify%20current%20claims%2C%20and%20include%20source%20links."
                   target="_blank"
@@ -2960,17 +2954,14 @@ const FinalCTA2 = () => {
                   title="Ask Google AI"
                   className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
                 >
-                  <img
+                  <ResponsiveImage sizes="28px"
                     src="/ask-ai/google-ai-512.png"
                     alt=""
-                    width={28}
-                    height={28}
                     loading="lazy"
                     decoding="async"
                     className="h-7 w-7 object-contain"
                   />
                 </a>
-
                 <a
                   href="https://claude.ai/new?q=Please%20review%20https%3A%2F%2Fb2b-voice.com%2F%20and%20explain%20what%20B2B%20Voice%20does%20and%20how%20its%20AI%20phone%20agents%20can%20help%20a%20business.%20Summarize%20its%20inbound%2C%20outbound%2C%20and%20customer%20support%20capabilities%2C%20ideal%20industries%2C%20integrations%2C%20pricing%2C%20setup%20timeline%2C%20and%20custom%20demo%20process.%20Use%20the%20official%20B2B%20Voice%20website%20as%20the%20primary%20source%2C%20verify%20current%20claims%2C%20and%20include%20source%20links."
                   target="_blank"
@@ -2979,11 +2970,9 @@ const FinalCTA2 = () => {
                   title="Ask Claude"
                   className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
                 >
-                  <img
+                  <ResponsiveImage sizes="28px"
                     src="/ask-ai/claude-512.png"
                     alt=""
-                    width={28}
-                    height={28}
                     loading="lazy"
                     decoding="async"
                     className="h-7 w-7 object-contain"

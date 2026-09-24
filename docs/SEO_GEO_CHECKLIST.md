@@ -9,7 +9,7 @@ Branch: `seo/ssg-overhaul`. Status legend: done / code-ready (needs deploy) / op
 | 2 | SSG: real HTML in first response | code-ready (`scripts/prerender.mjs`) |
 | 3 | One blog content source, out of main bundle | done (`src/lib/blogPosts.ts`, lazy chunk) |
 | 4 | One `<main>`, one `<article>`, one `<h1>`, `<time>` | done |
-| 5 | Per-page metadata + canonical + OG | done (`src/seo/pageMeta.ts`); OG image still shared |
+| 5 | Per-page metadata + canonical + OG | done (`src/seo/pageMeta.ts`); per-page OG cards generated at build |
 | 6 | Domain / HTTPS redirects, trailing slash | code-ready (`deploy/nginx`) |
 | 7 | Real 404 | code-ready (`404.html` + nginx) |
 | 8 | Real `sitemap.xml` | code-ready (generated at build) |
@@ -17,7 +17,7 @@ Branch: `seo/ssg-overhaul`. Status legend: done / code-ready (needs deploy) / op
 | 10 | Crawler access (CDN/firewall) | open – verify after deploy (`deploy/verify.sh`) |
 | 11 | Schema in first HTML | done (`src/seo/jsonLd.ts`); FAQPage intentionally omitted |
 | 12 | Image semantics | done – see rules below |
-| 13 | Image performance (srcset, AVIF) | open |
+| 13 | Image performance (srcset, AVIF, per-page OG) | done for local images; sector/agent photos live on the CDN bucket (open) |
 | 14 | Internal linking | partial – no service/sector pages yet |
 | 15 | Keep URL structure | done |
 | 16 | Compression, cache, code splitting | partial – main bundle still large |
@@ -50,3 +50,12 @@ Known limitation: logos in the "trusted by" strip are rendered from a built-in
 fallback list at prerender time and replaced by the database entries in the
 browser. Their alt text is `<company name> logo`, so keep company names in the
 admin panel descriptive.
+
+## Image performance (item 13)
+
+- `scripts/optimize-images.mjs` writes AVIF + WebP variants (and `src/lib/imageManifest.json`) for `public/integrations`, `ask-ai`, `partners`, `clients`. Re-run it after adding images there.
+- `<ResponsiveImage>` (`src/components/ui/responsive-image.tsx`) renders `<picture>` (AVIF, WebP fallback) with `srcset`/`sizes` and intrinsic `width`/`height`; anything not in the manifest (CDN URLs, data URIs) stays a plain `<img>`.
+- Result: the 12 orbit icons went from about 700 KB of 1024px PNGs to about 60 KB of 64px AVIFs on a 2x phone; logos/partners similarly.
+- Nothing on the home page is preloaded or `fetchpriority=high`: the LCP element is text (the H1), not an image. Below-the-fold images are `loading="lazy"`.
+- `scripts/prerender.mjs` generates a 1200x630 social card per page into `dist/public/og/` (title on the brand background) and writes `og:image:width/height/alt`. Falls back to `opengraph.jpg` if sharp fails.
+- Still open: sector and agent photos are served from the object-storage CDN (no variants). Re-encode them into the bucket to get srcset/AVIF there too.

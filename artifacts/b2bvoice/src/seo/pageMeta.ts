@@ -7,6 +7,12 @@ export const SITE_URL = "https://b2b-voice.com";
 export const SITE_NAME = "B2BVoice";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
 
+/** Per-page social card (1200x630), generated at build time by scripts/prerender.mjs. */
+export const OG_WIDTH = 1200;
+export const OG_HEIGHT = 630;
+export const ogFileFor = (path: string) => (path === "/" ? "home" : path.slice(1));
+export const ogImageFor = (path: string) => `${SITE_URL}/og/${ogFileFor(path)}.jpg`;
+
 export interface PageMeta {
   path: string;
   title: string;
@@ -18,7 +24,7 @@ export interface PageMeta {
   published?: string;
 }
 
-export const HOME_META: PageMeta = {
+const HOME_BASE: PageMeta = {
   path: "/",
   title: "B2BVoice – AI Voice Assistant for Businesses",
   description:
@@ -27,8 +33,8 @@ export const HOME_META: PageMeta = {
   ogImage: DEFAULT_OG_IMAGE,
 };
 
-export const STATIC_PAGES: PageMeta[] = [
-  HOME_META,
+const STATIC_BASE: PageMeta[] = [
+  HOME_BASE,
   {
     path: "/blog",
     title: "Blog | B2BVoice — AI Voice Assistant Insights",
@@ -78,6 +84,10 @@ export const STATIC_PAGES: PageMeta[] = [
   },
 ];
 
+/** Every static page uses its own social card. */
+export const STATIC_PAGES: PageMeta[] = STATIC_BASE.map((p) => ({ ...p, ogImage: ogImageFor(p.path) }));
+export const HOME_META: PageMeta = STATIC_PAGES[0];
+
 export const NOT_FOUND_META: PageMeta = {
   path: "/404",
   title: "Page Not Found | B2BVoice",
@@ -120,7 +130,7 @@ export function postMeta(post: {
       ? post.coverImage.startsWith("http")
         ? post.coverImage
         : `${SITE_URL}${post.coverImage}`
-      : DEFAULT_OG_IMAGE,
+      : ogImageFor(`/${post.slug}`),
     published: post.date,
   };
 }

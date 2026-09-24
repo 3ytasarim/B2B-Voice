@@ -1,0 +1,298 @@
+{
+ "/integrations/01-salesforce.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/02-hubspot.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/03-microsoft-dynamics-365.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/04-zoho-crm.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/05-pipedrive.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/06-monday-crm.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/07-whatsapp.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/08-google-calendar.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/09-calendly.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/10-microsoft-teams.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/11-zapier.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/integrations/12-google-sheets.png": {
+  "w": 1024,
+  "h": 1024,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/ask-ai/chatgpt-512.png": {
+  "w": 512,
+  "h": 512,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/ask-ai/claude-512.png": {
+  "w": 512,
+  "h": 512,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/ask-ai/google-ai-512.png": {
+  "w": 512,
+  "h": 512,
+  "variants": [
+   64,
+   128
+  ]
+ },
+ "/partners/corventis.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   160,
+   320
+  ]
+ },
+ "/partners/rufschmiede.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   160,
+   320
+  ]
+ },
+ "/partners/strom-strategen.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   160,
+   320
+  ]
+ },
+ "/clients/after-work.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/autohaus-1.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/autohaus-2.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/berliner-cafe-kette.png": {
+  "w": 1920,
+  "h": 1080,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/bioladen.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/das-nudel-ding.png": {
+  "w": 200,
+  "h": 200,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/eatcut.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/fratelli.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/hotel.png": {
+  "w": 200,
+  "h": 200,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/logo-15.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/logo-21.png": {
+  "w": 1536,
+  "h": 1024,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/logo-6.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/ludwig.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/q.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/real-estate.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/saas-solutions-ag.png": {
+  "w": 500,
+  "h": 500,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/selgros.png": {
+  "w": 1920,
+  "h": 1080,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/taverna.png": {
+  "w": 200,
+  "h": 200,
+  "variants": [
+   140,
+   280
+  ]
+ },
+ "/clients/ubereats.png": {
+  "w": 200,
+  "h": 200,
+  "variants": [
+   140,
+   280
+  ]
+ }
+}

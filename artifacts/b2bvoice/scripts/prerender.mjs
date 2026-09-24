@@ -11,7 +11,8 @@
 // The React app hydrates the prerendered markup, so users see the same page
 // crawlers get. nginx maps /route -> /route.html (see deploy/nginx).
 import { build } from "vite";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import sharp from "sharp";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -58,11 +59,12 @@ function headBlock({ meta, jsonLd }) {
     `<meta property="og:description" content="${esc(meta.description)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${meta.ogImage}" />`,
-    ...(meta.ogImage.endsWith("/opengraph.jpg")
+    ...(meta.ogImage.endsWith("/opengraph.jpg") || meta.ogImage.includes("/og/")
       ? [
           `<meta property="og:image:type" content="image/jpeg" />`,
-          `<meta property="og:image:width" content="1280" />`,
-          `<meta property="og:image:height" content="720" />`,
+          `<meta property="og:image:width" content="${meta.ogImage.includes("/og/") ? 1200 : 1280}" />`,
+          `<meta property="og:image:height" content="${meta.ogImage.includes("/og/") ? 630 : 720}" />`,
+          `<meta property="og:image:alt" content="${esc(meta.title)}" />`,
         ]
       : []),
     ...(meta.published ? [`<meta property="article:published_time" content="${meta.published}" />`] : []),
@@ -106,6 +108,51 @@ for (const page of pages) {
   await write(rel, assemble(page, body));
   console.log(`prerendered ${page.meta.path} -> ${rel} (${body.length} chars)`);
 }
+
+// Social cards: one 1200x630 JPG per page (title on the brand background).
+const wrap = (text, max) => {
+  const lines = [];
+  let line = "";
+  for (const word of text.split(/\s+/)) {
+    if ((line + " " + word).trim().length > max && line) { lines.push(line); line = word; }
+    else line = (line + " " + word).trim();
+  }
+  if (line) lines.push(line);
+  return lines;
+};
+const xmlEsc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const logoPng = await sharp(path.join(publicDir, "logo-footer-white.png")).resize({ width: 340 }).png().toBuffer();
+const fallbackOg = path.join(publicDir, "opengraph.jpg");
+for (const page of pages) {
+  const m = page.meta;
+  const name = m.ogImage.match(/\/og\/([^/]+)\.jpg$/)?.[1];
+  if (!name) continue;
+  const raw = m.path === "/" ? "Your AI Voice Assistant Talks to Customers 24/7" : m.title.replace(/ \| .*$/, "");
+  const label = m.ogType === "article" ? "AI VOICE AGENT GUIDE" : m.path === "/" ? "24/7 AI VOICE ASSISTANT" : "B2BVOICE";
+  const size = raw.length <= 55 ? 68 : raw.length <= 105 ? 54 : 44;
+  const lines = wrap(raw, Math.floor(1040 / (size * 0.52))).slice(0, 4);
+  const tspans = lines.map((l, i) => `<tspan x="80" dy="${i === 0 ? 0 : Math.round(size * 1.18)}">${xmlEsc(l)}</tspan>`).join("");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00357a"/><stop offset="1" stop-color="#001a3f"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#22b8e8"/>
+  <text x="80" y="200" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#22b8e8">${xmlEsc(label)}</text>
+  <text x="80" y="${200 + size + 20}" font-family="Arial, Helvetica, sans-serif" font-size="${size}" font-weight="800" fill="#ffffff">${tspans}</text>
+  <text x="80" y="576" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" fill="#9fd6f2">b2b-voice.com</text>
+</svg>`;
+  const out = path.join(publicDir, "og", `${name}.jpg`);
+  await mkdir(path.dirname(out), { recursive: true });
+  try {
+    await sharp(Buffer.from(svg))
+      .composite([{ input: logoPng, left: 80, top: 70 }])
+      .jpeg({ quality: 82, mozjpeg: true })
+      .toFile(out);
+  } catch (err) {
+    console.warn(`og image for ${m.path} failed (${err.message}); using opengraph.jpg`);
+    await copyFile(fallbackOg, out);
+  }
+}
+console.log("og images written");
 
 // Real 404 page (nginx serves it with status 404).
 await write("404.html", assemble(notFoundPage, await render("/404")));
