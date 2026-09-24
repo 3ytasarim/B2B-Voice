@@ -41,6 +41,14 @@ check "/index.html -> 301"              "[ \$(code $BASE/index.html) = 301 ]"
 check "/admin has noindex header"       "curl -sI $BASE/admin | grep -qi 'x-robots-tag: noindex'"
 check "/api/ is proxied, not HTML"      "! curl -s $BASE/api/blog | grep -q '<html'"
 
+echo "== compression and caching"
+ASSET=$(curl -s "$BASE/" | grep -o '/assets/app-[^"]*\.js' | head -1)
+check "HTML is gzip-compressed"         "curl -sI -H 'Accept-Encoding: gzip' $BASE/ | grep -qi 'content-encoding: gzip'"
+check "HTML revalidates (no-cache)"     "curl -sI $BASE/ | grep -i '^cache-control:' | grep -qi no-cache"
+check "hashed asset is immutable"       "curl -sI $BASE$ASSET | grep -i '^cache-control:' | grep -qi immutable"
+check "fonts cached for 30 days"        "curl -sI $BASE/fonts/bricolage-grotesque-latin.woff2 | grep -i '^cache-control:' | grep -q 2592000"
+check "OG card is served as image/jpeg" "curl -sI $BASE/og/home.jpg | grep -i '^content-type:' | grep -qi image/jpeg"
+
 case "$BASE" in
   https://b2b-voice.com*)
     echo "== domain redirects (production only)"

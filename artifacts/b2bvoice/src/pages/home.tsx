@@ -8,7 +8,7 @@ import { PatternText } from "@/components/ui/pattern-text";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
-import { FooterRobot } from "@/components/ui/robot-hero";
+import { LazyFooterRobot } from "@/components/LazyFooterRobot";
 import { motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
@@ -3125,7 +3125,7 @@ const Footer = () => {
           ref={robotWrapRef}
           className="hidden sm:block absolute -right-10 bottom-16 md:bottom-20 pointer-events-none"
         >
-          <FooterRobot className="pointer-events-auto h-56 w-56 md:h-72 md:w-72 lg:h-80 lg:w-80" />
+          <LazyFooterRobot className="pointer-events-auto h-56 w-56 md:h-72 md:w-72 lg:h-80 lg:w-80" />
         </div>
 
         <div className="py-5 flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-white/40">
