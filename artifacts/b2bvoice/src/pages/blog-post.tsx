@@ -4,6 +4,11 @@ import { blogPosts, fmtDate, getPostBySlug, type BlogPost } from "@/lib/blogPost
 import { NOT_FOUND_META, postMeta } from "@/seo/pageMeta";
 import { usePageMeta } from "@/seo/usePageMeta";
 
+/** Wide tables scroll inside .table-wrap: give that region keyboard access. */
+function withAccessibleTables(html: string): string {
+  return html.replace(/class="table-wrap"/g, 'class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"');
+}
+
 /** Turns the "Published August 30, 2026" text into a real <time datetime>. */
 function withTimeElement(html: string, isoDate: string): string {
   return html.replace(
@@ -30,17 +35,17 @@ export default function BlogPostPage() {
   usePageMeta(meta);
 
   const content = useMemo(
-    () => (post ? withTimeElement(post.content, post.date) : ""),
+    () => (post ? withAccessibleTables(withTimeElement(post.content, post.date)) : ""),
     [post],
   );
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center gap-4">
+      <main id="main-content" className="min-h-screen bg-white flex flex-col items-center justify-center gap-4">
         <h1 className="text-2xl font-bold text-gray-900">404 – Page not found</h1>
         <p className="text-gray-500">This page could not be found.</p>
         <Link href="/blog" className="text-primary font-semibold hover:underline">← Back to Blog</Link>
-      </div>
+      </main>
     );
   }
 
@@ -50,8 +55,8 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-6 pt-8">
-        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:underline">
+      <header className="container mx-auto px-6 pt-8">
+        <Link href="/blog" className="inline-flex items-center gap-2 py-3 -my-3 text-sm text-primary font-semibold hover:underline">
           ← Back to Blog
         </Link>
 
@@ -75,7 +80,7 @@ export default function BlogPostPage() {
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
         )}
-      </div>
+      </header>
 
       {/*
         The article's own <main> + <article> + <h1> header is embedded
@@ -83,12 +88,14 @@ export default function BlogPostPage() {
         <div> so each page has exactly one <main>, one <article> and one <h1>.
       */}
       <div
-        className="blog-content"
+        id="main-content"
+        tabIndex={-1}
+        className="blog-content focus:outline-none"
         dangerouslySetInnerHTML={{ __html: content }}
         data-testid="blog-post-content"
       />
 
-      <div className="container mx-auto px-6 max-w-5xl mt-4 pt-8 pb-16 border-t border-gray-100">
+      <footer className="container mx-auto px-6 max-w-5xl mt-4 pt-8 pb-16 border-t border-gray-100">
         {post.tags.length > 0 && (
           <ul className="flex flex-wrap gap-2 mb-10" aria-label="Topics">
             {post.tags.map((tag) => (
@@ -118,7 +125,7 @@ export default function BlogPostPage() {
           <Link href="/demo" className="text-primary font-semibold hover:underline">Book a free B2BVoice demo</Link>{" "}
           or read more about <Link href="/" className="text-primary font-semibold hover:underline">what B2BVoice builds for businesses</Link>.
         </p>
-      </div>
+      </footer>
     </div>
   );
 }

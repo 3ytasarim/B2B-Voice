@@ -1,5 +1,5 @@
 import { lazy, Suspense, type ComponentType } from "react";
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -35,9 +35,25 @@ const DemoPage = lazyPage(routeLoaders.demo);
 const BlogPage = lazyPage(routeLoaders.blog);
 const BlogPostPage = lazyPage(routeLoaders.blogPost);
 
+/** First tab stop: lets keyboard users jump past the navigation. */
+function SkipLink() {
+  const [location] = useLocation();
+  if (location.startsWith("/admin")) return null;
+  return (
+    <a
+      href="#main-content"
+      className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:bg-white focus:px-5 focus:py-3 focus:text-sm focus:font-bold focus:text-primary focus:shadow-lg"
+    >
+      Skip to main content
+    </a>
+  );
+}
+
 function Router() {
   useGoogleTracking();
   return (
+    <>
+    <SkipLink />
     <Switch>
         <Route path="/" component={Home} />
         <Route path="/admin/login" component={AdminLogin} />
@@ -52,6 +68,7 @@ function Router() {
         <Route path="/:slug" component={BlogPostPage} />
         <Route component={NotFound} />
     </Switch>
+    </>
   );
 }
 

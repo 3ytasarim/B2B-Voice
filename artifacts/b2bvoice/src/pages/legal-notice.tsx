@@ -7,14 +7,14 @@ const PAGE_META = STATIC_PAGES.find((p) => p.path === "/legal-notice")!;
 export default function LegalNotice() {
   usePageMeta(PAGE_META);
   return (
-    <div className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-white">
       <div className="container mx-auto px-6 py-16 max-w-3xl">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm text-primary font-semibold mb-10 hover:underline">
+        <Link href="/" className="inline-flex items-center gap-2 py-3 -mt-3 mb-7 text-sm text-primary font-semibold hover:underline">
           ← Back to Home
         </Link>
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Legal Notice</h1>
-        <p className="text-sm text-gray-400 mb-10">Last updated: May 2026</p>
+        <p className="text-sm text-gray-500 mb-10">Last updated: May 2026</p>
 
         <div className="prose prose-gray max-w-none space-y-8 text-gray-600 leading-relaxed">
           <section>
@@ -59,6 +59,6 @@ export default function LegalNotice() {
           </section>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

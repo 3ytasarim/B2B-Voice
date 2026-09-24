@@ -21,7 +21,7 @@ Branch: `seo/ssg-overhaul`. Status legend: done / code-ready (needs deploy) / op
 | 14 | Internal linking | done except service/sector pages (content decision pending); `check:links` audits broken links + orphans |
 | 15 | Keep URL structure | done |
 | 16 | Compression, cache, code splitting | done in code (entry JS 418 -> 152 KB gzip, self-hosted fonts); Brotli needs the nginx module |
-| 17 | Mobile/a11y (viewport zoom fixed) | partial – labels/targets/contrast audit open |
+| 17 | Mobile/a11y | done – axe-core clean on blog, article, demo, legal pages; see section below |
 | 18 | noindex/broken-link audit | partial – admin noindex done, crawl open |
 | 19 | Search Console / Bing | owner action after deploy |
 | 20 | Backlinks | not development work |
@@ -75,3 +75,16 @@ admin panel descriptive.
 - **Third-party scripts:** the ElevenLabs widget and Umami recorder load after the `load` event when the browser is idle. GTM and Umami `script.js` are unchanged.
 - **nginx (`deploy/nginx/b2b-voice-locations.conf`):** hashed `/assets/` immutable for 1 year; fonts/images/audio 30 days; HTML `no-cache`; gzip for text formats. Brotli: check `nginx -V 2>&1 | grep -c brotli`; if 0, `apt install libnginx-mod-http-brotli-filter libnginx-mod-http-brotli-static` and uncomment the block at the bottom of the locations file.
 - **Core Web Vitals:** not measurable in this environment; run PageSpeed Insights on staging/production after deploy.
+
+## Mobile usability and accessibility (item 17)
+
+Audited with axe-core (mobile 390 px and desktop 1280 px) plus manual checks.
+
+- **No horizontal overflow** at 390 px on any page; zoom is allowed (viewport `maximum-scale` removed).
+- **Forms (demo, admin login):** every field has a `<label htmlFor>` (or `aria-label`), `id`/`name`, correct `autocomplete`; errors use `role="alert"`; selectable options expose `aria-pressed`; the password toggle has an accessible name.
+- **Icon-only buttons** now have names: language menu (`Language: English`, `aria-expanded`), 12 voice-sample play buttons (`Play Alex voice sample`, `aria-pressed`).
+- **Landmarks and headings:** every page has one `<main id="main-content">`; blog posts use `<header>`/`<footer>` around the chrome; heading order fixed (demo steps and hero card are `h2`). A "Skip to main content" link is the first tab stop.
+- **Keyboard:** global `:focus-visible` ring; scrollable regions (industries carousel, article tables) are focusable.
+- **Contrast:** `text-gray-400`/`gray-300`/small green/amber labels raised to at least 4.5:1 (mostly `gray-500`).
+- **Touch targets:** nav buttons 44 px; back links, blog category links and "Continue Reading" enlarged without moving the layout (padding + negative margin); voice play button has an 8 px invisible hit area.
+- **Known leftovers:** language-chip buttons in the multilingual demo widget are 28 px tall (above WCAG 2.2 AA 24 px, below the 44-48 px goal); a few decorative mock-UI labels use 8-9 px type; the ElevenLabs widget is third-party and outside our landmarks; `axe` still reports a few transient contrast hits on the animated mock dashboard.

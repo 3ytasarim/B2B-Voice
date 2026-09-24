@@ -305,3 +305,14 @@ body {
 .blog-content li {
   display: revert;
 }
+
+/* Keyboard focus: visible ring for links, buttons, form controls and
+   scrollable regions. :focus-visible so mouse/touch users never see it. */
+:focus-visible {
+  outline: 2px solid #00357a;
+  outline-offset: 2px;
+}
+.bg-primary:focus-visible,
+footer :focus-visible {
+  outline-color: #42d7ff;
+}

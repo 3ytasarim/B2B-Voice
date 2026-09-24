@@ -216,18 +216,20 @@ export default function AdminLogin() {
 
           <div className="mb-8">
             <h1 className="text-2xl font-bold text-gray-900 mb-1">Admin Login</h1>
-            <p className="text-gray-400 text-sm">Sign in to manage demo requests</p>
+            <p className="text-gray-500 text-sm">Sign in to manage demo requests</p>
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             {/* Username */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+              <label htmlFor="admin-username" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
                 Username
               </label>
               <div className="relative">
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
+                  id="admin-username"
+                  name="username"
                   type="text"
                   autoComplete="username"
                   value={username}
@@ -242,12 +244,14 @@ export default function AdminLogin() {
 
             {/* Password */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+              <label htmlFor="admin-password" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
                 Password
               </label>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
+                  id="admin-password"
+                  name="password"
                   type={showPass ? "text" : "password"}
                   autoComplete="current-password"
                   value={password}
@@ -260,7 +264,9 @@ export default function AdminLogin() {
                 <button
                   type="button"
                   onClick={() => setShowPass(v => !v)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label={showPass ? "Hide password" : "Show password"}
+                  aria-pressed={showPass}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-gray-700 transition-colors"
                 >
                   {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -299,7 +305,7 @@ export default function AdminLogin() {
             </button>
           </form>
 
-          <p className="mt-8 text-center text-xs text-gray-300">
+          <p className="mt-8 text-center text-xs text-gray-500">
             B2BVoice Admin · Restricted Access
           </p>
         </motion.div>

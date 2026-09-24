@@ -33,7 +33,7 @@ function StepIndicator({ current, stepLabels }: { current: number; stepLabels: s
                     ? "bg-primary text-white"
                     : active
                     ? "bg-primary text-white ring-4 ring-primary/20"
-                    : "bg-gray-100 text-gray-400"
+                    : "bg-gray-100 text-gray-500"
                 }`}
               >
                 {done ? <Check className="w-3.5 h-3.5" /> : stepNum}
@@ -216,13 +216,13 @@ export default function DemoRequestModal({ open, onClose }: { open: boolean; onC
             <div className="flex items-start justify-between px-6 pt-6 pb-4 border-b border-gray-100">
               <div>
                 <h2 className="text-lg font-bold text-gray-900">{t.modal.title}</h2>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-500 mt-0.5">
                   {step < 5 ? t.modal.sub : ""}
                 </p>
               </div>
               <button
                 onClick={handleClose}
-                className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors flex-shrink-0"
+                className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors flex-shrink-0"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -261,7 +261,7 @@ export default function DemoRequestModal({ open, onClose }: { open: boolean; onC
                           placeholder="+1 (555) 000-0000"
                           className="w-full px-3 py-2.5 text-sm border border-gray-200 focus:outline-none focus:border-primary/60 placeholder-gray-300"
                         />
-                        <p className="text-[11px] text-gray-400 mt-1">{t.modal.step1.phoneHint}</p>
+                        <p className="text-[11px] text-gray-500 mt-1">{t.modal.step1.phoneHint}</p>
                       </div>
 
                       {/* Scenario toggle */}
@@ -330,7 +330,7 @@ export default function DemoRequestModal({ open, onClose }: { open: boolean; onC
                       )}
                       <div>
                         <label className="text-xs font-semibold text-gray-600 block mb-1.5">
-                          {t.modal.step2.websiteLabel} <span className="text-gray-400 font-normal">(optional)</span>
+                          {t.modal.step2.websiteLabel} <span className="text-gray-500 font-normal">(optional)</span>
                         </label>
                         <input
                           type="text"
@@ -422,7 +422,7 @@ export default function DemoRequestModal({ open, onClose }: { open: boolean; onC
                             </div>
                             <div>
                               <div className={`text-sm font-semibold ${selected ? "text-primary" : "text-gray-800"}`}>{dt.label}</div>
-                              <div className="text-xs text-gray-400 mt-0.5">{dt.desc}</div>
+                              <div className="text-xs text-gray-500 mt-0.5">{dt.desc}</div>
                             </div>
                           </button>
                         );
@@ -483,7 +483,7 @@ export default function DemoRequestModal({ open, onClose }: { open: boolean; onC
 
                       {form.scenario.trim() && (
                         <div className="mt-3 mb-4 text-left bg-gray-50 border border-gray-100 px-4 py-3">
-                          <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Your scenario</p>
+                          <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">Your scenario</p>
                           <p className="text-sm text-gray-700 leading-relaxed">{form.scenario}</p>
                         </div>
                       )}

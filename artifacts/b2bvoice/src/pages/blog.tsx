@@ -29,9 +29,9 @@ export default function BlogPage() {
   }, [query, activeCategory]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-white">
       <div className="container mx-auto px-6 py-16 max-w-6xl">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm text-primary font-semibold mb-10 hover:underline">
+        <Link href="/" className="inline-flex items-center gap-2 py-3 -mt-3 mb-7 text-sm text-primary font-semibold hover:underline">
           ← Back to Home
         </Link>
 
@@ -47,10 +47,10 @@ export default function BlogPage() {
 
         <div className="grid lg:grid-cols-[1fr_320px] gap-16">
           {/* Main post list */}
-          <main>
+          <div>
             {posts.length === 0 ? (
               <div className="py-20 text-center">
-                <p className="text-gray-400 text-sm">No articles match your search.</p>
+                <p className="text-gray-500 text-sm">No articles match your search.</p>
               </div>
             ) : (
               <div className="flex flex-col">
@@ -66,7 +66,7 @@ export default function BlogPage() {
                       </Link>
                     </h2>
 
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-400 mb-6">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500 mb-6">
                       <span className="font-semibold text-gray-600">{p.author}</span>
                       <span aria-hidden="true">·</span>
                       <span>{fmtDate(p.date)}</span>
@@ -74,7 +74,7 @@ export default function BlogPage() {
                       <button
                         type="button"
                         onClick={() => setActiveCategory(p.category)}
-                        className="font-bold uppercase tracking-wide text-primary hover:underline"
+                        className="py-2 -my-2 font-bold uppercase tracking-wide text-primary hover:underline"
                       >
                         {p.category}
                       </button>
@@ -96,7 +96,7 @@ export default function BlogPage() {
 
                     <Link
                       href={`/${p.slug}`}
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-5 py-2 text-xs font-bold uppercase tracking-wider text-primary hover:bg-primary hover:text-white transition-colors mb-6"
+                      className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-5 py-3 text-xs font-bold uppercase tracking-wider text-primary hover:bg-primary hover:text-white transition-colors mb-6"
                     >
                       Continue Reading<span className="sr-only">: {p.title}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -118,7 +118,7 @@ export default function BlogPage() {
                 ))}
               </div>
             )}
-          </main>
+          </div>
 
           {/* Sidebar */}
           <aside className="lg:pt-1">
@@ -143,7 +143,7 @@ export default function BlogPage() {
                         <span className="block text-sm font-semibold text-gray-800 leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                           {p.title}
                         </span>
-                        <span className="block text-xs text-gray-400 mt-1">{fmtDate(p.date)}</span>
+                        <span className="block text-xs text-gray-500 mt-1">{fmtDate(p.date)}</span>
                       </span>
                     </Link>
                   </li>
@@ -154,13 +154,13 @@ export default function BlogPage() {
             <div className="mb-10">
               <h3 className="text-sm font-black uppercase tracking-widest text-gray-900 mb-5">Search</h3>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <input
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search articles…"
-                  className="w-full border border-gray-200 rounded-full pl-10 pr-4 py-2.5 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-colors"
+                  className="w-full border border-gray-200 rounded-full pl-10 pr-4 py-2.5 text-sm text-gray-700 placeholder:text-gray-500 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-colors"
                   aria-label="Search"
                 />
               </div>
@@ -173,7 +173,7 @@ export default function BlogPage() {
                   <button
                     type="button"
                     onClick={() => setActiveCategory(null)}
-                    className={`text-sm transition-colors ${activeCategory === null ? "text-primary font-bold" : "text-gray-500 hover:text-primary"}`}
+                    className={`py-2 -my-2 text-sm transition-colors ${activeCategory === null ? "text-primary font-bold" : "text-gray-500 hover:text-primary"}`}
                   >
                     All
                   </button>
@@ -183,7 +183,7 @@ export default function BlogPage() {
                     <button
                       type="button"
                       onClick={() => setActiveCategory(cat)}
-                      className={`text-sm transition-colors ${activeCategory === cat ? "text-primary font-bold" : "text-gray-500 hover:text-primary"}`}
+                      className={`py-2 -my-2 text-sm transition-colors ${activeCategory === cat ? "text-primary font-bold" : "text-gray-500 hover:text-primary"}`}
                     >
                       {cat}
                     </button>
@@ -194,6 +194,6 @@ export default function BlogPage() {
           </aside>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

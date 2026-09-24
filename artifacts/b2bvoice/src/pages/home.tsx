@@ -194,7 +194,7 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
 
             {/* Header */}
             <div className="px-8 pt-7 pb-5">
-              <button onClick={onClose} className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 transition-colors">
+              <button onClick={onClose} className="absolute top-5 right-5 text-gray-500 hover:text-gray-600 transition-colors">
                 <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
@@ -302,15 +302,19 @@ const Navbar = () => {
           {/* Language dropdown */}
           <div className="relative" ref={langRef}>
             <button
+              type="button"
               onClick={() => setLangOpen((v) => !v)}
-              className="flex items-center gap-2 sm:gap-2.5 px-2.5 sm:px-4 h-10 sm:h-auto sm:py-2.5 bg-white border border-gray-200 hover:border-gray-300 shadow-sm transition-all rounded-none"
+              aria-label={`Language: ${active.name}`}
+              aria-haspopup="true"
+              aria-expanded={langOpen}
+              className="flex items-center gap-2 sm:gap-2.5 px-2.5 sm:px-4 h-11 sm:h-auto sm:py-2.5 bg-white border border-gray-200 hover:border-gray-300 shadow-sm transition-all rounded-none"
             >
               <active.Flag className="w-5 h-auto sm:w-[22px] shrink-0" style={{ display: "block", borderRadius: 3, boxShadow: "0 1px 3px rgba(0,0,0,0.15)" }} />
               <span className="hidden sm:inline text-[11px] font-black uppercase tracking-widest text-gray-800">{active.label}</span>
               <motion.svg
                 animate={{ rotate: langOpen ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="w-3 h-3 text-gray-400"
+                className="w-3 h-3 text-gray-500"
                 fill="none" stroke="currentColor" viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
@@ -337,7 +341,7 @@ const Navbar = () => {
                       <Flag className="w-5 h-auto shrink-0" style={{ display: "block", borderRadius: 3, boxShadow: "0 1px 3px rgba(0,0,0,0.15)" }} />
                       <div className="min-w-0">
                         <p className="text-[12px] font-bold text-gray-800 leading-none">{name}</p>
-                        <p className="text-[9px] uppercase tracking-widest text-gray-400 mt-0.5 font-mono">{label}</p>
+                        <p className="text-[9px] uppercase tracking-widest text-gray-500 mt-0.5 font-mono">{label}</p>
                       </div>
                       {code === lang && (
                         <svg aria-hidden="true" focusable="false" className="w-3.5 h-3.5 text-primary ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -356,7 +360,7 @@ const Navbar = () => {
             href="/demo"
             data-testid="nav-cta"
             className="text-center flex items-center justify-center bg-primary text-white font-bold hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(0,53,122,0.3)] transition-all rounded-none
-              h-10 min-w-[72px] px-2 sm:min-w-0 sm:px-5 sm:py-2.5 sm:text-sm sm:uppercase sm:tracking-wide"
+              h-11 min-w-[72px] px-2 sm:min-w-0 sm:px-5 sm:py-2.5 sm:text-sm sm:uppercase sm:tracking-wide"
           >
             <span className="text-[9px] font-black uppercase tracking-widest sm:hidden whitespace-nowrap">{lang === "de" ? "ZUR DEMO" : lang === "es" ? "PARA DEMO" : "FOR DEMO"}</span>
             <span className="hidden sm:inline whitespace-nowrap">{t.nav.requestDemo}</span>
@@ -379,7 +383,7 @@ const OverviewTab = () => {
     <div className="grid grid-cols-2 gap-2">
       {t.dashboard.stats.map(s => (
         <div key={s.label} className="bg-white border border-gray-100 rounded-lg p-2.5 shadow-sm">
-          <div className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">{s.label}</div>
+          <div className="text-[9px] font-bold uppercase tracking-wider text-gray-500 mb-0.5">{s.label}</div>
           <div className="text-lg font-bold text-gray-900">{s.val}</div>
         </div>
       ))}
@@ -396,7 +400,7 @@ const OverviewTab = () => {
               animate={{ height: `${h}%` }}
               transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
             />
-            <span className="text-[7px] text-gray-400">{DASH_DAYS[i]}</span>
+            <span className="text-[7px] text-gray-500">{DASH_DAYS[i]}</span>
           </div>
         ))}
       </div>
@@ -406,15 +410,15 @@ const OverviewTab = () => {
       {t.dashboard.calls.slice(0, 2).map((c, i) => (
         <div key={i} className="flex items-center gap-2 py-1.5 border-b border-gray-50 last:border-0">
           <div className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
-            <Users className="w-3 h-3 text-gray-400" />
+            <Users className="w-3 h-3 text-gray-500" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="text-[11px] font-semibold text-gray-800 truncate">{c.name}</div>
-            <div className="text-[9px] text-gray-400">{c.time}</div>
+            <div className="text-[9px] text-gray-500">{c.time}</div>
           </div>
           <span className={`text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 border rounded ${
             i === 0
-              ? "bg-green-50 text-green-600 border-green-200"
+              ? "bg-green-50 text-green-700 border-green-200"
               : "bg-blue-50 text-blue-600 border-blue-200"
           }`}>{c.status}</span>
         </div>
@@ -439,14 +443,14 @@ const CallsTab = () => {
     ].map((c, i) => (
       <div key={i} className="flex items-center gap-2 py-2 border-b border-gray-50 last:border-0">
         <div className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
-          <Users className="w-3 h-3 text-gray-400" />
+          <Users className="w-3 h-3 text-gray-500" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-[11px] font-semibold text-gray-800 truncate">{c.name}</div>
-          <div className="text-[9px] text-gray-400">{c.time} · {c.dur}</div>
+          <div className="text-[9px] text-gray-500">{c.time} · {c.dur}</div>
         </div>
         <span className={`text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 border rounded ${
-          c.color === "green"  ? "bg-green-50 text-green-600 border-green-200" :
+          c.color === "green"  ? "bg-green-50 text-green-700 border-green-200" :
           c.color === "blue"   ? "bg-blue-50 text-blue-600 border-blue-200"   :
           c.color === "orange" ? "bg-orange-50 text-orange-500 border-orange-200" :
                                  "bg-red-50 text-red-500 border-red-200"
@@ -464,7 +468,7 @@ const AppointmentsTab = () => {
   <div>
     <div className="flex items-center justify-between mb-2">
       <div className="text-[11px] font-bold text-gray-700">{t.dashboard.todayAppts}</div>
-      <div className="text-[9px] text-gray-400 font-medium">4 {t.dashboard.scheduled}</div>
+      <div className="text-[9px] text-gray-500 font-medium">4 {t.dashboard.scheduled}</div>
     </div>
     {[
       { time: "14:30", name: "Michael T.", type: t.dashboard.appointmentTypes.checkup,      status: "upcoming" },
@@ -476,7 +480,7 @@ const AppointmentsTab = () => {
         <div className="text-[11px] font-bold text-primary bg-primary/10 px-2 py-1 rounded shrink-0 min-w-[40px] text-center">{a.time}</div>
         <div className="flex-1 min-w-0">
           <div className="text-[11px] font-semibold text-gray-800">{a.name}</div>
-          <div className="text-[9px] text-gray-400">{a.type}</div>
+          <div className="text-[9px] text-gray-500">{a.type}</div>
         </div>
         <div className="w-2 h-2 bg-green-400 rounded-full shrink-0" />
       </div>
@@ -513,7 +517,7 @@ const HeroDashboard = () => {
         <div className="flex" style={{ minHeight: 420 }}>
           {/* Sidebar */}
           <div className="w-32 border-r border-gray-100 bg-gray-50 p-3 shrink-0 flex flex-col">
-            <div className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-2 px-2">{t.dashboard.menuLabel}</div>
+            <div className="text-[9px] font-bold uppercase tracking-widest text-gray-500 mb-2 px-2">{t.dashboard.menuLabel}</div>
             {t.dashboard.menu.map((item, i) => (
               <button
                 key={item}
@@ -554,7 +558,7 @@ const HeroDashboard = () => {
               key={label}
               onClick={() => setActive(i)}
               className={`flex-1 py-2 text-[10px] font-bold uppercase tracking-wider transition-colors ${
-                i === active ? "text-primary border-t-2 border-primary -mt-px bg-primary/5" : "text-gray-400 hover:text-gray-600"
+                i === active ? "text-primary border-t-2 border-primary -mt-px bg-primary/5" : "text-gray-500 hover:text-gray-600"
               }`}
             >
               {label}
@@ -670,7 +674,7 @@ const Hero = () => {
                 <Mail className="w-5 h-5" />
               </motion.div>
               <div>
-                <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold leading-none mb-1">{lang === "de" ? "oder per E-Mail an" : lang === "es" ? "o escríbenos a" : "or email us at"}</p>
+                <p className="text-[11px] uppercase tracking-widest text-gray-500 font-bold leading-none mb-1">{lang === "de" ? "oder per E-Mail an" : lang === "es" ? "o escríbenos a" : "or email us at"}</p>
                 <p className="text-xl font-black text-primary group-hover:underline underline-offset-2 leading-none">
                   hello@b2b-voice.com
                 </p>
@@ -717,17 +721,17 @@ const Hero = () => {
                   </span>
                 </div>
 
-                <h3 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
+                <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
                   <SparklesText
                     text={t.hero.talkTitle}
                     className="text-gray-900"
                     sparklesCount={7}
                   />
-                </h3>
-                <p className="text-3xl sm:text-4xl italic text-gray-400 font-serif mb-6">
+                </h2>
+                <p className="text-3xl sm:text-4xl italic text-gray-500 font-serif mb-6">
                   <SparklesText
                     text={t.hero.talkNow}
-                    className="text-gray-400"
+                    className="text-gray-500"
                     sparklesCount={5}
                   />
                 </p>
@@ -976,7 +980,7 @@ const MultiLangAnimation = () => {
             }}
           />
         ))}
-        <span className="ml-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest">100+ languages</span>
+        <span className="ml-2 text-[10px] text-gray-500 font-bold uppercase tracking-widest">100+ languages</span>
       </div>
     </div>
   );
@@ -1245,7 +1249,7 @@ const LanguagesSection = () => {
             <p className="text-base sm:text-lg font-medium text-gray-600 mb-4 max-w-xl mx-auto lg:mx-0">
               {tl.languages.sub}
             </p>
-            <p className="text-sm text-gray-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p className="text-sm text-gray-500 leading-relaxed max-w-lg mx-auto lg:mx-0">
               {tl.languages.desc}
             </p>
           </div>
@@ -1257,19 +1261,19 @@ const LanguagesSection = () => {
             {/* Header */}
             <div className="flex items-center justify-between mb-3 pb-3 border-b border-gray-100 gap-2">
               <div className="min-w-0 flex-1">
-                <p className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-1">{tl.languages.activeLanguage}</p>
+                <p className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1">{tl.languages.activeLanguage}</p>
                 <div className="flex items-center gap-2">
                   <FlagCircle code={localizedLanguages[active].code} size={24} />
                   <span className="text-base font-bold text-gray-900 truncate">{localizedLanguages[active].name}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-1 px-2 py-1 bg-green-50 border border-green-200 text-green-600 text-[9px] font-mono rounded-none shrink-0">
+              <div className="flex items-center gap-1 px-2 py-1 bg-green-50 border border-green-200 text-green-700 text-[9px] font-mono rounded-none shrink-0">
                 <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
                 {tl.languages.active}
               </div>
             </div>
             {/* Language grid — 2 cols on mobile */}
-            <p className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">{tl.languages.languagesLabel}</p>
+            <p className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-2">{tl.languages.languagesLabel}</p>
             <div className="grid grid-cols-2 gap-1.5">
               {localizedLanguages.map((lang, i) => (
                 <button
@@ -1295,7 +1299,7 @@ const LanguagesSection = () => {
               ].map((s) => (
                 <div key={s.label} className="flex-1 min-w-0 text-center">
                   <p className="text-base font-bold text-primary leading-none">{s.value}</p>
-                  <p className="text-[9px] uppercase tracking-wider text-gray-400 mt-0.5 font-mono truncate">{s.label}</p>
+                  <p className="text-[9px] uppercase tracking-wider text-gray-500 mt-0.5 font-mono truncate">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -1315,7 +1319,7 @@ const LanguagesSection = () => {
               ].map((s) => (
                 <div key={s.label} className="flex flex-col items-center px-5 py-3 border border-gray-200 bg-gray-50">
                   <span className="text-2xl font-bold text-primary leading-none">{s.value}</span>
-                  <span className="text-[10px] uppercase tracking-widest text-gray-400 mt-1 font-mono">{s.label}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-gray-500 mt-1 font-mono">{s.label}</span>
                 </div>
               ))}
             </div>
@@ -1365,7 +1369,7 @@ const LanguagesSection = () => {
                 {/* Card header */}
                 <div className="flex items-center justify-between mb-3 pb-3 border-b border-gray-100 gap-2">
                   <div className="min-w-0 flex-1">
-                    <p className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-1">{tl.languages.activeLanguage}</p>
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1">{tl.languages.activeLanguage}</p>
                     <div className="flex items-center gap-2">
                       <motion.div
                         key={active}
@@ -1386,14 +1390,14 @@ const LanguagesSection = () => {
                       </motion.span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 px-2 py-1 bg-green-50 border border-green-200 text-green-600 text-[9px] font-mono rounded-none shrink-0">
+                  <div className="flex items-center gap-1 px-2 py-1 bg-green-50 border border-green-200 text-green-700 text-[9px] font-mono rounded-none shrink-0">
                     <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
                     {tl.languages.active}
                   </div>
                 </div>
 
                 {/* Language grid */}
-                <p className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-3">{tl.languages.languagesLabel}</p>
+                <p className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-3">{tl.languages.languagesLabel}</p>
                 <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-2 sm:gap-2">
                   {localizedLanguages.map((lang, i) => (
                     <button
@@ -1414,15 +1418,15 @@ const LanguagesSection = () => {
                 {/* Bottom stat */}
                 <div className="mt-4 sm:mt-6 pt-3 sm:pt-5 border-t border-gray-100 flex items-center gap-2 sm:gap-4">
                   <div className="flex-1 min-w-0">
-                    <p className="text-[9px] sm:text-[10px] text-gray-400 mb-0.5 font-mono uppercase tracking-wider truncate">{tl.languages.totalLanguages}</p>
+                    <p className="text-[9px] sm:text-[10px] text-gray-500 mb-0.5 font-mono uppercase tracking-wider truncate">{tl.languages.totalLanguages}</p>
                     <p className="text-lg sm:text-2xl font-bold text-primary">30+</p>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[9px] sm:text-[10px] text-gray-400 mb-0.5 font-mono uppercase tracking-wider truncate">{tl.languages.responseTime}</p>
+                    <p className="text-[9px] sm:text-[10px] text-gray-500 mb-0.5 font-mono uppercase tracking-wider truncate">{tl.languages.responseTime}</p>
                     <p className="text-lg sm:text-2xl font-bold text-gray-900">&lt;0.5s</p>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[9px] sm:text-[10px] text-gray-400 mb-0.5 font-mono uppercase tracking-wider truncate">{tl.languages.availability}</p>
+                    <p className="text-[9px] sm:text-[10px] text-gray-500 mb-0.5 font-mono uppercase tracking-wider truncate">{tl.languages.availability}</p>
                     <p className="text-lg sm:text-2xl font-bold text-gray-900">24/7</p>
                   </div>
                 </div>
@@ -1582,6 +1586,9 @@ const IndustriesSection = () => {
         </button>
         <div
           ref={galleryRef}
+          tabIndex={0}
+          role="region"
+          aria-label={t.industries.heading}
           className="flex gap-5 overflow-x-auto scroll-smooth px-6 md:px-[max(4.5rem,calc((100vw-1200px)/2))] pb-5 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {industries.map((ind, i) => (
@@ -1624,7 +1631,7 @@ const IndustriesSection = () => {
         </div>
       </div>
       <div className="container mx-auto px-6 mt-5 flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
+        <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-slate-500">
           <ArrowRight className="h-4 w-4 text-primary" />
           <span>{t.industries.items.length} {t.industries.badge}</span>
           <span className="h-px w-12 bg-slate-300" />
@@ -2046,7 +2053,7 @@ const OrbitalIntegrations = () => {
               </motion.div>
               <div className="mt-3 text-center">
                 <p className="text-[13px] font-black uppercase tracking-widest text-slate-800">B2BVoice</p>
-                <p className="text-[10px] text-gray-400 font-semibold mt-0.5 uppercase tracking-wider">{lang === "de" ? "Ihr Tool" : lang === "es" ? "Tu herramienta" : "Your Tool"}</p>
+                <p className="text-[10px] text-gray-500 font-semibold mt-0.5 uppercase tracking-wider">{lang === "de" ? "Ihr Tool" : lang === "es" ? "Tu herramienta" : "Your Tool"}</p>
               </div>
             </div>
           </div>
@@ -2100,7 +2107,7 @@ const DB_DAYS = ["S","M","T","W","T","F","S"];
 
             {/* Sidebar */}
             <div className="w-56 bg-gray-50 border-r border-gray-200 p-5 hidden md:flex flex-col gap-1 shrink-0">
-              <div className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-3 px-2">{t.dashboard.menuLabel}</div>
+              <div className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-3 px-2">{t.dashboard.menuLabel}</div>
               {menuItems.map((item, i) => (
                 <button
                   key={item}
@@ -2110,7 +2117,7 @@ const DB_DAYS = ["S","M","T","W","T","F","S"];
                       ? "bg-primary/10 text-primary font-bold border-l-2 border-primary"
                       : i < 3
                         ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100 border-l-2 border-transparent cursor-pointer"
-                        : "text-gray-400 border-l-2 border-transparent cursor-default"
+                        : "text-gray-500 border-l-2 border-transparent cursor-default"
                   }`}
                 >
                   {item}
@@ -2139,7 +2146,7 @@ const DB_DAYS = ["S","M","T","W","T","F","S"];
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-b border-gray-100">
                 {t.dashboard.stats.map((stat, i) => (
                   <div key={i} className={`p-5 flex flex-col justify-center ${i < 3 ? "border-r border-gray-100" : ""}`}>
-                    <div className="text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-1">{stat.label}</div>
+                    <div className="text-gray-500 text-[10px] font-bold uppercase tracking-wider mb-1">{stat.label}</div>
                     <div className="text-2xl font-bold text-gray-900">{stat.val}</div>
                   </div>
                 ))}
@@ -2173,7 +2180,7 @@ const DB_DAYS = ["S","M","T","W","T","F","S"];
                                     animate={{ height: `${h}%` }}
                                     transition={{ duration: 0.6, delay: i * 0.06, ease: "easeOut" }}
                                   />
-                                  <span className="text-[9px] text-gray-400 font-bold">{DB_DAYS[i]}</span>
+                                  <span className="text-[9px] text-gray-500 font-bold">{DB_DAYS[i]}</span>
                                 </div>
                               ))}
                             </div>
@@ -2185,11 +2192,11 @@ const DB_DAYS = ["S","M","T","W","T","F","S"];
                               <div key={i} className="flex items-center justify-between py-2.5 border-b border-gray-100 last:border-0">
                                 <div className="flex items-center gap-3">
                                   <div className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center">
-                                    <Users className="w-3.5 h-3.5 text-gray-400" />
+                                    <Users className="w-3.5 h-3.5 text-gray-500" />
                                   </div>
                                   <div>
                                     <div className="text-gray-900 font-medium text-sm">{call.name}</div>
-                                    <div className="text-gray-400 text-xs">{call.time}</div>
+                                    <div className="text-gray-500 text-xs">{call.time}</div>
                                   </div>
                                 </div>
                                 <span className={`px-2 py-0.5 text-[10px] font-bold border uppercase tracking-wider ${call.color}`}>{call.status}</span>
@@ -2217,17 +2224,17 @@ const DB_DAYS = ["S","M","T","W","T","F","S"];
                       <div>
                         <div className="flex items-center justify-between mb-4">
                           <h4 className="text-gray-800 font-bold text-sm">{t.dashboard.allCallsToday}</h4>
-                          <span className="text-xs text-gray-400 font-medium">6 {t.dashboard.total}</span>
+                          <span className="text-xs text-gray-500 font-medium">6 {t.dashboard.total}</span>
                         </div>
                         <div className="border border-gray-100 bg-gray-50 divide-y divide-gray-100">
                           {[...t.dashboard.calls, ...dbExtraCalls].map((call, i) => (
                             <div key={i} className="flex items-center gap-4 px-5 py-3 hover:bg-white transition-colors">
                               <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
-                                <Users className="w-4 h-4 text-gray-400" />
+                                <Users className="w-4 h-4 text-gray-500" />
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="text-gray-900 font-medium text-sm truncate">{call.name}</div>
-                                <div className="text-gray-400 text-xs">{call.time}{("dur" in call) ? ` · ${(call as {dur:string}).dur}` : ""}</div>
+                                <div className="text-gray-500 text-xs">{call.time}{("dur" in call) ? ` · ${(call as {dur:string}).dur}` : ""}</div>
                               </div>
                               <span className={`shrink-0 px-2 py-0.5 text-[10px] font-bold border uppercase tracking-wider ${call.color}`}>{call.status}</span>
                             </div>
@@ -2255,7 +2262,7 @@ const DB_DAYS = ["S","M","T","W","T","F","S"];
                               <div className="text-primary font-mono text-base font-bold shrink-0 min-w-[48px]">{apt.time}</div>
                               <div>
                                 <div className="text-gray-900 text-sm font-semibold">{apt.title}</div>
-                                {"type" in apt && apt.type && <div className="text-gray-400 text-xs">{apt.type}</div>}
+                                {"type" in apt && apt.type && <div className="text-gray-500 text-xs">{apt.type}</div>}
                               </div>
                               <div className="ml-auto w-2 h-2 rounded-full bg-green-400 shrink-0" />
                             </motion.div>
@@ -2277,7 +2284,7 @@ const DB_DAYS = ["S","M","T","W","T","F","S"];
                     className={`flex-1 py-3 text-[11px] font-bold uppercase tracking-widest transition-colors ${
                       i === activeTab
                         ? "text-primary border-t-2 border-primary -mt-px bg-primary/5"
-                        : "text-gray-400 hover:text-gray-600"
+                        : "text-gray-500 hover:text-gray-600"
                     }`}
                   >
                     {label}
@@ -2498,7 +2505,7 @@ const ClientsPartners = () => {
               className="bg-white rounded-2xl px-2 py-4 sm:px-6 sm:py-6 shadow-sm border-2 border-gray-200 flex flex-col items-center hover:border-primary hover:shadow-[0_4px_20px_rgba(0,53,122,0.12)] transition-all duration-300"
             >
               <span className="text-lg sm:text-2xl font-bold text-gray-900 leading-tight">{stat.value}</span>
-              <span className="text-[10px] sm:text-xs text-gray-400 mt-1 font-medium leading-snug">{stat.label}</span>
+              <span className="text-[10px] sm:text-xs text-gray-500 mt-1 font-medium leading-snug">{stat.label}</span>
             </div>
           ))}
         </div>
@@ -2508,7 +2515,7 @@ const ClientsPartners = () => {
 };
 
 // --- Testimonials ---
-const AVATAR_COLORS = ["#00357a","#4f8ef7","#059669","#7c3aed","#dc2626","#d97706","#0891b2","#be185d"];
+const AVATAR_COLORS = ["#00357a","#2563eb","#047857","#7c3aed","#dc2626","#b45309","#0e7490","#be185d"];
 
 const EXTRA_TESTIMONIALS = [
   { quote: "Response times dropped dramatically. Our leads are handled faster than ever before.", author: "Thomas R.", role: "CEO, TechSolutions GmbH", metric: "8× faster response" },
@@ -2541,7 +2548,7 @@ const TCard = ({ item, colorIdx }: { item: { quote: string; author: string; role
           </div>
           <div className="min-w-0">
             <div className="font-bold text-gray-900 text-sm leading-tight truncate">{item.author}</div>
-            <div className="text-xs text-gray-400 leading-tight truncate">{item.role}</div>
+            <div className="text-xs text-gray-500 leading-tight truncate">{item.role}</div>
           </div>
         </div>
         <span className="text-xs font-semibold text-primary bg-primary/10 border border-primary/20 px-2 py-1 whitespace-nowrap flex-shrink-0">
@@ -2723,7 +2730,7 @@ const FAQSection = () => {
                 <span className="font-semibold text-gray-900 pr-4 text-sm leading-snug">{faq.q}</span>
                 {open === i
                   ? <Minus className="w-4 h-4 text-primary flex-shrink-0" />
-                  : <Plus className="w-4 h-4 text-gray-400 flex-shrink-0" />}
+                  : <Plus className="w-4 h-4 text-gray-500 flex-shrink-0" />}
               </button>
               <AnimatePresence>
                 {open === i && (
@@ -2799,7 +2806,7 @@ const FinalCTA = () => {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-col items-center gap-1.5"
           >
-            <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+            <p className="text-[11px] uppercase tracking-widest text-gray-500 font-bold">
               {lang === "de"
                 ? "Lieber per E-Mail? Kontaktieren Sie uns:"
                 : lang === "es"
@@ -2895,7 +2902,7 @@ const FinalCTA2 = () => {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-col items-center gap-1.5"
           >
-            <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+            <p className="text-[11px] uppercase tracking-widest text-gray-500 font-bold">
               {lang === "de"
                 ? "Lieber per E-Mail? Kontaktieren Sie uns:"
                 : lang === "es"
@@ -3128,7 +3135,7 @@ const Footer = () => {
           <LazyFooterRobot className="pointer-events-auto h-56 w-56 md:h-72 md:w-72 lg:h-80 lg:w-80" />
         </div>
 
-        <div className="py-5 flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-white/40">
+        <div className="py-5 flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-white/70">
           <p>&copy; {new Date().getFullYear()} B2BVoice. {t.footer.allRights}</p>
           <style>{`
             @keyframes creditShimmer {
@@ -3302,7 +3309,7 @@ const DemoCallViz = ({ callLabel, connected, demoReady }: { callLabel: string; c
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-[10px] font-bold text-gray-900">{callLabel}</div>
-          <div className="flex items-center gap-1 text-[9px] text-green-600">
+          <div className="flex items-center gap-1 text-[9px] text-green-700">
             <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
             {connected}
           </div>
@@ -3352,7 +3359,7 @@ const LeadFlowViz = ({ incomingCall, leadCaptured }: { incomingCall: string; lea
       >
         <PhoneCall className="w-4 h-4 text-orange-600" />
       </motion.div>
-      <span className="text-[9px] text-gray-400 font-medium text-center leading-tight" style={{ whiteSpace: "pre-line" }}>{incomingCall}</span>
+      <span className="text-[9px] text-gray-500 font-medium text-center leading-tight" style={{ whiteSpace: "pre-line" }}>{incomingCall}</span>
     </div>
 
     <div className="flex-1 relative h-px mx-1" style={{ background: "rgba(0,53,122,0.15)" }}>
@@ -3390,9 +3397,9 @@ const LeadFlowViz = ({ incomingCall, leadCaptured }: { incomingCall: string; lea
         animate={{ scale: [1, 1.12, 1] }}
         transition={{ duration: 0.4, repeat: Infinity, repeatDelay: 2.2, delay: 2.2 }}
       >
-        <CheckCircle2 className="w-4 h-4 text-green-600" />
+        <CheckCircle2 className="w-4 h-4 text-green-700" />
       </motion.div>
-      <span className="text-[9px] text-gray-400 font-medium text-center leading-tight" style={{ whiteSpace: "pre-line" }}>{leadCaptured}</span>
+      <span className="text-[9px] text-gray-500 font-medium text-center leading-tight" style={{ whiteSpace: "pre-line" }}>{leadCaptured}</span>
     </div>
   </div>
 );
@@ -3410,7 +3417,7 @@ const CalendarViz = () => {
 
   return (
     <div className="w-full max-w-[190px] mx-auto select-none">
-      <div className="text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+      <div className="text-[9px] font-bold text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
         <Calendar className="w-3 h-3" /> {lang === "de" ? "Heutiger Zeitplan" : lang === "es" ? "Agenda de hoy" : "Today's Schedule"}
       </div>
       <div className="grid grid-cols-2 gap-1.5">
@@ -3429,7 +3436,7 @@ const CalendarViz = () => {
           >
             <div>{slot}</div>
             <div
-              className="text-[8px] mt-0.5 text-primary/60"
+              className="text-[8px] mt-0.5 text-primary"
               style={{ opacity: i < filled ? 1 : 0, transition: "opacity 0.3s" }}
             >
               {lang === "de" ? "Gebucht ✓" : lang === "es" ? "Reservado ✓" : "Booked ✓"}
@@ -3445,9 +3452,9 @@ const CalendarViz = () => {
 const DataFlowViz = () => {
   const { lang } = useLanguage();
   const targets = [
-    { label: "Gmail",  color: "#EA4335", bg: "#FEF2F2", Icon: Mail },
+    { label: "Gmail",  color: "#C5221F", bg: "#FEF2F2", Icon: Mail },
     { label: "CRM",    color: "#00357a", bg: "#EFF6FF", Icon: Database },
-    { label: "Sheets", color: "#0F9D58", bg: "#F0FDF4", Icon: BarChart3 },
+    { label: "Sheets", color: "#0B7A43", bg: "#F0FDF4", Icon: BarChart3 },
   ];
 
   return (
@@ -3519,7 +3526,7 @@ const DataFlowViz = () => {
           <p className="text-[9px] font-black uppercase tracking-widest text-slate-800">B2BVoice</p>
           <div className="flex items-center justify-center gap-1 mt-0.5">
             <span className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-[8px] text-green-600 font-semibold">{lang === "de" ? "Synchronisierung" : lang === "es" ? "Sincronizando" : "Syncing"}</span>
+            <span className="text-[8px] text-green-700 font-semibold">{lang === "de" ? "Synchronisierung" : lang === "es" ? "Sincronizando" : "Syncing"}</span>
           </div>
         </div>
       </div>
@@ -3583,7 +3590,7 @@ const PowerfulFeaturesSection = () => {
               className="flex-1 rounded-sm outline-none transition-colors hover:bg-primary/[0.03] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               <h3 className="text-base font-bold text-gray-900 mb-2">{t.powerful.card2.title}</h3>
-              <p className="text-gray-400 text-xs leading-relaxed">
+              <p className="text-gray-500 text-xs leading-relaxed">
                 {t.powerful.card2.desc}
               </p>
             </a>
@@ -3595,7 +3602,7 @@ const PowerfulFeaturesSection = () => {
         <FadeInWhenVisible delay={0.2}>
           <div className="bg-white border border-gray-200 p-6 h-full flex flex-col rounded-none hover:border-primary/30 hover:shadow-lg transition-all group">
             <h3 className="text-base font-bold text-gray-900 mb-2">{t.powerful.card3.title}</h3>
-            <p className="text-gray-400 text-xs mb-6 leading-relaxed flex-1">
+            <p className="text-gray-500 text-xs mb-6 leading-relaxed flex-1">
               {t.powerful.card3.desc}
             </p>
             <LeadFlowViz incomingCall={t.powerful.incomingCall} leadCaptured={t.powerful.leadCaptured} />
@@ -3606,7 +3613,7 @@ const PowerfulFeaturesSection = () => {
         <FadeInWhenVisible delay={0.25}>
           <div className="bg-white border border-gray-200 p-6 h-full flex flex-col rounded-none hover:border-primary/30 hover:shadow-lg transition-all group">
             <h3 className="text-base font-bold text-gray-900 mb-2">{t.powerful.card4.title}</h3>
-            <p className="text-gray-400 text-xs mb-6 leading-relaxed flex-1">
+            <p className="text-gray-500 text-xs mb-6 leading-relaxed flex-1">
               {t.powerful.card4.desc}
             </p>
             <CalendarViz />
@@ -3617,7 +3624,7 @@ const PowerfulFeaturesSection = () => {
         <FadeInWhenVisible delay={0.3}>
           <div className="bg-white border border-gray-200 p-6 h-full flex flex-col rounded-none hover:border-primary/30 hover:shadow-lg transition-all group">
             <h3 className="text-base font-bold text-gray-900 mb-2">{t.powerful.card5.title}</h3>
-            <p className="text-gray-400 text-xs mb-6 leading-relaxed flex-1">
+            <p className="text-gray-500 text-xs mb-6 leading-relaxed flex-1">
               {t.powerful.card5.desc}
             </p>
             <DataFlowViz />
@@ -4016,8 +4023,11 @@ const AgentCard = ({
 
       {/* Play / Pause button */}
       <button
+        type="button"
         onClick={(e) => { e.stopPropagation(); toggle(); }}
-        className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 ${
+        aria-label={`${isPlaying ? "Pause" : "Play"} ${agent.name} voice sample`}
+        aria-pressed={isPlaying}
+        className={`relative shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 before:absolute before:-inset-2 before:content-[''] ${
           isPlaying
             ? "bg-[#4f8ef7] text-white"
             : "bg-white/10 text-white/45 group-hover:bg-white/20 group-hover:text-white"
@@ -4279,7 +4289,7 @@ export default function Home() {
     <DemoModalCtx.Provider value={{ open: () => { window.location.href = "/demo"; } }}>
       <div className="min-h-screen bg-white text-gray-900 selection:bg-primary selection:text-white font-sans overflow-x-hidden">
         <Navbar />
-        <main>
+        <main id="main-content">
         <Hero />
         <TrustStrip />
         {/* <FeaturesSection /> */}

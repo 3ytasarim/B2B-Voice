@@ -37,12 +37,12 @@ function StepIndicator({ current, stepLabels }: { current: number; stepLabels: s
                     ? "bg-primary text-white"
                     : active
                     ? "bg-primary text-white ring-4 ring-primary/20"
-                    : "bg-gray-100 text-gray-400"
+                    : "bg-gray-100 text-gray-500"
                 }`}
               >
                 {done ? <Check className="w-4 h-4" /> : stepNum}
               </div>
-              <span className={`text-[10px] font-bold uppercase tracking-wider mt-1.5 ${active ? "text-primary" : done ? "text-primary/60" : "text-gray-300"}`}>
+              <span className={`text-[10px] font-bold uppercase tracking-wider mt-1.5 ${active ? "text-primary" : done ? "text-primary/60" : "text-gray-500"}`}>
                 {label}
               </span>
             </div>
@@ -171,16 +171,16 @@ export default function DemoPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top bar */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 py-3 -my-3 text-sm font-semibold text-primary hover:underline">
           <ArrowLeft className="w-4 h-4" /> Back to Home
         </Link>
         <div style={{ overflow: "hidden", height: 28 }}>
           <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-clean.webp" alt="B2BVoice" style={{ width: 150, height: "auto", display: "block", marginTop: -63 }} />
         </div>
-      </div>
+      </header>
 
-      <div className="container mx-auto px-4 py-12 max-w-2xl">
+      <main id="main-content" className="container mx-auto px-4 py-12 max-w-2xl">
         {step < 5 && (
           <div className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{t.modal.title}</h1>
@@ -195,14 +195,19 @@ export default function DemoPage() {
             {/* Step 1 */}
             {step === 1 && (
               <motion.div key="step1" variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
-                <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{t.modal.step1.title}</h3>
+                <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{t.modal.step1.title}</h2>
                 <div className="space-y-5">
                   <div>
-                    <label className={labelCls}>
-                      {t.modal.step1.emailLabel} <span className="text-red-400">*</span>
+                    <label htmlFor="demo-email" className={labelCls}>
+                      {t.modal.step1.emailLabel} <span className="text-red-600" aria-hidden="true">*</span>
                     </label>
                     <input
+                      id="demo-email"
+                      name="email"
                       type="email"
+                      autoComplete="email"
+                      required
+                      aria-required="true"
                       value={form.email}
                       onChange={(e) => set("email", e.target.value)}
                       onKeyDown={(e) => e.key === "Enter" && submitStep1()}
@@ -211,25 +216,29 @@ export default function DemoPage() {
                     />
                   </div>
                   <div>
-                    <label className={labelCls}>
+                    <label htmlFor="demo-phone" className={labelCls}>
                       {t.modal.step1.phoneLabel}{" "}
                       <span className="text-gray-500 font-bold text-sm">{t.modal.step1.phoneOptional}</span>
                     </label>
                     <input
+                      id="demo-phone"
+                      name="phone"
                       type="tel"
+                      autoComplete="tel"
+                      aria-describedby="demo-phone-hint"
                       value={form.phone}
                       onChange={(e) => set("phone", e.target.value)}
                       placeholder="+1 (555) 000-0000"
                       className={inputCls}
                     />
-                    <p className="text-xs text-gray-400 mt-1.5">{t.modal.step1.phoneHint}</p>
+                    <p id="demo-phone-hint" className="text-xs text-gray-500 mt-1.5">{t.modal.step1.phoneHint}</p>
                   </div>
 
                   <div>
                     <button
                       type="button"
                       onClick={() => setShowScenario((s) => !s)}
-                      className="flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline"
+                      className="flex min-h-11 items-center gap-1.5 text-sm text-primary font-semibold hover:underline"
                     >
                       <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                         <path fillRule="evenodd" d={showScenario ? "M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" : "M10 3a.75.75 0 01.75.75v5.5h5.5a.75.75 0 010 1.5h-5.5v5.5a.75.75 0 01-1.5 0v-5.5h-5.5a.75.75 0 010-1.5h5.5v-5.5A.75.75 0 0110 3z"} clipRule="evenodd" />
@@ -239,6 +248,9 @@ export default function DemoPage() {
                     {showScenario && (
                       <div className="mt-3">
                         <textarea
+                          id="demo-scenario"
+                          name="scenario"
+                          aria-label="Describe your ideal call scenario"
                           value={form.scenario}
                           onChange={(e) => set("scenario", e.target.value)}
                           rows={4}
@@ -249,7 +261,7 @@ export default function DemoPage() {
                     )}
                   </div>
                 </div>
-                {error && <p className="mt-4 text-sm text-red-500">{error}</p>}
+                {error && <p role="alert" className="mt-4 text-sm font-medium text-red-600">{error}</p>}
                 <button
                   onClick={submitStep1}
                   disabled={loading}
@@ -263,11 +275,13 @@ export default function DemoPage() {
             {/* Step 2 */}
             {step === 2 && (
               <motion.div key="step2" variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
-                <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{t.modal.step2.title}</h3>
+                <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{t.modal.step2.title}</h2>
                 <div className="space-y-5">
                   <div>
-                    <label className={labelCls}>{t.modal.step2.businessTypeLabel}</label>
+                    <label htmlFor="demo-business-type" className={labelCls}>{t.modal.step2.businessTypeLabel}</label>
                     <select
+                      id="demo-business-type"
+                      name="businessType"
                       value={form.businessType}
                       onChange={(e) => set("businessType", e.target.value)}
                       className="w-full px-4 py-3.5 text-base border border-gray-200 focus:outline-none focus:border-primary/60 bg-white text-gray-700 rounded-none"
@@ -278,8 +292,10 @@ export default function DemoPage() {
                   </div>
                   {isOtherBusiness && (
                     <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} transition={{ duration: 0.2 }}>
-                      <label className={labelCls}>{t.modal.step2.descLabel}</label>
+                      <label htmlFor="demo-business-description" className={labelCls}>{t.modal.step2.descLabel}</label>
                       <textarea
+                        id="demo-business-description"
+                        name="businessDescription"
                         value={form.businessDescription}
                         onChange={(e) => set("businessDescription", e.target.value)}
                         rows={3}
@@ -289,12 +305,16 @@ export default function DemoPage() {
                     </motion.div>
                   )}
                   <div>
-                    <label className={labelCls}>
+                    <label htmlFor="demo-website" className={labelCls}>
                       {t.modal.step2.websiteLabel}{" "}
-                      <span className="text-gray-400 font-bold">(optional)</span>
+                      <span className="text-gray-500 font-bold">(optional)</span>
                     </label>
                     <input
+                      id="demo-website"
+                      name="website"
                       type="text"
+                      inputMode="url"
+                      autoComplete="url"
                       value={form.website}
                       onChange={(e) => set("website", e.target.value)}
                       placeholder={t.modal.step2.websitePlaceholder}
@@ -320,7 +340,7 @@ export default function DemoPage() {
             {/* Step 3 */}
             {step === 3 && (
               <motion.div key="step3" variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
-                <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{t.modal.step3.title}</h3>
+                <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{t.modal.step3.title}</h2>
                 <div className="grid grid-cols-1 gap-2.5">
                   {DEMO_NEEDS.map((need) => {
                     const selected = form.demoNeeds.includes(need);
@@ -381,6 +401,9 @@ export default function DemoPage() {
                       >
                         <textarea
                           autoFocus
+                          id="demo-other-need"
+                          name="otherNeed"
+                          aria-label={t.modal.step3.otherLabel}
                           rows={3}
                           value={form.otherNeed === "__open__" ? "" : form.otherNeed}
                           onChange={(e) => set("otherNeed", e.target.value || "__open__")}
@@ -409,7 +432,7 @@ export default function DemoPage() {
             {/* Step 4 */}
             {step === 4 && (
               <motion.div key="step4" variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
-                <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{t.modal.step4.title}</h3>
+                <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{t.modal.step4.title}</h2>
                 <div className="space-y-3 mb-6">
                   {DEMO_TYPES.map((dt) => {
                     const selected = form.demoType === dt.value;
@@ -428,7 +451,7 @@ export default function DemoPage() {
                         </div>
                         <div>
                           <div className={`text-base font-semibold ${selected ? "text-primary" : "text-gray-800"}`}>{dt.label}</div>
-                          <div className="text-sm text-gray-400 mt-0.5">{dt.desc}</div>
+                          <div className="text-sm text-gray-500 mt-0.5">{dt.desc}</div>
                         </div>
                       </button>
                     );
@@ -449,7 +472,7 @@ export default function DemoPage() {
                   </button>
                 </div>
 
-                {error && <p className="mt-4 text-sm text-red-500">{error}</p>}
+                {error && <p role="alert" className="mt-4 text-sm font-medium text-red-600">{error}</p>}
                 <div className="flex gap-3 mt-6">
                   <button onClick={() => setStep(3)} className="flex items-center gap-1.5 px-5 py-4 border border-gray-200 text-base text-gray-600 hover:bg-gray-50 transition-colors rounded-none">
                     <ArrowLeft className="w-4 h-4" /> {t.modal.back}
@@ -519,7 +542,7 @@ export default function DemoPage() {
 
                   {form.scenario.trim() && (
                     <div className="mt-5 text-left bg-gray-50 border border-gray-100 px-5 py-4">
-                      <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Your scenario</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Your scenario</p>
                       <p className="text-sm text-gray-700 leading-relaxed">{form.scenario}</p>
                     </div>
                   )}
@@ -534,7 +557,7 @@ export default function DemoPage() {
             )}
           </AnimatePresence>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
