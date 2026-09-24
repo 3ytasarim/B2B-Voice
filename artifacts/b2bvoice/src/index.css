@@ -262,14 +262,8 @@ body {
 .animate-marquee {
   animation: marquee-left 22s linear infinite;
 }
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
 .animate-marquee-reverse {
   animation: marquee-right 26s linear infinite;
-}
-.animate-marquee-reverse:hover {
-  animation-play-state: paused;
 }
 
 @keyframes wave-bar {

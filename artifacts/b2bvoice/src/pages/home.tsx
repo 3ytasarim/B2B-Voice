@@ -98,6 +98,7 @@ const useDemoModal = () => useContext(DemoModalCtx);
 const GOOGLE_MEET_LINK = "https://calendar.app.google/aKu2n5KzGBrMMvBL8";
 
 const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose: () => void; onOpenForm: () => void }) => {
+  const { lang } = useLanguage();
   if (!open) return null;
   const handleEmail = () => {
     window.location.href = "mailto:hello@b2b-voice.com?subject=Demo%20Request&body=Hi%20B2BVoice%20team%2C%0A%0AI%27d%20like%20to%20request%20a%20free%20custom%20demo.%0A%0ABusiness%20name%3A%20%0AIndustry%3A%20%0APhone%3A%20%0A%0AThank%20you";
@@ -119,8 +120,12 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
         </svg>
       ),
-      label: "Request Demo",
-      desc: "Fill out a quick form and we'll prepare your custom demo.",
+      label: lang === "de" ? "Demo anfordern" : lang === "es" ? "Solicitar demo" : "Request Demo",
+      desc: lang === "de"
+        ? "Füllen Sie ein kurzes Formular aus und wir bereiten Ihre individuelle Demo vor."
+        : lang === "es"
+          ? "Completa un breve formulario y prepararemos tu demo personalizada."
+          : "Fill out a quick form and we'll prepare your custom demo.",
       action: handleForm,
       accent: "#00357a",
       bg: "bg-primary/5 hover:bg-primary/10 border-primary/20 hover:border-primary/40",
@@ -132,8 +137,12 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
           <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
         </svg>
       ),
-      label: "Request via E-Mail",
-      desc: "Send us an email directly — we'll reply within 24 hours.",
+      label: lang === "de" ? "Per E-Mail anfragen" : lang === "es" ? "Solicitar por correo electrónico" : "Request via E-Mail",
+      desc: lang === "de"
+        ? "Senden Sie uns direkt eine E-Mail — wir antworten innerhalb von 24 Stunden."
+        : lang === "es"
+          ? "Envíanos un correo electrónico directamente — responderemos en un plazo de 24 horas."
+          : "Send us an email directly — we'll reply within 24 hours.",
       action: handleEmail,
       accent: "#059669",
       bg: "bg-emerald-50 hover:bg-emerald-100 border-emerald-200 hover:border-emerald-400",
@@ -145,8 +154,12 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
           <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
         </svg>
       ),
-      label: "Book a Demo Call",
-      desc: "Pick a time that works for you — book a live demo via Google Calendar.",
+      label: lang === "de" ? "Demo-Termin buchen" : lang === "es" ? "Reservar una llamada de demo" : "Book a Demo Call",
+      desc: lang === "de"
+        ? "Wählen Sie einen passenden Termin und buchen Sie eine Live-Demo über Google Calendar."
+        : lang === "es"
+          ? "Elige el horario que mejor te venga y reserva una demo en vivo mediante Google Calendar."
+          : "Pick a time that works for you — book a live demo via Google Calendar.",
       action: handleMeet,
       accent: "#4f8ef7",
       bg: "bg-blue-50 hover:bg-blue-100 border-blue-200 hover:border-blue-400",
@@ -184,10 +197,22 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
                 </svg>
               </button>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/8 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-3">
-                FREE DEMO
+                {lang === "de" ? "KOSTENLOSE DEMO" : lang === "es" ? "DEMO GRATIS" : "FREE DEMO"}
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 leading-tight">How would you like to connect?</h2>
-              <p className="text-gray-500 text-sm mt-1">Choose the option that works best for you.</p>
+              <h2 className="text-2xl font-bold text-gray-900 leading-tight">
+                {lang === "de"
+                  ? "Wie möchten Sie Kontakt aufnehmen?"
+                  : lang === "es"
+                    ? "¿Cómo te gustaría ponerte en contacto?"
+                    : "How would you like to connect?"}
+              </h2>
+              <p className="text-gray-500 text-sm mt-1">
+                {lang === "de"
+                  ? "Wählen Sie die Option, die am besten zu Ihnen passt."
+                  : lang === "es"
+                    ? "Elige la opción que mejor se adapte a ti."
+                    : "Choose the option that works best for you."}
+              </p>
             </div>
 
             {/* Options */}
@@ -234,10 +259,6 @@ const Navbar = () => {
   const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    ["https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-de.webp"].forEach(src => { const img = new Image(); img.src = src; });
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -265,10 +286,10 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <img
-            src={lang === "de" ? "https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-de.webp" : "https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-clean.webp"}
+            src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-clean.webp"
             alt="B2BVoice"
             className="w-[168px] sm:w-52"
-            style={{ height: "auto", opacity: 0.95, mixBlendMode: lang === "de" ? "multiply" : "normal" }}
+            style={{ height: "auto", opacity: 0.95, mixBlendMode: "normal" }}
             fetchPriority="high"
           />
         </Link>
@@ -334,7 +355,7 @@ const Navbar = () => {
             className="flex items-center justify-center bg-primary text-white font-bold hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(0,53,122,0.3)] transition-all rounded-none
               h-10 min-w-[72px] px-2 sm:min-w-0 sm:px-5 sm:py-2.5 sm:text-sm sm:uppercase sm:tracking-wide"
           >
-            <span className="text-[9px] font-black uppercase tracking-widest sm:hidden whitespace-nowrap">FOR DEMO</span>
+            <span className="text-[9px] font-black uppercase tracking-widest sm:hidden whitespace-nowrap">{lang === "de" ? "ZUR DEMO" : lang === "es" ? "PARA DEMO" : "FOR DEMO"}</span>
             <span className="hidden sm:inline whitespace-nowrap">{t.nav.requestDemo}</span>
           </button>
         </div>
@@ -347,15 +368,13 @@ const Navbar = () => {
 const DASH_BARS = [38, 52, 44, 71, 63, 82, 55];
 const DASH_DAYS = ["S","M","T","W","T","F","S"];
 
-const OverviewTab = () => (
+const OverviewTab = () => {
+  const { t } = useLanguage();
+
+  return (
   <div className="space-y-3">
     <div className="grid grid-cols-2 gap-2">
-      {[
-        { label: "TOTAL CALLS", value: "1,284" },
-        { label: "ANSWERED",    value: "1,271" },
-        { label: "APPOINTMENTS",value: "342"   },
-        { label: "NEW CUSTOMERS",value: "89"   },
-      ].map(s => (
+      {t.dashboard.stats.map(s => (
         <div key={s.label} className="bg-white border border-gray-100 rounded-lg p-2.5 shadow-sm">
           <div className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">{s.label}</div>
           <div className="text-lg font-bold text-gray-900">{s.value}</div>
@@ -363,7 +382,7 @@ const OverviewTab = () => (
       ))}
     </div>
     <div className="bg-white border border-gray-100 rounded-lg p-3 shadow-sm">
-      <div className="text-[11px] font-bold text-gray-700 mb-2">Weekly Call Summary</div>
+      <div className="text-[11px] font-bold text-gray-700 mb-2">{t.dashboard.weeklySummary}</div>
       <div className="flex items-end gap-1 h-12">
         {DASH_BARS.map((h, i) => (
           <div key={i} className="flex-1 flex flex-col items-center gap-0.5">
@@ -380,11 +399,8 @@ const OverviewTab = () => (
       </div>
     </div>
     <div className="bg-white border border-gray-100 rounded-lg p-3 shadow-sm">
-      <div className="text-[11px] font-bold text-gray-700 mb-2">Recent Calls</div>
-      {[
-        { name: "John Smith",   time: "2 min ago",  badge: "APPOINTMENT MADE", color: "green" },
-        { name: "Emma Johnson", time: "18 min ago", badge: "INFO PROVIDED",     color: "blue"  },
-      ].map((c, i) => (
+      <div className="text-[11px] font-bold text-gray-700 mb-2">{t.dashboard.recentCalls}</div>
+      {t.dashboard.calls.slice(0, 2).map((c, i) => (
         <div key={i} className="flex items-center gap-2 py-1.5 border-b border-gray-50 last:border-0">
           <div className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
             <Users className="w-3 h-3 text-gray-400" />
@@ -394,25 +410,29 @@ const OverviewTab = () => (
             <div className="text-[9px] text-gray-400">{c.time}</div>
           </div>
           <span className={`text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 border rounded ${
-            c.color === "green"
+            i === 0
               ? "bg-green-50 text-green-600 border-green-200"
               : "bg-blue-50 text-blue-600 border-blue-200"
-          }`}>{c.badge}</span>
+          }`}>{c.status}</span>
         </div>
       ))}
     </div>
   </div>
-);
+  );
+};
 
-const CallsTab = () => (
+const CallsTab = () => {
+  const { t } = useLanguage();
+
+  return (
   <div>
-    <div className="text-[11px] font-bold text-gray-700 mb-2">All Calls — Today</div>
+    <div className="text-[11px] font-bold text-gray-700 mb-2">{t.dashboard.allCallsToday}</div>
     {[
-      { name: "John Smith",    time: "2 min ago",  dur: "3:42", badge: "APPOINTMENT", color: "green"  },
-      { name: "Emma Johnson",  time: "18 min ago", dur: "2:15", badge: "INFO",        color: "blue"   },
-      { name: "David Park",    time: "34 min ago", dur: "1:58", badge: "CALLBACK",    color: "orange" },
-      { name: "Lisa Martinez", time: "1h ago",     dur: "4:20", badge: "APPOINTMENT", color: "green"  },
-      { name: "Tom Wilson",    time: "2h ago",     dur: "0:48", badge: "MISSED",      color: "red"    },
+      { name: "John Smith",    time: t.dashboard.calls[0].time, dur: "3:42", badge: t.dashboard.callStatuses.appointment,     color: "green"  },
+      { name: "Emma Johnson",  time: t.dashboard.calls[1].time, dur: "2:15", badge: t.dashboard.callStatuses.info,            color: "blue"   },
+      { name: "David Park",    time: t.dashboard.calls[2].time, dur: "1:58", badge: t.dashboard.callStatuses.callback,        color: "orange" },
+      { name: "Lisa Martinez", time: t.dashboard.calls[2].time, dur: "4:20", badge: t.dashboard.callStatuses.appointment,     color: "green"  },
+      { name: "Tom Wilson",    time: t.dashboard.calls[2].time, dur: "0:48", badge: t.dashboard.callStatuses.missed,          color: "red"    },
     ].map((c, i) => (
       <div key={i} className="flex items-center gap-2 py-2 border-b border-gray-50 last:border-0">
         <div className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
@@ -431,19 +451,23 @@ const CallsTab = () => (
       </div>
     ))}
   </div>
-);
+  );
+};
 
-const AppointmentsTab = () => (
+const AppointmentsTab = () => {
+  const { t } = useLanguage();
+
+  return (
   <div>
     <div className="flex items-center justify-between mb-2">
-      <div className="text-[11px] font-bold text-gray-700">Today's Appointments</div>
-      <div className="text-[9px] text-gray-400 font-medium">4 scheduled</div>
+      <div className="text-[11px] font-bold text-gray-700">{t.dashboard.todayAppts}</div>
+      <div className="text-[9px] text-gray-400 font-medium">4 {t.dashboard.scheduled}</div>
     </div>
     {[
-      { time: "14:30", name: "Michael T.", type: "Checkup",      status: "upcoming" },
-      { time: "15:00", name: "Sarah K.",   type: "Follow-up",    status: "upcoming" },
-      { time: "16:30", name: "James B.",   type: "First Visit",  status: "upcoming" },
-      { time: "17:15", name: "Ana Costa",  type: "Consultation", status: "upcoming" },
+      { time: "14:30", name: "Michael T.", type: t.dashboard.appointmentTypes.checkup,      status: "upcoming" },
+      { time: "15:00", name: "Sarah K.",   type: t.dashboard.appointmentTypes.followUp,     status: "upcoming" },
+      { time: "16:30", name: "James B.",   type: t.dashboard.appointmentTypes.firstVisit,   status: "upcoming" },
+      { time: "17:15", name: "Ana Costa",  type: t.dashboard.appointmentTypes.consultation, status: "upcoming" },
     ].map((a, i) => (
       <div key={i} className="flex items-center gap-3 py-2.5 border-b border-gray-50 last:border-0">
         <div className="text-[11px] font-bold text-primary bg-primary/10 px-2 py-1 rounded shrink-0 min-w-[40px] text-center">{a.time}</div>
@@ -455,11 +479,11 @@ const AppointmentsTab = () => (
       </div>
     ))}
   </div>
-);
-
-const DASH_MENU = ["Overview", "Calls", "Appointments", "Customers", "Settings"];
+  );
+};
 
 const HeroDashboard = () => {
+  const { t } = useLanguage();
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -486,8 +510,8 @@ const HeroDashboard = () => {
         <div className="flex" style={{ minHeight: 420 }}>
           {/* Sidebar */}
           <div className="w-32 border-r border-gray-100 bg-gray-50 p-3 shrink-0 flex flex-col">
-            <div className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-2 px-2">MENU</div>
-            {DASH_MENU.map((item, i) => (
+            <div className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-2 px-2">{t.dashboard.menuLabel}</div>
+            {t.dashboard.menu.map((item, i) => (
               <button
                 key={item}
                 onClick={() => i < 3 ? setActive(i) : undefined}
@@ -522,7 +546,7 @@ const HeroDashboard = () => {
 
         {/* Tab progress indicator */}
         <div className="flex border-t border-gray-100">
-          {["Overview", "Calls", "Appointments"].map((label, i) => (
+          {t.dashboard.menu.slice(0, 3).map((label, i) => (
             <button
               key={label}
               onClick={() => setActive(i)}
@@ -546,7 +570,7 @@ const DEMO_PAGE_URL = "https://b2b-voice.com/demo";
 
 const Hero = () => {
   const { open } = useDemoModal();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const heroHighlightMatch = t.hero.h2.match(/^(.*)\s(24\/7)$/);
 
   return (
@@ -643,7 +667,7 @@ const Hero = () => {
                 <Mail className="w-5 h-5" />
               </motion.div>
               <div>
-                <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold leading-none mb-1">or email us at</p>
+                <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold leading-none mb-1">{lang === "de" ? "oder per E-Mail an" : lang === "es" ? "o escríbenos a" : "or email us at"}</p>
                 <p className="text-xl font-black text-primary group-hover:underline underline-offset-2 leading-none">
                   hello@b2b-voice.com
                 </p>
@@ -725,7 +749,7 @@ const Hero = () => {
                   }}
                   transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
                   className="mx-auto mb-7 flex w-fit items-center justify-center gap-2 rounded-full bg-emerald-500/10 px-5 py-2 text-lg sm:text-xl font-black tracking-[0.22em] text-emerald-700 uppercase"
-                  aria-label="Available 24/7"
+                  aria-label={lang === "de" ? "Rund um die Uhr verfügbar" : lang === "es" ? "Disponible 24/7" : "Available 24/7"}
                 >
                   <motion.span
                     animate={{ rotate: [0, -16, 16, 0] }}
@@ -767,7 +791,7 @@ const Hero = () => {
 
 // --- Trust Strip ---
 const TrustStrip = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   return (
     <section className="py-12 border-y border-gray-200 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
@@ -788,7 +812,9 @@ const TrustStrip = () => {
             <div className="text-sm text-gray-500 font-medium uppercase tracking-widest">{t.trust.responseTime}</div>
           </div>
           <div className="flex flex-col items-center justify-center text-center p-4">
-            <div className="text-4xl font-bold text-gray-900 mb-2">Custom Build</div>
+            <div className="text-4xl font-bold text-gray-900 mb-2">
+              {lang === "de" ? "Individuell entwickelt" : lang === "es" ? "Desarrollo a medida" : "Custom Build"}
+            </div>
             <div className="text-sm text-gray-500 font-medium uppercase tracking-widest">{t.trust.integration}</div>
           </div>
         </div>
@@ -1797,7 +1823,8 @@ const ScaledOrbit = ({ size, children }: { size: number; children: React.ReactNo
     if (!el) return;
     const update = () => {
       const w = el.offsetWidth;
-      setScale(Math.min(1, w / size));
+      const padding = 60;
+      setScale(Math.min(1, w / (size + padding * 2)));
     };
     update();
     const ro = new ResizeObserver(update);
@@ -1805,9 +1832,27 @@ const ScaledOrbit = ({ size, children }: { size: number; children: React.ReactNo
     return () => ro.disconnect();
   }, [size]);
 
+  const padding = 60;
+
   return (
-    <div ref={wrapRef} className="relative mx-auto select-none w-full overflow-hidden" style={{ maxWidth: size, height: size * scale }}>
-      <div style={{ width: size, height: size, transform: `scale(${scale})`, transformOrigin: "top left" }}>
+    <div
+      ref={wrapRef}
+      className="relative mx-auto select-none w-full overflow-visible"
+      style={{
+        maxWidth: size + padding * 2,
+        height: (size + padding * 2) * scale,
+      }}
+    >
+      <div
+        style={{
+          width: size,
+          height: size,
+          marginLeft: padding * scale,
+          marginTop: padding * scale,
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+        }}
+      >
         {children}
       </div>
     </div>
@@ -1815,20 +1860,25 @@ const ScaledOrbit = ({ size, children }: { size: number; children: React.ReactNo
 };
 
 const ORBIT_INTEGRATIONS = [
-  { label: "HubSpot",          ring: 1, initialAngle: 0,   speed: 12, darkBg: false, accent: "#FF7A59" },
-  { label: "WhatsApp",         ring: 1, initialAngle: 120, speed: 12, darkBg: false, accent: "#25D366" },
-  { label: "Zoho CRM",         ring: 1, initialAngle: 240, speed: 12, darkBg: false, accent: "#E42527" },
-  { label: "Google Calendar",  ring: 2, initialAngle: 0,   speed: 7,  darkBg: false, accent: "#4285F4" },
-  { label: "Calendly",         ring: 2, initialAngle: 51,  speed: 7,  darkBg: false, accent: "#006BFF" },
-  { label: "Gmail",            ring: 2, initialAngle: 102, speed: 7,  darkBg: false, accent: "#EA4335" },
-  { label: "Microsoft Teams",  ring: 2, initialAngle: 154, speed: 7,  darkBg: false, accent: "#5059C9" },
-  { label: "Google Sheets",    ring: 2, initialAngle: 206, speed: 7,  darkBg: false, accent: "#34A853" },
-  { label: "Excel",            ring: 2, initialAngle: 257, speed: 7,  darkBg: false, accent: "#217346" },
-  { label: "Instagram",        ring: 2, initialAngle: 309, speed: 7,  darkBg: false, accent: "#DD2A7B" },
+  // İç halka — CRM
+  { label: "Salesforce",             image: "/integrations/01-salesforce.png",             ring: 1, initialAngle: 0,   speed: 12, accent: "#00A1E0" },
+  { label: "HubSpot",                image: "/integrations/02-hubspot.png",                ring: 1, initialAngle: 60,  speed: 12, accent: "#FF7A59" },
+  { label: "Microsoft Dynamics 365", image: "/integrations/03-microsoft-dynamics-365.png", ring: 1, initialAngle: 120, speed: 12, accent: "#002050" },
+  { label: "Zoho CRM",               image: "/integrations/04-zoho-crm.png",               ring: 1, initialAngle: 180, speed: 12, accent: "#E42527" },
+  { label: "Pipedrive",              image: "/integrations/05-pipedrive.png",              ring: 1, initialAngle: 240, speed: 12, accent: "#017737" },
+  { label: "Monday CRM",             image: "/integrations/06-monday-crm.png",             ring: 1, initialAngle: 300, speed: 12, accent: "#6161FF" },
+
+  // Dış halka — İletişim & otomasyon
+  { label: "WhatsApp",        image: "/integrations/07-whatsapp.png",         ring: 2, initialAngle: 0,   speed: 7, accent: "#25D366" },
+  { label: "Google Calendar", image: "/integrations/08-google-calendar.png",  ring: 2, initialAngle: 60,  speed: 7, accent: "#4285F4" },
+  { label: "Calendly",        image: "/integrations/09-calendly.png",         ring: 2, initialAngle: 120, speed: 7, accent: "#006BFF" },
+  { label: "Microsoft Teams", image: "/integrations/10-microsoft-teams.png",  ring: 2, initialAngle: 180, speed: 7, accent: "#5059C9" },
+  { label: "Zapier",          image: "/integrations/11-zapier.png",           ring: 2, initialAngle: 240, speed: 7, accent: "#FF4A00" },
+  { label: "Google Sheets",   image: "/integrations/12-google-sheets.png",    ring: 2, initialAngle: 300, speed: 7, accent: "#34A853" },
 ];
 
 const RINGS = [
-  { r: 130 },
+  { r: 165 },
   { r: 255 },
 ];
 
@@ -1856,7 +1906,6 @@ const OrbitalNode = ({ item, cx, cy }: {
       ref={nodeRef}
       className="absolute flex flex-col items-center gap-1.5"
       style={{ left: 0, top: 0, transform: `translate(${cx + ring.r * Math.cos(angleRef.current) - ICON/2}px, ${cy + ring.r * Math.sin(angleRef.current) - ICON/2}px)`, willChange: "transform", pointerEvents: "auto", zIndex: 10 }}
-      whileHover={{ scale: 1.12, zIndex: 50 }}
       title={item.label}
     >
       {/* Dark circle with inline brand logo */}
@@ -1864,15 +1913,19 @@ const OrbitalNode = ({ item, cx, cy }: {
         style={{
           width: ICON, height: ICON,
           borderRadius: "50%",
-          background: item.darkBg ? "#0f172a" : "#ffffff",
+          background: "#ffffff",
           boxShadow: `0 4px 20px ${item.accent}44, 0 2px 8px rgba(0,0,0,0.18)`,
           border: `1.5px solid ${item.accent}55`,
           display: "flex", alignItems: "center", justifyContent: "center",
           overflow: "hidden",
         }}
-        whileHover={{ boxShadow: `0 8px 32px ${item.accent}66, 0 4px 16px rgba(0,0,0,0.22)` }}
       >
-        <BrandIcon name={item.label} size={26} />
+        <img
+          src={item.image}
+          alt={item.label}
+          draggable={false}
+          className="w-8 h-8 object-contain pointer-events-none select-none"
+        />
       </motion.div>
       {/* Label badge */}
       <div style={{
@@ -1891,17 +1944,17 @@ const OrbitalNode = ({ item, cx, cy }: {
 };
 
 const OrbitalIntegrations = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const SIZE = 560;
   const CX = SIZE / 2;
   const CY = SIZE / 2;
 
   return (
-    <section className="py-14 md:py-20 bg-[#f8fafc] border-y border-gray-100 relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#f8fafc] border-y border-gray-100 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_55%,rgba(0,53,122,0.06),transparent)] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <FadeInWhenVisible className="text-center mb-12">
+        <FadeInWhenVisible className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 bg-primary/5 text-xs font-bold uppercase tracking-widest text-primary mb-5 rounded-none">
             {t.integrations.badge}
           </div>
@@ -1986,7 +2039,7 @@ const OrbitalIntegrations = () => {
               </motion.div>
               <div className="mt-3 text-center">
                 <p className="text-[13px] font-black uppercase tracking-widest text-slate-800">B2BVoice</p>
-                <p className="text-[10px] text-gray-400 font-semibold mt-0.5 uppercase tracking-wider">Your Tool</p>
+                <p className="text-[10px] text-gray-400 font-semibold mt-0.5 uppercase tracking-wider">{lang === "de" ? "Ihr Tool" : lang === "es" ? "Tu herramienta" : "Your Tool"}</p>
               </div>
             </div>
           </div>
@@ -2002,19 +2055,7 @@ const OrbitalIntegrations = () => {
 const DB_BARS = [40, 70, 45, 90, 60, 85, 30];
 const DB_DAYS = ["S","M","T","W","T","F","S"];
 
-const DB_EXTRA_CALLS = [
-  { name: "David Park",    time: "34 min ago", dur: "1:58", status: "Callback",    color: "text-orange-700 bg-orange-50 border-orange-200" },
-  { name: "Lisa Martinez", time: "1h ago",     dur: "4:20", status: "Appointment Made", color: "text-green-700 bg-green-50 border-green-200" },
-  { name: "Tom Wilson",    time: "2h ago",     dur: "0:48", status: "Missed",      color: "text-red-700 bg-red-50 border-red-200" },
-];
-
-const DB_EXTRA_APTS = [
-  { time: "09:00", title: "Ana Costa",    type: "Consultation" },
-  { time: "10:30", title: "Mark Lee",     type: "Follow-up"   },
-  { time: "12:00", title: "Linda Brown",  type: "First Visit"  },
-];
-
-const DashboardMockup = () => {
+ const DashboardMockup = () => {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
 
@@ -2024,6 +2065,18 @@ const DashboardMockup = () => {
   }, []);
 
   const menuItems = t.dashboard.menu;
+
+  const dbExtraCalls = [
+    { name: "David Park", time: t.dashboard.calls[2].time, dur: "1:58", status: t.dashboard.callStatuses.callback, color: "text-orange-700 bg-orange-50 border-orange-200" },
+    { name: "Lisa Martinez", time: t.dashboard.calls[2].time, dur: "4:20", status: t.dashboard.callStatuses.appointmentMade, color: "text-green-700 bg-green-50 border-green-200" },
+    { name: "Tom Wilson", time: t.dashboard.calls[2].time, dur: "0:48", status: t.dashboard.callStatuses.missed, color: "text-red-700 bg-red-50 border-red-200" },
+  ];
+
+  const dbExtraApts = [
+    { time: "09:00", title: "Ana Costa", type: t.dashboard.appointmentTypes.consultation },
+    { time: "10:30", title: "Mark Lee", type: t.dashboard.appointmentTypes.followUp },
+    { time: "12:00", title: "Linda Brown", type: t.dashboard.appointmentTypes.firstVisit },
+  ];
 
   return (
     <section className="py-14 md:py-20 bg-gray-50 border-y border-gray-200 relative overflow-hidden">
@@ -2040,7 +2093,7 @@ const DashboardMockup = () => {
 
             {/* Sidebar */}
             <div className="w-56 bg-gray-50 border-r border-gray-200 p-5 hidden md:flex flex-col gap-1 shrink-0">
-              <div className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-3 px-2">Menu</div>
+              <div className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-3 px-2">{t.dashboard.menuLabel}</div>
               {menuItems.map((item, i) => (
                 <button
                   key={item}
@@ -2156,11 +2209,11 @@ const DashboardMockup = () => {
                     {activeTab === 1 && (
                       <div>
                         <div className="flex items-center justify-between mb-4">
-                          <h4 className="text-gray-800 font-bold text-sm">All Calls — Today</h4>
-                          <span className="text-xs text-gray-400 font-medium">6 total</span>
+                          <h4 className="text-gray-800 font-bold text-sm">{t.dashboard.allCallsToday}</h4>
+                          <span className="text-xs text-gray-400 font-medium">6 {t.dashboard.total}</span>
                         </div>
                         <div className="border border-gray-100 bg-gray-50 divide-y divide-gray-100">
-                          {[...t.dashboard.calls, ...DB_EXTRA_CALLS].map((call, i) => (
+                          {[...t.dashboard.calls, ...dbExtraCalls].map((call, i) => (
                             <div key={i} className="flex items-center gap-4 px-5 py-3 hover:bg-white transition-colors">
                               <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
                                 <Users className="w-4 h-4 text-gray-400" />
@@ -2181,10 +2234,10 @@ const DashboardMockup = () => {
                       <div>
                         <div className="flex items-center justify-between mb-4">
                           <h4 className="text-gray-800 font-bold text-sm">{t.dashboard.todayAppts}</h4>
-                          <span className="text-xs text-primary font-bold">6 scheduled</span>
+                          <span className="text-xs text-primary font-bold">6 {t.dashboard.scheduled}</span>
                         </div>
                         <div className="grid sm:grid-cols-2 gap-3">
-                          {[...DB_EXTRA_APTS, ...t.dashboard.apts.map(a => ({ time: a.time, title: a.title, type: "" }))].map((apt, i) => (
+                          {[...dbExtraApts, ...t.dashboard.apts.map(a => ({ time: a.time, title: a.title, type: "" }))].map((apt, i) => (
                             <motion.div
                               key={i}
                               initial={{ opacity: 0, x: -8 }}
@@ -2210,7 +2263,7 @@ const DashboardMockup = () => {
 
               {/* Bottom tab switcher */}
               <div className="flex border-t border-gray-100">
-                {["Overview","Calls","Appointments"].map((label, i) => (
+                {t.dashboard.menu.slice(0, 3).map((label, i) => (
                   <button
                     key={label}
                     onClick={() => setActiveTab(i)}
@@ -2317,6 +2370,7 @@ interface ReferenceLogo { id: number; clientName: string; company: string; logoU
 interface PartnerLogo { id: number; name: string; imageUrl: string | null; websiteUrl: string | null; sortOrder: number; }
 
 const ClientsPartners = () => {
+  const { lang } = useLanguage();
   const [liveReferences, setLiveReferences] = useState<ReferenceLogo[] | null>(null);
   const [livePartners, setLivePartners] = useState<PartnerLogo[] | null>(null);
 
@@ -2359,13 +2413,20 @@ const ClientsPartners = () => {
       <div className="container mx-auto px-6">
         <FadeInWhenVisible className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 bg-primary/5 text-xs font-bold uppercase tracking-widest text-primary mb-4 rounded-none">
-            Trusted From Day One
+            {lang === "de" ? "Vertrauen vom ersten Tag an" : lang === "es" ? "Confianza desde el primer día" : "Trusted From Day One"}
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
-            Our Clients &amp; <span className="text-primary">Partners</span>
+            {lang === "de" ? "Unsere Kunden & " : lang === "es" ? "Nuestros clientes y " : "Our Clients & "}
+            <span className="text-primary">
+              {lang === "de" ? "Partner" : lang === "es" ? "socios" : "Partners"}
+            </span>
           </h2>
           <p className="text-gray-500 mt-4 max-w-lg mx-auto text-base">
-            Strong brands trust us — growing together toward your success.
+            {lang === "de"
+              ? "Starke Marken vertrauen uns — gemeinsam wachsen wir für Ihren Erfolg."
+              : lang === "es"
+                ? "Grandes marcas confían en nosotros — crecemos juntos hacia tu éxito."
+                : "Strong brands trust us — growing together toward your success."}
           </p>
         </FadeInWhenVisible>
       </div>
@@ -2552,7 +2613,7 @@ const PricingCTASection = () => {
 
 // --- Setup Process Section ---
 const SetupProcessSection = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const setup = t.faq.setup;
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -2570,7 +2631,7 @@ const SetupProcessSection = () => {
         {/* Header */}
         <FadeInWhenVisible className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-white/80 text-xs font-bold uppercase tracking-widest mb-5">
-            Setup Process
+            {lang === "de" ? "Einrichtungsprozess" : lang === "es" ? "Proceso de configuración" : "Setup Process"}
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 leading-tight">
             {setup.heading}
@@ -2585,7 +2646,11 @@ const SetupProcessSection = () => {
           <div className="inline-flex items-center gap-3 px-6 py-3 border border-white/20 bg-white/[0.06] backdrop-blur-sm">
             <div className="w-1 h-6 bg-gradient-to-b from-white/60 to-white/20 flex-shrink-0" />
             <span className="text-white/90 text-sm sm:text-base font-semibold tracking-wide leading-snug">
-              Before We Build Your Agent, We Learn Your Business First
+              {lang === "de"
+                ? "Bevor wir Ihren Agenten entwickeln, lernen wir zuerst Ihr Unternehmen kennen"
+                : lang === "es"
+                  ? "Antes de crear tu agente, primero conocemos tu negocio"
+                  : "Before We Build Your Agent, We Learn Your Business First"}
             </span>
             <div className="w-1 h-6 bg-gradient-to-b from-white/60 to-white/20 flex-shrink-0" />
           </div>
@@ -2678,7 +2743,7 @@ const FAQSection = () => {
 // --- Final CTA ---
 const FinalCTA = () => {
   const { open } = useDemoModal();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   return (
     <section id="demo" className="py-14 md:py-20 relative overflow-hidden bg-white border-b border-gray-200">
       <div className="absolute inset-0 z-0">
@@ -2697,7 +2762,10 @@ const FinalCTA = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {["Custom Build For You", "Setup in 24 Hours"].map((f) => (
+            {[
+              lang === "de" ? "Individuell für Sie entwickelt" : lang === "es" ? "Desarrollado a medida para ti" : "Custom Build For You",
+              lang === "de" ? "Einrichtung in 24 Stunden" : lang === "es" ? "Configuración en 24 horas" : "Setup in 24 Hours",
+            ].map((f) => (
               <span key={f} className="flex items-center gap-2 text-sm font-semibold text-gray-600">
                 <Check className="w-4 h-4 text-primary flex-shrink-0" /> {f}
               </span>
@@ -2709,7 +2777,11 @@ const FinalCTA = () => {
               onClick={open}
               className="w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold text-base hover:bg-primary/90 hover:shadow-lg transition-all rounded-none uppercase tracking-wide"
             >
-              REQUEST A FREE CUSTOM DEMO →
+              {lang === "de"
+                ? "KOSTENLOSE INDIVIDUELLE DEMO ANFORDERN →"
+                : lang === "es"
+                  ? "SOLICITA UNA DEMO PERSONALIZADA GRATIS →"
+                  : "REQUEST A FREE CUSTOM DEMO →"}
             </button>
           </div>
 
@@ -2721,7 +2793,11 @@ const FinalCTA = () => {
             className="flex flex-col items-center gap-1.5"
           >
             <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
-              Prefer email? Reach us at:
+              {lang === "de"
+                ? "Lieber per E-Mail? Kontaktieren Sie uns:"
+                : lang === "es"
+                  ? "¿Prefieres el correo electrónico? Contáctanos:"
+                  : "Prefer email? Reach us at:"}
             </p>
             <motion.a
               href="mailto:hello@b2b-voice.com"
@@ -2749,7 +2825,22 @@ const FinalCTA = () => {
 // --- FinalCTA2 (before Footer) ---
 const FinalCTA2 = () => {
   const { open } = useDemoModal();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+
+  const askAiText = {
+    en: {
+      title: "Ask AI About B2B Voice",
+      desc: "Choose your preferred AI assistant to learn more about our services.",
+    },
+    de: {
+      title: "Fragen Sie KI über B2B Voice",
+      desc: "Wählen Sie Ihren bevorzugten KI-Assistenten, um mehr über unsere Dienstleistungen zu erfahren.",
+    },
+    es: {
+      title: "Pregunta a la IA sobre B2B Voice",
+      desc: "Elige tu asistente de IA preferido para obtener más información sobre nuestros servicios.",
+    },
+  }[lang];
   return (
     <section className="py-14 md:py-20 relative overflow-hidden bg-white">
       <div className="absolute inset-0 z-0">
@@ -2767,7 +2858,10 @@ const FinalCTA2 = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {["Custom Build For You", "Setup in 24 Hours"].map((f) => (
+            {[
+              lang === "de" ? "Individuell für Sie entwickelt" : lang === "es" ? "Desarrollado a medida para ti" : "Custom Build For You",
+              lang === "de" ? "Einrichtung in 24 Stunden" : lang === "es" ? "Configuración en 24 horas" : "Setup in 24 Hours",
+            ].map((f) => (
               <span key={f} className="flex items-center gap-2 text-sm font-semibold text-gray-600">
                 <Check className="w-4 h-4 text-primary flex-shrink-0" /> {f}
               </span>
@@ -2779,7 +2873,11 @@ const FinalCTA2 = () => {
               onClick={open}
               className="w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold text-base hover:bg-primary/90 hover:shadow-lg transition-all rounded-none uppercase tracking-wide"
             >
-              REQUEST A FREE CUSTOM DEMO →
+              {lang === "de"
+                ? "KOSTENLOSE INDIVIDUELLE DEMO ANFORDERN →"
+                : lang === "es"
+                  ? "SOLICITA UNA DEMO PERSONALIZADA GRATIS →"
+                  : "REQUEST A FREE CUSTOM DEMO →"}
             </button>
           </div>
 
@@ -2791,7 +2889,11 @@ const FinalCTA2 = () => {
             className="flex flex-col items-center gap-1.5"
           >
             <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
-              Prefer email? Reach us at:
+              {lang === "de"
+                ? "Lieber per E-Mail? Kontaktieren Sie uns:"
+                : lang === "es"
+                  ? "¿Prefieres el correo electrónico? Contáctanos:"
+                  : "Prefer email? Reach us at:"}
             </p>
             <motion.a
               href="mailto:hello@b2b-voice.com"
@@ -2809,6 +2911,64 @@ const FinalCTA2 = () => {
                 hello@b2b-voice.com
               </span>
             </motion.a>
+
+            {/* Ask AI About B2B Voice */}
+            <div className="mt-8 pt-7 border-t border-gray-200/80 w-full max-w-md">
+              <p className="text-sm font-black text-gray-900">
+                {askAiText.title}
+              </p>
+
+              <p className="mt-1.5 text-sm text-gray-500 leading-relaxed">
+                {askAiText.desc}
+              </p>
+
+              <div className="mt-5 flex items-center justify-center gap-4">
+                <a
+                  href="https://chatgpt.com/?hints=search&q=Please%20review%20https%3A%2F%2Fb2b-voice.com%2F%20and%20explain%20what%20B2B%20Voice%20does%20and%20how%20its%20AI%20phone%20agents%20can%20help%20a%20business.%20Summarize%20its%20inbound%2C%20outbound%2C%20and%20customer%20support%20capabilities%2C%20ideal%20industries%2C%20integrations%2C%20pricing%2C%20setup%20timeline%2C%20and%20custom%20demo%20process.%20Use%20the%20official%20B2B%20Voice%20website%20as%20the%20primary%20source%2C%20verify%20current%20claims%2C%20and%20include%20source%20links."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ask ChatGPT about B2B Voice"
+                  title="Ask ChatGPT"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                >
+                  <img
+                    src="/ask-ai/chatgpt-512.png"
+                    alt="ChatGPT"
+                    className="h-7 w-7 object-contain"
+                  />
+                </a>
+
+                <a
+                  href="https://www.google.com/search?udm=50&q=Please%20review%20https%3A%2F%2Fb2b-voice.com%2F%20and%20explain%20what%20B2B%20Voice%20does%20and%20how%20its%20AI%20phone%20agents%20can%20help%20a%20business.%20Summarize%20its%20inbound%2C%20outbound%2C%20and%20customer%20support%20capabilities%2C%20ideal%20industries%2C%20integrations%2C%20pricing%2C%20setup%20timeline%2C%20and%20custom%20demo%20process.%20Use%20the%20official%20B2B%20Voice%20website%20as%20the%20primary%20source%2C%20verify%20current%20claims%2C%20and%20include%20source%20links."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ask Google AI about B2B Voice"
+                  title="Ask Google AI"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                >
+                  <img
+                    src="/ask-ai/google-ai-512.png"
+                    alt="Google AI"
+                    className="h-7 w-7 object-contain"
+                  />
+                </a>
+
+                <a
+                  href="https://claude.ai/new?q=Please%20review%20https%3A%2F%2Fb2b-voice.com%2F%20and%20explain%20what%20B2B%20Voice%20does%20and%20how%20its%20AI%20phone%20agents%20can%20help%20a%20business.%20Summarize%20its%20inbound%2C%20outbound%2C%20and%20customer%20support%20capabilities%2C%20ideal%20industries%2C%20integrations%2C%20pricing%2C%20setup%20timeline%2C%20and%20custom%20demo%20process.%20Use%20the%20official%20B2B%20Voice%20website%20as%20the%20primary%20source%2C%20verify%20current%20claims%2C%20and%20include%20source%20links."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ask Claude about B2B Voice"
+                  title="Ask Claude"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                >
+                  <img
+                    src="/ask-ai/claude-512.png"
+                    alt="Claude"
+                    className="h-7 w-7 object-contain"
+                  />
+                </a>
+              </div>
+            </div>
           </motion.div>
         </FadeInWhenVisible>
       </div>
@@ -2895,15 +3055,11 @@ const Footer = () => {
         <div className="max-w-5xl py-12 md:py-16 grid grid-cols-1 sm:grid-cols-[1.2fr_1.8fr] gap-10 md:gap-16">
           {/* Logo + tagline — same left edge as the copyright line below (both sit at the container's own inset, no offset math). */}
           <div className="flex flex-col items-start">
-            {lang === "de" ? (
-              <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
-            ) : (
-              <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
-            )}
+            <img src="https://b2b-voice-media.fsn1.your-objectstorage.com/site/logo-footer-white.png" alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" />
             <p className="mt-6 !text-[clamp(1.75rem,3.4vw,2.75rem)] font-black italic uppercase tracking-[-0.03em] leading-[0.95] text-white">
-              Let's build your
+              {lang === "de" ? "Entwickeln wir Ihr" : lang === "es" ? "Construyamos tu" : "Let's build your"}
               <br />
-              AI voice system.
+              {lang === "de" ? "KI-Sprachsystem." : lang === "es" ? "sistema de voz con IA." : "AI voice system."}
             </p>
           </div>
 
@@ -2911,8 +3067,8 @@ const Footer = () => {
           <div ref={legalContactWrapRef} className="grid grid-cols-2 gap-10 md:gap-16 sm:ml-16 md:ml-24 lg:ml-32">
             {/* Legal links */}
             <div>
-              <p className="mb-5 text-sm md:text-base font-black uppercase tracking-[0.28em] text-white">Legal</p>
-              <nav className="flex flex-col items-start gap-3 text-base md:text-lg font-semibold text-white/75 whitespace-nowrap" aria-label="Legal">
+              <p className="mb-5 text-sm md:text-base font-black uppercase tracking-[0.28em] text-white">{lang === "de" ? "Rechtliches" : lang === "es" ? "Legal" : "Legal"}</p>
+              <nav className="flex flex-col items-start gap-3 text-base md:text-lg font-semibold text-white/75 whitespace-nowrap" aria-label={lang === "de" ? "Rechtliches" : lang === "es" ? "Legal" : "Legal"}>
                 {links.map((link) => (
                   <a key={link.href} href={link.href} className="hover:text-white hover:translate-x-1 transition-all">
                     {link.label}
@@ -2923,7 +3079,7 @@ const Footer = () => {
 
             {/* Contact links */}
             <div>
-              <p className="mb-5 text-sm md:text-base font-black uppercase tracking-[0.28em] text-white">Contact</p>
+              <p className="mb-5 text-sm md:text-base font-black uppercase tracking-[0.28em] text-white">{lang === "de" ? "Kontakt" : lang === "es" ? "Contacto" : "Contact"}</p>
               <div className="flex flex-col items-start gap-4 text-base md:text-lg font-semibold sm:whitespace-nowrap">
                 <a href="mailto:hello@b2b-voice.com" className="inline-flex items-center gap-3 text-white/75 hover:text-white transition-colors max-w-full">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
@@ -3231,6 +3387,7 @@ const LeadFlowViz = ({ incomingCall, leadCaptured }: { incomingCall: string; lea
 
 // Viz 4: Calendar auto-fill (Card 4)
 const CalendarViz = () => {
+  const { lang } = useLanguage();
   const slots = ["09:00", "10:30", "11:00", "14:00", "15:30", "16:00"];
   const [filled, setFilled] = useState(0);
 
@@ -3242,7 +3399,7 @@ const CalendarViz = () => {
   return (
     <div className="w-full max-w-[190px] mx-auto select-none">
       <div className="text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-        <Calendar className="w-3 h-3" /> Today's Schedule
+        <Calendar className="w-3 h-3" /> {lang === "de" ? "Heutiger Zeitplan" : lang === "es" ? "Agenda de hoy" : "Today's Schedule"}
       </div>
       <div className="grid grid-cols-2 gap-1.5">
         {slots.map((slot, i) => (
@@ -3263,7 +3420,7 @@ const CalendarViz = () => {
               className="text-[8px] mt-0.5 text-primary/60"
               style={{ opacity: i < filled ? 1 : 0, transition: "opacity 0.3s" }}
             >
-              Booked ✓
+              {lang === "de" ? "Gebucht ✓" : lang === "es" ? "Reservado ✓" : "Booked ✓"}
             </div>
           </motion.div>
         ))}
@@ -3274,6 +3431,7 @@ const CalendarViz = () => {
 
 // Viz 5: Data Flow to integrations (Card 5) — redesigned
 const DataFlowViz = () => {
+  const { lang } = useLanguage();
   const targets = [
     { label: "Gmail",  color: "#EA4335", bg: "#FEF2F2", Icon: Mail },
     { label: "CRM",    color: "#00357a", bg: "#EFF6FF", Icon: Database },
@@ -3349,7 +3507,7 @@ const DataFlowViz = () => {
           <p className="text-[9px] font-black uppercase tracking-widest text-slate-800">B2BVoice</p>
           <div className="flex items-center justify-center gap-1 mt-0.5">
             <span className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-[8px] text-green-600 font-semibold">Syncing</span>
+            <span className="text-[8px] text-green-600 font-semibold">{lang === "de" ? "Synchronisierung" : lang === "es" ? "Sincronizando" : "Syncing"}</span>
           </div>
         </div>
       </div>
@@ -3359,7 +3517,7 @@ const DataFlowViz = () => {
 
 // Main Section
 const PowerfulFeaturesSection = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   return (
   <section className="py-14 md:py-20 bg-white border-b border-gray-200 relative overflow-hidden">
     <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-gray-50/60 to-transparent pointer-events-none" />
@@ -4112,13 +4270,13 @@ export default function Home() {
         <TrustStrip />
         {/* <FeaturesSection /> */}
         <PowerfulFeaturesSection />
+        <ClientsPartners />
         <LanguagesSection />
         <DemoSection />
         <FinalCTA />
+        <OrbitalIntegrations />
         <IndustriesSection />
         <SolutionSection />
-        <OrbitalIntegrations />
-        <ClientsPartners />
         <Testimonials />
         {/* <ProblemSection /> */}
         {/* <DashboardMockup /> */}

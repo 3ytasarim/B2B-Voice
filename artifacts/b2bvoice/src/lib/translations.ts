@@ -38,6 +38,9 @@ export interface Translations {
     badge: string; heading: string; menu: string[];
     stats: { label: string; val: string }[];
     weeklySummary: string; recentCalls: string; todayAppts: string;
+    menuLabel: string; allCallsToday: string; scheduled: string; total: string;
+    callStatuses: { appointment: string; appointmentMade: string; info: string; infoProvided: string; callback: string; missed: string };
+    appointmentTypes: { checkup: string; followUp: string; firstVisit: string; consultation: string };
     calls: { name: string; time: string; status: string; color: string }[];
     apts: { time: string; title: string }[];
   };
@@ -162,6 +165,9 @@ export const T: Record<Lang, Translations> = {
       menu: ["Overview", "Calls", "Appointments", "Customers", "Settings"],
       stats: [{ label: "Total Calls", val: "1,284" }, { label: "Answered", val: "1,271" }, { label: "Appointments", val: "342" }, { label: "New Customers", val: "89" }],
       weeklySummary: "Weekly Call Summary", recentCalls: "Recent Calls", todayAppts: "Today's Appointments",
+      menuLabel: "Menu", allCallsToday: "All Calls — Today", scheduled: "scheduled", total: "total",
+      callStatuses: { appointment: "Appointment", appointmentMade: "Appointment Made", info: "Info", infoProvided: "Info Provided", callback: "Callback", missed: "Missed" },
+      appointmentTypes: { checkup: "Checkup", followUp: "Follow-up", firstVisit: "First Visit", consultation: "Consultation" },
       calls: [
         { name: "John Smith", time: "2 min ago", status: "Appointment Made", color: "text-green-700 bg-green-50 border-green-200" },
         { name: "Emma Johnson", time: "15 min ago", status: "Info Provided", color: "text-blue-700 bg-blue-50 border-blue-200" },
@@ -366,6 +372,9 @@ export const T: Record<Lang, Translations> = {
       menu: ["Übersicht", "Anrufe", "Termine", "Kunden", "Einstellungen"],
       stats: [{ label: "Gesamt-Anrufe", val: "1.284" }, { label: "Beantwortet", val: "1.271" }, { label: "Termine", val: "342" }, { label: "Neukunden", val: "89" }],
       weeklySummary: "Wöchentliche Anrufübersicht", recentCalls: "Letzte Anrufe", todayAppts: "Heutige Termine",
+      menuLabel: "Menü", allCallsToday: "Alle Anrufe — Heute", scheduled: "geplant", total: "gesamt",
+      callStatuses: { appointment: "Termin", appointmentMade: "Termin vereinbart", info: "Info", infoProvided: "Info gegeben", callback: "Rückruf", missed: "Verpasst" },
+      appointmentTypes: { checkup: "Kontrolltermin", followUp: "Nachsorge", firstVisit: "Erstbesuch", consultation: "Beratung" },
       calls: [
         { name: "John Smith", time: "Vor 2 Min.", status: "Termin vereinbart", color: "text-green-700 bg-green-50 border-green-200" },
         { name: "Emma Johnson", time: "Vor 15 Min.", status: "Info gegeben", color: "text-blue-700 bg-blue-50 border-blue-200" },
@@ -570,6 +579,9 @@ export const T: Record<Lang, Translations> = {
       menu: ["Resumen", "Llamadas", "Citas", "Clientes", "Configuración"],
       stats: [{ label: "Total Llamadas", val: "1.284" }, { label: "Respondidas", val: "1.271" }, { label: "Citas", val: "342" }, { label: "Nuevos Clientes", val: "89" }],
       weeklySummary: "Resumen Semanal de Llamadas", recentCalls: "Llamadas Recientes", todayAppts: "Citas de Hoy",
+      menuLabel: "Menú", allCallsToday: "Todas las Llamadas — Hoy", scheduled: "programadas", total: "en total",
+      callStatuses: { appointment: "Cita", appointmentMade: "Cita Programada", info: "Info", infoProvided: "Info Proporcionada", callback: "Devolución de llamada", missed: "Perdida" },
+      appointmentTypes: { checkup: "Revisión", followUp: "Seguimiento", firstVisit: "Primera Visita", consultation: "Consulta" },
       calls: [
         { name: "John Smith", time: "Hace 2 min", status: "Cita Programada", color: "text-green-700 bg-green-50 border-green-200" },
         { name: "Emma Johnson", time: "Hace 15 min", status: "Info Proporcionada", color: "text-blue-700 bg-blue-50 border-blue-200" },

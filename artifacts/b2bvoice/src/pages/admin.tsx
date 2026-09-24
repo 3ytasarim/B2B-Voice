@@ -518,7 +518,15 @@ export default function AdminPage() {
     else setRefreshing(true);
     try {
       const res = await fetch("/api/leads", { headers: adminAuthHeaders() });
-      if (!res.ok) throw new Error("Failed to fetch");
+
+      if (res.status === 401) {
+        localStorage.removeItem(TOKEN_KEY);
+        setLocation("/admin/login");
+        return;
+      }
+
+      if (!res.ok) throw new Error(`Failed to fetch leads: ${res.status}`);
+
       const data = await res.json();
       setLeads(data);
       setError(null);
@@ -537,7 +545,14 @@ export default function AdminPage() {
     setLeads((ls) => ls.filter((l) => l.id !== id));
     try {
       const res = await fetch(`/api/leads/${id}`, { method: "DELETE", headers: adminAuthHeaders() });
-      if (!res.ok) throw new Error("Failed to delete");
+
+      if (res.status === 401) {
+        localStorage.removeItem(TOKEN_KEY);
+        setLocation("/admin/login");
+        return;
+      }
+
+      if (!res.ok) throw new Error(`Failed to delete lead: ${res.status}`);
     } catch {
       setLeads(prev);
       setError("Could not delete lead. Please try again.");
