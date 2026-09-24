@@ -118,7 +118,7 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
   const options = [
     {
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
         </svg>
       ),
@@ -135,7 +135,7 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
     },
     {
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
         </svg>
       ),
@@ -152,7 +152,7 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
     },
     {
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
         </svg>
       ),
@@ -194,7 +194,7 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
             {/* Header */}
             <div className="px-8 pt-7 pb-5">
               <button onClick={onClose} className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 transition-colors">
-                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
               </button>
@@ -233,7 +233,7 @@ const DemoChoiceModal = ({ open, onClose, onOpenForm }: { open: boolean; onClose
                     <div className={`font-bold text-sm ${opt.text}`}>{opt.label}</div>
                     <div className="text-gray-500 text-xs mt-0.5 leading-relaxed">{opt.desc}</div>
                   </div>
-                  <svg viewBox="0 0 24 24" className={`w-4 h-4 flex-shrink-0 ml-auto ${opt.text} opacity-50`} fill="none" stroke="currentColor" strokeWidth={2.5}>
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" className={`w-4 h-4 flex-shrink-0 ml-auto ${opt.text} opacity-50`} fill="none" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
                   </svg>
                 </motion.button>
@@ -341,7 +341,7 @@ const Navbar = () => {
                         <p className="text-[9px] uppercase tracking-widest text-gray-400 mt-0.5 font-mono">{label}</p>
                       </div>
                       {code === lang && (
-                        <svg className="w-3.5 h-3.5 text-primary ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg aria-hidden="true" focusable="false" className="w-3.5 h-3.5 text-primary ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       )}
@@ -1595,7 +1595,7 @@ const IndustriesSection = () => {
               <div className="relative aspect-[16/9] overflow-hidden bg-slate-200">
                 <img
                   src={ind.image}
-                  alt={`${ind.title} — B2BVoice AI voice assistant`}
+                  alt=""
                   width={960}
                   height={540}
                   loading="lazy"
@@ -1814,7 +1814,7 @@ const BrandIcon = ({ name, size = 26 }: { name: string; size?: number }) => {
   const vb = icon.viewBox ?? "0 0 24 24";
 
   return (
-    <svg viewBox={vb} width={size} height={size} style={{ display: "block" }}>
+    <svg aria-hidden="true" focusable="false" viewBox={vb} width={size} height={size} style={{ display: "block" }}>
       {icon.extra}
       {icon.path && <path fill={icon.fill} d={icon.path} />}
     </svg>
@@ -1930,7 +1930,7 @@ const OrbitalNode = ({ item, cx, cy }: {
       >
         <img
           src={item.image}
-          alt={item.label}
+          alt=""
           width={32}
           height={32}
           draggable={false}
@@ -1981,7 +1981,7 @@ const OrbitalIntegrations = () => {
         <ScaledOrbit size={SIZE}>
 
           {/* SVG orbit rings */}
-          <svg
+          <svg aria-hidden="true" focusable="false"
             viewBox={`0 0 ${SIZE} ${SIZE}`}
             className="absolute inset-0 w-full h-full pointer-events-none"
           >
@@ -2448,8 +2448,8 @@ const ClientsPartners = () => {
         {/* Row 1 — scrolling left */}
         <div className="flex items-center mb-6 animate-marquee" style={{ width: "max-content" }}>
           {row1.map((logo, i) => (
-            <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8">
-              <img src={logo.src} alt={logo.name} height={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
+            <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8" aria-hidden={i >= clientRow1.length ? true : undefined}>
+              <img src={logo.src} alt={i >= clientRow1.length ? "" : `${logo.name} logo`} height={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2457,8 +2457,8 @@ const ClientsPartners = () => {
         {/* Row 2 — scrolling right */}
         <div className="flex items-center animate-marquee-reverse" style={{ width: "max-content" }}>
           {row2.map((logo, i) => (
-            <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8">
-              <img src={logo.src} alt={logo.name} height={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
+            <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8" aria-hidden={i >= clientRow2.length ? true : undefined}>
+              <img src={logo.src} alt={i >= clientRow2.length ? "" : `${logo.name} logo`} height={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2479,7 +2479,7 @@ const ClientsPartners = () => {
                 className="flex items-center justify-center transition-transform duration-300 hover:-translate-y-1 hover:scale-105"
               >
                 {partner.src ? (
-                  <img src={partner.src} alt={partner.name} height={80} loading="lazy" decoding="async" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
+                  <img src={partner.src} alt={`${partner.name} logo`} height={80} loading="lazy" decoding="async" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
                 ) : (
                   <span className="font-black text-sm sm:text-xl tracking-[0.1em] sm:tracking-[0.18em] uppercase text-gray-800 whitespace-nowrap">
                     {partner.name}
@@ -2943,7 +2943,7 @@ const FinalCTA2 = () => {
                 >
                   <img
                     src="/ask-ai/chatgpt-512.png"
-                    alt="ChatGPT"
+                    alt=""
                     width={28}
                     height={28}
                     loading="lazy"
@@ -2962,7 +2962,7 @@ const FinalCTA2 = () => {
                 >
                   <img
                     src="/ask-ai/google-ai-512.png"
-                    alt="Google AI"
+                    alt=""
                     width={28}
                     height={28}
                     loading="lazy"
@@ -2981,7 +2981,7 @@ const FinalCTA2 = () => {
                 >
                   <img
                     src="/ask-ai/claude-512.png"
-                    alt="Claude"
+                    alt=""
                     width={28}
                     height={28}
                     loading="lazy"
@@ -3234,7 +3234,7 @@ const OrbitViz = ({ labels }: { labels: string[] }) => {
 
   return (
     <div className="relative w-full select-none" style={{ height: 200 }}>
-      <svg className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
+      <svg aria-hidden="true" focusable="false" className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
         <ellipse cx="50%" cy="50%" rx="40%" ry="28%" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1" strokeDasharray="6 6" />
         {labels.map((_, i) => (
           <line
@@ -3481,7 +3481,7 @@ const DataFlowViz = () => {
       </div>
 
       {/* SVG connector lines with animated packets — dots flow FROM B2BVoice hub OUT to targets */}
-      <svg viewBox="0 0 300 48" className="w-full" style={{ height: 48 }}>
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 300 48" className="w-full" style={{ height: 48 }}>
         <defs>
           {[50, 150, 250].map((x, i) => (
             <path key={i} id={`dfpath-${i}`} d={`M 150 48 L ${x} 0`} fill="none" />
@@ -3787,7 +3787,7 @@ const DemoPremiumCard = ({
             {card.imageSrc ? (
               <img
                 src={card.imageSrc}
-                alt={card.name}
+                alt={`Portrait of ${card.name}`}
                 className="w-full h-full object-cover"
               />
             ) : (
@@ -4208,7 +4208,7 @@ const ScrollProgressButton = () => {
           />
 
           {/* SVG ring */}
-          <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="absolute inset-0 -rotate-90">
+          <svg aria-hidden="true" focusable="false" width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="absolute inset-0 -rotate-90">
             {/* Track */}
             <circle
               cx={size / 2} cy={size / 2} r={radius}

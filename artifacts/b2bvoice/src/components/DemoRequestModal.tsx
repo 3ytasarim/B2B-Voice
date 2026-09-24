@@ -271,7 +271,7 @@ export default function DemoRequestModal({ open, onClose }: { open: boolean; onC
                           onClick={() => setShowScenario((s) => !s)}
                           className="flex items-center gap-1.5 text-xs text-primary font-semibold hover:underline"
                         >
-                          <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                          <svg aria-hidden="true" focusable="false" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                             <path fillRule="evenodd" d={showScenario ? "M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" : "M10 3a.75.75 0 01.75.75v5.5h5.5a.75.75 0 010 1.5h-5.5v5.5a.75.75 0 01-1.5 0v-5.5h-5.5a.75.75 0 010-1.5h5.5v-5.5A.75.75 0 0110 3z"} clipRule="evenodd" />
                           </svg>
                           {showScenario ? "Hide scenario" : "Describe your ideal call scenario (optional)"}
