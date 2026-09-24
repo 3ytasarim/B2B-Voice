@@ -10,6 +10,7 @@ import {
 import BlogPanel from "@/components/BlogPanel";
 import ReferencesPanel from "@/components/ReferencesPanel";
 import PartnersPanel from "@/components/PartnersPanel";
+import { useNoindex } from "@/hooks/use-noindex";
 
 const TOKEN_KEY = "b2bvoice_admin_token";
 
@@ -492,6 +493,7 @@ function SeoPanel() {
 }
 
 export default function AdminPage() {
+  useNoindex();
   const [, setLocation] = useLocation();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);

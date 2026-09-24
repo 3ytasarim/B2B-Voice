@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 import { motion, AnimatePresence, useAnimationFrame } from "framer-motion";
 import { Eye, EyeOff, Lock, User, PhoneCall } from "lucide-react";
+import { useNoindex } from "@/hooks/use-noindex";
 
 const TOKEN_KEY = "b2bvoice_admin_token";
 
@@ -119,6 +120,7 @@ const AnimatedWave = () => {
 };
 
 export default function AdminLogin() {
+  useNoindex();
   const [, setLocation] = useLocation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
