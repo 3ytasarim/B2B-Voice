@@ -15,7 +15,7 @@ Branch: `seo/ssg-overhaul`. Status legend: done / code-ready (needs deploy) / op
 | 8 | Real `sitemap.xml` | code-ready (generated at build) |
 | 9 | `robots.txt` with AI bots + Sitemap | done |
 | 10 | Crawler access (CDN/firewall) | open – verify after deploy (`deploy/verify.sh`) |
-| 11 | Schema in first HTML | done (`src/seo/jsonLd.ts`); FAQPage intentionally omitted |
+| 11 | Schema in first HTML | done and verified with Google Rich Results Test (0 warnings) - see below |
 | 12 | Image semantics | done – see rules below |
 | 13 | Image performance (srcset, AVIF, per-page OG) | done for local images; sector/agent photos live on the CDN bucket (open) |
 | 14 | Internal linking | done except service/sector pages (content decision pending); `check:links` audits broken links + orphans |
@@ -88,3 +88,14 @@ Audited with axe-core (mobile 390 px and desktop 1280 px) plus manual checks.
 - **Contrast:** `text-gray-400`/`gray-300`/small green/amber labels raised to at least 4.5:1 (mostly `gray-500`).
 - **Touch targets:** nav buttons 44 px; back links, blog category links and "Continue Reading" enlarged without moving the layout (padding + negative margin); voice play button has an 8 px invisible hit area.
 - **Known leftovers:** language-chip buttons in the multilingual demo widget are 28 px tall (above WCAG 2.2 AA 24 px, below the 44-48 px goal); a few decorative mock-UI labels use 8-9 px type; the ElevenLabs widget is third-party and outside our landmarks; `axe` still reports a few transient contrast hits on the animated mock dashboard.
+
+## Verification against the PDF checklist (this session)
+
+Ran actual tests, not just code review, against the local prerendered build (`dist/public`):
+
+- **Section F (per-page checks):** single H1 on all 20 pages; unique `<title>`/description across all 18 indexable pages (verified programmatically, no duplicates); canonical is self-referencing on every page; schema present in raw HTML (curl, no JS) on every page; every `<img>` has `alt` (107 on the home page, 0 missing); no unwanted `noindex` (only 404/admin have it); `check:links` finds 0 broken links / 0 orphans across 20 pages and 18 sitemap URLs.
+- **JavaScript disabled:** loaded `/`, `/blog`, an article and `/demo` with JS turned off in a real browser - H1, real body text (6.7-14 KB) and internal links are all present; React never mounts.
+- **No cloaking:** compared responses for `Mozilla/5.0`, `OAI-SearchBot`, `Claude-SearchBot`, `ClaudeBot`, `Googlebot`, `Google-Extended`, `GPTBot` on 4 pages - byte-for-byte identical every time (diff confirms it). Nothing in the build or the static server branches on user-agent.
+- **Google Rich Results Test (official tool, not a local validator):** pasted the built `what-is-b2b-voice.html` into search.google.com/test/rich-results. First run: 3 valid items (Article, Breadcrumbs, Organization), 4 non-critical warnings (`datePublished`/`dateModified` missing a timezone). Fixed by emitting full ISO 8601 datetimes (`toIsoDateTime()` in `src/seo/jsonLd.ts`) instead of bare dates. Re-tested: **3/3 valid items, 0 warnings, 0 errors.**
+- **Known, accepted deviation:** 2 of the 11 articles (`ai-voice-agent-turn-taking-interruptions`, `rag-vs-tool-calling-vs-prompt-context`) have their `<h1>` as a sibling of `<article>` inside `<main>` rather than nested in `<article><header>`, because their source HTML (kept byte-for-byte per an explicit instruction not to alter injected article markup) was authored with a `<main class="wrap">` structure. Counts are still exactly one `<main>`/`<article>`/`<h1>` and heading order is unaffected; flagged here rather than silently claimed as fully matching the PDFs example.
+- **Not verifiable in this environment:** Lighthouse/PageSpeed Core Web Vitals (headless Chromium in this VM cannot complete an LCP/TBT trace - FCP and CLS computed fine, LCP/TBT came back null on both mobile and desktop presets); must be measured on staging or production after deploy.

@@ -18,6 +18,9 @@ interface Post {
   coverImage: string;
 }
 
+/** Google's Rich Results Test flags a date-only value: it wants a full ISO 8601 datetime with a timezone. */
+const toIsoDateTime = (isoDate: string) => `${isoDate}T00:00:00+00:00`;
+
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const LOGO = `${SITE_URL}/logo-clean.png`;
@@ -85,7 +88,7 @@ export function jsonLdFor(page: PageMeta, posts: Post[]): object[] {
           "@type": "BlogPosting",
           headline: p.title,
           url: canonicalFor(`/${p.slug}`),
-          datePublished: p.date,
+          datePublished: toIsoDateTime(p.date),
         })),
       },
       { ...ctx, ...breadcrumb([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]) },
@@ -103,8 +106,8 @@ export function jsonLdFor(page: PageMeta, posts: Post[]): object[] {
         headline: post.title,
         description: postMeta(post).description,
         image: postMeta(post).ogImage || DEFAULT_OG_IMAGE,
-        datePublished: post.date,
-        dateModified: post.date,
+        datePublished: toIsoDateTime(post.date),
+        dateModified: toIsoDateTime(post.date),
         author: { "@type": "Organization", name: SITE_NAME, url: `${SITE_URL}/` },
         publisher: { ...organization, "@type": "Organization" },
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
