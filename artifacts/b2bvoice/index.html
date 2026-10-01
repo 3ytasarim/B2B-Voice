@@ -43,11 +43,19 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="root" style="overflow-x:hidden;max-width:100vw;"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- ElevenLabs ConvAI Widget -->
-    <elevenlabs-convai
-      agent-id="agent_5701m2wppr84fw4r1fzrs191yghh"
-      disable-banner="true"
-    ></elevenlabs-convai>
+    <!-- ElevenLabs ConvAI Widget — home page only (it looked out of place on
+         inner pages like /demo, which already has its own CTA). -->
+    <style>
+      /* The floating widget (and especially its opened chat panel) was
+         claiming most of the viewport on phones — scale the whole host
+         element down; that scales its shadow-DOM contents too. */
+      @media (max-width: 640px) {
+        elevenlabs-convai {
+          transform: scale(0.62);
+          transform-origin: bottom right;
+        }
+      }
+    </style>
 
     <!-- Non-critical third-party scripts (voice widget, Umami replays) load after
          the page is interactive so they never compete with the first render. -->
@@ -61,7 +69,13 @@
             for (var k in attrs) s.setAttribute(k, attrs[k]);
             document.body.appendChild(s);
           };
-          add("https://unpkg.com/@elevenlabs/convai-widget-embed");
+          if (location.pathname === "/") {
+            var widget = document.createElement("elevenlabs-convai");
+            widget.setAttribute("agent-id", "agent_5701m2wppr84fw4r1fzrs191yghh");
+            widget.setAttribute("disable-banner", "true");
+            document.body.appendChild(widget);
+            add("https://unpkg.com/@elevenlabs/convai-widget-embed");
+          }
           // Umami Replays & Heatmaps
           add("https://analytics.bleibsichtbar.com/recorder.js", {
             "data-website-id": "03a6ce51-8cd8-400c-9d7c-97d776810b3a",
@@ -75,6 +89,7 @@
 <!-- B2BVoice ElevenLabs Branding -->
 <script>
 (() => {
+  if (location.pathname !== "/") return;
   const applyBleibsichtbarBranding = () => {
     const widget = document.querySelector("elevenlabs-convai");
     const root = widget?.shadowRoot;
