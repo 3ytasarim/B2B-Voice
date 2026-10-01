@@ -3024,12 +3024,27 @@ const Footer = () => {
       if (!wrap || !phone || !credit) return;
 
       wrap.style.transform = "";
-      if (window.innerWidth < 640) return;
+      // Below lg the legal/contact columns are too narrow for the nowrap
+      // link/contact text (it overflows and the nudge below would then drag
+      // the whole block left on top of the tagline) — stay stacked instead.
+      if (window.innerWidth < 1024) return;
 
       const phoneRight = phone.getBoundingClientRect().right;
       const creditLeftX = credit.getBoundingClientRect().left;
       const nudgeLeft = 70; // shifted further left to give the (now nowrap) email room before the robot
-      const delta = creditLeftX - phoneRight - nudgeLeft;
+      let delta = creditLeftX - phoneRight - nudgeLeft;
+
+      // Safety clamp: never drag this block left of the logo/tagline column
+      // next to it. Without this, a large delta (e.g. at a narrower lg width,
+      // or after the link list grows) can shove it on top of that column
+      // instead of just under-aligning the phone/credit edges.
+      const firstCol = wrap.previousElementSibling as HTMLElement | null;
+      if (firstCol) {
+        const minLeft = firstCol.getBoundingClientRect().right + 32;
+        const wrapLeft = wrap.getBoundingClientRect().left;
+        if (wrapLeft + delta < minLeft) delta = minLeft - wrapLeft;
+      }
+
       wrap.style.transform = `translateX(${delta}px)`;
     };
     align();
@@ -3071,7 +3086,7 @@ const Footer = () => {
       </div>
 
       <div ref={footerContentRef} className="container mx-auto px-6 relative">
-        <div className="max-w-5xl py-12 md:py-16 grid grid-cols-1 sm:grid-cols-[1.2fr_1.8fr] gap-10 md:gap-16">
+        <div className="max-w-5xl py-12 md:py-16 grid grid-cols-1 lg:grid-cols-[1.2fr_1.8fr] gap-10 md:gap-16">
           {/* Logo + tagline — same left edge as the copyright line below (both sit at the container's own inset, no offset math). */}
           <div className="flex flex-col items-start">
             <img src="/logo-footer-white-920.webp" width={920} height={160} alt="B2BVoice" className="h-16 md:h-20 w-auto object-contain" loading="lazy" decoding="async" />
@@ -3083,7 +3098,7 @@ const Footer = () => {
           </div>
 
           {/* Legal + Contact — position corrected live so the phone number's right edge meets the credit line's left edge. */}
-          <div ref={legalContactWrapRef} className="grid grid-cols-2 gap-10 md:gap-16 sm:ml-16 md:ml-24 lg:ml-32">
+          <div ref={legalContactWrapRef} className="grid grid-cols-2 gap-10 md:gap-16 lg:ml-32">
             {/* Legal links */}
             <div>
               <p className="mb-5 text-sm md:text-base font-black uppercase tracking-[0.28em] text-white">{lang === "de" ? "Rechtliches" : lang === "es" ? "Legal" : "Legal"}</p>
@@ -3130,7 +3145,7 @@ const Footer = () => {
 
         <div
           ref={robotWrapRef}
-          className="hidden sm:block absolute -right-10 bottom-16 md:bottom-20 pointer-events-none"
+          className="hidden lg:block absolute -right-10 bottom-16 md:bottom-20 pointer-events-none"
         >
           <LazyFooterRobot className="pointer-events-auto h-56 w-56 md:h-72 md:w-72 lg:h-80 lg:w-80" />
         </div>

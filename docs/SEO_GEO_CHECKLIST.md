@@ -103,3 +103,11 @@ Ran actual tests, not just code review, against the local prerendered build (`di
 ## ElevenLabs widget scope + mobile size (post-launch tweak)
 
 The voice widget now only loads on the home page (`location.pathname === "/"` check in `index.html`, since every prerendered page shares the same HTML shell) - it looked out of place on `/demo`, which already has its own CTA flow. On screens <=640px it is scaled to 0.62x (`transform: scale(0.62)`, anchored bottom-right) so it no longer dominates the viewport; above that width it renders at full size. Verified in the browser at 375px (widget clearly smaller, page content no longer covered) and 1280px (unscaled, unchanged).
+
+## Footer overlap fix (post-launch bug report)
+
+User reported the footer text all overlapping on their phone. Root cause: the Legal+Contact block used a JS-measured translateX nudge (to line the phone number up under the "Design by" credit) that only activated at the sm breakpoint (640px) and up, while the two-column grid it nudges also only split there - but at tablet widths (640-1023px) the nowrap link/contact text barely fit its narrow column, and the nudge computed a sharply negative delta, dragging the whole Legal+Contact block left on top of the logo/tagline column. Likely present before, just newly visible once "Legal Notice" was added to the links list and someone hit that width range.
+
+Fix in src/pages/home.tsx Footer component:
+- Two-column grid (and the matching margin/robot) now only activate at the lg breakpoint (1024px) - below that the footer stacks in one column (Legal + Contact still sit side by side within it, same as always worked on phones).
+- Added a safety clamp to the alignment effect: it now reads the logo/tagline column's right edge and never lets the nudge push the Legal+Contact block closer than 32px to it, regardless of width or future link-list length. Verified empirically (not just read) at 700/1024/1280px: no overlap at any width, and the original phone/credit pixel alignment is unchanged at 1280px+ (the clamp never triggers there).
