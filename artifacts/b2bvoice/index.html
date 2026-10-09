@@ -86,61 +86,6 @@
       });
     </script>
     <!-- End ElevenLabs ConvAI Widget -->
-<!-- B2BVoice ElevenLabs Branding -->
-<script>
-(() => {
-  if (location.pathname !== "/") return;
-  const applyBleibsichtbarBranding = () => {
-    const widget = document.querySelector("elevenlabs-convai");
-    const root = widget?.shadowRoot;
-
-    if (!root) {
-      requestAnimationFrame(applyBleibsichtbarBranding);
-      return;
-    }
-
-    const update = () => {
-      const links = root.querySelectorAll('a[href*="elevenlabs.io"]');
-
-      links.forEach((link) => {
-        const parent = link.parentElement;
-        if (!parent) return;
-
-        const poweredBy = parent.querySelector("span");
-
-        if (poweredBy) {
-          poweredBy.textContent = "Powered by";
-          poweredBy.style.opacity = "1";
-          poweredBy.style.color = "#000000";
-        }
-
-        link.textContent = "B2b-voice.com";
-        link.href = "https://b2b-voice.com/";
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-
-        link.style.opacity = "1";
-        link.style.color = "#000000";
-        link.style.textDecoration = "underline";
-
-        parent.style.color = "#000000";
-      });
-    };
-
-    update();
-
-    const observer = new MutationObserver(update);
-    observer.observe(root, {
-      childList: true,
-      subtree: true
-    });
-  };
-
-  customElements.whenDefined("elevenlabs-convai")
-    .then(applyBleibsichtbarBranding);
-})();
-</script>
-<!-- End B2BVoice ElevenLabs Branding -->
 
 
   </body>
