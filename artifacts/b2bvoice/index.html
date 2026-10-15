@@ -47,12 +47,17 @@
          inner pages like /demo, which already has its own CTA). -->
     <style>
       /* The floating widget (and especially its opened chat panel) was
-         claiming most of the viewport on phones — scale the whole host
-         element down; that scales its shadow-DOM contents too. */
+         claiming most of the viewport on phones — shrink it on small
+         screens. Use `zoom`, not `transform: scale()`: the widget positions
+         itself with `position: fixed` internally, and a CSS transform on an
+         ancestor changes the containing block fixed-position descendants
+         resolve against (breaks/mispositions it, worse on WebKit/Safari —
+         real iPhones — than in Chromium dev tools). `zoom` rescales layout
+         itself instead of post-layout painting, so fixed positioning still
+         resolves against the real viewport. */
       @media (max-width: 640px) {
         elevenlabs-convai {
-          transform: scale(0.62);
-          transform-origin: bottom right;
+          zoom: 0.62;
         }
       }
     </style>
