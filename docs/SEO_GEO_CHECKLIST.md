@@ -146,3 +146,19 @@ Starting point: production at 2194b30, mobile PSI 60. Lighthouse flagged ~642 Ki
 **Behaviour changes to be aware of**
 - Widget needs one click/tap on the trigger, then the widget opens expanded (a second click on "Start a call" begins the call).
 - gtag.js (GA4) now starts on first interaction or 4 s after load instead of right after hydration; visitors who leave before that are not counted (same trade-off already made for GTM in the previous sprint).
+
+## Performance sprint 3 (branch perf/mobile-sprint-3)
+
+Starting point: production at dce04b7, mobile PSI 87, LCP 3.1 s, FCP 2.4 s, TBT 110 ms. LCP element: the hero paragraph (`p.text-xl`), "element render delay" ~3.2 s.
+
+**Root cause of the late LCP (measured, not assumed).** Resources were all in by ~90 ms locally, yet the first paint contained only the logo image and the hero text only appeared ~500-700 ms later. Frame captures showed the hero column at opacity 0: the left column (H1 + paragraph + CTAs) used the `hero-enter-left` entrance animation that faded from `opacity: 0`, and Chrome does not count text that is still fading in. It was independent of JS and fonts (same result with JS blocked and with fonts blocked). Fix: that animation is now transform-only (`translateX(-16px)`, 0.6 s) - the text is painted at first paint and the paragraph becomes the LCP candidate at FCP. The right-hand call card and the e-mail link keep their fade (their text is not the LCP candidate).
+
+**Other checks (no change needed)**
+- Hero font: Bricolage Grotesque `latin` is preloaded (`crossorigin`), `font-display: swap`; Inter is not used above the fold and is not preloaded. Removing the Bricolage preload gave no FCP/LCP gain and introduced a small CLS (0.004), so it stays.
+- Critical CSS (sprint 2) verified again; switching the full-stylesheet load from `preload` to `media=print` made no measurable difference locally, so it was left as is.
+- Meta pixel: the published GTM container has one Custom HTML tag (standard base code, `init` + `PageView`, fires on `gtm.js`); no `fbq` in app code and no duplicate load. There is no consent banner/Consent Mode in the app. Cache TTL of Google/Meta files cannot be changed from our side.
+- Source maps: production builds have `sourcemap: false`. The Lighthouse "missing source maps" warning is not a performance issue and clearing it would require publishing the maps (readable source); intentionally not done.
+
+**Main-thread work**
+- A profile with MutationObserver + invalidation tracking showed endless animation loops far below the fold restyling thousands of elements per second (6.6k style mutations / 3 s on the sparkle SVGs, 5.2k on the 20 waveform bars). `src/components/ui/motion-gated.tsx` is a drop-in for framer-motion's `m` that only runs `transition={{ repeat: Infinity }}` elements while they are within 150 px of the viewport; `SparklesText` also stops its 10 Hz re-render loop off screen. Output markup is unchanged. Result: main-thread work -27 %, Speed Index -18 % in the local Lighthouse runs.
+- Tried and reverted: incremental/selective hydration of the below-the-fold sections via `Suspense` + `use()`. React 19.1 client-rendered (and so removed) the dehydrated boundaries instead of keeping their server HTML, so it was dropped rather than shipped.

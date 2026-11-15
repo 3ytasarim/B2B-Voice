@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { m as motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "@/components/ui/motion-gated";
 import { cn } from "@/lib/utils";
 
 interface Sparkle {
@@ -29,8 +29,19 @@ export function SparklesText({
   sparklesCount = 8,
 }: SparklesTextProps) {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+  const rootRef = useRef<HTMLSpanElement>(null);
+  // The 10 Hz state loop below only runs while the text is near the screen.
+  const [near, setNear] = useState(true);
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: "150px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!near) return;
     const generateSparkle = (): Sparkle => ({
       id: `${Date.now()}-${Math.random()}`,
       x: `${Math.random() * 100}%`,
@@ -53,10 +64,11 @@ export function SparklesText({
     }, 100);
 
     return () => window.clearInterval(interval);
-  }, [colors.first, colors.second, sparklesCount]);
+  }, [colors.first, colors.second, sparklesCount, near]);
 
   return (
     <span
+      ref={rootRef}
       className={cn("relative inline-block", className)}
       style={{
         "--sparkles-first-color": colors.first,

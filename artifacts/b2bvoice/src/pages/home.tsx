@@ -10,7 +10,8 @@ import { ShinyButton } from "@/components/ui/shiny-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { LazyFooterRobot } from "@/components/LazyFooterRobot";
 import { useOnScreenRef, useScrolledPast, useScrollProgress } from "@/hooks/use-scroll-state";
-import { m as motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
+import { useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
+import { motion } from "@/components/ui/motion-gated";
 import { Link } from "wouter";
 import {
   Menu, X, ChevronRight, ArrowRight,
