@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TWK7KMW9');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>B2BVoice – AI Voice Assistant for Businesses</title>
@@ -62,33 +55,66 @@
       }
     </style>
 
-    <!-- Non-critical third-party scripts (voice widget, Umami replays) load after
-         the page is interactive so they never compete with the first render. -->
+    <!-- Third-party scripts are scheduled so they never compete with the first
+         render (on a throttled phone ~1 MB of GTM + Meta pixel + widget + session
+         recorder was queued ahead of the hero image and fonts):
+           - voice widget (home only): right after the page has loaded, when idle
+           - Google Tag Manager (and the GA4/Meta tags inside it): on the visitor's
+             first interaction, or 4 s after load at the latest
+           - Umami session recorder: first interaction, or 10 s after load -->
     <script>
-      window.addEventListener("load", function () {
-        var run = function () {
-          var add = function (src, attrs) {
-            var s = document.createElement("script");
-            s.src = src;
-            s.async = true;
-            for (var k in attrs) s.setAttribute(k, attrs[k]);
-            document.body.appendChild(s);
-          };
-          if (location.pathname === "/") {
+      (function () {
+        var done = {};
+        function addScript(src, attrs) {
+          var s = document.createElement("script");
+          s.src = src;
+          s.async = true;
+          for (var k in attrs) s.setAttribute(k, attrs[k]);
+          document.body.appendChild(s);
+        }
+        function once(name, fn) {
+          if (done[name]) return;
+          done[name] = true;
+          fn();
+        }
+        function loadGtm() {
+          once("gtm", function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            addScript("https://www.googletagmanager.com/gtm.js?id=GTM-TWK7KMW9");
+          });
+        }
+        function loadRecorder() {
+          once("recorder", function () {
+            addScript("https://analytics.bleibsichtbar.com/recorder.js", {
+              "data-website-id": "03a6ce51-8cd8-400c-9d7c-97d776810b3a",
+            });
+          });
+        }
+        function loadWidget() {
+          if (location.pathname !== "/") return;
+          once("widget", function () {
             var widget = document.createElement("elevenlabs-convai");
             widget.setAttribute("agent-id", "agent_5701m2wppr84fw4r1fzrs191yghh");
             widget.setAttribute("disable-banner", "true");
             document.body.appendChild(widget);
-            add("https://unpkg.com/@elevenlabs/convai-widget-embed");
-          }
-          // Umami Replays & Heatmaps
-          add("https://analytics.bleibsichtbar.com/recorder.js", {
-            "data-website-id": "03a6ce51-8cd8-400c-9d7c-97d776810b3a",
+            addScript("https://unpkg.com/@elevenlabs/convai-widget-embed");
           });
-        };
-        if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 4000 });
-        else setTimeout(run, 2000);
-      });
+        }
+        var events = ["pointerdown", "keydown", "touchstart", "scroll", "mousemove"];
+        function onInteract() {
+          events.forEach(function (e) { removeEventListener(e, onInteract); });
+          loadGtm();
+          loadRecorder();
+        }
+        events.forEach(function (e) { addEventListener(e, onInteract, { passive: true }); });
+        addEventListener("load", function () {
+          if ("requestIdleCallback" in window) requestIdleCallback(loadWidget, { timeout: 4000 });
+          else setTimeout(loadWidget, 2000);
+          setTimeout(loadGtm, 4000);
+          setTimeout(loadRecorder, 10000);
+        });
+      })();
     </script>
     <!-- End ElevenLabs ConvAI Widget -->
 

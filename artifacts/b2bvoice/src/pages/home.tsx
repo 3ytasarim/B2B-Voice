@@ -288,11 +288,16 @@ const Navbar = () => {
       <div className="w-full px-4 sm:px-6 flex items-center justify-between" style={{ height: "72px" }}>
         {/* Logo */}
         <Link href="/" className="shrink-0">
+          {/* LCP element on most phones: high priority + right-sized candidates (168px on phones, 208px from sm). */}
           <img
-            src="/logo-clean-420.webp"
+            src="/logo-clean-336.webp"
+            srcSet="/logo-clean-168.webp 168w, /logo-clean-336.webp 336w, /logo-clean-420.webp 420w"
+            sizes="(min-width: 640px) 208px, 168px"
             width={420}
             height={420}
             alt="B2BVoice"
+            fetchPriority="high"
+            decoding="async"
             className="w-[168px] sm:w-52"
             style={{ height: "auto", opacity: 0.95, mixBlendMode: "normal" }}
           />
@@ -596,12 +601,7 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="min-w-0 max-w-2xl lg:pr-4"
-          >
+          <div className="hero-enter-left min-w-0 max-w-2xl lg:pr-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-gray-200 mb-8 text-xs font-semibold tracking-wider text-primary uppercase rounded-none shadow-sm">
               <span className="w-1.5 h-1.5 bg-accent animate-pulse" />
               {t.hero.badge}
@@ -658,42 +658,27 @@ const Hero = () => {
               </ShinyButton>
             </div>
 
-            <motion.a
+            <a
               href="mailto:hello@b2b-voice.com"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              whileHover={{ scale: 1.02 }}
-              className="mt-6 inline-flex items-center gap-3.5 group"
+              className="hero-enter-up-sm mt-6 inline-flex items-center gap-3.5 group transition-transform hover:scale-[1.02]"
             >
-              <motion.div
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
-                className="flex items-center justify-center w-11 h-11 bg-primary/10 text-primary shrink-0"
-              >
+              <div className="soft-pulse flex items-center justify-center w-11 h-11 bg-primary/10 text-primary shrink-0">
                 <Mail className="w-5 h-5" />
-              </motion.div>
+              </div>
               <div>
                 <p className="text-[11px] uppercase tracking-widest text-gray-500 font-bold leading-none mb-1">{lang === "de" ? "oder per E-Mail an" : lang === "es" ? "o escríbenos a" : "or email us at"}</p>
                 <p className="text-xl font-black text-primary group-hover:underline underline-offset-2 leading-none">
                   hello@b2b-voice.com
                 </p>
               </div>
-            </motion.a>
-          </motion.div>
+            </a>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end lg:-translate-x-4"
-          >
-            <motion.a
+          <div className="hero-enter-up relative flex justify-center lg:justify-end lg:-translate-x-4">
+            <a
               href={`tel:${DEMO_PHONE_TEL}`}
               aria-label={`Call B2BVoice at ${DEMO_PHONE_DISPLAY}`}
-              animate={{ rotate: [0, 0, -1, 1, -1, 1, 0, 0] }}
-              transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 4.5, ease: "easeInOut" }}
-              className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-[0_24px_70px_rgba(0,53,122,0.16)] relative overflow-hidden rounded-none w-full max-w-[430px] min-h-[520px] flex flex-col cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="card-shake bg-white/95 backdrop-blur-xl border border-gray-200 shadow-[0_24px_70px_rgba(0,53,122,0.16)] relative overflow-hidden rounded-none w-full max-w-[430px] min-h-[520px] flex flex-col cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               data-testid="hero-call-card"
             >
               <BackgroundShader />
@@ -788,8 +773,8 @@ const Hero = () => {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>
-            </motion.a>
-          </motion.div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -1601,7 +1586,7 @@ const IndustriesSection = () => {
               <div className="relative aspect-[16/9] overflow-hidden bg-slate-200">
                 <img
                   src={ind.image}
-                  alt=""
+                  alt={`${ind.title} — AI voice assistant for ${ind.title.toLowerCase()}`}
                   width={960}
                   height={540}
                   loading="lazy"
@@ -1645,7 +1630,10 @@ const IndustriesSection = () => {
               aria-label={`Go to sector ${index + 1}`}
               aria-current={activeSector === index ? "true" : undefined}
               onClick={() => scrollToSector(index)}
-              className={`h-1.5 rounded-full transition-all ${
+              // 6px dots are not usable touch targets (and 14 of them sit side by side): on
+              // phones they are a position indicator only - the prev/next arrows handle taps.
+              // From sm up the hit area is enlarged with an invisible 8px halo.
+              className={`relative h-1.5 rounded-full transition-all max-sm:pointer-events-none before:absolute before:-inset-2 before:content-[''] ${
                 activeSector === index ? "w-7 bg-primary" : "w-1.5 bg-slate-300 hover:bg-slate-400"
               }`}
             />
@@ -1936,7 +1924,7 @@ const OrbitalNode = ({ item, cx, cy }: {
       >
         <ResponsiveImage sizes="32px"
           src={item.image}
-          alt=""
+          alt={`${item.label} logo`}
           draggable={false}
           className="w-8 h-8 object-contain pointer-events-none select-none"
         />
@@ -2453,7 +2441,7 @@ const ClientsPartners = () => {
         <div className="flex items-center mb-6 animate-marquee" style={{ width: "max-content" }}>
           {row1.map((logo, i) => (
             <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8" aria-hidden={i >= clientRow1.length ? true : undefined}>
-              <ResponsiveImage sizes="140px" src={logo.src} alt={i >= clientRow1.length ? "" : `${logo.name} logo`} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
+              <ResponsiveImage sizes="140px" src={logo.src} alt={`${logo.name} logo`} fallbackWidth={140} fallbackHeight={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2462,7 +2450,7 @@ const ClientsPartners = () => {
         <div className="flex items-center animate-marquee-reverse" style={{ width: "max-content" }}>
           {row2.map((logo, i) => (
             <div key={`${logo.name}-${i}`} className="flex items-center justify-center shrink-0 px-8" aria-hidden={i >= clientRow2.length ? true : undefined}>
-              <ResponsiveImage sizes="140px" src={logo.src} alt={i >= clientRow2.length ? "" : `${logo.name} logo`} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
+              <ResponsiveImage sizes="140px" src={logo.src} alt={`${logo.name} logo`} fallbackWidth={140} fallbackHeight={56} loading="lazy" decoding="async" draggable={false} className="h-14 w-auto max-w-[140px] object-contain select-none" />
             </div>
           ))}
         </div>
@@ -2483,7 +2471,7 @@ const ClientsPartners = () => {
                 className="flex items-center justify-center transition-transform duration-300 hover:-translate-y-1 hover:scale-105"
               >
                 {partner.src ? (
-                  <ResponsiveImage sizes="(min-width: 640px) 180px, 140px" src={partner.src} alt={`${partner.name} logo`} loading="lazy" decoding="async" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
+                  <ResponsiveImage sizes="(min-width: 640px) 180px, 140px" src={partner.src} alt={`${partner.name} logo`} fallbackWidth={140} fallbackHeight={80} loading="lazy" decoding="async" draggable={false} className="h-14 sm:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain select-none" />
                 ) : (
                   <span className="font-black text-sm sm:text-xl tracking-[0.1em] sm:tracking-[0.18em] uppercase text-gray-800 whitespace-nowrap">
                     {partner.name}
@@ -2759,7 +2747,7 @@ const FinalCTA = () => {
   const { open } = useDemoModal();
   const { t, lang } = useLanguage();
   return (
-    <section id="demo" className="py-14 md:py-20 relative overflow-hidden bg-white border-b border-gray-200">
+    <section id="get-demo" className="py-14 md:py-20 relative overflow-hidden bg-white border-b border-gray-200">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-transparent to-white" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] hero-blob-1" />
@@ -2947,7 +2935,7 @@ const FinalCTA2 = () => {
                 >
                   <ResponsiveImage sizes="28px"
                     src="/ask-ai/chatgpt-512.png"
-                    alt=""
+                    alt="ChatGPT logo"
                     loading="lazy"
                     decoding="async"
                     className="h-7 w-7 object-contain"
@@ -2963,7 +2951,7 @@ const FinalCTA2 = () => {
                 >
                   <ResponsiveImage sizes="28px"
                     src="/ask-ai/google-ai-512.png"
-                    alt=""
+                    alt="Google AI logo"
                     loading="lazy"
                     decoding="async"
                     className="h-7 w-7 object-contain"
@@ -2979,7 +2967,7 @@ const FinalCTA2 = () => {
                 >
                   <ResponsiveImage sizes="28px"
                     src="/ask-ai/claude-512.png"
-                    alt=""
+                    alt="Claude logo"
                     loading="lazy"
                     decoding="async"
                     className="h-7 w-7 object-contain"

@@ -10,6 +10,9 @@ interface ResponsiveImageProps
   src: string;
   /** `sizes` for the srcset, e.g. "32px". Defaults to the largest variant's width. */
   sizes?: string;
+  /** Width/height hint for images that are NOT in the manifest (CDN URLs, data URIs): reserves the box so nothing shifts. */
+  fallbackWidth?: number;
+  fallbackHeight?: number;
 }
 
 /**
@@ -18,9 +21,9 @@ interface ResponsiveImageProps
  * scripts/optimize-images.mjs). Anything else (remote URLs, data URIs, files
  * without variants) renders as a plain <img>.
  */
-export function ResponsiveImage({ src, sizes, alt, ...rest }: ResponsiveImageProps) {
+export function ResponsiveImage({ src, sizes, alt, fallbackWidth, fallbackHeight, ...rest }: ResponsiveImageProps) {
   const entry = entries[src];
-  if (!entry) return <img src={src} alt={alt} {...rest} />;
+  if (!entry) return <img src={src} alt={alt} width={fallbackWidth} height={fallbackHeight} {...rest} />;
 
   const base = src.replace(/\.png$/i, "");
   const widths = entry.variants.map((w) => ({ file: w, actual: Math.min(w, entry.w) }));

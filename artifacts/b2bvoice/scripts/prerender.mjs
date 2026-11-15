@@ -10,7 +10,7 @@
 //
 // The React app hydrates the prerendered markup, so users see the same page
 // crawlers get. nginx maps /route -> /route.html (see deploy/nginx).
-import { build } from "vite";
+import { build, transformWithEsbuild } from "vite";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import sharp from "sharp";
 import path from "node:path";
@@ -41,7 +41,22 @@ const { render, getPages, notFoundPage, adminPage } = await import(
   pathToFileURL(path.join(serverDir, "entry-server.mjs")).href
 );
 
-const shell = await readFile(path.join(publicDir, "index.html"), "utf8");
+let shell = await readFile(path.join(publicDir, "index.html"), "utf8");
+
+// Shrink the shell's hand-written bits: minify the inline scheduler script and
+// drop comments (HTML + the CSS block comment) so every page ships fewer bytes.
+{
+  const inline = /<script>([\s\S]*?)<\/script>/g;
+  const found = [...shell.matchAll(inline)];
+  for (const m of found) {
+    const out = await transformWithEsbuild(m[1], "inline.js", { minify: true, target: "es2017" });
+    shell = shell.replace(m[0], () => `<script>${out.code.trim()}</script>`);
+  }
+  shell = shell
+    .replace(/<style>([\s\S]*?)<\/style>/g, (_, css) =>
+      `<style>${css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, " ").trim()}</style>`)
+    .replace(/<!--(?!\[if)[\s\S]*?-->/g, "");
+}
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 const canonical = (p) => (p === "/" ? `${SITE_URL}/` : `${SITE_URL}${p}`);
