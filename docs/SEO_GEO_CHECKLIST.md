@@ -124,3 +124,25 @@ Source: PageSpeed Insights mobile run for b2b-voice.com (FCP 2.4 s, LCP 8.4 s, T
 - **HTML hygiene:** duplicate `id="demo"` removed (FinalCTA is now `id="get-demo"`; `#demo` links still target the demo form); inline scheduler script is minified and HTML/CSS comments stripped from the shell in `scripts/prerender.mjs`.
 - **Measured locally** (headless Edge, 4x CPU throttle, relative numbers only): load/hydration event ~35 s -> ~8 s; FCP unchanged (~2.5 s); H1 visible at first paint instead of after hydration. Real PSI must be re-run after deploy.
 - **Not fixable on our side:** cache TTL and legacy JS inside Facebook pixel / GTM / Umami recorder / ElevenLabs widget bundles; AMP (obsolete); "external links" advice (articles are kept byte-for-byte). Flag for the owner: GA4 is loaded twice (GTM container and `useGoogleTracking`) and a Meta pixel lives inside the GTM container.
+
+## Performance sprint 2 (branch perf/mobile-sprint-2)
+
+Starting point: production at 2194b30, mobile PSI 60. Lighthouse flagged ~642 KiB unused JS (ElevenLabs 321, GTM/GA4 139, Meta 123, first-party 59), render-blocking app CSS (~30 KiB), a font chain to inter-latin.woff2 and forced reflow from the ElevenLabs widget.
+
+**Findings from the real script graph**
+- GA4 comes only from `useGoogleTracking` (gtag.js, G-2J4S6PFFR4, read from `/api/tracking`). The published GTM container (GTM-TWK7KMW9) contains a single Custom HTML tag, the Meta pixel 4652135665107478 - no GA4 tag and no pixel in app code, so there is no duplicate GA4 or Meta setup. The earlier "possible duplicate GA4" warning was wrong.
+- Real duplicate found while testing: when gtag.js and GTM start at the same moment, GTM fetches a second copy of the same Google tag (`gtag/js?id=G-...&cx=c&gtm=...`, +177 KB). Fixed by starting GTM only after gtag.js has loaded (index.html `__b2bvGtagSettled`, 3.5 s safety timeout).
+- No cookie banner / Consent Mode exists in the repo (only the cookie-policy page), so there was nothing to preserve or change there.
+- Inter is not used above the fold (Bricolage Grotesque is the hero font and is already preloaded); the early Inter request came from the ElevenLabs widget's shadow DOM. No Inter preload was added.
+- robot-hero (three.js, ~266 KB gzip) and the WebGL mesh gradient were already lazy and desktop-only; verified with network logs that neither is requested on a phone, even after scrolling the whole page.
+
+**Changes**
+1. **ElevenLabs widget:** the embed (~470 KB) is no longer downloaded on load, idle or by timer. A lightweight, accessible trigger button (same look as the widget's collapsed pill, 53 px tall tap target, focus ring, `aria-busy` while loading, "Try again" on failure) is shown on `/` only. The embed starts downloading on first hover/focus/touch of the trigger and the widget is mounted expanded (`default-expanded`) on click - at most once (state + `customElements.get` guard). The mobile `zoom: .62` fix is kept. Home-only visibility also follows SPA navigation.
+2. **gtag.js + GTM:** both wait for the first interaction or 4 s after load; GTM waits for gtag.js (see above). Recorder: first interaction or 10 s.
+3. **Critical CSS:** `scripts/critical-css.mjs` (postcss from vite's install, no new dependency) inlines only the rules the header + first two sections can match (~6-10 KB gzip) and loads the FULL stylesheet non-blocking (`preload` + onload swap, `noscript` fallback). The full sheet is not split, so the final cascade is identical to before. Below-the-fold markup is `visibility:hidden` until the sheet is ready (class `css-ready`, also set on error) so nothing flashes unstyled. Admin shell keeps the blocking stylesheet. Verified: critical-only vs full viewport screenshots on 5 pages x mobile/desktop differ only by animation frames.
+4. **Framer Motion:** `m` + `<LazyMotion>` with the features in an async chunk (`motionFeatures`/`layout`, 27 KB gzip) instead of the full `motion` bundle in the entry; vendor-motion chunk removed from manualChunks. Entry JS 189 KB -> 161 KB gzip.
+5. **Forced reflow / re-renders:** navbar "scrolled" state and the scroll-to-top button use an IntersectionObserver sentinel and a rAF-throttled, cached-height progress hook (`src/hooks/use-scroll-state.ts`) instead of per-scroll-event `scrollY`/`scrollHeight` reads and state updates; the sector gallery reads `offsetLeft` once per frame and only autoplays while on screen; the orbit/waveform rAF loops pause while off screen. Third-party internals were not touched.
+
+**Behaviour changes to be aware of**
+- Widget needs one click/tap on the trigger, then the widget opens expanded (a second click on "Start a call" begins the call).
+- gtag.js (GA4) now starts on first interaction or 4 s after load instead of right after hydration; visitors who leave before that are not counted (same trade-off already made for GTM in the previous sprint).

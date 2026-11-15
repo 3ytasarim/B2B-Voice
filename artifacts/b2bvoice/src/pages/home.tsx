@@ -9,7 +9,8 @@ import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { LazyFooterRobot } from "@/components/LazyFooterRobot";
-import { motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
+import { useOnScreenRef, useScrolledPast, useScrollProgress } from "@/hooks/use-scroll-state";
+import { m as motion, useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
   Menu, X, ChevronRight, ArrowRight,
@@ -257,15 +258,9 @@ const NAV_LANG_OPTIONS = [
 const Navbar = () => {
   const { open } = useDemoModal();
   const { t, lang, setLang } = useLanguage();
-  const [scrolled, setScrolled] = useState(false);
+  const scrolled = useScrolledPast(20);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -1494,25 +1489,46 @@ const IndustriesSection = () => {
     const gallery = galleryRef.current;
     if (!gallery || industries.length < 2) return;
 
+    // Layout reads (offsetLeft) run at most once per frame, not once per scroll event.
+    let frame = 0;
     const updateActiveSector = () => {
+      frame = 0;
       const cards = Array.from(gallery.children) as HTMLElement[];
       if (!cards.length) return;
 
+      const scrollLeft = gallery.scrollLeft;
       const closestIndex = cards.reduce((closest, card, index) => {
-        const closestDistance = Math.abs(cards[closest].offsetLeft - gallery.scrollLeft - 24);
-        const cardDistance = Math.abs(card.offsetLeft - gallery.scrollLeft - 24);
+        const closestDistance = Math.abs(cards[closest].offsetLeft - scrollLeft - 24);
+        const cardDistance = Math.abs(card.offsetLeft - scrollLeft - 24);
         return cardDistance < closestDistance ? index : closest;
       }, 0);
       setActiveSector(closestIndex);
     };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateActiveSector);
+    };
 
-    gallery.addEventListener("scroll", updateActiveSector, { passive: true });
-    return () => gallery.removeEventListener("scroll", updateActiveSector);
+    gallery.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      gallery.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, [industries.length]);
+
+  // Autoplay only while the gallery is on screen (it used to smooth-scroll
+  // every 4.2 s even when nobody could see it).
+  const [galleryVisible, setGalleryVisible] = useState(true);
+  useEffect(() => {
+    const gallery = galleryRef.current;
+    if (!gallery || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(([entry]) => setGalleryVisible(entry.isIntersecting));
+    io.observe(gallery);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const gallery = galleryRef.current;
-    if (!gallery || isCarouselPaused || industries.length < 2) return;
+    if (!gallery || isCarouselPaused || !galleryVisible || industries.length < 2) return;
 
     const timer = window.setInterval(() => {
       const nextIndex = activeSector >= industries.length - 1 ? 0 : activeSector + 1;
@@ -1520,7 +1536,7 @@ const IndustriesSection = () => {
     }, 4200);
 
     return () => window.clearInterval(timer);
-  }, [activeSector, industries.length, isCarouselPaused]);
+  }, [activeSector, industries.length, isCarouselPaused, galleryVisible]);
 
   return (
     <section id="sektorler" className="py-16 md:py-24 bg-[#f8fafc] overflow-hidden">
@@ -1891,9 +1907,11 @@ const OrbitalNode = ({ item, cx, cy }: {
   const angleRef = useRef((item.initialAngle * Math.PI) / 180);
   const nodeRef = useRef<HTMLDivElement>(null);
   const ICON = 58;
+  const onScreen = useOnScreenRef(nodeRef);
 
-  // Direct DOM mutation — zero React re-renders
+  // Direct DOM mutation — zero React re-renders (paused while off screen)
   useAnimationFrame((_, delta) => {
+    if (!onScreen.current) return;
     angleRef.current += (item.speed * Math.PI) / 180 / 1000 * delta;
     if (nodeRef.current) {
       const x = cx + ring.r * Math.cos(angleRef.current);
@@ -3211,8 +3229,11 @@ const OrbitViz = ({ labels }: { labels: string[] }) => {
   const nodeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lineRefs = useRef<(SVGLineElement | null)[]>([]);
   const tRef = useRef(0);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const onScreen = useOnScreenRef(rootRef);
 
   useAnimationFrame((_, delta) => {
+    if (!onScreen.current) return;
     tRef.current += delta * 0.00003;
     nodeRefs.current.forEach((node, i) => {
       if (!node) return;
@@ -3233,7 +3254,7 @@ const OrbitViz = ({ labels }: { labels: string[] }) => {
   });
 
   return (
-    <div className="relative w-full select-none" style={{ height: 200 }}>
+    <div ref={rootRef} className="relative w-full select-none" style={{ height: 200 }}>
       <svg aria-hidden="true" focusable="false" className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
         <ellipse cx="50%" cy="50%" rx="40%" ry="28%" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1" strokeDasharray="6 6" />
         {labels.map((_, i) => (
@@ -3286,9 +3307,12 @@ const OrbitViz = ({ labels }: { labels: string[] }) => {
 const DemoCallViz = ({ callLabel, connected, demoReady }: { callLabel: string; connected: string; demoReady: string }) => {
   const barsRef = useRef<(HTMLDivElement | null)[]>([]);
   const phaseRef = useRef(0);
+  const rootRef = useRef<HTMLAnchorElement>(null);
+  const onScreen = useOnScreenRef(rootRef);
   const heights = [0.3, 0.5, 0.8, 1, 0.7, 0.4, 0.9, 0.6, 0.5, 0.3, 0.8, 0.4];
 
   useAnimationFrame((_, delta) => {
+    if (!onScreen.current) return;
     phaseRef.current += delta * 0.003;
     barsRef.current.forEach((bar, i) => {
       if (!bar) return;
@@ -3299,6 +3323,7 @@ const DemoCallViz = ({ callLabel, connected, demoReady }: { callLabel: string; c
 
   return (
     <a
+      ref={rootRef}
       href={DEMO_PAGE_URL}
       target="_blank"
       rel="noopener noreferrer"
@@ -4163,21 +4188,9 @@ const DemoSection = () => {
 // --- Floating Demo Cloud Button ---
 
 const ScrollProgressButton = () => {
-  const [progress, setProgress] = useState(0);
-  const [visible, setVisible] = useState(false);
+  const progress = useScrollProgress();
+  const visible = useScrolledPast(120);
   const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const p = docHeight > 0 ? scrollTop / docHeight : 0;
-      setProgress(p);
-      setVisible(scrollTop > 120);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 

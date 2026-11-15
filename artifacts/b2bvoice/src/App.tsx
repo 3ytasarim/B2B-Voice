@@ -1,6 +1,7 @@
 import { lazy, Suspense, type ComponentType } from "react";
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { LazyMotion } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
@@ -74,6 +75,9 @@ function Router() {
 
 const queryClient = new QueryClient();
 
+// Animation features load after the first render (see src/lib/motionFeatures.ts).
+const loadMotionFeatures = () => import("@/lib/motionFeatures").then((mod) => mod.default);
+
 interface AppProps {
   /** Set only during prerendering: the URL path being rendered. */
   ssrPath?: string;
@@ -82,6 +86,7 @@ interface AppProps {
 function App({ ssrPath }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
+      <LazyMotion features={loadMotionFeatures}>
       <TooltipProvider>
         <LanguageProvider>
           <WouterRouter
@@ -93,6 +98,7 @@ function App({ ssrPath }: AppProps) {
           <Toaster />
         </LanguageProvider>
       </TooltipProvider>
+      </LazyMotion>
     </QueryClientProvider>
   );
 }

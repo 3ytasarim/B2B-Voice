@@ -15,6 +15,7 @@ import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import sharp from "sharp";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { criticalCss } from "./critical-css.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicDir = path.join(root, "dist/public");
@@ -95,6 +96,42 @@ function headBlock({ meta, jsonLd }) {
   return lines.map((l) => `    ${l}`).join("\n");
 }
 
+// --- Critical CSS ---------------------------------------------------------
+// The shell links one ~200 KB stylesheet. Per page we inline only what the
+// above-the-fold markup needs and load the full stylesheet without blocking
+// (scripts/critical-css.mjs). The full sheet is never split, so once it has
+// loaded the cascade is identical to before.
+const CSS_LINK = /<link rel="stylesheet" crossorigin href="([^"]+\.css)">/;
+const cssHref = shell.match(CSS_LINK)?.[1];
+const fullCss = cssHref ? await readFile(path.join(publicDir, cssHref), "utf8") : "";
+// Until the full sheet arrives, below-the-fold markup would flash unstyled: keep
+// it invisible (layout is irrelevant while hidden) and reveal on load/error.
+const REVEAL = "html:not(.css-ready) main#main-content>:nth-child(n+3),html:not(.css-ready) footer{visibility:hidden}";
+function aboveTheFold(bodyHtml) {
+  const main = bodyHtml.indexOf("<main");
+  if (main < 0) return bodyHtml.slice(0, 20000);
+  let end = main;
+  for (let i = 0; i < 2; i++) {
+    const close = bodyHtml.indexOf("</section>", end);
+    if (close < 0) return bodyHtml.slice(0, main + 20000);
+    end = close + 10;
+  }
+  return bodyHtml.slice(0, end);
+}
+function withCriticalCss(html, bodyHtml) {
+  if (!cssHref || !bodyHtml) return html;
+  // opacity-35: the hero's WebGL gradient wrapper, rendered only after hydration (not in the SSR markup).
+  const critical = criticalCss(fullCss, aboveTheFold(bodyHtml), ["opacity-35"]);
+  const ready = "document.documentElement.classList.add('css-ready')";
+  const noscriptReveal = REVEAL.split("html:not(.css-ready)").join("html") + "{visibility:visible!important}";
+  const tag = [
+    `<style data-critical>${critical}${REVEAL}</style>`,
+    `<link rel="preload" as="style" crossorigin href="${cssHref}" onload="this.onload=null;this.rel='stylesheet';${ready}" onerror="${ready}">`,
+    `<noscript><link rel="stylesheet" crossorigin href="${cssHref}"><style>${noscriptReveal}</style></noscript>`,
+  ].join("\n    ");
+  return html.replace(CSS_LINK, () => tag);
+}
+
 function assemble(page, bodyHtml) {
   let html = shell
     // drop the shell's generic metadata; the page-specific block replaces it
@@ -107,7 +144,7 @@ function assemble(page, bodyHtml) {
     '<div id="root" style="overflow-x:hidden;max-width:100vw;"></div>',
     `<div id="root" style="overflow-x:hidden;max-width:100vw;"${bodyHtml ? ' data-prerendered="true"' : ""}>${bodyHtml}</div>`,
   );
-  return html;
+  return withCriticalCss(html, bodyHtml);
 }
 
 async function write(rel, content) {

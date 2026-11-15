@@ -39,37 +39,46 @@
     <!-- ElevenLabs ConvAI Widget — home page only (it looked out of place on
          inner pages like /demo, which already has its own CTA). -->
     <style>
-      /* The floating widget (and especially its opened chat panel) was
-         claiming most of the viewport on phones — shrink it on small
-         screens. Use `zoom`, not `transform: scale()`: the widget positions
-         itself with `position: fixed` internally, and a CSS transform on an
-         ancestor changes the containing block fixed-position descendants
-         resolve against (breaks/mispositions it, worse on WebKit/Safari —
-         real iPhones — than in Chromium dev tools). `zoom` rescales layout
-         itself instead of post-layout painting, so fixed positioning still
-         resolves against the real viewport. */
-      @media (max-width: 640px) {
-        elevenlabs-convai {
-          zoom: 0.62;
-        }
-      }
+      /* Real ElevenLabs widget (only mounted after the visitor asks for it).
+         On phones it was claiming most of the viewport, so it is shrunk with
+         `zoom`, not `transform: scale()`: the widget positions itself with
+         `position: fixed` internally, and a CSS transform on an ancestor
+         changes the containing block fixed-position descendants resolve
+         against (mispositions it, worse on WebKit/iPhones). `zoom` rescales
+         layout itself, so fixed positioning still uses the real viewport. */
+      @media (max-width: 640px) { elevenlabs-convai { zoom: 0.62; } }
+      /* Lightweight stand-in for the widget's collapsed state. The ~470 KB
+         embed script is fetched only when the visitor hovers/focuses/taps it. */
+      .b2bv-wt { position: fixed; right: 16px; bottom: 16px; z-index: 2147483000; display: flex; align-items: center; gap: 10px; min-height: 52px; max-width: calc(100vw - 32px); padding: 8px 8px 8px 12px; margin: 0; border: 0; border-radius: 26px; background: #fff; color: #0f172a; font: 600 14px/1.2 "Bricolage Grotesque", system-ui, sans-serif; text-align: left; cursor: pointer; box-shadow: 0 6px 24px rgba(15, 23, 42, .18), 0 1px 3px rgba(15, 23, 42, .12); -webkit-tap-highlight-color: transparent; transition: transform .2s cubic-bezier(.16, 1, .3, 1), box-shadow .2s; }
+      .b2bv-wt:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(15, 23, 42, .22), 0 1px 3px rgba(15, 23, 42, .12); }
+      .b2bv-wt:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 3px; }
+      .b2bv-wt[hidden] { display: none; }
+      .b2bv-wt img { width: 28px; height: 30px; flex: none; object-fit: contain; }
+      .b2bv-wt .b2bv-cta { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 999px; background: #0f172a; color: #fff; font-weight: 700; white-space: nowrap; }
+      .b2bv-wt[aria-busy="true"] { cursor: progress; }
+      .b2bv-wt[aria-busy="true"] .b2bv-cta { opacity: .75; }
+      @media (max-width: 380px) { .b2bv-wt .b2bv-label { display: none; } }
+      @media (prefers-reduced-motion: reduce) { .b2bv-wt { transition: none; } }
     </style>
 
     <!-- Third-party scripts are scheduled so they never compete with the first
-         render (on a throttled phone ~1 MB of GTM + Meta pixel + widget + session
-         recorder was queued ahead of the hero image and fonts):
-           - voice widget (home only): right after the page has loaded, when idle
-           - Google Tag Manager (and the GA4/Meta tags inside it): on the visitor's
-             first interaction, or 4 s after load at the latest
+         render. Nothing below ships its JS in the default page load:
+           - voice widget (home only): a lightweight trigger is shown; the
+             ElevenLabs embed is downloaded on first hover/focus/tap and mounted
+             (expanded) on click - at most once
+           - Google Tag Manager (Meta pixel) and gtag.js (GA4): together, on the
+             visitor's first interaction, or 4 s after load at the latest
            - Umami session recorder: first interaction, or 10 s after load -->
     <script>
       (function () {
         var done = {};
-        function addScript(src, attrs) {
+        function addScript(src, attrs, onload, onerror) {
           var s = document.createElement("script");
           s.src = src;
           s.async = true;
           for (var k in attrs) s.setAttribute(k, attrs[k]);
+          if (onload) s.onload = onload;
+          if (onerror) s.onerror = onerror;
           document.body.appendChild(s);
         }
         function once(name, fn) {
@@ -77,6 +86,10 @@
           done[name] = true;
           fn();
         }
+
+        /* ---- GTM / gtag / recorder -------------------------------------- */
+        var queued = [];
+        var trackersStarted = false;
         function loadGtm() {
           once("gtm", function () {
             window.dataLayer = window.dataLayer || [];
@@ -91,29 +104,100 @@
             });
           });
         }
-        function loadWidget() {
-          if (location.pathname !== "/") return;
-          once("widget", function () {
-            var widget = document.createElement("elevenlabs-convai");
-            widget.setAttribute("agent-id", "agent_5701m2wppr84fw4r1fzrs191yghh");
-            widget.setAttribute("disable-banner", "true");
-            document.body.appendChild(widget);
-            addScript("https://unpkg.com/@elevenlabs/convai-widget-embed");
-          });
+        /* GTM waits until gtag.js (GA4) has loaded (or it is known there is none):
+           when both start at the same moment GTM fetches a second copy of the
+           same Google tag (gtag/js?...&cx=c) - 177 KB extra and a duplicate-hit risk. */
+        var gtagSettled = false, gtmWanted = false;
+        function maybeGtm() { if (gtmWanted && gtagSettled) loadGtm(); }
+        window.__b2bvGtagSettled = function () { gtagSettled = true; maybeGtm(); };
+        function startTrackers() {
+          if (trackersStarted) return;
+          trackersStarted = true;
+          while (queued.length) { try { queued.shift()(); } catch (e) {} }
+          gtmWanted = true;
+          maybeGtm();
+          setTimeout(window.__b2bvGtagSettled, 3500); /* never block GTM for long */
         }
+        /* Run fn once trackers are allowed to start (used by the app's gtag.js loader). */
+        window.__b2bvAfterInteraction = function (fn) {
+          if (trackersStarted) fn(); else queued.push(fn);
+        };
         var events = ["pointerdown", "keydown", "touchstart", "scroll", "mousemove"];
         function onInteract() {
           events.forEach(function (e) { removeEventListener(e, onInteract); });
-          loadGtm();
+          startTrackers();
           loadRecorder();
         }
         events.forEach(function (e) { addEventListener(e, onInteract, { passive: true }); });
         addEventListener("load", function () {
-          if ("requestIdleCallback" in window) requestIdleCallback(loadWidget, { timeout: 4000 });
-          else setTimeout(loadWidget, 2000);
-          setTimeout(loadGtm, 4000);
+          setTimeout(startTrackers, 4000);
           setTimeout(loadRecorder, 10000);
         });
+
+        /* ---- Voice widget (home only) ----------------------------------- */
+        var AGENT = "agent_5701m2wppr84fw4r1fzrs191yghh";
+        var EMBED = "https://unpkg.com/@elevenlabs/convai-widget-embed";
+        var trigger = null, widget = null, embedState = "idle"; /* idle | loading | ready */
+        var waiting = null;
+
+        function loadEmbed(cb) {
+          if (embedState === "ready" || window.customElements.get("elevenlabs-convai")) { embedState = "ready"; if (cb) cb(true); return; }
+          if (cb) waiting = cb;
+          if (embedState === "loading") return;
+          embedState = "loading";
+          addScript(EMBED, null, function () {
+            embedState = "ready";
+            if (waiting) { var f = waiting; waiting = null; f(true); }
+          }, function () {
+            embedState = "idle";
+            if (waiting) { var f = waiting; waiting = null; f(false); }
+          });
+        }
+        function setBusy(on, label) {
+          if (!trigger) return;
+          if (on) trigger.setAttribute("aria-busy", "true"); else trigger.removeAttribute("aria-busy");
+          trigger.querySelector(".b2bv-cta").textContent = label;
+        }
+        function openWidget() {
+          if (widget) return;
+          setBusy(true, "Loading…");
+          loadEmbed(function (ok) {
+            if (!ok) { setBusy(false, "Try again"); return; }
+            if (widget) return;
+            widget = document.createElement("elevenlabs-convai");
+            widget.setAttribute("agent-id", AGENT);
+            widget.setAttribute("disable-banner", "true");
+            widget.setAttribute("default-expanded", "true");
+            document.body.appendChild(widget);
+            trigger.hidden = true;
+          });
+        }
+        function mountTrigger() {
+          if (trigger) return;
+          trigger = document.createElement("button");
+          trigger.type = "button";
+          trigger.className = "b2bv-wt";
+          trigger.setAttribute("data-testid", "voice-widget-trigger");
+          trigger.innerHTML = '<img src="/favicon.png" width="28" height="30" alt="" decoding="async"><span class="b2bv-label">Need help?</span><span class="b2bv-cta">Start a call</span>';
+          var prefetch = function () { loadEmbed(); };
+          ["pointerenter", "focus", "touchstart"].forEach(function (e) { trigger.addEventListener(e, prefetch, { passive: true, once: true }); });
+          trigger.addEventListener("click", openWidget);
+          document.body.appendChild(trigger);
+        }
+        /* The shell is shared by every page, so show the widget only on "/"
+           (also when the SPA navigates to/from the home page). */
+        function syncWidget() {
+          var home = location.pathname === "/";
+          if (home) mountTrigger();
+          if (trigger) trigger.hidden = !home || !!widget;
+          if (widget) widget.hidden = !home;
+        }
+        syncWidget();
+        ["pushState", "replaceState"].forEach(function (m) {
+          var orig = history[m];
+          history[m] = function () { var r = orig.apply(this, arguments); setTimeout(syncWidget, 0); return r; };
+        });
+        addEventListener("popstate", syncWidget);
       })();
     </script>
     <!-- End ElevenLabs ConvAI Widget -->
