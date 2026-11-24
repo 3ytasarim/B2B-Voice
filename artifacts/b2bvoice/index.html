@@ -26,14 +26,8 @@
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/bricolage-grotesque-latin.woff2" crossorigin>
-    <!-- Umami Analytics -->
-    <script defer src="https://analytics.bleibsichtbar.com/script.js" data-website-id="03a6ce51-8cd8-400c-9d7c-97d776810b3a"></script>
   </head>
   <body style="overflow-x:hidden;max-width:100vw;">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWK7KMW9"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <div id="root" style="overflow-x:hidden;max-width:100vw;"></div>
     <script type="module" src="/src/main.tsx"></script>
     <!-- ElevenLabs ConvAI Widget — home page only (it looked out of place on
@@ -61,16 +55,34 @@
       @media (prefers-reduced-motion: reduce) { .b2bv-wt { transition: none; } }
     </style>
 
-    <!-- Third-party scripts are scheduled so they never compete with the first
-         render. Nothing below ships its JS in the default page load:
+    <!-- Third-party scripts. Tracking only ever runs for the categories the
+         visitor agreed to in the cookie popup (choice kept in localStorage under
+         "b2bv-consent"; keep KEY/VERSION in sync with src/lib/consent.ts). Without
+         a decision nothing below loads, except the voice widget the visitor asks for.
            - voice widget (home only): a lightweight trigger is shown; the
              ElevenLabs embed is downloaded on first hover/focus/tap and mounted
              (expanded) on click - at most once
-           - Google Tag Manager (Meta pixel) and gtag.js (GA4): together, on the
-             visitor's first interaction, or 4 s after load at the latest
-           - Umami session recorder: first interaction, or 10 s after load -->
+           - statistics: gtag.js (GA4, loaded by the app) and the Umami page counter
+           - marketing: Google Tag Manager (Meta pixel), started only after gtag.js
+             has loaded
+           - replay: Umami session recorder
+         All of them start on the visitor's first interaction, or 4 s (recorder
+         10 s) after load, never competing with the first render; a fresh consent
+         starts them immediately. -->
     <script>
       (function () {
+        var KEY = "b2bv-consent", VERSION = 1;
+        function consent() {
+          try {
+            var c = JSON.parse(localStorage.getItem(KEY));
+            if (c && c.v === VERSION) return c;
+          } catch (e) {}
+          return null;
+        }
+        function allowed(category) {
+          var c = consent();
+          return !!(c && c[category] === true);
+        }
         var done = {};
         function addScript(src, attrs, onload, onerror) {
           var s = document.createElement("script");
@@ -87,7 +99,8 @@
           fn();
         }
 
-        /* ---- GTM / gtag / recorder -------------------------------------- */
+        /* ---- Umami / GTM / gtag / recorder ------------------------------ */
+        var UMAMI_ID = "03a6ce51-8cd8-400c-9d7c-97d776810b3a";
         var queued = [];
         var trackersStarted = false;
         function loadGtm() {
@@ -97,30 +110,41 @@
             addScript("https://www.googletagmanager.com/gtm.js?id=GTM-TWK7KMW9");
           });
         }
+        function loadUmami() {
+          once("umami", function () {
+            addScript("https://analytics.bleibsichtbar.com/script.js", { "data-website-id": UMAMI_ID, defer: "" });
+          });
+        }
         function loadRecorder() {
+          if (!allowed("replay")) return;
           once("recorder", function () {
-            addScript("https://analytics.bleibsichtbar.com/recorder.js", {
-              "data-website-id": "03a6ce51-8cd8-400c-9d7c-97d776810b3a",
-            });
+            addScript("https://analytics.bleibsichtbar.com/recorder.js", { "data-website-id": UMAMI_ID });
           });
         }
         /* GTM waits until gtag.js (GA4) has loaded (or it is known there is none):
            when both start at the same moment GTM fetches a second copy of the
            same Google tag (gtag/js?...&cx=c) - 177 KB extra and a duplicate-hit risk. */
-        var gtagSettled = false, gtmWanted = false;
+        var gtagSettled = false, gtmWanted = false, settleTimer = false;
         function maybeGtm() { if (gtmWanted && gtagSettled) loadGtm(); }
         window.__b2bvGtagSettled = function () { gtagSettled = true; maybeGtm(); };
         function startTrackers() {
-          if (trackersStarted) return;
           trackersStarted = true;
           while (queued.length) { try { queued.shift()(); } catch (e) {} }
-          gtmWanted = true;
-          maybeGtm();
-          setTimeout(window.__b2bvGtagSettled, 3500); /* never block GTM for long */
+          if (allowed("statistics")) loadUmami();
+          if (allowed("marketing")) {
+            gtmWanted = true;
+            maybeGtm();
+            if (!settleTimer) { settleTimer = true; setTimeout(window.__b2bvGtagSettled, 3500); } /* never block GTM for long */
+          }
         }
         /* Run fn once trackers are allowed to start (used by the app's gtag.js loader). */
         window.__b2bvAfterInteraction = function (fn) {
           if (trackersStarted) fn(); else queued.push(fn);
+        };
+        /* Called by the cookie popup right after a (new) choice: no waiting for an interaction. */
+        window.__b2bvConsentChanged = function () {
+          startTrackers();
+          loadRecorder();
         };
         var events = ["pointerdown", "keydown", "touchstart", "scroll", "mousemove"];
         function onInteract() {

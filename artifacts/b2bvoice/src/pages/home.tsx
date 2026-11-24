@@ -9,6 +9,7 @@ import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { LazyFooterRobot } from "@/components/LazyFooterRobot";
+import { COOKIE_SETTINGS_LABEL, openCookieSettings } from "@/lib/consentStore";
 import { useOnScreenRef, useScrolledPast, useScrollProgress } from "@/hooks/use-scroll-state";
 import { useInView, useAnimationFrame, AnimatePresence } from "framer-motion";
 import { motion } from "@/components/ui/motion-gated";
@@ -3115,6 +3116,9 @@ const Footer = () => {
                     {link.label}
                   </a>
                 ))}
+                <button type="button" onClick={openCookieSettings} className="hover:text-white hover:translate-x-1 transition-all">
+                  {COOKIE_SETTINGS_LABEL[lang] ?? COOKIE_SETTINGS_LABEL.en}
+                </button>
               </nav>
             </div>
 

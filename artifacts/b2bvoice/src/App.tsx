@@ -1,4 +1,4 @@
-import { lazy, Suspense, type ComponentType } from "react";
+import { lazy, Suspense, useEffect, useState, type ComponentType } from "react";
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { LazyMotion } from "framer-motion";
@@ -8,6 +8,20 @@ import Home from "@/pages/home";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import { useGoogleTracking } from "@/lib/useGoogleTracking";
 import { routeLoaders } from "@/routeLoaders";
+
+// Cookie popup: its own chunk, mounted only in the browser after hydration - it is never
+// part of the prerendered HTML and costs the first paint nothing.
+const CookieBanner = lazy(() => import("@/components/CookieBanner"));
+function ConsentBanner() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  return (
+    <Suspense fallback={null}>
+      <CookieBanner />
+    </Suspense>
+  );
+}
 
 // Route-level code splitting: only the Home page ships in the entry bundle.
 // Blog articles (large static HTML), admin and legal pages load on demand.
@@ -94,6 +108,7 @@ function App({ ssrPath }: AppProps) {
             ssrPath={ssrPath}
           >
             <Router />
+            <ConsentBanner />
           </WouterRouter>
           <Toaster />
         </LanguageProvider>

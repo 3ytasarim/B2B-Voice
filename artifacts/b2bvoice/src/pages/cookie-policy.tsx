@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { STATIC_PAGES } from "@/seo/pageMeta";
 import { usePageMeta } from "@/seo/usePageMeta";
+import { openCookieSettings } from "@/lib/consentStore";
 
 const H2 = ({ children }: { children: React.ReactNode }) => (
   <h2 className="text-xl font-bold text-gray-800 mb-3">{children}</h2>
@@ -29,7 +30,7 @@ export default function CookiePolicy() {
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Cookie Policy</h1>
         <p className="text-sm text-gray-500 mb-1">Effective Date: July 22, 2026</p>
-        <p className="text-sm text-gray-500 mb-10">Last Updated: July 22, 2026</p>
+        <p className="text-sm text-gray-500 mb-10">Last Updated: November 24, 2026</p>
 
         <div className="prose prose-gray max-w-none space-y-8 text-gray-600 leading-relaxed">
           <section>
@@ -103,13 +104,50 @@ export default function CookiePolicy() {
               "Block third-party cookies;", "Receive a warning before a cookie is stored.",
             ]} />
             <p className="mt-3">Blocking cookies may affect certain website features.</p>
-            <p className="mt-3">Where B2BVoice provides a cookie preference tool, you may use that tool to update your choices.</p>
+            <p className="mt-3">You can change or withdraw your choices at any time with the cookie preference tool: use the “Cookie Settings” link in the website footer or the button below. Withdrawing a choice reloads the page.</p>
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className="mt-4 inline-flex h-11 items-center bg-primary px-5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Change cookie settings
+            </button>
             <p className="mt-3">Where required by applicable law and technically supported, B2BVoice will recognize valid opt-out preference signals such as Global Privacy Control.</p>
             <p className="mt-3">Because there is no universally accepted standard for browser “Do Not Track” signals, our website may not respond to every Do Not Track signal.</p>
           </section>
 
           <section>
-            <H2>5. Updates to This Cookie Policy</H2>
+            <H2>5. Technologies Currently Used on This Website</H2>
+            <p>Apart from strictly necessary storage, nothing below is loaded until you agree in the cookie popup. You can choose each category separately.</p>
+
+            <H3>Strictly Necessary (always on)</H3>
+            <UL items={[
+              "Your cookie choice and your language preference, stored in your browser (local storage);",
+              "Security and form functions needed to operate the website.",
+            ]} />
+
+            <H3>Statistics</H3>
+            <UL items={[
+              "Google Analytics 4 (Google LLC) — measures which pages are visited and how visitors reach the website; may set cookies and transfers data to Google;",
+              "A page counter (Umami) that counts page views.",
+            ]} />
+
+            <H3>Session Recording</H3>
+            <UL items={[
+              "Session recording (Umami) — records clicks, scrolling, and mouse movement so we can improve usability.",
+            ]} />
+
+            <H3>Marketing</H3>
+            <UL items={[
+              "Meta (Facebook) pixel, loaded through Google Tag Manager — helps us measure the performance of our advertising and may set cookies and transfer data to Meta Platforms.",
+            ]} />
+
+            <H3>Voice Assistant Widget (loaded only when you use it)</H3>
+            <p>The voice assistant on the home page is provided by ElevenLabs. Its code is downloaded only when you select the assistant, and your conversation with it is processed by that provider under its own privacy policy.</p>
+          </section>
+
+          <section>
+            <H2>6. Updates to This Cookie Policy</H2>
             <p>We may update this Cookie Policy when:</p>
             <UL items={[
               "Website technologies change;", "Service providers change;",
@@ -119,7 +157,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <H2>6. Contact Us</H2>
+            <H2>7. Contact Us</H2>
             <p>Questions about this Cookie Policy may be sent to:</p>
             <p className="mt-3">B2B Voice LLC<br />A New Mexico limited liability company<br />Email: <a href="mailto:hello@b2b-voice.com" className="text-primary hover:underline">hello@b2b-voice.com</a><br />Website: b2b-voice.com</p>
           </section>
