@@ -26,7 +26,7 @@ type Copy = {
 const COPY: Record<"en" | "de" | "es", Copy> = {
   en: {
     title: "Your privacy choices",
-    intro: "We use necessary cookies to run this site. With your consent we also measure how it is used, record sessions to improve it and measure our advertising.",
+    intro: "We use strictly necessary cookies. If you agree, we also analyze how you use our website and record your browsing session.",
     policy: "Cookie Policy",
     acceptAll: "Accept all",
     onlyNecessary: "Necessary only",
@@ -41,7 +41,7 @@ const COPY: Record<"en" | "de" | "es", Copy> = {
   },
   de: {
     title: "Ihre Datenschutz-Auswahl",
-    intro: "Wir setzen notwendige Cookies ein, damit die Website funktioniert. Mit Ihrer Einwilligung messen wir außerdem die Nutzung, zeichnen Sitzungen auf und messen unsere Werbung.",
+    intro: "Wir verwenden nur unbedingt erforderliche Cookies. Wenn Sie zustimmen, analysieren wir außerdem, wie Sie unsere Website nutzen, und zeichnen Ihre Sitzung auf.",
     policy: "Cookie-Richtlinie",
     acceptAll: "Alle akzeptieren",
     onlyNecessary: "Nur notwendige",
@@ -56,7 +56,7 @@ const COPY: Record<"en" | "de" | "es", Copy> = {
   },
   es: {
     title: "Sus opciones de privacidad",
-    intro: "Usamos cookies necesarias para que el sitio funcione. Con su consentimiento también medimos su uso, grabamos sesiones para mejorarlo y medimos nuestra publicidad.",
+    intro: "Usamos solo cookies estrictamente necesarias. Si acepta, también analizamos cómo usa nuestro sitio web y grabamos su sesión de navegación.",
     policy: "Política de Cookies",
     acceptAll: "Aceptar todo",
     onlyNecessary: "Solo necesarias",
@@ -133,18 +133,18 @@ export default function CookieBanner() {
       data-testid="cookie-banner"
       // Above the voice-widget trigger (z-index 2147483000) so it never sits behind it on phones.
       style={{ zIndex: 2147483001 }}
-      className="fixed bottom-3 left-3 right-3 animate-in fade-in slide-in-from-bottom-3 duration-500 motion-reduce:animate-none sm:bottom-5 sm:left-5 sm:right-auto sm:w-[420px]"
+      className="fixed bottom-2.5 left-2.5 right-2.5 animate-in fade-in slide-in-from-bottom-3 duration-500 motion-reduce:animate-none sm:bottom-4 sm:left-4 sm:right-auto sm:w-[340px]"
     >
-      <div className="border border-gray-200 border-t-[3px] border-t-primary bg-white p-5 text-gray-900 shadow-[0_24px_60px_-18px_rgba(0,53,122,0.35)]">
-        <div className="flex items-start gap-3">
-          <span className="grid h-10 w-10 shrink-0 place-items-center bg-primary/10 text-primary" aria-hidden="true">
-            <Cookie className="h-5 w-5" />
+      <div className="border border-gray-200 border-t-[3px] border-t-primary bg-white p-4 text-gray-900 shadow-[0_24px_60px_-18px_rgba(0,53,122,0.35)]">
+        <div className="flex items-start gap-2.5">
+          <span className="grid h-8 w-8 shrink-0 place-items-center bg-primary/10 text-primary" aria-hidden="true">
+            <Cookie className="h-4 w-4" />
           </span>
           <div className="min-w-0 flex-1">
-            <h2 id="cookie-title" ref={titleRef} tabIndex={-1} className="text-lg font-bold leading-tight text-gray-900 outline-none">
+            <h2 id="cookie-title" ref={titleRef} tabIndex={-1} className="text-base font-bold leading-tight text-gray-900 outline-none">
               {copy.title}
             </h2>
-            <p id="cookie-intro" className="mt-1.5 text-[13.5px] leading-relaxed text-gray-600">
+            <p id="cookie-intro" className="mt-1 text-[12.5px] leading-relaxed text-gray-600">
               {copy.intro}{" "}
               <Link href="/cookie-policy" className="font-semibold text-primary underline-offset-2 hover:underline">
                 {copy.policy}
@@ -166,7 +166,7 @@ export default function CookieBanner() {
         {/* Settings: the height eases open (grid-rows), no layout jump */}
         <div className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${details ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
           <div className="overflow-hidden" aria-hidden={!details}>
-            <ul className="mt-4 divide-y divide-gray-200 border border-gray-200 bg-gray-50">
+            <ul className="mt-3 divide-y divide-gray-200 border border-gray-200 bg-gray-50">
               <SettingRow row={copy.necessary} locked lockedLabel={copy.alwaysOn} tabbable={details} />
               <SettingRow row={copy.statistics} checked={draft.statistics} onChange={(v) => setDraft((d) => ({ ...d, statistics: v }))} tabbable={details} />
               <SettingRow row={copy.replay} checked={draft.replay} onChange={(v) => setDraft((d) => ({ ...d, replay: v }))} tabbable={details} />
@@ -175,24 +175,24 @@ export default function CookieBanner() {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-2.5">
+        <div className="mt-3 grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={() => decide(REJECT_ALL)}
-            className="h-11 border border-primary/40 px-2 text-xs font-bold uppercase tracking-wider text-primary transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="h-9 border border-primary/40 px-2 text-xs font-bold uppercase tracking-wider text-primary transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             {copy.onlyNecessary}
           </button>
           <button
             type="button"
             onClick={() => decide(ACCEPT_ALL)}
-            className="h-11 bg-primary px-2 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="h-9 bg-primary px-2 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             {copy.acceptAll}
           </button>
         </div>
 
-        <div className="mt-2.5 flex items-center justify-between">
+        <div className="mt-1.5 flex items-center justify-between">
           <button
             type="button"
             onClick={() => {
@@ -200,7 +200,7 @@ export default function CookieBanner() {
               setDetails((d) => !d);
             }}
             aria-expanded={details}
-            className="inline-flex h-9 items-center gap-1 px-1 text-[13.5px] font-semibold text-primary transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="inline-flex h-8 items-center gap-1 px-1 text-[12.5px] font-semibold text-primary transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             {copy.settings}
             <ChevronDown className={`h-4 w-4 transition-transform duration-300 motion-reduce:transition-none ${details ? "rotate-180" : ""}`} />
@@ -209,7 +209,7 @@ export default function CookieBanner() {
             <button
               type="button"
               onClick={() => decide(draft)}
-              className="h-9 px-2 text-[13.5px] font-bold text-primary transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="h-8 px-2 text-[12.5px] font-bold text-primary transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               {copy.save}
             </button>
@@ -228,10 +228,10 @@ function SettingRow({
   const [title, text] = row;
   const id = `cookie-${title.toLowerCase().replace(/[^a-z]+/g, "-")}`;
   return (
-    <li className="flex items-start gap-3 px-3.5 py-3">
+    <li className="flex items-start gap-3 px-3 py-2.5">
       <div className="min-w-0 flex-1">
-        <label htmlFor={id} className="block text-[13.5px] font-bold text-gray-900">{title}</label>
-        <p className="mt-0.5 text-[12.5px] leading-snug text-gray-600">{text}</p>
+        <label htmlFor={id} className="block text-[12.5px] font-bold text-gray-900">{title}</label>
+        <p className="mt-0.5 text-[11.5px] leading-snug text-gray-600">{text}</p>
       </div>
       <div className="flex shrink-0 flex-col items-end gap-1 pt-0.5">
         <Switch id={id} checked={checked} disabled={locked} tabIndex={tabbable ? 0 : -1} onCheckedChange={onChange} />
