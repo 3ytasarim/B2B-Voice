@@ -1,0 +1,281 @@
+
+<style>
+:root{
+  --ink:#111827;--muted:#5b6472;--line:#e5e7eb;--soft:#f7f8fa;--accent:#111827;
+  --blue:#2563eb;--blue-soft:#eef4ff;--amber:#92400e;--amber-soft:#fff7ed;--green:#166534;
+  --green-soft:#f0fdf4;--max:1120px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}.blog-content a {color:#174ea6;text-decoration-thickness:1px;text-underline-offset:3px}.blog-content a:hover {color:#0f3f8c}.blog-content .wrap {width:min(var(--max),calc(100% - 40px));margin:0 auto}.blog-content header.site {border-bottom:1px solid var(--line);padding:18px 0;background:#fff}.blog-content .brand {font-weight:800;letter-spacing:-.02em;text-decoration:none;color:var(--ink);font-size:20px}.blog-content .breadcrumbs {font-size:14px;color:var(--muted);margin:30px 0 14px}.blog-content .hero {padding:8px 0 38px}.blog-content .kicker {text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:#4b5563}.blog-content h1 {font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.04em;max-width:1000px;margin:12px 0 18px}.blog-content .deck {font-size:clamp(19px,2.2vw,25px);line-height:1.5;color:#374151;max-width:900px;margin:0}.blog-content .meta {display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;color:var(--muted);font-size:14px}.blog-content .answer {margin:8px 0 42px;padding:26px 28px;border:1px solid #c9d7f3;background:var(--blue-soft);border-radius:18px}.blog-content .answer strong.label {display:block;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:#174ea6;margin-bottom:8px}.blog-content .answer p {font-size:20px;line-height:1.55;margin:0}.blog-content .layout {display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:64px;align-items:start}.blog-content article {min-width:0}.blog-content article h2 {font-size:34px;line-height:1.2;letter-spacing:-.025em;margin:56px 0 16px}.blog-content article h3 {font-size:24px;line-height:1.3;letter-spacing:-.015em;margin:34px 0 10px}.blog-content article p {font-size:17.5px;margin:0 0 18px}.blog-content article ul, .blog-content article ol {padding-left:24px;margin:8px 0 22px}.blog-content article li {margin:8px 0;font-size:17px}.blog-content aside.toc {position:sticky;top:24px;border-left:1px solid var(--line);padding-left:20px}.blog-content .toc b {font-size:13px;text-transform:uppercase;letter-spacing:.08em}.blog-content .toc a {display:block;color:#4b5563;text-decoration:none;font-size:14px;line-height:1.35;margin:10px 0}.blog-content .toc a:hover {color:#111827}.blog-content .callout {border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:28px 0;background:#fff}.blog-content .callout.note {background:var(--soft)}.blog-content .callout.misconception {background:var(--amber-soft);border-color:#fed7aa}.blog-content .callout.engineering {background:var(--green-soft);border-color:#bbf7d0}.blog-content .callout .eyebrow {font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:12px;margin-bottom:7px}.blog-content .diagram {margin:28px 0;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfbfc;overflow:auto}.blog-content .diagram-title {font-weight:800;margin-bottom:16px}.blog-content .flow {display:flex;align-items:stretch;gap:10px;min-width:760px}.blog-content .node {flex:1;border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:14px;text-align:center}.blog-content .node b {display:block;margin-bottom:5px}.blog-content .arrow {display:flex;align-items:center;font-weight:800;color:#9ca3af}.blog-content .stack {display:grid;gap:10px}.blog-content .stack .row {border:1px solid #d1d5db;border-radius:12px;padding:14px 16px;background:white}.blog-content .stack .row b {display:inline-block;min-width:180px}.blog-content table {width:100%;border-collapse:collapse;margin:26px 0;font-size:15.5px}.blog-content th, .blog-content td {text-align:left;vertical-align:top;padding:13px 12px;border-bottom:1px solid var(--line)}.blog-content th {font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#4b5563;background:#fafafa}.blog-content .qa {border-top:1px solid var(--line);padding:22px 0}.blog-content .qa h3 {font-size:20px;margin:0 0 8px}.blog-content .sources {margin-top:60px;padding-top:28px;border-top:1px solid var(--line)}.blog-content .sources ol {padding-left:22px}.blog-content .sources li {font-size:14px;color:#4b5563;margin:10px 0}.blog-content .tags {display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 10px}.blog-content .tag {display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:13px;color:#4b5563;background:#fafafa}.blog-content .next {margin:48px 0 20px;padding:24px;border-radius:18px;background:#111827;color:white}.blog-content .next a {color:white}.blog-content footer {border-top:1px solid var(--line);margin-top:60px;padding:28px 0 50px;color:#6b7280;font-size:14px}.blog-content sup a {text-decoration:none;font-weight:700}
+@media(max-width:900px){.blog-content .layout {grid-template-columns:1fr}.blog-content aside.toc {position:static;order:-1;border-left:0;border:1px solid var(--line);padding:18px;border-radius:14px}.blog-content .toc a {display:inline-block;margin:7px 12px 7px 0}
+}
+@media(max-width:640px){.blog-content .wrap {width:min(100% - 26px,var(--max))}.blog-content h1 {font-size:42px}.blog-content article h2 {font-size:29px}.blog-content .answer {padding:20px}.blog-content .answer p {font-size:18px}.blog-content table {display:block;overflow-x:auto;white-space:normal}
+}
+@media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
+}
+</style>
+<main class="wrap">
+<div class="breadcrumbs"><a href="https://b2b-voice.com/">Inicio</a> / <a href="https://b2b-voice.com/blog">Blog</a> / RAG vs. llamadas a herramientas vs. contexto del prompt: cómo los agentes de voz con IA acceden al conocimiento del negocio y a datos en vivo</div>
+
+<section class="hero">
+  <div class="kicker">Base de conocimiento técnico de B2B Voice · Artículo n.º 7</div>
+  <h1>RAG vs. llamadas a herramientas vs. contexto del prompt: cómo los agentes de voz con IA acceden al conocimiento del negocio y a datos en vivo</h1>
+  <p class="deck">Cuando un agente de voz responde una pregunta sobre el negocio, lo importante no es simplemente si «sabe» la respuesta. Lo importante es de dónde procede, qué tan actualizada está esa fuente y si es la fuente autorizada para esa pregunta concreta.</p>
+  <div class="meta"><span>Publicado el 30 de agosto de 2026</span><span>~15 min de lectura</span><span>IA de voz · RAG · Datos del negocio</span></div>
+</section>
+
+<div class="answer">
+  <strong class="label">Respuesta rápida</strong>
+  <p>Un agente de voz con IA puede obtener información de cuatro lugares distintos: el conocimiento previo del modelo, el contexto del prompt o de ejecución, el conocimiento de la empresa recuperado y los sistemas de negocio en vivo. Estas fuentes no son intercambiables. RAG sirve para encontrar documentos relevantes; las API en vivo suelen ser más adecuadas para obtener el estado actual y autorizado, como la disponibilidad del calendario o el registro de un cliente.</p>
+</div>
+
+<div class="layout">
+<article>
+  <h2 id="four-sources">Cuatro fuentes distintas pueden estar detrás de una misma respuesta hablada</h2>
+  <p>«La IA conoce nuestro negocio» suena sencillo, pero oculta varios mecanismos técnicamente distintos. Un agente de voz en producción puede responder una pregunta a partir de instrucciones colocadas directamente en su contexto de ejecución, responder otra a partir de un documento de políticas recuperado y responder una tercera solo después de consultar un calendario o un CRM.</p>
+  <p>Esas fuentes tienen fortalezas, modos de fallo y propiedades de confianza diferentes. Tratarlas como una única «base de conocimiento» indiferenciada genera errores evitables.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">Modelo conceptual de B2B Voice: ¿de dónde viene la respuesta?</div>
+    <div class="stack">
+      <div class="row"><b>1. Conocimiento del modelo</b>Lo que el modelo base aprendió durante el entrenamiento.</div>
+      <div class="row"><b>2. Contexto del prompt y de ejecución</b>Instrucciones, estado de la conversación y pequeños datos explícitos suministrados en tiempo de ejecución.</div>
+      <div class="row"><b>3. Conocimiento recuperado</b>Pasajes relevantes encontrados en documentos externos o en contenido indexado.</div>
+      <div class="row"><b>4. Estado en vivo y autorizado</b>Datos actuales leídos de un CRM, un calendario, un sistema de pedidos, una base de datos u otro sistema de origen.</div>
+    </div>
+  </div>
+
+  <p>Este modelo de cuatro capas es un marco de ingeniería, no un estándar de API. Aun así, se corresponde bien con el comportamiento que exponen los sistemas de producción actuales. La API de Retrieval de OpenAI, por ejemplo, realiza búsqueda semántica sobre datos externos, mientras que su flujo de llamadas a funciones separa la salida del modelo de la ejecución de código en el lado de la aplicación.<sup><a href="#source-1">1</a></sup><sup><a href="#source-2">2</a></sup></p>
+
+  <div class="callout engineering">
+    <div class="eyebrow">Principio fundamental</div>
+    <p><strong>Saber no es hacer.</strong> Encontrar una política de reembolsos es un problema de conocimiento. Comprobar si el cliente 48121 ya recibió un reembolso es un problema de estado actual. Emitir un reembolso es un problema de acción.</p>
+  </div>
+
+  <h2 id="model-knowledge">1. Conocimiento del modelo: útil y amplio, pero no es su fuente de verdad privada</h2>
+  <p>Un modelo de lenguaje llega con capacidades generales e información aprendida durante el entrenamiento. Eso puede ser útil para la comprensión del lenguaje, el razonamiento, la terminología habitual y el contexto general del mundo. No debe tratarse como una fuente autorizada para datos privados del negocio o que cambian con rapidez.</p>
+  <p>Un modelo base no sabe automáticamente lo que ocurrió en su CRM hace cinco minutos. No sabe de forma inherente qué horarios de cita están libres esta tarde, si una factura concreta está pagada o si su empresa cambió ayer la política de cancelación. Si la aplicación no ha suministrado esa información mediante contexto, recuperación o una integración con un sistema en vivo, no debe suponerse que el modelo la posee.</p>
+  <p>Es una cuestión de procedencia de los datos. El conocimiento del entrenamiento y el estado privado en tiempo de ejecución son capas de información distintas.</p>
+
+  <h2 id="prompt-context">2. Contexto del prompt y de ejecución: lo mejor para información pequeña, explícita y relevante para la sesión</h2>
+  <p>El contexto del prompt o de ejecución es la información que se entrega directamente al modelo para la sesión actual. Puede incluir el rol del agente, el tono, las reglas del negocio, el estado de la conversación, el nombre verificado de la persona que llama, el idioma seleccionado o un conjunto reducido de datos lo bastante estables como para suministrarlos directamente.</p>
+  <p>Por ejemplo, un agente de voz podría recibir:</p>
+  <div class="callout note">
+    <ul>
+      <li>«Eres el asistente de recepción de Northside Dental.»</li>
+      <li>«No diagnostiques afecciones médicas.»</li>
+      <li>«El nombre verificado de la persona que llama es Maria.»</li>
+      <li>«La oficina cierra los domingos.»</li>
+      <li>«Pide confirmación antes de crear una cita.»</li>
+    </ul>
+  </div>
+  <p>El contexto del prompt resulta atractivo porque es directo: no hay paso de recuperación ni consulta externa que esperar. Pero se convierte en una mala fuente de verdad cuando los equipos empiezan a copiar en el prompt grandes conjuntos de datos operativos que cambian con frecuencia. El inventario, los saldos de los clientes, la disponibilidad de citas y el estado de los pedidos cambian de forma independiente a la sesión del modelo de lenguaje.</p>
+  <p>Este último punto es una recomendación de ingeniería y no una regla universal: use el contexto del prompt para instrucciones compactas y datos específicos de la sesión; prefiera lecturas de sistemas autorizados para el estado operativo en vivo.</p>
+
+  <h2 id="rag">3. RAG: recuperar el conocimiento relevante antes de responder</h2>
+  <p><strong>La generación aumentada por recuperación (RAG)</strong> es un enfoque en el que la aplicación recupera información relevante de fuentes de conocimiento externas y se la proporciona al modelo como contexto para su respuesta.</p>
+  <p>La API de Retrieval actual de OpenAI lo describe como búsqueda semántica sobre sus datos. La búsqueda semántica puede mostrar resultados conceptualmente similares aunque la consulta y el documento compartan pocas palabras clave exactas, o ninguna. Los resultados de la búsqueda pueden incluir fragmentos relevantes, puntuaciones de similitud y el archivo de origen.<sup><a href="#source-1">1</a></sup></p>
+  <p>Un flujo de recuperación habitual tiene este aspecto:</p>
+
+  <div class="diagram">
+    <div class="flow">
+      <div class="node"><b>Documentos</b>Políticas, preguntas frecuentes, manuales, información de productos</div><div class="arrow">→</div>
+      <div class="node"><b>Índice</b>Dividir en fragmentos y representar el contenido para su recuperación</div><div class="arrow">→</div>
+      <div class="node"><b>Consulta</b>La persona que llama hace una pregunta</div><div class="arrow">→</div>
+      <div class="node"><b>Recuperación</b>Encontrar los pasajes relevantes</div><div class="arrow">→</div>
+      <div class="node"><b>Respuesta</b>Generar a partir de la evidencia recuperada</div>
+    </div>
+  </div>
+
+  <p>RAG es especialmente útil cuando la respuesta está en documentación demasiado extensa o cambiante para pegarla en cada prompt: políticas de reembolso, descripciones de servicios, catálogos de productos, procedimientos internos, condiciones de garantía o preguntas frecuentes específicas de cada sede.</p>
+  <p>Pero los detalles concretos —tamaño de los fragmentos, modelo de embeddings, método de ranking, búsqueda híbrida, reordenamiento (reranking) y comportamiento de la indexación— son decisiones de implementación. La documentación de OpenAI es un ejemplo de un sistema de recuperación actual, no una definición que toda arquitectura RAG deba seguir.</p>
+
+  <h2 id="semantic-vs-exact">La recuperación semántica no es lo mismo que una consulta exacta de un registro</h2>
+  <p>Esta distinción es una de las decisiones de diseño más importantes en la IA de voz para empresas.</p>
+  <table>
+    <thead><tr><th>Pregunta</th><th>¿Qué tipo de problema es?</th><th>Mejor punto de partida</th></tr></thead>
+    <tbody>
+      <tr><td>«¿Cuál es su política de reembolsos?»</td><td>Encontrar una explicación de política relevante</td><td>RAG / recuperación de conocimiento</td></tr>
+      <tr><td>«¿Ofrecen servicio de emergencia?»</td><td>Información estable del negocio</td><td>Contexto del prompt o base de conocimiento</td></tr>
+      <tr><td>«¿Está libre hoy a las 3:00 p. m.?»</td><td>Estado operativo actual</td><td>Consulta en vivo al calendario</td></tr>
+      <tr><td>«¿Ya se le reembolsó al cliente 48121?»</td><td>Estado transaccional privado y exacto</td><td>Consulta autenticada al CRM o al sistema de pagos</td></tr>
+      <tr><td>«Resérveme las 3:00 p. m.»</td><td>Cambio de estado externo</td><td>Herramienta de escritura autorizada</td></tr>
+    </tbody>
+  </table>
+  <p>La recuperación semántica responde a una pregunta de relevancia: <em>¿Qué pasaje se relaciona más con lo que preguntó la persona que llama?</em> Una consulta exacta al sistema responde a una pregunta de estado: <em>¿Qué dice actualmente el registro autorizado?</em></p>
+  <p>Si un registro exacto de un CRM o de una base de datos está disponible mediante una API adecuada, usar la similitud semántica aproximada como sustituto de esa consulta introduce una incertidumbre innecesaria. Es una inferencia de ingeniería respaldada por la diferente mecánica de la recuperación y de las llamadas a funciones, no un requisito de ningún proveedor.</p>
+
+  <div class="callout misconception">
+    <div class="eyebrow">Error frecuente</div>
+    <p><strong>«Una base de datos vectorial es básicamente el CRM de la IA».</strong> No. Un almacén vectorial es útil para recuperar por similitud semántica. Un CRM es un sistema operativo con registros específicos, permisos, identificadores, flujos de trabajo y estado transaccional actual.</p>
+  </div>
+
+  <h2 id="freshness">RAG tiene una variable oculta: la actualidad de los datos</h2>
+  <p>Un sistema de recuperación puede encontrar el documento correcto y, aun así, devolver una respuesta desactualizada.</p>
+  <p>Supongamos que una empresa tiene dos documentos de política de cancelación. El más antiguo dice que los clientes pueden cancelar hasta 24 horas antes de una cita; el más reciente dice 48 horas. Un recuperador puede considerar ambos documentos semánticamente relevantes. Si la estrategia de indexación y de metadatos no distingue la política vigente de la obsoleta, la relevancia de la recuperación por sí sola no puede establecer cuál debe regir la respuesta.</p>
+  <p>La versión preliminar de Azure AI Search de Microsoft en 2026 convierte la actualidad de los datos en una preocupación explícita de la recuperación. Su recuperación sensible a la actualidad puede inclinar el ranking hacia los documentos más recientes, aunque Microsoft señala que la actualidad sigue siendo una señal de ranking y no un filtro estricto: los documentos más antiguos aún pueden aparecer cuando son muy relevantes.<sup><a href="#source-3">3</a></sup> Es una función específica de un proveedor, pero ilustra un punto general: <strong>la relevancia y la vigencia son dimensiones distintas.</strong></p>
+
+  <div class="callout engineering">
+    <div class="eyebrow">Modelo de confianza en el conocimiento de B2B Voice</div>
+    <p>Para las respuestas en producción, conviene plantearse cuatro preguntas independientes: <strong>relevancia de la recuperación, autoridad de la fuente, actualidad de la fuente y fidelidad de la respuesta.</strong> Una puntuación de similitud alta responde solo a la primera de ellas.</p>
+  </div>
+
+  <table>
+    <thead><tr><th>Dimensión</th><th>Pregunta que hay que hacerse</th><th>Ejemplo de fallo</th></tr></thead>
+    <tbody>
+      <tr><td>Relevancia de la recuperación</td><td>¿Encontramos contenido relacionado con la pregunta?</td><td>Un fragmento irrelevante de las preguntas frecuentes gana en el ranking.</td></tr>
+      <tr><td>Autoridad de la fuente</td><td>¿Es este el sistema o el documento que debe decidir la respuesta?</td><td>Un folleto de ventas antiguo contradice la política legal.</td></tr>
+      <tr><td>Actualidad de la fuente</td><td>¿Está vigente la fuente?</td><td>Se recupera un horario de atención que ya fue sustituido.</td></tr>
+      <tr><td>Fidelidad de la respuesta</td><td>¿Se mantuvo el modelo dentro de la evidencia recuperada?</td><td>El modelo añade una excepción sin respaldo.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="live-data">4. Estado en vivo y autorizado: cuando la respuesta debe provenir del sistema del negocio</h2>
+  <p>Algunas preguntas no deberían responderse en absoluto a partir de la memoria del modelo ni de documentos estáticos.</p>
+  <p>La disponibilidad del calendario es un ejemplo claro. La API FreeBusy de Google Calendar devuelve información de disponibilidad (libre/ocupado) para un conjunto definido de calendarios y rangos de tiempo.<sup><a href="#source-4">4</a></sup> Un agente en producción al que se le pregunta «¿Está libre hoy a las 3 p. m.?» puede usar una herramienta autenticada de la aplicación para consultar el calendario en lugar de inferir la disponibilidad a partir de un documento.</p>
+  <p>El mismo principio se aplica a:</p>
+  <ul>
+    <li>el estado actual de los pedidos;</li>
+    <li>el estado de la cuenta del cliente;</li>
+    <li>los niveles de inventario;</li>
+    <li>el estado de los pagos;</li>
+    <li>los tickets de servicio activos;</li>
+    <li>los precios vigentes cuando cambian de forma dinámica;</li>
+    <li>la disponibilidad actual del personal o de los recursos.</li>
+  </ul>
+  <p>Para estas preguntas, el sistema de origen debe determinar la respuesta. La función del modelo de lenguaje es entender la solicitud de la persona que llama, seleccionar la operación adecuada y explicar el resultado obtenido de forma natural.</p>
+
+  <h2 id="tool-calling">Dónde encajan las llamadas a herramientas</h2>
+  <p>Las llamadas a herramientas son el puente entre el modelo y el código de la aplicación. No son lo mismo que RAG, aunque ambos pueden aportar información al modelo.</p>
+  <p>OpenAI documenta las llamadas a funciones como un intercambio de varios pasos: la aplicación envía las herramientas al modelo, el modelo devuelve una llamada a una herramienta, la aplicación ejecuta código con los datos de entrada de esa llamada, la aplicación devuelve el resultado de la herramienta y el modelo produce entonces una respuesta o solicita herramientas adicionales.<sup><a href="#source-2">2</a></sup></p>
+
+  <div class="diagram">
+    <div class="flow">
+      <div class="node"><b>Persona que llama</b>«¿Hay disponibilidad a las 3 p. m.?»</div><div class="arrow">→</div>
+      <div class="node"><b>Modelo</b>Solicita <code>get_availability</code></div><div class="arrow">→</div>
+      <div class="node"><b>Aplicación</b>Ejecuta código autorizado</div><div class="arrow">→</div>
+      <div class="node"><b>Calendario</b>Devuelve el estado actual</div><div class="arrow">→</div>
+      <div class="node"><b>Modelo</b>Explica el resultado</div>
+    </div>
+  </div>
+
+  <p>Esa arquitectura respalda una distinción importante: el modelo puede <em>solicitar</em> una consulta, pero es la aplicación la que la realiza. Esta separación se vuelve aún más importante cuando la herramienta modifica un estado externo. Nuestro próximo artículo sobre las <a href="https://b2b-voice.com/ai-voice-agent-integrations">integraciones de agentes de voz con IA</a> trata en detalle las API, los webhooks, las escrituras en el CRM, la reserva de citas en el calendario y la verificación de transacciones.</p>
+
+  <h2 id="decision-table">Prompt vs. RAG vs. herramienta en vivo: una tabla de decisión práctica</h2>
+  <table>
+    <thead><tr><th>Tipo de información</th><th>Ejemplo</th><th>Opción de partida habitual</th><th>Por qué</th></tr></thead>
+    <tbody>
+      <tr><td>Instrucción de comportamiento</td><td>«Confirme siempre la fecha antes de reservar».</td><td>Prompt</td><td>Regla directa de comportamiento del agente.</td></tr>
+      <tr><td>Dato pequeño y estable</td><td>«Cerramos los domingos».</td><td>Prompt o base de conocimiento</td><td>Información de baja volatilidad.</td></tr>
+      <tr><td>Conjunto grande de documentación</td><td>Políticas de reembolso, garantía y servicio</td><td>RAG</td><td>Recuperar solo los pasajes relevantes.</td></tr>
+      <tr><td>Estado actual de carácter casi público</td><td>Horarios disponibles hoy</td><td>Herramienta de lectura en vivo</td><td>El sistema de origen es la fuente autorizada.</td></tr>
+      <tr><td>Estado privado del cliente</td><td>Estado de pedido, pago o cuenta</td><td>Consulta autenticada en vivo</td><td>Registro exacto y con control de acceso.</td></tr>
+      <tr><td>Acción externa</td><td>Crear o cancelar una cita</td><td>Herramienta de escritura autorizada</td><td>El estado del negocio debe modificarse y verificarse.</td></tr>
+    </tbody>
+  </table>
+  <p>Esta tabla es una recomendación para producción, no un estándar universal. Algunas arquitecturas precargan datos estables en el contexto, otras los recuperan de forma dinámica y otras combinan la recuperación con herramientas. El diseño debe responder a la autoridad, la volatilidad, la privacidad y la semántica transaccional de los datos.</p>
+
+  <h2 id="failure-modes">¿Qué puede fallar en cada capa de conocimiento?</h2>
+  <table>
+    <thead><tr><th>Capa</th><th>Modo de fallo</th><th>Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td>Conocimiento del modelo</td><td>Suposición sin respaldo o desactualizada</td><td>El modelo inventa una política específica de la empresa.</td></tr>
+      <tr><td>Contexto del prompt</td><td>Deriva del contexto o dato incrustado desactualizado</td><td>El prompt aún indica el horario de atención del mes pasado.</td></tr>
+      <tr><td>RAG</td><td>Sin resultados, resultados deficientes, documentos en conflicto, fuente desactualizada</td><td>El recuperador muestra una política de cancelación antigua.</td></tr>
+      <tr><td>Herramienta en vivo</td><td>Error de autenticación, tiempo de espera agotado, resultado mal formado, registro equivocado</td><td>La consulta al CRM falla o consulta al cliente equivocado.</td></tr>
+    </tbody>
+  </table>
+  <p>Un agente robusto no debería reducir estos fallos a una única alternativa de respaldo (fallback) como «No lo sé». El comportamiento correcto depende de lo que haya fallado. La ausencia de resultados en el conocimiento puede justificar una alternativa segura o una transferencia a una persona. La consulta en vivo del registro de un cliente puede exigir una nueva autenticación. Un tiempo de espera agotado puede significar que el estado es desconocido, no que sea negativo.</p>
+
+  <h2 id="rag-hallucinations">¿RAG evita las alucinaciones?</h2>
+  <p>No. RAG puede mejorar el fundamento de las respuestas al darle al modelo evidencia relevante, pero no garantiza matemáticamente una respuesta correcta.</p>
+  <p>Todavía pueden fallar varias cosas:</p>
+  <ul>
+    <li>el recuperador no encuentra ninguna fuente relevante;</li>
+    <li>el pasaje mejor clasificado no es el autorizado;</li>
+    <li>la propia fuente es incorrecta o está desactualizada;</li>
+    <li>dos fuentes entran en conflicto;</li>
+    <li>los controles de acceso permiten recuperar contenido que la persona que llama no debería recibir;</li>
+    <li>el modelo va más allá de la evidencia recuperada al generar su respuesta.</li>
+  </ul>
+  <p>La guía de OWASP sobre debilidades de vectores y embeddings señala específicamente el acceso no autorizado y la fuga de datos como riesgos de los sistemas RAG cuando los controles de acceso de la capa de recuperación son inadecuados o están mal alineados.<sup><a href="#source-5">5</a></sup> Esta es una de las razones por las que la arquitectura del conocimiento y la arquitectura de seguridad no pueden diseñarse de forma independiente.</p>
+
+  <div class="callout misconception">
+    <div class="eyebrow">Error frecuente</div>
+    <p><strong>«Si la recuperación devuelve una puntuación de similitud alta, la respuesta es verdadera».</strong> La similitud mide la relevancia respecto a la consulta. No demuestra que la fuente esté vigente, sea la autorizada, esté permitida para esta persona que llama ni que se haya reflejado fielmente en la respuesta generada.</p>
+  </div>
+
+  <h2 id="security-preview">RAG también necesita permisos</h2>
+  <p>Una empresa puede tener un único repositorio de documentos con preguntas frecuentes públicas, procedimientos de empleados, archivos específicos de clientes y material financiero confidencial. Indexarlo todo en un mismo sistema de recuperación no significa que cualquier persona que llame deba poder recuperar cualquier fragmento.</p>
+  <p>Por eso, la recuperación en producción necesita límites de acceso acordes con el contexto del negocio. Según el sistema, esto puede incluir índices separados, filtros de metadatos, límites por tenant (cliente), recuperación basada en la identidad, permisos a nivel de documento o una capa de aplicación que controle qué fuentes están disponibles en cada sesión.</p>
+  <p>El modelo de amenazas más profundo —inyección de prompts, mínimo privilegio, datos personales (PII), permisos de herramientas y fuga de datos en RAG— se trata en nuestra guía específica sobre la <a href="https://b2b-voice.com/ai-voice-agent-security">seguridad de los agentes de voz con IA</a>.</p>
+
+  <h2 id="architecture">Cómo encajan estas capas en una arquitectura de voz en producción</h2>
+  <p>La ruta del conocimiento se sitúa dentro de la arquitectura más amplia de los agentes de voz que se describe en <a href="https://b2b-voice.com/how-ai-voice-agents-work">Cómo funcionan los agentes de voz con IA</a>. Primero, la voz de la persona que llama se convierte en un turno sobre el que el sistema puede razonar. Después, la capa de razonamiento decide qué fuente de información es la adecuada para la pregunta.</p>
+  <div class="diagram">
+    <div class="flow">
+      <div class="node"><b>Turno de la persona que llama</b>Intención + entidades</div><div class="arrow">→</div>
+      <div class="node"><b>Decisión de la fuente</b>¿Prompt, RAG o herramienta en vivo?</div><div class="arrow">→</div>
+      <div class="node"><b>Fundamentación</b>Reunir evidencia o estado</div><div class="arrow">→</div>
+      <div class="node"><b>Respuesta</b>Responder desde la fuente seleccionada</div>
+    </div>
+  </div>
+  <p>La arquitectura es considerablemente más segura cuando el sistema puede explicar internamente —no necesariamente en voz alta en cada llamada— de dónde salió una respuesta. Esa trazabilidad del origen permite depurar, evaluar y tomar decisiones de política que son imposibles cuando toda respuesta se trata como «el modelo lo sabía».</p>
+
+
+<h2 id="large-context">Por qué una ventana de contexto más grande no elimina el problema de la recuperación</h2>
+<p>Los modelos actuales pueden aceptar grandes cantidades de contexto, lo que puede hacer tentador cargar en cada llamada un manual completo de la empresa, un catálogo de productos y un archivo de políticas. Un contexto amplio puede ser útil, pero no elimina las cuestiones de arquitectura que RAG está diseñado para resolver.</p>
+<p>En primer lugar, un contexto amplio no resuelve automáticamente la <strong>selección de la fuente</strong>. Si el prompt contiene varias versiones de la misma política, el modelo todavía tiene que determinar cuál es la autorizada. En segundo lugar, no resuelve automáticamente la <strong>actualidad de los datos</strong>. Un prompt largo puede contener datos desactualizados con la misma facilidad que un almacén vectorial. En tercer lugar, puede complicar los <strong>permisos</strong> si cada sesión recibe información a la que la persona que llama nunca debería acceder. Por último, cargar material innecesario en cada turno puede aumentar el costo y la complejidad.</p>
+<p>Por estas razones, «RAG vs. contexto largo» no es una cuestión en la que haya un único ganador. La decisión práctica es qué información debe estar presente por defecto y cuál debe obtenerse solo cuando sea relevante. Las instrucciones globales estables pueden pertenecer al contexto; las colecciones de conocimiento grandes o con permisos pueden recuperarse mejor de forma selectiva.</p>
+
+<h2 id="no-hit">¿Qué debe ocurrir cuando la recuperación no encuentra nada?</h2>
+<p>Un agente en producción necesita una política explícita para los casos sin resultados. Si la recuperación devuelve evidencia débil o vacía, el agente no debe convertir en silencio la incertidumbre en seguridad.</p>
+<p>Entre los comportamientos seguros posibles están hacer una pregunta aclaratoria, probar otra consulta de recuperación, cambiar a un sistema en vivo cuando la pregunta es en realidad transaccional, dar una respuesta limitada que refleje con claridad la evidencia disponible o escalar el caso a una persona. La alternativa de respaldo (fallback) adecuada depende del riesgo para el negocio.</p>
+<p>El mismo principio se aplica cuando las fuentes entran en conflicto. Si dos documentos se contradicen, el sistema debe tener una regla de autoridad —como el estado del documento, la fecha de entrada en vigor, el departamento responsable o una fuente de verdad designada— en lugar de pedirle al modelo de lenguaje que adivine qué política «suena» más plausible.</p>
+<div class="callout engineering">
+  <div class="eyebrow">Nota de ingeniería</div>
+  <p><strong>Los fallos de recuperación deben ser observables.</strong> Registre si la respuesta provino del contexto del prompt, de una fuente recuperada o de una herramienta en vivo, y guarde los metadatos suficientes para reproducir los casos débiles o sin resultados sin exponer innecesariamente contenido sensible.</p>
+</div>
+
+<h2 id="source-attribution">Atribuir la fuente es útil aunque la persona que llama nunca escuche una cita</h2>
+<p>Normalmente, quien llama por teléfono no quiere escuchar una bibliografía después de cada respuesta. Sin embargo, el backend sí puede conservar la procedencia: qué fragmento de documento se recuperó, qué herramienta devolvió el estado actual, qué ID de registro se usó y qué versión de la fuente estaba activa.</p>
+<p>Esa trazabilidad ofrece varios beneficios operativos. Facilita la depuración de las respuestas erróneas, respalda las pruebas de regresión tras una actualización de la base de conocimiento y ayuda a separar los problemas de generación del modelo de los problemas de los datos de origen. Si un agente da una respuesta desactualizada, los equipos pueden determinar si el recuperador seleccionó el documento equivocado, si el índice contenía contenido obsoleto o si el modelo ignoró evidencia correcta.</p>
+<p>Esta es otra razón para evitar la frase vaga «la IA lo sabía». En los sistemas en producción, la procedencia debe poder inspeccionarse aunque sea invisible para la persona que llama.</p>
+
+  <h2 id="evaluation">¿Qué deben evaluar los equipos?</h2>
+  <p>Las pruebas de conocimiento no deben limitarse a «el agente respondió correctamente una vez». Un conjunto de evaluación útil debe probar por separado el comportamiento de cada capa de fuentes:</p>
+  <ul>
+    <li>preguntas que deben responderse a partir del contexto estable del prompt;</li>
+    <li>paráfrasis semánticas de la misma pregunta sobre una política;</li>
+    <li>consultas para las que la base de conocimiento no contiene respuesta;</li>
+    <li>documentos vigentes y obsoletos que se contradicen;</li>
+    <li>preguntas sobre estado en vivo cuyas respuestas cambian entre una ejecución de prueba y otra;</li>
+    <li>consultas exactas de clientes con nombres o ID similares;</li>
+    <li>pruebas de permisos sobre documentos que deben ser inaccesibles;</li>
+    <li>fallos de herramientas y tiempos de espera agotados;</li>
+    <li>comprobaciones de que las respuestas generadas se mantienen fieles a la evidencia devuelta.</li>
+  </ul>
+  <p>Esto sienta una transición clara hacia los siguientes artículos de la serie: el n.º 8 se ocupa de la ejecución, el n.º 9 de la evaluación repetible y el n.º 10 de la autorización y la seguridad. Mantener claros estos límites evita que «RAG», «herramientas» e «integraciones» se conviertan en sinónimos imprecisos.</p>
+
+  <h2 id="faq">Preguntas frecuentes</h2>
+  <div class="qa"><h3>¿Cómo conoce un agente de voz con IA mi negocio?</h3><p>La información del negocio puede suministrarse mediante el contexto del prompt o de ejecución, recuperarse de una base de conocimiento o leerse de sistemas de negocio en vivo, como un CRM o un calendario. La fuente adecuada depende de si la información es estable, documental, privada o sensible al tiempo.</p></div>
+  <div class="qa"><h3>¿Qué es RAG en la IA de voz?</h3><p>RAG recupera información relevante de fuentes de conocimiento externas y se la proporciona al modelo como contexto antes de que responda. La recuperación semántica puede encontrar pasajes conceptualmente relacionados aunque la persona que llama use otras palabras.</p></div>
+  <div class="qa"><h3>¿Cuál es la diferencia entre RAG y una consulta por API?</h3><p>RAG suele resolver un problema de relevancia: ¿qué documento o pasaje ayuda a responder esta pregunta? Una consulta por API puede leer un registro actual específico de un sistema externo autorizado. Las preguntas sobre políticas suelen encajar con RAG; la disponibilidad en vivo y el estado del cliente suelen encajar con las API.</p></div>
+  <div class="qa"><h3>¿RAG evita las alucinaciones?</h3><p>No. RAG puede mejorar el fundamento de las respuestas, pero el contenido recuperado puede faltar, estar desactualizado, ser contradictorio, no estar autorizado o interpretarse mal. Es una capa de control de la veracidad, no una garantía.</p></div>
+  <div class="qa"><h3>¿Cómo sabe un agente de IA la disponibilidad del calendario?</h3><p>Un agente en producción puede consultar el estado actual del calendario mediante una herramienta o una API autenticada. La API FreeBusy de Google Calendar es un ejemplo de un punto de acceso de un sistema de origen que devuelve información de disponibilidad (libre/ocupado) para calendarios y rangos de tiempo definidos.</p></div>
+  <div class="qa"><h3>¿Un agente de voz con IA conoce automáticamente mi CRM?</h3><p>No. El acceso al CRM requiere una integración, credenciales, permisos y lógica de aplicación. El modelo solo puede usar los datos privados del CRM que el sistema que lo rodea esté autorizado y diseñado para proporcionar.</p></div>
+  <div class="qa"><h3>¿Cuándo deben usarse herramientas en vivo en lugar de RAG?</h3><p>Las herramientas en vivo suelen ser la mejor fuente cuando la respuesta depende del estado operativo actual, de un registro privado exacto o de una acción externa. RAG suele ser más adecuado para recuperar conocimiento explicativo de documentos.</p></div>
+
+  <h2 id="conclusion">La pregunta importante no es «¿La IA lo sabe?»</h2>
+  <p>La mejor pregunta es: <strong>¿Qué fuente produjo esta respuesta y es esa fuente la autorizada para esta pregunta?</strong></p>
+  <p>El conocimiento del modelo, el contexto del prompt, RAG y los sistemas de negocio en vivo resuelven problemas distintos. Un agente de voz fiable los usa de forma deliberada. Las instrucciones estables pueden vivir en el contexto. La documentación extensa puede recuperarse. El estado actual del negocio debe provenir del sistema que lo gestiona. Las acciones externas deben ejecutarse y verificarse mediante herramientas controladas.</p>
+  <p>Esa separación es la base de la siguiente capa de la arquitectura de producción: <a href="https://b2b-voice.com/ai-voice-agent-integrations">cómo se conectan los agentes de voz con IA a las API, los CRM, los calendarios y los sistemas de flujo de trabajo</a>.</p>
+
+<div class="sources">
+<h2>Fuentes técnicas y base de investigación</h2>
+<p>Los comportamientos específicos de cada proveedor se presentan como ejemplos y no como estándares universales. Los marcos de ingeniería de este artículo son modelos editoriales de B2B Voice elaborados a partir de las fuentes primarias y los estudios citados.</p>
+<ol><li id="source-1"><a href="https://developers.openai.com/api/docs/guides/retrieval" rel="noopener">OpenAI — Retrieval</a>. Documentación oficial sobre búsqueda semántica, almacenes vectoriales, fragmentos relevantes, puntuaciones de similitud y archivos de origen.</li><li id="source-2"><a href="https://developers.openai.com/api/docs/guides/function-calling" rel="noopener">OpenAI — Function calling</a>. Documentación oficial que muestra el ciclo de vida de las llamadas a herramientas entre el modelo y la aplicación, y la ejecución en el lado de la aplicación.</li><li id="source-3"><a href="https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-how-to-configure-freshness" rel="noopener">Microsoft — Configure freshness-aware retrieval in Azure AI Search</a>. Documentación oficial que ilustra la actualidad de los datos como un aspecto independiente del ranking de recuperación; la función citada es una implementación en versión preliminar de Microsoft.</li><li id="source-4"><a href="https://developers.google.com/workspace/calendar/api/v3/reference/freebusy" rel="noopener">Google — Calendar API FreeBusy</a>. Referencia oficial para consultar la información actual de disponibilidad (libre/ocupado) de los calendarios.</li><li id="source-5"><a href="https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/" rel="noopener">OWASP GenAI Security Project — Vector and Embedding Weaknesses</a>. Guía de seguridad sobre los riesgos de RAG y de los vectores, incluidos el acceso no autorizado y la fuga de datos.</li></ol>
+</div>
+<div class="tags"><span class="tag">Agentes de voz con IA</span><span class="tag">RAG</span><span class="tag">Llamadas a herramientas</span><span class="tag">Bases de conocimiento</span><span class="tag">Datos del negocio</span><span class="tag">Recuperación</span></div>
+<div class="next"><strong>Continúe con la serie:</strong><br><a href="https://b2b-voice.com/ai-voice-agent-integrations">Cómo se conectan los agentes de voz con IA a los sistemas de negocio: API, webhooks, CRM, calendarios y automatización de flujos de trabajo →</a></div>
+</article>
+</div>
+</main>

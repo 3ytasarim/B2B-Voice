@@ -1,0 +1,293 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Saltar al artículo</a>
+  <header>
+    
+    <p class="b2bv-kicker">Soluciones por sector</p>
+    <h1 id="b2bv-title">Agentes de voz con IA para despachos de abogados: admisión de clientes, calificación de leads y programación de consultas</h1>
+    <p class="b2bv-byline">Por <a rel="author" href="/es/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Una llamada sobre un nuevo asunto suele ser incompleta y puede contener información confidencial. Diseñe la admisión en torno a un conjunto reducido de campos aprobados, un paso de revisión a cargo de personal y una respuesta precisa sobre lo que ocurrirá a continuación.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Respuesta rápida</h2>
+        <p>Use un agente de voz en un despacho de abogados para recopilar una admisión administrativa limitada y encaminar las solicitudes de consulta aprobadas. Las decisiones sobre conflictos de interés, el asesoramiento jurídico y la contratación de los servicios del despacho deben seguir en manos del despacho. Verifique cualquier acción autorizada sobre el calendario y utilice la vía supervisada del despacho para las excepciones confidenciales o urgentes.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Tabla de contenidos">
+      <p>En esta guía</p>
+      <ol>
+<li><a href="#intake-scope">Defina el alcance de la admisión</a></li>
+<li><a href="#conflicts">Apoye la revisión de conflictos del despacho</a></li>
+<li><a href="#consultations">Verifique la programación de consultas</a></li>
+<li><a href="#confidentiality">Supervise el acceso a los datos</a></li>
+<li><a href="#escalation">Encamine las llamadas urgentes</a></li>
+<li><a href="#pilot">Pruebe los resultados de la admisión</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+<li>Recopile solo la información que el equipo de admisión del despacho necesita para el siguiente paso aprobado.</li>
+<li>Gestione la revisión de conflictos, la confirmación del calendario y la contratación de servicios como decisiones distintas, cada una con un responsable dentro del despacho.</li>
+<li>Pida a un abogado supervisor que confirme el acceso, la divulgación, la conservación de datos y el procedimiento de transferencia.</li>
+        </ul>
+      </section>
+<section id="intake-scope">
+  <h2>¿Qué debe gestionar el agente de voz de un despacho de abogados?</h2>
+  <p>Un despacho puede utilizar una recepcionista con IA para responder preguntas públicas sobre la oficina, recopilar una admisión limitada, identificar la cola correcta y programar una consulta conforme a reglas aprobadas. Defina qué ocurre con la admisión antes de dar al flujo de trabajo telefónico acceso al sistema de gestión de casos o al calendario de un abogado. En particular, decida qué solicitudes entrantes requieren verificación de identidad, una comprobación por parte del equipo de conflictos o una conversación directa con el personal.</p>
+  <p>B2B Voice puede diseñar un flujo de trabajo telefónico administrativo en torno a los campos de admisión aprobados del despacho y al encaminamiento hacia su personal. Un abogado supervisor y el equipo de admisión pueden indicar qué datos recopilar al inicio, cuándo debe intervenir una persona y quién autoriza el siguiente paso. Use ejemplos sintéticos para definir el flujo de trabajo antes de utilizar datos reales de quienes llaman.</p>
+<p>Comience con un área de práctica y una oficina. Quien llama puede ser un cliente potencial, un cliente actual, una parte contraria o alguien con una consulta sobre una entrega o una cita. Separe las vías desde el principio. Pregunte solo lo que el equipo receptor necesita para identificar la solicitud o actuar sobre ella. Incluya la identidad del agente, la forma de comunicarse con una persona y cualquier aviso aplicable sobre grabación o datos en un texto aprobado por el despacho. Revise qué ocurre cuando la persona que llama rechaza la admisión automatizada, pide otro idioma o cuelga a mitad de la llamada.</p>
+  <div class="b2bv-table" role="region" aria-label="Tipo de llamada al despacho y encaminamiento al personal" tabindex="0">
+    <table>
+      <caption>Vías administrativas para las llamadas habituales a un despacho de abogados</caption>
+      <thead><tr><th scope="col">Motivo de la llamada</th><th scope="col">Admisión permitida</th><th scope="col">Responsable o siguiente paso</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Nueva consulta</th><td>Recopilar los nombres y datos de contacto aprobados, un tipo de asunto general y la jurisdicción tal como la indique la persona.</td><td>El personal de admisión comprueba el alcance, los conflictos y la política de consultas.</td></tr>
+        <tr><th scope="row">Cliente existente</th><td>Encaminar al equipo asignado mediante el procedimiento de verificación aprobado por el despacho.</td><td>El personal verifica la identidad antes de hablar de los detalles del caso o modificar un registro.</td></tr>
+        <tr><th scope="row">Tercero o parte contraria</th><td>Recopilar los datos de contacto y de encaminamiento aprobados.</td><td>El despacho decide si responde y cómo. La persona que llama no debe oír detalles protegidos del asunto.</td></tr>
+        <tr><th scope="row">Consulta de un tribunal, de mensajería o comercial</th><td>Usar el directorio y la información de presentación de documentos aprobados por la oficina, o transferir al personal.</td><td>El personal designado se encarga de las notificaciones, los escritos y los documentos confidenciales.</td></tr>
+        <tr><th scope="row">Solicitud urgente</th><td>Seguir la vía de urgencia del despacho, con datos limitados y con el plazo según lo indique la propia persona que llama.</td><td>Un abogado o un miembro del personal designado revisa la solicitud y es responsable de la respuesta.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Configure la calificación de leads como un encaminamiento administrativo. Un condado, una categoría de asunto y una franja horaria para devolver la llamada pueden ayudar a colocar una consulta en la cola correcta. Los méritos del caso, los derechos, los plazos, la elegibilidad para la representación, las excepciones de honorarios y la decisión de si el despacho puede actuar corresponden al despacho. Use una vía neutral cuando la solicitud no esté clara o quede fuera de las categorías configuradas.</p>
+</section>
+
+<section id="conflicts">
+  <h2>¿Cómo puede el despacho recopilar lo suficiente para una comprobación de conflictos?</h2>
+  <p>Entregue al equipo de admisión una lista aprobada de nombres que se deben recopilar según el tipo de asunto, como el cliente potencial, las entidades relevantes y las demás partes. Confirme la ortografía cuando sea necesario. Mantenga la pregunta inicial lo bastante general como para identificar el área de práctica sin invitar a una declaración detallada. El despacho puede decidir si alguien debe enviar documentos por un canal aprobado por separado. Mantenga la admisión reducida aunque quien llama ofrezca detalles por creer que compartir todo el historial acelerará la respuesta.</p>
+  <p>Las normas estatales de conducta profesional pueden proteger la información de un cliente potencial aunque después no se formalice la contratación. La Regla 1.18 de California y la Regla 1.18 de Nueva York ilustran cómo los deberes hacia los clientes potenciales, la confidencialidad y los conflictos pueden depender de los hechos y de la jurisdicción. Deje que los abogados del despacho apliquen las normas vigentes en los lugares donde este ejerce, incluido cómo afectan el flujo telefónico y cualquier aviso a la admisión. Un saludo o un aviso no resuelve por sí solo estos deberes. <a href="https://www.calbar.ca.gov/legal-professionals/rules/rules-professional-conduct/current-rules-professional-conduct/chapter-1-lawyer-client-relationship">California Rule 1.18 and related professional conduct rules</a> · <a href="https://www.nycourts.gov/ad3/agc/rules/07-01-2026-NYCRR-Part-1200.pdf">New York Rules of Professional Conduct, Rule 1.18</a></p>
+  <p>El agente puede guardar una solicitud de admisión e informar a quien llama de que el despacho la revisará. Nunca debe decirle quién más está representado ni deducir una decisión sobre conflictos a partir de un nombre coincidente. Proporcione al equipo de revisión una búsqueda restringida y un registro de decisiones. Una posible coincidencia o un sistema no disponible deben mantenerse como pendientes aunque el calendario tenga un hueco libre. Si otra persona llama por el mismo hecho, trate la verificación y la revisión del despacho por separado antes de fusionar nada. Un apellido o un número de teléfono compartido puede corresponder a partes distintas, y una fusión automática puede exponer la información de una persona que llama a alguien con intereses contrarios.</p>
+</section>
+
+<section id="consultations">
+  <h2>¿Cuándo está realmente programada una consulta?</h2>
+  <p>El flujo de trabajo de admisión y revisión de conflictos para despachos de abogados de B2B Voice comienza con una admisión acotada y registra por separado la consulta, la decisión sobre conflictos y la cita. Utilice un único registro, o una referencia controlada entre registros, para que el personal pueda rastrear lo que se le dijo a la persona que llamó y cuándo.</p>
+  <ol class="b2bv-flow b2bv-flow--four" aria-label="Flujo de trabajo de admisión y revisión de conflictos del despacho">
+    <li><strong>Encamine según el propósito administrativo</strong><span>Identifique la oficina correcta y el siguiente paso que solicita quien llama.</span></li>
+    <li><strong>Recopile los campos designados</strong><span>Capture únicamente los nombres y datos de contacto que el despacho permita.</span></li>
+    <li><strong>Espere la revisión autorizada</strong><span>Asigne la solicitud y use solo el estado que el despacho haya aprobado para la siguiente acción.</span></li>
+    <li><strong>Verifique la acción en el calendario</strong><span>Confirme el horario aceptado, la oficina y la referencia cuando las reglas del despacho permitan programar la cita.</span></li>
+  </ol>
+  <p>Una solicitud de consulta puede acusarse de recibo cuando existe una tarea con responsable. Un horario provisional solo puede reservarse si el despacho permite reservas provisionales con su propia política de vencimiento. Una consulta confirmada requiere autorización para programarla y un registro coincidente en el calendario. Indique la fecha local, la hora y el canal o lugar según lo aprobado. El agente debe dejar claro que la cita corresponde a una consulta inicial. El despacho controla sus comunicaciones de aceptación y de contratación de servicios.</p>
+  <div class="b2bv-table" role="region" aria-label="Estados de admisión y programación del despacho" tabindex="0">
+    <table>
+      <caption>Separe el estado de la admisión, la autorización y la evidencia de la programación</caption>
+      <thead><tr><th scope="col">Situación</th><th scope="col">Siguiente paso comunicado a quien llama</th><th scope="col">Evidencia para el personal</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Admisión recibida</th><td>El despacho revisará la solicitud mediante el proceso de devolución de llamada aprobado.</td><td>Referencia de admisión restringida, contacto verificado si se requiere, revisor y estado de la revisión.</td></tr>
+        <tr><th scope="row">Revisión de conflictos o de elegibilidad pendiente</th><td>La solicitud está a la espera de la revisión del despacho. Use el texto aprobado por el despacho.</td><td>Estado pendiente en el sistema de admisión. Mantenga restringidos los resultados de búsqueda subyacentes.</td></tr>
+        <tr><th scope="row">Consulta confirmada</th><td>Confirme la hora, el lugar o canal y el contacto de la oficina según lo aprobado.</td><td>Una decisión de programación autorizada y un ID de cita verificado.</td></tr>
+        <tr><th scope="row">Resultado de escritura desconocido</th><td>El despacho está verificando la agenda o hará un seguimiento por la vía aprobada.</td><td>ID de solicitud, conciliación del calendario y un único responsable para evitar una reserva duplicada.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Si un horario disponible cambia durante la llamada, conserve la admisión existente y encamine la alternativa o el seguimiento. Si es necesario mover una consulta existente, verifique a la persona que llama y conserve la cita original hasta que el cambio aprobado se complete correctamente. Use un canal de confirmación aprobado y evite revelar el asunto en calendarios compartidos o en el buzón de voz. Consulte <a href="/es/ai-voice-agent-integrations">cómo verificar las operaciones del negocio en un calendario y un sistema de admisión</a>.</p>
+</section>
+
+<section id="confidentiality">
+  <h2>¿Cómo debe supervisar un despacho el acceso a las llamadas, los resúmenes y los registros?</h2>
+  <p>Trace el recorrido de los datos de quien llama desde la línea hasta el agente, la tarea de admisión, el calendario, los registros del proveedor y cualquier revisión de calidad. Decida quién necesita acceso y durante cuánto tiempo. Otorgue a los flujos de trabajo telefónicos permisos limitados y proteja el material confidencial en las notas, las grabaciones y las entradas del calendario. Pregunte a los proveedores por la conservación de datos, los subencargados del tratamiento, la respuesta a incidentes, la exportación y la eliminación antes de utilizar datos de clientes. Confirme si alguna grabación, transcripción o divulgación automatizada requiere un tratamiento especial para las llamadas y ubicaciones reales.</p>
+  <p>La guía de 2026 del State Bar of California sobre IA generativa aborda la supervisión, la confidencialidad, el control del acceso de los sistemas con agentes y el monitoreo. Aplique las normas profesionales que correspondan a la jurisdicción del despacho y pida a un abogado supervisor que apruebe cómo se usa y se revisa el flujo de trabajo. Una configuración que pueda ver todos los asuntos activos, enviar documentos o hacer ediciones amplias merece una revisión explícita conforme a la política de acceso y delegación del despacho. Una integración de admisión acotada puede crear un único registro aprobado y dejar el resto del expediente fuera de sus permisos. <a href="https://www.calbar.ca.gov/sites/default/files/portals/0/documents/ethics/Generative-AI-Practical-Guidance.pdf">2026 practical guidance on generative AI in law practice</a></p>
+  <p>Revise cómo se encamina la admisión al correo electrónico o a una cola compartida. Un resumen administrativo puede bastar para muchas solicitudes. Restrinja los nombres sensibles al equipo de conflictos y de admisión según corresponda. Un evento de analítica puede registrar que una admisión llegó a la cola asignada sin incluir un nombre de caso, un número de teléfono ni el asunto jurídico. Defina un responsable claro para corregir un elemento mal encaminado, actualizar la política de acceso y revisar qué se divulgó. Consulte <a href="/es/ai-voice-agent-security">el alcance y la verificación para las acciones telefónicas protegidas</a>.</p>
+<p>Use la lista de verificación de preparación para <a href="/es/how-to-integrate-ai-voice-agents" data-phase2-link="true">validar la acción de integración permitida</a> y el responsable de una solicitud fallida.</p>
+</section>
+
+<section id="escalation">
+  <h2>¿Cómo debe tratar el agente una solicitud urgente?</h2>
+  <p>Use la vía de escalamiento aprobada por el despacho cuando quien llama mencione una audiencia, un escrito por presentar, una fecha inminente u otro asunto urgente. Registre el plazo que indique la persona que llama solo si el procedimiento del despacho lo permite y si el encaminamiento puede proceder con rapidez. El flujo de trabajo nunca debe calcular un plazo legal, aconsejar si la persona puede esperar ni tratar una solicitud de devolución de llamada como una representación aceptada. Defina quién puede recibir la transferencia, qué ocurre fuera del horario de oficina y qué oye la persona que llama si el destino no está disponible.</p>
+  <p>Acepte la solicitud de hablar con una persona sin exigir que quien llama repita toda la admisión. Compruebe el resultado de la transferencia y use de inmediato la vía alternativa aprobada cuando sea necesario. Mida las conexiones exitosas, la entrega de la alternativa de respaldo (fallback) y el momento en que el personal asumió realmente la responsabilidad. Un mensaje de voz urgente requiere un proceso explícito del despacho y un responsable correspondiente. Para la diferencia entre un intento de transferencia y una conexión en vivo, consulte <a href="/es/ai-voice-agent-reliability">el diseño de la transferencia y de la alternativa de respaldo del agente de voz</a>.</p>
+</section>
+
+<section id="pilot">
+  <h2>¿Qué debe demostrar un piloto de admisión jurídica?</h2>
+  <p>En un piloto ficticio, una persona llama para pedir una consulta sobre un asunto de arrendamiento comercial. La recepcionista captura los nombres aprobados para una comprobación de conflictos y guarda una admisión. La búsqueda del despacho devuelve una coincidencia parcial, por lo que la solicitud queda a la espera de una revisión manual. Más tarde, la persona vuelve a llamar y menciona una fecha que cree importante. La recepcionista sigue la vía aprobada para solicitudes urgentes, y el empleado que la recibe ve la admisión guardada en la cola restringida. El agente no ofrece ninguna valoración de los méritos ni resultado alguno sobre conflictos. Cuando el despacho determina que puede ofrecer una consulta, una acción verificada en el calendario genera una confirmación.</p>
+  <p>Repita la prueba con un sistema de conflictos no disponible, dos personas sin relación con el mismo nombre, una solicitud repetida desde un número compartido, un abogado no disponible y una persona que intenta enviar un documento no solicitado. Compare el resultado de cada llamada con la admisión asignada, el estado que oyó quien llamó, las escrituras verificadas en el calendario y cualquier divulgación. Mida la finalización de las admisiones elegibles, el tiempo hasta la revisión humana, los registros duplicados, la exactitud de las confirmaciones y las divulgaciones a un destinatario equivocado. Registre dónde el flujo de trabajo transfirió correctamente y dónde el personal tuvo que corregir el rumbo. Consulte <a href="/es/how-to-test-an-ai-voice-agent">cómo estructurar las llamadas de aceptación y de regresión</a>.</p>
+  <p>B2B Voice puede analizar con usted un flujo de trabajo telefónico a medida, adaptado al personal, al calendario y a las reglas de admisión del despacho. Comience con un asunto sintético, los campos aprobados, el responsable del personal y un ejemplo de solicitud que requiera escalamiento. Permita que el despacho compare los resultados y la carga de trabajo con sus propios procedimientos de revisión antes de ampliarlo a más oficinas o vías.</p>
+<p>Use la guía de compra para <a href="/es/how-to-choose-an-ai-voice-agent" data-phase2-link="true">probar una lista corta de proveedores con la misma admisión</a>, con datos sintéticos y una agenda controlada.</p>
+</section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+<div class="b2bv-faq-item"><h3>¿Puede un despacho de abogados usar IA para atender las llamadas de nuevos clientes?</h3><p>Un flujo de trabajo telefónico puede gestionar tareas administrativas aprobadas y encaminar al personal una admisión limitada. El despacho debe aprobar el guion, el tratamiento de los datos, la supervisión profesional y el proceso de escalamiento para el uso previsto.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede una recepcionista jurídica con IA despejar conflictos?</h3><p>El flujo de trabajo puede recopilar campos para la revisión del despacho. El personal autorizado del despacho debe aplicar las normas vigentes y aprobar cualquier acción posterior, en especial cuando una coincidencia o un registro incompleto requieran criterio.</p></div>
+<div class="b2bv-faq-item"><h3>¿Genera la admisión una relación abogado-cliente?</h3><p>El despacho controla las decisiones y las comunicaciones sobre la contratación de sus servicios. Una conversación con un cliente potencial puede generar deberes profesionales según las normas y las circunstancias aplicables, incluso cuando el despacho no acepte el asunto.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede un agente de voz confirmar una consulta jurídica?</h3><p>Sí, tras la revisión y la autorización que exija el despacho y una vez que el calendario registre la consulta aprobada. El despacho gestiona por separado cualquier proceso de contratación de sus servicios.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cómo debe tratar la admisión a una persona que llama con un posible plazo?</h3><p>Use la vía urgente del despacho y conserve el plazo que indique quien llama, si está permitido. Un abogado o un miembro del personal designado da el siguiente paso. El flujo de trabajo no debe calcular ni interpretar plazos.</p></div>
+<div class="b2bv-faq-item"><h3>¿Debe una recepcionista con IA grabar todas las llamadas de admisión jurídica?</h3><p>El despacho debe decidir qué registros son necesarios y aplicar las normas vigentes sobre grabación, confidencialidad, acceso y conservación. Un resumen administrativo limitado puede bastar para el propósito de encaminamiento.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Pruebe una admisión jurídica administrativa</h2>
+        <p>Traiga un asunto ficticio, los campos de admisión aprobados y una vía de escalamiento a una persona. Use una demostración de B2B Voice para recorrer la admisión, la revisión y la programación de consultas.</p>
+        <a href="/demo">Solicite una demostración del flujo de trabajo para despachos de abogados</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Fuentes</h2>
+        <ul>
+<li><a href="https://www.calbar.ca.gov/legal-professionals/rules/rules-professional-conduct/current-rules-professional-conduct/chapter-1-lawyer-client-relationship">California Rule 1.18 and related professional conduct rules</a> <span class="b2bv-source-note">(State Bar of California)</span></li>
+<li><a href="https://www.nycourts.gov/ad3/agc/rules/07-01-2026-NYCRR-Part-1200.pdf">New York Rules of Professional Conduct, Rule 1.18</a> <span class="b2bv-source-note">(New York State Unified Court System)</span></li>
+<li><a href="https://www.calbar.ca.gov/sites/default/files/portals/0/documents/ethics/Generative-AI-Practical-Guidance.pdf">2026 practical guidance on generative AI in law practice</a> <span class="b2bv-source-note">(State Bar of California)</span></li>
+<li><a href="/es/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Temas</h2>
+        <ul class="b2bv-tags">
+<li>Admisión en despachos de abogados</li>
+<li>Revisión de conflictos</li>
+<li>Programación de consultas</li>
+<li>Confidencialidad</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

@@ -1,0 +1,1665 @@
+
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --red-soft: #fff3f3;
+      --purple-soft: #f5f1ff;
+      --dark: #111a2e;
+      --max: 940px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(38px, 6vw, 62px);
+    }.blog-content h2 {
+      margin: 54px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 31px 0 12px;
+      font-size: 22px;
+    }.blog-content h4 {
+      margin: 20px 0 8px;
+      font-size: 18px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 850px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer strong.label, .blog-content .kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .note {
+      margin: 28px 0;
+      padding: 20px 22px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fafbfc;
+    }.blog-content .warning {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .warning strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #78570b;
+    }.blog-content .research-note {
+      margin: 26px 0;
+      padding: 22px 23px;
+      border-radius: 12px;
+      background: var(--purple-soft);
+      border: 1px solid #ddd2ff;
+    }.blog-content .research-note strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #5539a8;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .diagram {
+      margin: 28px 0 36px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fbfcfe;
+    }.blog-content .diagram-title {
+      font-weight: 850;
+      color: #1d2a43;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }.blog-content .flow-vertical {
+      display: grid;
+      gap: 9px;
+      max-width: 620px;
+      margin: 0 auto;
+    }.blog-content .flow-box {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #d6deea;
+      background: #fff;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.35;
+    }.blog-content .arrow {
+      text-align: center;
+      color: #73809a;
+      font-weight: 900;
+      line-height: 1;
+    }.blog-content .architecture-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 24px 0 34px;
+    }.blog-content .arch-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }.blog-content .arch-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }.blog-content .arch-card p:last-child { margin-bottom: 0; }.blog-content .plane {
+      margin: 28px 0 36px;
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #e9edf5;
+    }.blog-content .plane h3 {
+      color: #fff;
+      margin: 0 0 8px;
+    }.blog-content .plane p { color: #d6ddeb; }.blog-content .plane-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }.blog-content .plane-box {
+      padding: 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+    }.blog-content .plane-box strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 4px;
+    }.blog-content .sequence {
+      margin: 30px 0;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }.blog-content .sequence-step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 13px;
+      align-items: start;
+      margin: 0 0 16px;
+    }.blog-content .sequence-step:last-child { margin-bottom: 0; }.blog-content .sequence-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #17358f;
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+    }.blog-content .sequence-step strong {
+      display: block;
+      margin-bottom: 2px;
+      color: #17243c;
+    }.blog-content .code-card {
+      margin: 24px 0 34px;
+      padding: 22px;
+      border-radius: 14px;
+      background: #101827;
+      color: #e7ecf5;
+      overflow-x: auto;
+      border: 1px solid #293653;
+    }.blog-content .code-card pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }.blog-content .waterfall {
+      margin: 28px 0 36px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fafbfc;
+    }.blog-content .waterfall-track {
+      display: grid;
+      gap: 9px;
+      margin-top: 15px;
+    }.blog-content .waterfall-row {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 12px;
+      align-items: center;
+    }.blog-content .waterfall-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #42506a;
+    }.blog-content .waterfall-bar {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #d9e1ff 0%, #9bb0ff 50%, #5c78df 100%);
+      position: relative;
+      overflow: hidden;
+    }.blog-content .waterfall-bar.short { width: 34%; }.blog-content .waterfall-bar.medium { width: 56%; }.blog-content .waterfall-bar.long { width: 78%; }.blog-content .waterfall-bar.full { width: 100%; }.blog-content .misconceptions {
+      margin: 28px 0 38px;
+      display: grid;
+      gap: 13px;
+    }.blog-content .myth {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }.blog-content .myth-title {
+      padding: 15px 17px;
+      background: #fff4f4;
+      font-weight: 850;
+      color: #7f2727;
+    }.blog-content .myth-fix {
+      padding: 15px 17px;
+      background: #fff;
+      color: #39465c;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta a.button {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul {
+      padding-left: 20px;
+    }.blog-content .sources li {
+      margin: 9px 0;
+      overflow-wrap: anywhere;
+    }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 760px) {.blog-content .architecture-grid, .blog-content .plane-grid {
+        grid-template-columns: 1fr;
+      }.blog-content .waterfall-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }.blog-content .waterfall-bar, .blog-content .waterfall-bar.short, .blog-content .waterfall-bar.medium, .blog-content .waterfall-bar.long, .blog-content .waterfall-bar.full {
+        width: 100%;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .research-note, .blog-content .diagram, .blog-content .plane, .blog-content .sequence, .blog-content .code-card, .blog-content .waterfall, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap {
+        break-inside: avoid;
+      }.blog-content .plane, .blog-content .cta, .blog-content .code-card {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .plane h3, .blog-content .plane p, .blog-content .plane-box strong, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .code-card {
+        color: #111;
+      }
+    }
+</style>
+<main class="page">
+    <article>
+      <header>
+        <span class="eyebrow">Arquitectura de IA de voz · Guía técnica</span>
+        <h1>Cómo funcionan los agentes de voz con IA: STT, voz en tiempo real, LLM, TTS, telefonía y llamadas a herramientas</h1>
+        <p class="dek">
+          Un agente de voz con IA de nivel productivo no es simplemente “ChatGPT conectado a un teléfono”. Es un sistema en tiempo real en el que la telefonía, el transporte de audio, los turnos de conversación, el razonamiento, la lógica de negocio, las herramientas, la generación de voz, el monitoreo y la transferencia a una persona tienen que funcionar en conjunto.
+        </p>
+        <p class="meta">Publicado el 29 de agosto de 2026 · Por B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
+        <strong class="label">Respuesta rápida</strong>
+        <p>
+          <strong>Un agente de voz con IA conecta un canal de audio en vivo con un sistema de conversación capaz de comprender el habla, mantener el estado, usar conocimiento o herramientas de negocio y devolver respuestas habladas en tiempo real.</strong> Algunos sistemas usan una canalización en cascada (voz a texto, razonamiento y luego texto a voz), mientras que los sistemas nativos de audio más recientes pueden procesar y generar audio de forma más directa. En cualquiera de las dos arquitecturas, las acciones de negocio reales, como consultar un calendario, leer un registro del CRM, crear una cita o transferir a la persona que llama, normalmente se realizan mediante herramientas externas controladas y sistemas de telefonía, y no dentro del propio modelo de lenguaje.
+        </p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+          <li><strong>No existe una única arquitectura universal de agente de voz con IA.</strong></li>
+          <li>Tanto los sistemas en cascada como los sistemas nativos de audio en tiempo real son enfoques válidos en producción.</li>
+          <li>La calidad de la voz es solo una capa; los tiempos de respuesta, las herramientas, el manejo de fallos y los resultados de negocio importan igual.</li>
+          <li>Normalmente, el modelo de lenguaje no “ejecuta” por sí mismo la acción de negocio. Solicita o propone una acción; el software autorizado la ejecuta.</li>
+          <li>La latencia es una cascada de tiempos a lo largo de varios componentes, no un único dato de velocidad del modelo.</li>
+          <li>Las interrupciones son un problema de gestión de estado, no solo un evento de detención del audio.</li>
+          <li>Un agente de voz en producción debe probarse tanto como sistema de conversación como sistema de transacciones de negocio.</li>
+        </ul>
+      </section>
+
+      <h2>¿Qué ocurre realmente cuando habla con un agente de voz con IA?</h2>
+
+      <p>
+        Imagine que llama a un consultorio dental y dice: <strong>“Hola, quisiera reservar una limpieza para el próximo martes por la tarde”.</strong>
+      </p>
+
+      <p>
+        Desde la perspectiva de quien llama, se trata de una sola frase sencilla. Detrás de escena, un sistema de producción puede tener que coordinar varias capas:
+      </p>
+
+      <div class="sequence">
+        <div class="sequence-step">
+          <div class="sequence-num">1</div>
+          <div><strong>Se conecta la llamada.</strong> Una red telefónica, un navegador o un cliente móvil establece una sesión de medios en vivo.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">2</div>
+          <div><strong>El audio entra al sistema de voz.</strong> Los fragmentos de audio codificado se transmiten a la sesión en tiempo real.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">3</div>
+          <div><strong>El sistema detecta el turno de quien llama.</strong> La VAD, la detección de fin de habla o la detección semántica de turnos ayudan a determinar cuándo la persona está hablando y cuándo su turno puede haber terminado.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">4</div>
+          <div><strong>Se comprende la solicitud.</strong> Un sistema en cascada puede usar primero STT; un sistema nativo de audio puede interpretar el audio directamente.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">5</div>
+          <div><strong>El agente determina qué información falta.</strong> Puede necesitar el tipo de servicio, la fecha, la identidad del cliente u otros datos.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">6</div>
+          <div><strong>Se consulta un sistema externo.</strong> El agente pide a una herramienta autorizada que verifique la disponibilidad real del calendario.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">7</div>
+          <div><strong>La persona que llama elige una opción válida.</strong> El agente confirma la cita exacta antes de una operación de escritura.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">8</div>
+          <div><strong>El sistema de reservas crea la cita.</strong> El sistema externo devuelve un resultado de éxito o de error que es la fuente de verdad.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">9</div>
+          <div><strong>El agente confirma el resultado.</strong> La confirmación hablada debe reflejar lo que el sistema de negocio realmente hizo.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">10</div>
+          <div><strong>Pueden continuar los flujos de trabajo posteriores a la llamada.</strong> Las actualizaciones del CRM, los resúmenes, las notificaciones, la analítica o las tareas de seguimiento pueden ejecutarse cuando termina la conversación.</div>
+        </div>
+      </div>
+
+      <div class="thesis">
+        Un agente de voz con IA en producción se entiende mejor como un sistema distribuido en tiempo real, y no como un único modelo con una voz realista.
+      </div>
+
+      <h2>Las dos arquitecturas principales de agentes de voz con IA</h2>
+
+      <div class="architecture-grid">
+        <section class="arch-card">
+          <span class="kicker">Arquitectura 1</span>
+          <h3>Arquitectura de voz en cascada</h3>
+          <p>
+            Un sistema en cascada separa de forma explícita el reconocimiento de voz, el razonamiento y la generación de voz. Esto da a los ingenieros un control sólido sobre las transcripciones, las entradas del modelo, las herramientas y la salida del TTS.
+          </p>
+        </section>
+
+        <section class="arch-card">
+          <span class="kicker">Arquitectura 2</span>
+          <h3>Arquitectura nativa de audio en tiempo real</h3>
+          <p>
+            Un modelo nativo de audio en tiempo real puede procesar audio en vivo y producir salida hablada sin exigir que toda la interacción pase por un intermediario de texto obligatorio.
+          </p>
+        </section>
+      </div>
+
+      <h3>Arquitectura en cascada</h3>
+
+      <div class="diagram">
+        <div class="diagram-title">Flujo típico de un agente de voz en cascada</div>
+        <div class="flow-vertical">
+          <div class="flow-box">Audio de quien llama</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Detección de actividad de voz y de fin de turno</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Voz a texto (STT) en streaming</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Transcripción</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">LLM / orquestador del agente</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Conocimiento / reglas de negocio / herramientas</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Respuesta de texto</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Texto a voz (TTS) en streaming</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">La persona que llama escucha la respuesta</div>
+        </div>
+      </div>
+
+      <p>
+        La arquitectura en cascada no debe descartarse como “IA de voz anticuada”. Las implementaciones modernas pueden transmitir en streaming y encadenar las etapas en lugar de esperar a que cada una termine por completo antes de que empiece la siguiente.
+      </p>
+
+      <p>
+        Su mayor ventaja es la <strong>modularidad y la observabilidad</strong>. Los ingenieros pueden inspeccionar qué produjo el reconocedor de voz, qué texto llegó al modelo, qué herramienta se invocó, qué devolvió y qué respuesta se pasó al TTS.
+      </p>
+
+      <p>
+        Eso hace que los sistemas en cascada resulten especialmente útiles cuando importan los flujos de trabajo predecibles, los agentes de texto ya existentes, la auditabilidad o la optimización por componente.
+      </p>
+
+      <h3>Arquitectura de voz a voz en tiempo real / nativa de audio</h3>
+
+      <div class="diagram">
+        <div class="diagram-title">Flujo conceptual nativo de audio</div>
+        <div class="flow-vertical">
+          <div class="flow-box">Audio de quien llama</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Modelo multimodal / de audio en tiempo real</div>
+          <div class="arrow">↕</div>
+          <div class="flow-box">Estado de la conversación + herramientas + lógica de negocio</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Audio generado</div>
+        </div>
+      </div>
+
+      <p>
+        En esta arquitectura, el modelo principal puede trabajar directamente con la entrada y la salida de audio. Eso significa que el sistema puede conservar más información acústica, como el ritmo, el acento, la entonación, las dudas y el énfasis, en lugar de reducir cada turno a texto desde el principio.
+      </p>
+
+      <div class="research-note">
+        <strong>Distinción importante</strong> Voz a voz, nativo de audio y full-duplex no son sinónimos. Un sistema puede aceptar y devolver audio sin usar internamente un único modelo monolítico nativo de audio. Del mismo modo, que admita interrupciones (barge-in) no significa automáticamente que modele de forma continua el habla superpuesta como una arquitectura full-duplex de nivel de investigación.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Requisito</th>
+              <th>En cascada</th>
+              <th>Nativo de audio en tiempo real</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Depuración por componente</td>
+              <td>Normalmente más sencilla</td>
+              <td>Puede ser más abstracta</td>
+            </tr>
+            <tr>
+              <td>Control explícito de la transcripción</td>
+              <td>Sólido</td>
+              <td>Puede ser opcional o secundario</td>
+            </tr>
+            <tr>
+              <td>Integración con agentes de texto existentes</td>
+              <td>Encaje excelente</td>
+              <td>Puede requerir un rediseño</td>
+            </tr>
+            <tr>
+              <td>Intercambio de componentes</td>
+              <td>Flexible</td>
+              <td>Más dependiente del modelo</td>
+            </tr>
+            <tr>
+              <td>Información acústica</td>
+              <td>Parcialmente reducida al pasar por texto</td>
+              <td>Puede conservar más información de audio</td>
+            </tr>
+            <tr>
+              <td>Llamadas a herramientas</td>
+              <td>Compatible</td>
+              <td>Compatible</td>
+            </tr>
+            <tr>
+              <td>Auditabilidad</td>
+              <td>Normalmente directa</td>
+              <td>Puede requerir más telemetría</td>
+            </tr>
+            <tr>
+              <td>Potencial de baja latencia</td>
+              <td>Sólido con streaming</td>
+              <td>Gran potencial arquitectónico</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning">
+        <strong>No generalice en exceso:</strong> nativo de audio no significa automáticamente más rápido, mejor o más confiable. El enrutamiento de red, la detección de turnos, las herramientas, el almacenamiento en búfer, la elección del modelo y la calidad de la implementación pueden pesar más en la experiencia real del usuario.
+      </div>
+
+      <h2>La pila de un agente de voz con IA en producción</h2>
+
+      <div class="diagram">
+        <div class="diagram-title">Una arquitectura de producción más defendible</div>
+        <div class="flow-vertical">
+          <div class="flow-box">Persona que llama / navegador / app móvil</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Telefonía y entrada de medios<br><small>PSTN / SIP / WebRTC / WebSocket</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Transporte y manejo de audio<br><small>códec / remuestreo / jitter / búfer</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Turnos de conversación<br><small>VAD / EOT / turnos semánticos / interrupción</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Comprensión y razonamiento<br><small>STT + LLM o modelo nativo de audio</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Conocimiento + lógica de negocio<br><small>RAG / reglas / estado / API</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Plano de acción<br><small>CRM / calendario / base de datos / webhooks / flujos de trabajo</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Generación de voz</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">La persona que llama escucha la respuesta</div>
+        </div>
+      </div>
+
+      <div class="plane">
+        <h3>Plano de conversación frente a plano de acción</h3>
+        <p>
+          Una de las formas más útiles de entender la IA de voz en producción es separar lo que el sistema <em>decide</em> de lo que el sistema <em>cambia realmente</em>.
+        </p>
+        <div class="plane-grid">
+          <div class="plane-box">
+            <strong>Plano de conversación</strong> Comprender la intención, hacer preguntas, mantener el contexto, decidir si se necesita una herramienta y formular la siguiente respuesta.
+          </div>
+          <div class="plane-box">
+            <strong>Plano de acción</strong> Leer o escribir datos reales a través de calendarios, CRM, bases de datos, API, webhooks y sistemas de flujos de trabajo autorizados.
+          </div>
+        </div>
+      </div>
+
+      <h2>¿Cómo llega una llamada telefónica a la IA?</h2>
+
+      <p>
+        En un agente telefónico, el proceso suele comenzar antes de que cualquier modelo de IA reciba el audio.
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Número de teléfono</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Operador / PSTN</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Enrutamiento de llamadas / señalización SIP</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Sesión de medios en tiempo real</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Sistema del agente de voz</div>
+        </div>
+      </div>
+
+      <h3>SIP no es el flujo de audio</h3>
+
+      <p>
+        SIP (Session Initiation Protocol, protocolo de inicio de sesión) es, ante todo, un protocolo de señalización y control de sesiones. Se utiliza para establecer, modificar y finalizar sesiones de comunicación.
+      </p>
+
+      <p>
+        El audio en tiempo real suele transportarse por separado, mediante protocolos y sesiones de medios. Esta distinción importa porque la señalización telefónica y el transporte de audio son capas de ingeniería diferentes.
+      </p>
+
+      <div class="thesis">
+        SIP gestiona la sesión. El transporte de medios lleva la voz.
+      </div>
+
+      <h3>WebRTC y WebSockets</h3>
+
+      <p>
+        No todos los agentes de voz usan un número de teléfono. Las experiencias de voz en navegador o en móvil pueden usar WebRTC, mientras que las aplicaciones basadas en servidor pueden intercambiar audio en tiempo real mediante conexiones WebSocket bidireccionales.
+      </p>
+
+      <h2>El audio no se transmite como palabras</h2>
+
+      <p>
+        Antes de que un sistema de IA comprenda una oración, recibe fragmentos de audio. Según el proveedor de telefonía, el códec, la interfaz del modelo y la ruta de red, esos fragmentos pueden tener que decodificarse, remuestrearse, almacenarse en búfer o volver a codificarse.
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Fragmentos de audio entrantes</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Decodificar</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Remuestrear si es necesario</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Procesamiento del modelo</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Remuestrear / codificar</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Reproducción para quien llama</div>
+        </div>
+      </div>
+
+      <p>
+        Cada interfaz admite códecs y frecuencias de muestreo distintos. Afirmaciones como “todas las llamadas telefónicas con IA usan un códec o una frecuencia de muestreo específicos” deben, por tanto, considerarse propias de cada proveedor, no universales.
+      </p>
+
+      <h3>Jitter y almacenamiento en búfer</h3>
+
+      <p>
+        Los paquetes de audio en tiempo real no siempre llegan a intervalos perfectamente regulares. A la variación en el momento de llegada se le llama <strong>jitter</strong>.
+      </p>
+
+      <p>
+        Los búferes pueden suavizar la reproducción, pero implican un compromiso: más almacenamiento en búfer puede mejorar la estabilidad, pero también aumenta el retraso.
+      </p>
+
+      <h2>¿Cómo sabe el agente que usted terminó de hablar?</h2>
+
+      <p>
+        Este es uno de los problemas más difíciles de la interacción de voz natural.
+      </p>
+
+      <div class="code-card">
+        <pre>Speech
+Speech
+Speech
+Silence
+Silence
+Threshold reached
+→ End of turn</pre>
+      </div>
+
+      <p>
+        Los sistemas más simples dependen en gran medida del silencio y de la detección de actividad de voz (VAD). Pero el silencio no siempre significa que la persona haya terminado de hablar.
+      </p>
+
+      <p>
+        Piense en esto: <strong>“Necesito una cita para... eh... probablemente el martes”.</strong>
+      </p>
+
+      <p>
+        Un umbral fijo de silencio puede responder demasiado pronto e interrumpir a quien llama. Los sistemas más avanzados pueden combinar señales acústicas con información lingüística o semántica para estimar si la idea realmente está completa.
+      </p>
+
+      <div class="thesis">
+        La latencia de un agente de voz es en parte un problema de velocidad y en parte un problema de inteligencia conversacional.
+      </div>
+
+      <h2>Cómo comprenden el habla los sistemas en cascada</h2>
+
+      <p>
+        El reconocimiento de voz en streaming suele producir hipótesis intermedias en lugar de esperar a una oración completa.
+      </p>
+
+      <div class="code-card">
+        <pre>"I need..."
+"I need an app..."
+"I need an appointment..."
+"I need an appointment Tuesday."</pre>
+      </div>
+
+      <p>
+        Los resultados parciales iniciales pueden cambiar a medida que llega más audio. Finalmente, el reconocedor devuelve una transcripción estable o finalizada.
+      </p>
+
+      <p>
+        Esta distinción importa para nombres, direcciones, números de teléfono, fechas, números de cuenta y horarios de citas. Un sistema de producción debe ser cauteloso con las acciones irreversibles basadas en una transcripción parcial inestable.
+      </p>
+
+      <h2>La paradoja de la transcripción en los sistemas nativos de audio</h2>
+
+      <p>
+        En un sistema en cascada, la transcripción es normalmente la representación de texto explícita que se pasa a la etapa de razonamiento. En algunos sistemas nativos de audio, la arquitectura puede ser distinta:
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Audio de quien llama</div>
+          <div class="arrow">↙ &nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+          <div class="flow-box">Interpretación del modelo de audio</div>
+          <div class="flow-box">Transcripción de ASR independiente</div>
+        </div>
+      </div>
+
+      <div class="research-note">
+        <strong>Consecuencia técnica clave</strong> La transcripción visible no es necesariamente la representación interna exacta que el modelo nativo de audio utilizó para comprender a la persona que llama.
+      </div>
+
+      <p>
+        Eso significa que la precisión de la transcripción, por sí sola, puede no revelar si el agente comprendió la entidad correcta, seleccionó la herramienta correcta o completó el resultado de negocio adecuado.
+      </p>
+
+      <h2>¿Qué hace realmente la capa de razonamiento?</h2>
+
+      <p>
+        Según la arquitectura, la capa de razonamiento puede determinar:
+      </p>
+
+      <ul>
+        <li>qué quiere la persona que llama;</li>
+        <li>qué información falta;</li>
+        <li>si conviene hacer una pregunta aclaratoria;</li>
+        <li>si se necesita conocimiento aprobado de la empresa;</li>
+        <li>si debe invocarse una herramienta o un sistema externo;</li>
+        <li>qué herramienta y qué argumentos deben usarse;</li>
+        <li>si la acción solicitada está permitida;</li>
+        <li>si debe transferirse la llamada a una persona;</li>
+        <li>qué debe decir el agente a continuación.</li>
+      </ul>
+
+      <p>
+        Un buen diseño de producción suele separar el razonamiento probabilístico del modelo de las reglas de negocio deterministas y de los datos externos que son fuente de verdad.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo de información</th>
+              <th>Ejemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Razonamiento del modelo</strong></td>
+              <td>La persona que llama parece querer una limpieza el próximo martes por la tarde.</td>
+            </tr>
+            <tr>
+              <td><strong>Regla de negocio</strong></td>
+              <td>Este servicio no se puede reservar con menos de 24 horas de anticipación.</td>
+            </tr>
+            <tr>
+              <td><strong>Verdad externa</strong></td>
+              <td>La API del calendario indica que las 3:30 PM están disponibles.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Contexto del prompt frente a RAG frente a datos de negocio en vivo</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Mecanismo</th>
+              <th>Más adecuado para</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Prompt / contexto</strong></td>
+              <td>Instrucciones y datos breves y estables</td>
+            </tr>
+            <tr>
+              <td><strong>RAG / recuperación de conocimiento</strong></td>
+              <td>Grandes colecciones de documentos, manuales, políticas y preguntas frecuentes</td>
+            </tr>
+            <tr>
+              <td><strong>Herramientas / API en vivo</strong></td>
+              <td>Datos actuales o que son fuente de verdad, como la disponibilidad del calendario, los registros del CRM o el estado de un pedido</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="thesis">
+        El conocimiento responde preguntas. Las herramientas inspeccionan o cambian el mundo real.
+      </div>
+
+      <p>
+        La generación aumentada por recuperación (RAG) puede mejorar el anclaje en datos al aportar información relevante de una base de conocimiento, pero no debe describirse como una garantía de que las alucinaciones no puedan ocurrir.
+      </p>
+
+      <h2>Cómo las llamadas a herramientas convierten la conversación en acción</h2>
+
+      <p>
+        Las llamadas a herramientas son lo que permite a un agente de voz ir más allá de la conversación.
+      </p>
+
+      <div class="code-card">
+        <pre>Caller:
+"Can you book me Tuesday at 3?"
+
+        ↓
+
+Model requests:
+get_availability(
+  service="consultation",
+  date="Tuesday"
+)
+
+        ↓
+
+Application / Tool Layer:
+queries calendar
+
+        ↓
+
+Tool result:
+2:30 PM
+3:00 PM
+4:30 PM
+
+        ↓
+
+Agent:
+"Yes, 3 PM is available.
+Would you like me to book it?"
+
+        ↓
+
+Caller:
+"Yes."
+
+        ↓
+
+Model requests:
+create_booking(...)
+
+        ↓
+
+Application:
+creates appointment
+
+        ↓
+
+Authoritative result:
+booking_id = ABC123
+
+        ↓
+
+Agent:
+"You're booked for Tuesday at 3 PM."</pre>
+      </div>
+
+      <div class="thesis">
+        El modelo solicita o propone la acción. El software autorizado la ejecuta.
+      </div>
+
+      <h2>Ejemplo de principio a fin: reservar una cita</h2>
+
+      <div class="sequence">
+        <div class="sequence-step">
+          <div class="sequence-num">1</div>
+          <div><strong>Persona que llama:</strong> “Hola, necesito una limpieza el próximo martes por la tarde”.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">2</div>
+          <div><strong>Comprensión:</strong> intención = reserva, servicio = limpieza, fecha = próximo martes, preferencia = tarde.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">3</div>
+          <div><strong>Reglas de negocio:</strong> se verifican la duración del servicio, la elegibilidad del profesional y las restricciones de programación.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">4</div>
+          <div><strong>Herramienta de lectura:</strong> se solicitan al sistema de programación los horarios de cita disponibles.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">5</div>
+          <div><strong>Agente:</strong> ofrece únicamente los horarios devueltos por el calendario que es fuente de verdad.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">6</div>
+          <div><strong>Persona que llama:</strong> elige las 3:30 PM.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">7</div>
+          <div><strong>Límite de confirmación:</strong> se repiten la fecha, la hora y el servicio exactos antes de una operación de escritura.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">8</div>
+          <div><strong>Herramienta de escritura:</strong> la solicitud de reserva se envía al sistema de citas.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">9</div>
+          <div><strong>Respuesta autoritativa:</strong> el sistema de citas confirma el éxito.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">10</div>
+          <div><strong>Después de la llamada:</strong> pueden ejecutarse actualizaciones del CRM, resúmenes o flujos de trabajo de seguimiento.</div>
+        </div>
+      </div>
+
+      <h2>Las herramientas de lectura y las de escritura no deben tratarse por igual</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Acción</th>
+              <th>Ejemplo</th>
+              <th>Control típico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lectura básica</td>
+              <td>Consultar el horario de atención</td>
+              <td>Poca fricción</td>
+            </tr>
+            <tr>
+              <td>Lectura en vivo</td>
+              <td>Consultar la disponibilidad de citas</td>
+              <td>Validación</td>
+            </tr>
+            <tr>
+              <td>Lectura sensible</td>
+              <td>Recuperar el registro de un cliente</td>
+              <td>Autenticación + autorización</td>
+            </tr>
+            <tr>
+              <td>Escritura reversible</td>
+              <td>Agregar una nota al CRM</td>
+              <td>Validación + registro</td>
+            </tr>
+            <tr>
+              <td>Escritura visible para el cliente</td>
+              <td>Crear una cita</td>
+              <td>Confirmación explícita</td>
+            </tr>
+            <tr>
+              <td>Transacción sensible</td>
+              <td>Pago o reembolso</td>
+              <td>Autorización reforzada</td>
+            </tr>
+            <tr>
+              <td>Acción destructiva</td>
+              <td>Eliminar o cancelar un registro importante</td>
+              <td>Confirmación y, posiblemente, aprobación humana</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning">
+        <strong>La salida estructurada no equivale a una ejecución segura.</strong> Una llamada a una herramienta puede ser un JSON perfectamente válido y aun así apuntar al cliente, la cita o la cuenta equivocados. La validación de esquemas y la validación de reglas de negocio son problemas distintos.
+      </div>
+
+      <h2>¿Cómo responde hablando la IA?</h2>
+
+      <p>
+        En una arquitectura en cascada, el texto generado se pasa a un sistema TTS. El TTS moderno puede transmitir audio en streaming antes de que se haya sintetizado la respuesta completa.
+      </p>
+
+      <p>
+        Pero la calidad del TTS no se reduce a que la voz suene realista. Las pruebas reales en producción deben incluir:
+      </p>
+
+      <ul>
+        <li>nombres y apellidos;</li>
+        <li>números de teléfono;</li>
+        <li>direcciones;</li>
+        <li>monedas;</li>
+        <li>fechas y horarios de citas;</li>
+        <li>acrónimos;</li>
+        <li>terminología específica del sector;</li>
+        <li>cambio de idioma;</li>
+        <li>velocidad del habla y pausas.</li>
+      </ul>
+
+      <h2>De dónde proviene realmente la latencia de un agente de voz con IA</h2>
+
+      <p>
+        No existe un único componente llamado “latencia de voz”. Una respuesta hablada puede depender de varias etapas.
+      </p>
+
+      <div class="waterfall">
+        <div class="diagram-title">Cascada de latencia ilustrativa (sin escala)</div>
+        <div class="waterfall-track">
+          <div class="waterfall-row">
+            <div class="waterfall-label">Detección del fin de turno</div>
+            <div class="waterfall-bar medium"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Finalización del STT</div>
+            <div class="waterfall-bar short"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Inferencia del modelo</div>
+            <div class="waterfall-bar medium"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Recuperación / llamada a herramienta</div>
+            <div class="waterfall-bar long"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Primer audio del TTS</div>
+            <div class="waterfall-bar short"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Red / almacenamiento en búfer</div>
+            <div class="waterfall-bar medium"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Retraso total percibido por el usuario</div>
+            <div class="waterfall-bar full"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Métrica</th>
+              <th>Qué mide</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Latencia de fin de turno</td>
+              <td>Cuánto tarda el sistema en decidir que la persona que llama terminó de hablar</td>
+            </tr>
+            <tr>
+              <td>Latencia del STT</td>
+              <td>Tiempo hasta obtener un reconocimiento de voz utilizable</td>
+            </tr>
+            <tr>
+              <td>TTFT</td>
+              <td>Tiempo hasta el primer token de texto del modelo</td>
+            </tr>
+            <tr>
+              <td>Latencia de herramientas</td>
+              <td>Tiempo de espera de un sistema de negocio externo</td>
+            </tr>
+            <tr>
+              <td>Latencia del TTS</td>
+              <td>Tiempo hasta que comienza la generación de audio</td>
+            </tr>
+            <tr>
+              <td>TTFA</td>
+              <td>Tiempo hasta que la persona que llama empieza realmente a oír la respuesta</td>
+            </tr>
+            <tr>
+              <td>Latencia de turno de extremo a extremo</td>
+              <td>Retraso total percibido por el usuario, desde el fin de su turno hasta la respuesta audible</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning">
+        <strong>No invente un umbral universal “similar al humano”.</strong> Los paneles de los proveedores, los benchmarks de modelos y los artículos académicos pueden publicar cifras útiles, pero esas mediciones pertenecen a sistemas y condiciones específicos.
+      </div>
+
+      <h2>¿Qué ocurre cuando la persona que llama interrumpe a la IA?</h2>
+
+      <p>
+        A menudo se describe el barge-in como “la IA deja de hablar cuando el usuario habla”. Eso es solo una parte del problema.
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Se reproduce el audio de la IA</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Se detecta el habla de quien llama</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Detener / cancelar la generación en curso</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Vaciar la reproducción en cola</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Determinar qué escuchó realmente la persona que llama</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Aceptar el nuevo turno de quien llama</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Reconciliar el estado de la conversación</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Generar una nueva respuesta</div>
+        </div>
+      </div>
+
+      <p>
+        El problema oculto clave es la <strong>reconciliación del estado de reproducción</strong>. Es posible que el servidor haya generado más texto del que la persona que llama alcanzó a escuchar antes de interrumpir. Si el historial de la conversación da por hecho que se entregó la respuesta completa, el estado del sistema puede quedar inconsistente con la realidad.
+      </p>
+
+      <h2>¿Qué ocurre cuando algo sale mal?</h2>
+
+      <p>
+        Los sistemas de producción deben diseñarse en torno a las rutas de fallo, no solo a las demostraciones exitosas.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Fallo</th>
+              <th>Comportamiento inseguro</th>
+              <th>Comportamiento de producción más seguro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nombre o número poco claro</td>
+              <td>Adivinar</td>
+              <td>Pedir a la persona que repita o confirme</td>
+            </tr>
+            <tr>
+              <td>La persona que llama guarda silencio</td>
+              <td>Esperar indefinidamente</td>
+              <td>Volver a preguntar y luego finalizar con cortesía</td>
+            </tr>
+            <tr>
+              <td>Pregunta fuera del alcance</td>
+              <td>Inventar una respuesta</td>
+              <td>Recuperar información, explicar la limitación o transferir</td>
+            </tr>
+            <tr>
+              <td>Evidencia de recuperación débil</td>
+              <td>Completar la información faltante</td>
+              <td>Aclarar o escalar</td>
+            </tr>
+            <tr>
+              <td>API del calendario no disponible</td>
+              <td>Afirmar que la reserva tuvo éxito</td>
+              <td>Explicar el fallo y ofrecer una alternativa de respaldo (fallback)</td>
+            </tr>
+            <tr>
+              <td>Sin disponibilidad</td>
+              <td>Inventar un horario</td>
+              <td>Ofrecer únicamente alternativas reales</td>
+            </tr>
+            <tr>
+              <td>La solicitud de escritura agota el tiempo de espera</td>
+              <td>Reintentar a ciegas</td>
+              <td>Verificar el estado de la transacción y usar una recuperación idempotente cuando sea posible</td>
+            </tr>
+            <tr>
+              <td>La transferencia a una persona no recibe respuesta</td>
+              <td>Dejar a la persona que llama sin atención</td>
+              <td>Ruta alternativa, devolución de llamada o política de buzón de voz</td>
+            </tr>
+            <tr>
+              <td>Se interrumpe la conexión</td>
+              <td>Repetir acciones irreversibles</td>
+              <td>Recuperar el estado de forma segura</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        El problema de la escritura duplicada es especialmente importante. Si una API de reservas tiene éxito pero la respuesta se pierde por un tiempo de espera agotado en la red, reintentar a ciegas la misma acción puede crear dos citas.
+      </p>
+
+      <div class="thesis">
+        Muchos fallos de los agentes de voz no son problemas de “inteligencia de la IA”. Son problemas de sistemas distribuidos, de permisos, de telefonía o de fiabilidad de los flujos de trabajo.
+      </div>
+
+      <h2>¿Cómo funciona la transferencia a una persona?</h2>
+
+      <p>
+        La transferencia a una persona contiene al menos tres preguntas de diseño distintas:
+      </p>
+
+      <ol>
+        <li><strong>Disparador:</strong> ¿por qué debe transferirse la llamada?</li>
+        <li><strong>Telefonía:</strong> ¿hacia dónde debe enrutarse la llamada en vivo?</li>
+        <li><strong>Contexto:</strong> ¿qué información debe recibir la persona?</li>
+      </ol>
+
+      <p>
+        Los disparadores de transferencia habituales incluyen las solicitudes explícitas de quien llama, los malentendidos repetidos, las operaciones sensibles, las solicitudes no admitidas, los fallos de herramientas o el escalamiento definido por políticas.
+      </p>
+
+      <p>
+        También existe una diferencia terminológica entre la transferencia ciega o en frío y la transferencia asistida o en caliente. Un sistema no debería llamar “en caliente” a una transferencia a menos que el comportamiento de telefonía incluya de verdad la semántica de una transferencia asistida.
+      </p>
+
+      <h2>¿Qué ocurre después de una llamada de voz con IA?</h2>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Termina la llamada</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Transcripción / datos de la llamada</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Resumen</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Extracción estructurada</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Resultado de la llamada</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">CRM / flujo de trabajo de seguimiento</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Analítica / evaluación</div>
+        </div>
+      </div>
+
+      <div class="code-card">
+        <pre>{
+  "intent": "appointment_booking",
+  "appointment_booked": true,
+  "appointment_time": "...",
+  "human_handoff": false,
+  "follow_up_required": true
+}</pre>
+      </div>
+
+      <div class="warning">
+        <strong>Que sea válido según el esquema no significa que sea correcto en los hechos.</strong> Siempre que sea posible, los resultados de negocio importantes deben derivarse de eventos de herramientas que sean fuente de verdad, y no solo de un resumen generado por un modelo de lenguaje.
+      </div>
+
+      <h2>Cómo se monitorean los agentes de voz en producción</h2>
+
+      <p>
+        Leer las transcripciones es útil, pero no basta. Un sistema de producción puede registrar:
+      </p>
+
+      <ul>
+        <li>ID de la llamada o sesión;</li>
+        <li>eventos de inicio y fin del habla;</li>
+        <li>decisiones de fin de turno;</li>
+        <li>eventos intermedios y finales del STT;</li>
+        <li>tiempos de las solicitudes al modelo;</li>
+        <li>solicitudes de recuperación y sus resultados;</li>
+        <li>nombres de herramientas, argumentos y resultados;</li>
+        <li>inicio del TTS y tiempo hasta el primer audio;</li>
+        <li>interrupciones y reproducción cancelada;</li>
+        <li>intentos de transferencia a una persona;</li>
+        <li>errores y eventos de conexión;</li>
+        <li>resultados de negocio.</li>
+      </ul>
+
+      <p>
+        El análisis por percentiles también importa. Una latencia promedio baja puede ocultar un grupo pequeño pero importante de llamadas con un rendimiento muy lento en la cola de la distribución.
+      </p>
+
+      <h2>¿Cómo deben probarse los agentes de voz con IA?</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capa de prueba</th>
+              <th>Qué probar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pruebas deterministas de herramientas</td>
+              <td>Parámetros correctos, autenticación, prevención de escrituras duplicadas, manejo de tiempos de espera agotados</td>
+            </tr>
+            <tr>
+              <td>Pruebas de conversación en texto</td>
+              <td>Intención, políticas, selección de herramientas, comportamiento de escalamiento</td>
+            </tr>
+            <tr>
+              <td>Pruebas de audio</td>
+              <td>Pausas, interrupciones, acentos, nombres, números, ruido, cambio de idioma</td>
+            </tr>
+            <tr>
+              <td>Inyección de fallos</td>
+              <td>Errores del calendario, tiempos de espera agotados del CRM, destinos de transferencia no disponibles</td>
+            </tr>
+            <tr>
+              <td>Pruebas adversariales</td>
+              <td>Solicitudes de datos no autorizadas, intentos de inyección de prompts, entradas maliciosas a las herramientas</td>
+            </tr>
+            <tr>
+              <td>Pruebas de regresión</td>
+              <td>Escenarios críticos que se vuelven a ejecutar tras cambios en el modelo, el prompt, las herramientas o el flujo de trabajo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="thesis">
+        Un agente de voz debe probarse tanto como sistema de conversación como sistema de transacciones de negocio.
+      </div>
+
+      <h2>Seguridad: quien llama es una entrada no confiable</h2>
+
+      <p>
+        La voz no elimina los riesgos de seguridad de los agentes de IA. Quien llama aún puede intentar anular las instrucciones, acceder a información no autorizada o desencadenar acciones inseguras.
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Modelo</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Puerta de enlace de herramientas</div>
+          <div class="flow-box">Autenticación</div>
+          <div class="flow-box">Autorización</div>
+          <div class="flow-box">Validación de esquemas</div>
+          <div class="flow-box">Validación de reglas de negocio</div>
+          <div class="flow-box">Mínimo privilegio</div>
+          <div class="flow-box">Confirmación / aprobación</div>
+          <div class="flow-box">Registro de auditoría</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">CRM / calendario / base de datos</div>
+        </div>
+      </div>
+
+      <p>
+        Los requisitos de grabación, transcripción, datos personales (PII) y retención dependen de la jurisdicción y del contexto del negocio, por lo que deben tratarse por separado de la arquitectura técnica.
+      </p>
+
+      <h2>Ideas erróneas comunes sobre los agentes de voz con IA</h2>
+
+      <div class="misconceptions">
+        <div class="myth">
+          <div class="myth-title">“Es solo ChatGPT conectado a un teléfono”.</div>
+          <div class="myth-fix">La telefonía, el transporte de medios, la detección de turnos, las herramientas, la seguridad, la orquestación y la observabilidad son capas de ingeniería independientes.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">“Todos los agentes de voz con IA usan STT → LLM → TTS”.</div>
+          <div class="myth-fix">Existen tanto sistemas en cascada como sistemas nativos de audio de voz a voz.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">“Si una API acepta audio y devuelve audio, tiene que ser un único modelo nativo”.</div>
+          <div class="myth-fix">Una API unificada puede seguir orquestando varios sistemas de voz y de lenguaje subyacentes.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">“Nativo de audio significa full-duplex”.</div>
+          <div class="myth-fix">El procesamiento nativo de audio y el modelado continuo de conversaciones con habla superpuesta son propiedades distintas.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">“La transcripción es exactamente lo que comprendió el modelo”.</div>
+          <div class="myth-fix">En algunos sistemas nativos de audio, la transcripción puede ser un proceso de observabilidad independiente de la interpretación del audio que hace el modelo.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">“El modelo reserva la cita”.</div>
+          <div class="myth-fix">Normalmente, el modelo selecciona o solicita una herramienta; un software externo realiza la reserva real y devuelve el resultado.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">“RAG evita las alucinaciones”.</div>
+          <div class="myth-fix">RAG puede mejorar el anclaje en datos, pero no es una garantía absoluta de exactitud factual.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">“Una voz realista significa que el sistema es confiable”.</div>
+          <div class="myth-fix">La calidad de la voz y la ejecución correcta del negocio son dimensiones distintas.</div>
+        </div>
+      </div>
+
+      <h2>¿Un agente de voz con IA usa ChatGPT?</h2>
+
+      <p>
+        No necesariamente. “Agente de voz con IA” describe una categoría de sistemas, no un modelo o proveedor concreto.
+      </p>
+
+      <p>
+        Un agente de voz puede usar un modelo de lenguaje basado en texto detrás del STT y el TTS, un modelo multimodal en tiempo real, un modelo de voz especializado, lógica de flujo de trabajo determinista o varios modelos en distintas etapas.
+      </p>
+
+      <h2>¿Cómo se conecta un agente de voz con IA a un CRM?</h2>
+
+      <p>
+        Normalmente mediante una capa de integración controlada que usa API, llamadas a funciones, webhooks, automatización de flujos de trabajo, conectores de bases de datos o plataformas de integración.
+      </p>
+
+      <p>
+        No debe suponerse que el modelo “conoce” todo lo que existe en el CRM. La aplicación debe recuperar los datos pertinentes y aplicar los permisos adecuados.
+      </p>
+
+      <h2>¿Por qué los agentes de voz con IA tienen latencia?</h2>
+
+      <p>
+        Porque una respuesta hablada puede depender del transporte de red, la detección de turnos, el reconocimiento de voz, el razonamiento, la recuperación, las herramientas, el TTS, el almacenamiento en búfer y la reproducción.
+      </p>
+
+      <p>
+        Optimizar una sola métrica de referencia, como el TTFT del modelo, no hace automáticamente que toda la conversación telefónica sea rápida.
+      </p>
+
+      <h2>¿Qué ocurre si el agente no sabe la respuesta?</h2>
+
+      <p>
+        No existe una alternativa de respaldo (fallback) universal. Un sistema de producción debe definir una de forma explícita.
+      </p>
+
+      <p>
+        Según el flujo de trabajo, el agente puede:
+      </p>
+
+      <ul>
+        <li>buscar en una fuente de conocimiento aprobada;</li>
+        <li>hacer una pregunta aclaratoria;</li>
+        <li>decir que la información no está disponible;</li>
+        <li>consultar un sistema externo que sea fuente de verdad;</li>
+        <li>tomar un mensaje;</li>
+        <li>transferir la conversación a una persona.</li>
+      </ul>
+
+      <p>
+        Generar una respuesta sin sustento no debe ser la estrategia de respaldo.
+      </p>
+
+      <div class="one-sentence">
+        <div class="label">La definición de producción</div>
+        <p>Un agente de voz con IA en producción es un sistema distribuido en tiempo real en el que la conversación, la telefonía, la lógica de negocio y las herramientas externas deben funcionar correctamente en conjunto.</p>
+      </div>
+
+      <h2>Preguntas frecuentes</h2>
+
+      <section class="faq">
+        <div class="faq-item">
+          <h3>¿Cómo funcionan los agentes de voz con IA?</h3>
+          <p>
+            Conectan un canal de audio en vivo con un sistema de conversación que detecta los turnos de habla, comprende la solicitud, razona sobre qué hacer, usa conocimiento o herramientas de negocio cuando es necesario y devuelve audio hablado.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Todos los agentes de voz con IA usan STT, LLM y TTS?</h3>
+          <p>
+            No. Los sistemas en cascada sí, pero los sistemas nativos de audio en tiempo real pueden procesar y generar audio de forma más directa.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Cómo sabe un agente de voz con IA que alguien dejó de hablar?</h3>
+          <p>
+            Los sistemas pueden usar detección de silencio, VAD, detección acústica del fin del habla, predicción semántica del fin de turno o una combinación de estos métodos.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Cómo reserva una cita un agente de voz con IA?</h3>
+          <p>
+            Identifica la intención de reserva, reúne la información que falta, verifica la disponibilidad en vivo mediante una herramienta, confirma la elección de la persona que llama, solicita la acción de escritura, espera el resultado exitoso y luego confirma la reserva.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Cómo manejan las interrupciones los agentes de voz con IA?</h3>
+          <p>
+            Un sistema puede detectar el habla de quien llama, detener la generación en curso, vaciar el audio en cola, reconciliar lo que realmente se escuchó, aceptar el nuevo turno y continuar a partir del estado de conversación actualizado.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Por qué los agentes de voz con IA tienen latencia?</h3>
+          <p>
+            El retraso puede provenir del transporte de red, la detección de turnos, la transcripción, la inferencia del modelo, la recuperación, la ejecución de herramientas, la generación de voz, el almacenamiento en búfer y la reproducción.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Un agente de voz con IA conoce automáticamente mi CRM?</h3>
+          <p>
+            No. La información del CRM debe proporcionarse mediante contexto, recuperación o una integración autorizada.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Qué ocurre después de una llamada de voz con IA?</h3>
+          <p>
+            Una vez que termina la conversación en vivo, un sistema puede generar una transcripción, un resumen, un resultado estructurado, una actualización del CRM, un flujo de trabajo de seguimiento y un evento de analítica.
+          </p>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>¿Quiere comprender la categoría antes de elegir una configuración de agente de voz?</h2>
+        <p>
+          Comience con la guía más general sobre qué es un agente de voz con IA y luego use este artículo como referencia de arquitectura técnica.
+        </p>
+        <a class="button" href="https://b2b-voice.com/what-is-an-ai-voice-agent">Leer: ¿Qué es un agente de voz con IA? →</a>
+      </section>
+
+      <div class="next">
+        <strong>A continuación, en la serie de conocimiento de B2B Voice:</strong> <em>Agente de voz con IA frente a recepcionista con IA frente a IVR: ¿cuál es la diferencia?</em>
+      </div>
+
+      <section class="sources">
+        <h2>Fuentes técnicas y base de investigación</h2>
+        <p>
+          Esta guía se elaboró a partir de documentación primaria, estándares e investigación técnica sobre arquitectura de agentes de voz en producción, audio en tiempo real, llamadas a herramientas, telefonía, pruebas, observabilidad y seguridad. Las fuentes se revisaron en agosto de 2026.
+        </p>
+        <ul>
+          <li><strong>OpenAI — Voice Agents:</strong> <a href="https://developers.openai.com/api/docs/guides/voice-agents">developers.openai.com/api/docs/guides/voice-agents</a></li>
+          <li><strong>OpenAI — Realtime and Audio:</strong> <a href="https://developers.openai.com/api/docs/guides/realtime">developers.openai.com/api/docs/guides/realtime</a></li>
+          <li><strong>OpenAI — Voice Activity Detection:</strong> <a href="https://developers.openai.com/api/docs/guides/realtime-vad">developers.openai.com/api/docs/guides/realtime-vad</a></li>
+          <li><strong>OpenAI — Function Calling:</strong> <a href="https://developers.openai.com/api/docs/guides/function-calling">developers.openai.com/api/docs/guides/function-calling</a></li>
+          <li><strong>Google — Gemini Live API:</strong> <a href="https://ai.google.dev/gemini-api/docs/live-api">ai.google.dev/gemini-api/docs/live-api</a></li>
+          <li><strong>Microsoft — Azure Voice Live:</strong> <a href="https://learn.microsoft.com/en-us/azure/ai-services/speech-service/voice-live">learn.microsoft.com/.../voice-live</a></li>
+          <li><strong>ElevenLabs — ElevenAgents Architecture:</strong> <a href="https://elevenlabs.io/docs/eleven-agents/overview">elevenlabs.io/docs/eleven-agents/overview</a></li>
+          <li><strong>Deepgram — End-of-Speech Detection:</strong> <a href="https://developers.deepgram.com/docs/understanding-end-of-speech-detection">developers.deepgram.com/docs/understanding-end-of-speech-detection</a></li>
+          <li><strong>Twilio — ConversationRelay Voice Insights:</strong> <a href="https://www.twilio.com/docs/voice/voice-insights/conversation-relay-insights-dashboard">twilio.com/docs/voice/voice-insights/conversation-relay-insights-dashboard</a></li>
+          <li><strong>IETF RFC 3261 — SIP:</strong> <a href="https://www.rfc-editor.org/info/rfc3261/">rfc-editor.org/info/rfc3261</a></li>
+          <li><strong>IETF RFC 3550 — RTP:</strong> <a href="https://www.rfc-editor.org/info/rfc3550/">rfc-editor.org/info/rfc3550</a></li>
+          <li><strong>IETF RFC 6716 — Opus:</strong> <a href="https://www.rfc-editor.org/info/rfc6716/">rfc-editor.org/info/rfc6716</a></li>
+          <li><strong>W3C — WebRTC Statistics:</strong> <a href="https://www.w3.org/TR/webrtc-stats/">w3.org/TR/webrtc-stats</a></li>
+          <li><strong>Moshi — Real-Time Dialogue:</strong> <a href="https://arxiv.org/abs/2410.00037">arxiv.org/abs/2410.00037</a></li>
+          <li><strong>Salesforce AI Research — Building Enterprise Realtime Voice Agents from Scratch:</strong> <a href="https://arxiv.org/html/2603.05413v2">arxiv.org/html/2603.05413v2</a></li>
+          <li><strong>OWASP GenAI — Prompt Injection:</strong> <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">genai.owasp.org/llmrisk/llm01-prompt-injection</a></li>
+        </ul>
+      </section>
+
+      <section class="tags" aria-label="Etiquetas del artículo">
+        <span class="tags-label">Etiquetas</span>
+        <div class="tag-list">
+          <span class="tag">Agente de voz con IA</span> <span class="tag">IA de voz</span> <span class="tag">Voz a texto</span> <span class="tag">Voz en tiempo real</span> <span class="tag">LLM</span> <span class="tag">Texto a voz</span> <span class="tag">Telefonía</span> <span class="tag">Llamadas a herramientas</span> <span class="tag">RAG</span> <span class="tag">SIP</span>
+        </div>
+      </section>
+    </article>
+  </main>

@@ -1,0 +1,299 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+.b2bv .b2bv-results { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Betrieb und Anwendungsfälle</p>
+    <h1 id="b2bv-title">KI-Rezeptionist vs. menschlicher Rezeptionist: Kosten, Leistung und Grenzen</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Ein Empfang hat mehr Aufgaben als das Telefon. Dieselbe Person begrüßt womöglich Besucher, verschiebt den Termin eines Kunden und kümmert sich um eine Ausnahme bei der Abrechnung. Wer Empfangsoptionen vergleicht, beginnt bei diesen Aufgaben, bei den Zeiten, zu denen sie anfallen, und bei dem, was eine anrufende Person braucht, wenn der reguläre Empfang ausgelastet oder geschlossen ist.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurzantwort</h2>
+        <p>Ein KI-Rezeptionist kann freigegebene Routinearbeiten am Telefon und verifizierte Buchungen übernehmen. Ein menschlicher Rezeptionist kann Besucher empfangen, mehrdeutige Anliegen deuten und Ermessen ausüben. Ein Hybridmodell kombiniert begrenzte Automatisierung mit einer besetzten Eskalationsstufe. Vergleichen Sie bei der Kostenschätzung dieselben Schichten, Aufgaben und Service-Level.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Leitfaden</p>
+      <ol>
+<li><a href="#coverage">Empfangsabdeckung definieren</a></li>
+<li><a href="#staffing-cost">Personalkosten vergleichen</a></li>
+<li><a href="#allocation">Aufgaben und Ausnahmen zuordnen</a></li>
+<li><a href="#hybrid">Hybride Abdeckung einrichten</a></li>
+<li><a href="#accessibility">Unterschiedliche Anrufende unterstützen</a></li>
+<li><a href="#evaluation">Das Pilotprojekt messen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Messen Sie die besetzte Abdeckung und die Nutzungsminuten getrennt.</li>
+<li>Lassen Sie Aufgaben mit hohem Urteilsvermögen und persönliche Zuständigkeiten vor Ort bei einer namentlich benannten Person.</li>
+<li>Testen Sie Übergaben, Wiederherstellung und Sprachunterstützung gemeinsam mit dem Team, das die Anrufe erhält.</li>
+        </ul>
+      </section>
+<section id="coverage">
+  <h2>Was soll der Empfang abdecken?</h2>
+  <p>Beginnen Sie mit einer Arbeitswoche. Markieren Sie, wann Anrufe eingehen und was die Rezeptionistin oder der Rezeptionist sonst gerade erledigt. In einem kleinen Dienstleistungsbüro muss womöglich jemand Besucher begrüßen, den Zutritt prüfen, Dokumente bearbeiten und eine Ausnahme bei der Abrechnung klären, während das Telefon klingelt. Ein Reparaturbetrieb braucht unter Umständen einen Disponenten, der das Einsatzgebiet kennt und einen Termin kurzfristig ändern kann. Vergleichen Sie die Abdeckung nach Schicht, Telefonaufkommen und Entscheidungsbefugnis, bevor Sie Alternativen kalkulieren.</p>
+  <p>B2B Voice entwickelt individuelle KI-Rezeptionisten für die Telefonaufgaben, die Ihr Team dokumentiert hat. Wenn Ihr Empfang gleichzeitig Besucher betreut und komplexe Anrufe bearbeitet, bringen Sie einen Schichtplan und eine Liste der Aufgaben mit, für die Ihre Mitarbeitenden Zeit brauchen. Ein begleiteter Rollout kann Routineanrufenden eine brauchbare Antwort geben und zugleich einen klaren Weg zu einer Mitarbeiterin oder einem Mitarbeiter erhalten.</p>
+<p>Trennen Sie jedes Service-Level, das Sie einkaufen möchten. Legen Sie die Zeiten fest, den Anteil der Anrufe, die für Standardbuchungen infrage kommen, wer Ausnahmen genehmigen darf und wie schnell eine anrufende Person jemanden mit dieser Befugnis erreicht. Kennzeichnen Sie die körperliche Arbeit am Empfang sowie das Personal, das bei Pausen, Urlaub und konkurrierenden Aufgaben benötigt wird. Das U.S. Bureau of Labor Statistics nennt das Annehmen von Anrufen, den Empfang von Besuchern und die Pflege von Unterlagen als typische Aufgaben von Rezeptionisten. Eine Organisation kann diese Aufgaben anders verteilen, solange jede einen namentlich benannten Verantwortlichen hat. <a href="https://www.bls.gov/ooh/office-and-administrative-support/receptionists.htm">Receptionists Occupational Outlook Handbook</a></p>
+  <p>Ein Teil des Telefonaufkommens braucht womöglich ein vorhersehbares Menü-Routing, ein Teil einen dialogfähigen Rezeptionisten, und ein Teil braucht einen Menschen. Eine Definition der Telefonoptionen finden Sie unter <a href="/de/ai-voice-agent-vs-ai-receptionist-vs-ivr">So unterscheiden sich KI-Sprachagenten, KI-Rezeptionisten und IVR</a>. Entscheiden Sie, welche Anliegen in einem verifizierten System abgeschlossen werden können, bevor Sie die bearbeiteten Minuten über verschiedene Modelle hinweg vergleichen.</p>
+</section>
+
+<section id="staffing-cost">
+  <h2>Was kostet ein besetzter Empfang?</h2>
+  <p>Im Mai 2025 meldete das BLS für Rezeptionisten in den USA einen nationalen Medianlohn von <strong>$18.27 pro Stunde</strong>. Dieser Lohn stammt aus dem Programm Occupational Employment and Wage Statistics und bietet einen nationalen Richtwert. Die tatsächlichen Löhne unterscheiden sich je nach Standort, Branche, Schicht und konkreter Stelle. Lassen Sie sich die Vollkosten von der budgetverantwortlichen Person nennen. Berücksichtigen Sie anfallende Lohnnebenkosten, Sozialleistungen, Schulung, Vertretung und geplante Überschneidungen. <a href="https://www.bls.gov/ooh/office-and-administrative-support/receptionists.htm">Receptionists Occupational Outlook Handbook</a> <a href="https://www.bls.gov/oes/2025/may/oes_tec.htm">BLS technical notes for May 2025 OEWS estimates</a></p>
+  <p>Bezahlte Abdeckung und Gesprächszeit beschreiben unterschiedliche Arbeit. Eine Person, die für eine zweistündige Schicht eingeplant ist, kann Anrufe annehmen, Datensätze aktualisieren und Besucher begrüßen. Ein Nutzungszähler beschreibt die Telefonaktivität, die der jeweilige Vertrag abdeckt. Vergleichen Sie verfügbare Stunden, gleichzeitigen Bedarf, Kontozugriff, Zeitaufwand der Geschäftsleitung und die Fallback-Behandlung, und legen Sie fest, welche Partei für welchen Teil verantwortlich ist.</p>
+  <div class="b2bv-table" role="region" aria-label="Vergleich von Kosten und Service bei Rezeptionisten" tabindex="0">
+    <table>
+      <caption>Abdeckung für dieselbe Schicht und dieselbe Aufgabenliste vergleichen</caption>
+      <thead><tr><th scope="col">Option</th><th scope="col">Kostenfaktoren</th><th scope="col">Abdeckung, die zu prüfen ist</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Angestellter Rezeptionist</th><td>Bezahlte Stunden und Arbeitgeberkosten, zuzüglich Pausen, Urlaub, Schulung und Vertretung.</td><td>Arbeit vor Ort, internes Wissen, Entscheidungsbefugnis und Überlauf, wenn die Leitung oder der Empfang ausgelastet ist.</td></tr>
+        <tr><th scope="row">Live-Telefonservice</th><td>Grundgebühr, abgerechnete Anrufe oder Zeit, Eskalationen, Onboarding und Mehrverbrauch.</td><td>Verfügbarkeit des Personals, Vertrautheit mit Ihren Richtlinien und Befugnis, Termine zu buchen oder Änderungen zu genehmigen.</td></tr>
+        <tr><th scope="row">KI-Rezeptionist</th><td>Implementierung, Plattform- und Carrier-Nutzung, Tools, Überprüfungen und die menschliche Bearbeitung ungelöster Anliegen.</td><td>Freigegebene administrative Aufgaben, getestete gleichzeitige Anrufe, Sprachunterstützung und menschlicher Fallback.</td></tr>
+        <tr><th scope="row">Hybride Abdeckung</th><td>Besetzte Stunden und automatisierte Abdeckung, zuzüglich Kosten für Übergabe, Koordination und Ausnahmen.</td><td>Klare Aufgabenverantwortung, Abdeckung an den Schichtgrenzen und ein bestätigter Weg zurück zu einer Person.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Die Stunden schätzen, die tatsächlich eine Person erfordern</h3>
+  <p>Eine Position, die die ganze Woche lückenlos besetzt ist, erfordert 168 Stunden Abdeckung. Bei hypothetisch 40 Stunden pro Vollzeitäquivalent ergibt sich ein Grundbedarf von 4,2 Vollzeitäquivalenten. Diese Rechnung gilt vor Pausenvertretung, Urlaub, Überschneidungen und Schulung. Ein Unternehmen, das an fünf Abenden je zwei zusätzliche Telefonstunden benötigt, braucht ein anderes Budget und einen anderen Vertretungsplan.</p>
+  <p>Ein fiktives Büro, das pro Woche zehn Stunden besetzte Telefonabdeckung hinzufügt, würde über ein Jahr mit 52 Wochen 520 Stunden einplanen, noch ohne Puffer für Pausen oder Vertretung. Nutzen Sie dieselben Stunden und Aufgaben, um eine hybride Option zu bewerten. Eine automatisierte Anfrageaufnahme kann eine Änderungsanfrage erfassen, während das Personal gegebenenfalls separat abgedeckt sein muss, um an diesem Abend eine Ausnahme im Terminplan zu prüfen und zu genehmigen.</p>
+  <p>Prüfen Sie im Vertrag die Abrechnungseinheit und den Umgang mit einer Übergabe, einem Überlauf oder einem verpassten Termin. Bewerten Sie den zusätzlichen Aufwand, der für den nächsten Morgen bleibt, einschließlich Rückrufen und Korrekturen. Messen Sie die Veränderung der geplanten bezahlten Stunden und der Lohnkosten getrennt von den Minuten, die mit anrufenden Personen gesprochen wird. Wenn Mitarbeitende anderen Aufgaben zugewiesen werden, kann Kapazität entstehen, obwohl die bezahlten Stunden gleich bleiben.</p>
+</section>
+
+<section id="allocation">
+  <h2>B2B Voice Human-AI Task Allocation Framework</h2>
+  <p>Nutzen Sie das Framework, um jedem Anrufgrund und jeder Empfangsaufgabe einen primären Verantwortlichen und einen nutzbaren Fallback zuzuweisen. Beschreiben Sie die erforderliche Antwort oder Handlung, die maßgebliche Datenquelle, die Entscheidungsbefugnis, die Folgen eines Fehlers und ob die Handlung umkehrbar ist. Prüfen Sie jede Zeile für mindestens eine besetzte Schicht und einen Zeitraum mit eingeschränkter Abdeckung. Der erste Einsatz sollte einen kleinen Umfang haben, den Mitarbeitende überprüfen und korrigieren können.</p>
+  <div class="b2bv-table" role="region" aria-label="Aufgabenverteilung zwischen Mensch und KI am Empfang" tabindex="0">
+    <table>
+      <caption>Beispielhafte Aufgabenverteilung und Nachweis der Erledigung</caption>
+      <thead><tr><th scope="col">Aufgabe</th><th scope="col">Primärer Modus</th><th scope="col">Regel und nächster Verantwortlicher</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Öffentliche Öffnungszeiten oder Anfahrtsbeschreibung</th><td>KI auf Basis freigegebener Informationen</td><td>Feiertagszeiten, Standort und Aktualität der Quelle prüfen. Auf Wunsch den Weg zu besetzten Mitarbeitenden anbieten.</td></tr>
+        <tr><th scope="row">Routinetermin oder Terminverschiebung</th><td>KI mit begrenzter Befugnis</td><td>Bei Bedarf die Identität prüfen und den Termineintrag verifizieren. Einen unsicheren Schreibvorgang an den Verantwortlichen für die Terminplanung übergeben.</td></tr>
+        <tr><th scope="row">Abrechnungsstreit oder Ermessensentscheidung bei Gebühren</th><td>Personalgeführt mit optionaler Anfrageaufnahme</td><td>Nur die minimal nötigen Routinginformationen erfassen. Eine Person mit Entscheidungsbefugnis prüft den Vorgang und entscheidet.</td></tr>
+        <tr><th scope="row">Belastete anrufende Person, unklare Identität oder Wunsch nach einer Person</th><td>Mensch oder freigegebener Dringlichkeitsweg</td><td>Der Richtlinie folgen, gewöhnliche Rückfragen reduzieren und das Ergebnis der Weiterleitung oder Übergabe verifizieren.</td></tr>
+        <tr><th scope="row">Besucher begrüßen, Dokumente prüfen und Zutritt kontrollieren</th><td>Mensch</td><td>Empfangsabdeckung und eine Vertretung sicherstellen. Den Arbeitsaufwand außerhalb der Telefonwarteschlange messen.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol class="b2bv-flow" aria-label="Ablauf der Aufgabenverteilung">
+    <li><strong>Die Schicht abbilden</strong><span>Telefon-, Vor-Ort- und Nachbearbeitungsaufgaben so erfassen, wie sie anfallen.</span></li>
+    <li><strong>Befugnisse zuweisen</strong><span>Dem primären Verantwortlichen die freigegebene Quelle, die Handlungen und die Grenzen übertragen.</span></li>
+    <li><strong>Den Fallback testen</strong><span>Prüfen, was passiert, wenn eine anrufende Person einen Menschen braucht oder ein Schreibvorgang fehlschlägt.</span></li>
+  </ol>
+  <p>Um das Framework anzuwenden, ziehen Sie Stichproben aus den Öffnungszeiten, der Mittagspause, der verkehrsreichsten Stunde und der Zeit nach Geschäftsschluss. Lassen Sie das Empfangsteam die tatsächlichen Anfragen kennzeichnen und Fehler aus einem Test auswerten. Markieren Sie Zeilen mit fehlenden Nachweisen oder unbesetzten Übergaben als offen. Beschränken Sie den Agenten darauf, eine Anfrage zu erfassen, wenn das jeweilige Lesen im System oder ein bestätigter Schreibvorgang nicht verfügbar ist. Erfahren Sie, wie Sie eine <a href="/de/what-is-an-ai-voice-agent">begrenzte Aufgabe für einen KI-Sprachagenten</a> einordnen, bevor Sie den übrigen Telefonweg ändern.</p>
+</section>
+
+<section id="hybrid">
+  <h2>Wie funktioniert hybrider Empfang in einer realen Schicht?</h2>
+  <p>Stellen Sie sich ein fiktives Büro um 12:15 Uhr vor. Die Rezeptionistin hilft gerade einem Besucher. Der Überlauf-Agent nimmt einen Anruf entgegen, in dem jemand nach den Öffnungszeiten fragt, und liest den freigegebenen Zeitplan für diesen Standort vor. Eine andere anrufende Person möchte einen Termin verschieben, wobei eine Gebührenausnahme im Spiel ist. Der KI-Workflow überlässt die Ausnahme einer Person und übergibt den Grund sowie den vom Büro zugelassenen Mindestkontext. Der Mensch prüft den Datensatz und erläutert die Entscheidung.</p>
+  <p>Ist das Ziel besetzt, lassen Sie das empfangende Team bestätigen, dass es die Live-Verbindung angenommen hat. Ist es ausgelastet, lassen Sie den Workflow eine Aufgabe mit klarer Zuständigkeit anlegen und das tatsächliche Rückruffenster nennen. Ist es geschlossen, folgen Sie der Richtlinie für Zeiten außerhalb der Geschäftszeiten und leiten Sie verfügbare Dringlichkeitswege wie definiert weiter. Geben Sie der anrufenden Person einen hilfreichen Status und bewahren Sie den Grund der Übergabe auf, damit sie Angaben nicht wiederholen muss. Sind weder die Weiterleitung noch die Warteschlange erreichbar, stellen Sie den freigegebenen Fallback für die Leitung wieder her. Lesen Sie dazu <a href="/de/ai-voice-agent-reliability">So gehen Sie mit fehlgeschlagenen Weiterleitungen und nicht erreichbaren Zielen um</a>.</p>
+  <div class="b2bv-table" role="region" aria-label="Beispielplan für einen hybriden Empfang" tabindex="0">
+    <table>
+      <caption>Beispielhafter Abdeckungsplan für einen Empfang mit Überlauf zur Mittagszeit und am Abend</caption>
+      <thead><tr><th scope="col">Zeitfenster</th><th scope="col">Erste Reaktion</th><th scope="col">Aufgaben des Personals</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Normale Werktagszeiten</th><td>Der Empfang bearbeitet Anrufe und Ausnahmen. Freigegebener Routineüberlauf kann an den automatisierten Weg gehen.</td><td>Live-Eskalationen entgegennehmen, Datensätze verifizieren und die Besetzung vor Ort aufrechterhalten.</td></tr>
+        <tr><th scope="row">Mittagszeit und Spitzenaufkommen</th><td>Automatisierte Routine-Anfrageaufnahme oder Live-Überlauf, abhängig von der getesteten Kapazität.</td><td>Eine namentlich benannte Vertretung verantwortet die Warteschlange und überwacht dringende Anfragen und wiederholte Anrufe.</td></tr>
+        <tr><th scope="row">Nach Geschäftsschluss</th><td>Freigegebene Informationen bereitstellen oder berechtigte Anfragen für die nächste besetzte Schicht erfassen.</td><td>Ein passender Bereitschaftsweg nur, wenn er besetzt ist. Andernfalls prüft ein konkret benannter Verantwortlicher der Frühschicht die Warteschlange.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Testen Sie die Leitung bei Schichtwechseln und bei sich überschneidenden Anrufen. Berücksichtigen Sie dabei sowohl die Grenzen des Agenten als auch die Kapazität des empfangenden Teams. In einem Pilotprojekt kann ein menschlicher Rezeptionist bei einer heiklen Frage mehr Ermessensspielraum haben, während Automatisierung sich wiederholenden Überlauf bewältigen kann, wenn mehrere Anrufe gleichzeitig eingehen. Vergleichen Sie korrekte Ergebnisse und den tatsächlichen Zugang für die anrufenden Personen in Ihrer realen Warteschlange.</p>
+<p>Wenn die Abendschicht überwiegend neue Anfragen erhält, <a href="/de/cost-of-missed-business-calls" data-phase2-link="true">schätzen Sie den Wert qualifizierter verpasster Anrufe</a> im Vergleich zum aktuellen Rückrufprozess.</p>
+</section>
+
+<section id="accessibility">
+  <h2>Wie unterstützen Sie unterschiedliche Anrufende und Sprachen?</h2>
+  <p>Sorgen Sie dafür, dass eine Person erreichbar ist, wenn die anrufende Person danach fragt, eine Korrektur wiederholt oder einen anderen Kommunikationsweg braucht. Testen Sie mit echten Akzenten und unterstützten Sprachen unter normalen und lauten Bedingungen, einschließlich Namen, Adressen, Zahlen und Zeitzonen. Prüfen Sie, ob der Agent nach einer Unterbrechung fortfahren kann und ob das Ziel beim Personal die gewünschte Sprache unterstützen kann. Der <a href="/de/ai-voice-agent-turn-taking-interruptions">Leitfaden zu Sprecherwechsel und Gesprächsreparatur</a> beschreibt, worauf Sie bei der Anrufprüfung achten sollten.</p>
+  <p>Die Leitlinien des U.S. Department of Justice zur wirksamen Kommunikation nach dem ADA behandeln für erfasste Stellen die Annahme von Telefonanrufen über Telekommunikations-Relaisdienste und Video-Relaisdienste. Falls anwendbar, prüfen Sie den gesamten Telefonweg gemeinsam mit Ihrer verantwortlichen Person für Barrierefreiheit. Testen Sie den Weg mit repräsentativem Relay-Verhalten, planen Sie Zeit ein, damit ein Kommunikationsassistent sprechen kann, und vereinbaren Sie mit dem Personal eine praktikable Alternative, wenn eine anrufende Person Unterstützung benötigt. <a href="https://www.ada.gov/resources/effective-communication/">ADA effective communication guidance</a></p>
+  <p>Ein Unternehmen kann messen, wie Menschen die verfügbaren Wege nutzen. Bitten Sie die Prüfenden festzuhalten, ob die anrufende Person ihren gewählten Kanal erreicht hat, wie lange das dauerte und ob das empfangende Team die zugehörige Aufgabe gesehen hat. Bewahren Sie Testnotizen zu den Bedürfnissen der Anrufenden in freigegebenen Datensätzen auf. Eine Menüoption ist nützlich, wenn das Ziel tatsächlich erreichbar ist und helfen kann.</p>
+</section>
+
+<section id="evaluation">
+  <h2>Was sollten Sie nach dem Pilotprojekt vergleichen?</h2>
+  <p>Vergleichen Sie dieselben Anrufgründe, Schichten und Service-Level. Erfassen Sie den Anteil der berechtigten Anrufe, die zu einer verifizierten Antwort, einem gespeicherten Termin oder einer abgeschlossenen Übergabe an einen Menschen führen. Zählen Sie den Erstkontakt und den erneuten Kontakt bei ungelösten oder fehlerhaften Fällen. Verfolgen Sie für den Empfang, wie vielen Besuchern ohne Termin geholfen wurde, welche Arbeit in der Warteschlange liegen blieb, wie lange Rückrufe dauerten und welche Terminkorrekturen nötig waren. Betrachten Sie Spitzenzeiten getrennt vom durchschnittlichen Aufkommen.</p>
+  <p>Bitten Sie das Personal, Anrufe zu prüfen, bei denen es um Mehrdeutigkeit, heikle Fragen, geschlossene Ziele und unerwartete Weiterleitungen ging. Legen Sie fest, wer einen Termin korrigieren oder einen unsicheren Weg stoppen darf und woran diese Person erkennt, wann sie eingreifen muss. Erweitern Sie den Umfang erst, wenn das Team, das die Ausnahmen bearbeitet, die vorgeschlagenen Zeiten tragen kann und der Käufer die Kosten und die Abdeckung der verbleibenden Arbeit versteht.</p>
+  <p>B2B Voice entwickelt individuelle Telefon-Workflows, die sich auf eine Schicht oder einen Anruftyp eingrenzen lassen. Bringen Sie für eine Demo die Aufgaben mit, die Ihr Team delegieren möchte, die Richtlinie oder den Kalender, die der Agent verwenden darf, sowie die Personen oder Arbeitslisten, die Ausnahmen erhalten. Besprechen Sie damit die tatsächliche Übergabe und die Erfolgskennzahlen, die Sie vergleichen möchten. <a href="/de/what-is-b2b-voice">Das Unternehmen B2B Voice und sein Implementierungsansatz</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Kann ein KI-Rezeptionist einen Vollzeit-Rezeptionisten ersetzen?</h3><p>Listen Sie die Arbeit nach Schichten auf, bevor Sie die Besetzung ändern. Routineanrufe eignen sich möglicherweise für Automatisierung, während Besucher, Ermessensentscheidungen und heikle Anliegen unter Umständen eine Person erfordern. Planen Sie die Abdeckung und Nachbearbeitung ein, die Sie beibehalten.</p></div>
+<div class="b2bv-faq-item"><h3>Was kostet ein menschlicher Rezeptionist in den Vereinigten Staaten?</h3><p>Das U.S. Bureau of Labor Statistics meldete im Mai 2025 einen Median von $18.27 pro Stunde. Verwenden Sie für die Budgetplanung den lokalen Lohn und addieren Sie die anfallenden Arbeitgeberkosten, die Abdeckung und die Vertretung für die benötigte Stelle.</p></div>
+<div class="b2bv-faq-item"><h3>Können anrufende Personen weiterhin einen Menschen verlangen?</h3><p>Richten Sie einen klaren Weg zu einem Menschen ein und testen Sie, wohin er führt. Ist das Ziel geschlossen oder ausgelastet, nutzen Sie den vereinbarten Fallback, sagen Sie der anrufenden Person, was als Nächstes geschieht, und weisen Sie die Anfrage einem Verantwortlichen im Personal zu.</p></div>
+<div class="b2bv-faq-item"><h3>Wann ist ein Live-Telefonservice sinnvoll?</h3><p>Er kann für Schichten passen, in denen häufig Ausnahmen, Sprach- oder Barrierefreiheitsanforderungen auftreten oder Entscheidungen anfallen, die Ihr eigenes Personal nicht schnell prüfen kann. Prüfen Sie tatsächliche Befugnisse, Abdeckung, Routing und die vollen Kosten für dieselben Anrufe.</p></div>
+<div class="b2bv-faq-item"><h3>Was erfordert eine verlässliche mehrsprachige Abdeckung?</h3><p>Testen Sie die Aufgaben in jeder unterstützten Sprache mit repräsentativen Anrufenden. Prüfen Sie, ob Namen, Zahlen, Korrekturen und Weiterleitungen korrekt verarbeitet werden und ob das empfangende Personal in dieser Sprache helfen kann.</p></div>
+<div class="b2bv-faq-item"><h3>Wie kann ein Unternehmen hybride Abdeckung ausprobieren?</h3><p>Wählen Sie eine begrenzte Schicht oder einen Überlaufweg. Geben Sie dem Agenten eine Routineaufgabe, behalten Sie einen freigegebenen Weg zu einem Menschen und einen Wiederherstellungsweg bei und vergleichen Sie im Pilotprojekt verifizierte Ergebnisse und die Auswirkungen auf die Besetzung.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Bilden Sie eine Schicht gemeinsam mit Ihrem Empfangsteam ab</h2>
+        <p>Bringen Sie einen Routineanruf und einen Anruf mit, der Personal erfordert. B2B Voice kann beide Beispiele nutzen, um zu besprechen, welche Aufgaben sich für Automatisierung eignen und wie sich die Übergabe prüfen lässt.</p>
+        <a href="/demo">Demo für hybride Abdeckung anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="https://www.bls.gov/ooh/office-and-administrative-support/receptionists.htm">Receptionists Occupational Outlook Handbook</a> <span class="b2bv-source-note">(US Bureau of Labor Statistics)</span></li>
+<li><a href="https://www.bls.gov/oes/2025/may/oes_tec.htm">BLS technical notes for May 2025 OEWS estimates</a> <span class="b2bv-source-note">(US Bureau of Labor Statistics)</span></li>
+<li><a href="https://www.ada.gov/resources/effective-communication/">ADA effective communication guidance</a> <span class="b2bv-source-note">(U.S. Department of Justice)</span></li>
+<li><a href="/de/what-is-b2b-voice">Das Unternehmen B2B Voice und sein Implementierungsansatz</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>KI-Rezeptionisten</li>
+<li>Hybrider Empfang</li>
+<li>Betrieb am Empfang</li>
+<li>Übergabe an Menschen</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

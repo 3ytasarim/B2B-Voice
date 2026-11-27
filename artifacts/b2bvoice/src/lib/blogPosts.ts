@@ -38,6 +38,8 @@ export interface BlogPost {
 export type BlogPostMeta = Omit<BlogPost, "content">;
 
 import { newPostMeta } from "./blogNew";
+import { blogTranslations } from "./blogI18n";
+import { fmtDateLocale, type Locale } from "./i18n";
 
 const whatIsB2bVoiceContent = `
 <style>
@@ -7850,8 +7852,26 @@ export function getTopics(): { topic: string; count: number }[] {
   return TOPIC_ORDER.map((topic) => ({ topic, count: blogPosts.filter((p) => p.topic === topic).length })).filter((t) => t.count > 0);
 }
 
-export const fmtDate = (d: string) =>
-  new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+/** The post with its German / Spanish metadata (English posts are returned as they are). */
+export function localizePost(post: BlogPost, locale: Locale): BlogPost {
+  if (locale === "en") return post;
+  const tr = blogTranslations[locale][post.slug];
+  if (!tr) return post;
+  return {
+    ...post,
+    title: tr.title,
+    excerpt: tr.excerpt,
+    tags: tr.tags,
+    seoTitle: tr.seoTitle,
+    metaDescription: tr.metaDescription,
+    faq: tr.faq,
+  };
+}
+
+export const hasTranslation = (slug: string, locale: Locale) => locale === "en" || Boolean(blogTranslations[locale][slug]);
+
+export const fmtDate = (d: string, locale: Locale = "en") => fmtDateLocale(d, locale);
+
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);

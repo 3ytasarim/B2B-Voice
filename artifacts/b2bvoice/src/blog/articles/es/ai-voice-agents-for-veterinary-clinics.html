@@ -1,0 +1,295 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Saltar al artículo</a>
+  <header>
+    
+    <p class="b2bv-kicker">Soluciones por industria</p>
+    <h1 id="b2bv-title">Agentes de voz con IA para clínicas veterinarias: programación de citas y comunicación con los clientes</h1>
+    <p class="b2bv-byline">Por <a rel="author" href="/es/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Un flujo de trabajo telefónico veterinario debe identificar al animal correcto y a la clínica correcta antes de modificar una visita. Las consultas médicas y los casos dudosos necesitan una vía clara para llegar a personal calificado, incluso cuando la recepción habitual está cerrada.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Respuesta rápida</h2>
+        <p>Utilice un agente de voz veterinario para la información general de la clínica y para la programación de citas aprobada. Verifique la autoridad de la persona que llama, el registro del animal, la sede y la cita. Mantenga las solicitudes como pendientes hasta que el sistema de la clínica confirme la visita y derive las consultas médicas según el procedimiento aprobado por el equipo veterinario, ya sea con personal disponible o fuera de horario.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Tabla de contenido">
+      <p>En esta guía</p>
+      <ol>
+<li><a href="#front-desk">Elegir las tareas telefónicas rutinarias</a></li>
+<li><a href="#identity">Identificar al propietario y al animal</a></li>
+<li><a href="#scheduling">Verificar la programación en el PIMS</a></li>
+<li><a href="#clinical-routing">Derivar las consultas médicas</a></li>
+<li><a href="#records">Gestionar los datos de llamadas y registros</a></li>
+<li><a href="#measurement">Medir y probar el piloto</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+<li>Haga coincidir el cliente, el animal y la sede en el sistema de la clínica antes de trabajar con una cita existente.</li>
+<li>Asigne a cada cita pendiente o solicitud de reposición un destino verificado y un responsable.</li>
+<li>Pruebe las vías clínicas y de atención fuera de horario de la clínica junto con la escritura de citas y los controles de privacidad.</li>
+        </ul>
+      </section>
+<section id="front-desk">
+  <h2>¿Qué llamadas veterinarias son buenas candidatas para la automatización?</h2>
+  <p>La recepción de una clínica veterinaria puede atender consultas sobre citas mientras registra la llegada de pacientes, se coordina con el equipo de atención y habla con propietarios preocupados. Un agente de voz puede recoger una solicitud de cita rutinaria, confirmar datos de la clínica o transferir un mensaje al personal. La clínica decide a qué visitas y registros puede acceder el flujo de trabajo. Cree una vía clara hacia el equipo veterinario para las consultas médicas, las solicitudes poco claras y los pedidos de hablar con una persona.</p>
+  <p>Para la recepción de una clínica veterinaria, B2B Voice puede definir el alcance de un agente telefónico personalizado para consultas rutinarias sobre la clínica, solicitudes de cita y devoluciones de llamada del personal. Aporte las reglas de la clínica para asociar a un propietario con una mascota, las sedes que ofrecen cada tipo de visita y la vía hacia el equipo veterinario. La clínica puede revisar cada acción administrativa y cada transferencia propuestas antes de un piloto.</p>
+<p>Elija una solicitud administrativa de alto volumen con una fuente de información confiable, como cambiar el horario de una visita de control aprobada para una mascota adulta ya establecida. Asigne a una persona para mantener las reglas de especie, tipo de visita, edad, cliente nuevo y sede. Una clínica que atiende perros y gatos en dos sedes y animales exóticos en una tercera necesita reglas distintas para el calendario de cada sede. Los horarios de atención y la disponibilidad de los profesionales también pueden depender del día o de los días festivos. Pregunte a qué sede se refiere el propietario y confírmelo en voz alta.</p>
+  <div class="b2bv-table" role="region" aria-label="Solicitudes telefónicas veterinarias y responsabilidad del flujo de trabajo" tabindex="0">
+    <table>
+      <caption>Decida quién atiende cada categoría de llamada veterinaria</caption>
+      <thead><tr><th scope="col">Necesidad de quien llama</th><th scope="col">Acción administrativa aprobada</th><th scope="col">A quién corresponde la responsabilidad</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Visita de control rutinaria</th><td>Verificar el tipo de visita permitido y los requisitos de cliente, paciente y sede.</td><td>El calendario confirma la visita o el personal se hace cargo de la solicitud.</td></tr>
+        <tr><th scope="row">Solicitud de reposición</th><td>Enviar los campos de solicitud aprobados por la clínica a la cola de medicamentos.</td><td>El equipo veterinario revisa el registro, la autorización y la decisión de prescripción.</td></tr>
+        <tr><th scope="row">Historiales o resultados de pruebas</th><td>Explicar el proceso de solicitud aprobado y comunicar a la persona con el personal.</td><td>El personal autorizado verifica al solicitante y la divulgación antes de entregar la información.</td></tr>
+        <tr><th scope="row">Síntomas nuevos o preocupantes</th><td>Usar la vía aprobada por la clínica, en vivo o fuera de horario.</td><td>El personal veterinario calificado evalúa la inquietud y asesora al cliente.</td></tr>
+        <tr><th scope="row">Horarios y especies atendidas</th><td>Leer la información actual específica de cada sede que mantiene la clínica.</td><td>El personal de la clínica atiende las preguntas que excedan la fuente aprobada.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Una solicitud registrada en una cola y una reposición aprobada por un clínico son resultados distintos. Un agente que registra un mensaje puede indicar al propietario el siguiente paso aprobado y quién lo atenderá. Su calendario, sus recordatorios y sus mensajes deben usar descripciones aprobadas por la clínica y los horarios vigentes. Pida al personal que revise las frases que los clientes realmente utilizan, como «Necesito más de su medicina» y «¿Hay novedades sobre los resultados de sus pruebas?». Esas frases deben llegar a las personas correctas aunque quien llama nunca diga «reposición» ni «laboratorio».</p>
+</section>
+
+<section id="identity">
+  <h2>¿Cómo debe identificar el flujo de trabajo al propietario y a la mascota?</h2>
+  <p>Quien llama puede ser el propietario principal, un familiar, un cuidador de mascotas o el coordinador de un refugio. El número de teléfono puede ayudar a encontrar un registro candidato. Separe esa búsqueda de la decisión de la clínica sobre quién puede escuchar detalles, modificar una cita o solicitar documentos. Pida únicamente los datos de identificación aprobados para cada acción y ofrezca una vía hacia una persona si quien llama no puede completar la verificación. Una llamada sobre horarios o servicios puede no requerir ninguna búsqueda de cuenta.</p>
+  <p>En un sistema de gestión de información de la clínica (PIMS), una misma cuenta de cliente puede tener varios registros de animales, y dos clientes pueden usar el mismo nombre de mascota. Haga coincidir la referencia del cliente, el registro del animal, la especie, la sede y la visita solicitada antes de leer o modificar una cita. Use un mensaje aprobado por la clínica para resolver la ambigüedad sin enumerar las citas ni los detalles del registro de otro paciente. Si no existe una coincidencia segura, cree una tarea de verificación para la sede correspondiente o transfiera la llamada.</p>
+  <p>Mantenga diferenciados los identificadores del cliente y del animal al guardar una devolución de llamada. Una solicitud telefónica documentada puede mostrar quién llamó y si se verificó su autoridad. El personal debe poder encontrar ese contexto sin crear un perfil duplicado ni ver una grabación que la clínica no tiene motivo para conservar. Consulte <a href="/es/ai-voice-agent-security">seguridad y acceso a datos en las acciones telefónicas de una empresa</a>.</p>
+</section>
+
+<section id="scheduling">
+  <h2>¿Cómo puede un agente reservar y verificar una visita en un PIMS?</h2>
+  <p>El flujo de trabajo de programación para la recepción veterinaria de B2B Voice (B2B Voice Veterinary Front Desk Scheduling Workflow) registra la solicitud de quien llama, el animal específico, el horario permitido por la clínica y el registro final del calendario. Comience con una política de visitas mantenida por la clínica y con acceso limitado a una sola sede. Amplíe a otras sedes o a cambios en citas existentes una vez comprobados los permisos y los estados de las citas.</p>
+  <ol class="b2bv-flow b2bv-flow--four" aria-label="Flujo de trabajo de programación para la recepción veterinaria">
+    <li><strong>Identificar los registros correctos</strong><span>Confirme el contexto aprobado de quien llama, el animal y la sede.</span></li>
+    <li><strong>Aplicar las reglas de la visita</strong><span>Verifique el tipo de visita permitido, la sede y los recursos elegibles, el horario y los espacios disponibles actuales.</span></li>
+    <li><strong>Verificar la cita</strong><span>Guarde el cambio autorizado y confirme el registro de la cita devuelto o vuelto a leer.</span></li>
+    <li><strong>Informar a quien llama el estado real</strong><span>Indique los detalles confirmados o asigne una solicitud pendiente y explique el seguimiento.</span></li>
+  </ol>
+  <p>ezyVet, por ejemplo, documenta una operación de reserva y los permisos que requiere. La API de un producto solo establece las operaciones disponibles. Revise la suscripción y el acceso de la clínica, los permisos de cada sede, los campos de tipo y estado de la cita, y el profesional o recurso que realmente se requiere. Vuelva a leer el estado si la integración no obtiene información suficiente en su respuesta. Para los cambios de cita, conserve la visita existente hasta que el cambio autorizado se complete con éxito. Ante un tiempo de espera agotado, verifique el resultado o pida al personal que lo concilie antes de emitir otra escritura. <a href="https://developers.ezyvet.com/guides/booking.html">ezyVet booking appointments API guide</a></p>
+  <div class="b2bv-table" role="region" aria-label="Resultados y respuestas de la programación veterinaria" tabindex="0">
+    <table>
+      <caption>Resultados de programación que la clínica debe distinguir durante la llamada</caption>
+      <thead><tr><th scope="col">Resultado en el calendario</th><th scope="col">Qué decirle al propietario</th><th scope="col">Qué puede revisar el personal</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Cita verificada</th><td>Confirme la fecha, la hora local, la sede y los detalles de visita aprobados.</td><td>ID del animal coincidente, sede, ID de la cita y estado confirmado.</td></tr>
+        <tr><th scope="row">Solicitud de cita asignada</th><td>Explique que la clínica revisará la solicitud y cómo se comunicará con el propietario.</td><td>Una tarea con responsable, con la sede solicitada, el rango de fechas y los datos de contacto permitidos.</td></tr>
+        <tr><th scope="row">Escritura con tiempo de espera agotado o estado indeterminado</th><td>Indique que el calendario aún se está verificando.</td><td>ID de la solicitud, intento de búsqueda y responsable del personal si persiste la incertidumbre.</td></tr>
+        <tr><th scope="row">Discrepancia de registro, personal o horario</th><td>Ofrezca una opción permitida o la vía humana correspondiente.</td><td>La regla o el registro en conflicto y la solicitud original.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Imaginemos a una propietaria ficticia, Morgan, con un perro y un gato en la misma cuenta. Morgan pide cambiar la visita de control de su perro en la clínica Norte y reservar un nuevo examen para el gato en la clínica Este. El flujo de trabajo verifica a quien llama y repite en voz alta cada animal y cada sede por separado. El registro del perro se actualiza y devuelve una visita confirmada. La clínica Este exige la aprobación del personal para la solicitud del gato, por lo que quien llama escucha que la segunda solicitud está a la espera de seguimiento. Los dos resultados permanecen visibles en registros separados. Una llamada posterior sobre el gato puede consultar la solicitud guardada. Para conocer la mecánica de la integración, consulte <a href="/es/ai-voice-agent-integrations">cómo conectar los flujos de trabajo telefónicos con sistemas empresariales de referencia</a>.</p>
+<p>Aplique la guía de integración para <a href="/es/how-to-integrate-ai-voice-agents" data-phase2-link="true">comprobar si el sistema de la clínica está listo</a> antes de automatizar una escritura.</p>
+</section>
+
+<section id="clinical-routing">
+  <h2>¿Qué debe ocurrir cuando quien llama tiene una consulta médica?</h2>
+  <p>La dirección médica de la clínica debe definir una vía con personal disponible para las preguntas clínicas y un procedimiento fuera de horario independiente para posibles problemas urgentes. Si quien llama necesita a un profesional veterinario o el flujo de trabajo telefónico no puede aplicar con seguridad una regla administrativa, utilice la vía aprobada correspondiente. Mantenga el intercambio breve y use el guion propio de la clínica para el destino. El flujo de trabajo de voz no debe diagnosticar ni recomendar tratamientos o dosis, ni determinar si quien llama puede esperar, ni prometer que un clínico contestará un número no disponible.</p>
+  <p>Las pautas de aprovechamiento de técnicos de la American Animal Hospital Association (AAHA) describen la asignación de tareas entre los miembros del equipo veterinario. La FDA también describe los requisitos federales de la relación veterinario-cliente-paciente (VCPR) en contextos específicos, incluido el uso extraindicado de medicamentos y las directivas de alimentos veterinarios. Las normas estatales pueden imponer requisitos propios. El equipo veterinario debe aprobar las responsabilidades clínicas, el enrutamiento de las reposiciones y el procedimiento fuera de horario de su clínica. <a href="https://www.aaha.org/wp-content/uploads/2023/09/2023-aaha-technician-utilization-guidelines-new.pdf">2023 AAHA Technician Utilization Guidelines</a> · <a href="https://www.fda.gov/animal-veterinary/product-safety-information/veterinarian-client-patient-relationships-prescribingdispensing-animal-drugs-and-telemedicine">FDA guidance on veterinary prescribing, VCPR and telemedicine</a></p>
+  <p>Verifique si el servicio con personal contestó y recibió el contexto permitido. Si una transferencia falla, quien llama debe escuchar sin demora la vía alternativa aprobada por la clínica. Mantenga actualizados en la política de enrutamiento los horarios reales de la clínica receptora. Una vía urgente nunca debe depender de un buzón de voz ordinario como único camino. Realice llamadas de aceptación para los horarios con personal, los horarios de cierre, los destinos no disponibles, las esperas prolongadas y el caso de una persona que se niega a compartir datos de su cuenta. Consulte <a href="/es/ai-voice-agent-reliability">verificación de la transferencia a una persona y de la alternativa de respaldo (fallback)</a>.</p>
+</section>
+
+<section id="records">
+  <h2>¿Cómo debe gestionar la clínica los datos de las llamadas y de los registros de los animales?</h2>
+  <p>El HHS define a las entidades cubiertas por HIPAA según su función y las actividades aplicables en el ámbito de la atención médica. Revise el flujo real de una clínica veterinaria, incluida cualquier información de personas que recopile. Las normas estatales sobre registros veterinarios pueden regular por separado las divulgaciones. Por ejemplo, la sección 801.353 del Código de Ocupaciones de Texas (Texas Occupations Code) trata la confidencialidad y ciertas divulgaciones de información sobre la atención de un animal. La clínica debe establecer qué personas y qué encargados del tratamiento pueden acceder a los resúmenes de llamadas, los registros de animales y la información de los propietarios conforme a los requisitos que le sean aplicables. <a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> · <a href="https://tcss.legis.texas.gov/resources/OC/htm/OC.801.htm">Texas Occupations Code § 801.353</a></p>
+  <p>Decida con antelación si el flujo de trabajo necesita audio, una transcripción automática o un resumen administrativo. Defina los permisos de acceso y la retención de cada copia en la telefonía, el agente y el PIMS o el sistema de tareas. Mantenga las descripciones detalladas de síntomas o tratamientos fuera de las notas de programación rutinarias. Limite los recordatorios y el seguimiento a los datos y canales aprobados por la clínica, conforme a la ley aplicable y a la política de la clínica. Pruebe cómo se protegen los registros si un operador reintenta un evento o si un miembro del personal reenvía un resumen.</p>
+</section>
+
+<section id="measurement">
+  <h2>¿Qué evidencia respalda la ampliación a más citas?</h2>
+  <p>Concilie las llamadas elegibles con el PIMS y la cola de tareas para establecer una línea base y una ventana de piloto comparable. Registre las reservas verificadas por tipo de visita, las asignaciones incorrectas de paciente o sede, las visitas duplicadas, las devoluciones de llamada completadas, las consultas repetidas y el tiempo hasta una conexión con personal en el enrutamiento clínico. Mantenga disponibles por separado los resultados fuera de horario y en horario de atención, para que un promedio diurno no oculte el fallo de una vía nocturna. Revise el tiempo del personal dedicado a correcciones, al mantenimiento de reglas y a solicitudes sin resolver. Una llamada atendida resulta útil cuando quien llama recibe un resultado verificado o un siguiente paso con un responsable.</p>
+  <p>Pruebe el caso de un propietario con dos animales, una persona que llama sin autorización, un profesional no disponible, una solicitud simultánea para el mismo horario, una transferencia fallida y una respuesta fallida del PIMS. Comience con la captura de solicitudes mientras aún se evalúa el acceso. Ensaye el enrutamiento de las llamadas fuera del agente, conservando solo los registros permitidos y resolviendo las escrituras de resultado desconocido. Planifique las llamadas de prueba con el gerente de la clínica y con el responsable veterinario. Consulte <a href="/es/how-to-test-an-ai-voice-agent">pruebas en producción para las verificaciones de aceptación y recuperación</a>.</p>
+  <p>B2B Voice puede analizar con usted un flujo de trabajo telefónico administrativo personalizado para una clínica veterinaria. Aporte un cliente y una mascota ficticios, un tipo de visita, un estado de calendario de ejemplo y el proceso de escalamiento de la clínica. La demostración puede mostrar cómo el flujo de trabajo maneja una visita aceptada, una solicitud pendiente y una llamada que requiere a un profesional veterinario.</p>
+<p>Use la guía de dotación de personal para <a href="/es/ai-receptionist-vs-human-receptionist" data-phase2-link="true">comparar la cobertura de la recepción por tarea</a> antes de cambiar la forma en que las personas llegan al personal veterinario.</p>
+</section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+<div class="b2bv-faq-item"><h3>¿Qué llamadas debe automatizar primero una clínica veterinaria?</h3><p>Pruebe con una solicitud administrativa bien definida, como un cambio rutinario de cita o una consulta sobre el horario de atención. Mantenga una vía clara hacia el equipo veterinario para las preguntas médicas y las excepciones.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede un agente de voz con IA reservar citas en ezyVet?</h3><p>ezyVet documenta la reserva de citas a través de su API. Verifique la autorización de la clínica, las reglas de citas, la sede, la coincidencia del paciente y el estado guardado de la cita antes de habilitar la reserva directa.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede el agente atender a un hogar con varias mascotas?</h3><p>Sí, si verifica la relación con el cliente y selecciona por separado el registro y la sede de cada animal. Los registros ambiguos deben pasar al personal para su verificación.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede el agente decirle a quien llama si su animal puede esperar hasta una cita?</h3><p>Esa decisión debe tomarla un profesional veterinario. El flujo de trabajo telefónico debe utilizar la vía de escalamiento aprobada por la clínica, con personal disponible o fuera de horario.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede el agente aprobar la reposición de una receta?</h3><p>Puede derivar una solicitud de reposición recopilada correctamente. El equipo veterinario verifica el registro y se encarga de la prescripción y la aprobación.</p></div>
+<div class="b2bv-faq-item"><h3>¿Debe un agente de voz veterinario cumplir con HIPAA?</h3><p>La aplicabilidad de HIPAA depende de la entidad, de la información y de las actividades involucradas. Revise el flujo real de datos y los requisitos aplicables de registros veterinarios, privacidad y comunicaciones para la clínica.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Explore un flujo de trabajo de recepción veterinaria</h2>
+        <p>Aporte un propietario y una mascota ficticios, un tipo de visita y la vía de escalamiento humano de su clínica. Use una demostración de B2B Voice para comparar los posibles resultados de las llamadas.</p>
+        <a href="/demo">Solicitar una demostración de flujo de trabajo veterinario</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Fuentes</h2>
+        <ul>
+<li><a href="https://developers.ezyvet.com/guides/booking.html">ezyVet booking appointments API guide</a> <span class="b2bv-source-note">(ezyVet)</span></li>
+<li><a href="https://www.aaha.org/wp-content/uploads/2023/09/2023-aaha-technician-utilization-guidelines-new.pdf">2023 AAHA Technician Utilization Guidelines</a> <span class="b2bv-source-note">(American Animal Hospital Association)</span></li>
+<li><a href="https://www.fda.gov/animal-veterinary/product-safety-information/veterinarian-client-patient-relationships-prescribingdispensing-animal-drugs-and-telemedicine">FDA guidance on veterinary prescribing, VCPR and telemedicine</a> <span class="b2bv-source-note">(U.S. Food and Drug Administration)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://tcss.legis.texas.gov/resources/OC/htm/OC.801.htm">Texas Occupations Code § 801.353</a> <span class="b2bv-source-note">(Texas Legislature)</span></li>
+<li><a href="/es/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Temas</h2>
+        <ul class="b2bv-tags">
+<li>Recepción veterinaria</li>
+<li>Gestión de información de la clínica</li>
+<li>Programación de citas para mascotas</li>
+<li>Transferencia veterinaria</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

@@ -1,0 +1,365 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">Wie wird die Genauigkeit von Sprach-KI gemessen? Mehr als die Wortfehlerrate</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Die Genauigkeit von Sprach-KI sollte dort gemessen werden, wo ein Fehler tatsächlich ins Gewicht fällt. Die Wortfehlerrate beschreibt Abweichungen in der Transkription. Prüfungen von Entitäten und Intents zeigen, ob ein Sprachagent die entscheidenden Details und das Anliegen verstanden hat. Prüfungen der Tool-Argumente und des Aufgabenabschlusses zeigen, ob der Agent diese Details korrekt verwendet hat und ob das beabsichtigte Ergebnis im System angekommen ist, mit dem die Mitarbeitenden arbeiten.</p>
+<p>Bei einer individuellen Implementierung legt B2B Voice diese Prüfungen passend zum Workflow des Kunden fest. Bei einem Terminempfang kann das Unternehmen bestimmen, welcher Standort, welches Datum, welche Uhrzeit und welche Kontaktdaten stimmen müssen, bevor die anrufende Person eine Bestätigung hört. Ein Service-Desk dagegen benötigt möglicherweise das richtige Konto, die richtige Problemkategorie und die korrekte Rückruf-Disposition.</p>
+<h2 id="key-takeaways">Wichtigste Erkenntnisse</h2>
+<ul>
+<li>Wortfehlerrate und Zeichenfehlerrate beschreiben die Erkennungsausgabe unter einer festgelegten Vergleichsregel.</li>
+<li>Entitätsgenauigkeit, Intent-Genauigkeit und eine verifizierte Transaktion beantworten jeweils unterschiedliche geschäftliche Fragen.</li>
+<li>Behalten Sie Fehler bei folgenreichen Feldern und kritischen Ergebnissen im Blick, auch wenn die aggregierten Werte gesund aussehen.</li>
+<li>Legen Sie Normalisierung, Abgleich und Zulässigkeit fest, bevor Sie Ergebnisse über Anrufe oder Sprachen hinweg vergleichen.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#read-word-error-rate-at-the-transcription-boundary">Die Wortfehlerrate an der Grenze der Transkription richtig lesen</a></li>
+<li><a href="#follow-a-recognizable-request-to-the-saved-appointment">Ein erkennbares Anliegen bis zum gespeicherten Termin verfolgen</a></li>
+<li><a href="#b2b-voice-speech-and-task-accuracy-measurement-framework">B2B Voice Framework zur Messung von Sprach- und Aufgabengenauigkeit</a></li>
+<li><a href="#interpret-accuracy-measures-in-the-context-of-risk">Genauigkeitsmaße im Kontext des Risikos interpretieren</a></li>
+<li><a href="#build-an-accuracy-report-someone-can-reproduce">Einen reproduzierbaren Genauigkeitsbericht erstellen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="read-word-error-rate-at-the-transcription-boundary">Die Wortfehlerrate an der Grenze der Transkription richtig lesen</h2>
+<p>Die Wortfehlerrate (WER) vergleicht die Wörter eines Referenztranskripts mit den Wörtern der Ausgabe der Spracherkennung. Eine Substitution ersetzt ein Wort durch ein anderes. Eine Deletion lässt ein Wort aus der Referenz aus. Eine Insertion fügt in der Ausgabe ein Wort ein, das die Referenz nicht enthält. Das Maß beschreibt, wie viel Bearbeitungsaufwand im Verhältnis zur Referenz nötig ist. Hinzugefügte Wörter können dazu führen, dass der gemessene Fehler größer ist als die Länge der Referenz; die berichtete WER hat daher keine feste Obergrenze. <a class="b2bv3-ref" href="#source-wer">Microsoft Speech documentation</a></p>
+<p>Die Zeichenfehlerrate (Character Error Rate, CER) vergleicht Zeichen nach einer festgelegten Textregel. Sie kann helfen, Abweichungen in der Schreibweise zu erkennen, oder eine Analyse unterstützen, bei der die Wortsegmentierung schwierig ist. Die Ergebnisse auf Zeichenebene können sich ändern, je nachdem, wie die Auswertung Leerzeichen, Satzzeichen, kombinierende Zeichen und visuell gleichwertige Unicode-Formen behandelt. Ein niedriger Zeichenfehler belegt nicht die Identität einer Person. Ein einziger Buchstabe kann zwei Datensätze unterscheiden oder einen Straßennamen verändern.</p>
+<h3 id="define-the-reference-before-choosing-the-tool">Die Referenz festlegen, bevor Sie das Werkzeug wählen</h3>
+<p>Legen Sie fest, ob die Referenz wortgetreue Sprache ist, einschließlich bedeutsamer Zögerungen und Wiederholungen, oder eine normalisierte Darstellung des Gesagten. Dokumentieren Sie für Genauigkeitsmetriken bei Sprach-KI, wie die Auswertung mit Groß- und Kleinschreibung, Satzzeichen, Zusammenziehungen, ausgeschriebenen Zahlen, Akzenten in geschriebenen Namen und alternativen Schreibweisen umgeht. Bewahren Sie nach Möglichkeit die ursprüngliche Annotation auf, damit Sie erklären können, was die Normalisierung verändert hat.</p>
+<p>Ein fiktiver Anrufer könnte als letzte Ziffern einer Referenz „null sieben“ sagen. Wenn das Geschäftssystem die führende Null als bedeutsam behandelt, bewahren Sie sie in der zu prüfenden Entität. Ein Normalisierer, der jede Ziffernfolge als Zahl behandelt, kann den Transkriptvergleich besser aussehen lassen und dabei die Kennung zerstören. Halten Sie die Normalisierung des Transkripts getrennt von der Validierung der Geschäftsfelder.</p>
+<p>Wählen Sie bei mehrsprachigen Auswertungen eine Tokenisierung, die zur Sprache und zum beabsichtigten Vergleich passt. Leerzeichen sind in manchen Sprachen ein schlechter Ersatz für Wortgrenzen. Im Vietnamesischen kann ein Leerzeichen Silben innerhalb eines lexikalischen Wortes trennen, sodass ein auf Leerzeichen basierender Vergleich eine andere Frage beantwortet als ein Vergleich lexikalischer Wörter. Dokumentieren Sie den Tokenizer und vergleichen Sie nur Gleiches mit Gleichem. Ein isolierter Stillemoment oder ein vollständig unhörbarer Clip erfordert eine eigene Entscheidung zur Berichterstattung. JiWER dokumentiert eine versionsspezifische Konvention für leere Referenzen. Halten Sie Insertionen bei Stille sichtbar und dokumentieren Sie, welche Konvention verwendet wurde. <a class="b2bv3-ref" href="#source-jiw">JiWER documentation</a> <a class="b2bv3-ref" href="#source-viet">Nguyen and colleagues</a></p>
+<h2 id="follow-a-recognizable-request-to-the-saved-appointment">Ein erkennbares Anliegen bis zum gespeicherten Termin verfolgen</h2>
+<p>In einem fiktiven Anruf sagt ein Kunde: „Bitte verschieben Sie meinen Termin auf Donnerstagnachmittag in der Filiale Ost.“ Das Transkript lautet: „Bitte verschieben Sie meinen Termin auf Dienstagnachmittag in der Filiale Ost.“ Der übergeordnete Intent, den Termin zu verschieben, ist klar. Der abweichende Wochentag verändert jedoch die Maßnahme, die das Unternehmen ergreifen würde.</p>
+<p>Ein Prüfer kann die Substitution des Wochentags markieren und die Entität „Termindatum“ als falsch kennzeichnen. Fragt der Sprachagent nach, bestätigt Donnerstag und findet Donnerstag anschließend im resultierenden Kalendereintrag, kann die Aufgabe trotz eines Erkennungsfehlers erfolgreich abgeschlossen werden. Übernimmt der Agent dagegen Dienstag, scheitern sowohl die Erfassung des Datums als auch die Aufgabe. Derselbe Erkennungsfehler kann je nach Fehlerbehebung zu unterschiedlichen geschäftlichen Ergebnissen führen.</p>
+<p>Betrachten Sie nun den umgekehrten Fall. Das Transkript enthält korrekt Donnerstag in der Filiale Ost. Das Tool liefert jedoch die Kalenderkennung der Filiale West, weil ein veraltetes Feld aus einem früheren Gesprächsbeitrag erhalten geblieben ist. Der Agent bestätigt selbstsicher Donnerstag. Eine unabhängige Abfrage zeigt den Termin im Kalender der falschen Filiale. Die Prüfungen von Transkript und Intent bestehen. Die Tool-Argumente und das festgeschriebene Ergebnis fallen durch. Eine Bestätigungsformulierung allein sagt dem Empfang nicht, welcher Termin gilt.</p>
+<p>Diese Fälle erklären, warum die Aufgabengenauigkeit eines Sprachagenten einen eigenen Nachweis verdient. Prüfen Sie die bestätigten Details, die an den Kalender gesendete Aktion und den maßgeblichen Datensatz anhand einer Korrelationsreferenz. Macht ein Timeout oder eine Verzögerung den Datensatz unsicher, markieren Sie die Aktion als nicht verifiziert, während der Workflow sie abgleicht. Ein ausstehender Zustand sollte im Bericht sichtbar bleiben.</p>
+<h2 id="b2b-voice-speech-and-task-accuracy-measurement-framework">B2B Voice Framework zur Messung von Sprach- und Aufgabengenauigkeit</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Genauigkeitsmaße, Grenzen und erforderliche Nachweise</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Maß</th>
+<th scope="col">Was es erfasst</th>
+<th scope="col">Was außerhalb seines Geltungsbereichs bleibt</th>
+<th scope="col">Wann Sie es einsetzen und welche Nachweise Sie aufbewahren</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Wortfehlerrate</th>
+<td>Dokumentierte Einfügungen, Auslassungen und Ersetzungen von Wörtern im Vergleich zu einer Referenz.</td>
+<td>Befugnis der anrufenden Person, Bedeutung und geschäftliche Auswirkung eines bestimmten Wortes.</td>
+<td>Veränderungen in der Transkription diagnostizieren. Referenztext, Ausgabe, Normalisierung und Alignment-Regel aufbewahren.</td>
+</tr>
+<tr class="even">
+<th scope="row">Zeichenfehlerrate</th>
+<td>Zeichenabweichungen unter einer ausdrücklichen Vergleichsregel.</td>
+<td>Ob ein Name oder eine Adresse zum gemeinten Datensatz führt.</td>
+<td>Unterschiede in Schreibweise oder Schrift prüfen. Zeichenbehandlung und Unicode-Normalisierung dokumentieren.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Genauigkeit der Entitätserkennung</th>
+<td>Ob erforderliche Werte mit den von der anrufenden Person bestätigten oder autorisierten Werten übereinstimmen.</td>
+<td>Ob der Agent den richtigen Workflow gewählt oder die Felder korrekt verwendet hat.</td>
+<td>Daten, Namen, Adressen und Kennungen prüfen. Erwartete Werte und Abgleichsregeln aufbewahren.</td>
+</tr>
+<tr class="even">
+<th scope="row">Intent-Genauigkeit</th>
+<td>Ob der Agent die beabsichtigte Anfragekategorie oder eine zulässige Rückfrageroute gewählt hat.</td>
+<td>Die Korrektheit der Informationen, die das Anliegen erfordert.</td>
+<td>Die Routenwahl bewerten. Annotierte Intents und eine definierte Regel für mehrdeutige Fälle aufbewahren.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Precision, Recall und F1</th>
+<td>Unterschiedliche Sichtweisen auf ausgewählte oder erkannte Labels und die dabei übersehenen Fälle.</td>
+<td>Schweregrad einzelner Fehler und endgültiges Aufgabenergebnis.</td>
+<td>Das Verhalten bei Extraktion oder Klassifikation mit einheitlichen Label-Definitionen und zulässigen Beispielen vergleichen.</td>
+</tr>
+<tr class="even">
+<th scope="row">Korrektheit der Tool-Argumente</th>
+<td>Ob die angeforderte Aktion das zulässige Tool und die korrekten normalisierten Argumente verwendet hat.</td>
+<td>Ob das externe System die Aktion festgeschrieben hat.</td>
+<td>Den autorisierten Anfragevertrag mit der tatsächlichen Operation und Payload vergleichen.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Verifiziertes Aufgabenergebnis</th>
+<td>Ob das Geschäftssystem einen zulässigen Endzustand erreicht hat.</td>
+<td>Jeden Sprachfehler und jeden Moment, in dem die anrufende Person Mühe hatte.</td>
+<td>Den maßgeblichen Kalendereintrag, das Ticket oder ein anderes Ergebnis zurücklesen und den Operationsverlauf prüfen.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="interpret-accuracy-measures-in-the-context-of-risk">Genauigkeitsmaße im Kontext des Risikos interpretieren</h2>
+<h3 id="distinguish-missed-values-from-invented-values">Übersehene Werte von erfundenen Werten unterscheiden</h3>
+<p>Precision fragt, wie sehr Sie den Elementen vertrauen können, die ein System als zutreffend gekennzeichnet oder extrahiert hat. Bei einem Buchungsagenten kann ein erfundenes Datum dazu führen, dass der Agent auf Informationen reagiert, die die anrufende Person nie genannt hat. Recall fragt, wie viele der relevanten Informationen das System gefunden hat. Ein übersehenes Datum kann eine unnötige Rückfrage auslösen oder eine Buchung verhindern. Ein Team kann eine Fehlerart verbessern und dabei eine andere in die falsche Richtung treiben.</p>
+<p>F1 fasst Precision und Recall zu einer einzigen Kennzahl dieser beiden Maße zusammen. Sie kann beim Vergleich von Klassifikatoren helfen, sobald Label-Definitionen, Abgleich und der Umgang mit fehlenden Labels geklärt sind. Ein Fehler mit dem falschen Kundendatensatz kann dennoch schwerer wiegen als mehrere Schreibfehler. Bewahren Sie die zugrunde liegenden Fehlerkategorien und Beispiele auf. Die Dokumentation von scikit-learn erklärt die Definitionen und wie unterschiedliche Mittelungsverfahren verändern, was eine Zusammenfassung darstellt. <a class="b2bv3-ref" href="#source-prf">scikit-learn metrics documentation</a></p>
+<p>Legen Sie für die Genauigkeit der Entitätserkennung fest, ob ein Treffer alle Teile eines zusammengesetzten Feldes erfordert. „Donnerstagnachmittag“ kann für eine Verfügbarkeitssuche genügen. Das Festschreiben einer Reservierung kann ein exaktes Datum, eine Uhrzeit, einen Standort und eine Zeitzone erfordern. Ein fehlender oder unbestätigter Slot sollte in der Prüfung nicht verschwinden, wenn er erforderlich war. Lassen Sie alternative Formen nur zu, wenn sie zum selben zulässigen Geschäftswert führen.</p>
+<h3 id="keep-the-consequential-cases-visible">Die folgenreichen Fälle sichtbar halten</h3>
+<p>Ein Büro mit hohem Anrufvolumen, das hauptsächlich Fragen zu Öffnungszeiten bearbeitet, kann insgesamt nur wenige Fehler zeigen. Ein kleinerer Workflow, der Termine storniert, kann dennoch wiederholt Fehler beim bestätigten Datum der anrufenden Person machen. Berichten Sie Ergebnisse nach Workflow, nach Sprache oder Kanal, soweit relevant, und nach Schweregrad. Zeigen Sie fehlende Nachweise gesondert. Eine Zusammenfassung, die den üblichen Anrufverkehr abbilden soll, beantwortet eine andere Frage als ein Prüfsatz, der um seltene, aber schwerwiegende Fehler angereichert wurde.</p>
+<p>Unterscheiden Sie die Genauigkeit der Spracherkennung von der Korrektheit des Gesprächs. Die Erkennung kann die Wörter korrekt erfassen, während der Agent auf einer veralteten Annahme aufbaut. Eine angenehme Stimme kann eine falsche Adresse vorlesen. Hören Sie sich den entscheidenden Teil des Gesprächs an und prüfen Sie dann, ob die anrufende Person die Antwort korrigieren konnte, bevor das System handelte. Zur Ursachenzuordnung nutzen Sie den <a href="/de/how-voice-ai-handles-dropped-words-and-irregular-pacing">Diagnoseleitfaden zu ausgelassenen Wörtern und Pausen</a>.</p>
+<h2 id="build-an-accuracy-report-someone-can-reproduce">Einen reproduzierbaren Genauigkeitsbericht erstellen</h2>
+<p>Benennen Sie den Workflow, den getesteten Build, die Quelle der Ground Truth und die abgedeckten Kanäle. Halten Sie fest, welche Fälle für welches Maß zulässig waren und wie das Team mit ungeklärten Ergebnissen, Stille und nicht verfügbaren Traces umgegangen ist. Verwenden Sie für Release-Vergleiche nach Möglichkeit denselben Fallsatz und dieselben Regeln. Wenn Sie alle Wörter gemeinsam zusammenfassen, erhalten längere Anrufe mehr Gewicht. Wenn Sie jeden Anruf einzeln zusammenfassen, erhalten sehr kurze Anrufe ein ähnliches Gewicht wie lange. Wählen Sie die Sichtweise, die zur diagnostischen Frage passt, und benennen Sie sie ausdrücklich.</p>
+<p>Nehmen Sie Beispiele für akzeptable Fehlerbehebung ebenso auf wie Fehlschläge. Ein ASR-Fehler, der durch eine Rückfrage behoben wird, ist ein Nachweis für die Spracherkennung und zugleich eine potenziell erfolgreiche Transaktion. Eine unautorisierte Anfrage, die ordnungsgemäß abgelehnt wird, ist für diese Testvorgabe ein erfolgreiches Richtlinienergebnis, ohne eine abgeschlossene Buchung zu sein. Der <a href="/de/how-to-evaluate-ai-voice-agents">Leitfaden zur Evaluierung von Sprachagenten</a> zeigt, wie diese Maße in eine Release-Entscheidung einfließen. Der <a href="/de/ai-voice-agent-integrations">Leitfaden zur Integration von Geschäftssystemen</a> erklärt, wo Agenten Datensätze lesen und schreiben.</p>
+<h3 id="report-conversation-accuracy-when-corrections-change-the-outcome">Gesprächsgenauigkeit berichten, wenn Korrekturen das Ergebnis verändern</h3>
+<p>Halten Sie fest, wann das Unternehmen einen Wert als vorläufig behandelt und wann er zur Verwendung freigegeben ist. Sagt eine anrufende Person „am Nord-Schalter“ und korrigiert dies später zu „am Süd-Schalter“, enthält ein korrektes Transkript beides. Wer lediglich prüft, ob „Süd“ vorkommt, kann einen veralteten Wert übersehen, der dennoch das Tool erreicht. Prüfen Sie den Punkt, an dem die Bestätigung den aktiven Intent oder die aktive Entität verändert hat, und vergleichen Sie diesen Zustand mit dem freigegebenen Datensatz.</p>
+<p>Stellen Sie für die Prüfung der Genauigkeit eines KI-Sprachagenten eine kleine Auswahl gelabelter Ergebnisse zusammen, die eine Person von Anfang bis Ende nachvollziehen kann. Nehmen Sie einen sicher behobenen Erkennungsfehler auf, eine korrekte Anfrage, die an das falsche Ziel gesendet wurde, und einen Fall, in dem keine Nachweise verfügbar waren. So kann eine Betriebsleitung Fehler besser priorisieren, als wenn sie nur die Kennzahl an der Spitze ohne die zugrunde liegenden Entscheidungen sieht.</p>
+<h3 id="protect-comparisons-when-the-eligible-cases-change">Vergleiche schützen, wenn sich die zulässigen Fälle ändern</h3>
+<p>Dieselbe Eingabe kann für eine Sprachprüfung, eine Klärungsprüfung und eine Prüfung des Geschäftsergebnisses zulässig sein. Stille während der Begrüßung eignet sich, um unaufgeforderte Wörter oder vorschnelle Antworten zu messen. Sie liefert jedoch keine normale Transkriptreferenz. Eine unautorisierte Änderungsanfrage eignet sich, um die Ablehnung und das Ausbleiben von Schreibvorgängen zu prüfen. Sie gehört nicht in ein Maß, das erfolgreiche, zulässige Buchungen beschreiben soll. Bewahren Sie die Zulässigkeitsregel zusammen mit dem Bericht auf, damit die nächste Prüferin oder der nächste Prüfer den Vergleich reproduzieren kann.</p>
+<p>Trennen Sie ungeklärte Ergebnisse von einem bestätigten Fehlschlag. Fehlt das Zurücklesen aus dem Kalender, das Transkript enthält aber die richtige Bestätigung, fehlt dem Audit weiterhin der Nachweis, der für eine Aussage über die Transaktionsgenauigkeit nötig ist.</p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="does-a-low-word-error-rate-mean-a-voice-agent-is-accurate-enough-for-bookings">Bedeutet eine niedrige Wortfehlerrate, dass ein Sprachagent für Buchungen genau genug ist?</h3>
+<p>Eine niedrige Wortfehlerrate zeigt, dass das Transkript unter den festgelegten Regeln nah an seiner Referenz liegt. Prüfen Sie bei Buchungen die bestätigten Felder, die angeforderte Aktion und den Termin im richtigen Kalender.</p>
+<h3 id="when-does-character-error-rate-help">Wann hilft die Zeichenfehlerrate?</h3>
+<p>Sie hilft, Unterschiede in der Schreibweise sichtbar zu machen oder Erkennungsausgaben zu vergleichen, wenn die Wortsegmentierung schwierig ist. Legen Sie die Zeichen- und Normalisierungsregel fest und prüfen Sie kritische Felder unabhängig davon.</p>
+<h3 id="can-a-call-succeed-even-if-the-transcript-contains-an-error">Kann ein Anruf erfolgreich sein, obwohl das Transkript einen Fehler enthält?</h3>
+<p>Ja. Der Agent kann eine Rückfrage stellen, den korrigierten Wert erfassen und die autorisierte Aktion abschließen. Prüfen Sie diese Fehlerbehebung anhand des bestätigten Details und des tatsächlichen Geschäftsdatensatzes.</p>
+<h3 id="which-accuracy-result-should-block-a-launch">Welches Genauigkeitsergebnis sollte einen Launch blockieren?</h3>
+<p>Maßgeblich ist die freigegebene Workflow-Richtlinie. Eine falsche oder unautorisierte festgeschriebene Aktion kann ein Release blockieren, auch wenn das aggregierte Transkriptionsergebnis gut aussieht. Zeigen Sie für diesen Fall den Nachweis und die Folge.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Definieren Sie Genauigkeit für die Aktionen, die Ihr Team verantwortet</h2>
+<p>Bringen Sie die Felder mit, die Mitarbeitende prüfen, sowie den Datensatz, der entscheidet, ob eine Aktion erfolgreich war. <a href="/demo">Besprechen Sie die Abnahmekriterien für einen individuellen Sprach-Workflow</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-wer">Fehlerklassen bei der Worterkennung und Referenzvergleich. <a href="https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-custom-speech-evaluate-data?pivots=ai-foundry-portal">Test accuracy of a custom speech model</a>
+</li>
+<li id="source-jiw">Maße für Erkennungsfehler und dokumentierter Umgang mit leeren Referenzen. <a href="https://jitsi.github.io/jiwer/">JiWER documentation</a>
+</li>
+<li id="source-viet">Wortsegmentierung und die Rolle von Leerzeichen zwischen vietnamesischen Silben. <a href="https://aclanthology.org/L18-1410.pdf">A Fast and Accurate Vietnamese Word Segmenter</a>
+</li>
+<li id="source-prf">Definitionen von Precision, Recall, F-Maß und Mittelungsoptionen. <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html">precision_recall_fscore_support</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>Wortfehlerrate</li>
+<li>Entitätsgenauigkeit</li>
+<li>Aufgabenabschluss</li>
+<li>Transaktionsverifizierung</li>
+</ul></article>
+</main>

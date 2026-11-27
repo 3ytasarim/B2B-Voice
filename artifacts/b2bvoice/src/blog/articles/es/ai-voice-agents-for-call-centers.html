@@ -1,0 +1,344 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table:not(.b2bv-assess) tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Saltar al artículo</a>
+  <header>
+    
+    <p class="b2bv-kicker">Operaciones del centro de contacto</p>
+    <h1 id="b2bv-title">Agentes de voz con IA para centros de llamadas: cómo automatizar el servicio al cliente y escalar las operaciones</h1>
+    <p class="b2bv-byline">Por <a rel="author" href="/es/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Un centro de contacto puede atender más llamadas con automatización de voz y, aun así, dejar a los clientes con más seguimientos pendientes. Comience con una cola en la que la empresa pueda demostrar qué asuntos se resolvieron, qué recibió el personal y qué personas que llaman tuvieron que intentarlo de nuevo.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Respuesta rápida</h2>
+        <p>Use agentes de voz con IA para las solicitudes frecuentes de un centro de llamadas que tengan reglas claras, una fuente de verdad actualizada y un resultado verificable. Mantenga una vía con personal para las excepciones. Comience con una cola o un turno, mida por separado las resoluciones verificadas y las transferencias, y pruebe todo el recorrido del servicio durante el tráfico pico antes de ampliar.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Tabla de contenidos">
+      <p>En esta guía</p>
+      <ol>
+<li><a href="#prioritize">Elegir una primera cola</a></li>
+<li><a href="#opportunity-matrix">Matriz de oportunidades de automatización</a></li>
+<li><a href="#handoff">Planificar la transferencia en vivo y la alternativa de respaldo</a></li>
+<li><a href="#measurement">Medir los resultados del negocio</a></li>
+<li><a href="#worked-example">Revisar un piloto ficticio</a></li>
+<li><a href="#scale">Planificar la capacidad para horas pico</a></li>
+<li><a href="#pilot">Verificar antes de ampliar</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+<li>Priorice las intenciones según la autoridad del negocio, la fiabilidad de la fuente y un resultado que el equipo pueda verificar.</li>
+<li>Compare la contención, la resolución en el primer contacto y la conexión humana verificada usando denominadores explícitos.</li>
+<li>Pruebe tanto la capacidad técnica como el personal disponible para atender las alternativas de respaldo.</li>
+        </ul>
+      </section>
+<section id="prioritize">
+  <h2>¿Qué llamadas de servicio al cliente debería automatizar primero un centro de contacto?</h2>
+  <p>Elija una intención que se repita, tenga un responsable claro y termine en un resultado que su equipo pueda verificar. El estado de un pedido, el horario de atención publicado y una clase aprobada de cambios de cita pueden ser buenos puntos de partida cuando los registros necesarios están actualizados. Una llamada sobre un cargo en disputa o una excepción a la política requiere una persona con autoridad. La automatización de voz es útil cuando reduce el trabajo que tienen que hacer quien llama y el equipo de servicio para cerrar un asunto.</p>
+  <p>B2B Voice diseña agentes de voz personalizados para centros de contacto en torno a intenciones aprobadas, los sistemas de servicio al cliente existentes y un escalamiento atendido por personas. Traiga las reglas de la cola receptora y una muestra de las disposiciones en las que confía su equipo. Si el servicio multilingüe es importante, incluya cada idioma en el alcance de las pruebas para que el centro pueda verificar tanto el resultado de negocio como la transferencia.</p>
+<p>Comience con una ruta definida, como una única cola de servicio al cliente en las tardes entre semana. Extraiga una muestra de registros telefónicos y casos de servicio del mismo período. Conecte la llamada ofrecida, cualquier transferencia o devolución de llamada y el resultado final de negocio. Incluya las devoluciones de llamada, los abandonos y las llamadas repetidas para ver qué carga de trabajo pasaría a otra cola. Una llamada entrante con dos transferencias sigue siendo un único asunto del cliente si la necesidad original es la misma.</p>
+  <p>Use un catálogo de intenciones manejable que los agentes y supervisores reconozcan. Para cada entrada, documente el motivo habitual, el período pico, la regla de negocio, los requisitos de elegibilidad, la fuente de verdad y la cola humana receptora. Pida al personal que revise una llamada ordinaria y una excepción antes de redactar una regla de automatización propuesta. Las etiquetas asignadas a partir de un resumen pueden ser útiles para la clasificación inicial. Valídelas con las disposiciones de los casos y los resultados observados antes de asignar autoridad.</p>
+  <h3>Defina el punto final correcto para cada tarea</h3>
+  <p>En una llamada sobre el estado de un pedido, el punto final podría ser un estado entregado con exactitud a partir de un registro actualizado, tras la verificación de identidad aprobada. En una reprogramación, podría ser una cita elegible guardada. En una queja, el punto final del segmento automatizado podría ser una conexión segura con el equipo de quejas. Siga midiendo lo que el personal resuelve después. Mantener explícitos estos puntos finales le da al centro un lenguaje común para la supervisión y para los informes de experiencia del cliente.</p>
+  <p>Registre también la ruta fuera de alcance. Un cliente que empieza con el estado de un pedido y luego pide un reembolso puede pasar de una lectura automatizada a una decisión del personal. Transfiera el contexto verificado que la política permita y registre qué acción completó realmente el agente. La guía sobre <a href="/es/ai-voice-agent-vs-ai-receptionist-vs-ivr">agentes de voz, recepcionistas e IVR</a> explica dónde pueden encajar los menús rutinarios y los flujos de trabajo conversacionales.</p>
+</section>
+
+<section id="opportunity-matrix">
+  <h2>Matriz de oportunidades de automatización de centros de llamadas de B2B Voice</h2>
+  <p>Use la matriz para asignar a cada motivo de llamada un modo de operación y una alternativa de respaldo. Comience con la frecuencia y la repetibilidad, y luego compruebe si cuenta con una fuente actualizada, acciones permitidas, un resultado reversible y un responsable con personal para las excepciones. Un asunto puede pasar de la recepción asistida a la automatización acotada después de que el responsable vea evidencia de que el registro necesario y la vía de recuperación funcionan.</p>
+  <div class="b2bv-table" role="region" aria-label="Matriz de oportunidades de automatización de centros de llamadas" tabindex="0">
+    <table>
+      <caption>Elija un modo de operación según lo que el flujo de trabajo pueda demostrar</caption>
+      <thead><tr><th scope="col">Intención de ejemplo</th><th scope="col">Modo de operación y condición previa</th><th scope="col">Evidencia que se debe capturar</th><th scope="col">Vía de fallo o excepción</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Horarios públicos o instrucciones de devolución</th><td>Automatice una respuesta aprobada y actualizada. Use la ubicación y la fecha de política correctas.</td><td>Respuesta y versión de la fuente vinculadas a la disposición.</td><td>Derive al personal las políticas desactualizadas, contradictorias o no disponibles.</td></tr>
+        <tr><th scope="row">Estado de un pedido o cambio de cita sencillo</th><td>Use automatización acotada después de la verificación de identidad aprobada y la autorización de herramientas.</td><td>Consulta autorizada o ID de registro confirmado y datos verificados.</td><td>Envíe al responsable receptor las discrepancias, las escrituras fallidas y las excepciones a la política.</td></tr>
+        <tr><th scope="row">Interrupción compleja del servicio o queja repetida</th><td>Mantenga la resolución en manos de personas. Recopile un resumen aprobado del asunto si ayuda a la recepción de solicitudes.</td><td>Recepción por el equipo correcto y un caso con los hechos relevantes verificados.</td><td>Siga la vía atendida por personas con prontitud y mantenga un responsable designado para el seguimiento.</td></tr>
+        <tr><th scope="row">Disputa de alto impacto, decisión sensible o persona que llama en situación de angustia</th><td>Use a una persona o la vía urgente aprobada para tomar la decisión.</td><td>Disposición y destinatario registrados conforme a la política aplicable.</td><td>Pause la recepción ordinaria y siga el procedimiento de escalamiento aprobado.</td></tr>
+        <tr><th scope="row">Devolución de llamada aprobada sobre un estado</th><td>Ejecútela solo dentro de un alcance y un propósito salientes aprobados.</td><td>Verificación de permisos y de supresión, enrutamiento y disposición final.</td><td>No marque cuando se desconozca el permiso y derive al responsable.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Aplique la matriz a un minorista ficticio con una cola de estado de envíos de alto volumen. El registro actual del envío es fiable, pero las personas que atienden las llamadas también resuelven reclamaciones por daños. Comience con el estado de un envío elegible después de la verificación de identidad. Mantenga las reclamaciones por daños con personal capacitado, mediante una única transferencia aprobada. Para el primer piloto, otorgue únicamente el acceso de lectura que necesita la tarea de estado. Cuando el registro esté desactualizado, la ruta puede ofrecer una cola atendida por personas o guardar una solicitud con responsable asignado según la política.</p>
+  <h3>Defina límites específicos por cliente en un BPO</h3>
+  <p>Un proveedor de subcontratación de procesos de negocio (BPO) puede inventariar la misma intención en todos sus clientes y luego verificar la acción por separado en el entorno de cada cliente. Dos clientes minoristas pueden usar la misma categoría de caso y, aun así, permitir verificaciones de identidad, plazos de devolución y campos distintos. Asigne a cada cliente una fuente de políticas aprobada, un límite de registros, reglas de retención de datos y una cola receptora. Revise los permisos de saludo, acceso, transferencia y auditoría para el cliente específico antes de asignar tráfico.</p>
+  <p>Solicite evidencia de autorización tanto negativa como positiva en el entorno de pruebas aprobado por el comprador. Use registros sintéticos y verifique que una prueba para la cola de un cliente revele solo la información permitida de ese cliente. El responsable de la cola debería poder pausar a un cliente o una ruta de forma independiente y ver qué trabajo queda en las colas del personal.</p>
+  <p>Registre la decisión para cada fila de la matriz y revísela cuando llegue la evidencia de producción. Una acción solicitada con frecuencia, pero con una fuente débil o sin una alternativa de respaldo accesible, puede permanecer en modo de recepción de solicitudes aunque el volumen resulte atractivo. Una tarea de menor volumen con un registro fiable puede ser un mejor primer piloto. El perfil de riesgos de IA generativa del NIST ofrece un marco para considerar las pruebas, el monitoreo y la gobernanza en torno al uso previsto. <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a></p>
+</section>
+
+<section id="handoff">
+  <h2>¿Cómo comparten una cola la IA y los agentes humanos?</h2>
+  <p>Dé a un solo sistema la autoridad sobre la ruta. El distribuidor automático de llamadas, o ACD, puede aplicar el horario de servicio, el grupo de habilidades y las reglas de desbordamiento. Un flujo de trabajo limitado puede atender una opción del menú de respuesta de voz interactiva (IVR), ayudar con una intención repetitiva cuando la cola alcanza una espera definida o recibir un conjunto acotado de solicitudes fuera del horario de atención. El patrón adecuado depende de si el personal puede aceptar el escalamiento y de si la vía de IA puede verificar el trabajo antes de que la persona que llama cuelgue.</p>
+  <p>Defina como registros separados un evento de escalamiento, un intento de transferencia, una conexión con personal y un caso aceptado. Una persona que llama y queda conectada puede llegar a un equipo distinto del esperado. Compruebe el destino real y entregue al receptor un resumen útil que pueda ver. Cuando una transferencia se conecta, el equipo receptor debería poder volver a verificar la identidad si la política lo exige, retomar el asunto concreto y registrar el siguiente paso.</p>
+  <ol class="b2bv-flow" aria-label="Automatización del centro de llamadas y flujo de transferencia a una persona">
+    <li><strong>Aplique la regla de la cola</strong><span>Compruebe el resultado previsto, la acción aprobada y la disponibilidad actual.</span></li>
+    <li><strong>Complete o escale</strong><span>Verifique el resultado o solicite el destino en vivo aprobado.</span></li>
+    <li><strong>Confirme la responsabilidad</strong><span>Registre el resultado guardado, la conexión con personal o la alternativa de respaldo con responsable asignado.</span></li>
+  </ol>
+  <p>Acuerde qué ocurre si el destino está cerrado, ocupado o inaccesible. La persona que llama puede necesitar la ruta anterior o un servicio de devolución de llamada aprobado. Una solicitud de devolución de llamada requiere un responsable disponible, la ventana de tiempo elegible y un estado final. Si el centro usa una ruta de retorno, pruebe que no devuelva a la persona que llama por la misma rama de automatización. La <a href="/es/ai-voice-agent-reliability">guía de fiabilidad de los agentes de voz</a> trata con más detalle la seguridad de las transacciones, la alternativa de respaldo y la transferencia.</p>
+  <p>Defina por separado el alcance de la actividad saliente. En Estados Unidos pueden aplicarse restricciones a las llamadas realizadas con una voz artificial. Pida al equipo responsable que revise el propósito, los permisos requeridos, el consentimiento y la supresión aplicables, y la vía correcta de devolución de llamada antes de habilitar una cola saliente. Mantenga un mecanismo de detención independiente para la actividad saliente y documente el flujo de trabajo aprobado real. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+</section>
+
+<section id="measurement">
+  <h2>¿Cómo se debe medir la automatización de un centro de llamadas?</h2>
+  <p>Redacte un diccionario de métricas antes del piloto. Cada medida necesita una regla de elegibilidad, un evento o ventana de observación, un denominador y un responsable. Use los paneles actuales del centro para ubicar los eventos y luego verifique qué mide la plataforma. Por ejemplo, la medida de nivel de servicio documentada de Amazon Connect se basa en los contactos retirados de una cola dentro de un umbral y puede incluir conexiones con agentes, abandonos y solicitudes de devolución de llamada. Si su promesa de servicio es una respuesta con personal dentro de ese umbral, defínala directamente con los eventos de respuesta y de cola pertinentes. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html">Amazon Connect metric definitions</a></p>
+  <div class="b2bv-table" role="region" aria-label="Definiciones de KPI de la automatización del centro de llamadas" tabindex="0">
+    <table>
+      <caption>Métricas de trabajo para un piloto basado en resultados</caption>
+      <thead><tr><th scope="col">Medida</th><th scope="col">Definición de trabajo</th><th scope="col">Registrar junto con ella</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Contención</th><td>Contactos ofrecidos elegibles que completan la ruta automatizada sin transferencia en vivo ÷ todos los contactos ofrecidos elegibles.</td><td>Abandonos, fallos y llamadas repetidas, además de una medida independiente de resolución verificada.</td></tr>
+        <tr><th scope="row">Resolución en el primer contacto (FCR)</th><td>Asuntos únicos elegibles resueltos en el primer contacto, sin una llamada repetida sobre el mismo asunto dentro de la ventana declarada ÷ asuntos únicos elegibles.</td><td>Método de verificación, ventana de repetición, agrupación de duplicados y casos que siguen abiertos.</td></tr>
+        <tr><th scope="row">Tasa de conexión humana</th><td>Transferencias conectadas con el destino correcto atendido por personal ÷ intentos de transferencia.</td><td>Tasa de intentos y tiempo hasta llegar a una persona, con seguimiento de los casos ocupados, cerrados, fallidos y de las devoluciones de llamada posteriores.</td></tr>
+        <tr><th scope="row">Tiempo promedio de gestión (AHT)</th><td>Tiempo total de trabajo de interacción, espera y posterior al contacto ÷ contactos gestionados dentro de un alcance de agentes declarado.</td><td>Qué tramos de consulta y de transferencia se cuentan, la combinación de intenciones y el retrabajo del personal.</td></tr>
+        <tr><th scope="row">Velocidad promedio de respuesta (ASA)</th><td>Espera total en cola de los contactos atendidos ÷ contactos atendidos dentro del alcance.</td><td>Tiempos de espera de los abandonos y qué cola o evento inicia el cronómetro.</td></tr>
+        <tr><th scope="row">Nivel de servicio</th><td>Contactos ofrecidos elegibles atendidos dentro del umbral de tiempo acordado ÷ contactos ofrecidos elegibles.</td><td>El umbral y el tratamiento de los abandonos breves, las devoluciones de llamada y los contactos transferidos.</td></tr>
+        <tr><th scope="row">Tasa de abandono</th><td>Contactos que terminan mientras esperan ÷ contactos en cola elegibles.</td><td>Desconexiones previas a la cola y abandonos breves como disposiciones explícitas.</td></tr>
+        <tr><th scope="row">Satisfacción del cliente (CSAT)</th><td>Respuestas positivas ÷ respuestas de encuesta válidas en una escala declarada.</td><td>Tasa de respuesta, canal, momento y si la muestra sobrerrepresenta las llamadas completadas.</td></tr>
+        <tr><th scope="row">Costo por contacto resuelto</th><td>Gasto operativo atribuible, incluidos la gestión humana y el retrabajo, ÷ resoluciones verificadas únicas.</td><td>Período, componentes de costo y prueba de resolución. Si hay cero resoluciones verificadas, el costo unitario queda indefinido.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Mida la latencia del lado de la persona que llama donde esta pueda observarla realmente. Informe al menos un resultado típico y uno de cola, como p50 y p95, para turnos y rutas comparables. El p95 es el retraso igual o inferior al cual se sitúa aproximadamente el 95% de las observaciones de la muestra. Agrupe las respuestas cortas por separado de las llamadas que esperan a un sistema de negocio. Use el mismo reloj para las comparaciones e informe el tamaño de la muestra, el idioma y la carga. Consulte <a href="/es/voice-ai-latency">el desglose de la latencia de la IA de voz</a> para conocer los componentes que afectan el retraso percibido.</p>
+</section>
+
+<section id="worked-example">
+  <h2>¿Qué puede ocultar una cifra de ruta completada?</h2>
+  <p>Considere un piloto ficticio con 100 contactos ofrecidos elegibles que representan 100 asuntos únicos. Setenta llamadas terminan la ruta automatizada, 20 intentan una transferencia al personal y 10 se abandonan antes de recibir servicio. El equipo usa una ventana de siete días para detectar otra llamada sobre el mismo asunto. Durante esa ventana, 12 de las 70 regresan con el mismo asunto y las otras 58 tienen resultados automatizados verificados. Los datos de los casos también muestran que 16 de 20 intentos llegaron a la cola correcta atendida por personal, donde 13 se verificaron como resueltos en el primer contacto. Los demás intentos o resultados siguen visibles para su revisión.</p>
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Conciliación de resultados de un piloto ficticio de centro de llamadas" tabindex="0">
+    <table>
+      <caption>Distintos denominadores muestran resultados diferentes para los mismos 100 asuntos</caption>
+      <thead><tr><th scope="col">Medida</th><th scope="col">Evidencia</th><th scope="col">Resultado</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Contención</th><td>70 completan la ruta automatizada ÷ 100 ofrecidos elegibles</td><td>70%</td></tr>
+        <tr><th scope="row">Resolución verificada en el primer contacto automatizado</th><td>58 primeros resultados automatizados verificados ÷ 100 asuntos elegibles</td><td>58%</td></tr>
+        <tr><th scope="row">Conexión exitosa con personal en la transferencia</th><td>16 conexiones correctas con personal ÷ 20 intentos</td><td>80%</td></tr>
+        <tr><th scope="row">FCR combinada</th><td>(58 verificados automatizados + 13 primeros resultados verificados atendidos por personal) ÷ 100 asuntos elegibles</td><td>71%</td></tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <p>Use sus propios registros operativos para calcular el costo por contacto resuelto de la misma cola y el mismo período. Divida el gasto operativo atribuible, incluidos la gestión por personal y el retrabajo, entre el número de resoluciones verificadas únicas. Aplique los mismos límites de costo y la misma definición de resolución a ambos períodos. Si el denominador es cero, informe la métrica como indefinida y muestre el recuento de cero.</p><p>Este ejemplo cuenta las resoluciones atendidas por personal que ocurren dentro del contacto original y se mantienen durante la misma ventana de repetición. Una devolución de llamada resuelta posteriormente aún puede generar un resultado verificado y debería tener su propia línea. Analice los 12 contactos repetidos, las cuatro transferencias fallidas y los abandonos tempranos como cohortes operativas. Por ejemplo, un aumento de las llamadas repetidas sobre el estado de pedidos podría apuntar a un registro de origen desactualizado. Un fallo en la cola atendida por personal puede requerir un cambio de horario o de enrutamiento. Una tasa agregada puede ocultar cualquiera de las dos causas.</p>
+  <p>Al comparar con una línea base, establezca la misma elegibilidad y la misma ventana de tiempo. Excluya las observaciones incompletas del modo acordado e informe cuántas siguen pendientes. En un centro con colas internas y colas de especialistas combinadas, incluya la revisión del personal y la gestión de las escrituras fallidas en el cálculo de costos. Vincule cada resultado con un caso que el responsable pueda inspeccionar sin necesidad de revisar una grabación completa de la llamada.</p>
+</section>
+
+<section id="scale">
+  <h2>¿Cómo se planifica la capacidad para la demanda pico?</h2>
+  <p>Estime los patrones de llegada en intervalos de tiempo pequeños, no solo con un recuento mensual de llamadas. Si 600 llamadas se inician en una hora estable y cada una usa un promedio de tres minutos activos, eso equivale a 1,800 minutos activos por hora, o 30 llamadas simultáneas en promedio bajo las condiciones estables supuestas. Un minuto concentrado o un cambio de turno pueden producir un pico mayor. Las llamadas reenviadas o puenteadas pueden ocupar varios tramos de llamada, y el equipo receptor puede estar al límite de su capacidad al mismo tiempo.</p>
+  <p>Pida a cada responsable el límite probado en su capa. El operador de telecomunicaciones, el entorno de voz, la cola del centro de contacto, el sistema de negocio y el destino humano pueden fijar cada uno una restricción diferente. Amazon Connect documenta por separado el tamaño de la cola y los ajustes de cuotas de servicio. La tasa de inicio de una API, el número de sesiones activas, los tramos de llamada de la troncal y el número máximo de contactos que esperan en una cola describen capacidades distintas. Verifique la cuenta, la geografía, la ruta y los cambios recientes de límites reales del comprador. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a></p>
+  <div class="b2bv-table" role="region" aria-label="Tráfico pico y manejo de fallos" tabindex="0">
+    <table>
+      <caption>Acuerde qué ocurre cuando un componente alcanza su límite</caption>
+      <thead><tr><th scope="col">Capa</th><th scope="col">Estrés que se debe observar</th><th scope="col">Comportamiento aprobado</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Ruta de entrada u operador de telecomunicaciones</th><td>Ráfaga de llegadas, llamadas largas y superposición de transferencias.</td><td>Use la ruta alternativa con capacidad verificada y registre la disposición resultante.</td></tr>
+        <tr><th scope="row">IA y sistema de negocio</th><td>Turnos concurrentes, lecturas lentas, escrituras ausentes y confirmaciones pendientes.</td><td>Mantenga informada a la persona que llama, no emita confirmaciones sin verificar y asigne las acciones pendientes.</td></tr>
+        <tr><th scope="row">Cola atendida por personal</th><td>Escalamientos simultáneos, cambios de horario o falta de disponibilidad del destino.</td><td>Use una alternativa atendida por personal o el alcance de devolución de llamada acordado y alerte al responsable del turno.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Reproduzca una combinación realista de esperas, interrupciones, turnos largos de herramientas y transferencias en un entorno de pruebas aprobado. Ponga a prueba la ruta ocupada o no disponible y confirme la carga de trabajo que queda para el personal. Un plan realista para horas pico incluye la respuesta del operador tanto ante los límites técnicos como ante las transferencias fallidas. Mantenga a una persona designada como responsable de restablecer la ruta anterior si el piloto supera una condición de detención acordada.</p>
+</section>
+
+<section id="pilot">
+  <h2>¿Qué debe verificar un centro de contacto antes de ampliar?</h2>
+  <p>Elija una intención elegible, un turno o una cola y una muestra repetible. Establezca requisitos para los resultados verificados, las protecciones de privacidad, el acceso humano, la alternativa de respaldo y el retrabajo. Documente qué sistema aporta cada resultado y cómo puede el comprador compararlo con la línea base. Las llamadas de prueba de bajo riesgo pueden abarcar varios idiomas y acentos, además de solicitudes repetidas de la persona que llama y ruido de fondo. Un revisor puede inspeccionar el resultado final aunque la primera respuesta hablada haya sonado plausible.</p>
+  <p>Detenga el despliegue cuando ocurra una acción protegida sin autorización, cuando una confirmación informada carezca de un registro confirmado o cuando las personas que llaman no puedan acceder a su alternativa de respaldo aprobada. El objetivo inmediato es restablecer la ruta segura y conciliar las transacciones pendientes. Tras una corrección, vuelva a ejecutar el escenario y revise la cohorte más amplia en busca del mismo problema. Mantenga el registro de incidentes limitado a la evidencia y a las reglas de retención que el centro haya aprobado.</p>
+  <p>Decida quién revisa y quién actúa. El responsable de la cola comprueba la espera, las conexiones y las personas afectadas; el responsable del sistema de negocio se ocupa de los registros inciertos, y el responsable de políticas revisa las excepciones al alcance aprobado. Acuerde cómo solicita un supervisor de turno una pausa y cómo lleva el caso a un canal atendido por personas. Pruebe quién puede restablecer el servicio fuera del turno principal. Consulte <a href="/es/how-to-test-an-ai-voice-agent">cómo ejecutar pruebas de aceptación de un agente de voz</a>.</p>
+  <p>B2B Voice diseña agentes telefónicos personalizados en torno al flujo de trabajo del comprador. Traiga una cola anonimizada, sus reglas de elegibilidad, un equipo receptor y un ejemplo del resultado que desea auditar. Use la conversación para definir qué se puede demostrar en un piloto limitado y qué evidencia exigiría antes de asignar más tráfico al flujo de trabajo. <a href="/es/what-is-b2b-voice">Empresa B2B Voice y su enfoque de implementación</a></p>
+<p>Una vez que elija una intención, use la guía de implementación para <a href="/es/ai-voice-agent-call-center-implementation" data-phase2-link="true">implementar en un centro de llamadas existente</a> con una ruta reversible.</p>
+<p>Use la guía de compra para <a href="/es/best-ai-voice-agent-for-call-centers" data-phase2-link="true">evaluar proveedores de centros de contacto con el mismo piloto</a> cuando las responsabilidades de viabilidad y soporte estén claras.</p>
+</section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+<div class="b2bv-faq-item"><h3>¿Qué tareas del centro de llamadas debería automatizar primero?</h3><p>Elija una intención repetitiva con reglas claras, una fuente de verdad actualizada y un resultado que el centro pueda verificar. La información pública o las solicitudes acotadas de estado de pedidos pueden encajar cuando se definen la elegibilidad y una alternativa de respaldo con personal.</p></div>
+<div class="b2bv-faq-item"><h3>¿En qué se diferencia la contención de la resolución en el primer contacto?</h3><p>La contención cuenta las llamadas elegibles que completan la ruta automatizada sin transferencia en vivo. La resolución en el primer contacto exige un resultado verificado del asunto en el primer contacto y ninguna llamada repetida sobre el mismo asunto durante la ventana de observación que usted haya establecido.</p></div>
+<div class="b2bv-faq-item"><h3>¿Qué se considera una transferencia a una persona exitosa?</h3><p>Una transferencia cuenta como conexión con personal cuando la persona que llama llega al destino atendido por personal previsto. Use una disposición separada para un intento de transferencia, una solicitud de devolución de llamada y una resolución verificada.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cómo dimensiono la IA de voz para el volumen de llamadas pico?</h3><p>Use las ráfagas de llegada y las duraciones de llamada observadas, incluidas las transferencias y las superposiciones. Verifique los límites de la cuenta, la troncal, la cola, el sistema de negocio y el equipo humano. Pruebe que la ruta de desbordamiento o de retorno pueda aceptar el tráfico acordado.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede la automatización apoyar el servicio al cliente fuera del horario de atención?</h3><p>Puede gestionar información aprobada y acciones verificadas dentro de su alcance. Establezca una vía utilizable con personal o de devolución de llamada para las excepciones, con horarios exactos y un responsable designado.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede un BPO usar la automatización de voz para varios clientes?</h3><p>Un BPO puede evaluarla cliente por cliente. Verifique el contrato, las políticas, el acceso, el enrutamiento, el manejo de datos y la alternativa de respaldo de cada cliente. Pruebe que la ruta use y exponga únicamente la información del cliente aprobado.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Mapee una cola para un piloto de centro de contacto</h2>
+        <p>Traiga un tipo de llamada anonimizado, un resultado que su equipo pueda verificar y la cola receptora. Use una demostración de B2B Voice para conversar sobre el flujo de trabajo y la evidencia requerida.</p>
+        <a href="/demo">Solicitar una demostración para centros de llamadas</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Fuentes</h2>
+        <ul>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html">Amazon Connect metric definitions</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <span class="b2bv-source-note">(NIST)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/es/what-is-b2b-voice">Empresa B2B Voice y su enfoque de implementación</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Temas</h2>
+        <ul class="b2bv-tags">
+<li>Automatización de centros de llamadas</li>
+<li>Resolución en el primer contacto</li>
+<li>Transferencia a una persona</li>
+<li>Capacidad en horas pico</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

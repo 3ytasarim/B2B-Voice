@@ -1,0 +1,389 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">Evaluierungsdaten für Sprachagenten: So erstellen Sie verlässliche Testdatensätze</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Verlässliche Evaluierungsdaten für Sprachagenten beschreiben die Situation der anrufenden Person, was der Agent tun darf und was das Geschäftssystem nach dem Anruf zeigen soll. Ein Gesprächsskript allein lässt zu viel offen. Derselbe Schlusssatz kann auf eine erfolgreiche Reservierung, eine gescheiterte Anfrage oder einen unter dem falschen Standort gespeicherten Datensatz folgen. Ein brauchbarer Testfall kann diese Ergebnisse voneinander unterscheiden.</p>
+<p>B2B Voice legt den Umfang individueller Sprachagenten-Implementierungen anhand von Entscheidungen fest, die die Mitarbeitenden des Kunden ohnehin treffen. In der Discovery-Phase zur Terminplanung kann das bedeuten, zu definieren, wann eine Anfrage offen bleibt, wann sie zu einer Buchung wird und welches Büro für einen ungelösten Anruf zuständig ist. Diese Unterscheidungen liefern einem Evaluierungsdatensatz seine erwarteten Ergebnisse.</p>
+<h2 id="key-takeaways">Wichtigste Erkenntnisse</h2>
+<ul>
+<li>Ein Fixture braucht einen Ausgangszustand, die Absicht der anrufenden Person, erlaubte Aktionen und ein unabhängig überprüfbares Ergebnis.</li>
+<li>Synthetische Anrufer eignen sich für kontrollierte Variation. Aufzeichnungen realer Personen mit Einwilligung ergänzen natürliches Timing, natürliche Sprechweise und akustische Bedingungen.</li>
+<li>Halten Sie beim Erstellen der Datensatz-Splits zusammengehörige Sprecher, Skripte und aus Vorfällen abgeleitete Beispiele zusammen.</li>
+<li>Dokumentieren Sie Label-Richtlinien, Datenrechte und Änderungen zusammen mit den Testfällen selbst.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#design-scenarios-around-a-business-decision">Szenarien um eine Geschäftsentscheidung herum entwerfen</a></li>
+<li><a href="#b2b-voice-evaluation-dataset-design-framework">B2B Voice Framework für den Entwurf von Evaluierungsdatensätzen</a></li>
+<li><a href="#a-fictional-evaluation-case-in-json">Ein fiktiver Evaluierungsfall in JSON</a></li>
+<li><a href="#choose-inputs-that-represent-the-calls-you-care-about">Eingaben wählen, die die relevanten Anrufe repräsentieren</a></li>
+<li><a href="#protect-the-holdout-and-maintain-the-case-record">Holdout schützen und die Falldokumentation pflegen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="design-scenarios-around-a-business-decision">Szenarien um eine Geschäftsentscheidung herum entwerfen</h2>
+<h3 id="start-with-what-staff-must-resolve">Beginnen Sie mit dem, was die Mitarbeitenden klären müssen</h3>
+<p>Gut gestaltete Testdatensätze für Sprachagenten bilden die Entscheidungen ab, die ein Unternehmen vom Agenten treffen lassen möchte. Bei einem Terminplanungs-Workflow für ein Büro können dazu gehören: einen freien Termin finden, Büro und Zeitzone bestätigen, einen zulässigen Termin ändern, eingeschränkte Informationen zurückhalten und die anrufende Person an Mitarbeitende weiterleiten. Jedes Szenario sollte den Ausgangszustand und die Aktionen benennen, die die anrufende Person autorisiert hat. Beginnen Sie mit gewöhnlichen Anrufen und nehmen Sie dann Fehler und mehrdeutige Fälle auf, die den Workflow in der Nachbearbeitung teuer machen.</p>
+<p>Legen Sie die Ground Truth des Sprachagenten fest, bevor ein Kandidat antwortet. Trennen Sie, was ein Annotator hören kann, von Fakten, die nur die Simulation kennt. Eine anrufende Person könnte „Donnerstag“ sagen, während nur das Fixture festlegt, dass das Büro Ost donnerstags geschlossen ist. Erfassen Sie gesprochene Informationen als Sprachbeleg und nutzen Sie den vorbelegten Kalender, um zu bestimmen, welche Aktionen verfügbar sind. Andernfalls erwartet der Evaluator womöglich, dass der Agent Fakten erschließt, die weder die anrufende Person noch die Integration je geliefert hat.</p>
+<p>Definieren Sie mehrere gültige Pfade, wenn der Workflow sie zulässt. Ein Agent bestätigt die Zeitzone der anrufenden Person vielleicht sofort. Ein anderer klärt zuerst den Standort und bestätigt denselben Termin danach. Beide können bestehen, wenn sie die erforderlichen Fakten bewahren, dieselbe Autorisierungsregel einhalten und mit dem erwarteten Datensatz enden. Wenn der genaue Wortlaut zählt, etwa bei der Unterscheidung zwischen einer Anfrage und einer genehmigten Bestätigung, dokumentieren Sie die Bedeutung, die die Antwort vermitteln muss.</p>
+<h3 id="make-the-outcome-oracle-independent">Das Ergebnis-Oracle unabhängig halten</h3>
+<p>Ein Ergebnis-Oracle beschreibt den Beleg, der entscheidet, ob ein Test bestanden wurde. Wenn ein Fall prüft, <a href="/de/ai-voice-agent-integrations">wie ein Sprachagent ein CRM oder einen Kalender aktualisiert</a>, prüfen Sie eine Buchung über einen Lesezugriff auf den Sandbox-Kalender, eine Übergabe über das freigegebene Queue-Ereignis und die Frage, ob das System nie einen untersagten Datensatz berührt hat, über ein geordnetes Schreibprotokoll. Eine HTTP-Erfolgsantwort oder eine Aussage im Transkript kann die Untersuchung stützen. Das Oracle sollte jedoch die Beobachtung verwenden, die der tatsächlichen Folge am nächsten liegt.</p>
+<p>Der endgültige Datensatz kann außerdem einen Zwischenfehler verbergen. Ein Agent könnte den ersten Termin buchen und ihn löschen, nachdem die anrufende Person die Anfrage korrigiert hat. Ein Test, der nur den endgültigen Termin sieht, kann bestehen, obwohl die frühere Aktion bereits Benachrichtigungen an Mitarbeitende ausgelöst hat. Nehmen Sie verbotene Operationen und doppelte Schreibvorgänge in die Nachweisanforderungen auf. Das τ-Voice-Paper zeigt, wie ein gesprochener Benchmark den Aufgabenerfolg an einen annotierten Datenbankzustand binden kann. Wenden Sie dieses Prinzip an der Grenze an, die für das jeweilige Unternehmen zählt. <a class="b2bv3-ref" href="#source-taum">τ-Voice-Methoden</a></p>
+<h2 id="b2b-voice-evaluation-dataset-design-framework">B2B Voice Framework für den Entwurf von Evaluierungsdatensätzen</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Entwurfs- und Prüfentscheidungen für einen Evaluierungsdatensatz</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Entwurfsentscheidung</th>
+<th scope="col">Was zu erfassen ist</th>
+<th scope="col">Prüffrage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Umfang</th>
+<td>Absicht der anrufenden Person, zuständige Stelle im Unternehmen, Workflow-Version und zulässige Aktionen.</td>
+<td>Könnte jemand, der den Fall nicht geschrieben hat, erklären, was der Test belegt?</td>
+</tr>
+<tr class="even">
+<th scope="row">Ausgangszustand</th>
+<td>Termin, Standort, Berechtigung des Kontos, Öffnungszeiten und Integrationsverhalten, soweit für diesen Fall relevant.</td>
+<td>Kann der Runner den Zustand für ein anderes Release wiederherstellen?</td>
+</tr>
+<tr class="odd">
+<th scope="row">Dialog und Audiobedingungen</th>
+<td>Wortwahl der anrufenden Person, relevante Korrekturen, Pausen, Rauschen, Kanal und gegebenenfalls Sprache.</td>
+<td>Bildet der Fall das beabsichtigte Verhalten ab, ohne irrelevante Variation einzuführen?</td>
+</tr>
+<tr class="even">
+<th scope="row">Ground Truth</th>
+<td>Von der anrufenden Person bestätigte Entitäten, zulässige Bedeutungen der Antwort und der freigegebene Satz an Aktionen.</td>
+<td>Können Prüfende Mehrdeutigkeit von einem falsch erfassten Wert unterscheiden?</td>
+</tr>
+<tr class="odd">
+<th scope="row">Business-Oracle</th>
+<td>Unabhängiger Endzustand, Aktionsverlauf und untersagte Ereignisse.</td>
+<td>Würde der Test eine falsche Bestätigung oder einen doppelten Schreibvorgang erkennen?</td>
+</tr>
+<tr class="even">
+<th scope="row">Herkunft und Pflege</th>
+<td>Quellentyp, Rechte, Entscheidung der Prüfenden, Split, Fallversion und verantwortliche Person.</td>
+<td>Kann das Team den Fall reproduzieren oder ausmustern, ohne raten zu müssen, wer ihn geliefert hat?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Betrachten Sie dieses Framework als Vertrag zwischen den Personen, die einen Fall verfassen, und denjenigen, die sein Ergebnis lesen. Ein Entwickler weiß möglicherweise, warum ein Webhook fehlgeschlagen ist. Eine verantwortliche Person im Betrieb liefert die Unterscheidung zwischen einer bestehenden Buchung und einem Rückruf, der lediglich angefragt wurde. Prüfen Sie diese Entscheidungen gemeinsam, bevor Sie weitere Audiodaten sammeln.</p>
+<h3 id="give-an-evidence-gap-its-own-outcome">Geben Sie einer Nachweislücke ein eigenes Ergebnis</h3>
+<p>Wenn der Test-Runner einen Tool-Trace verliert, kann der Evaluator möglicherweise dennoch den endgültigen Datensatz prüfen. Derselbe Lauf kann jedoch nicht belegen, dass der Agent keinen Schreibvorgang auf den ersetzten Termin ausgeführt hat. Legen Sie fest, welcher Nachweis verpflichtend ist, welche Beobachtung ihn ersetzen kann und wer einen nicht abschließend bewertbaren Fall entscheidet. Andernfalls kann ein fehlendes Artefakt mit einem sauberen Aktionsverlauf verwechselt werden.</p>
+<p>Erfassen Sie bei Änderungen, die Release-Entscheidungen betreffen, die Fallversion und die Regelversion getrennt. Ein Unternehmen kann bewusst ändern, was ein Rückruf-Ticket enthalten muss. Alten Dialog gegen den neuen Vertrag erneut abzuspielen, kann nützlich sein. Behalten Sie beim Vergleich historischer Ergebnisse aber die frühere Erwartung bei.</p>
+<h2 id="a-fictional-evaluation-case-in-json">Ein fiktiver Evaluierungsfall in JSON</h2>
+<p>Dieses Fixture beschreibt eine anrufende Person, die den Tag korrigiert, bevor der Agent schreibt. Alle Kennungen, Daten und Datensätze sind erfunden. Die Erwartung an die Antwort lässt bewusst mehrere Arten zu, ein bestätigtes Ergebnis zu erklären. Das Geschäftsergebnis verlangt dennoch eine Zeile im Sandbox-Kalender, und der Verlauf darf keinen Schreibvorgang auf den ersetzten Termin zeigen.</p>
+<pre class="json" tabindex="0"><code>{
+  "test_case_id": "east-office-correction",
+  "scenario": "The caller requests Friday, pauses, and confirms Thursday.",
+  "language": "en-US",
+  "caller_intent": "book an appointment",
+  "initial_context": {
+    "customer_id": "fixture-caller",
+    "calendar_id": "sandbox-east",
+    "confirmed_candidate": "2030-06-13T10:00:00-04:00",
+    "superseded_candidate": "2030-06-14T10:00:00-04:00",
+    "existing_reservation": null
+  },
+  "audio_conditions": ["telephone audio", "pause before correction"],
+  "expected_entities": {
+    "location_id": "east-office",
+    "confirmed_slot": "2030-06-13T10:00:00-04:00"
+  },
+  "expected_tool_calls": [
+    {
+      "operation": "create_reservation",
+      "fixture_arguments": {
+        "calendar_id": "sandbox-east",
+        "slot": "2030-06-13T10:00:00-04:00"
+      }
+    }
+  ],
+  "expected_spoken_answer": "Confirm the Thursday booking only after read-back.",
+  "expected_business_outcome": "The sandbox calendar contains the confirmed reservation.",
+  "prohibited_actions": ["reserve Friday", "create a duplicate reservation"],
+  "acceptance_criteria": [
+    "The saved appointment matches the confirmed slot and office.",
+    "The action history contains no write to the Friday slot.",
+    "The caller hears a confirmation only after the result is verified."
+  ]
+}</code></pre>
+<p>Definieren Sie, ob die erwarteten Aufrufe erforderlich, optional oder verboten sind. Das obige Fixture verlangt einen Reservierungsschreibvorgang auf den bestätigten Termin und kann vor diesem Schreibvorgang eine Abfrage zulassen. Der Operationsname ist eine fiktive Fixture-Bezeichnung. Ordnen Sie ihn beim Implementieren eines Runners dem tatsächlichen Sandbox-Adapter zu. Wenden Sie ein versioniertes Schema an, um die erforderlichen Felder und Typen zu prüfen. Ein JSON-Schema-Validator kann die Struktur der Datei prüfen. Eine separate Workflow-Assertion muss prüfen, ob der Termin unter der richtigen Kalenderidentität existiert. <a class="b2bv3-ref" href="#source-json">JSON Schema Draft 2020-12</a></p>
+<p>Erstellen Sie Begleitfälle mit derselben Absicht der anrufenden Person und unterschiedlichen Ausgangszuständen. Ist der Termin nicht verfügbar, kann der erwartete Zustand ein abgelehnter Schreibvorgang und das Angebot eines anderen Termins sein. Läuft eine bestätigte Anfrage in ein Timeout, kann der erwartete nächste Schritt ein an die ursprüngliche Operation gebundener Read-back sein. Wenn Sie in diesen Fällen denselben Satz wiederverwenden, zeigt sich, ob der Agent den Systemzustand liest oder eine vertraute Antwort wiederholt.</p>
+<h2 id="choose-inputs-that-represent-the-calls-you-care-about">Eingaben wählen, die die relevanten Anrufe repräsentieren</h2>
+<h3 id="combine-different-data-sources-with-a-clear-test-purpose">Verschiedene Datenquellen mit einem klaren Testzweck kombinieren</h3>
+<p>Synthetische Sprachdaten eignen sich dazu, den Wortlaut konstant zu halten und dabei Rauschen, Tempo oder Unterbrechungen zu variieren. Ein skriptgesteuerter synthetischer Anrufer kann größere Gruppen von Gesprächstestfällen konsistent durchspielen. Geben Sie dem Anrufersimulator nur die Fakten, die die Rolle kennen würde. Ein Simulator, der die gewünschte Antwort kennt oder ein verborgenes Kalenderergebnis sieht, kann den Agenten auf eine Weise retten, die eine reale Kundschaft nie reproduzieren könnte.</p>
+<p>Beauftragen Sie mit entsprechender Erlaubnis Aufnahmen realer Sprecher, um natürliche Selbstkorrekturen, wechselndes Sprechtempo, unterschiedliche Geräte und die gewöhnliche Aussprache der Sprechenden zu ergänzen. Spielen Sie repräsentative Fälle über eine kontrollierte Telefonstrecke ab, wenn die Release-Entscheidung davon abhängt, was an einem echten Telefonendpunkt ankommt. Eine ruhige Studioaufnahme und ein echter Anruf mit schlechter Verbindung beanspruchen unterschiedliche Teile des Systems.</p>
+<p>Bevorzugen Sie bei aus der Produktion abgeleiteten Szenarien ein Vorfallmuster, das mit fiktiven Identitäten und neu geschriebenem Dialog nachgebaut wurde. Behalten Sie den Teil bei, der das Problem ausgelöst hat, etwa eine Korrektur nach einer langen Pause oder eine zweite Person mit ähnlichem Namen. Vermeiden Sie es, Originalaudio oder private Texte ohne ausdrückliche Befugnis, geprüften Zugriff und einen Aufbewahrungsplan in eine Fixture-Pipeline zu übernehmen. Der Leitfaden zur <a href="/de/voice-agent-testing-without-production-pii">datenschutzfreundlichen Evaluierung</a> behandelt die Datensatzkopien, die Teams berücksichtigen müssen.</p>
+<h3 id="use-published-datasets-for-the-tasks-they-were-designed-to-support">Veröffentlichte Datensätze für die Aufgaben nutzen, für die sie entworfen wurden</h3>
+<p>SLURP kombiniert gesprochenes englisches Material mit Annotationen zu Intent und Entitäten. Es kann helfen zu verstehen, wie ein Datensatz zum Sprachverstehen eine einzelne Anfrage darstellt. Ein Beispiel mit nur einem Turn lässt die Auswirkungen einer Netzwerkübergabe oder eines transaktionalen Read-backs außerhalb des Tests. FLEURS liefert parallel aufgebautes Vorlesesprach-Material in mehreren Sprachen, das für vergleichbare Formulierungen und für die Spracherkennungsforschung nützlich ist. Ein vorgelesener Text bildet keine spontane Selbstkorrektur im Anruf ab. Prüfen Sie die Rechte für die exakte Teilmenge und Modalität, bevor Sie sie wiederverwenden. Ein Paper, das Benchmark-Daten für Sprachagenten beschreibt, erlaubt nicht automatisch die kommerzielle Weitergabe seiner Audiodaten oder Aufnahmen. <a class="b2bv3-ref" href="#source-slurp">Bastianelli und Kollegen</a> <a class="b2bv3-ref" href="#source-flow">Conneau und Kollegen</a></p>
+<h3 id="review-rights-for-each-input-and-each-use">Rechte für jede Eingabe und jede Nutzung prüfen</h3>
+<p>Bevor Sie öffentliches oder beauftragtes Material wiederverwenden, ermitteln Sie Audio, Transkript, Annotationen sowie jedes Modell oder jede generierte Stimme, die zu seiner Erstellung verwendet wurde. Prüfen Sie für jedes Element, das Sie nutzen möchten, ob die Bedingungen internes Testen, kommerzielle Nutzung, Änderung und Weitergabe erlauben. Bewahren Sie die Version und den Nachweis der Einwilligung oder Erlaubnis zusammen mit dem Datensatzeintrag auf. Erlauben die Bedingungen nur eine engere Nutzung, beauftragen Sie ein eigenes Fixture oder verlinken Sie auf die Publikation, ohne deren Samples erneut zu veröffentlichen.</p>
+<p>Behandeln Sie die Generierung von Sprach-KI-Testdaten als eigenen Quellentyp im Datensatz. Versionieren Sie die Anweisungen und Einstellungen des Generators sowie die Audiotransformationen. Hängt eine Release-Prüfung von der spezifischen Aussprache einer Sprecherin oder eines Sprechers ab, frieren Sie diese Aufnahme ein, damit spätere Generierungen den Test nicht unbemerkt verändern. Bewahren Sie beim Ziehen eines Holdouts die Zusammengehörigkeit von Sprecher- oder Darstellergruppen.</p>
+<h2 id="protect-the-holdout-and-maintain-the-case-record">Holdout schützen und die Falldokumentation pflegen</h2>
+<p>Teilen Sie Evaluierungsdatensätze für Sprach-KI nach der Quelle der Ähnlichkeit auf. Halten Sie Paraphrasen desselben Skripts, wiederholte Aufnahmen derselben Sprecherin oder desselben Sprechers und Varianten aus einem Vorfall auf derselben Seite des Splits, wenn sie sonst das Verhalten offenlegen würden, das der Holdout testen soll. Ein anderer Dateiname oder eine andere synthetische Stimme kann dennoch nahezu identischen Inhalt tragen. Wenn die Prompt-Entwicklung die exakten Beispiele eines Benchmarks sehen kann, dokumentieren Sie diese Exposition und reservieren Sie unabhängige Fälle für Release-Entscheidungen. Dokumentieren Sie bei öffentlichen Benchmarks, was Sie über Überschneidungen mit Trainings- oder Tuning-Daten wissen, und lassen Sie Unsicherheit sichtbar, wo die Trainingsdaten des Anbieters unbekannt sind.</p>
+<p>Schreiben Sie einen Annotationsleitfaden mit zulässigen Paraphrasen, kritischen Feldern und einem Status für ungeklärte Bedeutung. Lassen Sie folgenreiche oder strittige Fälle von einer zweiten Person prüfen. Eine anrufende Person, die eine Adresse nie bestätigt hat, gehört in einen Mehrdeutigkeitsfall. Ein Fall, in dem ein Feld eindeutig gesprochen, aber ausgelassen wurde, gehört in einen Erkennungs- oder Zustandsverarbeitungsfall. Beide können denselben leeren Slot ergeben und brauchen dennoch unterschiedliche Korrekturen.</p>
+<p>Geben Sie jedem Fixture eine stabile Kennung und versionieren Sie Ausgangszustand, vorgesehene Labels, Rechte und jede Audiotransformation. Halten Sie dauerhafte Fehlerfälle in einem Regressionsdatensatz, der <a href="/de/voice-agent-regression-and-smoke-testing">automatisierte Regressions- und Smoke-Tests</a> speisen kann. Aktualisieren Sie das Abdeckungsset, wenn sich Anrufmix, Produkte, Geschäftszeiten, Kanäle oder Sprachen ändern. Ein neues Servicegebiet kann unbekannte Adressen und andere Routing-Regeln mit sich bringen, obwohl die alten Tests weiterhin bestehen. Dokumentieren Sie diese Verteilungsverschiebung zusammen mit den neuen Fällen. Der Datasheets-Ansatz liefert ein Modell zur Dokumentation von Zusammensetzung, Erhebung, vorgesehener Nutzung und Pflege. <a class="b2bv3-ref" href="#source-sheet">Gebru und Kollegen</a></p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="how-is-an-evaluation-dataset-different-from-a-transcript-archive">Worin unterscheidet sich ein Evaluierungsdatensatz von einem Transkriptarchiv?</h3>
+<p>Ein Evaluierungsdatensatz legt für jeden Test die erlaubten Aktionen, den erwarteten Zustand, die Nachweise und die Zugriffsrechte fest. Ein Archiv kann historisches Material bewahren, ohne diese Entscheidungen zu liefern oder die Erlaubnis zur Wiederverwendung zu erteilen.</p>
+<h3 id="can-synthetic-callers-replace-consented-human-recordings">Können synthetische Anrufer Aufnahmen realer Personen mit Einwilligung ersetzen?</h3>
+<p>Synthetische Anrufer eignen sich für kontrollierte Variationen und wiederholbare Fixtures. Realistisches Sprechtempo, Verhalten im Live-Telefonbetrieb, überlappende Sprache und Sprechervariation brauchen Belege, die der vorgesehenen Anruferpopulation und dem vorgesehenen Kanal ähneln.</p>
+<h3 id="what-if-several-different-agent-replies-are-acceptable">Was, wenn mehrere unterschiedliche Antworten des Agenten akzeptabel sind?</h3>
+<p>Legen Sie die erforderliche Bedeutung und die untersagten Zusagen fest. Verwenden Sie unabhängige Assertions für den resultierenden Zustand und jeden Schreibverlauf. Lassen Sie den Agenten eine natürliche Formulierung oder einen Klärungsweg wählen, der diese Bedingungen erfüllt.</p>
+<h3 id="should-regression-cases-be-removed-when-the-bug-is-fixed">Sollten Regressionsfälle entfernt werden, wenn der Fehler behoben ist?</h3>
+<p>Behalten Sie wichtige Fälle, solange der Workflow und die Risiken noch zutreffen. Mustern Sie sie mit dokumentierter Begründung aus, wenn ihre Richtlinie oder Integration obsolet wird. Bewahren Sie die Version auf, die vergangenen Testergebnissen zugeordnet ist.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Besprechen Sie einen Workflow mit konkreten Abnahmezuständen</h2>
+<p>Bringen Sie ein fiktives Beispiel für eine Buchung, eine abgelehnte Anfrage und einen Fall mit, den Mitarbeitende abschließen müssen. <a href="/demo">Besprechen Sie Ihre Anforderungen an Ihre Geschäftssysteme mit B2B Voice</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-taum">Annotierter Geschäftszustand, Messgrößen der Sprachinteraktion und Evaluierungsumfang. <a href="https://arxiv.org/html/2603.13686v1">τ-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains</a>
+</li>
+<li id="source-json">Strukturelle Validierung versionierter JSON-Dokumente. <a href="https://json-schema.org/draft/2020-12">Draft 2020-12</a>
+</li>
+<li id="source-slurp">Ein Beispiel für englische Sprache mit Annotationen zu Intent und Entitäten. <a href="https://aclanthology.org/2020.emnlp-main.588.pdf">SLURP: A Spoken Language Understanding Resource Package</a>
+</li>
+<li id="source-flow">Aufbau und Abdeckung eines parallelen Benchmarks mit Vorlesesprache. <a href="https://arxiv.org/pdf/2205.12446">FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech</a>
+</li>
+<li id="source-sheet">Dokumentation von Zusammensetzung, Erhebung, vorgesehener Nutzung und Pflege eines Datensatzes. <a href="https://arxiv.org/pdf/1803.09010">Datasheets for Datasets</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>Evaluierungsdaten</li>
+<li>Test-Fixtures</li>
+<li>Synthetische Sprache</li>
+<li>Datensatz-Herkunft</li>
+</ul></article>
+</main>

@@ -1,0 +1,389 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Saltar al artículo</a><header><h1 id="article-title">Datos de evaluación para agentes de voz: cómo crear conjuntos de datos de prueba fiables</h1>
+<p class="b2bv3-byline">Por B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Los datos de evaluación fiables para un agente de voz describen la situación de la persona que llama, lo que el agente puede hacer y lo que debería mostrar el sistema de la empresa después de la llamada. Un guion de conversación por sí solo deja demasiado abierto. La misma frase de cierre puede acompañar a una reserva exitosa, a una solicitud fallida o a un registro guardado en la ubicación equivocada. Un buen caso de prueba permite distinguir esos resultados.</p>
+<p>B2B Voice define el alcance de las implementaciones personalizadas de agentes de voz en torno a decisiones que el personal del cliente ya toma. Durante el descubrimiento de la programación de citas, eso puede significar definir cuándo una solicitud sigue pendiente, cuándo se convierte en una reserva y qué oficina se encarga de una llamada sin resolver. Esas distinciones dan a un conjunto de datos de evaluación sus resultados esperados.</p>
+<h2 id="key-takeaways">Puntos clave</h2>
+<ul>
+<li>Un fixture necesita un estado inicial, la intención de la persona que llama, las acciones permitidas y un resultado verificable de forma independiente.</li>
+<li>Las personas que llaman sintéticas son útiles para introducir variaciones controladas. Las grabaciones de personas reales con consentimiento aportan tiempos, entonación y condiciones acústicas naturales.</li>
+<li>Al crear las divisiones del conjunto de datos, mantenga juntos a los hablantes, guiones y ejemplos derivados de incidentes que estén relacionados entre sí.</li>
+<li>Registre las políticas de etiquetado, los derechos sobre los datos y los cambios junto con los propios casos.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">En este artículo</p>
+<ol>
+<li><a href="#design-scenarios-around-a-business-decision">Diseñe escenarios en torno a una decisión de negocio</a></li>
+<li><a href="#b2b-voice-evaluation-dataset-design-framework">Marco de B2B Voice para diseñar conjuntos de datos de evaluación</a></li>
+<li><a href="#a-fictional-evaluation-case-in-json">Un caso de evaluación ficticio en JSON</a></li>
+<li><a href="#choose-inputs-that-represent-the-calls-you-care-about">Elija entradas que representen las llamadas que le importan</a></li>
+<li><a href="#protect-the-holdout-and-maintain-the-case-record">Proteja el conjunto de reserva y mantenga el registro de cada caso</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+<li><a href="#references-heading">Referencias</a></li>
+</ol></nav><h2 id="design-scenarios-around-a-business-decision">Diseñe escenarios en torno a una decisión de negocio</h2>
+<h3 id="start-with-what-staff-must-resolve">Empiece por lo que el personal debe resolver</h3>
+<p>Los conjuntos de datos de prueba bien diseñados para agentes de voz reflejan las decisiones que una empresa quiere que tome el agente. En un flujo de trabajo de programación de citas de una oficina, esas decisiones pueden incluir encontrar un horario disponible, confirmar la oficina y la zona horaria, actualizar una cita permitida, retener información restringida y transferir a la persona que llama al personal. Cada escenario debe indicar el estado inicial y las acciones que la persona que llama ha autorizado. Empiece con llamadas ordinarias y después incluya errores y casos ambiguos que hacen que el flujo de trabajo sea costoso de reparar.</p>
+<p>Defina la verdad de referencia (ground truth) del agente de voz antes de que responda un candidato. Separe lo que un anotador puede oír de los hechos que solo conoce la simulación. Una persona podría decir «jueves», mientras que solo el fixture especifica que la oficina Este cierra los jueves. Registre la información hablada como evidencia de voz y use el calendario sembrado para definir qué acciones están disponibles. De lo contrario, el evaluador podría esperar que el agente deduzca hechos que ni la persona que llama ni la integración le proporcionaron.</p>
+<p>Defina varias rutas válidas cuando el flujo de trabajo lo permita. Un agente puede confirmar de inmediato la zona horaria de la persona que llama. Otro puede establecer primero la ubicación y confirmar el mismo horario después. Ambos pueden aprobar si conservan los datos requeridos, respetan la misma regla de autorización y terminan con el registro esperado. Cuando la redacción exacta importa, por ejemplo para distinguir una solicitud de una confirmación aprobada, documente el significado que debe transmitir la respuesta.</p>
+<h3 id="make-the-outcome-oracle-independent">Haga que el oráculo de resultados sea independiente</h3>
+<p>Un oráculo de resultados describe la evidencia que decide si una prueba se superó. En un caso que verifica <a href="/es/ai-voice-agent-integrations">cómo un agente de voz actualiza un CRM o un calendario</a>, use una lectura del calendario del entorno de pruebas para comprobar una reserva, el evento aprobado de la cola para comprobar una transferencia, o un registro de escrituras ordenado para comprobar que el sistema nunca tocó un registro prohibido. Una respuesta HTTP exitosa o una afirmación en la transcripción pueden apoyar la investigación. El oráculo debe usar la observación más cercana a la consecuencia real.</p>
+<p>El registro final también puede ocultar un error intermedio. Un agente podría reservar la primera fecha y luego eliminarla cuando la persona corrige su solicitud. Una prueba que solo ve la cita final puede aprobar aunque la acción anterior haya activado notificaciones al personal. Mantenga las operaciones prohibidas y las escrituras duplicadas entre los requisitos de evidencia. El artículo de τ-Voice muestra cómo un benchmark hablado puede vincular el éxito de la tarea con un estado anotado de la base de datos. Aplique ese principio en el límite que importa para su negocio concreto. <a class="b2bv3-ref" href="#source-taum">Métodos de τ-Voice</a></p>
+<h2 id="b2b-voice-evaluation-dataset-design-framework">Marco de B2B Voice para diseñar conjuntos de datos de evaluación</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Decisiones de diseño y revisión de un conjunto de datos de evaluación</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Decisión de diseño</th>
+<th scope="col">Qué registrar</th>
+<th scope="col">Pregunta de revisión</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Alcance</th>
+<td>Intención de la persona que llama, responsable del negocio, versión del flujo de trabajo y acciones permitidas.</td>
+<td>¿Podría alguien que no escribió el caso explicar qué demuestra la prueba?</td>
+</tr>
+<tr class="even">
+<th scope="row">Estado inicial</th>
+<td>Cita, ubicación, autoridad sobre la cuenta, horarios y comportamiento de la integración relevantes para este caso.</td>
+<td>¿Puede el ejecutor recrear el estado para otra versión?</td>
+</tr>
+<tr class="odd">
+<th scope="row">Diálogo y condiciones de audio</th>
+<td>Redacción de la persona que llama, correcciones significativas, pausas, ruido, canal e idioma cuando corresponda.</td>
+<td>¿El caso muestrea el comportamiento previsto sin introducir variación irrelevante?</td>
+</tr>
+<tr class="even">
+<th scope="row">Verdad de referencia (ground truth)</th>
+<td>Entidades confirmadas por la persona que llama, significados permitidos de la respuesta y el conjunto aprobado de acciones.</td>
+<td>¿Pueden los revisores distinguir la ambigüedad de un valor capturado incorrectamente?</td>
+</tr>
+<tr class="odd">
+<th scope="row">Oráculo de negocio</th>
+<td>Estado final independiente, historial de acciones y eventos prohibidos.</td>
+<td>¿Detectaría la prueba una falsa confirmación o una escritura duplicada?</td>
+</tr>
+<tr class="even">
+<th scope="row">Procedencia y mantenimiento</th>
+<td>Tipo de fuente, derechos, decisión del revisor, división, versión del caso y responsable.</td>
+<td>¿Puede el equipo reproducir o retirar el caso sin adivinar quién lo aportó?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Trate este marco como un contrato entre quien redacta un caso y quien lee su resultado. Un desarrollador puede saber por qué falló un webhook. Un responsable de operaciones aporta la distinción entre una reserva que existe y una devolución de llamada que solo se ha solicitado. Revise esas decisiones en conjunto antes de recopilar más audio.</p>
+<h3 id="give-an-evidence-gap-its-own-outcome">Dé a una laguna de evidencia su propio resultado</h3>
+<p>Si el ejecutor de pruebas pierde un registro de llamadas a herramientas, el evaluador aún podría verificar el registro final. Esa misma ejecución no permite verificar que el agente evitó una escritura en la fecha reemplazada. Indique qué evidencia es obligatoria, qué observación puede sustituirla y quién resuelve un caso no concluyente. De lo contrario, un artefacto ausente puede confundirse con un historial de acciones limpio.</p>
+<p>Cuando los cambios afecten a decisiones de lanzamiento, registre por separado la versión del caso y la versión de la regla. Una empresa puede cambiar intencionalmente lo que debe contener un ticket de devolución de llamada. Reproducir diálogos antiguos contra el nuevo contrato puede ser útil, pero conserve la expectativa anterior al comparar resultados históricos.</p>
+<h2 id="a-fictional-evaluation-case-in-json">Un caso de evaluación ficticio en JSON</h2>
+<p>Este fixture describe a una persona que corrige el día antes de que el agente escriba. Todos los identificadores, fechas y registros son inventados. La expectativa sobre la respuesta acepta deliberadamente varias formas de explicar un resultado confirmado. El resultado de negocio sigue requiriendo una fila en el calendario del entorno de pruebas, y el historial no debe mostrar ninguna escritura en el horario reemplazado.</p>
+<pre class="json" tabindex="0"><code>{
+  "test_case_id": "east-office-correction",
+  "scenario": "The caller requests Friday, pauses, and confirms Thursday.",
+  "language": "en-US",
+  "caller_intent": "book an appointment",
+  "initial_context": {
+    "customer_id": "fixture-caller",
+    "calendar_id": "sandbox-east",
+    "confirmed_candidate": "2030-06-13T10:00:00-04:00",
+    "superseded_candidate": "2030-06-14T10:00:00-04:00",
+    "existing_reservation": null
+  },
+  "audio_conditions": ["telephone audio", "pause before correction"],
+  "expected_entities": {
+    "location_id": "east-office",
+    "confirmed_slot": "2030-06-13T10:00:00-04:00"
+  },
+  "expected_tool_calls": [
+    {
+      "operation": "create_reservation",
+      "fixture_arguments": {
+        "calendar_id": "sandbox-east",
+        "slot": "2030-06-13T10:00:00-04:00"
+      }
+    }
+  ],
+  "expected_spoken_answer": "Confirm the Thursday booking only after read-back.",
+  "expected_business_outcome": "The sandbox calendar contains the confirmed reservation.",
+  "prohibited_actions": ["reserve Friday", "create a duplicate reservation"],
+  "acceptance_criteria": [
+    "The saved appointment matches the confirmed slot and office.",
+    "The action history contains no write to the Friday slot.",
+    "The caller hears a confirmation only after the result is verified."
+  ]
+}</code></pre>
+<p>Defina si las llamadas esperadas son obligatorias, opcionales o prohibidas. El fixture anterior exige una escritura de reserva en el horario confirmado y puede permitir una consulta previa a esa escritura. El nombre de la operación es una etiqueta ficticia del fixture. Asígnelo al adaptador real del entorno de pruebas al implementar un ejecutor. Aplique un esquema versionado para comprobar los campos y tipos requeridos. Un validador de JSON Schema puede comprobar la forma del archivo. Una aserción de flujo de trabajo independiente debe comprobar si la cita existe bajo la identidad de calendario correcta. <a class="b2bv3-ref" href="#source-json">JSON Schema Draft 2020-12</a></p>
+<p>Cree casos complementarios con la misma intención de la persona que llama y distintos estados iniciales. Cuando el horario no está disponible, el estado esperado puede ser una escritura rechazada y la oferta de otra cita. Cuando una solicitud confirmada agota el tiempo de espera, el siguiente paso esperado puede ser una lectura de verificación vinculada a la operación original. Reutilizar la misma frase en esos casos revela si el agente lee el estado del sistema o repite una respuesta conocida.</p>
+<h2 id="choose-inputs-that-represent-the-calls-you-care-about">Elija entradas que representen las llamadas que le importan</h2>
+<h3 id="combine-different-data-sources-with-a-clear-test-purpose">Combine distintas fuentes de datos con un propósito de prueba claro</h3>
+<p>Los datos de voz sintética son útiles para mantener constante la redacción mientras se cambian el ruido, el ritmo o las interrupciones. Una persona que llama sintética con guion puede ejercitar de forma consistente grupos más grandes de casos de prueba de conversación. Dé al simulador de la persona que llama solo los datos que conocería ese rol. Un simulador que conoce la respuesta prevista o que ve el resultado de un calendario oculto puede rescatar al agente de maneras que un cliente real nunca podría reproducir.</p>
+<p>Con el permiso adecuado, encargue grabaciones de personas reales para incorporar correcciones naturales, velocidad de habla variable, distintos dispositivos y la pronunciación habitual de los hablantes. Reproduzca casos representativos por una ruta telefónica controlada cuando la decisión de lanzamiento dependa de lo que llega a un punto final telefónico real. Una grabación de estudio silenciosa y una llamada real con mala conexión ejercitan partes distintas del sistema.</p>
+<p>Para escenarios derivados de producción, prefiera un patrón de incidente reconstruido con identidades ficticias y un diálogo escrito de nuevo. Conserve la parte que originó el problema, como una corrección tras una pausa larga o una segunda persona con un nombre similar. Evite llevar audio original o texto privado a una canalización de fixtures sin autoridad explícita, acceso verificado y un plan de retención. La guía sobre <a href="/es/voice-agent-testing-without-production-pii">evaluación que preserva la privacidad</a> cubre las copias de registros que los equipos deben tener en cuenta.</p>
+<h3 id="use-published-datasets-for-the-tasks-they-were-designed-to-support">Use conjuntos de datos publicados para las tareas que fueron diseñados para respaldar</h3>
+<p>SLURP combina material hablado en inglés con anotaciones de intención y entidades. Puede ayudar al lector a entender cómo un conjunto de datos de comprensión del lenguaje hablado representa una sola solicitud. Un ejemplo de un solo turno deja fuera de la prueba los efectos de una transferencia de red o de una lectura de verificación transaccional. FLEURS ofrece material de habla leída en paralelo en varios idiomas, útil para frases comparables y para la investigación en reconocimiento de voz. Un pasaje leído no representa la corrección espontánea durante una llamada. Compruebe los derechos del subconjunto y la modalidad exactos antes de reutilizarlos. Un artículo que describe datos de referencia para agentes de voz no autoriza automáticamente la redistribución comercial de su audio o sus grabaciones. <a class="b2bv3-ref" href="#source-slurp">Bastianelli y colaboradores</a> <a class="b2bv3-ref" href="#source-flow">Conneau y colaboradores</a></p>
+<h3 id="review-rights-for-each-input-and-each-use">Revise los derechos de cada entrada y de cada uso</h3>
+<p>Antes de reutilizar material público o encargado, identifique el audio, la transcripción, las anotaciones y cualquier modelo o voz generada que se haya usado para crearlo. Compruebe si los términos permiten pruebas internas, uso comercial, modificación y redistribución para cada elemento que piensa usar. Conserve la versión y la evidencia del consentimiento o del permiso junto con el registro del conjunto de datos. Si los términos solo autorizan un uso más limitado, encargue su propio fixture o enlace a la publicación sin volver a publicar sus muestras.</p>
+<p>Trate la generación de datos de prueba de IA de voz como un tipo de fuente aparte dentro del conjunto de datos. Versione las instrucciones del generador, la configuración y las transformaciones de audio. Si una comprobación de lanzamiento depende de la pronunciación específica de un actor, congele esa grabación para que generaciones posteriores no alteren la prueba sin que nadie lo note. Conserve los grupos de hablantes o actores al muestrear un conjunto de reserva.</p>
+<h2 id="protect-the-holdout-and-maintain-the-case-record">Proteja el conjunto de reserva y mantenga el registro de cada caso</h2>
+<p>Divida los conjuntos de datos de evaluación de IA de voz según la fuente de similitud. Mantenga en el mismo lado de la división las paráfrasis del mismo guion, las tomas repetidas del mismo actor y las variantes de un mismo incidente, siempre que revelen el comportamiento que el conjunto de reserva debe poner a prueba. Un nombre de archivo o una voz sintética distintos pueden seguir conteniendo un contenido casi idéntico. Si el desarrollo del prompt puede ver los ejemplos exactos de un benchmark, registre esa exposición y reserve casos independientes para las decisiones de lanzamiento. En el caso de los benchmarks públicos, documente lo que sepa sobre el solapamiento con el entrenamiento o el ajuste y deje visible la incertidumbre cuando se desconozcan los datos de entrenamiento del proveedor.</p>
+<p>Redacte una guía de anotación con paráfrasis aceptables, campos críticos y un estado para el significado sin resolver. Pida a un segundo revisor que compruebe los casos importantes o discutidos. Una persona que nunca confirmó una dirección pertenece a un caso de ambigüedad. Un caso en el que un campo se dijo con claridad pero se omitió pertenece a un caso de reconocimiento o de gestión de estado. Ambos pueden producir el mismo campo vacío y aun así requerir reparaciones distintas.</p>
+<p>Dé a cada fixture un identificador estable y versione el estado inicial, las etiquetas previstas, los derechos y cualquier transformación de audio. Conserve los casos de fallo duraderos en un conjunto de datos de regresión que pueda alimentar <a href="/es/voice-agent-regression-and-smoke-testing">pruebas automatizadas de regresión y de humo (smoke tests)</a>. Actualice el conjunto de cobertura cuando cambien la mezcla de llamadas, los productos, los horarios, los canales o los idiomas. Una nueva zona de servicio puede traer direcciones desconocidas y reglas de enrutamiento distintas aunque las pruebas antiguas sigan aprobando. Registre ese cambio de distribución junto con los casos nuevos. El enfoque de las datasheets ofrece un modelo para documentar la composición, la recopilación, los usos previstos y el mantenimiento. <a class="b2bv3-ref" href="#source-sheet">Gebru y colaboradores</a></p>
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3 id="how-is-an-evaluation-dataset-different-from-a-transcript-archive">¿En qué se diferencia un conjunto de datos de evaluación de un archivo de transcripciones?</h3>
+<p>Un conjunto de datos de evaluación especifica, para cada prueba, las acciones permitidas, el estado esperado, la evidencia y los derechos de acceso. Un archivo puede conservar material histórico sin aportar esas decisiones ni conceder permiso para reutilizarlo.</p>
+<h3 id="can-synthetic-callers-replace-consented-human-recordings">¿Pueden las personas que llaman sintéticas reemplazar las grabaciones de personas reales con consentimiento?</h3>
+<p>Las personas que llaman sintéticas son útiles para variaciones controladas y fixtures repetibles. El ritmo realista, el comportamiento telefónico en vivo, el habla superpuesta y la variación entre hablantes requieren evidencia que se asemeje a la población de personas que llaman y al canal previstos.</p>
+<h3 id="what-if-several-different-agent-replies-are-acceptable">¿Qué ocurre si varias respuestas distintas del agente son aceptables?</h3>
+<p>Especifique el significado requerido y las promesas prohibidas. Use aserciones independientes para el estado resultante y para cualquier historial de escrituras. Deje que el agente elija una formulación natural o una vía de aclaración que cumpla esas condiciones.</p>
+<h3 id="should-regression-cases-be-removed-when-the-bug-is-fixed">¿Deben eliminarse los casos de regresión cuando se corrige el error?</h3>
+<p>Conserve los casos importantes mientras sigan vigentes el flujo de trabajo y los riesgos. Retírelos, con un motivo documentado, cuando su política o su integración queden obsoletas. Conserve la versión asociada a los resultados de pruebas anteriores.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Hable de un flujo de trabajo con estados de aceptación concretos</h2>
+<p>Traiga un ejemplo ficticio de una reserva, de una solicitud denegada y de un caso que el personal debe terminar. <a href="/demo">Hable con B2B Voice sobre los requisitos de sus sistemas de negocio</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Referencias</h2>
+<ul>
+<li id="source-taum">Estado de negocio anotado, medidas de la interacción de voz y alcance de la evaluación. <a href="https://arxiv.org/html/2603.13686v1">τ-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains</a>
+</li>
+<li id="source-json">Validación estructural de documentos JSON versionados. <a href="https://json-schema.org/draft/2020-12">Draft 2020-12</a>
+</li>
+<li id="source-slurp">Un ejemplo de habla en inglés con anotaciones de intención y entidades. <a href="https://aclanthology.org/2020.emnlp-main.588.pdf">SLURP: A Spoken Language Understanding Resource Package</a>
+</li>
+<li id="source-flow">Diseño y cobertura de un benchmark de habla leída en paralelo. <a href="https://arxiv.org/pdf/2205.12446">FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech</a>
+</li>
+<li id="source-sheet">Documentación sobre la composición, la recopilación, el uso previsto y el mantenimiento de un conjunto de datos. <a href="https://arxiv.org/pdf/1803.09010">Datasheets for Datasets</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Temas">
+<li>Datos de evaluación</li>
+<li>Fixtures de prueba</li>
+<li>Voz sintética</li>
+<li>Procedencia de los datos</li>
+</ul></article>
+</main>

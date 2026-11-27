@@ -1,0 +1,445 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">Automatisierte Regressions- und Smoke-Tests für Sprachagenten: ein praktischer Leitfaden</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Ein automatisierter Regressionstest für Sprachagenten prüft, ob eine neue Version Verhalten beschädigt hat, das zuvor funktionierte. Setzen Sie Smoke-Tests für Sprachagenten für eine kurze Reihe kritischer Pfade ein, gezielte Regressionsfälle für die jeweilige Änderung und kontrollierte Audio- oder Telefontests, wenn der Nachweis von einem echten Anruf abhängt. Ein simulierter Kalender kann zeigen, welche Argumente der Agent übermittelt hat. Ein Anruf über die vorgesehene Route kann zeigen, ob die anrufende Person die Bestätigung gehört hat und ob die Mitarbeitenden die Übergabe erhalten haben.</p>
+<p>B2B Voice richtet individuelle Implementierungen an den Workflow und den Release-Verantwortlichkeiten des Kunden aus. Für ein Team mit Terminplanung kann dazu gehören festzulegen, wer ein Deployment stoppen darf, welche Ergebnisse einen Release blockieren und wie die Mitarbeitenden mit Buchungen umgehen, die nach einem Rollback noch offen sind.</p>
+<h2 id="key-takeaways">Wichtigste Erkenntnisse</h2>
+<ul>
+<li>Versionieren Sie die Einstellungen, die das Verhalten verändern können, darunter Prompt, Modell, Workflow, Stimme, Tool-Vertrag und Route.</li>
+<li>Wählen Sie Tests danach aus, was sich geändert hat und was die verfügbare Testoberfläche überprüfen kann.</li>
+<li>Bewahren Sie bei einem instabilen Test den vollständigen Ergebnisverlauf auf. Untersuchen Sie folgenreiche Inkonsistenzen vor dem Release.</li>
+<li>Weisen Sie Canary, Rollback und offenen Transaktionen jeweils eine klare Verantwortung zu.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#match-the-test-suite-to-the-change">Die Test-Suite auf die Änderung abstimmen</a></li>
+<li><a href="#know-what-each-test-surface-can-prove">Wissen, was jede Testoberfläche belegen kann</a></li>
+<li><a href="#a-runnable-regression-test-for-an-uncertain-booking">Ein lauffähiger Regressionstest für eine unklare Buchung</a></li>
+<li><a href="#b2b-voice-automated-voice-agent-regression-pipeline">Die automatisierte Regressionspipeline von B2B Voice für Sprachagenten</a></li>
+<li><a href="#preserve-useful-evidence-when-a-test-is-flaky">Aussagekräftige Nachweise bei instabilen Tests sichern</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="match-the-test-suite-to-the-change">Die Test-Suite auf die Änderung abstimmen</h2>
+<p>Eine Smoke-Suite fragt, ob der wesentliche Pfad weiterhin startet und abschließt. Eine Regressions-Suite fragt, ob ein früherer Fehler oder ein erforderliches Verhalten nach einer Änderung zurückgekehrt ist. Derselbe Buchungsfall kann beiden Zwecken dienen, wenn er einen kritischen Pfad durchläuft. Ein Release, der durch eine Änderung des Kalenderschemas ausgelöst wird, braucht außerdem Fälle, die gezielt das Schema, das Retry-Verhalten und die Rückmeldung (Read-back) herausfordern.</p>
+<p>Führen Sie ein Release-Manifest für Prompt, Modell, Stimme, Spracheinstellungen, Tool-Schemas, Anwendungsadapter, Workflow, Daten-Fixture und gegebenenfalls die Telefonie-Konfiguration. Ein Provider-Alias kann gleich bleiben, während sich die zugrunde liegende Implementierung ändert. Halten Sie die Version fest, die der Dienst preisgibt, und vermerken Sie, wo Sie keine beobachten konnten. Halten Sie eine frühere funktionierende Baseline zugänglich, damit ein verändertes Ergebnis untersucht werden kann.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Testabdeckung nach Art der Änderung</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Änderung</th>
+<th scope="col">Beginnen Sie mit</th>
+<th scope="col">Ergänzen, wenn das Risiko über den ersten Test hinausreicht</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Prompt oder Service-Richtlinie</th>
+<td>Prompt-Regressionstests für zulässige Aktionen, Bestätigung, Ablehnung und Übergabe.</td>
+<td>Mehrdeutige Formulierungen erneut abspielen oder einen kontrollierten Anruf nutzen, wenn sich Timing oder Sprachverhalten ändern können.</td>
+</tr>
+<tr class="even">
+<th scope="row">Modell, Stimme oder Spracheinstellungen</th>
+<td>Audiofälle für Unterbrechungen, Stille, Aussprache und korrigierte Angaben.</td>
+<td>Die Wiedergabe auf Anruferseite über den relevanten Telefonpfad bestätigen.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Workflow oder Integration</th>
+<td>Sandbox-Vertragstests für Tool-Auswahl, bestätigte Argumente, Verzögerung und maßgebliche Rückmeldung (Read-back).</td>
+<td>Testen, wo eine Antwort einen Erfolg melden könnte, bevor eine Transaktion verifiziert ist.</td>
+</tr>
+<tr class="even">
+<th scope="row">Tool-Schema</th>
+<td>Pflicht- und optionale Felder, Validierungsfehler und das Verhalten des Adapters prüfen.</td>
+<td>Eine Sandbox-Prüfung einbeziehen, ob die echte Integration die Payload wie vorgesehen interpretiert.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Telefonroute oder Warteschlange</th>
+<td>Weiterleitung, lokale Zeiten und Zielkennungen prüfen.</td>
+<td>Auf dem autorisierten Anrufpfad die tatsächliche Annahme am Ziel, die Medien und den genehmigten Fallback verifizieren.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Die Testautomatisierung für Sprachagenten funktioniert am besten, wenn die Suite zeigen kann, welche Änderung sie abfangen soll. Ein großer, undifferenzierter Durchlauf kann länger dauern und die Ursache eines Fehlers schwerer erkennbar machen. Dokumentieren Sie, welche Prüfungen übersprungen wurden, und halten Sie erforderliche Nachweise am Release-Gate sichtbar.</p>
+<h2 id="know-what-each-test-surface-can-prove">Wissen, was jede Testoberfläche belegen kann</h2>
+<p>Ein Mock kann auf Abruf einen Fehler zurückgeben, eine Anfrage erfassen und eine deterministische Assertion deren Argumente prüfen lassen. Die Mock-Werkzeuge der Python-Standardbibliothek unterstützen das Setzen von Seiteneffekten und das Untersuchen von Aufrufen. Ein Mock folgt nur dem Vertrag, den Sie ihm gegeben haben. Wenn der echte Adapter ein Datum oder eine Fehlerantwort anders interpretiert, können Test und Implementierung für sich genommen beide gesund wirken. <a class="b2bv3-ref" href="#source-mock">Dokumentation zu Python unittest.mock</a></p>
+<p>Ein Sandbox-Vertragstest kann den tatsächlichen Integrationsclient gegen isolierte Testdaten ausführen. Nutzen Sie ihn für Antwortstruktur, Berechtigungen, Zustandsänderungen und Abgleich. Ein Audio-Replay prüft, was ein Modell oder Agent unter kontrollierten Bedingungen erhalten und zurückgegeben hat. Wenn behauptet wird, dass eine anrufende Person oder ein Mitarbeitender die Route nutzen kann, führen Sie einen autorisierten Anruf über den vorgesehenen Telefonpfad durch und holen Sie den Nachweis vom Empfänger ein. Der <a href="/de/ivr-and-conversational-voice-ai-testing">Leitfaden zu IVR und Telefonrouting</a> zeigt, welche Beobachtungen zu Route und Übergabe Sie festhalten sollten.</p>
+<p>Legen Sie bei nichtdeterministischen Gesprächen zulässige Ergebnisse und die erforderliche Bedeutung fest. Eine höfliche Ablehnung kann verschiedene Formen annehmen. Ein verbotener Schreibzugriff muss unabhängig von der Formulierung verboten bleiben. Vergleichen Sie Kandidat und Baseline mit derselben Fallfamilie und denselben Einstellungen, und behalten Sie alle Versuche. Nutzen Sie <a href="/de/voice-agent-evaluation-data">versionierte Ergebnis-Fixtures</a>, damit ein geändertes Skript oder eine geänderte Erwartung nicht als veränderter Agent erscheint.</p>
+<h2 id="a-runnable-regression-test-for-an-uncertain-booking">Ein lauffähiger Regressionstest für eine unklare Buchung</h2>
+<p>Dieses Python-Beispiel verwendet nur die Standardbibliothek und Test-Doubles. Speichern Sie es als <code>test_booking.py</code> und führen Sie <code>python -m unittest test_booking.py</code> aus. Die Namen der Beispiel-Adapter gehören zur Fixture. Der Test führt keine Netzwerkaufrufe aus und verwendet keine Produktionsdaten.</p>
+<pre class="python" tabindex="0"><code>import unittest
+from unittest.mock import Mock
+
+
+def reserve_with_readback(calendar, request_id, slot):
+    try:
+        calendar.reserve(request_id, slot)
+    except TimeoutError:
+        # The save might have committed before the reply timed out.
+        pass
+
+    saved = calendar.lookup(request_id)
+    if saved and saved["request_id"] == request_id and saved["slot"] == slot:
+        return "confirmed"
+    return "pending"
+
+
+class BookingRegression(unittest.TestCase):
+    def setUp(self):
+        self.calendar = Mock(spec=["reserve", "lookup"])
+        self.calendar.reserve.side_effect = TimeoutError("fixture timeout")
+        self.request_id = "fixture-booking"
+        self.slot = "thursday-east-morning"
+
+    def test_readback_can_confirm_a_committed_booking(self):
+        self.calendar.lookup.return_value = {
+            "request_id": self.request_id,
+            "slot": self.slot,
+        }
+        outcome = reserve_with_readback(
+            self.calendar, self.request_id, self.slot
+        )
+        self.assertEqual(outcome, "confirmed")
+        self.calendar.reserve.assert_called_once_with(self.request_id, self.slot)
+        self.calendar.lookup.assert_called_once_with(self.request_id)
+
+    def test_wrong_booking_stays_pending(self):
+        self.calendar.lookup.return_value = {
+            "request_id": self.request_id,
+            "slot": "friday-west-afternoon",
+        }
+        outcome = reserve_with_readback(
+            self.calendar, self.request_id, self.slot
+        )
+        self.assertEqual(outcome, "pending")
+        self.calendar.reserve.assert_called_once_with(self.request_id, self.slot)
+
+    def test_no_record_stays_pending(self):
+        self.calendar.lookup.return_value = None
+        outcome = reserve_with_readback(
+            self.calendar, self.request_id, self.slot
+        )
+        self.assertEqual(outcome, "pending")
+        self.calendar.reserve.assert_called_once_with(self.request_id, self.slot)</code></pre>
+<p>Im fiktiven Fall kann ein externer Dienst die Buchung gespeichert haben, bevor seine Antwort in ein Timeout lief. Ein einzelner Schreibversuch mit anschließender übereinstimmender Rückmeldung (Read-back) erlaubt die Bestätigung. Ein fehlender oder widersprüchlicher Datensatz hält den Workflow im Wartezustand. Der Code bildet providerspezifische Retries, verzögerte Konsistenz, Abfragefehler, Zugriffskontrollen oder Telefon-Audio nicht ab. Für diese Verhaltensweisen braucht eine Implementierung eigene Tests. Ein Test-Adapter kann den erwarteten Datensatz liefern, während ein echter Kalender einen anderen zurückgibt. Ergänzen Sie einen Sandbox-Read-back, bevor Sie sich in einem Release auf die Integration verlassen.</p>
+<h3 id="keep-one-trace-for-an-interruption-regression">Einen Trace für eine Unterbrechungsregression aufbewahren</h3>
+<p>Ein Gesprächsprotokoll kann zeigen, dass der Agent eine vollständige Antwort erzeugt hat, obwohl die anrufende Person unterbrochen hat, bevor sie sie hörte. Markieren Sie in einem Audio-Regressionstest die neue Äußerung der anrufenden Person, den Punkt, an dem die Wiedergabe stoppte, und die darauffolgenden Ereignisse. Wenn der Agent weitersprach, prüfen Sie, ob er die alte Bestätigung fortsetzte oder auf die Korrektur einging. Ein Anruf über die vorgesehene Route ist nötig, wenn Gateway-Pufferung oder ein Empfänger verändert, was die anrufende Person hört.</p>
+<p>Vergleichen Sie Kandidat und Baseline unter derselben Aufnahmebedingung und denselben Operator-Einstellungen. Akzeptieren Sie bei Fällen mit variierender Formulierung die erforderliche geschäftliche Bedeutung und prüfen Sie die geordneten Seiteneffekte unabhängig davon. Ein erwarteter Trace kann verlangen, dass eine Korrektur vor einer Ersatzaktion eintrifft, ohne das Modell bestimmte Worte erzeugen zu lassen. Berichten Sie alternative Gründe, warum erwartete Ereignisse fehlen können, darunter eine abgebrochene Aufnahme oder ein Anruf, der vor der Korrektur endete.</p>
+<h2 id="b2b-voice-automated-voice-agent-regression-pipeline">Die automatisierte Regressionspipeline von B2B Voice für Sprachagenten</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-2-caption">
+<table>
+<caption id="table-2-caption">Nachweise und Entscheidungen in der Release-Pipeline</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Phase</th>
+<th scope="col">Auslöser und Nachweis</th>
+<th scope="col">Release-Entscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Änderungsprüfung</th>
+<td>Betroffene Versionen, bekannte Fehlermodi und die Tests erfassen, die auf die Änderung reagieren sollten.</td>
+<td>Eine verantwortliche Person benennen und erforderliche Nachweise dokumentieren, die ein Runner nicht erfassen kann.</td>
+</tr>
+<tr class="even">
+<th scope="row">Smoke-Test im Pull Request</th>
+<td>Mit kontrollierten Fixtures den wesentlichen autorisierten Pfad und eine kritische Ablehnung oder einen kritischen Fallback verifizieren.</td>
+<td>Bei einem fehlgeschlagenen Integritäts-Gate oder einer erforderlichen Prüfung, die nicht ausgeführt werden konnte, stoppen.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Gezielte Regression</th>
+<td>Geordnete Tool-Ereignisse, zulässige Gesprächsergebnisse und frühere Fehlerfälle mit der Baseline vergleichen.</td>
+<td>Neue Fehler und instabile Ergebnisse untersuchen. Den vollständigen Versuchsverlauf aufbewahren.</td>
+</tr>
+<tr class="even">
+<th scope="row">Audio- und Telefonverifikation</th>
+<td>Die relevanten Sprachfälle erneut abspielen und kontrollierte Anrufe über genehmigte Routen durchführen.</td>
+<td>Tatsächliche Medien, tatsächliches Ziel und resultierenden Zustand verlangen, wenn davon der Release abhängt.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Canary und Monitoring</th>
+<td>Eine genehmigte Kohorte auf den Kandidaten leiten und mit einer stabilen Kontrollgruppe vergleichen.</td>
+<td>Anhalten, ausweiten oder zurückrollen gemäß den vereinbarten Release-Kriterien.</td>
+</tr>
+<tr class="even">
+<th scope="row">Rollback und Abgleich</th>
+<td>Keinen neuen Traffic mehr an die betroffene Version senden, bestehende Anrufe abwickeln und offene Vorgänge klären.</td>
+<td>Bestätigen, dass die vorherige Route aktiv ist und ausstehende Datensätze ein dokumentiertes Ergebnis haben.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Nutzen Sie Continuous Integration und Continuous Delivery (CI/CD), um ein Ergebnis zusammen mit der Änderung aufzubewahren, einschließlich der getesteten Version, der Fixture, des beobachteten Ergebnisses, des Trace-Verweises, der Umgebung und der übersprungenen Prüfungen. Halten Sie Artefakte zugriffsbeschränkt und schwärzen Sie nicht erforderliche Payloads. CI/CD für Sprach-KI kann bei gewöhnlichen Änderungen schnellere deterministische Prüfungen ausführen und kontrollierte Telefonanrufe für Änderungen vorsehen, die die Route oder das Anruferlebnis beeinflussen können.</p>
+<h2 id="preserve-useful-evidence-when-a-test-is-flaky">Aussagekräftige Nachweise bei instabilen Tests sichern</h2>
+<p>Ein instabiler Test kann bestehen und fehlschlagen, ohne dass sich der erwartete Release ändert. Achten Sie auf gemeinsam genutzte Sandbox-Datensätze, Abhängigkeiten von der Uhrzeit, uneinheitliche Telefonpfade, Modellvariation und Agent-Einstellungen, die nicht erfasst wurden. Die pytest-Dokumentation nennt unkontrollierten Systemzustand und mangelnde Isolation als häufige Ursachen instabiler automatisierter Tests. Wiederholen Sie den Lauf, um die Bedingungen zu untersuchen. Behalten Sie den ursprünglichen Fehlschlag in den Unterlagen. <a class="b2bv3-ref" href="#source-flak">pytest-Hinweise zu instabilen Tests</a></p>
+<p>Wenn eine unwesentliche Formulierungsprüfung instabil ist, geben Sie ihr eine verantwortliche Person und eine zeitlich befristete Entscheidung, während das Team den Test repariert. Eine instabile Autorisierungs- oder Duplikat-Schreibprüfung sollte ein Release-Thema bleiben, bis das betreffende Verhalten verstanden ist. Automatisierte QA für Sprach-KI braucht eine klare Möglichkeit, fehlende Nachweise zu kennzeichnen. Ein sauberer Abschlussbericht nach einem Wiederholungslauf kann nicht belegen, was bei einem fehlgeschlagenen Versuch geschehen ist.</p>
+<p>Canary-Traffic sollte eine verantwortliche Person, bekannte Routen und einen stabilen Vergleich haben. Proben Sie, wie das Team das Senden neuer Anrufe an den Kandidaten stoppt, laufende Sitzungen beibehält oder auslaufen lässt und den Endzustand bereits begonnener Aktionen verifiziert. Das Site Reliability Workbook von Google beschreibt, wie sich Teil-Releases gegen Kontrollgruppen bewerten lassen. Stellen Sie den erwarteten Serviceweg wieder her und gleichen Sie den Geschäftsdatensatz ab, bevor Sie die Wiederherstellung als abgeschlossen markieren. <a class="b2bv3-ref" href="#source-can">Google-SRE-Hinweise zu Canary-Releases</a></p>
+<p>Nutzen Sie den <a href="/de/how-to-test-an-ai-voice-agent">Leitfaden zum Testen von Sprachagenten im Produktivbetrieb</a> für die Grundabdeckung über Fehlermodi hinweg. Nutzen Sie den <a href="/de/rag-vs-tool-calling-vs-prompt-context">Vergleich von Retrieval und Tool Calling</a>, wenn Sie entscheiden, ob eine Änderung eine Wissensantwort, eine externe Aktion oder beides betrifft.</p>
+<h3 id="set-release-gates-that-a-test-operator-can-interpret">Release-Gates festlegen, die ein Testverantwortlicher deuten kann</h3>
+<p>Legen Sie fest, ob jede Prüfung blockierend, beratend oder wartend auf Nachweise ist, bevor der Kandidat läuft. Eine blockierte Prüfung der Buchungsintegrität sollte erkennbar sein, selbst wenn eine Prüfung der Sprachqualität gut aussieht. Ein fehlender Trace zum Ziel sollte die Übergabe-Behauptung offen lassen. Geben Sie der verantwortlichen Person für den Release einen Link zum genauen Ereignis und eine unabhängige Möglichkeit, den resultierenden Datensatz einzusehen, wenn die Entscheidung von einer Integration abhängt. Das hilft auch der Person in Bereitschaft, ein Anwendungsproblem von einem Runner-Problem zu unterscheiden.</p>
+<p>Manche Testwerkzeuge für Sprachagenten können Modellgespräche erneut abspielen und Text vergleichen. Prüfen Sie, welche Werkzeuge tatsächliches Audio verarbeiten und welche die Gegenseite eines Anrufs beobachten können. Halten Sie diese Grenzen im Ergebnis ausdrücklich fest, damit ein automatisierter Testlauf für Sprachagenten nicht stillschweigend eine gestufte Routenprüfung ersetzt.</p>
+<p>Wenden Sie dieselbe Disziplin auf das Rollback an. Wenn die gewählte Version wiederhergestellt ist, aber ein verzögerter Vorgang weiterhin wiederholt wird, ist der Vorfall für diesen Geschäftsdatensatz weiterhin aktiv. Prüfen Sie, dass die vorherige Route neue Anrufe erhält, ermitteln Sie alle Arbeiten, die an den zurückgezogenen Release gebunden sind, und gleichen Sie den Endzustand ab, bevor Sie den Vorfall schließen.</p>
+<h3 id="include-the-checks-an-operator-needs-after-rollout">Die Prüfungen einbeziehen, die ein Operator nach dem Rollout braucht</h3>
+<p>Eine verantwortliche Person für den Release sollte wissen, welche Version einen gemeldeten Vorfall bearbeitet hat und welche Fixture ihn reproduzieren könnte. Führen Sie ein lesbares Run-Manifest mit der Kandidatenversion, der Anrufroute, der betroffenen Abhängigkeit und einem genehmigten Verweis auf das Ergebnis. Wenn ein Problem Daten betraf, die ein breiter Personenkreis nicht sehen sollte, halten Sie die Grenze des Ereignisses fest und stellen Sie zugrunde liegende Nachweise nur der autorisierten prüfenden Person zur Verfügung. Reproduzieren Sie das Problem mit einem erfundenen Fall, bevor Sie es in die laufende Suite aufnehmen.</p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="how-is-a-smoke-test-different-from-a-regression-test">Worin unterscheidet sich ein Smoke-Test von einem Regressionstest?</h3>
+<p>Ein Smoke-Test prüft, ob ein wesentlicher Pfad nach einer Änderung funktioniert. Ein Regressionstest prüft Verhalten, das korrekt bleiben muss, oft einschließlich eines bekannten früheren Fehlers. Ein kritischer Buchungs- oder Übergabefall kann zu beiden Mengen gehören.</p>
+<h3 id="can-a-mock-prove-that-a-phone-transfer-works">Kann ein Mock belegen, dass eine Telefonübergabe funktioniert?</h3>
+<p>Ein Mock kann das Zielargument und die Reaktion der Anwendung auf ein simuliertes Ergebnis verifizieren. Bestätigen Sie die Übergabe auf der autorisierten Telefonroute, indem Sie die Annahme am Ziel und das Zwei-Wege-Audio beobachten.</p>
+<h3 id="should-a-later-pass-clear-an-earlier-failed-run">Sollte ein späterer Erfolg einen früheren fehlgeschlagenen Lauf aufheben?</h3>
+<p>Bewahren Sie beide Ergebnisse auf. Ein sporadischer Fehler kann im Produktivbetrieb relevant sein. Klären Sie, ob die Abweichung vom Test, von der Umgebung, von einer Abhängigkeit oder vom Agenten stammte, bevor Sie die Release-Entscheidung ändern.</p>
+<h3 id="what-should-i-run-after-a-prompt-change">Was sollte ich nach einer Prompt-Änderung ausführen?</h3>
+<p>Beginnen Sie mit den betroffenen Richtlinien- und Bestätigungsfällen. Ergänzen Sie Regressionsfälle für bekannte Fehler sowie Audio- oder Telefontests, wenn die Änderung Unterbrechungen, das Verständnis der anrufenden Person oder Übergaben beeinflussen kann.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Besprechen Sie, wie Ihr Team Workflow-Änderungen freigibt</h2>
+<p>Bringen Sie eine aktuelle Änderung, ihre mögliche Auswirkung auf anrufende Personen und die Person mit, die ein Deployment anhalten kann. <a href="/demo">Besprechen Sie die Release-Anforderungen für Ihren individuellen Sprach-Workflow</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-mock">Mock-Seiteneffekte und Aufruf-Assertions, die im Beispiel verwendet werden. <a href="https://docs.python.org/3/library/unittest.mock.html">unittest.mock — mock object library</a>
+</li>
+<li id="source-flak">Unkontrollierter Zustand und Isolation in automatisierten Test-Suites. <a href="https://docs.pytest.org/en/stable/explanation/flaky.html">Flaky tests</a>
+</li>
+<li id="source-can">Begrenzte Releases und Vergleiche mit einer stabilen Kontrollgruppe. <a href="https://sre.google/workbook/canarying-releases/">Canarying Releases</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>Regressionstests</li>
+<li>Smoke-Tests</li>
+<li>CI/CD</li>
+<li>Canary-Releases</li>
+<li>Rollback</li>
+</ul></article>
+</main>

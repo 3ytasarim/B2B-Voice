@@ -1,0 +1,343 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table:not(.b2bv-assess) tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Implementierungsleitfäden</p>
+    <h1 id="b2bv-title">So implementieren Sie KI-Sprachagenten in einem bestehenden Callcenter, ohne Ihre Infrastruktur zu ersetzen</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Wer Sprach-KI in ein bestehendes Callcenter integriert, beginnt mit einer Routing-Entscheidung. Suchen Sie einen Pfad, den der Carrier und die Verantwortlichen des Contact Centers testen, beobachten und wiederherstellen können. Klären Sie die Geschäftsaufgabe, den Medienpfad und das Ziel, das bei einem Ausfall übernimmt.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurzantwort</h2>
+        <p>Beginnen Sie mit einer freigegebenen Route, etwa einer Testnummer, einer Rufweiterleitung außerhalb der Geschäftszeiten, dem Überlauf einer Warteschlange oder einem IVR-Zweig. Prüfen Sie Carrier, Telefonanlage, Medienpfad, Ziel mit Personal und den Zugriff auf Geschäftssysteme. Halten Sie die bisherige oder eine freigegebene alternative Route bereit, proben Sie die Wiederherstellung und erweitern Sie den Umfang erst, wenn der gewählte Pfad besteht.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Leitfaden</p>
+      <ol>
+<li><a href="#route">Die erste Route wählen</a></li>
+<li><a href="#compatibility">Carrier- und PBX-Kompatibilität prüfen</a></li>
+<li><a href="#framework">Dem Deployment-Framework folgen</a></li>
+<li><a href="#reversible-pilot">Ein Pilotprojekt durchführen und zurücknehmen</a></li>
+<li><a href="#scale">In kontrollierten Kohorten erweitern</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Qualifizieren Sie für jede vorgesehene Route die tatsächliche Rufnummer, den Carrier, den Trunk, den Sprachpfad und die empfangende Warteschlange.</li>
+<li>Bestätigen Sie eine Übergabe oder einen Schreibvorgang anhand beobachteter Verbindungs- und Geschäftsergebnisse.</li>
+<li>Dokumentieren Sie die Rollback-Befugnis, testen Sie die Wiederherstellung und gleichen Sie offene Vorgänge ab, bevor Sie erweitern.</li>
+        </ul>
+      </section>
+<section id="route">
+  <h2>Wo sollte die erste KI-Route liegen?</h2>
+  <p>Legen Sie den ersten Workflow auf die kleinste Route, die den vorgesehenen Einsatz abbildet. Ein etabliertes Contact Center kann die veröffentlichte Nummer oft beim Carrier belassen und die bestehende PBX oder CCaaS-Plattform entscheiden lassen, welche Anrufe den KI-Dienst erreichen. Beginnen Sie mit einer internen Testnummer, einer Warteschlangenbedingung oder einer Option im Sprachmenü (Interactive Voice Response, IVR). Legen Sie fest, wie die anrufende Person ein Ziel mit Personal erreicht, bevor Sie die Route für die ausgewählte Gruppe öffnen.</p>
+  <p>B2B Voice kann einen individuellen Sprachagenten rund um eine bestehende Contact-Center-Route konzipieren. Lassen Sie die Verantwortlichen für die Telefonie klären, wo Anrufe eingehen, wem die PBX oder das Cloud Contact Center gehört und wie das Personal den bisherigen Pfad wiederherstellen kann. Diese Angaben bilden den Ausgangspunkt für ein umkehrbares Pilotprojekt und für eine Kompatibilitätsprüfung Ihrer Konfiguration.</p>
+<p>Zeichnen Sie den Pfad von der öffentlichen Rufnummer bis zum endgültigen Ziel auf. Listen Sie den Carrier, die Durchwahlrufnummern (Direct Inward Dialing, DID), die Telefonanlage (Private Branch Exchange, PBX) oder Cloud-Plattform, die Anrufverteilung (Automatic Call Distributor, ACD), den Agentendienst, die Geschäftsanwendungen und das empfangende Team auf. Halten Sie fest, welche Komponente bei einem Vorfall ihre Route ändern kann. Ziehen Sie aktuelle Daten zu Anrufaufkommen, aktiven Gesprächsleitungen, Verhalten außerhalb der Geschäftszeiten und Personalkapazität heran. Nutzen Sie dieselben Aufzeichnungen, um beim Rollback den ursprünglichen Pfad zu verifizieren.</p>
+  <div class="b2bv-table" role="region" aria-label="Vergleich möglicher erster Routen für ein Callcenter-Pilotprojekt mit Sprach-KI" tabindex="0">
+    <table>
+      <caption>Einen Einstiegspunkt für das Pilotprojekt wählen und festlegen, wie die Telefonie-Verantwortlichen ihn zurücknehmen können</caption>
+      <thead><tr><th scope="col">Einstiegspunkt</th><th scope="col">Eignung und Voraussetzung</th><th scope="col">Abnahme und Rücknahme</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Eigene Pilot-DID</th><td>Eine neue Testnummer oder freie Leitung mit isolierter Route und freigegebenen Zielen.</td><td>Rufen Sie sie aus den erwarteten Netzen an, testen Sie den Rückweg und beenden Sie am Ende des Piloten die Veröffentlichung oder das Routing der Testnummer.</td></tr>
+        <tr><th scope="row">Regel oder Weiterleitung außerhalb der Geschäftszeiten</th><td>Ein begrenztes Anliegen für Nacht oder Wochenende mit definierter Ortszeit, definierten Feiertagen und einem verantwortlichen Empfänger.</td><td>Testen Sie die Zustände geschlossen, geöffnet und Feiertag mit einem externen Anruf. Stellen Sie das bisherige Ziel für die Zeit außerhalb der Geschäftszeiten wieder her.</td></tr>
+        <tr><th scope="row">Überlauf der Warteschlange</th><td>Die ACD unterstützt einen vereinbarten Auslöser und eine Rückführung zu Personal oder einen anderen freigegebenen Fallback.</td><td>Testen Sie die Wartezeit der anrufenden Person und die Aufnahmekapazität bei einer Lastspitze. Entfernen Sie das Überlaufziel und behalten Sie dabei die Kontrolle des Routenverantwortlichen bei.</td></tr>
+        <tr><th scope="row">Ausgewählter IVR-Zweig</th><td>Das Center kontrolliert das Menü, das Routing-Ziel und einen Rückweg zum Personal.</td><td>Prüfen Sie, dass die anrufende Person wie vorgesehen auswählen, den Zweig verlassen und wieder eintreten kann. Stellen Sie die bisherige Zuordnung des Menüzweigs wieder her.</td></tr>
+        <tr><th scope="row">Einzelner ausgehender Workflow</th><td>Ein freigegebener Servicezweck, validierte Berechtigungen, Sperrlisten und eine Rückführungsroute.</td><td>Prüfen Sie Sperrlisten und Anrufergebnis. Erproben Sie einen unabhängigen Weg, den Workflow zu stoppen.</td></tr>
+        <tr><th scope="row">Rollout Abteilung für Abteilung</th><td>Ein bewährtes Pilotprojekt, versioniertes Routing und eine Betriebsverantwortung für jede hinzukommende Warteschlange.</td><td>Proben Sie den Rollback je Kohorte und zeigen Sie, dass das bisherige Ziel diesen Verkehr aufnehmen kann.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Eine Test-DID lässt sich leicht isolieren und kann einen Anrufpfad belegen, bevor der Live-Betrieb betroffen ist. Eine ausgewählte IVR- oder Überlaufroute liegt näher am normalen Verkehr und braucht einen belastbareren Wiederherstellungspfad. Eine Rufweiterleitung kann bei einem vom Carrier unterstützten Design die veröffentlichte Nummer erhalten. Testen Sie die tatsächliche Darstellung der Anruferkennung, den Rückweg der anrufenden Person zum Personal und alle kostenpflichtigen Gesprächsleitungen, die während der Überbrückung entstehen.</p>
+  <p>Halten Sie bei ausgehender Automatisierung den anfänglichen Umfang und die Entscheidung über Berechtigungen getrennt von der Umsetzung für eingehende Anrufe. In den USA können je nach Zweck und Umständen Beschränkungen für Anrufe mit künstlicher Stimme gelten. Klären Sie die Sprach- und Telefoniekonfiguration sowie die relevanten Einwilligungs- und Opt-out-Kontrollen mit dem zuständigen Team. Richten Sie den unabhängigen Stopp ein und prüfen Sie das freigegebene Rückrufziel, bevor Sie berechtigten Verkehr freigeben. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+<p>Nutzen Sie die Automatisierungsmatrix, um <a href="/de/ai-voice-agents-for-call-centers" data-phase2-link="true">den ersten Contact-Center-Workflow zu priorisieren</a>, bevor Sie die erste Telefonroute wählen.</p>
+</section>
+
+<section id="compatibility">
+  <h2>Was müssen Carrier und PBX nachweisen?</h2>
+  <p>Bestätigen Sie die Inhaberschaft der eingehenden Rufnummern und die Berechtigungen für jede geplante Aktion. Das bestehende System kann unter Umständen Anrufe weiterleiten oder eine Menüauswahl an ein freigegebenes SIP-Ziel senden. Die Antwort hängt vom Carrier-Konto des Käufers, vom PBX-Release, vom Trunk, von den unterstützten Anbietern und von den Funktionslizenzen ab. Ein Session Border Controller (SBC) kann Teil einer freigegebenen Grenze zwischen Telefonsystemen sein. Fragen Sie die Telefonie-Verantwortlichen, welche Komponenten Signalisierung, Medien und Authentifizierung auf jeder Verbindung steuern.</p>
+  <p>Das Session Initiation Protocol (SIP) signalisiert das Herstellen, Ändern und Beenden von Sitzungen. Für den Audiopfad gelten eigene Anforderungen. Bestätigen Sie für jedes Segment Zwei-Wege-Audio, vereinbarte Sprachcodecs, Tonwahlziffern für Menüs, Netzwerkerreichbarkeit und Verschlüsselung an den konfigurierten Endpunkten. Ein Tastentest sollte die Ziffern prüfen, die das empfangende Menü tatsächlich erhält. RFC 4733 beschreibt ein Verfahren, Tonwahlereignisse in RTP zu übertragen. Prüfen Sie, welches Verfahren jedes beteiligte System auf der Route akzeptiert. <a href="https://www.rfc-editor.org/rfc/rfc3261.html">RFC 3261 Session Initiation Protocol (SIP)</a> <a href="https://www.rfc-editor.org/rfc/rfc4733.html">RFC 4733 RTP payload for DTMF and telephony events</a></p>
+  <div class="b2bv-table" role="region" aria-label="Checkliste zur Kompatibilität von PBX und Carrier" tabindex="0">
+    <table>
+      <caption>Die reale Route gemeinsam mit allen beteiligten Systemverantwortlichen prüfen</caption>
+      <thead><tr><th scope="col">Was zu prüfen ist</th><th scope="col">Nachweis vor der Umschaltung</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Inhaberschaft und Routing</th><td>Aktueller Carrier, Kontrolle über die Rufnummer, Routing-Befugnis, freigegebenes Ziel, Servicezeiten und die Rückroute, die externe Anrufer nutzen.</td></tr>
+        <tr><th scope="row">Signalisierung und Medien</th><td>Unterstützte Verfahren und Codecs, Tastenereignisse, autorisierte Endpunkte und erfolgreiches Zwei-Wege-Audio an jedem Eröffnungs- und Übergabepfad.</td></tr>
+        <tr><th scope="row">Anrufer- und Abrechnungsinformationen</th><td>Zulässige Anruferkennung, wie sie an jeder Station beobachtet wird, abrechenbare Gesprächsleitungen, Entgelte sowie jede autorisierte Anzeige- oder Aufzeichnungsrichtlinie.</td></tr>
+        <tr><th scope="row">Übergabe und Fehlerfall</th><td>Tatsächliche Annahme durch das vorgesehene Ziel mit Personal, übermittelter Kontext sowie Ergebnisse bei besetzt, geschlossen, unbeantwortet und fehlgeschlagener Übergabe.</td></tr>
+        <tr><th scope="row">Kapazität und Wiederherstellung</th><td>Konfigurierte Anrufe, gleichzeitige Gesprächsleitungen, Warteschlangen- und Anwendungslimits sowie die freigegebene Route bei Sättigung oder Ausfall.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Bitten Sie die Verantwortlichen von Carrier und Plattform, dieselben Gesprächsleitungen zu prüfen. Ein Anruf kann bei der Weiterleitung und erneut während der Überbrückung oder bei einer Übergabe an Personal durch den Agenten anders abgerechnet und geroutet werden. Halten Sie fest, welche Partei jede Rufnummer bereitstellt, welche Zeitstempel sichtbar sind und welche Gesprächsleitung die Schichtleitung ändern kann. Behandeln Sie die übermittelte Anrufernummer als Routing-Kontext. Nutzen Sie die vom Unternehmen freigegebene Identitätsprüfung, bevor Sie geschützte Datensätze lesen oder ändern.</p>
+  <h3>Die Übergabe bis zur Verbindung mit Personal testen</h3>
+  <p>SIP REFER fordert eine andere Partei auf, ein Ziel zu kontaktieren. RFC 3515 definiert das Verfahren. Ein Anbieter wie Twilio dokumentiert für seine Implementierung eine spezifische Trunk-Konfiguration und ein spezifisches Verhalten. Klären Sie, ob die vorgesehene Route dieses Verfahren, eine Brücke oder eine plattformeigene Übergabe nutzt und wie Ergebnisse gemeldet werden. Fragen Sie, ob das Personal nur den Anruf erhält oder auch einen freigegebenen Kontextdatensatz. Werten Sie eine Übergabe an einen Menschen erst dann als erfolgreich, wenn die anrufende Person und der vorgesehene Empfänger mit Personal verbunden sind. Erfassen Sie die Telefonie-Antwort, die Verbindung zum Personal und das geschäftliche Ergebnis getrennt. <a href="https://www.rfc-editor.org/rfc/rfc3515.html">RFC 3515 SIP REFER method</a> <a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a></p>
+  <p>Üben Sie, von einer repräsentativen externen Leitung anzurufen und die vorgesehene Warteschlange zu erreichen. Prüfen Sie das Zwei-Wege-Audio nach der Übergabe und bestätigen Sie, welche Anrufernummer oder freigegebene Identität beim Personal ankommt. Ein weitergeleiteter Anruf kann in verschiedenen Netzen unterschiedliche zulässige Informationen darstellen. Die Schichtleitung sollte sehen, wo der Anruf eingegangen ist und welcher Kontext einsehbar ist. Folgen Sie bei besetztem oder geschlossenem Empfang dem autorisierten alternativen Pfad und prüfen Sie, ob der daraus entstehende Rückruf einen benannten Verantwortlichen hat.</p>
+  <h3>Aufzeichnung, Transkription und Sicherheit an jeder Grenze abbilden</h3>
+  <p>Trennen Sie den Schutz der Signalisierung vom Schutz der Anrufmedien. Twilio beschreibt Transport Layer Security (TLS) für die Signalisierung und das Secure Real-time Transport Protocol (SRTP) für Medien auf unterstützten Elastic-SIP-Trunking-Verbindungen. Bestätigen Sie die Abdeckung für jede relevante Verbindung und prüfen Sie, wo Medien enden oder ein Legacy-Segment durchlaufen. Fragen Sie die Verantwortlichen, welche Komponente den Anruf aufzeichnet, welche ein Transkript erstellt und welches System es aufbewahrt. <a href="https://www.twilio.com/docs/sip-trunking">Twilio Elastic SIP Trunking documentation</a></p>
+  <p>Leiten Sie nur die Daten weiter, die für die freigegebene Aufgabe nötig sind. Vereinbaren Sie Aufzeichnungshinweise und Berechtigungen für die jeweils geltenden Rechtsordnungen, Aufbewahrung, Zugriff, Löschung und den Speicherort freigegebener Protokolle oder Transkripte. Eine Übergabezusammenfassung sollte nur die Informationen enthalten, die das empfangende Team nutzen kann. Der <a href="/de/ai-voice-agent-security">Leitfaden zur Sicherheit von Sprachagenten</a> beschreibt, wie sich der Zugriff auf geschützte Aktionen und Daten eingrenzen lässt. Der <a href="/de/how-ai-voice-agents-work">Leitfaden zum KI-Sprach-Stack</a> erklärt die getrennten Konversations- und Telefoniekomponenten.</p>
+</section>
+
+<section id="framework">
+  <h2>Das B2B-Voice-Deployment-Framework für Callcenter</h2>
+  <p>Lassen Sie jede Phase mit einer Entscheidung enden, die der benannte Verantwortliche unterzeichnen kann. Die kleinste Route ist die, die Ihr Team betreiben, beobachten und wiederherstellen kann. Eine funktionierende Demo kann bei der Erkundung helfen. Ein Live-Pilotprojekt braucht die folgenden Nachweise und die betriebliche Verantwortung.</p>
+  <div class="b2bv-table" role="region" aria-label="Neun Phasen beim Deployment eines Sprachagenten im Callcenter" tabindex="0">
+    <table>
+      <caption>Mit Abschlussnachweisen entscheiden, wann die Route fortschreiten kann</caption>
+      <thead><tr><th scope="col">Phase</th><th scope="col">Was der Verantwortliche liefern muss</th><th scope="col">Nachweis für den nächsten Schritt</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Erkundung</th><td>Ein geeignetes Anliegen, Verantwortlicher der Warteschlange, DID, Zeiten, erwartetes Volumen und bekannter Fallback.</td><td>Vom Betrieb freigegebene Dokumentation von Umfang und Anrufpfad.</td></tr>
+        <tr><th scope="row">Architektur</th><td>Route, Übergabeverfahren, Grenzen für Medien und Berechtigungen sowie die bisherige Route.</td><td>Reale Konfiguration, validiert durch Carrier und Telefonie-Verantwortliche.</td></tr>
+        <tr><th scope="row">Integration</th><td>Geschäftsdatensatz, zulässige Aktionen, Timeouts, verknüpfte Kennungen und Verantwortlicher für die Wiederherstellung.</td><td>Erfolgreiche und unklare Testtransaktionen abgeglichen.</td></tr>
+        <tr><th scope="row">Sicherheit</th><td>Freigegebene Identitäts-, Autorisierungs-, Zugriffsbeschränkungs-, Aufzeichnungs- und Aufbewahrungskontrollen für geschützte Daten.</td><td>Richtlinientests, die von der Sicherheit und dem verantwortlichen Fachbereich beobachtet wurden.</td></tr>
+        <tr><th scope="row">Pilotprojekt</th><td>Freigegebene Testroute mit Personalabdeckung und genügend Nachfrage für eine begrenzte Erprobung.</td><td>Testergebnis, aktuelle Kapazität, Fallback und Rollback erprobt.</td></tr>
+        <tr><th scope="row">Evaluierung</th><td>Konsistente Ausgangsbasis für verifizierte Ergebnisse, Wiederholungen, Übergaben, Zeiten und Kosten.</td><td>Dokumentierte Entscheidung zur abgegrenzten Anruferpopulation und zu den Schwellenwerten.</td></tr>
+        <tr><th scope="row">Kontrollierter Rollout</th><td>Kleine Kohorten, Änderungsfenster, Stoppbedingungen und ein benannter Rollback-Verantwortlicher.</td><td>Erste Produktionsanrufe auf der vorgesehenen, stabilisierten Route bestätigt.</td></tr>
+        <tr><th scope="row">Monitoring</th><td>Alarmierung bei Erreichbarkeit, verzögerten oder fehlgeschlagenen Aktionen, offenen Fällen, Kundenauswirkungen und Limits.</td><td>Die Verantwortlichen können die vereinbarten Signale sehen und darauf reagieren.</td></tr>
+        <tr><th scope="row">Optimierung</th><td>Prüfung stichprobenartiger Ergebnisse und geänderter Richtlinien, getestet unter einer neuen Version.</td><td>Regressionsergebnisse und Freigabe, bevor Anliegen oder Kapazität hinzugefügt werden.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Korrelieren Sie für jede freigegebene Geschäftsaktion den eingehenden Anruf und jede spätere Gesprächsleitung mit dem maßgeblichen CRM-, Fall- oder Buchungsdatensatz. Speichern Sie bei unklarem Ergebnis einen ausstehenden Status und gleichen Sie ab, bevor Sie einen weiteren Schreibvorgang versuchen. Läuft zum Beispiel die Anfrage zur Änderung eines Termins in ein Timeout, kann die Antwort nach einer erfolgreichen Aktualisierung verloren gegangen sein. Das empfangende Team sollte den vorhandenen Datensatz finden und seinen Zustand bestimmen können. Nutzen Sie <a href="/de/ai-voice-agent-integrations">den Leitfaden zu Aktionen und Bestätigungen in Geschäftssystemen</a>, um eine festgeschriebene Aktion von einer gesprochenen Antwort zu unterscheiden.</p>
+<p>Nutzen Sie die Integrations-Checkliste, um <a href="/de/how-to-integrate-ai-voice-agents" data-phase2-link="true">die Kompatibilität mit Ihren Geschäftstools zu prüfen</a>, und zwar für jeden erforderlichen Vorgang.</p>
+</section>
+
+<section id="reversible-pilot">
+  <h2>Wie führen Sie ein umkehrbares Pilotprojekt durch?</h2>
+  <p>Tragen Sie die freigegebene Route und die Rollback-Option in einen Änderungsdatensatz ein. Halten Sie die genaue Route und Testnummer, die Schicht, das bisherige Ziel, das Zeitfenster, den benannten Verantwortlichen mit Zugriff und die Art fest, wie der Käufer die Wiederherstellung bestätigt. Halten Sie die ursprüngliche Route bereit, neue Anrufe anzunehmen. Vereinbaren Sie, was mit laufenden Anrufen sowie mit offenen Rückschreibvorgängen, Übergaben oder Rückrufaufgaben geschieht. Eine Route kann wiederhergestellt sein, während Arbeit aus dem Pilotprojekt noch aussteht.</p>
+  <ol class="b2bv-flow" aria-label="Ablauf eines umkehrbaren Callcenter-Deployments">
+    <li><strong>Eingehende Route beibehalten</strong><span>Der bestehende Carrier und die ACD wählen das begrenzte Pilotprojekt aus.</span></li>
+    <li><strong>Zurück zum Personal</strong><span>Das Pilotprojekt verifiziert das zulässige Ergebnis oder verbindet mit dem freigegebenen Pfad zu Personal.</span></li>
+    <li><strong>Bei Bedarf wiederherstellen</strong><span>Der Routing-Verantwortliche schaltet neue Anrufe zurück und gleicht aktive Fälle ab.</span></li>
+  </ol>
+  <div class="b2bv-table" role="region" aria-label="Abnahme- und Rollback-Tests für ein Callcenter-Pilotprojekt" tabindex="0">
+    <table>
+      <caption>Typische Anrufe und Fehlerfälle in einer freigegebenen Testumgebung durchspielen</caption>
+      <thead><tr><th scope="col">Szenario</th><th scope="col">Erforderliche Beobachtung</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Normaler Anruf auf der ausgewählten Route</th><td>Richtiger Zweig, nutzbares Audio und erwartetes gespeichertes oder gesprochenes Ergebnis.</td></tr>
+        <tr><th scope="row">Ziele mit Personal, ausgelastete und geschlossene Ziele</th><td>Tatsächliche Verbindung mit Personal oder korrektes alternatives Ergebnis, mit dokumentierter Verantwortung.</td></tr>
+        <tr><th scope="row">Verzögerung im vorgelagerten System oder unklarer Schreibvorgang</th><td>Wahrheitsgemäßer Status für die anrufende Person, ein ausstehender Datensatz und ein benannter Verantwortlicher für den Abgleich.</td></tr>
+        <tr><th scope="row">Lastspitze oder Kapazitätsgrenze</th><td>Die alternative Route verhält sich unter der getesteten Last wie vereinbart, einschließlich der Kapazität der menschlichen Warteschlange.</td></tr>
+        <tr><th scope="row">Pilotprojekt deaktiviert und ursprüngliche Route wiederhergestellt</th><td>Ein externer Testanruf erreicht das erwartete Ziel. Das Personal kann ausstehende Fälle finden und schließen.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>In einem fiktiven Rollout leitet der bestehende Carrier den normalen Tagesverkehr an die ACD des Centers. Die Schichtleitung aktiviert einen Überlaufzweig für einen Workflow zur Bestellstatusabfrage mit freigegebenem Lesezugriff. Fordert eine anrufende Person eine Ausnahme von einer Richtlinie, übergibt der Workflow sie mit dem Fallkontext an eine Warteschlange mit Personal. Fällt die Medienverbindung aus oder ist der Pfad zu Personal über die vereinbarte Bedingung hinaus nicht verfügbar, stellt der autorisierte Routing-Verantwortliche das bisherige Überlaufziel wieder her. Ein externer Anruf bestätigt die Route, und ein Verantwortlicher im Betrieb gleicht alle offen gebliebenen Datensätze ab.</p>
+  <h3>Die Wiederherstellungsübung im Änderungsdatensatz festhalten</h3>
+  <p>Halten Sie für eine fiktive Probe einen Stopp um 10:14 Uhr, die Auswahl des bisherigen Überlaufziels um 10:15 Uhr und einen erfolgreichen externen Testanruf, der um 10:17 Uhr das Personal erreicht, fest. Die gemessene Zeit bis zur verifizierten Wiederherstellung beträgt für diese Übung drei Minuten. Erfassen Sie getrennt davon zwei offene Fälle, die der Verantwortliche abgleicht, nachdem der Anrufpfad wieder steht. So erhält der Käufer eigene Nachweise für die Routing-Wiederherstellung, für ungeklärte Transaktionen und für den Zugriff, der nötig ist, um das Verfahren unter den vereinbarten Bedingungen zu wiederholen.</p>
+  <p>Testen Sie den externen Anruf aus einem Netz, das die vorgesehenen Anrufer nutzen. Prüfen Sie das Verhalten bei geöffnetem, geschlossenem und besonderem Zeitplan, sofern diese Zeitpläne zum Umfang gehören. Bestätigen Sie die relevanten Audio- und Tastenauswahlen auf der wiederhergestellten Route. Halten Sie fest, wer die endgültige Entscheidung trifft und ob ein alternativer Freigabeweg besteht, wenn der primäre Ansprechpartner abwesend ist.</p>
+  <p>Legen Sie Stoppbedingungen fest, bevor echte Anrufe eintreffen. Eine bestätigte unbefugte Offenlegung oder ein geschützter Schreibvorgang über den freigegebenen Umfang hinaus sollte die Route bis zur Prüfung anhalten. Scheitert die Ankunft an einem Ziel mit Personal, sollte der vereinbarte Fallback greifen und einen Alarm an die Verantwortlichen auslösen. Vereinbaren Sie, wie viele wiederholte Fehler oder wie viel Zeit auf schlechtem Niveau die Wiederherstellung für die ausgewählte Gruppe auslösen. Hängt die bisherige Route von derselben ausgefallenen Abhängigkeit ab, testen Sie eine freigegebene Route, die weiterhin Anrufe annehmen kann.</p>
+<p>Nutzen Sie den Evaluierungsleitfaden, um <a href="/de/best-ai-voice-agent-for-call-centers" data-phase2-link="true">Abnahmekriterien für ein Contact-Center-Pilotprojekt festzulegen</a>, und zwar für Routing, Arbeitslast und freigegebene Geschäftsergebnisse.</p>
+</section>
+
+<section id="scale">
+  <h2>Wie erweitern Sie, ohne die bestehenden Warteschlangen zu stören?</h2>
+  <p>Dimensionieren Sie den gesamten Anrufpfad. Beobachten Sie, wie viele aktive Sitzungen und überlappende Gesprächsleitungen der Carrier tatsächlich sieht, welches System jede Warteschlange besitzt und welche Geschäfts-APIs Limits haben. Testen Sie zur relevanten Tageszeit und mit der jeweiligen Routing-Konfiguration. Ein dokumentiertes Warteschlangenlimit beschreibt, wie viele Kontakte die Warteschlange aufnehmen kann. Es gehört neben die Prüfungen von aktiven Anrufen und Plattform-Kontingenten, Gerätekapazität und Verfügbarkeit des empfangenden Personals. Amazon Connect dokumentiert Warteschlangenkonfiguration und Service-Kontingente getrennt. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a></p>
+  <p>Erweitern Sie jeweils eine betriebliche Kohorte. Nutzen Sie das getestete Änderungsverfahren und machen Sie die Zunahme des Verkehrs ausdrücklich. Prüfen Sie, ob die bisherige Route bei einer Rücknahme die neue Kohorte aufnehmen kann. Vergleichen Sie verifizierte Ergebnisse, Erfolgsquote von Übergaben an Personal, p95-Verzögerung, Wiederholungen und Nacharbeit des Personals innerhalb desselben Umfangs. Verhält sich eine Region, ein Carrier oder ein Standort anders, qualifizieren Sie diesen Pfad unabhängig, bevor Sie dieselbe Rollout-Entscheidung übertragen. Prüfen Sie Monitoring und Bereitschaftsverantwortung für die abgedeckten Zeiten.</p>
+  <p>Führt etwa eine freigegebene Testroute 20 gleichzeitige eingehende Gesprächsleitungen und fügen sechs Rückfragen beim Personal vorübergehend je eine Leitung hinzu, beträgt die gemessene Überlappung 26 Leitungen auf einer Komponente, die beide Seiten sieht. Bestätigen Sie die Zählregeln jedes Anbieters und wie lange diese Überlappungen in der Spitzenzeit andauern. Prüfen Sie Kontingent und Fehlerverhalten für jede Schicht. Eine konfigurierbare Warteschlange kann sich füllen, obwohl Carrier und KI-Plattform noch freie Kapazität haben, und eine offene Warteschlange des Personals kann unbrauchbar werden, wenn die für den Test vereinbarte Besetzung fehlt.</p>
+  <p>Benennen Sie im Runbook einen Monitoring-Verantwortlichen und ein Nachverfolgungsintervall. Berücksichtigen Sie Signale für erreichbare Ziele, Wartezeit der Kunden, Audio auf Anruferseite, geschützte Aktionen, fehlgeschlagene oder noch ausstehende Schreibvorgänge und Alarme außerhalb der Geschäftszeiten. Testen Sie den Benachrichtigungsweg und wer die freigegebenen Nachweise sieht. Klären Sie anhand der Support-Vereinbarung, wer die Anrufroute wiederherstellen und wer offene Arbeit abschließen kann, einschließlich Fällen, die in einem Änderungsfenster beginnen.</p>
+  <p>Definieren Sie für jede Kohorte das minimale Launch-Protokoll. Eine Schichtleitung sollte die ausgewählte Route, ihren aktuellen Verantwortlichen, die letzte erfolgreiche externe Verifizierung und die nach einem Rollback offenen Fälle finden können. Wechselt das Center den Carrier, die Zeiten des Empfangs oder die Berechtigungen für eine Geschäftsaktion, behandeln Sie diese Änderungen als neue Testbedingungen. Bewahren Sie eine freigegebene Version der Route und eine Aufzeichnung des darüber geführten Verkehrs auf, damit ein späterer Prüfer feststellen kann, welche Tests für die neue Konfiguration gelten.</p>
+  <h3>Wann wird eine bestimmte Infrastrukturänderung notwendig?</h3>
+  <p>Einem Carrier-Konto, einer älteren PBX oder einem Abonnement kann eine erforderliche unterstützte Route, ein gesichertes Mediensegment, ein bestimmtes Übergabeverhalten, eine Rückführung in die Warteschlange oder nützliche Ereignisdaten fehlen. Benennen Sie die fehlende Fähigkeit und den Umfang, den sie betrifft. Unter Umständen kann ein Käufer ein unterstütztes Gateway, einen Trunk, eine Lizenz oder einen Integrationsadapter ergänzen und dabei die aktuelle Hauptnummer und die Verantwortung für die Warteschlangen behalten. Bleibt auch dann ein unsicherer oder nicht beobachtbarer Pfad, begrenzen Sie den Workflow weiter, bis die Verantwortlichen eine unterstützte Topologie verifizieren können.</p>
+  <p>B2B Voice kann eine individuelle Implementierung rund um eine freigegebene Route und eine geschäftsspezifische Aufgabe besprechen. Bringen Sie eine anonymisierte Pfadübersicht, den aktuellen Fallback, den Anwendungsverantwortlichen und die Anforderung mit, die das Pilotprojekt belegen soll. Klären Sie für jedes vorgeschlagene Deployment die Kompatibilität und die genauen betrieblichen Zuständigkeiten im abgegrenzten Design. <a href="/de/what-is-b2b-voice">B2B Voice Unternehmen und Implementierungsansatz</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Können wir unser bestehendes Contact Center und unsere Hauptrufnummer behalten?</h3><p>Viele Center können mit einer unterstützten Rufweiterleitung, einem Warteschlangenzweig oder einer SIP-Route beginnen, während der bestehende Carrier die Hauptnummer hält. Klären Sie mit den tatsächlichen Anbietern die Kontrolle über das Routing, die freigegebene Anruferkennung, Kosten, Kapazität und Wiederherstellung.</p></div>
+<div class="b2bv-faq-item"><h3>Was sollten Carrier und PBX für ein Sprach-KI-Pilotprojekt prüfen?</h3><p>Prüfen Sie die Unterstützung von Trunk und Ziel, Signalisierung, Zwei-Wege-Medien, Tastenereignisse, Aufzeichnungsgrenzen und die Kapazität der Gesprächsleitungen. Testen Sie die tatsächliche Übergabe an Personal und eine freigegebene Rückroute.</p></div>
+<div class="b2bv-faq-item"><h3>Belegt SIP REFER, dass die anrufende Person einen Agenten erreicht hat?</h3><p>SIP REFER fordert eine Übergabeaktion an. Verifizieren Sie die endgültige Verbindung mit Personal und das geschäftliche Ergebnis auf dem tatsächlichen Anrufpfad, einschließlich dessen, was bei geschlossener oder ausgelasteter Warteschlange geschieht.</p></div>
+<div class="b2bv-faq-item"><h3>Was ist die risikoärmste erste Route?</h3><p>Wählen Sie eine beaufsichtigte Testleitung oder einen begrenzten IVR-, Überlauf- oder Außerhalb-der-Geschäftszeiten-Zweig, der den vorgesehenen Einsatz abbildet. Der Verantwortliche muss das Ergebnis bestätigen und das bisherige Ziel wiederherstellen können.</p></div>
+<div class="b2bv-faq-item"><h3>Wie nehmen wir das Deployment des Sprachagenten zurück?</h3><p>Lassen Sie den autorisierten Routing-Verantwortlichen den ausgewählten Verkehr auf den getesteten bisherigen oder alternativen Pfad umschalten. Bestätigen Sie die Route mit einem externen Anruf und gleichen Sie offene Vorgänge und bereits laufende Anrufe ab.</p></div>
+<div class="b2bv-faq-item"><h3>Wann sollten wir die bestehende Infrastruktur ändern?</h3><p>Eine bestimmte Änderung kann nötig sein, wenn dem aktuellen Carrier, der Telefonanlage oder der Lizenz eine freigegebene Route, gesicherte Medien, eine zuverlässige Übergabe, Transparenz oder Wiederherstellung fehlt. Benennen Sie die fehlende Fähigkeit und verifizieren Sie die kleinste Änderung, die sie abdeckt.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Eine bestehende Telefonroute prüfen</h2>
+        <p>Bringen Sie eine anonymisierte Route, den aktuellen Fallback und den Workflow mit, den das Pilotprojekt belegen soll. Besprechen Sie in einer B2B-Voice-Demo Voraussetzungen und Rollback.</p>
+        <a href="/demo">Demo zur Deployment-Prüfung anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc3261.html">RFC 3261 Session Initiation Protocol (SIP)</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4733.html">RFC 4733 RTP payload for DTMF and telephony events</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc3515.html">RFC 3515 SIP REFER method</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://www.twilio.com/docs/sip-trunking">Twilio Elastic SIP Trunking documentation</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/de/what-is-b2b-voice">B2B Voice Unternehmen und Implementierungsansatz</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>Sprach-KI-Deployment</li>
+<li>SIP und PBX</li>
+<li>Anrufrouting</li>
+<li>Phasenweiser Rollout</li>
+<li>Rollback</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

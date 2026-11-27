@@ -1,0 +1,307 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+.b2bv .b2bv-results { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Ir al artículo</a>
+  <header>
+    
+    <p class="b2bv-kicker">Soluciones por sector</p>
+    <h1 id="b2bv-title">Agentes de voz con IA para servicios para el hogar: HVAC, plomería, electricidad y empresas de servicios</h1>
+    <p class="b2bv-byline">Por <a rel="author" href="/es/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Para un contratista, un flujo telefónico útil puede recibir una solicitud de servicio mientras el despachador está ocupado, verificar la propiedad y darle a la persona que llama un siguiente paso preciso. El trabajo debe llegar a la rama correcta con la información suficiente para que alguien pueda actuar.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Respuesta rápida</h2>
+        <p>Las empresas de servicios para el hogar pueden usar agentes de voz con IA para registrar solicitudes, verificar áreas de servicio, enrutar llamadas y reservar presupuestos permitidos cuando el sistema de programación verifica el horario. La asignación de un técnico requiere su propio registro confirmado. Ofrezca a las llamadas urgentes y relacionadas con la seguridad una ruta aprobada de personal o de emergencia.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Tabla de contenido">
+      <p>En esta guía</p>
+      <ol>
+<li><a href="#first-workflows">Elegir un primer tipo de llamada</a></li>
+<li><a href="#eligibility">Verificar elegibilidad y capacidad</a></li>
+<li><a href="#dispatch">Verificar el estado del despacho</a></li>
+<li><a href="#worked-estimate">Seguir una llamada de presupuesto</a></li>
+<li><a href="#after-hours">Diseñar la cobertura fuera de horario</a></li>
+<li><a href="#pilot">Probar la primera ruta</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+<li>Defina las reglas de territorio, oficio, tipo de visita y capacidad disponible antes de ofrecer un horario.</li>
+<li>Mantenga diferenciados la solicitud recibida, la visita reservada, el despacho y la finalización del trabajo.</li>
+<li>Pruebe la recepción de solicitudes fuera de horario y la ruta de emergencia antes de enrutar llamadas reales.</li>
+        </ul>
+      </section>
+<section id="first-workflows">
+  <h2>¿Qué llamadas de servicios para el hogar son buenos primeros flujos de trabajo?</h2>
+  <p>Comience con una sola sucursal y un solo tipo de llamada que el contratista atienda con frecuencia. Una solicitud de presupuesto no urgente es un buen punto de partida cuando la empresa puede definir el área cubierta, el tipo de trabajo y el equipo que la recibe. Compare las notas de la llamada con los registros finales de reserva y despacho. El primer piloto puede usar la recepción de solicitudes mientras se prueban las reglas de aprobación del sistema de programación y la ruta telefónica.</p>
+  <p>B2B Voice diseña flujos de trabajo telefónicos personalizados en torno al territorio de servicio, las reglas de presupuesto y las transferencias al despacho de un contratista. Comience con una sola sucursal y muestre cómo enruta hoy una solicitud elegible. Así, el equipo de implementación puede probar la transferencia a su despachador y verificar el registro del presupuesto o del servicio.</p>
+<p>Cada oficio pide información distinta. Un presupuesto de reemplazo de HVAC puede requerir el código postal de la propiedad y saber si corresponde una visita de presupuesto en el sitio. Una solicitud de plomería para un trabajo de rutina puede requerir la dirección del servicio, la unidad y los datos de contacto preferidos. Un presupuesto eléctrico puede requerir que la persona que llama elija una categoría aprobada por la empresa, como una instalación o una inspección programada. Mantenga la descripción en un nivel administrativo y deje el diagnóstico técnico al profesional del oficio correspondiente.</p>
+  <div class="b2bv-table" role="region" aria-label="Llamadas de servicios para el hogar y personal receptor" tabindex="0">
+    <table>
+      <caption>Ajuste las preguntas de admisión y la transferencia al trabajo que vende el contratista</caption>
+      <thead><tr><th scope="col">Tipo de empresa o de llamada</th><th scope="col">Primera acción razonable</th><th scope="col">Decisión a cargo del personal</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Presupuesto de HVAC</th><td>Identificar el sitio, el territorio y la categoría de presupuesto aprobada. Verificar la disponibilidad del estimador si está autorizado.</td><td>Selección del sistema, precio del trabajo, alcance no estándar y cualquier aprobación especial.</td></tr>
+        <tr><th scope="row">Solicitud de servicio de plomería</th><td>Registrar el tipo de trabajo, la dirección de la propiedad, el número de devolución de llamada de la persona y una breve descripción.</td><td>Prioridad para el trabajo sensible al tiempo, asignación e instrucciones para el técnico.</td></tr>
+        <tr><th scope="row">Cita eléctrica</th><td>Recopilar la propiedad, el tipo de solicitud de rutina y una ventana de programación adecuada.</td><td>Evaluación de seguridad eléctrica, preguntas sobre permisos y autorización del trabajo.</td></tr>
+        <tr><th scope="row">Techado, limpieza u otro servicio en campo</th><td>Confirmar la elegibilidad del sitio y si la persona que llama desea un presupuesto o un servicio. Registrar las restricciones de acceso aprobadas.</td><td>Inspección del techo o del sitio, necesidades de equipo, excepciones de precio y compromisos de servicio recurrente.</td></tr>
+        <tr><th scope="row">Reserva existente o solicitud de garantía</th><td>Vincular a una persona autorizada con una solicitud conocida y enrutarla a la sucursal o al responsable del caso.</td><td>Determinación de la garantía, cambios de tarifa, reasignación y divulgación de registros sensibles.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Haga que el responsable del servicio distinga una cita de rutina de un trabajo sensible al tiempo que podría necesitar al equipo de guardia. Cree un proceso aparte para los reportes de posible peligro inmediato. Acuerde la ruta segura antes de la implementación y pruébela con una llamada sintética.</p>
+</section>
+
+<section id="eligibility">
+  <h2>¿Cuándo puede el agente ofrecer un horario?</h2>
+  <p>Una cita confirmada requiere una dirección de servicio o un territorio verificado, una categoría de trabajo elegible y capacidad vigente en el sistema que realmente administra la programación. Use el mapa del despachador o las reglas autorizadas de la unidad de negocio. Pregunte el código postal al comienzo y recopile los campos de dirección aprobados cuando sea necesario. Un código postal que abarca varios territorios puede servir como filtro inicial, y la decisión final queda sujeta a la dirección completa o al despachador. Confirme la localidad si la dirección dictada por la persona que llama podría corresponder a varios lugares.</p>
+  <p>Después, verifique el tipo y la duración de la visita. Un presupuesto de dos horas asignado a un estimador adecuado no es lo mismo que una reparación que requiere un técnico con licencia, equipo especial o tiempo de traslado. Separe la política de reservas para presupuestos nuevos, mantenimiento, seguimiento de trabajos existentes y trabajos de garantía. Si la propiedad requiere un código de acceso o un inquilino debe dar su autorización, recopile solo la información aprobada que se necesita para enrutar la solicitud. Deje los casos especiales y las instrucciones para el técnico en manos del despacho.</p>
+  <p>La programación de servicios en campo puede depender de algo más que un calendario compartido. Por ejemplo, Microsoft Dynamics 365 Field Service documenta filtros de programación que incluyen la ubicación del trabajo, el territorio, los tipos de recursos y sus características. El contratista debe confirmar esas mismas restricciones en su propio sistema y entorno (tenant). Un horario que muestra un calendario podría incumplir los requisitos de recursos, sucursal o zona horaria del trabajo. <a href="https://learn.microsoft.com/en-us/dynamics365/field-service/schedule-assistant">Microsoft Field Service scheduling filters</a></p>
+  <p>Mantenga una ruta para excepciones de área de servicio y capacidad. Si la dirección está fuera del área aprobada, dé a la persona que llama la respuesta que la empresa autorice o pida al personal que revise una dirección limítrofe. Si la agenda está llena, ofrezca otro horario permitido, una lista de espera administrada o una devolución de llamada del despachador. Indique que la solicitud está pendiente hasta que el sistema de referencia registre una reserva válida.</p>
+</section>
+
+<section id="dispatch">
+  <h2>¿Cómo llega una llamada al despacho?</h2>
+  <p>Anote qué evidencia respalda cada estado antes de redactar los guiones de confirmación. Una entrada en el CRM puede demostrar que se registró la solicitud de la persona que llama. El sistema de servicio en campo puede demostrar que se reservó una visita o se asignó un técnico, si el registro correspondiente lo confirma. Es posible que un despachador aún deba reconocer una excepción, verificar el servicio o confirmar una ventana de tiempo antes de que la empresa pueda asumir un compromiso.</p>
+  <div class="b2bv-table" role="region" aria-label="Hitos de la solicitud, la cita y el despacho" tabindex="0">
+    <table>
+      <caption>Haga coincidir la confirmación a la persona que llama con el estado guardado</caption>
+      <thead><tr><th scope="col">Estado</th><th scope="col">Evidencia</th><th scope="col">Redacción segura para este flujo de trabajo</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Solicitud recibida</th><td>ID de solicitud guardado con una sucursal o lista de trabajo responsable.</td><td>“Registré su solicitud para que la revise el equipo de despacho.”</td></tr>
+        <tr><th scope="row">Visita reservada</th><td>ID de reserva del sistema de referencia, fecha y ventana confirmadas, ubicación y categoría correcta.</td><td>“Su cita de presupuesto está reservada para la ventana de tiempo confirmada.”</td></tr>
+        <tr><th scope="row">Técnico asignado</th><td>El sistema de servicio en campo confirma la asignación de un recurso aprobado.</td><td>“El despacho ha asignado a un técnico.” Dé solo una hora estimada de llegada autorizada y vigente, si está disponible.</td></tr>
+        <tr><th scope="row">Trabajo completado</th><td>Registro validado de finalización en el sistema de servicio en campo, más evidencia aparte de la factura o del pago cuando corresponda.</td><td>El personal usa el registro real de finalización o de facturación para el seguimiento.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Microsoft documenta los estados del sistema de las órdenes de trabajo, los subestados de las órdenes de trabajo y los estados de las reservas como partes del ciclo de vida de un servicio en campo. Para su propia integración, pregunte qué registros identifican el despacho, la llegada y la finalización. Una notificación en cola demuestra que se envió un mensaje para su revisión. La lista de trabajo o el registro de despacho deben mostrar quién asumió la responsabilidad y qué ocurrió después. Consulte <a href="/es/ai-voice-agent-integrations">cómo un flujo de voz verifica un registro guardado</a>. <a href="https://learn.microsoft.com/en-us/dynamics365/field-service/work-order-status-booking-status">Microsoft Field Service work order and booking statuses</a></p>
+  <p>Conserve un ID de solicitud entre llamadas repetidas. Una familia podría llamar dos veces tras sufrir una desconexión telefónica. Si la propiedad y el motivo coinciden con un caso abierto según sus reglas, localice ese caso para el personal en lugar de crear una segunda visita. Si una llamada termina mientras la aplicación espera la escritura de una reserva, asígnele un resultado pendiente hasta que el sistema pueda conciliar el resultado. Mantenga separados las aperturas, los cambios de cita y el estado del despacho para que un evento telefónico duplicado no pueda enviar a dos técnicos.</p>
+<p>Use la guía de herramientas de negocio para <a href="/es/how-to-integrate-ai-voice-agents" data-phase2-link="true">evaluar el esfuerzo de integración del servicio en campo</a> según la acción de escritura y los permisos del tenant.</p>
+</section>
+
+<section id="worked-estimate">
+  <h2>¿Cómo es una llamada de presupuesto completada?</h2>
+  <p>Piense en una empresa local ficticia de HVAC con equipos de servicio y de reemplazo separados. Una persona que llama solicita un presupuesto de rutina para reemplazar un calefactor. El flujo de trabajo verifica un código postal y una dirección dentro del área de cobertura, confirma la ubicación y pide un número de devolución de llamada. Comprueba la categoría de presupuesto permitida y busca las ventanas disponibles de estimadores elegibles. La regla asigna al estimador un único calendario aprobado y deja en manos del personal las decisiones sobre reparaciones o garantías.</p>
+  <ol class="b2bv-flow" aria-label="Validar el servicio, reservar la visita y mostrar la evidencia del despacho">
+    <li><strong>Validar el servicio</strong><span>Haga coincidir la propiedad y el tipo de presupuesto con las reglas de la sucursal.</span></li>
+    <li><strong>Verificar la reserva</strong><span>Confirme una ventana permitida y compruebe su ID y su ubicación.</span></li>
+    <li><strong>Notificar a la sucursal</strong><span>Muestre la solicitud, la reserva y cualquier seguimiento en la lista de trabajo del personal.</span></li>
+  </ol>
+  <p>Si se ofrece el miércoles por la tarde y el sistema de programación lo confirma, la persona que llama recibe la fecha y la ventana aprobada. La integración guarda o vincula el registro del cliente y publica el ID de la reserva donde la sucursal pueda encontrarlo. Si el horario ofrecido se ocupa antes de confirmarse, pruebe con otra ventana elegible. Si el resultado de la escritura es incierto, suspenda la confirmación y cree un único elemento de conciliación con responsable. Si la solicitud está fuera del área de servicio, siga la respuesta aprobada por la sucursal y evite reservar una visita.</p>
+  <p>Pida al despachador que pruebe el mismo escenario con un cliente existente, una dirección nueva y una agenda llena. Revise el registro principal, la persona o la cola notificada, las palabras efectivamente dichas y lo que aparece en cualquier nota vinculada del CRM. Una prueba puede establecer cómo recibe el trabajo esta sucursal; otras sucursales pueden necesitar horarios, mapas de servicio y reglas de trabajo distintos.</p>
+</section>
+
+<section id="after-hours">
+  <h2>¿Qué cambia fuera de horario o durante un pico de demanda?</h2>
+  <h3>Haga de la seguridad una ruta de llamada distinta</h3>
+  <p>Cuando una persona que llama reporta un posible peligro inmediato, como una sospecha de fuga de gas, detenga la recepción ordinaria de ventas o de programación y siga la ruta de emergencia aprobada localmente. La PHMSA indica a quienes huelen gas que se trasladen a un lugar seguro y llamen al 911. Use un lenguaje aprobado y un destino de emergencia claro. Mantenga la resolución de problemas y el diagnóstico técnico fuera del alcance del agente telefónico. Las políticas de escalamiento y el personal de guardia deben revisarse antes de habilitar cualquier cobertura fuera de horario en vivo. <a href="https://www.phmsa.dot.gov/incident-reporting">PHMSA incident reporting and pipeline emergency guidance</a></p>
+  <p>Distinga una solicitud de servicio urgente de un reporte de peligro inmediato. Este último debe llegar al mensaje de emergencia aprobado sin esperar a que se respondan las preguntas de rutina. Para una solicitud de servicio que no es una emergencia pero que el contratista considera urgente, verifique quién está disponible y cómo asume la responsabilidad. Cuando la ruta de guardia no puede aceptar una llamada, siga el procedimiento aprobado para transferencias fallidas. Dé a la persona que llama un siguiente paso veraz y registre el resultado. La <a href="/es/ai-voice-agent-reliability">guía de alternativas de respaldo (fallback)</a> describe dónde pueden ocurrir fallas de transferencia y de cola.</p>
+  <h3>Ajuste la demanda entrante al personal y a las cuadrillas</h3>
+  <p>La BLS señala que los horarios de los técnicos de HVAC pueden incluir trabajo de guardia, en horarios irregulares o con horas extra durante las temporadas pico de calefacción y refrigeración. Use sus propios patrones de llegada de llamadas y los horarios de sus cuadrillas para diseñar el desborde. Una ola de calor puede generar una avalancha de llamadas al mismo tiempo que la cuadrilla ya está completamente reservada. Pruebe el tráfico entrante simultáneo, el comportamiento de recuperación del sistema de reservas y la cantidad de excepciones que el despachador puede manejar. <a href="https://www.bls.gov/ooh/Installation-Maintenance-and-Repair/Heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm">BLS Occupational Outlook Handbook for HVAC technicians</a></p>
+  <p>Antes del cierre, defina qué llamadas reciben ayuda en vivo de inmediato y cuáles pasan a la cola del primer turno. Asigne a esa lista de trabajo un responsable designado, una ventana de respuesta aprobada y una forma de ordenar los elementos que llevan más tiempo esperando. Por la mañana, distinga entre solicitudes de servicio, visitas confirmadas, transferencias fallidas y duplicados. Sin esa distinción, el equipo puede dedicar más tiempo a depurar la cola que a dar seguimiento a las personas que llamaron.</p>
+  <p>Mida lo que la empresa puede cambiar. Entre las medidas útiles para el piloto están el tiempo hasta el acuse de recibo del despachador, la proporción de solicitudes elegibles guardadas con la sucursal correcta, los horarios confirmados con un registro válido, las alternativas de respaldo (fallback) con un responsable localizable y el contacto repetido por el mismo trabajo. Evalúe el piloto junto con la capacidad de los técnicos. Una llamada atendida puede mejorar el acceso incluso cuando la capacidad impide una cita el mismo día.</p>
+<p>Use la guía de llamadas perdidas para <a href="/es/cost-of-missed-business-calls" data-phase2-link="true">estimar el costo de las llamadas calificadas perdidas</a> frente a las devoluciones de llamada que ya realiza.</p>
+<p>Si su despachador alterna entre asignaciones en campo y llamadas, <a href="/es/ai-receptionist-vs-human-receptionist" data-phase2-link="true">planifique una cobertura telefónica híbrida</a> con un respaldo designado.</p>
+</section>
+
+<section id="pilot">
+  <h2>¿Cómo debe un contratista probar el primer piloto?</h2>
+  <p>Comience con una línea de prueba supervisada, una ruta de desborde u otra vía limitada acordada. Entregue al agente los campos aprobados, el mapa de cobertura, las reglas de programación vigentes y las acciones permitidas para una sola sucursal. Acuerde quién es responsable de la ruta telefónica, la agenda de servicio y la cola de despacho. Documente qué debe escuchar la persona que llama cuando no hay una reserva confirmada ni una asignación de técnico.</p>
+  <div class="b2bv-table" role="region" aria-label="Pruebas de aceptación para la recepción de llamadas de servicios para el hogar" tabindex="0">
+    <table>
+      <caption>Llamadas de aceptación que se deben realizar antes de ampliar la ruta</caption>
+      <thead><tr><th scope="col">Escenario sintético</th><th scope="col">Resultado requerido</th><th scope="col">Evidencia a inspeccionar</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Presupuesto elegible y ventana disponible</th><td>Una reserva correcta o una solicitud descrita con precisión.</td><td>Disposición de la llamada, ID de registro confirmado y sucursal receptora.</td></tr>
+        <tr><th scope="row">Agenda llena o resultado de reserva desconocido</th><td>Ofrecer una alternativa autorizada o dejar un único elemento pendiente.</td><td>Sin citas duplicadas y con un nombre o rol responsable de la recuperación.</td></tr>
+        <tr><th scope="row">Territorio u oficio incorrecto</th><td>Aplicar la regla de servicio publicada o enrutar al responsable aprobado.</td><td>Política aplicada, mensaje a la persona que llama y disposición del lead (cliente potencial).</td></tr>
+        <tr><th scope="row">Despachador cerrado u ocupado</th><td>Usar la alternativa de respaldo (fallback) acordada sin dar a entender una llegada confirmada.</td><td>Registro en la cola, expectativa de la persona que llama y recepción verificada cuando haya personal disponible.</td></tr>
+        <tr><th scope="row">Peligro inmediato reportado</th><td>Activar sin demora la ruta de emergencia aprobada.</td><td>Revisar la llamada con el responsable de seguridad y confirmar que se detuvo la recepción ordinaria.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Use registros de prueba y agregue una llamada duplicada, una respuesta tardía y una transferencia desconectada. Confirme cómo puede el personal restablecer la ruta original si el piloto debe detenerse. La guía de <a href="/es/how-to-test-an-ai-voice-agent">pruebas de aceptación de agentes de voz</a> puede ayudar a organizar la prueba y la evidencia.</p>
+  <p>B2B Voice diseña flujos de trabajo telefónicos personalizados con IA para la recepción de solicitudes y el seguimiento en las empresas. Lleve a una demostración un escenario aprobado de presupuesto o de solicitud de servicio, junto con el nombre del sistema que guarda el registro y de la sucursal que lo recibiría. Use el escenario para revisar las reglas del área de servicio, el estado que la persona que llama puede escuchar y la excepción que su despachador debe asumir. <a href="/es/what-is-b2b-voice">Empresa B2B Voice y enfoque de implementación</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+<div class="b2bv-faq-item"><h3>¿Puede una sola recepcionista con IA atender llamadas de HVAC, plomería y electricidad?</h3><p>Una línea compartida de la empresa puede enrutar según el oficio, el territorio y el tipo de trabajo aprobados, siempre que la empresa defina las reglas y los responsables receptores. Pruebe cada flujo de trabajo y la ruta de seguridad en la ruta telefónica real.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede un agente de voz con IA reservar un presupuesto de servicios para el hogar?</h3><p>Solo puede confirmar un presupuesto cuando la empresa autoriza la reserva y el sistema de referencia confirma el horario elegible. De lo contrario, puede registrar una solicitud e indicar que la revisión está pendiente.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede despachar a un técnico automáticamente?</h3><p>Depende de los permisos del contratista y de su sistema de programación. Confirme una asignación solo después de que el flujo de trabajo autorizado vea un registro de despacho del sistema de referencia. Una solicitud recibida o un presupuesto reservado pueden ocurrir antes de la asignación.</p></div>
+<div class="b2bv-faq-item"><h3>¿Qué debe decir el agente cuando la agenda está llena?</h3><p>Ofrezca una alternativa aprobada o coloque la solicitud en una lista de trabajo con un responsable designado. Explique el siguiente paso y establezca una expectativa de devolución de llamada que el equipo pueda cumplir.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cómo debe manejar el reporte de una posible fuga de gas?</h3><p>Use de inmediato la ruta de emergencia aprobada del contratista. La PHMSA aconseja a quienes huelen gas que se trasladen a un lugar seguro y llamen al 911. Finalice la recepción ordinaria y use el escalamiento aprobado.</p></div>
+<div class="b2bv-faq-item"><h3>¿Qué debo pedir en una demostración de servicios para el hogar?</h3><p>Proporcione una solicitud de presupuesto ficticia, el territorio real y las reglas de trabajo, y los campos que necesita el despacho. Pida ver la solicitud o la reserva guardada y luego repita la llamada con la agenda llena y el despachador no disponible.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Siga una solicitud de presupuesto hasta el despacho</h2>
+        <p>Lleve una llamada ficticia, sus reglas de área de servicio y el registro que debería recibir un despachador. B2B Voice puede usar el escenario para conversar sobre un flujo de trabajo acotado de recepción o de reservas.</p>
+        <a href="/demo">Solicitar una demostración de servicios para el hogar</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Fuentes</h2>
+        <ul>
+<li><a href="https://learn.microsoft.com/en-us/dynamics365/field-service/schedule-assistant">Microsoft Field Service scheduling filters</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/dynamics365/field-service/work-order-status-booking-status">Microsoft Field Service work order and booking statuses</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://www.phmsa.dot.gov/incident-reporting">PHMSA incident reporting and pipeline emergency guidance</a> <span class="b2bv-source-note">(Administración de Seguridad de Ductos y Materiales Peligrosos de EE. UU.)</span></li>
+<li><a href="https://www.bls.gov/ooh/Installation-Maintenance-and-Repair/Heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm">BLS Occupational Outlook Handbook for HVAC technicians</a> <span class="b2bv-source-note">(Oficina de Estadísticas Laborales de EE. UU.)</span></li>
+<li><a href="/es/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Temas</h2>
+        <ul class="b2bv-tags">
+<li>Servicios para el hogar</li>
+<li>Reserva de presupuestos</li>
+<li>Flujos de trabajo de despacho</li>
+<li>Recepción de solicitudes fuera de horario</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

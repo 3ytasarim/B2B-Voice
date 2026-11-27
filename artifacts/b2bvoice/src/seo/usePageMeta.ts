@@ -36,5 +36,16 @@ export function usePageMeta(page: PageMeta) {
     setTag('meta[name="twitter:title"]', meta("name", "twitter:title"), "content", page.title);
     setTag('meta[name="twitter:description"]', meta("name", "twitter:description"), "content", page.description);
     setTag('meta[name="twitter:image"]', meta("name", "twitter:image"), "content", page.ogImage);
+
+    // language of the document + hreflang alternates (translated blog)
+    document.documentElement.lang = page.lang ?? "en";
+    document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+    for (const alt of page.alternates ?? []) {
+      const link = document.createElement("link");
+      link.rel = "alternate";
+      link.setAttribute("hreflang", alt.hreflang);
+      link.href = alt.href;
+      document.head.appendChild(link);
+    }
   }, [page]);
 }

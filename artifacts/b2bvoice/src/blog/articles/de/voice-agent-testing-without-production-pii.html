@@ -1,0 +1,390 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">So testen Sie KI-Sprachagenten, ohne personenbezogene Produktionsdaten offenzulegen</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Ein KI-Sprachagent lässt sich testen, ohne personenbezogene Daten (PII) aus der Produktion offenzulegen: Man baut die Szenarien aus Geschäftsregeln auf, verwendet neu erfundene Identitäten und Werte und führt die Tests in einer isolierten Umgebung aus. Entscheidend ist, die Entscheidung zu erhalten, die der Agent treffen muss. Bei einem Test der Terminplanung kann das heißen, eine berechtigte Anfrage zu erkennen und einen bestätigten Termin zu speichern. Der Name einer echten anrufenden Person, die Originalaufnahme oder die Kontohistorie helfen beim Test dieser Regel selten weiter.</p>
+<p>Wenn B2B Voice einen individuellen Workflow konzipiert, kann das Unternehmen benennen, welche Felder die Mitarbeitenden zum Abschluss des Anrufs benötigen und welche Systeme sie erhalten dürfen. Diese Bestandsaufnahme zeigt dem Qualitätssicherungsteam außerdem, was sich durch fiktive Werte ersetzen lässt und welche Ausgaben genauer geprüft werden müssen.</p>
+<h2 id="key-takeaways">Wichtigste Erkenntnisse</h2>
+<ul>
+<li>Verwenden Sie unabhängig erfundene Anrufende und Ergebnisse überall dort, wo sie die Testfrage beantworten.</li>
+<li>Prüfen Sie Aufnahmen, Transkripte, Tool-Argumente, Logs und Exporte als jeweils eigene Orte, an denen sensible Daten auftauchen können.</li>
+<li>Geben Sie Testkonten und Integrationen eigene Berechtigungen und eigene Ziele.</li>
+<li>Benennen Sie eine verantwortliche Person, die Zugriff, Aufbewahrung, Löschung und jede Verwendung von aus der Produktion abgeleitetem Material freigibt.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#can-synthetic-voice-agent-tests-avoid-exposing-production-pii">Können synthetische Sprachagenten-Tests verhindern, dass personenbezogene Produktionsdaten offengelegt werden?</a></li>
+<li><a href="#choose-a-treatment-that-fits-the-data">Die zu den Daten passende Behandlung wählen</a></li>
+<li><a href="#rebuild-test-cases-from-business-rules">Testfälle aus Geschäftsregeln neu aufbauen</a></li>
+<li><a href="#b2b-voice-privacy-preserving-voice-agent-evaluation-framework">B2B Voice Framework zur datenschutzfreundlichen Evaluierung von Sprachagenten</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="can-synthetic-voice-agent-tests-avoid-exposing-production-pii">Können synthetische Sprachagenten-Tests verhindern, dass personenbezogene Produktionsdaten offengelegt werden?</h2>
+<p>Ja, wenn Identitäten, Dialoge, Spracheingaben und vorbelegte Datensätze unabhängig von Produktionsdaten echter Kundschaft sind und der Test keine Live-Systeme erreichen kann. Ein Team für die Terminplanung kann eine anrufende Person erfinden, die einen Termin verschieben möchte, und einen Fake-Kalender mit denselben Buchungsregeln wie im Unternehmen aufsetzen. Mit dieser Testumgebung lassen sich Identitätsprüfungen, ein nicht verfügbarer Termin und eine Bestätigung durchspielen, ohne einen Kundendatensatz zu verarbeiten.</p>
+<p>Synthetische Daten sind nicht automatisch anonym. Ein generiertes Beispiel kann identifizierende Details übernehmen, wenn ein echtes Transkript in den Prompt kopiert wird, ein Generator mit privatem Material trainiert wurde oder die echte Stimme einer anrufenden Person als Grundlage für synthetische Sprache dient. Ein Test kann auch nach der Generierung zu einer Offenlegung führen, wenn eine Integration einen echten Datensatz abruft oder Ausgaben an ein Live-System weiterleitet. Die De-Identifikations-Leitlinien des NIST behandeln Offenlegungsrisiko, synthetische Daten und Governance als zusammenhängende Entscheidungen. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<h3 id="inventory-where-the-identity-can-appear">Erfassen, wo die Identität auftauchen kann</h3>
+<p>PII kann ein direktes Identifikationsmerkmal sein oder Informationen umfassen, die erst in Verbindung mit anderen Informationen identifizierend werden. In einem erfundenen Support-Szenario können ein auffälliges Problem, ein genannter Ort und der Zeitpunkt eines bestimmten Besuchs die Identität eingrenzen, selbst wenn das Transkript den Namen der Person auslässt. Legen Sie fest, welche Informationen nötig sind, um die Richtlinie zu prüfen, bevor Sie die Werte der Testdaten wählen. <a class="b2bv3-ref" href="#source-pii">NIST SP 800-122</a> <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<p>Hören Sie sich Aufnahmen an, statt nur Text zu lesen. Audio kann eine erkennbare sprechende Person, eine weitere Person im Raum oder Hintergrunddurchsagen festhalten, die das Transkript nicht erfasst hat. Eine Aufnahme und ein biometrischer Stimmabdruck sind unterschiedliche Artefakte. Ein Stimmabdruck leitet identifizierende Merkmale zur Wiedererkennung oder Verifizierung ab. Audio mit gewöhnlicher Unterhaltung kann dennoch durch den gesprochenen Inhalt oder eine erkennbare Stimme die Identität verraten. Wenn ein Workflow tatsächlich Stimmbiometrie nutzt, klären Sie Zweck, Einwilligung, Verarbeitungsziele und Prüfanforderungen, bevor solches Material in Tests einfließt.</p>
+<p>Eine einzelne Interaktion kann außerdem einen Anrufdatensatz, ein Transkript, Modell-Ein- und -Ausgaben, eine Zusammenfassung, Integrationsanfragen, einen Eintrag in einer Retry-Warteschlange, einen Dashboard-Eintrag und ein Backup erzeugen. Jedes davon kann ein anderes Feld enthalten. Eine PII-Schwärzung im QA-Dashboard kann dieselben Informationen im rohen Tool-Argument, im Anwendungs-Trace, im Export oder in der Originalaufnahme zurücklassen. Verfolgen Sie die Daten durch jede Kopie und prüfen Sie die Beispiele, die der Testlauf tatsächlich erzeugt hat. <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h2 id="choose-a-treatment-that-fits-the-data">Die zu den Daten passende Behandlung wählen</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Datenbehandlung und Restrisiko</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Behandlung</th>
+<th scope="col">Was sie bewirkt</th>
+<th scope="col">Was das Testteam weiterhin prüfen muss</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Synthetische Testdaten</th>
+<td>Erzeugt neue Werte, Stimmen oder Szenarien, um den Workflow zu prüfen.</td>
+<td>Woher die Eingaben stammen, ob die Ausgabe ungewöhnliche private Details enthält und ob die Ausführung in einer Sandbox bleibt.</td>
+</tr>
+<tr class="even">
+<th scope="row">Schwärzung (Redaction)</th>
+<td>Entfernt ausgewähltes Material aus einer bestimmten Kopie. Audio und Text erfordern möglicherweise eine getrennte Behandlung.</td>
+<td>Ob dasselbe Material in anderen Kopien, Metadaten, Backups oder einem von der Schwärzung nicht erfassten Feld verbleibt.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Maskierung</th>
+<td>Verbirgt oder ersetzt einen Teil eines Werts für einen bestimmten Zweck, etwa indem ein Testbericht nur eine Token-Referenz zeigt.</td>
+<td>Ob jemand das Original wiederherstellen, Datensätze systemübergreifend verknüpfen oder den Wert aus dem Kontext ableiten kann.</td>
+</tr>
+<tr class="even">
+<th scope="row">Pseudonymisierung</th>
+<td>Ersetzt Angaben durch einen stabilen Alias, der über den Kontext oder eine Zuordnungstabelle weiterhin mit einer Person verknüpft sein kann.</td>
+<td>Wer Zugriff auf die Zuordnung hat, ob sie erforderlich ist und wie die Kombination mehrerer Datensätze eine Person identifizierbar machen könnte.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Anonymisierung oder formale De-Identifikation</th>
+<td>Bewertet das Restrisiko der Identifizierung nach einer definierten Methode, Datenumgebung und den geltenden Regeln.</td>
+<td>Geltungsbereich, Methode, Datenempfänger und die Nachweise, die die Verwendung des Begriffs stützen.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Das Entfernen von Namen garantiert keine Anonymität. Ein genauer Standort, eine seltene Transaktion und charakteristisches Audio können dennoch auf eine Person hinweisen. Weniger Felder und eingeschränkter Zugriff können das Risiko senken. Ob eine Weitergabe einen bestimmten rechtlichen Maßstab erfüllt, hängt von den Umständen und den geltenden Anforderungen ab. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<h2 id="rebuild-test-cases-from-business-rules">Testfälle aus Geschäftsregeln neu aufbauen</h2>
+<h3 id="a-fictional-clinic-fixture">Eine fiktive Klinik-Testumgebung</h3>
+<p>Vorher: Ein Beispielentwurf lässt den Testlauf einen Klinikanruf wiedergeben, der einen Namen, einen Besuchsgrund, die Originalstimme und Termindetails enthält. Die Testfrage lautet, ob die anrufende Person nach der Verifizierung einen berechtigten Termin verschieben kann. Die Diagnose und die Originalstimme erhöhen die Sensibilität, entscheiden aber nicht über den Verzweigungspfad.</p>
+<p>Nachher: Der Testlauf verwendet ein fiktives Token für die anrufende Person, einen Mock-Termin, einen Sandbox-Kalender und neu geskriptetes Audio. Die erlaubte Aktion ist eine Terminverschiebung nach erfolgreicher synthetischer Verifizierung. Ein zweiter Testfall lässt die Verifizierung ungeklärt und prüft, dass der Agent keine Termindetails preisgibt. Beide Tests bewahren die Geschäftsregel und lassen sich wiederholen, ohne den Originalanruf abzurufen.</p>
+<h3 id="a-fictional-home-service-callback">Ein fiktiver Rückruf im Haushaltsservice</h3>
+<p>Vorher: Ein Testdatensatz enthält einen Kontaktdatensatz, der dem Produktionsexport nachempfunden ist, und verweist das Rückruf-Tool auf ein Kundenkontaktfeld. Selbst wenn das Beispiel erfundene Namen verwendet, könnte das Tool das Token trotzdem in einem Live-CRM-System auflösen.</p>
+<p>Nachher: Verwenden Sie eine Sandbox-Kontaktkennung, die nur zu einem Testticket oder einem freigegebenen internen Endpunkt aufgelöst wird. Halten Sie die Einwilligung der anrufenden Person im Skript fest und prüfen Sie, ob die empfangende Sandbox die passende Rückrufanfrage enthält. Leiten Sie alle ausgehenden Aktionen an Testziele. Halten Sie den Kontaktwert aus breit zugänglichen Logs heraus, wenn der Fall nur einen Vorgangsstatus und eine Trace-Kennung benötigt.</p>
+<p>Diese Testfälle beantworten Fragen zu Workflow und Berechtigungen. Hängt der Test von natürlichem Zögern, ungewöhnlichen Namen oder realistischem Telefonaudio ab, beauftragen Sie neue Aufnahmen mit entsprechender Einwilligung oder nutzen Sie lizenzierte Stimmen. Prüfen Sie die Rechte der sprechenden Person getrennt von den Rechten am geschriebenen Skript.</p>
+<h2 id="b2b-voice-privacy-preserving-voice-agent-evaluation-framework">B2B Voice Framework zur datenschutzfreundlichen Evaluierung von Sprachagenten</h2>
+<p>Beginnen Sie mit einer Bestandsaufnahme der Datenflüsse, die benennt, wer jedes Artefakt lesen kann und wessen Konfiguration die Aufbewahrung steuert. Nutzen Sie das Framework beim Entwurf der Testdaten und noch einmal nach dem ersten vollständigen Testlauf. Bei der zweiten Prüfung werden zusätzliche Ausgaben, etwa eine Retry-Payload oder ein nachgelagertes Transkript, für das Testteam oft erst sichtbar.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-2-caption">
+<table>
+<caption id="table-2-caption">Phasen der datenschutzfreundlichen Evaluierung</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Phase</th>
+<th scope="col">Maßnahme</th>
+<th scope="col">Nachweis für die Freigabeprüfung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Bestandsaufnahme</th>
+<td>Erforderliche Felder, Quellen, Auftragsverarbeiter, Logs, Warteschlangen, Exporte und Backups identifizieren.</td>
+<td>Eine Übersicht ordnet jedes Feld und jede Aufnahme ihrem geschäftlichen Bedarf und ihrem Ziel zu.</td>
+</tr>
+<tr class="even">
+<th scope="row">Minimieren</th>
+<td>Erfundene Werte verwenden und unnötige Payloads vermeiden. Nur so viel Detail behalten, wie zur Prüfung der Regel nötig ist.</td>
+<td>Eine prüfende Person kann erklären, warum jedes behaltene Feld vorhanden ist und wie es entstanden ist.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Isolieren</th>
+<td>Einen dedizierten Test-Tenant, Testzugangsdaten und freigegebene interne Endpunkte verwenden. Schreibzugriffe und ausgehenden Kontakt auf Testziele beschränken.</td>
+<td>Konfigurationsprüfung und Nachweise eines sicheren Preflights zeigen, wohin ein Testschreibvorgang gelangen kann.</td>
+</tr>
+<tr class="even">
+<th scope="row">Validieren</th>
+<td>Audio, Transkripte, Metadaten, Zusammenfassungen sowie repräsentative erfolgreiche und fehlgeschlagene Tool-Aufrufe prüfen.</td>
+<td>Das Team prüft sowohl erwartete Ausgaben als auch Wiederholungsversuche, einschließlich dessen, was bei einem fehlgeschlagenen Task geschieht.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Einschränken</th>
+<td>Zugriff auf rohe Traces und Aufnahmen begrenzen. Gewöhnliche Status-Logs frei von unnötigen privaten Werten halten.</td>
+<td>Zugriffsrechte und Audit-Ereignisse sind für die Personen und Systeme angemessen, die sie benötigen.</td>
+</tr>
+<tr class="even">
+<th scope="row">Löschen</th>
+<td>Aufbewahrung je Artefakt dokumentieren und prüfen, wie Löschung, Ablauf von Backups und die Aufbewahrung bei externen Auftragsverarbeitern funktionieren.</td>
+<td>Prüfende können den Ablauf der Aufbewahrung und alle genehmigten Ausnahmen über sämtliche Speicher hinweg nachvollziehen.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="check-the-sandbox-and-the-error-path">Sandbox und Fehlerpfad prüfen</h3>
+<p>Verwenden Sie dedizierte Testzugangsdaten und bestätigen Sie Umgebung, Konto und ausgehendes Ziel, bevor Sie einen Schreibzugriff aktivieren. Idealerweise hat die Testidentität überhaupt keine Berechtigung auf Produktionsdatensätze. Eine Sandbox-Kennzeichnung in der Anwendung nützt wenig, wenn ein gemeinsames Dienstkonto weiterhin den Live-Kalender erreichen kann. Betrachten Sie Tool-Argumente als Ziel sensibler Daten. Eine Tool-Anfrage kann eine Kontokennung, ein Geburtsdatum oder eine vollständige Adresse enthalten, auch wenn ein Transkript sie nicht mehr enthält.</p>
+<p>Prüfen Sie Fehlerpfade genauso sorgfältig wie erfolgreiche Anrufe. Ausnahmen können rohe Payloads oder Anfragedaten enthalten. Ein fehlgeschlagener Workflow kann eine Kopie an eine Retry- oder Dead-Letter-Queue senden, die andere Zugriffs- und Aufbewahrungseinstellungen hat. Eine prüfende Person kann Traces zur Fehlersuche exportieren und damit eine weitere dauerhafte Kopie erzeugen. Wenden Sie auf exportiertes Material dieselben Handhabungsregeln an. Das OWASP Logging Cheat Sheet beschreibt, sensible Daten aus Logs auszuschließen oder zu bereinigen und den Zugriff auf Logs zu schützen. <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h3 id="apply-regulated-environment-requirements-to-the-actual-workflow">Anforderungen regulierter Umgebungen auf den tatsächlichen Workflow anwenden</h3>
+<p>Im US-amerikanischen Gesundheitswesen, in Finanzwesen, Rechtsbereich und anderen regulierten Umfeldern können Pflichten bestehen, die von der Organisation, den Daten, der Verwendung und den beteiligten Anbietern abhängen. Ein Datenschutztest kann zeigen, dass bestimmte Sandbox-Identitäten und Testdaten isoliert bleiben. Er kann nicht den rechtlichen Status eines Produktivbetriebs belegen. Lassen Sie die zuständige Datenschutz- oder Rechtsverantwortung die geltenden Regeln, Anbieterbedingungen, Rechte und Aufbewahrungsrichtlinien bestätigen, bevor Sie geschütztes Material verwenden oder eine Compliance-Aussage treffen.</p>
+<p>Nutzen Sie den <a href="/de/ai-voice-agent-security">bestehenden Leitfaden zur Sicherheit von Sprachagenten</a> für Produktionsberechtigungen und den <a href="/de/voice-agent-evaluation-data">Leitfaden zum Entwurf von Evaluierungsdatensätzen</a> für den Aufbau der Testfälle. Datenschutztests für Sprachagenten stellen eine engere Frage: was in die Evaluierungsumgebung gelangt, sie verlässt und in ihr verbleibt. Dieser Zuschnitt hilft einem regulierten Unternehmen, jeder prüfenden Person eine konkrete Entscheidung zu geben.</p>
+<h3 id="inspect-the-people-and-systems-that-can-retrieve-a-trace">Prüfen, welche Personen und Systeme einen Trace abrufen können</h3>
+<p>Ein sicherer Testablauf für Sprachagenten bezieht die Personen ein, die Ausnahmen prüfen. Eine QA-Analystin oder ein QA-Analyst benötigt möglicherweise eine bereinigte Ereignisfolge, während die Datenschutzverantwortung für eine definierte Untersuchung Zugriff auf eine autorisierte Originalaufnahme braucht. Geben Sie jeder Rolle nur die Nachweise, die sie benötigt, und prüfen Sie, wie sich der Zugriff wieder entziehen lässt. Wenden Sie dieselben Kontrollen an, wenn Ihr Team <a href="/de/voice-agent-regression-and-smoke-testing">Nachweise automatisierter Regressionstests aufbewahrt</a>. Behandeln Sie einen geteilten Export als neue Kopie mit eigenem Zugriff und eigenem Ablaufdatum. Eine geschwärzte Ansicht in der Anwendung schützt personenbezogene Produktionsdaten kaum, wenn ein breit geteilter Fehlerbericht die ursprüngliche Anfrage enthält.</p>
+<p>Bei der Anonymisierung von Sprach-KI-Daten können für ein Transkript, eine abgeleitete Sprecherrepräsentation und eine Anrufaufnahme unterschiedliche Entscheidungen anfallen. Halten Sie fest, welches Artefakt verändert wurde und wer es weiterhin mit einer Person verknüpfen kann. Eine Prüfung für ein Format lässt die anderen offen, bis der tatsächliche Workflow zeigt, was sie enthalten. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a> <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="does-redacting-the-transcript-protect-an-original-recording">Schützt das Schwärzen des Transkripts eine Originalaufnahme?</h3>
+<p>Die Schwärzung des Transkripts verändert nur die Textkopie. Die Aufnahme kann weiterhin dieselben Worte, eine erkennbare Stimme oder Hintergrunddetails enthalten. Wenden Sie die passenden Kontrollen auf beide Darstellungen an.</p>
+<h3 id="can-a-team-use-a-production-incident-to-design-a-fictional-test">Kann ein Team einen Produktionsvorfall nutzen, um einen fiktiven Test zu entwerfen?</h3>
+<p>Ein Team kann das Verhalten anhand einer genehmigten Beschreibung des Fehlers nachbauen und dabei neu formulierte Texte und erfundene Datensätze verwenden. Die direkte Wiederverwendung eines Originaltranskripts oder einer Originalaufnahme erfordert eine gesonderte Berechtigung und eine für dieses Material angemessene Handhabung.</p>
+<h3 id="how-can-i-tell-whether-tests-reach-a-production-system">Woran erkenne ich, ob Tests ein Produktivsystem erreichen?</h3>
+<p>Prüfen Sie die tatsächlichen Berechtigungen der Zugangsdaten, die Konto- und Tenant-Endpunkte sowie die ausgehenden Ziele. Nutzen Sie einen autorisierten Preflight und prüfen Sie den resultierenden Testdatensatz in der vorgesehenen Sandbox.</p>
+<h3 id="which-logs-does-compliance-qa-for-voice-agents-need-to-inspect">Welche Logs muss die Compliance-QA für Sprachagenten prüfen?</h3>
+<p>Prüfen Sie reguläre Logs, Tool-Traces, Fehlerprotokolle, Exporte und nachgelagerte Kopien, die der genehmigte Workflow tatsächlich erzeugt. Behalten Sie die für den Test nötigen Nachweise und minimieren Sie sensible Felder in breit zugänglichen Datensätzen.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Einen Workflow mit fiktiven Anruferdaten besprechen</h2>
+<p>Bringen Sie mit, welche Aktionen der Agent ausführen soll, welche Felder die Mitarbeitenden sehen müssen und welche Systeme diese Felder erhalten dürfen. <a href="/demo">Besprechen Sie einen isolierten Test-Workflow für Ihre individuelle Umsetzung</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-deid">Methoden der De-Identifikation, Offenlegungsrisiko, synthetische Daten und Governance. <a href="https://csrc.nist.gov/pubs/sp/800/188/final">De-Identifying Government Datasets: Techniques and Governance</a>
+</li>
+<li id="source-pii">Kontextbasierter Schutz für identifizierbare oder verknüpfbare Informationen. <a href="https://csrc.nist.gov/pubs/sp/800/122/final">Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)</a>
+</li>
+<li id="source-log">Ausschluss sensibler Daten, Zugriff und Schutz von Logs. <a href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html">Logging Cheat Sheet</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>Synthetische Testdaten</li>
+<li>Datenminimierung</li>
+<li>Datenschutz bei Sprachagenten</li>
+<li>Testisolation</li>
+</ul></article>
+</main>

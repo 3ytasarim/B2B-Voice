@@ -1,0 +1,364 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">So testen Sie IVR-Systeme und dialogfähige Sprach-KI</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Beim Testen von Interactive Voice Response (IVR) wird geprüft, ob eine anrufende Person über einen realen Telefonweg einsteigen, die passende Option wählen oder beschreiben und das vorgesehene Ziel oder einen freigegebenen Fallback erreichen kann. Ein Tastaturereignis, eine korrekte Sprachklassifizierung und eine akzeptierte Übergabeanfrage sind lediglich Zwischensignale. Soll eine Übergabe bei der Buchhaltung ankommen, prüfen Sie das tatsächlich antwortende Ziel, die Zwei-Wege-Audioverbindung und alle Kontextinformationen, die das empfangende Team benötigt. Ist die Warteschlange geschlossen, prüfen Sie, ob die Geschäftsaktion, die der Fallback verspricht, tatsächlich erfolgt.</p>
+<p>Bei einem individuellen Sprach-Workflow legt B2B Voice den Rahmen fest: die bestehende Telefonnummer, die Routen, die das Unternehmen steuern kann, und die Übergaben, die das Personal tatsächlich entgegennehmen kann. Eine Route, die technisch zwar verbindet, aber im falschen Büro oder in einer unbesetzten Warteschlange landet, lässt die anrufende Person mit demselben ungelösten Problem zurück.</p>
+<h2 id="key-takeaways">Wichtigste Erkenntnisse</h2>
+<ul>
+<li>Testen Sie klassische IVR-Menüs und dialogfähige IVR-Sprachpfade gegen dieselben geschäftlichen Routingregeln.</li>
+<li>Erfassen Sie Ziffer, erkannte Absicht, gewählten Zweig, Warteschlangenstatus und Nachweis zum Ziel jeweils getrennt.</li>
+<li>Prüfen Sie ungültige Eingaben, Stille, Timeouts, geschlossene Warteschlangen und Fehler auf dem Übergabeabschnitt.</li>
+<li>Kontrollieren Sie den Datensatz im Backend, wenn ein Fallback ein Ticket oder einen Rückruf verspricht.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#build-a-route-inventory-before-placing-a-call">Routeninventar erstellen, bevor Sie einen Testanruf tätigen</a></li>
+<li><a href="#decide-what-to-assert-for-keypad-and-speech-routes">Festlegen, was bei Tastatur- und Sprachrouten geprüft wird</a></li>
+<li><a href="#b2b-voice-ivr-and-conversational-ai-test-matrix">Testmatrix von B2B Voice für IVR und dialogfähige KI</a></li>
+<li><a href="#verify-the-destination-after-a-transfer">Das Ziel nach einer Übergabe überprüfen</a></li>
+<li><a href="#keep-call-traces-usable-for-operations">Anruf-Traces für den Betrieb nutzbar halten</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="build-a-route-inventory-before-placing-a-call">Routeninventar erstellen, bevor Sie einen Testanruf tätigen</h2>
+<p>IVR steht für Interactive Voice Response. Ein klassisches IVR-System kann Ansagen abspielen, Tonwahleingaben entgegennehmen und anrufende Personen durch einen festgelegten Menübaum leiten. Ein dialogfähiges IVR kann gesprochene Anliegen interpretieren und eine Rückfrage stellen, bevor es eine Route wählt. Beide können auf einer einzigen Telefonleitung nebeneinander bestehen. Eine anrufende Person könnte eine Ziffer drücken, um die Sprache zu wählen, ein Rechnungsproblem mündlich schildern und anschließend bei einer Person in der Buchhaltungs-Warteschlange landen. Der <a href="/de/ai-voice-agent-vs-ai-receptionist-vs-ivr">Vergleich von IVR und KI-Sprachagenten</a> erklärt, wo sich welcher Ansatz eignet.</p>
+<p>Erfassen Sie die veröffentlichte Telefonnummer, die erste Route beim Netzbetreiber oder in der Telefonanlage (Private Branch Exchange, PBX), Weiterleitungsregeln, die Menüversion, Abteilungen, Geschäftszeiten und die benannten Verantwortlichen. Halten Sie für jeden Zweig das Ziel während der Geschäftszeiten und den Fallback außerhalb der Geschäftszeiten fest. Eine gemeinsame landesweite Nummer kann anrufende Personen an ein Büro in einer anderen Zeitzone leiten. Testen Sie die tatsächlichen lokalen Öffnungszeiten des Büros und Feiertagsausnahmen. Der Test sollte außerdem eine unerwartete gewählte oder weitergeleitete Nummer berücksichtigen, sofern die Umgebung diese Information bereitstellt.</p>
+<h3 id="separate-signaling-input-and-media">Signalisierung, Eingabe und Medien trennen</h3>
+<p>Das Session Initiation Protocol (SIP) kann eine Sitzung aufbauen, ändern und beenden. Eine Signalisierungsantwort kann zeigen, dass an einem bestimmten Hop ein Anruf aufgebaut wurde. Auf der Empfangsseite kann dennoch Stille, einseitiges Audio oder die falsche Ansage zu hören sein. Prüfen Sie Signalisierung und Medien unabhängig voneinander auf den jeweils relevanten Anrufabschnitten. <a class="b2bv3-ref" href="#source-sip">IETF RFC 3261</a></p>
+<p>Dual-Tone Multi-Frequency (DTMF) ist die bekannte Tonwahleingabe über die Telefontastatur. Eine Route kann diese Töne als Audio im Sprachband (In-Band) übertragen oder benannte Telefonereignisse im Real-time Transport Protocol (RTP) übermitteln. Prüfen Sie, welchen Modus die tatsächlichen Endpunkte ausgehandelt haben. Bei RTP-Ereignissen sollten Sie die Ereigniskennung und die Endemarkierung auswerten, statt jedes Paket als eigenen Tastendruck zu zählen. Ein Trace, der die richtige Ziffer enthält, muss dennoch zeigen, wie das Menü sie interpretiert hat. <a class="b2bv3-ref" href="#source-dtmf">IETF RFC 4733</a></p>
+<p>Wer eine nicht belegte Taste drückt, braucht einen anderen Test als jemand, der nichts sagt. Testen Sie ungültige Eingaben, die Behandlung ausbleibender Eingaben und die Wartezeit vor jedem Timeout. Die VoiceXML-Spezifikation des World Wide Web Consortium (W3C) unterscheidet Ereignisse für ausbleibende Eingaben und für Eingaben, die nicht passen. Eine moderne Route kann dieselbe Unterscheidung auch dann anwenden, wenn sie anders implementiert ist. Testen Sie wiederholte Fehlversuche und prüfen Sie, ob die Route schließlich den freigegebenen Fallback des Unternehmens erreicht. <a class="b2bv3-ref" href="#source-vxml">W3C VoiceXML 2.0</a></p>
+<h2 id="decide-what-to-assert-for-keypad-and-speech-routes">Festlegen, was bei Tastatur- und Sprachrouten geprüft wird</h2>
+<p>Senden Sie bei einer festen Menüversion die erwartete Tastenfolge und prüfen Sie für diesen Pfad den exakten Zweig, die Ansage und das Ziel. Kontrollieren Sie die Menünavigation sowohl mit vollständigen als auch mit unterbrochenen Eingaben. Halten Sie in einem automatisierten IVR-Test-Framework gesendete Ziffern, Anrufereignisse und Nachweise des Zuhörers im selben Falldatensatz fest. Eine Menüansage kann korrekt klingen, selbst wenn die Ziffer zu einem veralteten Ziel führt.</p>
+<p>Gesprochenes Routing akzeptiert verschiedene Formulierungen. „Da ist eine Abbuchung, die ich nicht kenne“ und „Kann mir jemand meine Rechnung erklären?“ können in einem fiktiven Test-Mandanten beide zur Buchhaltung gehören. Verwenden Sie vorgegebene Sätze, natürliche Umformulierungen und unterschiedliche Audioqualitäten. Legen Sie für mehrdeutige Äußerungen wie „Ich brauche Hilfe mit meinem Konto“ fest, wann der Agent nachfragen soll. Bewerten Sie, welches Ziel am Ende erreicht wurde und ob eine Rückfrage angemessen war. Die Klassifizierung des Modells allein lässt beide Fragen offen.</p>
+<p>Vergleichen Sie beim Testen von Sprachbots die Route, die bei einer Dialogwiedergabe gewählt wurde, mit der Route, die bei einem kontrollierten Anruf beobachtet wird. Eine Testlösung für Voicebots kann melden, welches Ziel der Agent gewählt hat, während die für die Telefonie verantwortliche Person die tatsächliche Weiterleitung und den Weg durch die Warteschlange überprüft. Nutzen Sie Conversational-AI-Tests für das Sprachverhalten und direkte Prüfungen für beobachtbare Ergebnisse bei Route, Übergabe oder Ticket.</p>
+<h3 id="check-the-input-at-the-menu-boundary">Die Eingabe an der Menügrenze prüfen</h3>
+<p>Wiederholen Sie einen Pfad einmal mit Eingabe während der Begrüßung und einmal mit Eingabe nach Ende der Ansage. Das richtige Verhalten hängt davon ab, ob die Route frühe Eingaben unterstützt und wann sie mit dem Zuhören beginnt. Beobachten Sie bei einem kontrollierten Anruf, was der Eingabeempfänger gesehen hat und welcher Menüzustand aktiv war. Eine gültige Ziffer, die vor Beginn der Eingabeerfassung gesendet wurde, erreicht den vorgesehenen Zweig möglicherweise nie.</p>
+<p>Dokumentieren Sie, woher die Ansagen stammen und ob die empfangende Seite die aktuelle Version gehört hat. Eine zwischengespeicherte oder fehlgeleitete Begrüßung kann Anrufende auffordern, eine Taste zu drücken, die inzwischen einer anderen Abteilung gehört. Der Menütest sollte die Anweisungen, die die anrufende Person gehört hat, mit dem aktiven Routingverhalten vergleichen.</p>
+<h2 id="b2b-voice-ivr-and-conversational-ai-test-matrix">Testmatrix von B2B Voice für IVR und dialogfähige KI</h2>
+<p>Verwenden Sie freigegebene Testnummern und eine versionierte Routenübersicht. Bestimmen Sie eine Person, die das Ziel beobachtet. Wenn der Anruf voraussichtlich in einer Warteschlange landet, legen Sie fest, welches Ereignis den Eintritt in die Warteschlange, die Annahme durch Personal und einen autorisierten Rückruf voneinander unterscheidet.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Fiktive IVR-Fälle, vorgesehene Routen und Nachweise zum Ergebnis</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Fiktiver Testfall</th>
+<th scope="col">Erwartete Route und Fallback</th>
+<th scope="col">Nachweis und akzeptables Geschäftsergebnis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Anrufende Person wählt während der veröffentlichten Zeiten per Tastatur die Buchhaltung</th>
+<td>Das konfigurierte Menü bis zur besetzten Buchhaltungs-Warteschlange durchlaufen. Bei nicht verfügbarer Warteschlange die freigegebene Alternative nutzen.</td>
+<td>Ziffernereignis, Zweig, Ziel-Warteschlange und Nachweis der empfangenden Seite für einen nutzbaren Anruf oder einen autorisierten Fallback.</td>
+</tr>
+<tr class="even">
+<th scope="row">Anrufende Person sagt, eine Rechnung enthalte eine unbekannte Abbuchung</th>
+<td>Das Anliegen als Buchhaltung klassifizieren oder nachfragen, wenn die aufgezeichnete Äußerung mehrdeutig ist.</td>
+<td>Letzte Äußerung, Routing-Entscheidung und verifizierte Antwort der Buchhaltung.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Anrufende Person schweigt nach der Begrüßung</th>
+<td>Gemäß der Richtlinie für ausbleibende Eingaben erneut auffordern und anschließend den freigegebenen Ausstieg anbieten.</td>
+<td>Ende der Ansage, Timeout, Zweig bei ausbleibender Eingabe und endgültiger Status.</td>
+</tr>
+<tr class="even">
+<th scope="row">Anrufende Person wählt eine nicht belegte Option</th>
+<td>Die gültigen Auswahlmöglichkeiten nennen und einen begrenzten Fallback durchlaufen, wenn die anrufende Person nicht weiterkommt.</td>
+<td>Tatsächliche Eingabe, ungültiger Zweig, verständliche Ansage und endgültiger Status.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Anruf geht ein, nachdem das Zielbüro geschlossen hat</th>
+<td>Dem lokalen Zeitplan des Büros und etwaigen Feiertagsregelungen folgen. Einen unterstützten nächsten Schritt anbieten.</td>
+<td>Standort, Zeitplan-Fixture, Trace zum Ziel und eine gespeicherte Rückrufanfrage, sofern die anrufende Person zustimmt.</td>
+</tr>
+<tr class="even">
+<th scope="row">Die Weiterleitung führt den Anruf auf eine gemeinsame Servicenummer</th>
+<td>Den vorgesehenen Standort anhand des verfügbaren Routenkontexts ermitteln oder die anrufende Person fragen.</td>
+<td>Weitergeleiteter Abschnitt, Standortzuordnung und Bestätigung des empfangenden Büros.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Das Ziel klingelt und wird nie angenommen</th>
+<td>Die freigegebene alternative Warteschlange oder den Rückrufweg nutzen.</td>
+<td>Übergabeergebnis, sekundäre Route, hörbarer Fallback und ein daraus entstandener Vorgang, falls einer gewünscht wurde.</td>
+</tr>
+<tr class="even">
+<th scope="row">Anrufende Person legt während des Wartens auf</th>
+<td>Die Bearbeitung beenden und die vereinbarte Richtlinie für abgebrochene Anrufe anwenden.</td>
+<td>Auflegeereignis, letzte Menü- oder Warteschlangenphase und jede daraus folgende autorisierte Aktion.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Gestalten Sie den Nachweis zum Fallback so belastbar, dass er im Betrieb genutzt werden kann. Ein Trace kann zeigen, dass ein Sprachagent ein Rückruf-Tool aufgerufen hat. Prüfen Sie in der tatsächlichen Aufgabenwarteschlange des Zielteams, ob dieselbe Referenz dort vorliegt. Falls die anrufende Person aufgelegt hat, bevor sie zugestimmt hat, und die Richtlinie dies verlangt, prüfen Sie, dass das System die Anfrage nicht angelegt hat. Berichten Sie eine unbeantwortete Übergabe und einen akzeptierten Rückruf als zwei verschiedene Ergebnisse.</p>
+<h2 id="verify-the-destination-after-a-transfer">Das Ziel nach einer Übergabe überprüfen</h2>
+<h3 id="use-the-evidence-the-transfer-method-exposes">Die Nachweise nutzen, die die Übergabemethode bereitstellt</h3>
+<p>Einige SIP-Umgebungen nutzen die Methode REFER, um eine andere Komponente zu einer weiterverwiesenen Aktion aufzufordern. Soweit anwendbar, können nachfolgende Statusmeldungen beschreiben, wie diese Aktion verlaufen ist. Eine Übergabe kann auch von einer Telefonplattform abgewickelt werden, die einen weiteren Anrufabschnitt aufbaut und überbrückt, ohne REFER nach außen sichtbar zu machen. Ermitteln Sie die eingesetzte Methode, bevor Sie festlegen, welche Ereignisse auftreten müssen. <a class="b2bv3-ref" href="#source-refer">IETF RFC 3515</a></p>
+<p>Ermitteln Sie die vorgesehene Warteschlange oder Person, ordnen Sie den ursprünglichen Anrufabschnitt dem ausgehenden Abschnitt zu und prüfen Sie, wer oder was geantwortet hat. Ein Anrufbeantworter kann ein Verbunden-Ereignis auslösen, obwohl der Workflow eine Person erfordert. Hören Sie mit oder nutzen Sie einen kontrollierten Beobachter auf der Empfangsseite, um Zwei-Wege-Medien nachzuweisen. Prüfen Sie bei einer begleiteten Übergabe (Warm Transfer), dass die empfangende Person den freigegebenen Kontext erhält und die anrufende Person während der Vorstellung verbunden bleibt. Seien Sie bei einer unbegleiteten Übergabe (Blind Transfer) klar darüber, wie das ursprüngliche System erfährt, dass das Ziel fehlgeschlagen ist, sofern es diese Information überhaupt erhält.</p>
+<h3 id="check-the-receiving-workflow">Den Workflow auf der Empfangsseite prüfen</h3>
+<p>Betrachten Sie einen fiktiven Servicedesk für Immobilien mit mehreren Standorten. Eine anrufende Person in einer anderen Zeitzone wählt die Hauptnummer für ein Gebäude in Phoenix. Die Sprachroute erkennt die Instandhaltung korrekt, übergibt aber an eine geschlossene Warteschlange, die weiterhin eine Begrüßung abspielt. Der Netzbetreiber meldet eine Annahme. Eine tatsächliche Mitarbeiterin oder ein Mitarbeiter stand jedoch nie zur Verfügung.</p>
+<p>Der relevante Test reicht über das IVR hinaus. Er benötigt das ermittelte Gebäude, den Zeitplan des Ziels, den Status der Warteschlange und, wenn die anrufende Person einen Rückruf akzeptiert, eine echte Sandbox-Aufgabe im richtigen Büro. Prüfen Sie im empfangenden Team außerdem, dass die Aufgabe nur die Angaben enthält, die zur Weiterbearbeitung nötig sind. Bietet der Service außerhalb der besetzten Zeiten keinen Rückruf an, sollte die Antwort den verfügbaren Weg klar erläutern.</p>
+<h3 id="test-what-happened-at-the-transfer-edge">Testen, was an der Übergabestelle geschah</h3>
+<p>Eine Route kann in einer Aufzeichnung, die von der Ursprungsseite abgespielt wird, korrekt wirken, auch wenn die Empfangsseite Stille gehört hat. Prüfen Sie beide Richtungen mit einem Beobachter am freigegebenen Endpunkt. Bestätigen Sie bei einer begleiteten Übergabe, dass ein privates Briefing des Personals beendet war, bevor die Kundin oder der Kunde dazukam, sofern der Workflow so konfiguriert ist. Prüfen Sie bei einer fehlgeschlagenen Übergabe, ob die anrufende Person zum ursprünglichen Agenten zurückkehrt, in eine andere Warteschlange gelangt oder eine verständliche Rückrufoption hört. Ein Ereignis auf dem ersten Abschnitt kann nicht klären, wie sich der zweite Abschnitt verhalten hat.</p>
+<p>Wiederholen Sie beim Testen von KI-Voicebots dieselbe Zielprüfung, wenn Sie eine Sprachansage oder die Netzbetreiber-Route ändern. Änderungen, die die Dialogrichtlinie unberührt lassen, können dennoch beeinflussen, wann eine Begrüßung beginnt oder ob der Agent Tastatureingaben erhält. Die verantwortliche Person im Betrieb kann anhand der Matrix festlegen, welche Nachweise bei jeder Änderung erforderlich sind.</p>
+<h2 id="keep-call-traces-usable-for-operations">Anruf-Traces für den Betrieb nutzbar halten</h2>
+<p>Halten Sie die Menü- oder Ansageversion, eine datenschutzgerechte Anrufreferenz, die Zeitzone, die Routenwahl, die Übergabeabschnitte, den Zielstatus und den resultierenden Geschäftsdatensatz fest. Trennen Sie das Beenden eines Anrufs von einer erfolgreichen Übergabe. Eine anrufende Person kann auflegen, weil die Warteschlange belegt ist, nachdem sie gehört hat, was sie braucht, oder bevor die Route aufgelöst wurde. Markieren Sie die zuletzt beobachtete Phase und schreiben Sie keinen Grund zu, den die Logs nicht belegen können.</p>
+<p>Verwenden Sie dieselbe Nachweisfolge, wenn Sie Tastatur- und Sprachpfade vergleichen. Eine fehlerhafte Konfiguration kann beide Routen betreffen, auch wenn die Sprachbewertung gut ausfällt. Der <a href="/de/ai-voice-agent-reliability">Leitfaden zu Ausfällen, Fallbacks und Übergabe an Menschen</a> beschreibt, wie sich das Wiederherstellungsverhalten definieren lässt. Ein separater <a href="/de/voice-agent-load-testing">kontrollierter Lasttest für Sprachagenten</a> kann die bereits verifizierte Route prüfen, wenn sich das Anrufaufkommen ändert.</p>
+<h3 id="test-an-integration-failure-as-part-of-the-call">Einen Integrationsfehler als Teil des Anrufs testen</h3>
+<p>Geben Sie dem Sandbox-Rückrufsystem einen kontrollierten Fehlermodus. Ein versprochener Rückruf sollte den Eingangsnachweis einer Aufgabe beim Ziel voraussetzen. Läuft der Dienst in ein Timeout, sollte der Agent den ausstehenden oder alternativen Zustand erklären, den der Workflow zulässt. Prüfen Sie, ob bei einem erneuten Versuch der Integration eine doppelte Aufgabe entsteht. Halten Sie Routenentscheidung, Übergabeergebnis, die Meldung an die anrufende Person und den endgültigen Aufgabenstatus im selben Falldatensatz fest. Jede dieser Angaben hilft einem anderen Team, den Fehler zu beheben.</p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="can-a-keypad-menu-and-a-conversational-voice-agent-share-the-same-phone-number">Können ein Tastaturmenü und ein dialogfähiger Sprachagent dieselbe Telefonnummer nutzen?</h3>
+<p>Ja. Ein Anruf kann für eine vorhersehbare Auswahl die Tastatureingabe nutzen und für ein gesprochenes Anliegen an einen dialogfähigen Agenten übergehen. Testen Sie den Übergang, das Ziel und den Fallback als eine einzige Route.</p>
+<h3 id="does-an-accepted-transfer-request-prove-that-a-person-answered">Belegt eine akzeptierte Übergabeanfrage, dass eine Person geantwortet hat?</h3>
+<p>Die Annahme einer Anfrage zeigt lediglich, dass eine Komponente die Übergabeanfrage akzeptiert hat. Prüfen Sie den nachfolgenden Abschnitt, die Annahme durch das vorgesehene Ziel und nutzbare Medien, sofern der Workflow sie erfordert.</p>
+<h3 id="how-do-i-test-after-hours-ivr-routing">Wie teste ich das IVR-Routing außerhalb der Geschäftszeiten?</h3>
+<p>Richten Sie einen kontrollierten Anruf ein, der den lokalen Öffnungszeiten oder dem Feiertagsplan des Büros entspricht. Prüfen Sie, dass er eine geschlossene Warteschlange vermeidet und der versprochenen Alternative folgt. Kontrollieren Sie die gespeicherte Aufgabe, wenn ein Rückruf angeboten und akzeptiert wird.</p>
+<h3 id="what-should-i-capture-when-callers-hang-up-in-the-queue">Was sollte ich erfassen, wenn anrufende Personen in der Warteschlange auflegen?</h3>
+<p>Halten Sie die zuletzt beobachtete Phase, den Status der Warteschlange, das Auflegen und jede autorisierte Backend-Aktion fest. Trennen Sie abgebrochene Anrufe von erfolgreich beantworteten Übergaben.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Besprechen Sie Ihre aktuelle Telefonroute und Ihren Fallback</h2>
+<p>Bringen Sie die Route mit, die Ihr Personal heute nutzt, das besetzte Ziel und die Vorgabe, was geschehen soll, wenn niemand antwortet. <a href="/demo">Besprechen Sie einen individuellen Sprach-Einsatz für Ihren Telefon-Workflow</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-sip">Sitzungsaufbau und Semantik der Signalisierung. <a href="https://www.rfc-editor.org/info/rfc3261/">SIP: Session Initiation Protocol</a>
+</li>
+<li id="source-dtmf">RTP-Telefonereignisse für Tastaturziffern und andere Signale. <a href="https://www.rfc-editor.org/info/rfc4733/">RTP Payload for DTMF Digits, Telephony Tones, and Telephony Signals</a>
+</li>
+<li id="source-vxml">Eingabeverarbeitung sowie getrennte Ereignisse für ausbleibende Eingaben und Grammatik-Abweichungen. <a href="https://www.w3.org/TR/voicexml20/">Voice Extensible Markup Language (VoiceXML) Version 2.0</a>
+</li>
+<li id="source-refer">Annahme der Übergabeanfrage und nachfolgende Benachrichtigung über die weiterverwiesene Operation. <a href="https://www.rfc-editor.org/info/rfc3515/">The Session Initiation Protocol (SIP) Refer Method</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>IVR-Tests</li>
+<li>DTMF</li>
+<li>SIP</li>
+<li>Anrufrouting</li>
+<li>Übergabe an Menschen</li>
+</ul></article>
+</main>

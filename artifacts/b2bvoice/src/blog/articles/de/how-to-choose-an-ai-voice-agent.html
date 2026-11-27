@@ -1,0 +1,358 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Kaufratgeber</p>
+    <h1 id="b2bv-title">So wählen Sie einen KI-Sprachagenten für Ihr Unternehmen: der vollständige Kaufratgeber</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Eine gelungene Sprachdemo zeigt, wie ein Anruf klingen könnte. Eine Kaufentscheidung braucht dagegen Belege dafür, dass die anrufende Person die vorgesehene Aufgabe abschließen kann, der richtige Geschäftsdatensatz entsteht und Ihre Mitarbeitenden das Gespräch übernehmen können. Vergleichen Sie Anbieter anhand dieser Ergebnisse mit einem einzigen Workflow und einem wiederholbaren Pilotprojekt.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurzantwort</h2>
+        <p>Wählen Sie einen KI-Sprachagenten, indem Sie ein konkretes Geschäftsergebnis definieren, jeden Anbieter mit Anrufen testen, die zu Ihren tatsächlichen Regeln passen, und die entstehenden Datensätze oder Übergaben prüfen. Ein vorkonfigurierter KI-Rezeptionist kann für die routinemäßige Anfrageaufnahme geeignet sein. Eine verwaltete Implementierung kann für individuelle Lösungen über mehrere Systeme hinweg passen. Machen Sie Autorisierung, menschlichen Fallback und Rollback zur Pflicht für das Pilotprojekt.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Ratgeber</p>
+      <ol>
+<li><a href="#business-outcome">Das Ergebnis definieren</a></li>
+<li><a href="#delivery-model">Bereitstellungsmodelle vergleichen</a></li>
+<li><a href="#readiness">Checkliste zur Einsatzbereitschaft und Scorecard</a></li>
+<li><a href="#pilot">Ein faires Pilotprojekt durchführen</a></li>
+<li><a href="#agreement">Support und Ausstieg vereinbaren</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Geben Sie jedem Anbieter dieselben Testanrufe, dieselben Erfolgskriterien und dieselben Prüfungen in Ihren Geschäftssystemen vor.</li>
+<li>Bewerten Sie die Belege in sechs Dimensionen und lassen Sie nicht bewertete Punkte leer.</li>
+<li>Stoppen Sie den Start, wenn ein verpflichtendes Gate für Autorisierung, menschlichen Fallback oder Rollback nicht bewertet wurde oder nicht bestanden ist.</li>
+        </ul>
+      </section>
+<section id="business-outcome">
+  <h2>Was soll der Agent in einem echten Anruf abschließen?</h2>
+  <p>Wählen Sie einen wiederkehrenden Anruf, den eine Person in Ihrem Team von Anfang bis Ende beschreiben könnte. Ein kleiner Dienstleistungsbetrieb könnte einen Termin für einen neuen Kostenvoranschlag wählen, ein Büro für freie Berufe eine Nachricht mit einem Rückrufzeitfenster. Halten Sie schriftlich fest, was die anrufende Person erreichen will, welche Felder erforderlich sind, welche Entscheidungen der Agent treffen darf und woran Ihr Team erkennt, dass die Aufgabe erledigt ist. Eine Führungskraft sollte das Ergebnis am nächsten Morgen prüfen können, ohne das gesamte Gespräch anzuhören.</p>
+  <p>Wenn Sie Unterstützung dabei wünschen, aus diesem Anruf ein funktionierendes System zu machen: B2B Voice bietet verwaltetes Design und verwaltete Implementierung für individuelle KI-Sprachagenten. Bringen Sie die Regeln mit, nach denen ein Mitarbeitender vorgeht, sowie den Datensatz, der den Abschluss einer Aufgabe belegt. Anhand dieser Angaben können sich beide Seiten auf den ersten Workflow, den für das Pilotprojekt nötigen Zugriff und die Entscheidungen einigen, die Ihre Mitarbeitenden selbst treffen.</p>
+<p>Definieren Sie den Erfolg einer Buchung als gültigen Termin im vorgesehenen System, am richtigen Standort und zur richtigen Zeit. Verlangen Sie bei einem Rückruf eine gespeicherte Anfrage mit Kontaktweg, Anliegen und einer besetzten Zuständigkeit. Verlangen Sie bei einer Live-Weiterleitung eine Verbindung zur vorgesehenen Empfängerin oder zum vorgesehenen Empfänger. Legen Sie eine eigene Kennzeichnung fest für eine gescheiterte Weiterleitung oder eine Nachricht, die aufgenommen wurde, während das Ziel geschlossen war. Mit diesem Vokabular können Anbieter vergleichbare Leistungen vorführen, und Ihre Mitarbeitenden haben einen Ansatzpunkt für die Nachforschung, wenn sich eine anrufende Person erneut meldet.</p>
+  <p>Verwenden Sie eine aktuelle Auswahl an Anrufgründen und beziehen Sie die Schichten ein, die diese Anrufe bearbeiten. Ermitteln Sie die Anruferkategorien oder Sprachen, die Ihre Mitarbeitenden abdecken können, risikoreiche Anliegen, tatsächliche Rückrufzeitfenster und die Fälle, in denen sofort ein Mensch gebraucht wird. Geben Sie allen Anbietern der engeren Auswahl dasselbe anonymisierte Briefing. Ein fiktives Beispiel genügt für den Anfang und vermeidet, dass in der Sondierungsphase private Kundendaten offengelegt werden.</p>
+</section>
+
+<section id="delivery-model">
+  <h2>Welches Bereitstellungsmodell passt zu Ihrem Team?</h2>
+  <p>Vergleichen Sie die Menschen und Verantwortlichkeiten, die jede Option mit sich bringt. Der Lieferant kann für eine Anwendung verantwortlich sein, während Ihr Unternehmen weiterhin die Routing-Regeln, die personelle Abdeckung und die Berechtigung zum Schreiben in Ihre Systeme verantwortet. Fragen Sie, wer jeden einzelnen Baustein pflegt, wenn sich eine Kalenderregel ändert oder jemand das Unternehmen verlässt und Zugangsdaten ersetzt werden müssen.</p>
+  <div class="b2bv-table" role="region" aria-label="Vergleich der Bereitstellungsmodelle für Sprachagenten" tabindex="0">
+    <table>
+      <caption>Passen Sie das Betriebsmodell an den Anruf und die Personen an, die es betreuen werden</caption>
+      <thead><tr><th scope="col">Option</th><th scope="col">Typischer Einsatzbereich</th><th scope="col">Nachweis oder Verantwortung, die zu klären ist</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Vorkonfigurierter KI-Rezeptionist</th><td>Routinemäßige Anrufannahme, Nachrichten, Standard-Routing oder ein freigegebenes Buchungstool.</td><td>Lassen Sie sich zeigen, dass Ihre Ausnahmen in die Konfiguration passen, und klären Sie, wer für Änderungen und fehlgeschlagene Fälle zuständig ist.</td></tr>
+        <tr><th scope="row">Sprachplattform, auf der Sie selbst bauen</th><td>Ein Team mit Entwicklungskapazität, einer QA-Praxis und der Fähigkeit, den Telefon-Workflow zu pflegen.</td><td>Planen Sie Budget ein für Anwendungslogik, Monitoring, Servicekonten, Fallback-Tests und die Verantwortung für den Bereitschaftsdienst.</td></tr>
+        <tr><th scope="row">Verwaltete individuelle Implementierung</th><td>Ein klar definierter Geschäfts-Workflow mit individuellen Regeln oder mehreren Systemen, bei dem ein externes Umsetzungsteam beim Entwurf und Aufbau helfen kann.</td><td>Holen Sie ein Leistungsverzeichnis ein, das Business Discovery, Systemzugriff, Releases, Monitoring, Wartung und die Pflichten des Kunden regelt.</td></tr>
+        <tr><th scope="row">Live-Telefonservice oder Hybridservice</th><td>Anrufe, die regelmäßig Urteilsvermögen, eine personell besetzte Antwort oder eine Mischung aus sich wiederholenden Aufgaben und menschlichen Entscheidungen erfordern.</td><td>Prüfen Sie Schulung, Schichtabdeckung und die Entscheidungsbefugnis der Mitarbeitenden. Testen Sie, wie ein Anruf die verantwortliche Person erreicht.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Nutzen Sie einen personell besetzten Weg für Streitfälle, sensible Anliegen, folgenreiche Ausnahmen und anrufende Personen, die einen Menschen verlangen. Manche Betriebe können für vorhersehbares Routing mit einem bereits vorhandenen automatischen Telefonmenü beginnen, auch Interactive Voice Response (IVR) genannt. Ein besetzter Service kann übernehmen, wenn die Frage Ermessen verlangt. Wie diese Rollen zusammenspielen, zeigt der <a href="/de/ai-voice-agent-vs-ai-receptionist-vs-ivr">Vergleich von KI-Sprachagenten, KI-Rezeptionisten und IVR</a>.</p>
+  <p>Bei einem B2B-Voice-Projekt bestimmen Umfang, Anrufvolumen, Komplexität des Workflows, Integrationen und die Geschäftsvereinbarung den Preis. Je nach Implementierung ist unter Umständen keine Einrichtungsgebühr im Voraus erforderlich. Fordern Sie mit dem Workflow, den Sie testen möchten, eine <a href="/demo">persönliche Demo</a> an.</p>
+<p>Der Ratgeber zu <a href="/de/ai-receptionist-vs-human-receptionist" data-phase2-link="true">personeller und hybrider Telefonbesetzung</a> vergleicht die Abdeckung nach Schicht, Aufgabe und Bedarf an menschlichem Urteilsvermögen.</p>
+</section>
+
+<section id="readiness">
+  <h2>B2B Voice Checkliste zur Einsatzbereitschaft für Käufer</h2>
+  <p>Lassen Sie die Fachverantwortlichen des Geschäftsbereichs, die Systemadministration und das empfangende Team diese Checkliste durchgehen, bevor Sie Anbieter in die engere Auswahl nehmen. Jeder Punkt sollte Belege liefern, auf die alle Anbieter aufbauen können. Fehlen Ressourcen oder Freigaben, begrenzen Sie den Umfang des ersten Pilotprojekts auf eine Aktion, die Sie überprüfen können.</p>
+  <div class="b2bv-table" role="region" aria-label="Checkliste zur Einsatzbereitschaft für Käufer" tabindex="0">
+    <table>
+      <caption>Fünf Fragen, die Sie beantworten sollten, bevor Sie Anbieterdemos vereinbaren</caption>
+      <thead><tr><th scope="col">Frage</th><th scope="col">Bringen Sie diese Belege mit</th><th scope="col">Verantwortliches Team</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Was soll die anrufende Person erreichen?</th><td>Ein einzelner Anrufgrund, das Basisvolumen je Schicht, der Sprachbedarf und eine Definition des Abschlusses.</td><td>Geschäftsbetrieb</td></tr>
+        <tr><th scope="row">Welche Befugnisse hat der Agent?</th><td>Felder, die er lesen oder schreiben darf, Verifizierung der anrufenden Person, zulässige Aktionen, Aufzeichnung und Hinweise.</td><td>Systemverantwortliche und Richtlinienprüfung</td></tr>
+        <tr><th scope="row">Wo wird der Abschluss erfasst?</th><td>Der maßgebliche Datensatz, ein zugelassenes Testkonto und ein fiktives Beispiel, das die verantwortliche Person prüfen kann.</td><td>Administration von CRM, Kalender oder Anwendung</td></tr>
+        <tr><th scope="row">Was passiert, wenn der Ablauf scheitert?</th><td>Ein personell besetzter Weg, das Verhalten bei besetzter oder geschlossener Leitung, die Zuständigkeit für Rückrufe und die vorherige Route für den Rollback.</td><td>Empfangendes Team und Telefonie-Verantwortliche</td></tr>
+        <tr><th scope="row">Wie bleiben Sie nach dem Start oder dem Ausstieg handlungsfähig?</th><td>Benannte Support-Verantwortliche, Änderungsrechte, Datenexport, Zugriff auf die Telefonnummer und ein Wiederherstellungsplan.</td><td>Betrieb und Einkauf</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol class="b2bv-flow" aria-label="Entscheidungsweg bei der Anbieterbewertung">
+    <li><strong>Umfang festlegen</strong><span>Formulieren Sie ein Ergebnis für die anrufende Person und bestimmen Sie den Datensatz, der es belegt.</span></li>
+    <li><strong>Pilotprojekt bewerten</strong><span>Bewerten Sie die Belege aus denselben Anrufen für jeden Anbieter.</span></li>
+    <li><strong>Startentscheidung treffen</strong><span>Stoppen Sie bei nicht bestandenen Gates. Prüfen Sie den unterzeichneten Umfang, sobald alle Gates bestanden sind.</span></li>
+  </ol>
+  <h3>Bewerten Sie die Belege, die Sie beobachten</h3>
+  <p>Bewerten Sie jede Dimension für denselben abgegrenzten Workflow mit einem Wert von 0 bis 5. Vergeben Sie 0, wenn bestätigt ist, dass die Fähigkeit fehlt, 1 für eine mündliche Aussage, 2 für Dokumentation, 3 für eine kontrollierte Vorführung, 4, wenn Ihr Team sie im Pilotprojekt reproduziert, und 5, wenn Sie sie reproduzieren und Betriebsnachweise wie Wiederherstellungsprotokolle einsehen. Lassen Sie einen Punkt nicht bewertet, bis Sie Belege haben. Eine schriftliche Datenrichtlinie und ein erfolgreicher Zugriffstest sind unterschiedliche Beweisstufen.</p>
+  <p><strong>Gewichtete Punktzahl</strong> = die Summe aus (Gewicht der Dimension in Punkten × Bewertung ÷ 5). Die Standardgewichte ergeben zusammen 100. Halten Sie fest, warum Sie ein Gewicht geändert haben, und wenden Sie dieselben Gewichte auf alle Kandidaten an. Die Bewertungsmatrix hilft, Nachweise zu vergleichen und offene Fragen zu erkennen. Führen Sie für verpflichtende Anforderungen Ihres Workflows eine gesonderte Liste.</p>
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Fiktives Beispiel einer Käufer-Scorecard" tabindex="0">
+    <table>
+      <caption>Fiktiver Kandidat für ein Pilotprojekt zur Terminvereinbarung im Servicebereich</caption>
+      <thead><tr><th scope="col">Dimension</th><th scope="col">Gewicht</th><th scope="col">Bewertung</th><th scope="col">Punkte</th><th scope="col">Beispiel für beobachtete Belege</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Geschäftsergebnis und Workflow</th><td>25%</td><td>4</td><td>20</td><td>Der Käufer reproduziert die Buchung am richtigen Standort.</td></tr>
+        <tr><th scope="row">Integration und Zuständigkeit</th><td>20%</td><td>3</td><td>12</td><td>Der Anbieter zeigt in seiner kontrollierten Demo einen eingeschränkten Kalenderzugriff.</td></tr>
+        <tr><th scope="row">Datenschutz und Eskalation</th><td>20%</td><td>4</td><td>16</td><td>Der Käufer wiederholt die Ablehnung bei geschützten Daten und eine besetzte Weiterleitung tagsüber.</td></tr>
+        <tr><th scope="row">Gespräch und Sprachen</th><td>15%</td><td>3</td><td>9</td><td>Der Anbieter zeigt eine Unterbrechung und eine Korrektur der anrufenden Person in einer unterstützten Sprache.</td></tr>
+        <tr><th scope="row">Support und Wiederherstellung</th><td>10%</td><td>3</td><td>6</td><td>Der Anbieter zeigt in einer kontrollierten Umgebung eine zugewiesene Warteschlange für Fehlerfälle.</td></tr>
+        <tr><th scope="row">Gesamtkosten und Portabilität</th><td>10%</td><td>2</td><td>4</td><td>Der Käufer hat Vertragsentwürfe und eine Beschreibung des Exports.</td></tr>
+        <tr class="b2bv-emphasis"><th scope="row">Gesamt</th><td>100%</td><td></td><td>67</td><td>Stoppen, bis der vereinbarte Fallback für die geschlossene Warteschlange behoben ist und die erforderlichen Gates bestanden sind.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>In diesem Beispiel erreichte der Agent 16 Punkte für Belege, die der Käufer tagsüber reproduziert hat. Ein separater Abendtest scheiterte, weil der Anruf an eine geschlossene Leitung ohne zuständige Person für den Rückruf zurückgeleitet wurde. Behalten Sie die Bewertung der Belege bei und dokumentieren Sie das nicht bestandene Gate ausdrücklich. Ein Unternehmen, das bereits eine Warteschlange für geschlossene Leitungen hat, könnte mit diesem Ziel erneut testen und die Person benennen, die sie am Morgen betreut.</p>
+  <form id="b2bv-score" class="b2bv-calculator" novalidate hidden>
+  <fieldset>
+    <legend>Einen Kandidaten bewerten</legend>
+    <p>Ersetzen Sie die fiktiven Bewertungen durch Ihre Belege. Verwenden Sie ganzzahlige Bewertungen und lassen Sie die Gewichte in der Summe 100 % ergeben.</p>
+    <div class="b2bv-table b2bv-assess" role="region" aria-label="Bearbeitbare Käufer-Scorecard" tabindex="0">
+      <table>
+        <caption>Gewichte und Beleg-Bewertungen nach Dimension</caption>
+        <thead><tr><th scope="col">Dimension</th><th scope="col">Gewicht</th><th scope="col">Bewertung</th></tr></thead>
+        <tbody><tr><th scope="row">Geschäftsergebnis und Workflow</th><td><input type="number" data-weight aria-label="Gewicht für Geschäftsergebnis und Workflow in Prozent" min="0" max="100" step="any" value="25" required></td><td><select data-rating aria-label="Bewertung für Geschäftsergebnis und Workflow"><option value="">Nicht bewertet</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Integration und Zuständigkeit</th><td><input type="number" data-weight aria-label="Gewicht für Integration und Zuständigkeit in Prozent" min="0" max="100" step="any" value="20" required></td><td><select data-rating aria-label="Bewertung für Integration und Zuständigkeit"><option value="">Nicht bewertet</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Datenschutz und Eskalation</th><td><input type="number" data-weight aria-label="Gewicht für Datenschutz und Eskalation in Prozent" min="0" max="100" step="any" value="20" required></td><td><select data-rating aria-label="Bewertung für Datenschutz und Eskalation"><option value="">Nicht bewertet</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Gespräch und Sprachen</th><td><input type="number" data-weight aria-label="Gewicht für Gespräch und Sprachen in Prozent" min="0" max="100" step="any" value="15" required></td><td><select data-rating aria-label="Bewertung für Gespräch und Sprachen"><option value="">Nicht bewertet</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Support und Wiederherstellung</th><td><input type="number" data-weight aria-label="Gewicht für Support und Wiederherstellung in Prozent" min="0" max="100" step="any" value="10" required></td><td><select data-rating aria-label="Bewertung für Support und Wiederherstellung"><option value="">Nicht bewertet</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Gesamtkosten und Portabilität</th><td><input type="number" data-weight aria-label="Gewicht für Gesamtkosten und Portabilität in Prozent" min="0" max="100" step="any" value="10" required></td><td><select data-rating aria-label="Bewertung für Gesamtkosten und Portabilität"><option value="">Nicht bewertet</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr></tbody>
+      </table>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Verpflichtende Entscheidungs-Gates</legend>
+    <div class="b2bv-fields"><label class="b2bv-field"><span>Autorisierung und Datenkontrollen</span><select data-gate><option value="">Nicht bewertet</option><option value="pass" selected>Bestanden</option><option value="fail">Nicht bestanden</option></select></label>
+<label class="b2bv-field"><span>Geprüfter menschlicher Fallback</span><select data-gate><option value="">Nicht bewertet</option><option value="pass">Bestanden</option><option value="fail" selected>Nicht bestanden</option></select></label>
+<label class="b2bv-field"><span>Geprobte Wiederherstellung der vorherigen Route</span><select data-gate><option value="">Nicht bewertet</option><option value="pass" selected>Bestanden</option><option value="fail">Nicht bestanden</option></select></label></div>
+  </fieldset>
+  <button type="submit">Punktzahl berechnen</button>
+  <div class="b2bv-status" role="status">
+    <p data-score-result></p>
+    <p data-gate-result></p>
+  </div>
+</form>
+<p>Der <a href="/de/how-to-integrate-ai-voice-agents" data-phase2-link="true">Ratgeber zur Kompatibilität mit Geschäftsanwendungen</a> hilft der Systemverantwortlichen oder dem Systemverantwortlichen, die genaue Aktion in jedem Konto zu überprüfen.</p>
+<p>Eine Kanzlei kann die <a href="/de/ai-voice-agents-for-law-firms" data-phase2-link="true">administrative juristische Anfrageaufnahme eingrenzen</a>, mit begrenzten Berechtigungen, Interessenkollisionsprüfung und einem freigegebenen Eskalationsweg.</p>
+</section>
+
+<section id="pilot">
+  <h2>So testen Sie Anbieter, bevor Sie unterschreiben</h2>
+  <p>Lassen Sie dieselben Anrufe bei jedem Anbieter mit fiktiven Datensätzen, denselben Zeiten und denselben Ausgangsbedingungen laufen. Der Käufer sollte die Anrufe selbst tätigen, die entstehenden Datensätze beobachten und die Erfahrung des empfangenden Teams prüfen. Bitten Sie den Anbieter, die Schritte zu benennen, die für die Demo vorkonfiguriert sind, und den Test vor dem Rollout in der vorgesehenen Umgebung zu wiederholen.</p>
+  <div class="b2bv-table" role="region" aria-label="Beispiel-Pilottests für Sprachagenten" tabindex="0">
+    <table>
+      <caption>Fünf Pilotanrufe und was ein Käufer danach prüfen sollte</caption>
+      <thead><tr><th scope="col">Anruftest</th><th scope="col">Nach dem Anruf prüfen</th><th scope="col">Erwartetes Verhalten</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Gewöhnlicher Termin für einen Kostenvoranschlag</th><td>Kalendereintrag, Zeitzone, Standort und Kontaktkennung.</td><td>Ein korrekter Termin und eine Formulierung, die zum bestätigten Datensatz passt.</td></tr>
+        <tr><th scope="row">Gestörte Leitung und korrigierte Telefonnummer</th><td>Korrigierter Wert im endgültigen Datensatz und eine hörbar verstandene Korrektur.</td><td>Der Agent bewältigt die Unterbrechung und bestätigt die aktualisierte Angabe, bevor er sie schreibt.</td></tr>
+        <tr><th scope="row">Der gewünschte Zeitpunkt wird nicht mehr verfügbar</th><td>Vorgeschlagener Zeitfenster-Kandidat und endgültiger Terminstatus.</td><td>Einen geeigneten Zeitpunkt anbieten oder eine ausstehende Anfrage erfassen. Den Unterschied in der Nachricht an die anrufende Person beibehalten.</td></tr>
+        <tr><th scope="row">Die Identitätsprüfung ist unvollständig</th><td>Zugriffsergebnis, offengelegte Felder, Audit-Ereignis und nächster Weg.</td><td>Die geschützte Aktion blockieren und den freigegebenen besetzten Weg anbieten.</td></tr>
+        <tr><th scope="row">Die anrufende Person verlangt außerhalb der Dienstzeiten einen Menschen</th><td>Endgültiges Routing-Ergebnis, Rückrufaufgabe und die benannte zuständige Person.</td><td>Einen wahrheitsgemäßen Fallback geben und sicherstellen, dass die Anfrage in einer von Mitarbeitenden betreuten Warteschlange ankommt.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Setzen Sie für jede Sprache im Umfang repräsentative Prüferinnen und Prüfer ein. Geben Sie ihnen Namen, Orte, Nummern und Korrekturen, wie sie in Ihrem Geschäft vorkommen. Beziehen Sie eine Anpassung oder einen alternativen Weg zu Mitarbeitenden ein. Bewerten Sie abgeschlossene Ergebnisse und die Wiederherstellung ebenso wie die Sprachqualität. Bewahren Sie Aufzeichnung, beobachtetes Ereignis und erwartetes Ergebnis zusammen auf, sofern angemessen und zulässig. Siehe <a href="/de/ai-voice-agent-turn-taking-interruptions">wie Sprachagenten mit Unterbrechungen umgehen</a> und <a href="/de/how-to-test-an-ai-voice-agent">wie Sie einen Testdatensatz für einen KI-Sprachagenten entwerfen</a>.</p>
+  <h3>Legen Sie Start-Gates fest, bevor Sie Bewertungen prüfen</h3>
+  <p>Verlangen Sie eine freigegebene Autorisierung und Datenverarbeitung, einen nachgewiesenen besetzten oder von Mitarbeitenden verantworteten Fallback und eine geprobte Rückkehr zur vorherigen Route. Definieren Sie, welche Belege jedes Gate bestehen lassen. Die Systemverantwortlichen sollten die eingeschränkten Aktionen freigeben, das empfangende Team die Übergabe verifizieren und die Person, die die Telefonie kontrolliert, den Rollback vorführen. Eine nicht bewertete oder nicht bestandene kritische Anforderung stoppt den Start. Die Leitlinien des NIST zu Risiken generativer KI können den Testplan unterstützen. OWASP empfiehlt, die Funktionen, Berechtigungen und die Autonomie zu begrenzen, die eine Anwendung einem Modell einräumt. <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a></p>
+  <p>Halten Sie fest, was jedes Pilotprojekt für den abgedeckten Verkehr, die Tools, Sprachen und Zeiten belegt. Ein kontrollierter Terminvereinbarungstest kann zeigen, dass die Buchungsregeln unter Testbedingungen funktionieren. Spitzenlast bei gleichzeitigen Anrufen, Ausfälle unter Last und die Wiederherstellung bei Änderungen einer Abhängigkeit erfordern jeweils eigene Prüfungen. Wählen Sie Abnahmeschwellen, die Ihren geschäftlichen Risiken entsprechen, und erfassen Sie die zugrunde liegenden Zahlen, statt Fehler durch Mittelwerte zu verwischen.</p>
+<p>Nutzen Sie die <a href="/de/best-ai-voice-agent-for-call-centers" data-phase2-link="true">Anbieter-Scorecard für Contact Center</a>, wenn Produktions-Warteschlangen, Lastspitzen und Pflichten gegenüber den Netzbetreibern die Auswahl bestimmen.</p>
+</section>
+
+<section id="agreement">
+  <h2>Was gehört in die Pilot- und Supportvereinbarung?</h2>
+  <p>Verfassen Sie für jeden Workflow ein Abnahmeprotokoll. Nehmen Sie die zulässigen Daten, die abgeschlossene Geschäftsaktion, die freigegebene Übergabe, die Testbedingungen und die Angabe auf, welche verantwortliche Person den Rollout stoppen darf. Legen Sie eine kleine erste Route fest, etwa einen Standort während der besetzten Zeiten, sowie einen vereinbarten Rückweg, bevor Sie das Produktiv-Routing ändern. Prüfen Sie wiederkehrende Rechnungen, Änderungsrichtlinie und Eskalationskontakt im Rahmen derselben Entscheidung.</p>
+  <ul>
+    <li><strong>Zugriff und Aufbewahrung.</strong> Dokumentieren Sie, wohin Anrufe, Aufzeichnungen, Transkripte, Zusammenfassungen und Geschäftsdatensätze gelangen. Legen Sie fest, wer sie einsehen, exportieren und löschen darf und wer übernimmt, wenn der Anbieter wechselt.</li>
+    <li><strong>Betrieb und Support.</strong> Benennen Sie, wer fehlgeschlagene Aktionen bearbeitet und wer einen Workflow pausieren kann. Vereinbaren Sie Zeiten, die Verantwortung bei Störungen, Rollback-Bedingungen und die Freigabe von Workflow-Änderungen.</li>
+    <li><strong>Portabilität von Nummer und Daten.</strong> Halten Sie fest, wer die Geschäftsnummer kontrolliert, wo die historischen Datensätze liegen, in welchem Format Sie den Export erhalten und wie die alte Route wiederhergestellt werden kann.</li>
+    <li><strong>Preis und Verlängerung.</strong> Verlangen Sie ein Rechnungsbeispiel über ruhige und ausgelastete Monate. Legen Sie beim Vergleich der Gesamtkosten jedes Angebots dieselbe Anrufabdeckung und dieselben weiterhin bearbeiteten Aufgaben zugrunde.</li>
+  </ul>
+  <h3>Ausgehende Anrufe als eigenen Workflow prüfen</h3>
+  <p>Starten Sie ein Pilotprojekt für eingehende Anrufe mit Personen, die Ihr Unternehmen erreichen. Umfasst der Plan automatisierte ausgehende Anrufe, lassen Sie Zweck, Nummerntyp, Einwilligung, Sperrlisten, Widersprüche und die geltenden bundes- und einzelstaatlichen Vorschriften gesondert prüfen. Die FCC behandelt KI-generierte menschliche Stimmen im Sinne des US-amerikanischen Telephone Consumer Protection Act als künstliche Stimmen. Die Anforderungen hängen vom jeweiligen Anruf und den anwendbaren Vorschriften ab. Legen Sie die Verantwortung für Freigaben und Einwilligungsnachweise fest, bevor Sie ausgehende Testanrufe an echte Empfänger tätigen. Prüfen Sie Aufzeichnung und Hinweise für die tatsächlichen Rechtsordnungen und das konkrete Design. <a href="https://docs.fcc.gov/public/attachments/FCC-24-17A1_Rcd.pdf">FCC 24-17 declaratory ruling</a> <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+  <p>Entscheiden Sie nach der Auswertung der Belege. Ein kurzes Pilotprojekt, das eine Geschäftsaufgabe abschließt und Ausnahmen übergibt, kann dem Einkauf einen klaren Umfang für den Kauf liefern. Bleibt eine kritische Lücke bestehen, halten Sie fest, ob der nächste Schritt ein engerer Workflow, ein erneuter Test in Ihrer Umgebung oder ein anderer Anbieter mit den erforderlichen Belegen ist.</p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Welcher KI-Sprachagent ist der beste für mein Unternehmen?</h3><p>Wählen Sie die Option, die Ihren vorrangigen Anruf-Workflow innerhalb Ihrer freigegebenen Regeln abschließt, bei Bedarf einen Menschen erreicht und ein Betriebsmodell hat, das Ihr Team tragen kann. Testen Sie die Kandidaten mit denselben Anrufen und prüfen Sie die Datensätze, die sie erzeugen.</p></div>
+<div class="b2bv-faq-item"><h3>Brauche ich einen individuellen Agenten oder einen vorkonfigurierten KI-Rezeptionisten?</h3><p>Ein vorkonfigurierter Rezeptionist kann für Routinefragen, Nachrichten und Standard-Routing geeignet sein. Vergleichen Sie eine individuelle Lösung, wenn Berechtigungsregeln, mehrere Standorte, geschützte Aktionen oder bestätigte Schreibvorgänge über bestehende Tools hinweg über den Erfolg entscheiden.</p></div>
+<div class="b2bv-faq-item"><h3>Wie sollte ich die Sprachqualität testen?</h3><p>Setzen Sie sprachgewandte Prüferinnen und Prüfer ein, die mit der Sprechweise Ihrer Anrufer vertraut sind. Testen Sie Namen, Zahlen, Unterbrechungen, gegebenenfalls Code-Switching, mehrdeutige Anfragen und den erfolgreichen Abschluss der Aufgabe in jeder Sprache, die Sie einsetzen möchten.</p></div>
+<div class="b2bv-faq-item"><h3>Wem sollten die Geschäftsnummer und die Datensätze gehören?</h3><p>Regeln Sie Nummernkontrolle, Datenzugriff, Exportformat, Aufbewahrung und Verantwortlichkeiten beim Übergang im Vertrag. Lassen Sie sich einen Beispielexport zeigen und klären Sie, wer das Routing ändern oder eine Portierung veranlassen kann, falls die Zusammenarbeit endet.</p></div>
+<div class="b2bv-faq-item"><h3>Kann ein Anbieter mit hoher Punktzahl das Pilotprojekt nicht bestehen?</h3><p>Ja. Ein nicht bestandenes Gate für Autorisierung, Datenschutz, menschlichen Fallback oder Rollback stoppt den Start, bis der Mangel behoben und erneut getestet ist. Die Punktzahl spiegelt die Stärke der beobachteten Belege über alle Dimensionen wider.</p></div>
+<div class="b2bv-faq-item"><h3>Was sollte ich zu einer B2B-Voice-Demo mitbringen?</h3><p>Bringen Sie ein Anrufszenario, die darauf folgende Geschäftsaktion, das System, das den Abschluss belegt, und den Eskalationsweg mit. Verwenden Sie fiktive Namen und Datensätze, damit sich die Demo auf Verhalten und Passung konzentrieren kann.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Bringen Sie einen Workflow zu einer individuellen Demo mit</h2>
+        <p>Sagen Sie B2B Voice, was die anrufende Person erreichen soll, was Ihr Geschäftssystem erfassen soll und wann Mitarbeitende übernehmen sollen. Verwenden Sie für den Beispielanruf fiktive Angaben.</p>
+        <a href="/demo">Workflow-Demo anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="/de/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+<li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <span class="b2bv-source-note">(NIST)</span></li>
+<li><a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a> <span class="b2bv-source-note">(OWASP)</span></li>
+<li><a href="https://docs.fcc.gov/public/attachments/FCC-24-17A1_Rcd.pdf">FCC 24-17 declaratory ruling</a> <span class="b2bv-source-note">(Federal Communications Commission)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>Kaufratgeber für KI-Sprachagenten</li>
+<li>KI-Rezeptionisten</li>
+<li>Verwaltete Implementierung</li>
+<li>Anbieterbewertung</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

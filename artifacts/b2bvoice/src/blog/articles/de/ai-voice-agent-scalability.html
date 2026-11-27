@@ -1,0 +1,354 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">So bewerten Sie die Skalierbarkeit von KI-Sprachagenten für wachsende Unternehmen</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Bewerten Sie die Skalierbarkeit von KI-Sprachagenten, indem Sie nachvollziehen, was mit steigendem Anrufvolumen mitwachsen muss. Der Carrier muss die Anrufe annehmen, das System muss jedes laufende Gespräch aufrechterhalten, die Geschäftsintegrationen müssen mithalten, und für Eskalationen muss Personal verfügbar sein. Prüfen Sie für jeden Standort die Ausfallgrenzen und den Wiederherstellungsplan. Zusätzliche Application-Worker können einer ausgelasteten Anwendung helfen. Carrier-Kontingente, Kalenderlimits oder eine unbesetzte Warteschlange erfordern jeweils eigene Maßnahmen.</p>
+<p>B2B Voice richtet individuelle Sprachagenten-Implementierungen an den Anruferreisen und dem Betriebsmodell aus, die der Kunde unterstützen möchte. Bevor Sie auf weitere Niederlassungen ausweiten, klären Sie, welche Regeln sich alle Standorte teilen können, welche Datensätze und Zeitpläne standortspezifisch sind und wer den Anruf übernimmt, wenn der automatisierte Pfad ihn nicht abschließen kann.</p>
+<h2 id="key-takeaways">Wichtigste Erkenntnisse</h2>
+<ul>
+<li>Finden Sie den engsten Engpass entlang von Carrier, Streaming-Medien, Modell, Datenbank, Integration und Personalbesetzung.</li>
+<li>Legen Sie fest, wo Sitzungsverantwortung und Wiederherstellungszustand liegen, bevor Sie horizontal skalieren.</li>
+<li>Klären Sie, was geschehen soll, wenn eine gemeinsam genutzte Abhängigkeit oder ein einzelner Standort ausfällt.</li>
+<li>Machen Sie Rollout, Eskalationsdienstplan und Rollback-Plan für die verantwortlichen Teams nachvollziehbar und prüfbar.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#trace-capacity-across-the-whole-caller-journey">Kapazität entlang der gesamten Anruferreise nachvollziehen</a></li>
+<li><a href="#plan-overload-behavior-and-fault-isolation">Überlastverhalten und Fehlerisolierung planen</a></li>
+<li><a href="#scale-staffed-coverage-across-locations">Besetzte Abdeckung über Standorte hinweg skalieren</a></li>
+<li><a href="#b2b-voice-voice-agent-scalability-readiness-checklist">B2B Voice Checkliste zur Skalierungsreife von Sprachagenten</a></li>
+<li><a href="#prepare-recovery-before-adding-a-location">Wiederherstellung vorbereiten, bevor ein Standort hinzukommt</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="trace-capacity-across-the-whole-caller-journey">Kapazität entlang der gesamten Anruferreise nachvollziehen</h2>
+<p>Die Skalierung von KI-Sprachagenten beginnt mit einer Abhängigkeitskarte. Verfolgen Sie einen eingehenden Anruf vom Carrier und der Telefonroute über das Audio-Streaming, die Sprachverarbeitung und den Dialog bzw. die Realtime-Inferenz bis zum Tool, das das Geschäftssystem aktualisiert. Verfolgen Sie ungelöste Anrufe weiter in die besetzten Warteschlangen. Listen Sie für jede Stufe die Verantwortlichen und Limits auf. Eine Prüfung der Sprach-KI-Infrastruktur sollte außerdem festhalten, welche Belege es für jedes Limit gibt. Das Kontingentdokument eines Lieferanten, ein sauber aufgesetzter Test und ein Dienstplan für besetzte Warteschlangen beantworten unterschiedliche Fragen.</p>
+<p>Ein Telefonie-Carrier kann Anrufstarts und aktive Sitzungen getrennt begrenzen. Ein Medienservice kann Limits für aktive Streams, Sockets oder Worker-Ressourcen haben. Ein Modellservice kann eigene Sitzungs- oder Ratenlimits besitzen. Das Customer-Relationship-Management-System (CRM) oder der Kalender kann API-Limits (Application Programming Interface) pro Konto oder Endpunkt durchsetzen. Die Beschreibung von Anrufen pro Sekunde bei Twilio ist ein nützliches Beispiel für eine Richtlinie zum Anrufaufbau, die an ein bestimmtes Produkt gebunden ist. Fragen Sie den tatsächlichen Carrier, welche Richtlinie für die Route, das Konto und die Richtung gilt, die Sie nutzen werden. <a class="b2bv3-ref" href="#source-cps">Twilio CPS glossary</a></p>
+<p>Prüfen Sie Datenbank-Connection-Pools, Sperren und Zugriffe auf gemeinsam genutzte Datensätze. Mehr Worker können mehr gleichzeitige Abfragen erzeugen und eine gemeinsam genutzte Datenbank stärker belasten. Wenn alle neuen Worker zur selben Zeit dieselbe Verfügbarkeit lesen, muss der Terminservice den Schreibvorgang dennoch vor Konflikten oder Duplikaten schützen. Erfassen Sie die gemeinsam genutzten Ressourcen, bevor Sie entscheiden, dass ein weiterer Worker-Pool das Problem löst.</p>
+<h3 id="choose-vertical-or-horizontal-scaling-by-component">Vertikale oder horizontale Skalierung je Komponente wählen</h3>
+<p>Vertikale Skalierung gibt einer Komponente mehr Ressourcen pro Worker. Sie kann sinnvoll sein, wenn ein Medien- oder Anwendungsprozess in Spitzenzeiten mehr Arbeitsspeicher oder Rechenleistung benötigt. Horizontale Skalierung fügt weitere Worker-Instanzen hinzu und verteilt die Arbeit auf sie. Eine zustandslose Routing-Schicht kann eingehende Anrufe oft an unterschiedliche Worker verteilen, ohne viel lokalen Zustand zu teilen. Eine laufende Audiositzung hat dagegen in der Regel einen Gesprächsverlauf, Timing, Stream-Zuständigkeit und möglicherweise eine ausstehende Geschäftsaktion, die erhalten bleiben müssen.</p>
+<p>Legen Sie fest, was beim aktuellen Worker bleiben muss, was in einem gemeinsamen System gespeichert werden kann und welche Teile ein anderer Worker wiederherstellen kann. Eine Session-Affinity-Regel kann den Datenverkehr während eines Anrufs mit dem aktuellen Besitzer verbunden halten. Ein Wiederherstellungspfad kann außerdem einen sicheren Checkpoint, eine dauerhafte Operationskennung und Zugriff auf den freigegebenen Anruferkontext erfordern. Dass sich ein neuer Anruf auf einem anderen Worker platzieren lässt, bedeutet nicht, dass sich ein bereits laufender Anruf verlagern lässt. Halten Sie diese Unterscheidung im Wiederherstellungsentwurf fest.</p>
+<h2 id="plan-overload-behavior-and-fault-isolation">Überlastverhalten und Fehlerisolierung planen</h2>
+<h3 id="separate-traffic-that-can-wait-from-work-that-keeps-a-caller-on-the-line">Datenverkehr, der warten kann, von Arbeit trennen, die eine anrufende Person in der Leitung hält</h3>
+<p>Warteschlangen können Arbeiten glätten, etwa die Erstellung einer internen Zusammenfassung nach einem Anruf. Eine anrufende Person, die auf eine Kalenderabfrage wartet, braucht einen hörbaren, zeitnahen nächsten Schritt. Nutzen Sie für den Live-Pfad begrenzte Wartezeiten und einen genehmigten Fallback. Setzen Sie Ratenlimits ein, damit ein ausgelasteter Mandant oder wiederholte Integrationswiederholungen nicht Ressourcen verbrauchen, die andere Anrufe benötigen. Legen Sie fest, wer benachrichtigt wird, wenn eine Warteschlange wächst oder eine Integration Arbeit ablehnt. <a class="b2bv3-ref" href="#source-load">Google SRE overload guidance</a></p>
+<p>Eine Organisation mit mehreren Filialen kann sich einen Carrier und einen Workflow teilen und dabei Mandanten-Zugangsdaten, Warteschlangen und Kapazitätszuteilungen isolieren. Ein Bulkhead-Muster teilt Ressourcen so auf, dass der Ausfall einer Gruppe geringere Auswirkungen auf andere hat. Die Architekturhinweise von Azure erläutern den Zielkonflikt zwischen Isolierung und der Effizienz gemeinsam genutzter Ressourcen. Halten Sie die Grenzen im Monitoring sichtbar, damit die für einen Vorfall zuständige Person erkennen kann, ob ein Ausfall einen Standort oder die gesamte Installation betraf. <a class="b2bv3-ref" href="#source-bulk">Azure bulkhead guidance</a></p>
+<h3 id="review-what-the-autoscaler-actually-observes">Prüfen, was der Autoscaler tatsächlich beobachtet</h3>
+<p>Ein reaktiver Autoscaler beobachtet eine ausgewählte Metrik und ändert im Zeitverlauf die Anzahl der Replikate. Ein Anrufstoß kann eintreffen, während Metriken noch erfasst werden oder neue Worker gerade betriebsbereit werden. Kubernetes dokumentiert, dass sein Controller für horizontale Autoskalierung periodisch arbeitet und dass Bereitschaft, Metriken und Stabilisierungsverhalten die Skalierungsentscheidungen beeinflussen. Wählen Sie ein Signal, das den tatsächlichen Engpass abbildet, etwa aktive Sitzungen oder wartende Arbeit, sofern die Plattform dies unterstützt. Validieren Sie Start- und Drain-Verhalten separat. <a class="b2bv3-ref" href="#source-hpa">Kubernetes autoscaling documentation</a></p>
+<p>Halten Sie Anrufannahme, aktive Audiositzungen, Limits des Modellservices, Latenz nachgelagerter Systeme, Alter der Warteschlange und Übergaben an Menschen gleichzeitig beobachtbar. Steigt das Alter der Warteschlange, während die Application-Worker im Leerlauf bleiben, prüfen Sie die vorgelagerte Anrufannahme und die Wartezeit nachgelagerter Services. Ist die einzige Warnung eine hohe Prozessorauslastung der Anwendung, übersieht das Team möglicherweise eine Carrier-Beschränkung oder eine überlastete Zielwarteschlange. Die Site-Reliability-Engineering-Hinweise von Google beschreiben, Latenz, Datenverkehr, Fehler und Sättigung gemeinsam zu beobachten. <a class="b2bv3-ref" href="#source-sre">Google SRE monitoring guidance</a></p>
+<h2 id="scale-staffed-coverage-across-locations">Besetzte Abdeckung über Standorte hinweg skalieren</h2>
+<p>Technische Skalierbarkeit beschreibt, ob die Route zusätzliche Last innerhalb ihrer Grenzen bedienen kann. Betriebliche Skalierbarkeit umfasst, ob Menschen die Ausnahmen bearbeiten, den Betrieb unterstützen und Entscheidungen treffen können, wenn ein Service ausfällt. KI-Sprachagenten mit hohem Volumen können Anrufe schneller annehmen, als ein kleines Team Weiterleitungen beantworten kann. Bevor Sie eine Route ausbauen, klären Sie besetzte Zeiten, Fach- und Sprachabdeckung, Feiertagsregeln und die Rückrufverantwortung des Ziels.</p>
+<p>In einem fiktiven Rollout für Immobiliendienstleistungen teilen sich drei Niederlassungen eine eingehende Rufnummer und nutzen unterschiedliche Bereitschaftsteams. Ein Anruf zu einem bestehenden Arbeitsauftrag erreicht die richtige Service-Richtlinie. Der Eskalationsdienstplan leitet ihn nach Schließung der ersten Niederlassung dennoch in die falsche Betriebsregion. Mehr Medien-Worker würden nur mehr Anrufe auf denselben falschen Pfad bringen. Die Skalierungsprüfung sollte die lokalen Zeiten, die Kontaktstelle, die die Übergabe erhält, und die Zuständigkeit prüfen, wenn die richtige Niederlassung nicht erreichbar ist.</p>
+<p>Vereinbaren Sie für skalierbare Callcenter-Automatisierung, welche Anrufe in einer Warteschlange bleiben dürfen, welche zeitnah Personal benötigen und welche über eine genehmigte alternative Route laufen sollen. Zur Personalkapazität gehört die Zeit für die Bearbeitung der Übergabe und den Abschluss des Falls. Eine anrufende Person, die in eine Warteschlange aufgenommen wurde, hat nicht zwangsläufig Hilfe erhalten. Nutzen Sie die <a href="/de/ivr-and-conversational-voice-ai-testing">Verifizierung des Telefonpfads für Übergaben an Mitarbeitende</a>, um den empfangenden Workflow nachzuweisen, bevor Sie weiteren Datenverkehr hinzufügen.</p>
+<h3 id="identify-who-can-change-the-system-under-pressure">Klären, wer das System unter Druck ändern kann</h3>
+<p>Fragen Sie die Verantwortlichen für Abhängigkeiten, was geschieht, wenn sich eine Richtlinie oder ein Kontingent zur verkehrsreichsten Tageszeit ändert. Das Carrier-Team kann möglicherweise neue Anrufe umleiten. Das Workflow-Team kann möglicherweise eine nicht wesentliche Integration pausieren. Die Betriebsleitung kann möglicherweise eine alternative besetzte Route öffnen. Benennen Sie, welches Team welche Maßnahme ergreifen kann, wie sie autorisiert wird und wie der nächste Verantwortliche den aktuellen Stand erfährt. Das gehört zur Kapazitätsplanung für Sprachagenten, besonders wenn Freigaben mehr als eine Niederlassung betreffen.</p>
+<p>Skalierbare KI-Sprachagenten brauchen eine Möglichkeit, nicht den gesamten wiederhergestellten Datenverkehr auf dieselbe schwache Abhängigkeit zu lenken. Fragen Sie bei Vorfallsanalysen, was den Fehler erneut auslösen würde, etwa das Wiederöffnen einer überlasteten Route oder die gleichzeitige Freigabe eines Rückstaus an Wiederholungen. Besprechen Sie den Aufnahmeplan mit dem Empfänger, einschließlich der besetzten Zeiten und des autorisierten Ziels für einen verbleibenden Rückstau.</p>
+<h2 id="b2b-voice-voice-agent-scalability-readiness-checklist">B2B Voice Checkliste zur Skalierungsreife von Sprachagenten</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Operative und technische Bereitschaft für die Skalierung</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Bereitschaftsbereich</th>
+<th scope="col">Anzufordernde Nachweise</th>
+<th scope="col">Entscheidung, die die verantwortliche Person treffen können sollte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Telefonie und Medien</th>
+<td>Zulässige Routen, Kontolimits, bidirektionale Medien und getestete alternative Ziele.</td>
+<td>Wohin neue Anrufe gehen, wenn eine Route ausgelastet ist oder ausfällt.</td>
+</tr>
+<tr class="even">
+<th scope="row">Sprach- und Modellservices</th>
+<td>Sitzungs- und Anfragelimits, Startverhalten, überwachte Ressourcenkonkurrenz und genehmigtes eingeschränktes Verhalten.</td>
+<td>Welche Funktionen verfügbar bleiben, wenn eine Abhängigkeit langsamer wird.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Sitzungszuständigkeit und Datengrenzen</th>
+<td>Sitzungsrouting, sicherer Wiederherstellungszustand, Zugriffsregeln für Mandanten und Abgleich von Schreibvorgängen.</td>
+<td>Ob ein laufender Anruf ausgeleitet (Drain), auf dem alten Build belassen oder über einen genehmigten alternativen Pfad übergeben werden soll.</td>
+</tr>
+<tr class="even">
+<th scope="row">Kalender, CRM und weitere Integrationen</th>
+<td>Dokumentierte Limits, gemeinsam genutzte Abhängigkeiten, Wiederholungsrichtlinie und Rücklesen aus dem führenden System.</td>
+<td>Welche Vorgänge in eine Warteschlange dürfen und welche einen sofortigen Fallback erfordern.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Personal und Betriebsunterstützung</th>
+<td>Verifizierte Dienstpläne, besetzte Ziele, Eskalationsauslöser und das bei einem Vorfall zuständige Team.</td>
+<td>Wer die anrufende Person übernimmt und was geschieht, solange eine Warteschlange geschlossen oder voll ist.</td>
+</tr>
+<tr class="even">
+<th scope="row">Deployment und Disaster Recovery</th>
+<td>Genehmigte Canary-Route, Rollback-Plan, Wiederherstellungsziele und ein Protokoll der Übung.</td>
+<td>Wie der Betrieb wiederhergestellt und wie ausstehende Transaktionen bei einem Ausfall oder Rollback geschützt werden.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Stufen Sie die Ergebnisse der Checkliste als nachgewiesen, dokumentiert, ungeklärt oder blockiert ein. Eine Vertragsklausel kann ein Kontolimit belegen. Eine Übung kann belegen, was bei einem Ausfall geschehen ist. Ungeklärte Personalbesetzung oder Workflow-Zuständigkeit kann eine ansonsten funktionsfähige Erweiterung dennoch blockieren. Benennen Sie für jede Zeile eine entscheidungsbefugte Person.</p>
+<h2 id="prepare-recovery-before-adding-a-location">Wiederherstellung vorbereiten, bevor ein Standort hinzukommt</h2>
+<p>Legen Sie für die betroffenen Geschäftsdaten die akzeptable Wiederherstellungszeit und den tolerierbaren Datenverlust fest. Ein regionaler Failover-Plan sollte zwischen dem Routing neuer Anrufe und der Fortsetzung bestehender Gespräche unterscheiden und erklären, wie ausstehende Schreibvorgänge abgeglichen werden. Prüfen Sie die Zugriffs- und Standortregeln, die für ein Wiederherstellungssystem gelten. Ein scheinbar verfügbares Backup ist nur dann nützlich, wenn es Medien tragen, Kontogrenzen einhalten und in den vorgesehenen Datensatz schreiben kann.</p>
+<p>Nutzen Sie umkehrbare Deployment-Schritte. Leiten Sie eine genehmigte Gruppe eingehender Anrufe auf ein neues Release, überwachen Sie die vereinbarten Nachweise und halten Sie einen Weg zur Vorgängerversion offen. Belassen Sie aktive Sitzungen auf der passenden Version oder leiten Sie sie bei Bedarf aus (Drain). Gleichen Sie nach einem Rollback bereits begonnene Buchungen und Rückrufe ab. Eine frühere Version kann die Route wieder öffnen und dennoch einzelne Aufgaben ungeklärt lassen. Ein kontrollierter Canary vergleicht einen Kandidaten in einem begrenzten Release-Verfahren mit einer stabilen Baseline. <a class="b2bv3-ref" href="#source-can">Google SRE canary guidance</a></p>
+<p>Nutzen Sie <a href="/de/voice-agent-load-testing">kontrollierte Lasttests, um den Kapazitätsrahmen zu verifizieren</a>, sobald Architektur, Personalbesetzung und Ausfallentscheidungen stehen. Der <a href="/de/ai-voice-agent-reliability">Leitfaden zur Zuverlässigkeit von Sprachagenten</a> hilft dabei, Fallback-Anforderungen bei einem umfassenderen Serviceausfall zu bestimmen.</p>
+<h3 id="rehearse-the-first-decision-in-a-failure">Die erste Entscheidung im Fehlerfall proben</h3>
+<p>Nutzen Sie einen Planspielfall (Tabletop), um Lücken zu finden, bevor Sie einen Failover testen. In einem fiktiven Rollout für eine Filiale fällt der Kalender aus, während die anrufenden Personen noch ihre Termindaten korrigieren. Fragen Sie, ob der Agent die Anfrage zurückhalten, einen Rückruf anbieten oder der anrufenden Person einen anderen Weg empfehlen soll. Klären Sie, wer die Kalenderroute wiederherstellt, wer unsichere Schreibvorgänge prüft und wer die Mitarbeitenden informiert, was noch aussteht. Eine schriftliche Entscheidung und eine kontrollierte Übung zeigen, ob Routenkarte und Betriebsplan übereinstimmen.</p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="can-adding-servers-increase-voice-agent-capacity">Kann das Hinzufügen von Servern die Kapazität eines Sprachagenten erhöhen?</h3>
+<p>Das kann der Fall sein, wenn die Application-Worker die begrenzte Ressource sind und die Route, das Sitzungsmanagement, die Anbieter und die Geschäftssysteme die Änderung verkraften. Prüfen Sie die gesamte Anruferreise, bevor Sie eine einzelne Schicht ausbauen.</p>
+<h3 id="what-should-enterprise-voice-ai-capacity-planning-include">Was sollte die Kapazitätsplanung für Enterprise-Sprach-KI umfassen?</h3>
+<p>Sie sollte Anrufannahme, Audiositzungen, Modell- und Integrationslimits, Zustandswiederherstellung, besetzte Eskalation und betriebliche Zuständigkeit umfassen. Schlüsseln Sie die Routen und Geschäftsaufgaben auf, die für den Rollout kritisch sind.</p>
+<h3 id="can-autoscaling-absorb-every-arrival-spike">Kann Autoscaling jede Lastspitze bei den Anrufeingängen abfangen?</h3>
+<p>Autoscaling reagiert auf beobachtete Signale und braucht Zeit, bis Ressourcen nutzbar sind. Prüfen Sie mit einem kontrollierten Test, wie vorhandene Reserven, Zugangsregeln und genehmigte Fallbacks mit abrupt steigendem Datenverkehr umgehen.</p>
+<h3 id="what-should-a-rollback-preserve">Was sollte ein Rollback erhalten?</h3>
+<p>Erhalten Sie nach Möglichkeit laufende Anrufe über den genehmigten Pfad, stellen Sie für neue anrufende Personen eine sichere Route wieder her und gleichen Sie ausstehende Geschäftsschreibvorgänge mit den führenden Datensätzen ab.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Eine Standort- oder Contact-Center-Erweiterung prüfen</h2>
+<p>Bringen Sie den nächsten Standort, seine Zeiten und die Abdeckung für Übergaben sowie die Geschäftssysteme mit, auf die sich die anrufenden Personen stützen werden. <a href="/de/what-is-b2b-voice">Lesen Sie, wie B2B Voice individuelle Implementierungen plant</a>, oder <a href="/demo">besprechen Sie einen Sprach-KI-Rollout über Ihre Standorte hinweg</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-cps">Ein produktspezifisches Beispiel für ein Limit beim Aufbau ausgehender Anrufe. <a href="https://www.twilio.com/docs/glossary/cps">CPS</a>
+</li>
+<li id="source-load">Serviceschutz, Warteschlangen und Drosselung. <a href="https://sre.google/sre-book/handling-overload/">Handling Overload</a>
+</li>
+<li id="source-bulk">Ressourcenpartitionierung und Zielkonflikte bei der Isolierung. <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/bulkhead">Bulkhead pattern</a>
+</li>
+<li id="source-hpa">Regelkreise für Replikate, Bereitschaft und Stabilisierung. <a href="https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/">Horizontal Pod Autoscaling</a>
+</li>
+<li id="source-sre">Überwachung von Datenverkehr, Latenz, Fehlern und Sättigung. <a href="https://sre.google/sre-book/monitoring-distributed-systems/">Monitoring Distributed Systems</a>
+</li>
+<li id="source-can">Begrenzte Releases und Vergleiche mit einer stabilen Kontrollgruppe. <a href="https://sre.google/workbook/canarying-releases/">Canarying Releases</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>Kapazitätsplanung</li>
+<li>Sprach-KI-Infrastruktur</li>
+<li>Disaster Recovery</li>
+<li>Eskalationskapazität</li>
+</ul></article>
+</main>

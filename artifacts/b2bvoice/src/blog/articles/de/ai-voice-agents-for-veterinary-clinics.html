@@ -1,0 +1,295 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Branchenlösungen</p>
+    <h1 id="b2bv-title">KI-Sprachagenten für Tierarztpraxen: Terminplanung und Kundenkommunikation</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Ein telefonischer Ablauf in der Tierarztpraxis muss das richtige Tier und die richtige Praxis identifizieren, bevor er einen Termin ändert. Medizinische Fragen und unklare Fälle brauchen einen eindeutigen Weg zu qualifiziertem Personal, auch wenn der reguläre Empfang geschlossen ist.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurzantwort</h2>
+        <p>Setzen Sie einen Sprachagenten in der Tierarztpraxis für routinemäßige Praxisauskünfte und freigegebene Terminplanung ein. Prüfen Sie die Berechtigung der anrufenden Person, den Tierdatensatz, den Standort und den Termin. Lassen Sie Anfragen so lange offen, bis das Praxissystem den Termin bestätigt, und leiten Sie medizinische Anliegen über das vom Praxisteam freigegebene Verfahren für besetzte Zeiten oder den Notdienst außerhalb der Sprechzeiten weiter.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Leitfaden</p>
+      <ol>
+<li><a href="#front-desk">Routineaufgaben am Telefon auswählen</a></li>
+<li><a href="#identity">Tierhalter und Tier identifizieren</a></li>
+<li><a href="#scheduling">Terminplanung im PIMS verifizieren</a></li>
+<li><a href="#clinical-routing">Medizinische Anliegen weiterleiten</a></li>
+<li><a href="#records">Anruf- und Datensatzdaten verwalten</a></li>
+<li><a href="#measurement">Pilotprojekt messen und testen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Gleichen Sie Kunde, Tier und Standort im Praxissystem ab, bevor Sie an einem bestehenden Termin arbeiten.</li>
+<li>Geben Sie jeder offenen Terminanfrage und jeder Rezeptanfrage ein geprüftes Ziel und eine verantwortliche Person.</li>
+<li>Testen Sie die klinischen Wege und die Wege außerhalb der Sprechzeiten der Praxis zusammen mit Terminschreibvorgängen und Datenschutzkontrollen.</li>
+        </ul>
+      </section>
+<section id="front-desk">
+  <h2>Welche tierärztlichen Anrufe eignen sich für die Automatisierung?</h2>
+  <p>Der Empfang einer Tierarztpraxis beantwortet möglicherweise Terminfragen, während er Patienten aufnimmt, sich mit dem Behandlungsteam abstimmt und mit besorgten Tierhaltern spricht. Ein Sprachagent kann eine routinemäßige Terminanfrage aufnehmen, Praxisdetails bestätigen oder eine Nachricht an das Personal weiterleiten. Die Praxis entscheidet, auf welche Termine und Datensätze der Workflow zugreifen darf. Richten Sie einen klaren Weg zum tierärztlichen Team ein für medizinische Anliegen, unklare Absichten und Wünsche, mit einer Person zu sprechen.</p>
+  <p>Für den Empfang einer Tierarztpraxis kann B2B Voice einen individuellen Telefonagenten für routinemäßige Praxisfragen, Terminanfragen und Rückrufe durch das Personal konzipieren. Bringen Sie die Regeln der Praxis für die Zuordnung eines Tierhalters zu einem Tier, die Standorte, die jeweils eine Terminart anbieten, und den Weg zum tierärztlichen Team mit. Die Praxis kann jede vorgeschlagene administrative Aktion und Übergabe vor einem Pilotprojekt prüfen.</p>
+<p>Wählen Sie eine administrative Anfrage mit hohem Aufkommen und verlässlicher maßgeblicher Datenquelle, etwa die Verschiebung eines freigegebenen Vorsorgetermins für ein ausgewachsenes, bereits bekanntes Tier. Benennen Sie eine Person, die die Regeln zu Tierart, Terminart, Alter, Neukunden und Standort pflegt. Eine Praxis, die an zwei Standorten Hunde und Katzen und an einem dritten Exoten behandelt, braucht für den Terminplan jedes Standorts eigene Regeln. Öffnungszeiten und Verfügbarkeit der Behandelnden können zudem vom Wochentag oder von Feiertagen abhängen. Fragen Sie, welchen Standort der Tierhalter meint, und bestätigen Sie ihn mündlich.</p>
+  <div class="b2bv-table" role="region" aria-label="Telefonische Anfragen in der Tierarztpraxis und Verantwortlichkeiten im Workflow" tabindex="0">
+    <table>
+      <caption>Festlegen, wer welche Kategorie tierärztlicher Anrufe bearbeitet</caption>
+      <thead><tr><th scope="col">Anliegen der anrufenden Person</th><th scope="col">Freigegebene administrative Aktion</th><th scope="col">Wo die Verantwortung liegt</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Routinemäßiger Vorsorgetermin</th><td>Zulässige Terminart sowie Anforderungen an Kunde, Patient und Standort prüfen.</td><td>Der Terminplan bestätigt den Termin, oder das Personal übernimmt die Anfrage.</td></tr>
+        <tr><th scope="row">Rezeptanfrage</th><td>Die von der Praxis freigegebenen Anfragefelder an die Medikamentenwarteschlange weiterleiten.</td><td>Das tierärztliche Team prüft Datensatz, Berechtigung und Verschreibungsentscheidung.</td></tr>
+        <tr><th scope="row">Unterlagen oder Untersuchungsergebnisse</th><td>Den freigegebenen Anfrageprozess erklären und die anrufende Person mit dem Personal verbinden.</td><td>Berechtigtes Personal prüft vor der Herausgabe die anfragende Person und die Zulässigkeit der Offenlegung.</td></tr>
+        <tr><th scope="row">Neue oder besorgniserregende Symptome</th><td>Den von der Praxis freigegebenen Weg zum Live-Kontakt oder zum Notdienst außerhalb der Sprechzeiten nutzen.</td><td>Qualifiziertes tierärztliches Personal beurteilt das Anliegen und berät den Kunden.</td></tr>
+        <tr><th scope="row">Öffnungszeiten und angenommene Tierarten</th><td>Aktuelle standortspezifische Informationen lesen, die von der Praxis gepflegt werden.</td><td>Das Praxispersonal beantwortet Fragen, die über die freigegebene Quelle hinausgehen.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Eine in eine Warteschlange geschriebene Anfrage und ein von einer tierärztlichen Fachperson genehmigtes Rezept sind unterschiedliche Ergebnisse. Ein Agent, der eine Nachricht aufnimmt, kann dem Tierhalter den freigegebenen nächsten Schritt und den Empfänger nennen. Terminplan, Erinnerungen und Nachrichten sollten praxisfreigegebene Beschreibungen und aktuelle Öffnungszeiten verwenden. Lassen Sie das Personal die Formulierungen prüfen, die Anrufende tatsächlich verwenden, darunter „Ich brauche mehr von ihrem Medikament“ und „Gibt es etwas Neues zu seinen Testergebnissen?“. Diese Anliegen sollten die richtigen Personen erreichen, auch wenn die anrufende Person nie „Rezept“ oder „Labor“ sagt.</p>
+</section>
+
+<section id="identity">
+  <h2>Wie sollte der Workflow Tierhalter und Tier identifizieren?</h2>
+  <p>Anrufen kann der Haupttierhalter, ein Familienmitglied, ein Tiersitter oder eine Koordinatorin eines Tierschutzvereins. Die Telefonnummer kann helfen, einen möglichen Datensatz zu finden. Trennen Sie diese Suche von der Entscheidung der Praxis, wer Details hören, einen Termin ändern oder Unterlagen anfordern darf. Fragen Sie nur nach den Identifikationsmerkmalen, die für die jeweilige Aktion freigegeben sind, und bieten Sie einen Weg zu einem Menschen an, wenn die anrufende Person die Verifizierung nicht abschließen kann. Bei einem Anruf zu Öffnungszeiten oder Leistungen ist möglicherweise gar keine Kontosuche nötig.</p>
+  <p>In einem Praxisverwaltungssystem (PIMS) kann ein Kundenkonto mehrere Tierdatensätze enthalten, und zwei Kunden können denselben Tiernamen verwenden. Gleichen Sie Kundenreferenz, Tierdatensatz, Tierart, Standort und gewünschten Termin ab, bevor Sie einen Termin lesen oder ändern. Verwenden Sie einen von der Praxis freigegebenen Prompt, um Unklarheiten aufzulösen, ohne die Termine oder Datensatzdetails eines anderen Patienten aufzulisten. Wenn es keine sichere Zuordnung gibt, erstellen Sie eine Verifizierungsaufgabe für den zuständigen Standort oder übergeben Sie die anrufende Person.</p>
+  <p>Halten Sie Kunden- und Tierkennungen getrennt, wenn Sie einen Rückruf speichern. Eine dokumentierte telefonische Anfrage kann zeigen, welche Person angerufen hat und ob deren Berechtigung geprüft wurde. Das Personal sollte diesen Kontext finden können, ohne ein doppeltes Profil anzulegen oder eine Aufzeichnung zu sehen, die die Praxis nicht aufbewahren muss. Siehe <a href="/de/ai-voice-agent-security">Sicherheit und Datenzugriff bei geschäftlichen Telefonaktionen</a>.</p>
+</section>
+
+<section id="scheduling">
+  <h2>Wie kann ein Agent einen Termin in einem PIMS buchen und verifizieren?</h2>
+  <p>Der B2B Voice Veterinary Front Desk Scheduling Workflow verfolgt die Anfrage der anrufenden Person, das konkrete Tier, den von der Praxis zugelassenen Zeitfenster-Slot und den endgültigen Termindatensatz. Beginnen Sie mit einer von der Praxis gepflegten Terminrichtlinie und einem auf einen einzelnen Standort beschränkten Zugriff. Erweitern Sie auf weitere Standorte oder Änderungen an bestehenden Terminen erst, wenn Berechtigungen und Terminstatus erprobt sind.</p>
+  <ol class="b2bv-flow b2bv-flow--four" aria-label="Terminplanungs-Workflow am Empfang der Tierarztpraxis">
+    <li><strong>Richtige Datensätze identifizieren</strong><span>Freigegebenen Anrufkontext, Tier und Standort bestätigen.</span></li>
+    <li><strong>Terminregeln anwenden</strong><span>Zulässige Terminart, infrage kommenden Standort und Ressourcen, Öffnungszeiten und aktuell freie Termine prüfen.</span></li>
+    <li><strong>Termin verifizieren</strong><span>Die autorisierte Änderung speichern und den zurückgegebenen oder erneut gelesenen Termindatensatz bestätigen.</span></li>
+    <li><strong>Der anrufenden Person den tatsächlichen Status nennen</strong><span>Die bestätigten Details nennen oder eine offene Anfrage zuweisen und das weitere Vorgehen erklären.</span></li>
+  </ol>
+  <p>ezyVet dokumentiert zum Beispiel einen Buchungsvorgang und die dafür erforderlichen Berechtigungen. Eine Produkt-API legt lediglich fest, welche Operationen verfügbar sind. Prüfen Sie Abonnement und Zugriff der Praxis, die Berechtigungen für jeden Standort, die Felder für Terminart und Terminstatus sowie die tatsächlich erforderliche behandelnde Person oder Ressource. Lesen Sie den Status zurück, wenn die Antwort der Integration nicht genügend Informationen enthält. Bewahren Sie bei Terminänderungen den bestehenden Termin, bis die autorisierte Änderung erfolgreich ist. Prüfen Sie bei einem Timeout das Ergebnis oder bitten Sie das Personal um einen Abgleich, bevor Sie einen weiteren Schreibvorgang auslösen. <a href="https://developers.ezyvet.com/guides/booking.html">ezyVet booking appointments API guide</a></p>
+  <div class="b2bv-table" role="region" aria-label="Ergebnisse und Rückmeldungen der Terminplanung in der Tierarztpraxis" tabindex="0">
+    <table>
+      <caption>Ergebnisse der Terminplanung, die die Praxis im Gespräch unterscheiden sollte</caption>
+      <thead><tr><th scope="col">Ergebnis im Terminplan</th><th scope="col">Was dem Tierhalter zu sagen ist</th><th scope="col">Was das Personal prüfen kann</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Verifizierter Termin</th><td>Datum, Ortszeit, Standort und freigegebene Termindetails bestätigen.</td><td>Abgeglichene Tier-ID, Standort, Termin-ID und bestätigter Status.</td></tr>
+        <tr><th scope="row">Terminanfrage zugewiesen</th><td>Erklären, dass die Praxis die Anfrage prüft und wie der Tierhalter eine Rückmeldung erhält.</td><td>Eine Aufgabe mit klarer Zuständigkeit samt gewünschtem Standort, Zeitfenster und zulässigen Kontaktdaten.</td></tr>
+        <tr><th scope="row">Schreibvorgang mit Timeout oder unklarem Status</th><td>Sagen, dass der Terminplan noch geprüft wird.</td><td>Anfrage-ID, Abrufversuch und zuständige Person im Personal, falls Unsicherheit bleibt.</td></tr>
+        <tr><th scope="row">Abweichung bei Datensatz, Personal oder Slot</th><td>Eine zulässige Option oder den passenden Weg zu einem Menschen anbieten.</td><td>Die widersprüchliche Regel oder der widersprüchliche Datensatz und die ursprüngliche Anfrage.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Nehmen wir eine fiktive Tierhalterin, Morgan, mit einem Hund und einer Katze im selben Konto. Morgan bittet darum, den Vorsorgetermin des Hundes in der North Clinic zu verschieben und eine neue Untersuchung für die Katze in der East Clinic zu buchen. Der Workflow verifiziert die anrufende Person und liest Tier und Standort jeweils einzeln zurück. Der Datensatz des Hundes wird aktualisiert und liefert einen bestätigten Termin zurück. Die East Clinic verlangt für die Anfrage zur Katze die Zustimmung des Personals, sodass die anrufende Person hört, dass die zweite Anfrage noch auf Rückmeldung wartet. Die beiden Ergebnisse bleiben in getrennten Datensätzen sichtbar. Ein späterer Anruf zur Katze kann die gespeicherte Anfrage prüfen. Zur technischen Umsetzung der Integration siehe <a href="/de/ai-voice-agent-integrations">Telefon-Workflows mit maßgeblichen Geschäftssystemen verbinden</a>.</p>
+<p>Nutzen Sie den Integrationsleitfaden, um die <a href="/de/how-to-integrate-ai-voice-agents" data-phase2-link="true">Einsatzbereitschaft des Praxissystems zu prüfen</a>, bevor Sie einen Schreibvorgang automatisieren.</p>
+</section>
+
+<section id="clinical-routing">
+  <h2>Was sollte geschehen, wenn die anrufende Person ein medizinisches Anliegen hat?</h2>
+  <p>Die medizinische Leitung der Praxis sollte einen besetzten Weg für klinische Fragen und ein separates Verfahren außerhalb der Sprechzeiten für mögliche dringende Anliegen festlegen. Wenn die anrufende Person eine tierärztliche Fachperson braucht oder der telefonische Workflow eine administrative Regel nicht sicher anwenden kann, nutzen Sie den passenden freigegebenen Weg. Halten Sie das Gespräch kurz und verwenden Sie das eigene Skript der Praxis für das jeweilige Ziel. Der Sprach-Workflow sollte weder diagnostizieren noch Behandlungen oder Dosierungen empfehlen, weder beurteilen, ob die anrufende Person warten kann, noch zusagen, dass eine tierärztliche Fachperson unter einer nicht erreichbaren Nummer antworten wird.</p>
+  <p>Die Richtlinien der American Animal Hospital Association zum Einsatz von Tiermedizinischen Fachangestellten (Technician Utilization Guidelines) beschreiben die Aufgabenverteilung innerhalb des tierärztlichen Teams. Die FDA beschreibt außerdem die bundesrechtlichen Anforderungen an das Tierarzt-Kunden-Patienten-Verhältnis (VCPR) in bestimmten Zusammenhängen, darunter die zulassungsüberschreitende Anwendung von Arzneimitteln (Extralabel-Anwendung) und Veterinary Feed Directives. Einzelstaatliche Vorschriften können eigene Anforderungen stellen. Das tierärztliche Team sollte die klinischen Zuständigkeiten, die Weiterleitung von Rezeptanfragen und das Verfahren außerhalb der Sprechzeiten für seine Praxis freigeben. <a href="https://www.aaha.org/wp-content/uploads/2023/09/2023-aaha-technician-utilization-guidelines-new.pdf">2023 AAHA Technician Utilization Guidelines</a> · <a href="https://www.fda.gov/animal-veterinary/product-safety-information/veterinarian-client-patient-relationships-prescribingdispensing-animal-drugs-and-telemedicine">FDA guidance on veterinary prescribing, VCPR and telemedicine</a></p>
+  <p>Verfolgen Sie, ob der besetzte Dienst geantwortet und den zulässigen Kontext erhalten hat. Wenn eine Übergabe fehlschlägt, sollte die anrufende Person zügig den von der Praxis freigegebenen alternativen Weg hören. Halten Sie die tatsächlichen Öffnungszeiten der empfangenden Praxis in der Routing-Richtlinie aktuell. Ein dringender Weg sollte niemals ausschließlich von einer gewöhnlichen Mailbox abhängen. Führen Sie Abnahmeanrufe für besetzte Zeiten, geschlossene Zeiten, nicht erreichbare Ziele, lange Wartezeiten und für den Fall durch, dass eine anrufende Person die Weitergabe von Kontodaten ablehnt. Siehe <a href="/de/ai-voice-agent-reliability">Verifizierung von Übergabe an einen Menschen und Fallback</a>.</p>
+</section>
+
+<section id="records">
+  <h2>Wie sollte die Praxis mit Anruf- und Tierdatensatzdaten umgehen?</h2>
+  <p>Das HHS definiert unter HIPAA fallende Einrichtungen (Covered Entities) anhand ihrer Rolle und der einschlägigen Tätigkeiten im Gesundheitswesen. Prüfen Sie den tatsächlichen Datenfluss für eine Tierarztpraxis, einschließlich aller von Menschen erhobenen Informationen. Landesrechtliche Vorschriften zu tierärztlichen Unterlagen können Offenlegungen zusätzlich regeln. Der Texas Occupations Code, Abschnitt 801.353, behandelt beispielsweise die Vertraulichkeit und bestimmte Herausgaben von Informationen über die Behandlung eines Tieres. Die Praxis sollte festlegen, welche Personen und Auftragsverarbeiter nach den für sie geltenden Anforderungen auf Anrufzusammenfassungen, Tierdatensätze und Tierhalterinformationen zugreifen dürfen. <a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> · <a href="https://tcss.legis.texas.gov/resources/OC/htm/OC.801.htm">Texas Occupations Code § 801.353</a></p>
+  <p>Entscheiden Sie im Voraus, ob der Workflow Audio, ein maschinelles Transkript oder eine administrative Zusammenfassung benötigt. Legen Sie für jede Kopie in Telefonie, Agent und PIMS oder Aufgabensystem Zugriffsberechtigungen und Aufbewahrung fest. Halten Sie ausführliche Schilderungen von Symptomen oder Behandlungen aus routinemäßigen Terminnotizen heraus. Beschränken Sie Erinnerungen und Nachfassaktionen auf von der Praxis freigegebene Details und Kanäle im Rahmen des geltenden Rechts und der Praxisrichtlinien. Testen Sie, wie Datensätze geschützt sind, wenn ein Netzbetreiber ein Ereignis erneut sendet oder ein Mitarbeitender eine Zusammenfassung weiterleitet.</p>
+</section>
+
+<section id="measurement">
+  <h2>Welche Nachweise sprechen für die Ausweitung auf weitere Termine?</h2>
+  <p>Gleichen Sie die infrage kommenden Anrufe mit dem PIMS und der Aufgabenwarteschlange ab, um eine Ausgangsbasis und ein vergleichbares Pilotzeitfenster zu erhalten. Erfassen Sie verifizierte Buchungen nach Terminart, falsche Patienten- oder Standortzuordnungen, doppelte Termine, abgeschlossene Rückrufe, wiederholte Anfragen und die Zeit bis zu einer Verbindung mit dem besetzten Dienst bei klinischer Weiterleitung. Halten Sie die Ergebnisse außerhalb und innerhalb der Sprechzeiten getrennt verfügbar, damit ein Tagesdurchschnitt einen gescheiterten nächtlichen Weg nicht verdeckt. Prüfen Sie den Personalaufwand für Korrekturen, Regelpflege und ungeklärte Anfragen. Ein bearbeiteter Anruf wird erst nützlich, wenn die anrufende Person ein verifiziertes Ergebnis oder einen verantwortlich betreuten nächsten Schritt erhält.</p>
+  <p>Testen Sie einen Tierhalter mit zwei Tieren, eine anrufende Person ohne Berechtigung, eine nicht verfügbare behandelnde Person, eine gleichzeitige Anfrage für denselben Slot, eine fehlgeschlagene Übergabe und eine fehlgeschlagene PIMS-Antwort. Beginnen Sie mit der reinen Anfrageaufnahme, solange der Zugriff noch geprüft wird. Proben Sie die Weiterleitung von Anrufen am Agenten vorbei, wobei nur zulässige Datensätze behalten und unbekannte Schreibvorgänge geklärt werden. Planen Sie die Testanrufe gemeinsam mit der Praxismanagerin oder dem Praxismanager und der tierärztlichen Leitung. Siehe <a href="/de/how-to-test-an-ai-voice-agent">Produktionstests für die Abnahme- und Wiederherstellungsprüfungen</a>.</p>
+  <p>B2B Voice kann einen individuellen administrativen Telefon-Workflow für eine Tierarztpraxis mit Ihnen besprechen. Bringen Sie einen fiktiven Kunden mit Tier, eine Terminart, einen Beispielzustand des Terminplans und den Eskalationsprozess der Praxis mit. Die Demonstration kann zeigen, wie der Workflow einen akzeptierten Termin, eine offene Anfrage und einen Anruf behandelt, der eine tierärztliche Fachperson erfordert.</p>
+<p>Nutzen Sie den Personalleitfaden, um die <a href="/de/ai-receptionist-vs-human-receptionist" data-phase2-link="true">Abdeckung des Empfangs nach Aufgaben zu vergleichen</a>, bevor Sie ändern, wie Anrufende das tierärztliche Personal erreichen.</p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Welche Anrufe sollte eine Tierarztpraxis zuerst automatisieren?</h3><p>Beginnen Sie mit einer klar abgegrenzten administrativen Anfrage, etwa einer routinemäßigen Terminänderung oder einer Frage zu den Öffnungszeiten. Behalten Sie für medizinische Fragen und Ausnahmen einen klaren Weg zum tierärztlichen Team bei.</p></div>
+<div class="b2bv-faq-item"><h3>Kann ein KI-Sprachagent in ezyVet buchen?</h3><p>ezyVet dokumentiert die Terminbuchung über seine API. Prüfen Sie Berechtigung der Praxis, Terminregeln, Standort, Patientenzuordnung und gespeicherten Terminstatus, bevor Sie die direkte Buchung aktivieren.</p></div>
+<div class="b2bv-faq-item"><h3>Kann der Agent einen Haushalt mit mehreren Haustieren bearbeiten?</h3><p>Ja, sofern er die Kundenbeziehung verifiziert und Tierdatensatz und Standort jeweils getrennt auswählt. Mehrdeutige Datensätze sollten zur Verifizierung an das Personal gehen.</p></div>
+<div class="b2bv-faq-item"><h3>Kann der Agent einer anrufenden Person sagen, ob ihr Tier auf einen Termin warten kann?</h3><p>Diese Entscheidung sollte eine tierärztliche Fachperson treffen. Der telefonische Workflow sollte den von der Praxis freigegebenen Eskalationsweg zum besetzten Dienst oder zum Notdienst außerhalb der Sprechzeiten nutzen.</p></div>
+<div class="b2bv-faq-item"><h3>Kann der Agent eine Rezeptverlängerung genehmigen?</h3><p>Er kann eine korrekt aufgenommene Rezeptanfrage weiterleiten. Das tierärztliche Team prüft den Datensatz und übernimmt Verschreibung und Genehmigung.</p></div>
+<div class="b2bv-faq-item"><h3>Muss ein Sprachagent in der Tierarztpraxis HIPAA einhalten?</h3><p>Ob HIPAA anwendbar ist, hängt von der Einrichtung sowie von den betroffenen Informationen und Tätigkeiten ab. Prüfen Sie den tatsächlichen Datenfluss und die für die Praxis geltenden Anforderungen an tierärztliche Unterlagen, Datenschutz und Kommunikation.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Einen Workflow für den Empfang einer Tierarztpraxis kennenlernen</h2>
+        <p>Bringen Sie einen fiktiven Tierhalter mit Tier, eine Terminart und den Eskalationsweg Ihrer Praxis zu einem Menschen mit. Vergleichen Sie in einer B2B Voice Demo die möglichen Anrufergebnisse.</p>
+        <a href="/demo">Demo eines Workflows für Tierarztpraxen anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="https://developers.ezyvet.com/guides/booking.html">ezyVet booking appointments API guide</a> <span class="b2bv-source-note">(ezyVet)</span></li>
+<li><a href="https://www.aaha.org/wp-content/uploads/2023/09/2023-aaha-technician-utilization-guidelines-new.pdf">2023 AAHA Technician Utilization Guidelines</a> <span class="b2bv-source-note">(American Animal Hospital Association)</span></li>
+<li><a href="https://www.fda.gov/animal-veterinary/product-safety-information/veterinarian-client-patient-relationships-prescribingdispensing-animal-drugs-and-telemedicine">FDA guidance on veterinary prescribing, VCPR and telemedicine</a> <span class="b2bv-source-note">(U.S. Food and Drug Administration)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://tcss.legis.texas.gov/resources/OC/htm/OC.801.htm">Texas Occupations Code § 801.353</a> <span class="b2bv-source-note">(Texas Legislature)</span></li>
+<li><a href="/de/what-is-b2b-voice">B2B Voice Unternehmen und Implementierungsansatz</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>Empfang der Tierarztpraxis</li>
+<li>Praxisverwaltungssystem</li>
+<li>Terminplanung für Haustiere</li>
+<li>Übergabe in der Tierarztpraxis</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

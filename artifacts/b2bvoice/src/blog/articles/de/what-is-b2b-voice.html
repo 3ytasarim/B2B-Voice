@@ -1,0 +1,522 @@
+
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --success-soft: #eef9f3;
+      --max: 860px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 800px;
+      font-size: clamp(38px, 6vw, 62px);
+    }.blog-content .dek {
+      max-width: 780px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 24px 26px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer strong.label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content h2 {
+      margin: 50px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--success-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: -16px;
+    }.blog-content .steps {
+      counter-reset: steps;
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }.blog-content .steps li {
+      counter-increment: steps;
+      position: relative;
+      padding: 0 0 23px 58px;
+      margin: 0;
+    }.blog-content .steps li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #152f91;
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+    }.blog-content .steps li strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #142038;
+    }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: #111a2e;
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta a.button {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .thesis, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap {
+        break-inside: avoid;
+      }.blog-content .cta {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button {
+        color: #111;
+      }.blog-content .cta a.button {
+        border: 1px solid #999;
+      }
+    }
+</style>
+<main class="page">
+    <article>
+      <header>
+        <span class="eyebrow">B2B Voice Ratgeber · Unternehmensprofil</span>
+        <h1>Was ist B2B Voice und was leistet es?</h1>
+        <p class="dek">
+          B2B Voice konzipiert und entwickelt maßgeschneiderte KI-Sprachagenten und KI-Rezeptionisten für Unternehmen. Der entscheidende Unterschied liegt nicht allein in der Technologie, sondern darin, wer diese Technologie zu einem funktionierenden Geschäftssystem macht.
+        </p>
+        <p class="meta">Veröffentlicht am 12. August 2026 · Von B2B Voice</p>
+      </header>
+
+      <section class="quick-answer" aria-label="Kurzantwort">
+        <strong class="label">Kurzantwort</strong>
+        <p>
+          <strong>B2B Voice ist ein Unternehmen für die individuelle Umsetzung von KI-Sprachagenten für geschäftliche Telefonate.</strong> Statt einem Unternehmen einen generischen Agent-Builder an die Hand zu geben und das Team das System allein konfigurieren zu lassen, lernt B2B Voice zunächst, wie das Unternehmen arbeitet. Anschließend konzipiert und baut B2B Voice den Telefonassistenten passend zu dessen Leistungen, Kundenfragen, Gesprächsablauf, Terminregeln, Übergabelogik und angebundenen Geschäftstools. Das Unternehmen liefert das Wissen und die Anforderungen; die technische Umsetzung übernimmt das Team von B2B Voice.
+        </p>
+      </section>
+
+      <h2>Was ist B2B Voice?</h2>
+
+      <p>
+        B2B Voice ist ein Unternehmen mit Schwerpunkt auf <strong>KI-Sprachagenten, KI-Telefonagenten, KI-Rezeptionisten und Business Phone Automation</strong>. Die Systeme sind darauf ausgelegt, echte Telefongespräche für Unternehmen zu führen: eingehende Anrufe entgegennehmen, verstehen, was die anrufende Person benötigt, Informationen erfassen, bei Workflows zur Terminvereinbarung oder Lead-Aufnahme helfen, Anliegen weiterleiten und die Ergebnisse der Anrufe mit Geschäftssystemen wie CRM, Kalendern, Tabellen und Kommunikationstools verbinden.
+      </p>
+
+      <p>
+        Am besten versteht man B2B Voice jedoch nicht als „einen weiteren Ort, um einen KI-Bot zu erstellen“. Die öffentliche Positionierung des Unternehmens beruht auf einem Modell der individuellen Entwicklung: Jeder Assistent wird rund um das jeweilige Unternehmen, seine Kunden, seine Leistungen und die Art vorbereitet, wie seine Telefonate tatsächlich abgewickelt werden sollen.
+      </p>
+
+      <div class="thesis">
+        Ihre Aufgabe ist es, zu erklären, wie Ihr Unternehmen arbeitet. Unsere Aufgabe ist es, daraus das System zu machen.
+      </div>
+
+      <h2>Der Hauptunterschied: Eine Plattform liefert Ihnen Werkzeuge. B2B Voice liefert Ihnen die Umsetzung.</h2>
+
+      <p>
+        Sprach-KI ist heute deutlich leichter zugänglich geworden. Viele moderne Sprach-KI-Produkte bieten Dashboards, visuelle Workflow-Builder, APIs, Prompts, Modelleinstellungen, Integrationen und Telefonie-Steuerungen, mit denen Unternehmen oder Entwickler einen Agenten selbst erstellen und konfigurieren können.
+      </p>
+
+      <p>
+        Diese Produkte können leistungsstark sein. Das Problem ist, dass <strong>der Zugang zu einem Builder nicht dasselbe ist wie ein fertiges Geschäftssystem</strong>. Jemand muss weiterhin das Unternehmen verstehen, entscheiden, was der Agent tun soll und was nicht, die Gesprächslogik schreiben, die richtigen Tools anbinden, Übergabebedingungen festlegen, Sonderfälle testen und den gesamten Workflow im realen Betrieb nutzbar machen.
+      </p>
+
+      <p>
+        B2B Voice verfolgt einen praxisnäheren Ansatz. Sie teilen dem Team mit, welche Art von Unternehmen Sie führen, weshalb Kunden üblicherweise anrufen, welche Informationen erfasst werden müssen, wie Termine oder Anfragen behandelt werden sollen, wann ein Mensch übernehmen soll, welche Sprachen wichtig sind und welche Systeme bereits Teil Ihres Betriebs sind. Die Umsetzung wird dann auf diese Anforderungen zugeschnitten.
+      </p>
+
+      <div class="table-wrap">
+        <table aria-label="Self-Service-Sprach-KI-Plattform im Vergleich zu B2B Voice">
+          <thead>
+            <tr>
+              <th>Frage</th>
+              <th>Typischer Self-Service-Builder für Sprach-KI</th>
+              <th>Ansatz von B2B Voice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wo beginnt man?</td>
+              <td>In einem Dashboard, Builder, einer API oder einem Workflow-Editor.</td>
+              <td>Beim Unternehmen: Leistungen, Anrufende, Ziele, Regeln, Systeme und Gesprächsablauf.</td>
+            </tr>
+            <tr>
+              <td>Wer gestaltet das Gesprächsverhalten?</td>
+              <td>In der Regel konfiguriert Ihr Team Prompts, Abläufe, Tools und Logik.</td>
+              <td>B2B Voice konzipiert die Umsetzung auf Grundlage Ihrer Angaben zum Unternehmen.</td>
+            </tr>
+            <tr>
+              <td>Wer bindet den Workflow an?</td>
+              <td>Ihr Team oder ein Entwickler bindet die erforderlichen Systeme an.</td>
+              <td>Die erforderlichen Integrationen werden als Teil der individuellen Umsetzung geplant.</td>
+            </tr>
+            <tr>
+              <td>Wer durchdenkt Übergabe und Sonderfälle?</td>
+              <td>In der Regel der Kunde, ein Entwickler oder ein Implementierungspartner.</td>
+              <td>Übergaberegeln und unternehmensspezifische Szenarien sind Teil des Designprozesses.</td>
+            </tr>
+            <tr>
+              <td>Was ist das angestrebte Ergebnis?</td>
+              <td>Ein konfigurierter Agent innerhalb einer Plattform.</td>
+              <td>Ein Telefonassistent, der auf den tatsächlichen Arbeitsablauf des Unternehmens ausgerichtet ist.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        Dieser Vergleich beschreibt ein verbreitetes Self-Service-Builder-Modell, nicht den gesamten Markt für Sprach-KI. Verschiedene Anbieter kombinieren Software, Implementierung, Beratung oder Managed Services auf unterschiedliche Weise.
+      </p>
+
+      <h2>Was macht B2B Voice also konkret?</h2>
+
+      <p>
+        Ein Einsatz von B2B Voice kann Gespräch und Geschäftsaktionen miteinander verbinden. Die genaue Ausgestaltung hängt vom Unternehmen ab, doch das aktuelle Leistungsangebot von B2B Voice beschreibt unter anderem automatisierte Anrufbearbeitung, Terminplanung, CRM-Integration, mehrsprachige Kommunikation, Lead-Aufnahme, Anrufzusammenfassungen sowie unternehmensspezifische Weiterleitungs- oder Workflow-Logik.
+      </p>
+
+      <h3>1. Eingehende Geschäftsanrufe entgegennehmen</h3>
+      <p>
+        Der KI-Assistent kann eingehende Anrufe annehmen, wenn Kunden das Unternehmen kontaktieren, auch dann, wenn die Mitarbeitenden beschäftigt sind oder das Unternehmen eine umfassendere telefonische Erreichbarkeit wünscht. B2B Voice positioniert seine Telefonassistenten derzeit für die Anrufbearbeitung rund um die Uhr (24/7).
+      </p>
+
+      <h3>2. Verstehen, warum der Kunde anruft</h3>
+      <p>
+        Der Assistent kann Fragen stellen und das Anliegen der anrufenden Person erkennen, statt jede anrufende Person durch dasselbe starre Menü zu schicken. Eine Serviceanfrage, ein Terminwunsch, ein Lead, eine Supportfrage, ein dringendes Anliegen oder ein Weiterleitungsbedarf kann jeweils einem anderen Pfad folgen, sofern der Einsatz entsprechend konzipiert ist.
+      </p>
+
+      <h3>3. Im Gespräch nützliche Informationen erfassen</h3>
+      <p>
+        Je nach Workflow kann das System Angaben wie den Namen der anrufenden Person, die Telefonnummer, die gewünschte Leistung, den bevorzugten Zeitpunkt, die Dringlichkeit oder andere Informationen erfassen, die das Unternehmen vor dem nächsten Schritt benötigt.
+      </p>
+
+      <h3>4. Workflows zur Terminvereinbarung und Lead-Aufnahme abwickeln</h3>
+      <p>
+        B2B Voice führt Terminplanung und Lead-Aufnahme öffentlich unter seinen aktuellen Anwendungsfällen auf. Dazu kann gehören, die für eine Terminanfrage nötigen Informationen zu sammeln, die Anfrage zu strukturieren und sie mit dem passenden Kalender oder Workflow zu verbinden, sofern die Konfiguration des Unternehmens dies unterstützt.
+      </p>
+
+      <h3>5. Das Anliegen weiterleiten oder das Gespräch an einen Menschen übergeben</h3>
+      <p>
+        Nicht jeder Anruf sollte bei der KI enden. Ein guter Telefon-Workflow braucht auch Regeln dafür, wann eine Person, eine Abteilung oder ein anderer Prozess übernehmen soll. Der Einrichtungsprozess von B2B Voice fragt ausdrücklich ab, wann der Assistent direkt antworten und wann das Gespräch an einen Menschen übergeben werden soll. Der rechtliche Hinweis des Unternehmens besagt zudem, dass Anrufende, die mit einem von B2B Voice betriebenen Assistenten sprechen, einen menschlichen Ansprechpartner verlangen können.
+      </p>
+
+      <h3>6. Telefongespräche mit Geschäftssystemen verbinden</h3>
+      <p>
+        Ein Telefonat wird wertvoller, wenn das Ergebnis nicht verschwindet, sobald die anrufende Person aufgelegt hat. Je nach Umsetzung kann B2B Voice Anrufinformationen mit Systemen wie CRM, Kalendern, Tabellen und Kommunikations-Workflows verbinden. Die aktuelle Website nennt unter anderem HubSpot, Zoho CRM, Google Calendar, Calendly, Gmail, Microsoft Teams, Google Sheets, Excel und WhatsApp.
+      </p>
+
+      <h3>7. Anrufzusammenfassungen und Lead-Details versenden</h3>
+      <p>
+        Nach einem Gespräch kann das System eine strukturierte Zusammenfassung erstellen: wer angerufen hat, was die Person benötigte, welche Absicht dahinterstand und welcher nächste Schritt empfohlen wird. So ist der Anruf für das Team auch dann nützlich, wenn während des ursprünglichen Gesprächs niemand im Unternehmen erreichbar war.
+      </p>
+
+      <h3>8. Mehrsprachige Gespräche unterstützen</h3>
+      <p>
+        B2B Voice bietet außerdem mehrsprachige Sprachassistenten an. Die Sprachkombination ist Teil der individuellen Konfiguration. Die entscheidende Frage lautet daher nicht einfach „Wie viele Sprachen gibt es?“, sondern welche Sprachen das Unternehmen für seine Kunden und Gesprächsabläufe tatsächlich benötigt.
+      </p>
+
+      <h2>Was muss ein Unternehmen tun?</h2>
+
+      <p>
+        „Done for you“ bedeutet nicht, dass das Unternehmen nichts beisteuert. Das Unternehmen kennt seine Kunden, Regeln, Leistungen und Sonderfälle weiterhin besser als jeder andere. B2B Voice benötigt dieses Geschäftswissen, um das richtige System zu bauen.
+      </p>
+
+      <p>
+        Der aktuelle Einrichtungsprozess von B2B Voice bittet Unternehmen, unter anderem folgende Punkte anzugeben oder zu klären:
+      </p>
+
+      <ul>
+        <li>welche Art von Unternehmen sie betreiben;</li>
+        <li>welche Leistungen sie anbieten;</li>
+        <li>welche Fragen Kunden am häufigsten stellen;</li>
+        <li>wie Termine oder Anrufe geplant werden sollen;</li>
+        <li>welche Informationen erfasst werden müssen;</li>
+        <li>was der Assistent direkt beantworten darf;</li>
+        <li>wann ein Mensch übernehmen soll;</li>
+        <li>welche Tonalität das Unternehmen verwenden möchte;</li>
+        <li>welche Sprachen benötigt werden; und</li>
+        <li>welche CRM-, Kalender-, Buchungs- oder Kommunikationstools bereits im Einsatz sind.</li>
+      </ul>
+
+      <p>
+        Anders gesagt: <strong>Das Unternehmen liefert die betriebliche Wahrheit; das Team von B2B Voice macht daraus das Telefonsystem.</strong>
+      </p>
+
+      <h2>Wie läuft der Prozess bei B2B Voice ab?</h2>
+
+      <ol class="steps">
+        <li>
+          <strong>Das Unternehmen verstehen.</strong> Ausgangspunkt ist nicht ein leerer Prompt, sondern es sind die Leistungen, Kunden, das Anrufaufkommen, die Regeln und die gewünschten Ergebnisse des Unternehmens.
+        </li>
+        <li>
+          <strong>Den Gesprächsablauf definieren.</strong> Das Team legt fest, was der Assistent fragen, beantworten, erfassen, weiterleiten, terminieren, zusammenfassen oder eskalieren soll.
+        </li>
+        <li>
+          <strong>Den Agenten auf diese Anforderungen zuschneiden.</strong> Stimme, Tonalität, Geschäftswissen, Gesprächsverhalten und Workflow-Logik werden für den konkreten Anwendungsfall konfiguriert.
+        </li>
+        <li>
+          <strong>Die erforderlichen Geschäftssysteme anbinden.</strong> CRM, Kalender, Tabellen, Buchungstools und Kommunikations-Workflows werden dort angebunden, wo die Umsetzung sie erfordert.
+        </li>
+        <li>
+          <strong>Die unternehmensspezifischen Szenarien testen.</strong> Das System wird daran getestet, wie sich echte Anrufe im jeweiligen Unternehmen erwartungsgemäß verhalten sollen, statt das Projekt wie eine generische Demo zu behandeln.
+        </li>
+        <li>
+          <strong>Einen funktionierenden Telefonassistenten in Betrieb nehmen.</strong> Das Ziel ist nicht, dem Kunden einen Builder zu überlassen, den er selbst fertigstellen muss, sondern das umgesetzte System zu liefern, das das Unternehmen in Auftrag gegeben hat.
+        </li>
+      </ol>
+
+      <h2>Ist B2B Voice nur für kleine Unternehmen gedacht?</h2>
+
+      <p>
+        Keine einzelne Unternehmensgröße definiert das Modell. Ein fokussierter Einsatz kann einen Standort und wenige Anrufarten abdecken. Ein komplexerer Einsatz kann mehrere Workflows, Abteilungen, Integrationen, Sprachen oder Eskalationsregeln erfordern.
+      </p>
+
+      <p>
+        Entscheidend ist, dass die Umsetzung auf die <strong>Komplexität des Workflows</strong> ausgerichtet ist, statt jeden Kunden in denselben vorgefertigten Assistenten zu pressen.
+      </p>
+
+      <h2>Was B2B Voice nicht ist</h2>
+
+      <ul>
+        <li><strong>Es ist kein Einheits-Telefonbot für alle.</strong> Das öffentlich beschriebene Servicemodell beruht auf einer individuellen Konfiguration für jedes Unternehmen.</li>
+        <li><strong>Es ist nicht bloß der Zugang zu einer Software.</strong> Das Leistungsversprechen umfasst auch die Konzeptions- und Umsetzungsarbeit rund um die Software.</li>
+        <li><strong>Es ist kein Versprechen, dass jeder Anruf bei der KI bleiben sollte.</strong> Regeln für die Übergabe an einen Menschen gehören zu einem verantwortungsvollen Gesprächsablauf.</li>
+        <li><strong>Es ist kein starres IVR-Menü.</strong> Das System ist für dialogbasierte Anrufbearbeitung und Workflow-Aktionen ausgelegt.</li>
+        <li><strong>Es ist keine „Zauber-KI“.</strong> Die Qualität des Systems hängt weiterhin von klaren Geschäftsinformationen, Regeln, Integrationen, Tests und sinnvollen Grenzen ab.</li>
+      </ul>
+
+      <h2>Warum ein verwaltetes Modell mit individueller Entwicklung wählen?</h2>
+
+      <p>
+        Die Sprach-KI-Technologie selbst ist nur eine Ebene des Problems. Ein produktives Telefonsystem benötigt außerdem Geschäftslogik, Gesprächsdesign, Wissen, Telefonie, Integrationen, Aktionsregeln, Eskalation, Tests und eine betriebliche Verantwortlichkeit.
+      </p>
+
+      <p>
+        Ein Unternehmen kann sich selbstverständlich dafür entscheiden, diese Bausteine intern mit einer Entwicklerplattform oder einem No-Code-Builder aufzubauen. Für Teams, die diese Kontrolle wünschen und über die passenden technischen Ressourcen verfügen, kann das sinnvoll sein.
+      </p>
+
+      <p>
+        B2B Voice ist auf eine andere Präferenz ausgelegt: <strong>Ein Unternehmen sollte das gewünschte Ergebnis beschreiben können, ohne zuvor selbst ein Team für die Umsetzung von Sprach-KI werden zu müssen.</strong>
+      </p>
+
+      <p>
+        Das ist der Kernunterschied. Der Kunde kauft keine Hausaufgaben. Der Kunde kauft die Umsetzung.
+      </p>
+
+      <div class="one-sentence">
+        <div class="label">B2B Voice in einem Satz</div>
+        <p>B2B Voice baut maßgeschneiderte KI-Sprachagenten, die geschäftliche Telefonate in Gespräche, Aktionen und vernetzte Workflows verwandeln, ohne dass der Kunde den Agenten allein aufbauen muss.</p>
+      </div>
+
+      <h2>Häufig gestellte Fragen</h2>
+
+      <section class="faq">
+        <div class="faq-item">
+          <h3>Ist B2B Voice ein Self-Service-Builder für KI-Agenten?</h3>
+          <p>
+            B2B Voice ist primär auf individuelle Umsetzung ausgerichtet und nicht darauf, dem Kunden schlicht einen generischen Builder zur Verfügung zu stellen. Das Team erfasst die Anforderungen des Unternehmens und baut den Assistenten rund um dessen Gesprächsablauf, Leistungen, Fragen und Systeme.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Muss ich den KI-Sprachagenten selbst bauen?</h3>
+          <p>
+            Sie müssen erklären, wie Ihr Unternehmen arbeitet, und die wichtigen Regeln freigeben. Das gesamte technische System selbst zu entwerfen, ist nicht erforderlich. B2B Voice übernimmt die Umsetzung auf Grundlage dieser Anforderungen.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Kann B2B Voice Anrufe rund um die Uhr (24/7) entgegennehmen?</h3>
+          <p>
+            Ja. B2B Voice positioniert seine KI-Telefonassistenten derzeit für eine Anrufabdeckung rund um die Uhr (24/7), wobei das genaue Anrufverhalten auf das jeweilige Unternehmen zugeschnitten wird.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Kann B2B Voice Termine buchen?</h3>
+          <p>
+            Terminplanung gehört zu den aktuellen Funktionen, die B2B Voice auflistet. Der genaue Buchungsablauf hängt von den Regeln des Unternehmens und von den in der Umsetzung verwendeten Kalender- oder Terminplanungstools ab.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Kann B2B Voice an ein CRM oder einen Kalender angebunden werden?</h3>
+          <p>
+            Ja. B2B Voice nennt CRM- und Kalenderintegration derzeit als Teil seines Leistungsangebots; die konkreten Tools und Workflows werden passend zur Konfiguration des Kunden ausgewählt.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Kann eine anrufende Person an einen Menschen weitergeleitet werden?</h3>
+          <p>
+            Die Übergabe an einen Menschen kann in den Gesprächsablauf eingebaut werden. Der Einrichtungsprozess von B2B Voice umfasst ausdrücklich die Festlegung, wann der Assistent antworten und wann ein Gespräch an eine Person übergeben werden soll.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Kann ich vorab sehen, wie B2B Voice für mein Unternehmen funktionieren würde?</h3>
+          <p>
+            B2B Voice bietet derzeit eine kostenlose, individuelle Demo an, die auf das Unternehmen, die Leistungen und den Gesprächsablauf des Interessenten zugeschnitten ist.
+          </p>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Sehen Sie, wie B2B Voice für Ihr Unternehmen aussehen würde.</h2>
+        <p>
+          Erzählen Sie uns, wie Ihr Unternehmen arbeitet, weshalb Ihre Kunden anrufen und was das System leisten soll. B2B Voice kann diese Informationen nutzen, um eine individuelle Demo auf Basis Ihres realen Gesprächsablaufs vorzubereiten.
+        </p>
+        <a class="button" href="https://b2b-voice.com/">Kostenlose individuelle Demo anfordern →</a>
+      </section>
+
+      <div class="next">
+        <strong>Als Nächstes in der B2B-Voice-Wissensreihe:</strong> <em>What Is an AI Voice Agent? A Complete Guide to Business Phone Automation.</em>
+        <!-- Add internal link to /blog/what-is-an-ai-voice-agent after Article #1 is published. -->
+      </div>
+    </article>
+  </main>

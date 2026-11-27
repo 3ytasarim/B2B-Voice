@@ -1,0 +1,1665 @@
+
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --red-soft: #fff3f3;
+      --purple-soft: #f5f1ff;
+      --dark: #111a2e;
+      --max: 940px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(38px, 6vw, 62px);
+    }.blog-content h2 {
+      margin: 54px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 31px 0 12px;
+      font-size: 22px;
+    }.blog-content h4 {
+      margin: 20px 0 8px;
+      font-size: 18px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 850px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer strong.label, .blog-content .kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .note {
+      margin: 28px 0;
+      padding: 20px 22px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fafbfc;
+    }.blog-content .warning {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .warning strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #78570b;
+    }.blog-content .research-note {
+      margin: 26px 0;
+      padding: 22px 23px;
+      border-radius: 12px;
+      background: var(--purple-soft);
+      border: 1px solid #ddd2ff;
+    }.blog-content .research-note strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #5539a8;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .diagram {
+      margin: 28px 0 36px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fbfcfe;
+    }.blog-content .diagram-title {
+      font-weight: 850;
+      color: #1d2a43;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }.blog-content .flow-vertical {
+      display: grid;
+      gap: 9px;
+      max-width: 620px;
+      margin: 0 auto;
+    }.blog-content .flow-box {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #d6deea;
+      background: #fff;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.35;
+    }.blog-content .arrow {
+      text-align: center;
+      color: #73809a;
+      font-weight: 900;
+      line-height: 1;
+    }.blog-content .architecture-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 24px 0 34px;
+    }.blog-content .arch-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }.blog-content .arch-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }.blog-content .arch-card p:last-child { margin-bottom: 0; }.blog-content .plane {
+      margin: 28px 0 36px;
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #e9edf5;
+    }.blog-content .plane h3 {
+      color: #fff;
+      margin: 0 0 8px;
+    }.blog-content .plane p { color: #d6ddeb; }.blog-content .plane-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }.blog-content .plane-box {
+      padding: 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+    }.blog-content .plane-box strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 4px;
+    }.blog-content .sequence {
+      margin: 30px 0;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }.blog-content .sequence-step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 13px;
+      align-items: start;
+      margin: 0 0 16px;
+    }.blog-content .sequence-step:last-child { margin-bottom: 0; }.blog-content .sequence-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #17358f;
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+    }.blog-content .sequence-step strong {
+      display: block;
+      margin-bottom: 2px;
+      color: #17243c;
+    }.blog-content .code-card {
+      margin: 24px 0 34px;
+      padding: 22px;
+      border-radius: 14px;
+      background: #101827;
+      color: #e7ecf5;
+      overflow-x: auto;
+      border: 1px solid #293653;
+    }.blog-content .code-card pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }.blog-content .waterfall {
+      margin: 28px 0 36px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fafbfc;
+    }.blog-content .waterfall-track {
+      display: grid;
+      gap: 9px;
+      margin-top: 15px;
+    }.blog-content .waterfall-row {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 12px;
+      align-items: center;
+    }.blog-content .waterfall-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #42506a;
+    }.blog-content .waterfall-bar {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #d9e1ff 0%, #9bb0ff 50%, #5c78df 100%);
+      position: relative;
+      overflow: hidden;
+    }.blog-content .waterfall-bar.short { width: 34%; }.blog-content .waterfall-bar.medium { width: 56%; }.blog-content .waterfall-bar.long { width: 78%; }.blog-content .waterfall-bar.full { width: 100%; }.blog-content .misconceptions {
+      margin: 28px 0 38px;
+      display: grid;
+      gap: 13px;
+    }.blog-content .myth {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }.blog-content .myth-title {
+      padding: 15px 17px;
+      background: #fff4f4;
+      font-weight: 850;
+      color: #7f2727;
+    }.blog-content .myth-fix {
+      padding: 15px 17px;
+      background: #fff;
+      color: #39465c;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta a.button {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul {
+      padding-left: 20px;
+    }.blog-content .sources li {
+      margin: 9px 0;
+      overflow-wrap: anywhere;
+    }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 760px) {.blog-content .architecture-grid, .blog-content .plane-grid {
+        grid-template-columns: 1fr;
+      }.blog-content .waterfall-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }.blog-content .waterfall-bar, .blog-content .waterfall-bar.short, .blog-content .waterfall-bar.medium, .blog-content .waterfall-bar.long, .blog-content .waterfall-bar.full {
+        width: 100%;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .research-note, .blog-content .diagram, .blog-content .plane, .blog-content .sequence, .blog-content .code-card, .blog-content .waterfall, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap {
+        break-inside: avoid;
+      }.blog-content .plane, .blog-content .cta, .blog-content .code-card {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .plane h3, .blog-content .plane p, .blog-content .plane-box strong, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .code-card {
+        color: #111;
+      }
+    }
+</style>
+<main class="page">
+    <article>
+      <header>
+        <span class="eyebrow">Sprach-KI-Architektur · Technischer Leitfaden</span>
+        <h1>Wie KI-Sprachagenten funktionieren: STT, Realtime Speech, LLMs, TTS, Telefonie und Tool Calling</h1>
+        <p class="dek">
+          Ein produktiver KI-Sprachagent ist nicht einfach „ChatGPT, das an ein Telefon angeschlossen ist“. Er ist ein Echtzeitsystem, in dem Telefonie, Audiotransport, Gesprächstiming, Reasoning, Geschäftslogik, Tools, Sprachgenerierung, Monitoring und die Übergabe an einen Menschen zusammenspielen müssen.
+        </p>
+        <p class="meta">Veröffentlicht am 29. August 2026 · Von B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
+        <strong class="label">Kurzantwort</strong>
+        <p>
+          <strong>Ein KI-Sprachagent verbindet einen Live-Audiokanal mit einem Dialogsystem, das Sprache verstehen, einen Gesprächszustand führen, Wissen oder Geschäfts-Tools nutzen und in Echtzeit gesprochene Antworten zurückgeben kann.</strong> Manche Systeme verwenden eine kaskadierte Pipeline – Speech-to-Text, Reasoning, dann Text-to-Speech –, während neuere audio-native Systeme Audio direkter verarbeiten und erzeugen können. In beiden Architekturen laufen echte Geschäftsaktionen wie das Prüfen eines Kalenders, das Lesen eines CRM-Datensatzes, das Anlegen eines Termins oder das Weiterleiten einer anrufenden Person in der Regel über kontrollierte externe Tools und Telefoniesysteme ab und nicht im Sprachmodell selbst.
+        </p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+          <li><strong>Es gibt keine einzige universelle Architektur für KI-Sprachagenten.</strong></li>
+          <li>Kaskadierte Systeme und audio-native Echtzeitsysteme sind beide valide Ansätze für den Produktivbetrieb.</li>
+          <li>Die Sprachqualität ist nur eine Ebene; Timing, Tools, Fehlerbehandlung und Geschäftsergebnisse sind genauso wichtig.</li>
+          <li>Das Sprachmodell „führt“ die Geschäftsaktion in der Regel nicht selbst aus. Es fordert eine Aktion an oder schlägt sie vor; autorisierte Software führt sie aus.</li>
+          <li>Latenz ist ein Wasserfall über mehrere Komponenten, nicht eine einzelne Modellgeschwindigkeit.</li>
+          <li>Unterbrechungen sind ein Problem des Zustandsmanagements, nicht bloß ein Ereignis, bei dem das Audio gestoppt wird.</li>
+          <li>Ein produktiver Sprachagent sollte sowohl als Dialogsystem als auch als System für Geschäftstransaktionen getestet werden.</li>
+        </ul>
+      </section>
+
+      <h2>Was passiert eigentlich, wenn Sie mit einem KI-Sprachagenten sprechen?</h2>
+
+      <p>
+        Stellen Sie sich vor, Sie rufen eine Zahnarztpraxis an und sagen: <strong>„Hallo, ich möchte nächsten Dienstagnachmittag eine Zahnreinigung buchen.“</strong>
+      </p>
+
+      <p>
+        Aus Sicht der anrufenden Person klingt das wie ein einziger einfacher Satz. Hinter den Kulissen muss ein produktives System womöglich mehrere Ebenen koordinieren:
+      </p>
+
+      <div class="sequence">
+        <div class="sequence-step">
+          <div class="sequence-num">1</div>
+          <div><strong>Der Anruf wird verbunden.</strong> Ein Telefonnetz, ein Browser oder ein Mobile-Client baut eine Live-Mediensitzung auf.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">2</div>
+          <div><strong>Das Audio gelangt in das Sprachsystem.</strong> Kodierte Audioframes werden in die Echtzeitsitzung gestreamt.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">3</div>
+          <div><strong>Das System erkennt den Redebeitrag der anrufenden Person.</strong> VAD, Endpointing oder semantische Erkennung des Äußerungsendes helfen dabei festzustellen, wann die Person spricht und wann ihr Redebeitrag beendet sein könnte.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">4</div>
+          <div><strong>Das Anliegen wird verstanden.</strong> Ein kaskadiertes System nutzt möglicherweise zuerst STT; ein audio-natives System kann das Audio direkt interpretieren.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">5</div>
+          <div><strong>Der Agent stellt fest, welche Informationen fehlen.</strong> Möglicherweise benötigt er Leistungsart, Datum, Kundenidentität oder weitere Angaben.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">6</div>
+          <div><strong>Ein externes System wird abgefragt.</strong> Der Agent beauftragt ein autorisiertes Tool, die tatsächliche Kalenderverfügbarkeit zu prüfen.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">7</div>
+          <div><strong>Die anrufende Person wählt eine gültige Option.</strong> Der Agent bestätigt den genauen Termin, bevor ein Schreibvorgang erfolgt.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">8</div>
+          <div><strong>Das Buchungssystem legt den Termin an.</strong> Das externe System liefert ein verbindliches Ergebnis: Erfolg oder Fehler.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">9</div>
+          <div><strong>Der Agent bestätigt das Ergebnis.</strong> Die gesprochene Bestätigung sollte widerspiegeln, was das Geschäftssystem tatsächlich getan hat.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">10</div>
+          <div><strong>Nachgelagerte Workflows können folgen.</strong> CRM-Aktualisierungen, Zusammenfassungen, Benachrichtigungen, Analysen oder Folgeaufgaben können nach dem Ende des Gesprächs stattfinden.</div>
+        </div>
+      </div>
+
+      <div class="thesis">
+        Ein produktiver KI-Sprachagent lässt sich am besten als verteiltes Echtzeitsystem verstehen – nicht als ein einzelnes Modell mit realistischer Stimme.
+      </div>
+
+      <h2>Die beiden wichtigsten Architekturen für KI-Sprachagenten</h2>
+
+      <div class="architecture-grid">
+        <section class="arch-card">
+          <span class="kicker">Architektur 1</span>
+          <h3>Kaskadierte Sprachagenten-Architektur</h3>
+          <p>
+            Ein kaskadiertes System trennt Spracherkennung, Reasoning und Sprachgenerierung explizit voneinander. Das gibt Entwicklern eine starke Kontrolle über Transkripte, Modelleingaben, Tools und die TTS-Ausgabe.
+          </p>
+        </section>
+
+        <section class="arch-card">
+          <span class="kicker">Architektur 2</span>
+          <h3>Audio-native Echtzeit-Architektur</h3>
+          <p>
+            Ein audio-natives Echtzeitmodell kann Live-Audio verarbeiten und gesprochene Ausgaben erzeugen, ohne dass die gesamte Interaktion zwingend über eine Text-Zwischenstufe laufen muss.
+          </p>
+        </section>
+      </div>
+
+      <h3>Kaskadierte Architektur</h3>
+
+      <div class="diagram">
+        <div class="diagram-title">Typischer Ablauf eines kaskadierten Sprachagenten</div>
+        <div class="flow-vertical">
+          <div class="flow-box">Audio der anrufenden Person</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Sprachaktivitäts- und Äußerungsende-Erkennung</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Streaming-Speech-to-Text</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Transkript</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">LLM / Agent-Orchestrator</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Wissen / Geschäftsregeln / Tools</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Textantwort</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Streaming-Text-to-Speech</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Anrufende Person hört die Antwort</div>
+        </div>
+      </div>
+
+      <p>
+        Die kaskadierte Architektur sollte nicht als „alte Sprach-KI“ abgetan werden. Moderne Implementierungen können die Stufen streamen und parallelisieren, statt zu warten, bis jede Stufe vollständig abgeschlossen ist, bevor die nächste beginnt.
+      </p>
+
+      <p>
+        Ihr größter Vorteil ist <strong>Modularität und Beobachtbarkeit</strong>. Entwickler können nachvollziehen, was der Spracherkenner geliefert hat, welcher Text das Modell erreicht hat, welches Tool aufgerufen wurde, was das Tool zurückgegeben hat und welche Antwort an das TTS übergeben wurde.
+      </p>
+
+      <p>
+        Damit eignen sich kaskadierte Systeme besonders dann, wenn vorhersehbare Workflows, bestehende textbasierte Agenten, Auditierbarkeit oder die Optimierung einzelner Komponenten wichtig sind.
+      </p>
+
+      <h3>Echtzeit-Speech-to-Speech- / audio-native Architektur</h3>
+
+      <div class="diagram">
+        <div class="diagram-title">Konzeptioneller Ablauf eines audio-nativen Systems</div>
+        <div class="flow-vertical">
+          <div class="flow-box">Audio der anrufenden Person</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Multimodales Echtzeit- / Audiomodell</div>
+          <div class="arrow">↕</div>
+          <div class="flow-box">Gesprächszustand + Tools + Geschäftslogik</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Erzeugtes Audio</div>
+        </div>
+      </div>
+
+      <p>
+        In dieser Architektur kann das Hauptmodell direkt mit Audio-Ein- und -Ausgabe arbeiten. Das heißt, das System kann mehr akustische Informationen wie Timing, Betonung, Rhythmus, Intonation, Zögern und Nachdruck erhalten, statt jeden Redebeitrag zunächst in Text zu überführen und dabei zu verflachen.
+      </p>
+
+      <div class="research-note">
+        <strong>Wichtige Unterscheidung</strong> Speech-to-Speech, audio-nativ und Vollduplex sind keine Synonyme. Ein System kann Audio entgegennehmen und zurückgeben, ohne darunter ein einziges monolithisches audio-natives Modell zu verwenden. Ebenso bedeutet die Unterstützung von Barge-in nicht automatisch, dass das System überlappende Sprache fortlaufend modelliert wie eine Vollduplex-Architektur auf Forschungsniveau.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Anforderung</th>
+              <th>Kaskadiert</th>
+              <th>Audio-nativ in Echtzeit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Debugging auf Komponentenebene</td>
+              <td>In der Regel einfacher</td>
+              <td>Kann abstrakter sein</td>
+            </tr>
+            <tr>
+              <td>Explizite Kontrolle über das Transkript</td>
+              <td>Stark</td>
+              <td>Kann optional oder nachrangig sein</td>
+            </tr>
+            <tr>
+              <td>Integration bestehender Text-Agenten</td>
+              <td>Sehr gut geeignet</td>
+              <td>Kann ein Redesign erfordern</td>
+            </tr>
+            <tr>
+              <td>Austausch von Komponenten</td>
+              <td>Flexibel</td>
+              <td>Stärker vom Modell abhängig</td>
+            </tr>
+            <tr>
+              <td>Akustische Informationen</td>
+              <td>Durch die Umwandlung in Text teilweise reduziert</td>
+              <td>Kann mehr Audioinformationen erhalten</td>
+            </tr>
+            <tr>
+              <td>Tool Calling</td>
+              <td>Unterstützt</td>
+              <td>Unterstützt</td>
+            </tr>
+            <tr>
+              <td>Auditierbarkeit</td>
+              <td>In der Regel unkompliziert</td>
+              <td>Kann mehr Telemetrie erfordern</td>
+            </tr>
+            <tr>
+              <td>Potenzial für niedrige Latenz</td>
+              <td>Stark mit Streaming</td>
+              <td>Starkes architektonisches Potenzial</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning">
+        <strong>Nicht verallgemeinern:</strong> Audio-nativ bedeutet nicht automatisch schneller, besser oder zuverlässiger. Netzwerkrouting, Erkennung des Äußerungsendes, Tools, Pufferung, Modellwahl und Implementierungsqualität können das tatsächliche Nutzererlebnis dominieren.
+      </div>
+
+      <h2>Der Stack eines produktiven KI-Sprachagenten</h2>
+
+      <div class="diagram">
+        <div class="diagram-title">Eine belastbarere Produktionsarchitektur</div>
+        <div class="flow-vertical">
+          <div class="flow-box">Anrufende Person / Browser / Mobile App</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Telefonie &amp; Medien-Ingress<br><small>PSTN / SIP / WebRTC / WebSocket</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Audiotransport &amp; -verarbeitung<br><small>Codec / Resampling / Jitter / Pufferung</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Gesprächstiming<br><small>VAD / EOT / semantische Sprecherwechsel / Unterbrechung</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Verstehen &amp; Reasoning<br><small>STT + LLM oder audio-natives Modell</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Wissen + Geschäftslogik<br><small>RAG / Regeln / Zustand / APIs</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Aktionsebene<br><small>CRM / Kalender / Datenbank / Webhooks / Workflows</small></div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Sprachgenerierung</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Anrufende Person hört die Antwort</div>
+        </div>
+      </div>
+
+      <div class="plane">
+        <h3>Dialogebene vs. Aktionsebene</h3>
+        <p>
+          Eine der nützlichsten Möglichkeiten, produktive Sprach-KI zu verstehen, ist die Trennung zwischen dem, was das System <em>entscheidet</em>, und dem, was das System <em>tatsächlich verändert</em>.
+        </p>
+        <div class="plane-grid">
+          <div class="plane-box">
+            <strong>Dialogebene</strong> Absicht verstehen, Fragen stellen, Kontext halten, entscheiden, ob ein Tool nötig ist, und die nächste Antwort formulieren.
+          </div>
+          <div class="plane-box">
+            <strong>Aktionsebene</strong> Echte Daten über autorisierte Kalender, CRMs, Datenbanken, APIs, Webhooks und Workflow-Systeme lesen oder schreiben.
+          </div>
+        </div>
+      </div>
+
+      <h2>Wie gelangt ein Telefonanruf zur KI?</h2>
+
+      <p>
+        Bei einem telefonbasierten Agenten beginnt der Prozess in der Regel, bevor ein KI-Modell überhaupt Audio erhält.
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Telefonnummer</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Carrier / PSTN</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Anrufrouting / SIP-Signalisierung</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Echtzeit-Mediensitzung</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Sprachagenten-System</div>
+        </div>
+      </div>
+
+      <h3>SIP ist nicht der Audiostream</h3>
+
+      <p>
+        SIP – das Session Initiation Protocol – ist in erster Linie ein Protokoll für Signalisierung und Sitzungssteuerung. Es dient dazu, Kommunikationssitzungen aufzubauen, zu ändern und zu beenden.
+      </p>
+
+      <p>
+        Echtzeit-Audio wird in der Regel getrennt über Medienprotokolle und Mediensitzungen übertragen. Diese Unterscheidung ist wichtig, weil Telefonie-Signalisierung und Audiotransport unterschiedliche technische Ebenen sind.
+      </p>
+
+      <div class="thesis">
+        SIP steuert die Sitzung. Der Medientransport trägt die Stimme.
+      </div>
+
+      <h3>WebRTC und WebSockets</h3>
+
+      <p>
+        Nicht jeder Sprachagent nutzt eine Telefonnummer. Sprachanwendungen im Browser oder auf Mobilgeräten können WebRTC verwenden, während serverbasierte Anwendungen Echtzeit-Audio über bidirektionale WebSocket-Verbindungen austauschen können.
+      </p>
+
+      <h2>Audio wird nicht als Wörter übertragen</h2>
+
+      <p>
+        Bevor ein KI-System einen Satz versteht, erhält es Audioframes. Diese Frames müssen je nach Telefonieanbieter, Codec, Modellschnittstelle und Netzwerkpfad möglicherweise dekodiert, neu abgetastet, gepuffert oder erneut kodiert werden.
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Eingehende Audioframes</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Dekodieren</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Bei Bedarf neu abtasten (Resampling)</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Modellverarbeitung</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Neu abtasten / kodieren</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Wiedergabe an die anrufende Person</div>
+        </div>
+      </div>
+
+      <p>
+        Verschiedene Schnittstellen unterstützen unterschiedliche Codecs und Abtastraten. Aussagen wie „alle KI-Telefonanrufe verwenden einen bestimmten Codec oder eine bestimmte Abtastrate“ sollten daher als anbieterspezifisch und nicht als allgemeingültig betrachtet werden.
+      </p>
+
+      <h3>Jitter und Pufferung</h3>
+
+      <p>
+        Echtzeit-Audiopakete treffen nicht immer in perfekt gleichmäßigen Abständen ein. Die Schwankung der Ankunftszeiten wird als <strong>Jitter</strong> bezeichnet.
+      </p>
+
+      <p>
+        Puffer können die Wiedergabe glätten, bringen aber einen Zielkonflikt mit sich: Mehr Pufferung kann die Stabilität verbessern, erhöht aber zugleich die Verzögerung.
+      </p>
+
+      <h2>Woher weiß der Agent, dass Sie fertig gesprochen haben?</h2>
+
+      <p>
+        Das ist eines der schwierigsten Probleme bei natürlicher Sprachinteraktion.
+      </p>
+
+      <div class="code-card">
+        <pre>Speech
+Speech
+Speech
+Silence
+Silence
+Threshold reached
+→ End of turn</pre>
+      </div>
+
+      <p>
+        Die einfachsten Systeme verlassen sich stark auf Stille und Voice Activity Detection. Doch Stille bedeutet nicht immer, dass die sprechende Person fertig ist.
+      </p>
+
+      <p>
+        Nehmen Sie diesen Satz: <strong>„Ich brauche einen Termin für ... äh ... wahrscheinlich Dienstag.“</strong>
+      </p>
+
+      <p>
+        Ein fester Stille-Schwellenwert kann zu früh antworten und die anrufende Person unterbrechen. Fortgeschrittenere Systeme kombinieren möglicherweise akustische Signale mit sprachlichen oder semantischen Informationen, um abzuschätzen, ob der Gedanke tatsächlich abgeschlossen ist.
+      </p>
+
+      <div class="thesis">
+        Die Latenz eines Sprachagenten ist teils ein Geschwindigkeitsproblem – und teils ein Problem der Gesprächsintelligenz.
+      </div>
+
+      <h2>Wie kaskadierte Systeme Sprache verstehen</h2>
+
+      <p>
+        Streaming-Spracherkennung liefert häufig Zwischenhypothesen, statt auf einen vollständigen Satz zu warten.
+      </p>
+
+      <div class="code-card">
+        <pre>"I need..."
+"I need an app..."
+"I need an appointment..."
+"I need an appointment Tuesday."</pre>
+      </div>
+
+      <p>
+        Frühere Teilergebnisse können sich ändern, wenn weiteres Audio eintrifft. Schließlich liefert der Erkenner ein stabiles oder finalisiertes Transkript.
+      </p>
+
+      <p>
+        Diese Unterscheidung ist wichtig bei Namen, Adressen, Telefonnummern, Daten, Kontonummern und Terminzeiten. Ein produktives System sollte bei unumkehrbaren Aktionen, die auf instabilen Teiltranskripten beruhen, vorsichtig sein.
+      </p>
+
+      <h2>Das Transkript-Paradoxon bei audio-nativen Systemen</h2>
+
+      <p>
+        In einem kaskadierten System ist das Transkript normalerweise die explizite Textrepräsentation, die an die Reasoning-Stufe übergeben wird. Bei manchen audio-nativen Systemen kann die Architektur anders aussehen:
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Audio der anrufenden Person</div>
+          <div class="arrow">↙ &nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+          <div class="flow-box">Interpretation durch das Audiomodell</div>
+          <div class="flow-box">Separates ASR-Transkript</div>
+        </div>
+      </div>
+
+      <div class="research-note">
+        <strong>Wichtige technische Konsequenz</strong> Das sichtbare Transkript ist nicht zwangsläufig die exakte interne Repräsentation, mit der das audio-native Modell die anrufende Person verstanden hat.
+      </div>
+
+      <p>
+        Das bedeutet, dass die Transkriptgenauigkeit allein möglicherweise nicht verrät, ob der Agent die richtige Entität verstanden, das richtige Tool gewählt oder das richtige Geschäftsergebnis erzielt hat.
+      </p>
+
+      <h2>Was leistet die Reasoning-Ebene eigentlich?</h2>
+
+      <p>
+        Je nach Architektur kann die Reasoning-Ebene Folgendes bestimmen:
+      </p>
+
+      <ul>
+        <li>was die anrufende Person möchte;</li>
+        <li>welche Informationen fehlen;</li>
+        <li>ob eine Rückfrage gestellt werden soll;</li>
+        <li>ob freigegebenes Unternehmenswissen benötigt wird;</li>
+        <li>ob ein Tool oder ein externes System aufgerufen werden soll;</li>
+        <li>welches Tool mit welchen Argumenten verwendet werden soll;</li>
+        <li>ob die gewünschte Aktion zulässig ist;</li>
+        <li>ob die anrufende Person weitergeleitet werden soll;</li>
+        <li>was der Agent als Nächstes sagen soll.</li>
+      </ul>
+
+      <p>
+        Ein gutes Produktionsdesign trennt in der Regel probabilistisches Modell-Reasoning von deterministischen Geschäftsregeln und verbindlichen externen Daten.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Art der Information</th>
+              <th>Beispiel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Modell-Reasoning</strong></td>
+              <td>Die anrufende Person möchte offenbar nächsten Dienstagnachmittag eine Zahnreinigung.</td>
+            </tr>
+            <tr>
+              <td><strong>Geschäftsregel</strong></td>
+              <td>Diese Leistung kann nicht weniger als 24 Stunden im Voraus gebucht werden.</td>
+            </tr>
+            <tr>
+              <td><strong>Externe Wahrheit</strong></td>
+              <td>Die Kalender-API meldet, dass 15:30 Uhr verfügbar ist.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Prompt-Kontext vs. RAG vs. Live-Geschäftsdaten</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Mechanismus</th>
+              <th>Am besten geeignet für</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Prompt / Kontext</strong></td>
+              <td>Kleine, stabile Anweisungen und Fakten</td>
+            </tr>
+            <tr>
+              <td><strong>RAG / Wissensabruf</strong></td>
+              <td>Große Sammlungen von Dokumenten, Handbüchern, Richtlinien und FAQs</td>
+            </tr>
+            <tr>
+              <td><strong>Live-Tools / APIs</strong></td>
+              <td>Aktuelle oder verbindliche Daten wie Kalenderverfügbarkeit, CRM-Datensätze oder Bestellstatus</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="thesis">
+        Wissen beantwortet Fragen. Tools prüfen oder verändern die reale Welt.
+      </div>
+
+      <p>
+        Retrieval-Augmented Generation (RAG) kann die Fundierung der Antworten verbessern, indem relevante Informationen aus einer Wissensdatenbank bereitgestellt werden. Man sollte es aber nicht als Garantie dafür darstellen, dass keine Halluzinationen auftreten können.
+      </p>
+
+      <h2>Wie Tool Calling ein Gespräch in Handlung verwandelt</h2>
+
+      <p>
+        Tool Calling ermöglicht es einem Sprachagenten, über das reine Gespräch hinauszugehen.
+      </p>
+
+      <div class="code-card">
+        <pre>Caller:
+"Can you book me Tuesday at 3?"
+
+        ↓
+
+Model requests:
+get_availability(
+  service="consultation",
+  date="Tuesday"
+)
+
+        ↓
+
+Application / Tool Layer:
+queries calendar
+
+        ↓
+
+Tool result:
+2:30 PM
+3:00 PM
+4:30 PM
+
+        ↓
+
+Agent:
+"Yes, 3 PM is available.
+Would you like me to book it?"
+
+        ↓
+
+Caller:
+"Yes."
+
+        ↓
+
+Model requests:
+create_booking(...)
+
+        ↓
+
+Application:
+creates appointment
+
+        ↓
+
+Authoritative result:
+booking_id = ABC123
+
+        ↓
+
+Agent:
+"You're booked for Tuesday at 3 PM."</pre>
+      </div>
+
+      <div class="thesis">
+        Das Modell fordert die Aktion an oder schlägt sie vor. Autorisierte Software führt sie aus.
+      </div>
+
+      <h2>Durchgängiges Beispiel: einen Termin buchen</h2>
+
+      <div class="sequence">
+        <div class="sequence-step">
+          <div class="sequence-num">1</div>
+          <div><strong>Anrufende Person:</strong> „Hallo, ich brauche nächsten Dienstagnachmittag eine Zahnreinigung.“</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">2</div>
+          <div><strong>Verstehen:</strong> Absicht = Buchung, Leistung = Zahnreinigung, Datum = nächster Dienstag, Präferenz = nachmittags.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">3</div>
+          <div><strong>Geschäftsregeln:</strong> Leistungsdauer, Eignung der Behandler und Terminplanungsbeschränkungen werden geprüft.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">4</div>
+          <div><strong>Lese-Tool:</strong> Verfügbare Terminslots werden beim Terminplanungssystem angefragt.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">5</div>
+          <div><strong>Agent:</strong> bietet nur die Slots an, die der maßgebliche Kalender zurückliefert.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">6</div>
+          <div><strong>Anrufende Person:</strong> wählt 15:30 Uhr.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">7</div>
+          <div><strong>Bestätigungsgrenze:</strong> Datum, Uhrzeit und Leistung werden vor einem Schreibvorgang genau wiederholt.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">8</div>
+          <div><strong>Schreib-Tool:</strong> Die Buchungsanfrage wird an das Terminsystem gesendet.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">9</div>
+          <div><strong>Verbindliche Antwort:</strong> Das Terminsystem bestätigt den Erfolg.</div>
+        </div>
+        <div class="sequence-step">
+          <div class="sequence-num">10</div>
+          <div><strong>Nach dem Anruf:</strong> CRM-Aktualisierungen, Zusammenfassungen oder Folge-Workflows können ausgeführt werden.</div>
+        </div>
+      </div>
+
+      <h2>Lese-Tools und Schreib-Tools sollten nicht gleich behandelt werden</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Aktion</th>
+              <th>Beispiel</th>
+              <th>Typische Kontrolle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Einfaches Lesen</td>
+              <td>Öffnungszeiten prüfen</td>
+              <td>Geringe Hürde</td>
+            </tr>
+            <tr>
+              <td>Live-Lesen</td>
+              <td>Terminverfügbarkeit prüfen</td>
+              <td>Validierung</td>
+            </tr>
+            <tr>
+              <td>Sensibles Lesen</td>
+              <td>Kundendatensatz abrufen</td>
+              <td>Authentifizierung + Autorisierung</td>
+            </tr>
+            <tr>
+              <td>Umkehrbares Schreiben</td>
+              <td>CRM-Notiz hinzufügen</td>
+              <td>Validierung + Protokollierung</td>
+            </tr>
+            <tr>
+              <td>Für Kunden sichtbares Schreiben</td>
+              <td>Termin anlegen</td>
+              <td>Ausdrückliche Bestätigung</td>
+            </tr>
+            <tr>
+              <td>Sensible Transaktion</td>
+              <td>Zahlung oder Erstattung</td>
+              <td>Starke Autorisierung</td>
+            </tr>
+            <tr>
+              <td>Destruktive Aktion</td>
+              <td>Wichtigen Datensatz löschen oder stornieren</td>
+              <td>Bestätigung und gegebenenfalls Freigabe durch einen Menschen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning">
+        <strong>Strukturierte Ausgabe ist nicht dasselbe wie sichere Ausführung.</strong> Ein Tool-Aufruf kann vollkommen gültiges JSON sein und dennoch den falschen Kunden, den falschen Termin oder das falsche Konto betreffen. Schema-Validierung und fachliche Validierung sind unterschiedliche Probleme.
+      </div>
+
+      <h2>Wie antwortet die KI per Sprache?</h2>
+
+      <p>
+        In einer kaskadierten Architektur wird der erzeugte Text an ein TTS-System übergeben. Modernes TTS kann Audio streamen, bevor die gesamte Antwort synthetisiert wurde.
+      </p>
+
+      <p>
+        Bei der TTS-Qualität geht es aber nicht nur darum, ob die Stimme realistisch klingt. Realistische Produktionstests sollten Folgendes einschließen:
+      </p>
+
+      <ul>
+        <li>Vor- und Nachnamen;</li>
+        <li>Telefonnummern;</li>
+        <li>Adressen;</li>
+        <li>Währungen;</li>
+        <li>Daten und Terminzeiten;</li>
+        <li>Akronyme;</li>
+        <li>branchenspezifische Fachbegriffe;</li>
+        <li>Sprachwechsel;</li>
+        <li>Sprechgeschwindigkeit und Pausen.</li>
+      </ul>
+
+      <h2>Woher die Latenz von KI-Sprachagenten tatsächlich kommt</h2>
+
+      <p>
+        Es gibt keine einzelne Komponente namens „Sprachlatenz“. Eine gesprochene Antwort kann von mehreren Stufen abhängen.
+      </p>
+
+      <div class="waterfall">
+        <div class="diagram-title">Veranschaulichender Latenz-Wasserfall – nicht maßstabsgetreu</div>
+        <div class="waterfall-track">
+          <div class="waterfall-row">
+            <div class="waterfall-label">Erkennung des Äußerungsendes</div>
+            <div class="waterfall-bar medium"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">STT-Finalisierung</div>
+            <div class="waterfall-bar short"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Modell-Inferenz</div>
+            <div class="waterfall-bar medium"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Retrieval / Tool-Aufruf</div>
+            <div class="waterfall-bar long"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Erstes TTS-Audio</div>
+            <div class="waterfall-bar short"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Netzwerk / Pufferung</div>
+            <div class="waterfall-bar medium"></div>
+          </div>
+          <div class="waterfall-row">
+            <div class="waterfall-label">Gesamte vom Nutzer wahrgenommene Verzögerung</div>
+            <div class="waterfall-bar full"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Metrik</th>
+              <th>Was sie misst</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Latenz des Äußerungsendes</td>
+              <td>Wie lange das System braucht, um zu entscheiden, dass die anrufende Person fertig gesprochen hat</td>
+            </tr>
+            <tr>
+              <td>STT-Latenz</td>
+              <td>Zeit bis zu einer nutzbaren Spracherkennung</td>
+            </tr>
+            <tr>
+              <td>TTFT</td>
+              <td>Zeit bis zum ersten Text-Token des Modells</td>
+            </tr>
+            <tr>
+              <td>Tool-Latenz</td>
+              <td>Zeit, die auf ein externes Geschäftssystem gewartet wird</td>
+            </tr>
+            <tr>
+              <td>TTS-Latenz</td>
+              <td>Zeit, bis die Audiogenerierung beginnt</td>
+            </tr>
+            <tr>
+              <td>TTFA</td>
+              <td>Zeit, bis die anrufende Person die Antwort tatsächlich zu hören beginnt</td>
+            </tr>
+            <tr>
+              <td>Gesamtlatenz pro Gesprächsrunde</td>
+              <td>Gesamte vom Nutzer wahrgenommene Verzögerung vom Ende des Redebeitrags bis zur hörbaren Antwort</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning">
+        <strong>Erfinden Sie keinen universellen „menschenähnlichen“ Schwellenwert.</strong> Dashboards von Anbietern, Modell-Benchmarks und wissenschaftliche Veröffentlichungen können nützliche Zahlen nennen, doch diese Messwerte gehören zu bestimmten Systemen und Bedingungen.
+      </div>
+
+      <h2>Was passiert, wenn die anrufende Person die KI unterbricht?</h2>
+
+      <p>
+        Barge-in wird oft beschrieben als „Die KI hört auf zu sprechen, wenn der Nutzer spricht“. Das ist nur ein Teil des Problems.
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">KI-Audio wird abgespielt</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Sprache der anrufenden Person erkannt</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Aktuelle Generierung stoppen / abbrechen</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Wiedergabewarteschlange leeren</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Ermitteln, was die anrufende Person tatsächlich gehört hat</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Neuen Redebeitrag der anrufenden Person annehmen</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Gesprächszustand abgleichen</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Neue Antwort erzeugen</div>
+        </div>
+      </div>
+
+      <p>
+        Das zentrale verborgene Problem ist der <strong>Abgleich des Wiedergabezustands</strong>. Der Server hat möglicherweise mehr Text erzeugt, als die anrufende Person vor der Unterbrechung tatsächlich gehört hat. Geht der Gesprächsverlauf davon aus, dass die gesamte Antwort ausgeliefert wurde, kann der Systemzustand von der Realität abweichen.
+      </p>
+
+      <h2>Was passiert, wenn etwas schiefgeht?</h2>
+
+      <p>
+        Produktive Systeme sollten um Fehlerpfade herum entworfen werden, nicht nur für erfolgreiche Demos.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Fehler</th>
+              <th>Unsicheres Verhalten</th>
+              <th>Sichereres Verhalten im Produktivbetrieb</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Name oder Nummer unklar</td>
+              <td>Raten</td>
+              <td>Die anrufende Person bitten, zu wiederholen oder zu bestätigen</td>
+            </tr>
+            <tr>
+              <td>Anrufende Person schweigt</td>
+              <td>Unbegrenzt warten</td>
+              <td>Erneut nachfragen, dann das Gespräch höflich beenden</td>
+            </tr>
+            <tr>
+              <td>Frage außerhalb des Zuständigkeitsbereichs</td>
+              <td>Eine Antwort erfinden</td>
+              <td>Informationen abrufen, die Einschränkung erklären oder weiterleiten</td>
+            </tr>
+            <tr>
+              <td>Schwache Retrieval-Evidenz</td>
+              <td>Fehlende Informationen ergänzen</td>
+              <td>Nachfragen oder eskalieren</td>
+            </tr>
+            <tr>
+              <td>Kalender-API nicht verfügbar</td>
+              <td>Behaupten, die Buchung sei erfolgreich gewesen</td>
+              <td>Den Fehler erklären und einen Fallback anbieten</td>
+            </tr>
+            <tr>
+              <td>Keine Verfügbarkeit</td>
+              <td>Einen Slot erfinden</td>
+              <td>Nur tatsächliche Alternativen anbieten</td>
+            </tr>
+            <tr>
+              <td>Schreibanfrage läuft in ein Timeout</td>
+              <td>Blind wiederholen</td>
+              <td>Transaktionsstatus prüfen und, wo möglich, idempotente Wiederherstellung verwenden</td>
+            </tr>
+            <tr>
+              <td>Übergabe an einen Menschen bleibt unbeantwortet</td>
+              <td>Die anrufende Person im Stich lassen</td>
+              <td>Fallback-Route, Rückruf oder Voicemail-Regelung</td>
+            </tr>
+            <tr>
+              <td>Verbindung bricht ab</td>
+              <td>Unumkehrbare Aktionen wiederholen</td>
+              <td>Zustand sicher wiederherstellen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Das Problem doppelter Schreibvorgänge ist besonders wichtig. Wenn eine Buchungs-API erfolgreich ist, die Antwort aber durch ein Netzwerk-Timeout verloren geht, kann das blinde Wiederholen derselben Aktion zwei Termine erzeugen.
+      </p>
+
+      <div class="thesis">
+        Viele Fehler von Sprachagenten sind keine Probleme der „KI-Intelligenz“. Es sind Probleme verteilter Systeme, von Berechtigungen, Telefonie oder der Zuverlässigkeit von Workflows.
+      </div>
+
+      <h2>Wie funktioniert die Übergabe an einen Menschen?</h2>
+
+      <p>
+        Die Übergabe an einen Menschen umfasst mindestens drei getrennte Entwurfsfragen:
+      </p>
+
+      <ol>
+        <li><strong>Auslöser:</strong> Warum soll der Anruf weitergeleitet werden?</li>
+        <li><strong>Telefonie:</strong> Wohin soll der laufende Anruf geleitet werden?</li>
+        <li><strong>Kontext:</strong> Welche Informationen soll der Mensch erhalten?</li>
+      </ol>
+
+      <p>
+        Häufige Auslöser für eine Weiterleitung sind ausdrückliche Wünsche der anrufenden Person, wiederholte Missverständnisse, sensible Vorgänge, nicht unterstützte Anfragen, Tool-Fehler oder richtliniengesteuerte Eskalation.
+      </p>
+
+      <p>
+        Es gibt außerdem einen terminologischen Unterschied zwischen Blind- bzw. Cold-Transfer und Attended- bzw. Warm-Transfer. Ein System sollte eine Weiterleitung nur dann „warm“ nennen, wenn das Telefonieverhalten tatsächlich die Semantik einer begleiteten Weiterleitung (Attended Transfer) umfasst.
+      </p>
+
+      <h2>Was passiert nach einem KI-Sprachanruf?</h2>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Anruf endet</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Transkript / Anrufdaten</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Zusammenfassung</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Strukturierte Extraktion</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Anrufergebnis</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">CRM / Folge-Workflow</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Analyse / Evaluierung</div>
+        </div>
+      </div>
+
+      <div class="code-card">
+        <pre>{
+  "intent": "appointment_booking",
+  "appointment_booked": true,
+  "appointment_time": "...",
+  "human_handoff": false,
+  "follow_up_required": true
+}</pre>
+      </div>
+
+      <div class="warning">
+        <strong>Schemakonform bedeutet nicht sachlich korrekt.</strong> Wichtige Geschäftsergebnisse sollten nach Möglichkeit aus verbindlichen Tool-Ereignissen abgeleitet werden – nicht nur aus der Zusammenfassung eines Sprachmodells.
+      </div>
+
+      <h2>Wie produktive Sprachagenten überwacht werden</h2>
+
+      <p>
+        Transkripte zu lesen ist nützlich, reicht aber nicht aus. Ein produktives System kann Folgendes erfassen:
+      </p>
+
+      <ul>
+        <li>Anruf-/Sitzungs-ID;</li>
+        <li>Ereignisse für Sprachbeginn und Sprachende;</li>
+        <li>Entscheidungen zum Äußerungsende;</li>
+        <li>STT-Zwischen- und Endergebnisse;</li>
+        <li>Timing der Modellanfragen;</li>
+        <li>Retrieval-Anfragen und -Ergebnisse;</li>
+        <li>Tool-Namen, Argumente und Ergebnisse;</li>
+        <li>TTS-Start und Timing des ersten Audios;</li>
+        <li>Unterbrechungen und abgebrochene Wiedergabe;</li>
+        <li>Versuche der Übergabe an einen Menschen;</li>
+        <li>Fehler und Verbindungsereignisse;</li>
+        <li>Geschäftsergebnisse.</li>
+      </ul>
+
+      <p>
+        Auch die Perzentil-Analyse ist wichtig. Eine niedrige durchschnittliche Latenz kann eine kleine, aber wichtige Gruppe von Anrufen mit sehr langsamen Ausreißern verbergen.
+      </p>
+
+      <h2>Wie sollten KI-Sprachagenten getestet werden?</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Testebene</th>
+              <th>Was getestet wird</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Deterministische Tool-Tests</td>
+              <td>Korrekte Parameter, Authentifizierung, Verhinderung doppelter Schreibvorgänge, Timeout-Behandlung</td>
+            </tr>
+            <tr>
+              <td>Textbasierte Gesprächstests</td>
+              <td>Absicht, Richtlinien, Tool-Auswahl, Eskalationsverhalten</td>
+            </tr>
+            <tr>
+              <td>Audiotests</td>
+              <td>Pausen, Unterbrechungen, Akzente, Namen, Zahlen, Störgeräusche, Sprachwechsel</td>
+            </tr>
+            <tr>
+              <td>Fehlerinjektion</td>
+              <td>Kalenderfehler, CRM-Timeouts, nicht erreichbare Weiterleitungsziele</td>
+            </tr>
+            <tr>
+              <td>Adversarial Testing</td>
+              <td>Nicht autorisierte Datenanfragen, Prompt-Injection-Versuche, bösartige Tool-Eingaben</td>
+            </tr>
+            <tr>
+              <td>Regressionstests</td>
+              <td>Kritische Szenarien werden nach Änderungen an Modell, Prompt, Tools oder Workflow erneut ausgeführt</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="thesis">
+        Ein Sprachagent sollte sowohl als Dialogsystem als auch als System für Geschäftstransaktionen getestet werden.
+      </div>
+
+      <h2>Sicherheit: Die anrufende Person ist eine nicht vertrauenswürdige Eingabe</h2>
+
+      <p>
+        Sprache beseitigt die Sicherheitsrisiken von KI-Agenten nicht. Eine anrufende Person kann weiterhin versuchen, Anweisungen auszuhebeln, auf nicht autorisierte Informationen zuzugreifen oder unsichere Aktionen auszulösen.
+      </p>
+
+      <div class="diagram">
+        <div class="flow-vertical">
+          <div class="flow-box">Modell</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">Tool-Gateway</div>
+          <div class="flow-box">Authentifizierung</div>
+          <div class="flow-box">Autorisierung</div>
+          <div class="flow-box">Schema-Validierung</div>
+          <div class="flow-box">Validierung der Geschäftsregeln</div>
+          <div class="flow-box">Prinzip der minimalen Rechte</div>
+          <div class="flow-box">Bestätigung / Freigabe</div>
+          <div class="flow-box">Audit-Protokollierung</div>
+          <div class="arrow">↓</div>
+          <div class="flow-box">CRM / Kalender / Datenbank</div>
+        </div>
+      </div>
+
+      <p>
+        Anforderungen an Aufzeichnung, Transkription, personenbezogene Daten (PII) und Aufbewahrung hängen von der Rechtsordnung und vom geschäftlichen Kontext ab. Diese Fragen sollten daher getrennt von der technischen Architektur behandelt werden.
+      </p>
+
+      <h2>Häufige Missverständnisse über KI-Sprachagenten</h2>
+
+      <div class="misconceptions">
+        <div class="myth">
+          <div class="myth-title">„Das ist doch nur ChatGPT, das an ein Telefon angeschlossen ist.“</div>
+          <div class="myth-fix">Telefonie, Medientransport, Erkennung des Äußerungsendes, Tools, Sicherheit, Orchestrierung und Observability sind getrennte technische Ebenen.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">„Jeder KI-Sprachagent verwendet STT → LLM → TTS.“</div>
+          <div class="myth-fix">Es gibt sowohl kaskadierte als auch audio-native Speech-to-Speech-Systeme.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">„Wenn eine API Audio entgegennimmt und Audio zurückgibt, muss es ein einziges natives Modell sein.“</div>
+          <div class="myth-fix">Eine einheitliche API kann dennoch mehrere zugrunde liegende Sprach- und Sprachmodellsysteme orchestrieren.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">„Audio-nativ bedeutet Vollduplex.“</div>
+          <div class="myth-fix">Native Audioverarbeitung und kontinuierliche Modellierung überlappender Gesprächsbeiträge sind unterschiedliche Eigenschaften.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">„Das Transkript ist genau das, was das Modell verstanden hat.“</div>
+          <div class="myth-fix">Bei manchen audio-nativen Systemen kann die Transkription ein vom Audioverständnis des Modells getrennter Observability-Prozess sein.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">„Das Modell bucht den Termin.“</div>
+          <div class="myth-fix">Das Modell wählt in der Regel ein Tool aus oder fordert es an; externe Software führt die eigentliche Buchung durch und liefert das Ergebnis zurück.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">„RAG verhindert Halluzinationen.“</div>
+          <div class="myth-fix">RAG kann die Fundierung verbessern, ist aber keine absolute Garantie für sachliche Korrektheit.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-title">„Eine realistische Stimme bedeutet, dass das System zuverlässig ist.“</div>
+          <div class="myth-fix">Sprachqualität und korrekte Ausführung der Geschäftsvorgänge sind getrennte Dimensionen.</div>
+        </div>
+      </div>
+
+      <h2>Verwendet ein KI-Sprachagent ChatGPT?</h2>
+
+      <p>
+        Nicht unbedingt. „KI-Sprachagent“ beschreibt eine Kategorie von Systemen, nicht ein einzelnes Modell oder einen einzelnen Anbieter.
+      </p>
+
+      <p>
+        Ein Sprachagent kann hinter STT und TTS ein textbasiertes Sprachmodell einsetzen, ein multimodales Echtzeitmodell, ein spezialisiertes Sprachmodell, deterministische Workflow-Logik oder mehrere Modelle in verschiedenen Stufen.
+      </p>
+
+      <h2>Wie wird ein KI-Sprachagent mit einem CRM verbunden?</h2>
+
+      <p>
+        In der Regel über eine kontrollierte Integrationsschicht mit APIs, Function Calling, Webhooks, Workflow-Automatisierung, Datenbank-Konnektoren oder Integrationsplattformen.
+      </p>
+
+      <p>
+        Man sollte nicht davon ausgehen, dass das Modell alles „weiß“, was im CRM steht. Die Anwendung muss die relevanten Daten abrufen und die passenden Berechtigungen durchsetzen.
+      </p>
+
+      <h2>Warum haben KI-Sprachagenten Latenz?</h2>
+
+      <p>
+        Weil eine gesprochene Antwort von Netzwerktransport, Erkennung des Äußerungsendes, Spracherkennung, Reasoning, Retrieval, Tools, TTS, Pufferung und Wiedergabe abhängen kann.
+      </p>
+
+      <p>
+        Die Optimierung einer einzelnen Kennzahl – etwa der TTFT des Modells – macht das gesamte Telefongespräch nicht automatisch schnell.
+      </p>
+
+      <h2>Was passiert, wenn der Agent die Antwort nicht kennt?</h2>
+
+      <p>
+        Es gibt keinen universellen Fallback. Ein produktives System sollte einen ausdrücklich definieren.
+      </p>
+
+      <p>
+        Je nach Workflow kann der Agent:
+      </p>
+
+      <ul>
+        <li>eine freigegebene Wissensquelle durchsuchen;</li>
+        <li>eine Rückfrage stellen;</li>
+        <li>sagen, dass die Information nicht verfügbar ist;</li>
+        <li>ein verbindliches externes System aufrufen;</li>
+        <li>eine Nachricht aufnehmen;</li>
+        <li>das Gespräch an einen Menschen übergeben.</li>
+      </ul>
+
+      <p>
+        Das Erzeugen einer nicht belegten Antwort sollte nicht die Fallback-Strategie sein.
+      </p>
+
+      <div class="one-sentence">
+        <div class="label">Die Definition für den Produktivbetrieb</div>
+        <p>Ein produktiver KI-Sprachagent ist ein verteiltes Echtzeitsystem, in dem Gespräch, Telefonie, Geschäftslogik und externe Tools gemeinsam funktionieren müssen.</p>
+      </div>
+
+      <h2>Häufig gestellte Fragen</h2>
+
+      <section class="faq">
+        <div class="faq-item">
+          <h3>Wie funktionieren KI-Sprachagenten?</h3>
+          <p>
+            Sie verbinden einen Live-Audiokanal mit einem Dialogsystem, das Sprecherwechsel erkennt, das Anliegen versteht, überlegt, was zu tun ist, bei Bedarf Wissen oder Geschäfts-Tools nutzt und gesprochenes Audio zurückgibt.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Verwenden alle KI-Sprachagenten STT, LLM und TTS?</h3>
+          <p>
+            Nein. Kaskadierte Systeme tun das, aber audio-native Echtzeitsysteme können Audio direkter verarbeiten und erzeugen.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Woher weiß ein KI-Sprachagent, dass jemand aufgehört hat zu sprechen?</h3>
+          <p>
+            Systeme können Stilleerkennung, VAD, akustisches Endpointing, semantische Vorhersage des Äußerungsendes oder eine Kombination dieser Methoden einsetzen.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Wie bucht ein KI-Sprachagent einen Termin?</h3>
+          <p>
+            Er erkennt die Buchungsabsicht, erfragt fehlende Informationen, prüft die Live-Verfügbarkeit über ein Tool, bestätigt die Wahl der anrufenden Person, fordert die Schreibaktion an, wartet auf den Erfolg und bestätigt dann die Buchung.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Wie gehen KI-Sprachagenten mit Unterbrechungen um?</h3>
+          <p>
+            Ein System kann die Sprache der anrufenden Person erkennen, die aktuelle Generierung stoppen, die Audiowarteschlange leeren, abgleichen, was tatsächlich gehört wurde, den neuen Redebeitrag annehmen und vom aktualisierten Gesprächszustand aus fortfahren.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Warum haben KI-Sprachagenten Latenz?</h3>
+          <p>
+            Verzögerungen können durch Netzwerktransport, Erkennung des Äußerungsendes, Transkription, Modell-Inferenz, Retrieval, Tool-Ausführung, Sprachgenerierung, Pufferung und Wiedergabe entstehen.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Kennt ein KI-Sprachagent automatisch mein CRM?</h3>
+          <p>
+            Nein. CRM-Informationen müssen über Kontext, Retrieval oder eine autorisierte Integration bereitgestellt werden.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Was passiert nach einem KI-Sprachanruf?</h3>
+          <p>
+            Ein System kann nach dem Ende des Live-Gesprächs ein Transkript, eine Zusammenfassung, ein strukturiertes Ergebnis, eine CRM-Aktualisierung, einen Folge-Workflow und ein Analyseereignis erzeugen.
+          </p>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Möchten Sie die Kategorie verstehen, bevor Sie sich für ein Sprachagenten-Setup entscheiden?</h2>
+        <p>
+          Beginnen Sie mit dem umfassenderen Leitfaden dazu, was ein KI-Sprachagent ist, und nutzen Sie diesen Artikel anschließend als technische Architekturreferenz.
+        </p>
+        <a class="button" href="https://b2b-voice.com/what-is-an-ai-voice-agent">Lesen: Was ist ein KI-Sprachagent? →</a>
+      </section>
+
+      <div class="next">
+        <strong>Als Nächstes in der B2B-Voice-Wissensreihe:</strong> <em>KI-Sprachagent vs. KI-Rezeptionist vs. IVR: Was ist der Unterschied?</em>
+      </div>
+
+      <section class="sources">
+        <h2>Technische Quellen &amp; Forschungsgrundlage</h2>
+        <p>
+          Dieser Leitfaden wurde auf Basis von Primärdokumentation, Standards und technischer Forschung zu produktiver Sprachagenten-Architektur, Echtzeit-Audio, Tool Calling, Telefonie, Tests, Observability und Sicherheit erstellt. Die Quellen wurden im August 2026 geprüft.
+        </p>
+        <ul>
+          <li><strong>OpenAI — Voice Agents:</strong> <a href="https://developers.openai.com/api/docs/guides/voice-agents">developers.openai.com/api/docs/guides/voice-agents</a></li>
+          <li><strong>OpenAI — Realtime and Audio:</strong> <a href="https://developers.openai.com/api/docs/guides/realtime">developers.openai.com/api/docs/guides/realtime</a></li>
+          <li><strong>OpenAI — Voice Activity Detection:</strong> <a href="https://developers.openai.com/api/docs/guides/realtime-vad">developers.openai.com/api/docs/guides/realtime-vad</a></li>
+          <li><strong>OpenAI — Function Calling:</strong> <a href="https://developers.openai.com/api/docs/guides/function-calling">developers.openai.com/api/docs/guides/function-calling</a></li>
+          <li><strong>Google — Gemini Live API:</strong> <a href="https://ai.google.dev/gemini-api/docs/live-api">ai.google.dev/gemini-api/docs/live-api</a></li>
+          <li><strong>Microsoft — Azure Voice Live:</strong> <a href="https://learn.microsoft.com/en-us/azure/ai-services/speech-service/voice-live">learn.microsoft.com/.../voice-live</a></li>
+          <li><strong>ElevenLabs — ElevenAgents Architecture:</strong> <a href="https://elevenlabs.io/docs/eleven-agents/overview">elevenlabs.io/docs/eleven-agents/overview</a></li>
+          <li><strong>Deepgram — End-of-Speech Detection:</strong> <a href="https://developers.deepgram.com/docs/understanding-end-of-speech-detection">developers.deepgram.com/docs/understanding-end-of-speech-detection</a></li>
+          <li><strong>Twilio — ConversationRelay Voice Insights:</strong> <a href="https://www.twilio.com/docs/voice/voice-insights/conversation-relay-insights-dashboard">twilio.com/docs/voice/voice-insights/conversation-relay-insights-dashboard</a></li>
+          <li><strong>IETF RFC 3261 — SIP:</strong> <a href="https://www.rfc-editor.org/info/rfc3261/">rfc-editor.org/info/rfc3261</a></li>
+          <li><strong>IETF RFC 3550 — RTP:</strong> <a href="https://www.rfc-editor.org/info/rfc3550/">rfc-editor.org/info/rfc3550</a></li>
+          <li><strong>IETF RFC 6716 — Opus:</strong> <a href="https://www.rfc-editor.org/info/rfc6716/">rfc-editor.org/info/rfc6716</a></li>
+          <li><strong>W3C — WebRTC Statistics:</strong> <a href="https://www.w3.org/TR/webrtc-stats/">w3.org/TR/webrtc-stats</a></li>
+          <li><strong>Moshi — Real-Time Dialogue:</strong> <a href="https://arxiv.org/abs/2410.00037">arxiv.org/abs/2410.00037</a></li>
+          <li><strong>Salesforce AI Research — Building Enterprise Realtime Voice Agents from Scratch:</strong> <a href="https://arxiv.org/html/2603.05413v2">arxiv.org/html/2603.05413v2</a></li>
+          <li><strong>OWASP GenAI — Prompt Injection:</strong> <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">genai.owasp.org/llmrisk/llm01-prompt-injection</a></li>
+        </ul>
+      </section>
+
+      <section class="tags" aria-label="Artikel-Tags">
+        <span class="tags-label">Tags</span>
+        <div class="tag-list">
+          <span class="tag">KI-Sprachagent</span> <span class="tag">Sprach-KI</span> <span class="tag">Speech-to-Text</span> <span class="tag">Realtime Speech</span> <span class="tag">LLM</span> <span class="tag">Text-to-Speech</span> <span class="tag">Telefonie</span> <span class="tag">Tool Calling</span> <span class="tag">RAG</span> <span class="tag">SIP</span>
+        </div>
+      </section>
+    </article>
+  </main>

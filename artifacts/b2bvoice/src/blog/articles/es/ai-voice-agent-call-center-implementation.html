@@ -1,0 +1,343 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table:not(.b2bv-assess) tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Saltar al artículo</a>
+  <header>
+    
+    <p class="b2bv-kicker">Guías de implementación</p>
+    <h1 id="b2bv-title">Cómo implementar agentes de voz con IA en un centro de llamadas existente sin reemplazar su infraestructura</h1>
+    <p class="b2bv-byline">Por <a rel="author" href="/es/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Incorporar IA de voz a un centro de llamadas existente comienza con una decisión de enrutamiento. Busque una ruta que los responsables del operador y del centro de contacto puedan probar, observar y restaurar. Confirme la tarea de negocio, la ruta de medios y el destino que asume la llamada cuando algo falla.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Respuesta rápida</h2>
+        <p>Comience con una ruta aprobada, como un número de prueba, el desvío fuera de horario, el desbordamiento de cola o una rama del IVR. Verifique el operador, el sistema telefónico, los medios, el destino atendido por personal y el acceso a los sistemas de negocio. Mantenga lista la ruta anterior o una alternativa aprobada, ensaye la recuperación y amplíe el alcance solo cuando la ruta elegida supere las pruebas.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Tabla de contenido">
+      <p>En esta guía</p>
+      <ol>
+<li><a href="#route">Elegir la primera ruta</a></li>
+<li><a href="#compatibility">Verificar la compatibilidad del operador y del PBX</a></li>
+<li><a href="#framework">Seguir el marco de implementación</a></li>
+<li><a href="#reversible-pilot">Ejecutar y revertir un piloto</a></li>
+<li><a href="#scale">Ampliar por cohortes controladas</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+<li>Califique el número, el operador, el troncal, la ruta de voz y la cola receptora reales de cada ruta prevista.</li>
+<li>Use los resultados observados de la conexión y del negocio para confirmar una transferencia o una escritura.</li>
+<li>Documente quién tiene autoridad para revertir, pruebe la restauración y concilie el trabajo pendiente antes de ampliar el alcance.</li>
+        </ul>
+      </section>
+<section id="route">
+  <h2>¿Dónde debería ubicarse la primera ruta de IA?</h2>
+  <p>Coloque el primer flujo de trabajo en la ruta más pequeña que represente el uso previsto. Un centro de contacto consolidado a menudo puede mantener el número publicado con su operador y dejar que el PBX o la plataforma CCaaS existente decida qué llamadas llegan al servicio de IA. Comience con un número de prueba interno, una condición de cola o una opción del sistema de respuesta de voz interactiva (IVR). Establezca cómo llega la persona que llama a un destino atendido por personal antes de abrir la ruta al grupo seleccionado.</p>
+  <p>B2B Voice puede definir el alcance de un agente de voz a medida en torno a una ruta existente del centro de contacto. Pida al responsable de telefonía que identifique por dónde entran las llamadas, quién es el responsable del PBX o del centro de contacto en la nube, y cómo puede el personal restaurar la ruta anterior. Esa información es el punto de partida de un piloto reversible y de una verificación de compatibilidad con su configuración.</p>
+<p>Trace la ruta desde el número público hasta el destino final. Enumere el operador, los números de marcación directa entrante (DID), la central telefónica privada (PBX) o plataforma en la nube, el distribuidor automático de llamadas (ACD), el servicio de agentes, las aplicaciones de negocio y el equipo receptor. Registre qué componente puede cambiar su ruta durante un incidente. Reúna datos recientes sobre la llegada de llamadas, los tramos activos, el comportamiento fuera de horario y la capacidad del personal. Use los mismos registros para verificar la ruta original durante la reversión.</p>
+  <div class="b2bv-table" role="region" aria-label="Comparación de primeras rutas para un piloto de IA de voz en un centro de llamadas" tabindex="0">
+    <table>
+      <caption>Elija un punto de entrada para el piloto y defina cómo puede revertirlo el responsable de telefonía</caption>
+      <thead><tr><th scope="col">Punto de entrada</th><th scope="col">Idoneidad y requisito previo</th><th scope="col">Aceptación y reversión</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">DID de piloto dedicado</th><td>Un número de prueba nuevo o una línea disponible con una ruta aislada y destinos aprobados.</td><td>Llame desde las redes previstas, pruebe la ruta de retorno y deje de publicar o enrutar el número de prueba al finalizar el piloto.</td></tr>
+        <tr><th scope="row">Regla o desvío fuera de horario</th><td>Una intención acotada para noches o fines de semana, con hora local, festivos y responsable receptor definidos.</td><td>Pruebe las condiciones de cierre, apertura y festivos con una llamada externa. Restaure el destino fuera de horario anterior.</td></tr>
+        <tr><th scope="row">Desbordamiento de cola</th><td>El ACD admite un criterio de activación acordado y un retorno atendido por personal u otra alternativa de respaldo aprobada.</td><td>Pruebe la espera de la persona que llama y la capacidad de recepción ante una ráfaga de llamadas. Retire el destino de desbordamiento manteniendo el control en manos del responsable de la ruta.</td></tr>
+        <tr><th scope="row">Rama seleccionada del IVR</th><td>El centro controla el menú, el destino de enrutamiento y una vía de regreso al personal.</td><td>Verifique que la persona que llama pueda seleccionar, salir y volver a entrar según lo previsto. Restaure la asignación anterior de la rama del menú.</td></tr>
+        <tr><th scope="row">Flujo de trabajo saliente individual</th><td>Una finalidad de servicio aprobada, permisos validados, listas de supresión y una ruta de retorno.</td><td>Revise la supresión y la disposición de la llamada. Pruebe una forma independiente de detener el flujo de trabajo.</td></tr>
+        <tr><th scope="row">Despliegue departamento por departamento</th><td>Un piloto comprobado, enrutamiento con control de versiones y responsabilidad operativa para cada cola añadida.</td><td>Ensaye la reversión por cohorte y demuestre que el destino anterior puede absorber ese tráfico.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Un DID de prueba es fácil de aislar y permite comprobar una ruta de llamada antes de involucrar tráfico real. Una ruta de IVR o de desbordamiento seleccionada se acerca más al tráfico ordinario y requiere una vía de recuperación más sólida. El desvío puede conservar un número publicado dentro de un diseño compatible con el operador. Pruebe cómo se presenta realmente la identidad de la persona que llama, cómo regresa esta al personal y los tramos facturables que se generan durante el puente.</p>
+  <p>En la automatización de llamadas salientes, mantenga el alcance inicial y la decisión sobre permisos separados de la implementación entrante. En Estados Unidos pueden aplicarse restricciones a las llamadas con voz artificial, según la finalidad y las circunstancias. Confirme con el equipo responsable la configuración de voz y de telefonía, así como los controles pertinentes de consentimiento y de exclusión voluntaria. Defina la detención independiente y verifique el destino de devolución de llamada aprobado antes de autorizar cualquier tráfico elegible. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+<p>Use la matriz de automatización para <a href="/es/ai-voice-agents-for-call-centers" data-phase2-link="true">priorizar el primer flujo de trabajo del centro de contacto</a> antes de elegir la ruta telefónica inicial.</p>
+</section>
+
+<section id="compatibility">
+  <h2>¿Qué deben demostrar el operador y el PBX?</h2>
+  <p>Confirme la titularidad de los números entrantes y los permisos para cada acción prevista. Es posible que el sistema existente pueda desviar llamadas o enviar una opción de menú a un destino SIP aprobado. La respuesta depende de la cuenta del comprador con el operador, de la versión del PBX, del troncal, de los proveedores compatibles y de las funciones incluidas en la licencia. Un controlador de borde de sesión (SBC) puede formar parte de un límite aprobado entre sistemas telefónicos. Pregunte al responsable de telefonía qué componentes gobiernan la señalización, los medios y la autenticación en cada conexión.</p>
+  <p>El Protocolo de Inicio de Sesión (SIP) señaliza la creación, modificación y terminación de sesiones. La ruta de audio tiene sus propios requisitos. En cada tramo, confirme el audio bidireccional, los códecs de voz acordados, los dígitos de menú por tonos, la accesibilidad de red y el cifrado en los extremos configurados. Una prueba de teclado debe verificar los dígitos que el menú receptor realmente recibe. La RFC 4733 documenta un método para transportar eventos de tonos en RTP. Verifique el método que aceptan todos los sistemas relevantes de la ruta. <a href="https://www.rfc-editor.org/rfc/rfc3261.html">RFC 3261 Session Initiation Protocol (SIP)</a> <a href="https://www.rfc-editor.org/rfc/rfc4733.html">RFC 4733 RTP payload for DTMF and telephony events</a></p>
+  <div class="b2bv-table" role="region" aria-label="Lista de verificación de compatibilidad del PBX y del operador" tabindex="0">
+    <table>
+      <caption>Verifique la ruta real con todos los responsables de los sistemas participantes</caption>
+      <thead><tr><th scope="col">Qué examinar</th><th scope="col">Evidencia antes del cambio a producción</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Titularidad y enrutamiento</th><td>Operador actual, control del número, autoridad de enrutamiento, destino aprobado, horario de servicio y la ruta de retorno que usan las personas que llaman desde el exterior.</td></tr>
+        <tr><th scope="row">Señalización y medios</th><td>Métodos y códecs compatibles, eventos de teclado, extremos autorizados y audio bidireccional correcto en cada ruta de apertura y de transferencia.</td></tr>
+        <tr><th scope="row">Información de la persona que llama y de facturación</th><td>Identificador de llamada permitido, tal como se observa en cada salto, tramos de llamada facturables, cargos y cualquier política autorizada de visualización o grabación.</td></tr>
+        <tr><th scope="row">Transferencia y fallos</th><td>Respuesta real del destino previsto atendido por personal, contexto recibido, además de los resultados de ocupado, cerrado, sin respuesta y transferencia fallida.</td></tr>
+        <tr><th scope="row">Capacidad y recuperación</th><td>Llamadas configuradas, tramos simultáneos, límites de cola y de aplicación, junto con la ruta aprobada en caso de saturación o caída.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Pida a los responsables del operador y de la plataforma que revisen los mismos tramos de llamada. Una llamada puede facturarse y enrutarse de forma distinta durante el desvío y de nuevo mientras el agente mantiene en espera o puentea una transferencia a una persona. Conserve un registro de qué parte suministra cada número, qué marcas de tiempo son visibles y qué tramo puede modificar el supervisor de turno. Trate el número de la persona que llama que se presenta como contexto de enrutamiento. Use la verificación de identidad aprobada por la empresa antes de leer o modificar registros protegidos.</p>
+  <h3>Pruebe la transferencia hasta lograr una conexión con una persona del personal</h3>
+  <p>SIP REFER solicita que otra parte contacte con un destino. La RFC 3515 define el método. Un proveedor como Twilio documenta la configuración de troncales y el comportamiento específicos de su implementación. Confirme si la ruta propuesta usa ese método, un puente o una transferencia nativa de la plataforma, y cómo se informan los resultados. Pregunte si el personal recibirá solo la llamada o también un registro de contexto aprobado. Cuente como exitosa una transferencia a una persona cuando la persona que llama y el destinatario previsto del personal quedan conectados. Registre por separado la respuesta de telefonía, la conexión con el personal y la disposición de negocio. <a href="https://www.rfc-editor.org/rfc/rfc3515.html">RFC 3515 SIP REFER method</a> <a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a></p>
+  <p>Practique llamando desde una línea externa representativa y llegando a la cola prevista. Verifique el audio bidireccional tras la transferencia y confirme qué número o identidad aprobada de la persona que llama llega al personal. Una llamada desviada puede presentar información permitida distinta según la red. El supervisor de turno debería ver dónde llegó la llamada y qué contexto puede consultar. Si el equipo de atención está ocupado o fuera de servicio, siga la ruta alternativa autorizada y compruebe si la devolución de llamada resultante tiene un responsable designado.</p>
+  <h3>Documente la grabación, la transcripción y la seguridad en cada límite</h3>
+  <p>Separe la protección de la señalización de la protección de los medios de la llamada. Twilio describe Transport Layer Security (TLS) para la señalización y Secure Real-time Transport Protocol (SRTP) para los medios en las conexiones compatibles de Elastic SIP Trunking. Confirme la cobertura en cada conexión relevante y compruebe dónde terminan los medios o dónde atraviesan un tramo heredado. Pregunte a los responsables qué componente graba la llamada, cuál genera una transcripción y qué sistema la conserva. <a href="https://www.twilio.com/docs/sip-trunking">Twilio Elastic SIP Trunking documentation</a></p>
+  <p>Enrute solo los datos necesarios para la tarea aprobada. Acuerde la divulgación de la grabación y los permisos según las jurisdicciones aplicables, además de la retención, el acceso, la eliminación y el lugar donde se almacenan los registros o transcripciones aprobados. Un resumen de transferencia debe incluir solo la información que el equipo receptor pueda utilizar. La <a href="/es/ai-voice-agent-security">guía de seguridad de agentes de voz</a> describe cómo limitar el acceso a las acciones y datos protegidos. La <a href="/es/how-ai-voice-agents-work">guía de la pila tecnológica de IA de voz</a> explica los componentes independientes de conversación y de telefonía.</p>
+</section>
+
+<section id="framework">
+  <h2>Marco de implementación de B2B Voice para centros de llamadas</h2>
+  <p>Haga que cada fase termine en una decisión que el responsable designado pueda firmar. La ruta más pequeña es la que su equipo puede operar, observar y restaurar. Una demostración funcional puede ayudar en la fase de descubrimiento. Un piloto en vivo necesita la evidencia y la responsabilidad operativa que se detallan a continuación.</p>
+  <div class="b2bv-table" role="region" aria-label="Nueve etapas de la implementación de un agente de voz en un centro de llamadas" tabindex="0">
+    <table>
+      <caption>Use la evidencia de salida para decidir cuándo puede avanzar la ruta</caption>
+      <thead><tr><th scope="col">Etapa</th><th scope="col">Qué debe aportar el responsable</th><th scope="col">Evidencia para avanzar</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Descubrimiento</th><td>Una intención elegible, responsable de la cola, DID, horarios, volumen esperado y alternativa de respaldo conocida.</td><td>Registro del alcance y de la ruta de llamada aprobado por operaciones.</td></tr>
+        <tr><th scope="row">Arquitectura</th><td>Ruta, método de transferencia, límites de medios y de permisos, y la ruta anterior.</td><td>Configuración real validada por los responsables del operador y de telefonía.</td></tr>
+        <tr><th scope="row">Integración</th><td>Registro de negocio, acciones permitidas, tiempos de espera, identificadores vinculados y responsable de recuperación.</td><td>Transacciones de prueba exitosas e inciertas conciliadas.</td></tr>
+        <tr><th scope="row">Seguridad</th><td>Controles aprobados de identidad, autorización, datos restringidos, grabación y retención.</td><td>Pruebas de políticas observadas por seguridad y por el responsable de negocio correspondiente.</td></tr>
+        <tr><th scope="row">Piloto</th><td>Ruta de prueba aprobada, con cobertura de personal y demanda suficiente para un ensayo acotado.</td><td>Resultado de la prueba, capacidad actual, alternativa de respaldo y reversión ejercitadas.</td></tr>
+        <tr><th scope="row">Evaluación</th><td>Línea base consistente de resultados verificados, repeticiones, transferencias, tiempos y costo.</td><td>Decisión documentada sobre la población y los umbrales definidos.</td></tr>
+        <tr><th scope="row">Despliegue controlado</th><td>Cohortes pequeñas, ventana de cambio, condiciones de detención y un responsable de reversión designado.</td><td>Primeras llamadas de producción confirmadas en la ruta prevista ya estabilizada.</td></tr>
+        <tr><th scope="row">Monitoreo</th><td>Alertas sobre alcance, acciones retrasadas o fallidas, casos pendientes, impacto en el cliente y límites.</td><td>Los responsables pueden ver las señales acordadas y actuar en consecuencia.</td></tr>
+        <tr><th scope="row">Optimización</th><td>Revisión de resultados muestreados y de políticas modificadas, probadas con una nueva versión.</td><td>Resultados de regresión y aprobación antes de añadir intenciones o capacidad.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Para cada acción de negocio aprobada, correlacione la llamada entrante y cualquier tramo posterior con el registro autorizado del CRM, del caso o de la reserva. Almacene una disposición pendiente cuando el resultado sea incierto y concilie antes de intentar otra escritura. Por ejemplo, si una solicitud para cambiar una cita agota el tiempo de espera, la respuesta pudo haberse perdido después de una actualización exitosa. El equipo receptor debería poder encontrar el registro existente y determinar su estado. Use <a href="/es/ai-voice-agent-integrations">la guía de acciones y confirmaciones en sistemas de negocio</a> para distinguir una acción confirmada de una respuesta hablada.</p>
+<p>Use la lista de verificación de integración para <a href="/es/how-to-integrate-ai-voice-agents" data-phase2-link="true">verificar la compatibilidad con las herramientas de negocio</a> en cada operación necesaria.</p>
+</section>
+
+<section id="reversible-pilot">
+  <h2>¿Cómo se ejecuta un piloto reversible?</h2>
+  <p>Incluya la ruta aprobada y la opción de reversión en un registro de cambios. Anote la ruta y el número de prueba exactos, el turno, el destino anterior, la ventana horaria, el responsable designado con acceso y cómo confirmará el comprador la restauración. Mantenga la ruta original lista para recibir llamadas nuevas. Acuerde qué hacer con las llamadas en curso y con las escrituras de retorno, transferencias o devoluciones de llamada pendientes. Una ruta puede restaurarse mientras el trabajo generado por el piloto sigue pendiente.</p>
+  <ol class="b2bv-flow" aria-label="Secuencia de implementación reversible en un centro de llamadas">
+    <li><strong>Conserve la ruta entrante</strong><span>El operador y el ACD existentes seleccionan el piloto acotado.</span></li>
+    <li><strong>Regrese al personal</strong><span>El piloto verifica el resultado permitido o conecta con la vía aprobada atendida por personal.</span></li>
+    <li><strong>Restaure cuando sea necesario</strong><span>El responsable de enrutamiento devuelve las llamadas nuevas a la ruta anterior y concilia los casos activos.</span></li>
+  </ol>
+  <div class="b2bv-table" role="region" aria-label="Pruebas de aceptación y de reversión para un piloto en un centro de llamadas" tabindex="0">
+    <table>
+      <caption>Ejecute llamadas comunes y fallos en un entorno de pruebas aprobado</caption>
+      <thead><tr><th scope="col">Escenario</th><th scope="col">Observación requerida</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Llamada ordinaria a la ruta seleccionada</th><td>Rama correcta, audio utilizable y resultado esperado, ya sea guardado o comunicado verbalmente.</td></tr>
+        <tr><th scope="row">Destinos atendidos, ocupados y cerrados</th><td>Conexión real con el personal o resultado alternativo correcto, con la responsabilidad registrada.</td></tr>
+        <tr><th scope="row">Retraso aguas arriba o escritura incierta</th><td>Estado veraz para la persona que llama, un único registro pendiente y un responsable de conciliación designado.</td></tr>
+        <tr><th scope="row">Ráfaga o límite de capacidad</th><td>La ruta alternativa se comporta según lo acordado bajo la carga probada, incluida la capacidad de la cola humana.</td></tr>
+        <tr><th scope="row">Piloto desactivado y ruta original restaurada</th><td>Una llamada de prueba externa llega al destino esperado. El personal puede encontrar y cerrar los casos pendientes.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>En un despliegue ficticio, el operador actual envía el tráfico normal diurno al ACD del centro. El supervisor habilita una rama de desbordamiento para un flujo de trabajo de estado de pedidos con acceso de lectura aprobado. Cuando una persona que llama solicita una excepción a la política, el flujo de trabajo la devuelve a una cola atendida por personal junto con el contexto del caso. Si los medios fallan o la vía atendida por personal no está disponible más allá de la condición acordada, el responsable de enrutamiento autorizado restaura el destino de desbordamiento anterior. Una llamada externa confirma la ruta y un responsable de operaciones concilia los registros que hayan quedado abiertos.</p>
+  <h3>Registre el ejercicio de restauración en el registro de cambios</h3>
+  <p>En un ensayo ficticio, registre una detención a las 10:14 a. m., la selección del destino de desbordamiento anterior a las 10:15 y una llamada de prueba externa exitosa que llega al personal a las 10:17. El tiempo medido hasta la restauración verificada es de tres minutos en ese ejercicio. Registre por separado dos casos pendientes que el responsable concilia una vez que la ruta de llamada vuelve a funcionar. Así el comprador dispone de evidencia diferenciada sobre la recuperación del enrutamiento, las transacciones sin resolver y el acceso necesario para repetir el procedimiento en las condiciones acordadas.</p>
+  <p>Pruebe la llamada externa desde una red que usen las personas que llaman previstas. Verifique el comportamiento en horario de apertura, de cierre y en horarios especiales si forman parte del alcance. Confirme las opciones de audio y de teclado pertinentes en la ruta restaurada. Registre qué responsable toma la decisión final y si existe una vía de aprobación alternativa cuando el contacto principal está ausente.</p>
+  <p>Defina las condiciones de detención antes de que lleguen llamadas reales. Una divulgación no autorizada confirmada o una escritura protegida fuera del alcance aprobado deberían pausar la ruta hasta su revisión. Si una llamada no llega a un destino atendido por personal, debe seguirse la alternativa de respaldo acordada y activarse una alerta al responsable. Acuerde cuántos fallos repetidos, o cuánto tiempo en un nivel deficiente, desencadenan la restauración para el grupo seleccionado. Si la ruta anterior depende de la misma dependencia que falló, pruebe una ruta aprobada que aún pueda recibir llamadas.</p>
+<p>Use la guía de evaluación para <a href="/es/best-ai-voice-agent-for-call-centers" data-phase2-link="true">definir los criterios de aceptación del piloto en el centro de contacto</a> en cuanto a enrutamiento, carga de trabajo y resultados de negocio aprobados.</p>
+</section>
+
+<section id="scale">
+  <h2>¿Cómo se amplía el alcance sin interrumpir las colas existentes?</h2>
+  <p>Dimensione la ruta de llamada completa. Observe cuántas sesiones activas y tramos superpuestos ve realmente el operador, qué sistema es responsable de cada cola y qué API de negocio tienen límites. Pruebe en la hora relevante y con la configuración de enrutamiento correspondiente. Un límite de cola documentado describe cuántos contactos puede mantener la cola. Debe considerarse junto con las verificaciones de llamadas activas y de cuotas de la plataforma, la capacidad de los equipos y la disponibilidad del personal receptor. Amazon Connect documenta por separado la configuración de colas y las cuotas de servicio. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a></p>
+  <p>Amplíe una cohorte operativa a la vez. Use el procedimiento de cambio probado y haga explícito el aumento de tráfico. Compruebe que la ruta anterior pueda absorber la nueva cohorte durante una reversión. Compare los resultados verificados, el éxito de las transferencias a personal, el retraso p95, las repeticiones y el retrabajo del personal dentro del mismo alcance. Si una región, un operador o una oficina se comporta de forma distinta, califique esa ruta de manera independiente antes de compartir la misma decisión de despliegue. Verifique el monitoreo y la responsabilidad de guardia para las horas incluidas.</p>
+  <p>Por ejemplo, si una ruta de prueba aprobada transporta 20 tramos entrantes simultáneos y seis consultas del personal añaden temporalmente un tramo cada una, la superposición medida es de 26 tramos en un componente que ve ambos lados. Confirme las reglas de conteo de cada proveedor y cuánto duran esas superposiciones en el periodo de mayor demanda. Verifique la cuota y el comportamiento ante fallos de cada capa. Una cola configurable aún puede llenarse mientras el operador y la plataforma de IA tienen capacidad de sobra, y una cola de personal abierta puede volverse inutilizable sin la dotación de personal acordada para la prueba.</p>
+  <p>Publique en el runbook un responsable de monitoreo y un intervalo de seguimiento. Incluya señales sobre destinos accesibles, espera del cliente, audio del lado de la persona que llama, acciones protegidas, escrituras fallidas o aún pendientes y alertas fuera de horario. Pruebe la vía de notificación y quién ve la evidencia aprobada. Use el acuerdo de soporte para confirmar quién puede restaurar la ruta de llamada y quién puede resolver el trabajo abierto, incluidos los casos que comienzan durante una ventana de cambio.</p>
+  <p>Defina el registro mínimo de lanzamiento para cada cohorte. Un supervisor debería poder encontrar la ruta seleccionada, su responsable actual, la última verificación externa exitosa y los casos pendientes tras una reversión. Si el centro cambia de operador, de horarios de atención o de permisos para una acción de negocio, trate esos cambios como nuevas condiciones de prueba. Conserve una versión aprobada de la ruta y un registro del tráfico que ha gestionado, para que un revisor posterior pueda determinar qué pruebas se aplican a la nueva configuración.</p>
+  <h3>¿Cuándo se vuelve necesario un cambio específico de infraestructura?</h3>
+  <p>Es posible que una cuenta de operador, un PBX heredado o una suscripción carezcan de una ruta compatible necesaria, de un tramo de medios seguro, de un comportamiento de transferencia adecuado, de un retorno a la cola o de datos de eventos útiles. Identifique la capacidad que falta y el alcance al que afecta. Un comprador podría añadir una pasarela, un troncal, una licencia o un adaptador de integración compatibles, conservando el número principal actual y la titularidad de las colas. Si esa opción aún deja una ruta insegura o no observable, mantenga el flujo de trabajo limitado hasta que los responsables puedan verificar una topología compatible.</p>
+  <p>B2B Voice puede analizar una implementación a medida en torno a una ruta aprobada y una tarea específica del negocio. Traiga un mapa de ruta anonimizado, la alternativa de respaldo actual, el responsable de la aplicación y el requisito que necesita que el piloto demuestre. Para cualquier despliegue propuesto, establezca la compatibilidad y las responsabilidades operativas exactas en el diseño con alcance definido. <a href="/es/what-is-b2b-voice">Empresa B2B Voice y su enfoque de implementación</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+<div class="b2bv-faq-item"><h3>¿Podemos conservar nuestro centro de contacto actual y el número de teléfono principal?</h3><p>Muchos centros pueden comenzar con un desvío compatible, una rama de cola o una ruta SIP mientras el operador actual mantiene el número principal. Confirme con los proveedores reales el control del enrutamiento, la identidad aprobada de la persona que llama, los costos, la capacidad y la recuperación.</p></div>
+<div class="b2bv-faq-item"><h3>¿Qué deben verificar el operador y el PBX en un piloto de IA de voz?</h3><p>Revise la compatibilidad del troncal y del destino, la señalización, los medios bidireccionales, los eventos de teclado, los límites de grabación y la capacidad de tramos de llamada. Pruebe la transferencia real a una persona del personal y una ruta de retorno aprobada.</p></div>
+<div class="b2bv-faq-item"><h3>¿SIP REFER demuestra que la persona que llama llegó a un agente?</h3><p>SIP REFER solicita una acción de transferencia. Verifique la conexión final con el personal y la disposición de negocio en la ruta de llamada real, incluido lo que ocurre cuando la cola está cerrada u ocupada.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cuál es la primera ruta de menor riesgo?</h3><p>Elija una línea de prueba supervisada o una sola ruta acotada de IVR, desbordamiento o fuera de horario que represente el uso previsto. El responsable debe poder confirmar el resultado y restaurar el destino anterior.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cómo revertimos la implementación del agente de voz?</h3><p>Pida al responsable de enrutamiento autorizado que cambie el tráfico seleccionado a la ruta anterior o alternativa ya probada. Confirme la ruta con una llamada externa y concilie el trabajo pendiente y las llamadas que ya estaban en curso.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cuándo debemos cambiar la infraestructura existente?</h3><p>Puede ser necesario un cambio específico cuando el operador, el sistema telefónico o la licencia actuales carecen de una ruta aprobada, de medios seguros, de una transferencia fiable, de visibilidad o de recuperación. Identifique la capacidad que falta y verifique el cambio más pequeño que la cubra.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Revise una ruta telefónica existente</h2>
+        <p>Traiga una ruta anonimizada, la alternativa de respaldo actual y el flujo de trabajo que el piloto debe demostrar. Use una demostración de B2B Voice para analizar los requisitos previos y la reversión.</p>
+        <a href="/demo">Solicitar una demostración de revisión de implementación</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Fuentes</h2>
+        <ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc3261.html">RFC 3261 Session Initiation Protocol (SIP)</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4733.html">RFC 4733 RTP payload for DTMF and telephony events</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc3515.html">RFC 3515 SIP REFER method</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://www.twilio.com/docs/sip-trunking">Twilio Elastic SIP Trunking documentation</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/es/what-is-b2b-voice">Empresa B2B Voice y su enfoque de implementación</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Temas</h2>
+        <ul class="b2bv-tags">
+<li>Implementación de IA de voz</li>
+<li>SIP y PBX</li>
+<li>Enrutamiento de llamadas</li>
+<li>Despliegue por fases</li>
+<li>Reversión</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

@@ -1,0 +1,355 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">Mehrsprachige KI-Sprachagenten testen: Sprachen, Akzente und Dialekte</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Beim Test mehrsprachiger Sprachagenten muss die jeweilige Geschäftsaufgabe in jeder relevanten Sprache und unter jeder relevanten Anrufbedingung überprüft werden. Prüfen Sie, ob der Agent Sprache erkennt, die Sprache der anrufenden Person wählt oder beibehält, wichtige Angaben deutlich ausspricht und auf Grundlage der richtigen Informationen handelt. Eine beworbene Spracheinstellung kann zeigen, dass ein Modus verfügbar ist. Um die Qualität für einen bestimmten Workflow nachzuweisen, braucht es jedoch Hörproben, einen verifizierten Datensatz und mitunter eine tatsächlich entgegengenommene Übergabe.</p>
+<p>B2B Voice plant individuelle Sprach-Workflows anhand der Sprachen, die Anrufende nutzen, der Angaben, die das Personal benötigt, und der Teams, die einen Anruf übernehmen können, wenn jemand um Hilfe bittet. Für einen US-Servicedesk kann ein englischer Straßenname innerhalb eines spanischen Gesprächs alltäglich sein. Ein Test sollte genau diesen Anruf abbilden, einschließlich dessen, was das annehmende Team sieht.</p>
+<h2 id="key-takeaways">Wichtigste Erkenntnisse</h2>
+<ul>
+<li>Prüfen Sie Spracherkennung, synthetisierte Sprache und ausgeführte Aktionen für jeden Workflow und jede Sprache getrennt.</li>
+<li>Beziehen Sie natürliches Code-Switching, Eigennamen, Datumsangaben, Zahlen und Korrekturen der anrufenden Person ein.</li>
+<li>Bitten Sie qualifizierte Muttersprachler oder hochkompetente Prüfer, Bedeutung, Verständlichkeit und Sprachregister zu beurteilen.</li>
+<li>Stellen Sie sicher, dass eine anrufende Person, die einen Menschen verlangt, ein Ziel erreicht, das in der vereinbarten Sprache weiterhelfen kann.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#define-the-language-conditions-the-business-actually-serves">Die Sprachbedingungen definieren, die das Unternehmen tatsächlich bedient</a></li>
+<li><a href="#test-the-fields-and-conversation-moves-that-can-break-a-call">Die Felder und Gesprächszüge testen, die einen Anruf zum Scheitern bringen können</a></li>
+<li><a href="#b2b-voice-multilingual-evaluation-matrix">B2B Voice Multilingual Evaluation Matrix</a></li>
+<li><a href="#compare-results-by-cohort-and-workflow">Ergebnisse nach Kohorte und Workflow vergleichen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="define-the-language-conditions-the-business-actually-serves">Die Sprachbedingungen definieren, die das Unternehmen tatsächlich bedient</h2>
+<p>Beginnen Sie mit den eingehenden Routen, Standorten und Aufgaben, die in Betracht kommen. Ein mehrsprachiges Sprach-KI-System kann getrennte Komponenten für Spracherkennung und Sprachsynthese oder ein audionatives Modell verwenden. Die Einstellungen zur Spracherkennung, die Ausgabestimme, die Unterstützung für Wechsel innerhalb eines Gesprächsbeitrags und die Fallback-Route können sich unterscheiden. Erfassen Sie beim Sprachtest von KI-Sprachagenten diese Einstellungen je Aufgabe und beobachten Sie, welche davon die Laufzeitumgebung tatsächlich genutzt hat.</p>
+<p>Geben Sie Anrufenden die Möglichkeit, die Sprache zu wählen oder zu korrigieren, sofern der Workflow dies zulässt. Eine kurze Begrüßung liefert womöglich wenig Aufschluss darüber, in welcher Sprache die anrufende Person sprechen möchte. Ein Straßenname, ein Organisationsname oder eine Teilenummer in einer anderen Sprache deutet nicht zwingend auf einen Präferenzwechsel hin. Legen Sie fest, wann der Agent in der gewählten Sprache fortfahren, nachfragen soll, welche Sprache bevorzugt wird, oder der freigegebenen Eskalation folgen soll.</p>
+<p>Verwenden Sie in einigen Kohorten dieselben Geschäftsaufgaben, um Ergebnisse zu vergleichen, und beauftragen Sie in jeder Kohorte eigenständige Testfälle, um lokale Probleme aufzudecken. Eine wörtliche Übersetzung eines englischen Tests kann übliche Ausdrucksweisen für einen Firmennamen, ein Datum oder eine Dienstleistungsart verfehlen. Bitten Sie die Verfasser, natürliche Umschreibungen mit demselben beabsichtigten Datensatz sowie Bedingungen einzubauen, die eine Rückfrage erfordern.</p>
+<h3 id="recruit-speakers-without-treating-an-accent-as-a-label-for-ability">Sprecher rekrutieren, ohne einen Akzent als Maßstab für Fähigkeiten zu behandeln</h3>
+<p>Akzenterkennungstests sind am aussagekräftigsten, wenn sie prüfen, wie gut das System Sprecher in der vorgesehenen Zielgruppe versteht. Rekrutieren Sie für wichtige Aufgaben mehrere Sprecher, Endgeräte und Anrufumgebungen. Bieten Sie dort, wo es passend ist, freiwillige und relevante Angaben zur Sprachvarietät an. Schließen Sie nicht aus einer bestimmten Aussprache auf die Identität und gehen Sie nicht davon aus, dass ein Sprecher eine regionale oder nationale Gruppe repräsentiert.</p>
+<p>Eine veröffentlichte US-Studie verglich Erkennungssysteme anhand strukturierter Interviewsprache verschiedener Sprechergruppen und fand Leistungsunterschiede. Ihre Beobachtungen beziehen sich auf die untersuchte Sprachstichprobe und die untersuchten Systeme. Die Studie liefert einen Anlass, die Ergebnisse nach Untergruppen unter den tatsächlichen Einsatzbedingungen zu prüfen. Sie kann weder die Sprechweise einer einzelnen anrufenden Person noch die Leistung eines aktuellen Anbieters vorhersagen. <a class="b2bv3-ref" href="#source-disp">Koenecke und Kollegen</a></p>
+<h2 id="test-the-fields-and-conversation-moves-that-can-break-a-call">Die Felder und Gesprächszüge testen, die einen Anruf zum Scheitern bringen können</h2>
+<h3 id="names-addresses-dates-and-numbers">Namen, Adressen, Datumsangaben und Zahlen</h3>
+<p>Prüfen Sie zuerst die Felder mit der größten Wirkung. Ein Sprachagent kann flüssig sprechen und dennoch einen Eigennamen verstümmeln oder ein Datum so wiedergeben, dass die anrufende Person es missversteht. Fragen Sie die Prüfer, welche Aussprachevarianten akzeptabel sind und welche Rückfrage natürlich klingt. Bewahren Sie bedeutungsrelevante Schreibweisen und diakritische Zeichen, wenn das System sie zur Unterscheidung von Datensätzen nutzt. Vergleichen Sie normalisierte Adress- und Datumsfelder mit dem Geschäftssystem und mit dem Audio, das die anrufende Person gehört hat.</p>
+<p>Achten Sie darauf, wie in der jeweiligen Sprache Rückrufnummern gruppiert, Datumsangaben genannt oder Uhrzeiten ausgedrückt werden. Geben Sie dem Testfall den Standort des Büros und die erwartete Zeitzone mit. Prüfen Sie anhand der Korrektur der anrufenden Person, dass der endgültige Datensatz die bestätigte Zeit abbildet. Betrifft die Aufgabe einen regulierten oder berechtigungssensiblen Workflow, gelten in jeder Sprache dieselben Zugriffsanforderungen.</p>
+<h3 id="code-switching-and-interruptions">Code-Switching und Unterbrechungen</h3>
+<p>Code-Switching liegt vor, wenn ein Sprecher beim Sprechen zwischen Sprachen wechselt. Das kann ein Fachbegriff, ein Straßenname oder ein Wechsel der Sprache sein, in der das Gespräch beendet wird. Sagen Sie den Prüfern, ob das Beispiel die aktuelle Antwortsprache beibehalten oder einen ausdrücklichen Wechsel berücksichtigen soll. In einem fiktiven spanischsprachigen Terminplanungsanruf in den USA nennt der Kunde einen englischen Straßennamen, korrigiert die Hausnummer und bittet darum, auf Spanisch fortzufahren. Der Test sollte Namen und Nummer erhalten und dabei Antwort und Übergabe in der gewünschten Sprache halten.</p>
+<p>Für Tests von Hindi-Sprachagenten bietet die MUCS-Forschung ein Beispiel für einen Benchmark, der Hindi-Englisch-Code-Switching ausdrücklich untersucht hat. Ihr Rahmen und ihr Datensatz sind Forschungsgrundlagen mit eigenen Grenzen. Beauftragen Sie telefonbasierte Testfälle für Fachbegriffe und gemischtsprachige Anfragen, die der Service tatsächlich erwartet. Unterscheiden Sie eine Pause vor einem Wechsel von der Aufforderung an den Agenten, zu sprechen. Nutzen Sie den <a href="/de/how-voice-ai-handles-dropped-words-and-irregular-pacing">Leitfaden zu ausgelassenen Wörtern und unregelmäßigem Sprechtempo</a>, wenn eine Unterbrechung dazu führt, dass die entscheidende Angabe verloren geht. <a class="b2bv3-ref" href="#source-mucs">Diwan und Kollegen</a></p>
+<h3 id="courtesy-clarity-and-human-escalation">Höflichkeit, Klarheit und Eskalation an einen Menschen</h3>
+<p>Höflichkeitskonventionen und professionelles Sprachregister hängen vom Anruf, von der Unternehmensrichtlinie und von der Präferenz des Sprechers ab. Lassen Sie lokale Prüfer akzeptable Formulierungen bestimmen, ohne in jeder Kohorte dieselbe Standardbegrüßung zu verlangen. Fragen Sie, ob die anrufende Person eine Buchung von einer ausstehenden Anfrage unterscheiden kann. Wenn der Agent einen Menschen anbietet, prüfen Sie die von der anrufenden Person gewünschte Sprache, die Route, die den Anruf erhalten hat, und ob eine qualifizierte Person verfügbar war, um das Gespräch fortzuführen.</p>
+<h2 id="b2b-voice-multilingual-evaluation-matrix">B2B Voice Multilingual Evaluation Matrix</h2>
+<p>Diese fiktiven Prüferaufgaben veranschaulichen unterschiedliche Testbedingungen. Es sind Forschungskohorten für die Gestaltung von Workflows mit US-Bezug. Ziehen Sie Stichproben aus den relevanten Varietäten und Aufgaben für den Einsatz, den Sie evaluieren möchten.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Fiktive mehrsprachige Testaufgaben und akzeptable Ergebnisse</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Kohorte</th>
+<th scope="col">Zu prüfende Anrufbedingung</th>
+<th scope="col">Nachweis eines akzeptablen Ergebnisses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">US-Englisch</th>
+<td>Die anrufende Person macht eine Pause und ändert den gewünschten Tag bei gewöhnlichen Hintergrundgeräuschen.</td>
+<td>Der Agent wartet oder fragt nach, bestätigt das korrigierte Datum und trägt den richtigen Termin ein.</td>
+</tr>
+<tr class="even">
+<th scope="row">US-Spanisch</th>
+<td>Die anrufende Person nennt einen englischen Straßennamen, stellt eine Frage auf Spanisch und verlangt eine spanischsprachige Person.</td>
+<td>Die Adressfelder überstehen den Wechsel, die Übergabe berücksichtigt die Präferenz, und das annehmende Team erhält den freigegebenen Kontext.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Deutsch</th>
+<td>Ein Prüfer entwirft eine formelle Serviceinteraktion mit einem Eigennamen und einer Terminänderung.</td>
+<td>Der Prüfer bestätigt angemessenes Sprachregister und verständliche Aussprache, und der Kalender zeigt den korrigierten Termin.</td>
+</tr>
+<tr class="even">
+<th scope="row">Französisch</th>
+<td>Eine anrufende Person nennt einen mehrteiligen Nachnamen und gruppiert die Rückrufnummer auf natürliche Weise.</td>
+<td>Der Agent bestätigt den richtigen Nachnamen und die richtige Ziffernfolge, speichert die zulässigen Angaben und nutzt das freigegebene Follow-up.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Hindi</th>
+<td>Ein Prüfer skriptet einen Hindi-Englisch-Dialog mit einem Fachbegriff und einer korrigierten Uhrzeit.</td>
+<td>Die Annotationen erhalten Begriff und Uhrzeit. Der Agent folgt der Sprachpräferenz, und das System speichert den richtigen Termin.</td>
+</tr>
+<tr class="even">
+<th scope="row">Vietnamesisch</th>
+<td>Ein Prüfer liefert einen mehrsilbigen Namen, einen lokalen Datumsausdruck und eine Korrektur.</td>
+<td>Der Agent prüft den Namen angemessen, bewahrt relevante Namensunterschiede und verifiziert das Datum im Geschäftsdatensatz.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="give-listeners-a-task-rather-than-a-general-impression">Hörern eine Aufgabe geben statt eines allgemeinen Eindrucks</h3>
+<p>Bitten Sie die Prüfer, zunächst ohne Transkript zuzuhören. Sie sollen den Namen, die Uhrzeit oder die Anweisung festhalten, die sie gehört haben. Zeigen Sie danach die erwartete Aufgabe und die Audiomarkierungen für den kritischen Gesprächsbeitrag. Wer zuerst die richtige Formulierung sieht, kann sie aus einer unvollständigen Wiedergabe ableiten. Fragen Sie in einem separaten Durchgang nach Natürlichkeit, Tonfall, Sprachregister und danach, wie gut der Agent mit Rückfragen umgeht. Verifizieren Sie den Geschäftsstatus unabhängig davon.</p>
+<p>Setzen Sie Prüfer ein, die die Sprachvarietät und den beruflichen Kontext verstehen, und dokumentieren Sie die akzeptablen Alternativen, die sie benennen. Bitten Sie bei einer folgenreichen Meinungsverschiedenheit einen zweiten Prüfer um eine unabhängige Annotation und entscheiden Sie dann anhand des Testfalls und der Anforderungen des Workflow-Verantwortlichen. Verwenden Sie das Label „ungeklärt“, wenn Audio oder Richtlinie die Frage nicht entscheiden. Der Telekommunikations-Standardisierungssektor der Internationalen Fernmeldeunion (ITU-T) beschreibt in der Empfehlung P.800 die formale subjektive Bewertung der Telefonübertragung, einschließlich der Bedeutung von Testmethode und Testbedingungen. Ein Hörpanel im Unternehmen sollte sein eigenes Verfahren beschreiben. <a class="b2bv3-ref" href="#source-mos">ITU-T P.800</a></p>
+<h2 id="compare-results-by-cohort-and-workflow">Ergebnisse nach Kohorte und Workflow vergleichen</h2>
+<p>FLEURS stellt parallele Vorlesesprache in vielen Sprachen bereit. Es kann vergleichbare Erkennungseingaben unterstützen und ist eine nützliche Referenz für das Datensatzdesign. Das Format der Vorlesesprache deckt jedoch weder spontane Korrekturen oder Übergaben noch die Einschränkungen eines echten Telefonpfads ab. Kombinieren Sie vergleichbare Phrasen mit neu beauftragten Testfällen, die die Anrufenden, Endgeräte und Umgebungen widerspiegeln, auf die sich das Unternehmen vorbereitet. Prüfen Sie die Datenrechte und Sprechererlaubnisse für das im tatsächlichen Test verwendete Material. <a class="b2bv3-ref" href="#source-flow">Conneau und Kollegen</a></p>
+<p>Entscheiden Sie bei Tests vietnamesischer Sprachagenten, wie mehrsprachige Transkripte segmentiert werden und ob lexikalische Wörter, silbengetrennte Einheiten oder Zeichen verglichen werden. Halten Sie die Regel innerhalb eines Vergleichs konsistent. Ein geänderter Tokenizer kann das scheinbare Erkennungsergebnis beeinflussen, ohne dass sich Audio oder Ergebnis ändern. Vergleichen Sie in einer separaten Prüfung den exakt von der anrufenden Person bestätigten Namen oder das bestätigte Datum mit dem entstandenen Datensatz. Der <a href="/de/how-voice-ai-accuracy-is-measured">Leitfaden zur Genauigkeit von Sprach-KI</a> erklärt, warum die Kennzahlen unterschiedliche Fragen beantworten. <a class="b2bv3-ref" href="#source-viet">Nguyen und Kollegen</a></p>
+<p>Berichten Sie, was tatsächlich getestet wurde, einschließlich Varietät, Aufgabe, Kanal, Abdeckung durch Prüfer und konkurrierender Bedingungen. Ein zusammengefasstes Ergebnis kann von der größten Kohorte dominiert werden und ein Problem in einer kleineren verdecken. Halten Sie releasekritische Probleme sichtbar. Ein Unternehmen kann gute Belege für den Umgang mit Terminänderungen auf US-Englisch haben und unvollständige Belege für dieselbe Aktion auf Französisch. Behandeln Sie das als unterschiedliche Einsatzentscheidungen.</p>
+<h3 id="decide-whether-the-problem-is-language-delivery-or-the-route">Entscheiden, ob das Problem bei der Sprache, der Wiedergabe oder der Route liegt</h3>
+<p>In einem fiktiven Reparaturanruf hört eine französischsprachige anrufende Person ihren Nachnamen deutlich, doch der Agent verwendet bei der Übergabe an einen Empfangsmitarbeiter die falsche Aussprache. Die ursprüngliche Erkennung hat möglicherweise den richtigen Datensatz erfasst. Prüfen Sie die synthetisierte Übergabe, das Audio, das der Empfangsmitarbeiter tatsächlich gehört hat, und den schriftlichen Kontext, bevor Sie entscheiden, welche Komponente überarbeitet werden muss. Erhält der Empfangsmitarbeiter keinen Kontext, kann eine verständliche Aussprache allein die Falldetails nicht wiederherstellen.</p>
+<p>Dialekttests für Sprach-KI sollten Raum für mehr als eine akzeptable Realisierung eines Namens oder einer Phrase lassen. Beziehen Sie innerhalb jedes wichtigen Workflows unterschiedliche Sprechweisen und Endgeräte ein und kennzeichnen Sie, was das Unternehmen als korrekt ansieht. Testen Sie beim Code-Switching in Sprach-KI, wo relevant, beide Richtungen des erwarteten Wechsels. Ein Modell folgt der anrufenden Person möglicherweise ins Spanische und schafft es dann nicht, ins Englische zurückzukehren, wenn sie dies ausdrücklich verlangt. Halten Sie dieses Ergebnis zusammen mit der unterstützten Aufgabe oder Aktion fest, die davon betroffen war, und verifizieren Sie jede annehmende Warteschlange außerhalb des Modells.</p>
+<h3 id="tie-a-language-decision-to-a-real-release-boundary">Eine Sprachentscheidung an eine echte Release-Grenze knüpfen</h3>
+<p>Legen Sie, bevor Sie einem Workflow eine Sprache hinzufügen, fest, was das Personal für diese konkrete Aktion als Nachweis akzeptiert. Validiert der Test Öffnungszeiten und Terminaufnahme, prüft aber nie eine Stornierung oder eine Übergabe an einen Menschen, behalten Sie diesen engeren Umfang in den Release Notes bei. Wiederholen Sie bei Personaländerungen den Teil des Nachweises, der von einem qualifizierten Ziel abhing.</p>
+<h3 id="keep-fallback-language-visible-in-the-business-result">Die Fallback-Sprache im Geschäftsergebnis sichtbar halten</h3>
+<p>Erfassen Sie die von der anrufenden Person gewählte Sprache, die Sprache der Antwort und die Sprache oder personelle Besetzung des Ziels als getrennte Beobachtungen. Eine Weiterleitung an die allgemeine Empfangswarteschlange kann eine aufgezeichnete Begrüßung in der gewünschten Sprache abspielen, während die verfügbare Person das Gespräch in dieser Sprache nicht fortführen kann. Ist das freigegebene Ergebnis eine Dolmetscher-Warteschlange oder ein Rückruf, prüfen Sie, was der anrufenden Person mitgeteilt wurde und was das annehmende Team tatsächlich erfasst hat.</p>
+<p>Für einen fairen Vergleich zwischen Sprachen sollten Aufgabe und Geschäftsregel übereinstimmen, während Raum für natürliche Formulierungen bleibt. Ein Prompt, der einer Kohorte versehentlich die genauen Wörter nennt, die für das Routing nötig sind, kann diese Kohorte auf dem Papier leichter bewertbar und schwerer vergleichbar machen.</p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="does-advertised-language-support-demonstrate-real-call-quality">Belegt eine beworbene Sprachunterstützung eine tatsächliche Anrufqualität?</h3>
+<p>Sie kann eine verfügbare Spracheinstellung ausweisen. Weisen Sie die Qualität anhand der tatsächlichen Aufgaben der Anrufenden, des Kanals, der kritischen Felder und der besetzten Ziele nach. Führen Sie die Belege getrennt nach Sprache und Workflow.</p>
+<h3 id="how-should-reviewers-grade-an-acceptable-code-switch">Wie sollten Prüfer ein akzeptables Code-Switching bewerten?</h3>
+<p>Legen Sie fest, ob die anrufende Person einen Sprachwechsel verlangt hat, ob der Agent einen fremdsprachigen Namen oder Begriff beibehalten soll und was die abschließende Aktion zeigen muss. Akzeptieren Sie natürliche Varianten, die diese Anforderungen erfüllen.</p>
+<h3 id="who-should-review-pronunciation-and-politeness">Wer sollte Aussprache und Höflichkeit beurteilen?</h3>
+<p>Setzen Sie Muttersprachler oder hochkompetente Sprecher ein, die mit der jeweiligen Varietät und dem Geschäftsumfeld vertraut sind. Lassen Sie sie dort unabhängig zuhören, wo die Entscheidung folgenreich ist, und lösen Sie Meinungsverschiedenheiten in einem dokumentierten Verfahren.</p>
+<h3 id="what-should-happen-when-no-qualified-staff-member-is-available">Was sollte geschehen, wenn keine qualifizierte Mitarbeiterin und kein qualifizierter Mitarbeiter verfügbar ist?</h3>
+<p>Nutzen Sie den freigegebenen Fallback des Workflows, etwa einen passend weitergeleiteten Rückruf oder eine andere unterstützte Kontaktmöglichkeit. Der Agent sollte diesen Status korrekt beschreiben und keine sofortige Weiterleitung versprechen, die er nicht durchführen kann.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Besprechen Sie die Sprachen und Übergaben, die Ihre Anrufenden benötigen</h2>
+<p>Bringen Sie die Geschäftsaufgaben mit, die Anrufende erledigen müssen, die Sprachen, die sie nutzen, und die Mitarbeitenden oder Rückrufwege, die zur Fortführung des Anrufs zur Verfügung stehen. <a href="/demo">Einen mehrsprachigen Workflow für eine individuelle Umsetzung besprechen</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-disp">Belege aus einer Stichprobe von US-Interviewsprache zur getrennten Auswertung von Gruppen. <a href="https://www.pnas.org/content/pnas/117/14/7684.full.pdf">Racial disparities in automated speech recognition</a>
+</li>
+<li id="source-mucs">Interspeech-Evaluierung mehrsprachiger und Hindi-Englisch-code-geswitchter Sprache. <a href="https://www.isca-archive.org/interspeech_2021/diwan21_interspeech.pdf">MUCS 2021: Multilingual and Code-Switching ASR Challenges for Low Resource Indian Languages</a>
+</li>
+<li id="source-mos">Kontrollierte subjektive Methoden zur Beurteilung der Übertragungsqualität im Telefonnetz. <a href="https://www.itu.int/rec/dologin_pub.asp?id=T-REC-P.800-199608-I%21%21PDF-E&amp;lang=e&amp;type=items">Methods for subjective determination of transmission quality</a>
+</li>
+<li id="source-flow">Design und Abdeckung eines Benchmarks mit paralleler Vorlesesprache. <a href="https://arxiv.org/pdf/2205.12446">FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech</a>
+</li>
+<li id="source-viet">Wortsegmentierung und die Rolle des Leerzeichens zwischen vietnamesischen Silben. <a href="https://aclanthology.org/L18-1410.pdf">A Fast and Accurate Vietnamese Word Segmenter</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>Mehrsprachige Sprach-KI</li>
+<li>Code-Switching</li>
+<li>Akzentrobustheit</li>
+<li>Menschliche Prüfung</li>
+</ul></article>
+</main>

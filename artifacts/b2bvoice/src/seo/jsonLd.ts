@@ -7,6 +7,9 @@ import {
   type PageMeta,
 } from "./pageMeta";
 
+import { LOCALE_INFO, localizePath, parseLocale } from "@/lib/i18n";
+import { BLOG_UI } from "@/lib/blogUi";
+
 interface Post {
   slug: string;
   title: string;
@@ -51,6 +54,10 @@ const breadcrumb = (items: { name: string; path: string }[]) => ({
 /** JSON-LD graphs (each becomes one <script type="application/ld+json">) for a path. */
 export function jsonLdFor(page: PageMeta, posts: Post[]): object[] {
   const ctx = { "@context": "https://schema.org" };
+  // Translated blog pages live under /de/... and /es/...: `rest` is the English route, `locale` the language.
+  const { locale, rest } = parseLocale(page.path);
+  const ui = BLOG_UI[locale];
+  const inLanguage = LOCALE_INFO[locale].hreflang;
 
   if (page.path === "/") {
     return [
@@ -76,7 +83,7 @@ export function jsonLdFor(page: PageMeta, posts: Post[]): object[] {
     ];
   }
 
-  if (page.path === "/blog") {
+  if (rest === "/blog") {
     return [
       {
         ...ctx,
@@ -84,21 +91,21 @@ export function jsonLdFor(page: PageMeta, posts: Post[]): object[] {
         "@id": `${SITE_URL}/blog#blog`,
         name: "B2BVoice Blog",
         description: page.description,
-        url: canonicalFor("/blog"),
-        inLanguage: "en",
+        url: canonicalFor(page.path),
+        inLanguage,
         publisher: { "@id": ORG_ID },
         blogPost: posts.map((p) => ({
           "@type": "BlogPosting",
           headline: p.title,
-          url: canonicalFor(`/${p.slug}`),
+          url: canonicalFor(localizePath(`/${p.slug}`, locale)),
           datePublished: toIsoDateTime(p.date),
         })),
       },
-      { ...ctx, ...breadcrumb([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]) },
+      { ...ctx, ...breadcrumb([{ name: ui.home, path: "/" }, { name: "Blog", path: page.path }]) },
     ];
   }
 
-  const post = posts.find((p) => `/${p.slug}` === page.path);
+  const post = posts.find((p) => `/${p.slug}` === rest);
   if (post) {
     const url = canonicalFor(page.path);
     return [
@@ -107,23 +114,23 @@ export function jsonLdFor(page: PageMeta, posts: Post[]): object[] {
         "@type": "BlogPosting",
         "@id": `${url}#article`,
         headline: post.title,
-        description: postMeta(post).description,
-        image: postMeta(post).ogImage || DEFAULT_OG_IMAGE,
+        description: postMeta(post, locale).description,
+        image: postMeta(post, locale).ogImage || DEFAULT_OG_IMAGE,
         datePublished: toIsoDateTime(post.date),
         dateModified: toIsoDateTime(post.date),
         author: { "@type": "Organization", name: SITE_NAME, url: `${SITE_URL}/` },
         publisher: { ...organization, "@type": "Organization" },
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
         url,
-        inLanguage: "en",
+        inLanguage,
         articleSection: post.category,
         keywords: post.tags.join(", ") || undefined,
       },
       {
         ...ctx,
         ...breadcrumb([
-          { name: "Home", path: "/" },
-          { name: "Blog", path: "/blog" },
+          { name: ui.home, path: "/" },
+          { name: "Blog", path: localizePath("/blog", locale) },
           { name: post.title, path: page.path },
         ]),
       },

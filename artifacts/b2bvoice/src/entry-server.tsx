@@ -9,9 +9,10 @@ export async function render(path: string): Promise<string> {
   return html;
 }
 
-import { blogPosts as posts } from "./lib/blogPosts";
+import { blogPosts as posts, hasTranslation, localizePost } from "./lib/blogPosts";
+import { localizePath, type Locale } from "./lib/i18n";
 import { jsonLdFor } from "./seo/jsonLd";
-import { STATIC_PAGES, NOT_FOUND_META, ADMIN_META, postMeta, type PageMeta } from "./seo/pageMeta";
+import { STATIC_PAGES, NOT_FOUND_META, ADMIN_META, blogIndexMeta, postMeta, type PageMeta } from "./seo/pageMeta";
 
 export interface PrerenderPage {
   meta: PageMeta;
@@ -37,6 +38,17 @@ export function getPages(): PrerenderPage[] {
   for (const post of posts) {
     const meta = postMeta(post);
     pages.push({ meta, jsonLd: jsonLdFor(meta, posts), ssr: true, lastmod: post.date });
+  }
+  // German and Spanish blog: /de/blog, /de/<slug>, /es/blog, /es/<slug>
+  for (const locale of ["de", "es"] as Locale[]) {
+    const localized = posts.filter((p) => hasTranslation(p.slug, locale)).map((p) => localizePost(p, locale));
+    if (!localized.length) continue;
+    const index = blogIndexMeta(locale);
+    pages.push({ meta: index, jsonLd: jsonLdFor(index, localized), ssr: true, lastmod: newest });
+    for (const post of localized) {
+      const meta = postMeta(post, locale);
+      pages.push({ meta, jsonLd: jsonLdFor(meta, localized), ssr: true, lastmod: post.date });
+    }
   }
   return pages;
 }

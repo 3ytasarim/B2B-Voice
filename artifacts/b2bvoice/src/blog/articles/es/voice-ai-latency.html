@@ -1,0 +1,1329 @@
+
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --red-soft: #fff2f2;
+      --purple-soft: #f5f1ff;
+      --cyan-soft: #eef9fc;
+      --dark: #111a2e;
+      --max: 920px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 890px;
+      font-size: clamp(38px, 6vw, 61px);
+    }.blog-content h2 {
+      margin: 52px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 830px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer .label, .blog-content .small-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .warning {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .warning strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #78570b;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .waterfall {
+      margin: 28px 0 38px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fafbfc;
+    }.blog-content .waterfall h3 {
+      margin: 0 0 6px;
+    }.blog-content .waterfall-sub {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .wf-row {
+      display: grid;
+      grid-template-columns: 175px 1fr;
+      gap: 13px;
+      align-items: center;
+      margin: 10px 0;
+    }.blog-content .wf-label {
+      color: #465268;
+      font-size: 13px;
+      font-weight: 800;
+    }.blog-content .wf-bar {
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e2e8ff, #8ea6ff, #4d6ddc);
+    }.blog-content .w1 { width: 36%; }.blog-content .w2 { width: 25%; }.blog-content .w3 { width: 48%; }.blog-content .w4 { width: 72%; }.blog-content .w5 { width: 31%; }.blog-content .w6 { width: 43%; }.blog-content .w7 { width: 100%; background: linear-gradient(90deg, #d8e1ff, #405fc9); }.blog-content .equation {
+      margin: 28px 0 38px;
+      padding: 27px;
+      border-radius: 15px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .equation .small-label {
+      color: #aab8f7;
+    }.blog-content .equation-main {
+      font-size: 20px;
+      line-height: 1.65;
+      font-weight: 800;
+      margin-bottom: 11px;
+    }.blog-content .equation-note {
+      margin: 0;
+      color: #d3dbe9;
+      font-size: 14px;
+    }.blog-content .six-stage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 26px 0 38px;
+    }.blog-content .stage {
+      padding: 19px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }.blog-content .stage-num {
+      width: 31px;
+      height: 31px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #17358f;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+    }.blog-content .stage strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #18253d;
+    }.blog-content .stage p {
+      margin: 0;
+      color: #4b576d;
+      font-size: 14px;
+    }.blog-content .tradeoff {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 15px;
+      align-items: center;
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: var(--purple-soft);
+      border: 1px solid #ddd2ff;
+    }.blog-content .trade-card {
+      padding: 18px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid #e0daef;
+    }.blog-content .trade-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }.blog-content .trade-card p {
+      margin: 0;
+      color: #505a6e;
+      font-size: 14px;
+    }.blog-content .trade-vs {
+      font-weight: 900;
+      color: #6b53ae;
+      font-size: 13px;
+    }.blog-content .metric-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 25px 0 38px;
+    }.blog-content .metric {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }.blog-content .metric h3 {
+      margin: 0 0 7px;
+      font-size: 19px;
+    }.blog-content .metric p {
+      margin: 0;
+      color: #4a566c;
+      font-size: 14px;
+    }.blog-content .benchmark-box {
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: var(--cyan-soft);
+      border: 1px solid #cde7ef;
+    }.blog-content .benchmark-box h3 {
+      margin: 0 0 8px;
+    }.blog-content .benchmark-number {
+      display: block;
+      margin: 13px 0 4px;
+      font-size: 36px;
+      line-height: 1;
+      font-weight: 900;
+      color: #153f6a;
+    }.blog-content .benchmark-caption {
+      color: #466174;
+      font-size: 14px;
+    }.blog-content .debug-framework {
+      margin: 30px 0 40px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }.blog-content .debug-head {
+      padding: 23px 25px;
+      background: var(--dark);
+      color: white;
+    }.blog-content .debug-head h3 {
+      margin: 0 0 6px;
+      color: white;
+    }.blog-content .debug-head p {
+      margin: 0;
+      color: #d6deeb;
+    }.blog-content .debug-row {
+      display: grid;
+      grid-template-columns: 125px 1fr 1fr;
+      gap: 15px;
+      padding: 17px 20px;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }.blog-content .debug-row:last-child { border-bottom: 0; }.blog-content .debug-stage {
+      font-weight: 900;
+      color: #18326f;
+    }.blog-content .debug-question {
+      color: #26334a;
+      font-weight: 700;
+    }.blog-content .debug-signal {
+      color: #566176;
+      font-size: 14px;
+    }.blog-content .percentile {
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: #fbfcfe;
+      border: 1px solid var(--line);
+    }.blog-content .percentile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }.blog-content .percentile-card {
+      padding: 17px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }.blog-content .percentile-card strong {
+      display: block;
+      font-size: 22px;
+      color: #18326f;
+    }.blog-content .percentile-card span {
+      color: #59657a;
+      font-size: 13px;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }.blog-content .cta a.button {
+      display: inline-block;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .cta a.secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.42);
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul { padding-left: 20px; }.blog-content .sources li { margin: 9px 0; overflow-wrap: anywhere; }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 760px) {.blog-content .six-stage, .blog-content .metric-cards, .blog-content .percentile-grid {
+        grid-template-columns: 1fr;
+      }.blog-content .tradeoff {
+        grid-template-columns: 1fr;
+      }.blog-content .trade-vs {
+        text-align: center;
+      }.blog-content .wf-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }.blog-content .wf-bar, .blog-content .w1, .blog-content .w2, .blog-content .w3, .blog-content .w4, .blog-content .w5, .blog-content .w6, .blog-content .w7 {
+        width: 100%;
+      }.blog-content .debug-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .waterfall, .blog-content .equation, .blog-content .tradeoff, .blog-content .benchmark-box, .blog-content .debug-framework, .blog-content .percentile, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap {
+        break-inside: avoid;
+      }.blog-content .equation, .blog-content .cta, .blog-content .debug-head {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .equation .small-label, .blog-content .equation-main, .blog-content .equation-note, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary, .blog-content .debug-head h3, .blog-content .debug-head p {
+        color: #111;
+      }
+    }
+</style>
+<main class="page">
+    <article>
+      <header>
+        <span class="eyebrow">Rendimiento de la IA de voz · Guía técnica</span>
+        <h1>Latencia en la IA de voz: qué causa el retraso y con qué rapidez debe responder un agente de IA</h1>
+        <p class="dek">
+          Un modelo de lenguaje rápido puede producir, aun así, una conversación telefónica lenta. La latencia de la IA de voz es el resultado combinado de la detección de turnos, el reconocimiento de voz, el razonamiento, la recuperación de información, las herramientas, la generación de voz, las redes y la reproducción.
+        </p>
+        <p class="meta">Publicado el 29 de agosto de 2026 · Por B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
+        <span class="label">Respuesta rápida</span>
+        <p>
+          <strong>La latencia de la IA de voz es el retraso entre el momento en que el usuario habla y el momento en que el sistema entrega la siguiente respuesta audible.</strong> En producción, ese retraso puede incluir la detección del fin de turno, la conversión de voz a texto, la inferencia del modelo, la recuperación de información, la ejecución de herramientas externas, la conversión de texto a voz, el transporte de red y el almacenamiento temporal del audio. No existe una cifra única y universal que haga que todo agente de voz con IA suene “humano”. El objetivo correcto depende de la arquitectura, el tipo de llamada, el idioma, las condiciones de red, el uso de herramientas y la política de turnos de conversación. La métrica más útil suele ser no la velocidad del modelo por sí sola, sino el tiempo que la persona que llama espera realmente antes de oír una respuesta relevante.
+        </p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+          <li><strong>La latencia de voz es una cascada de etapas, no una única medición de referencia.</strong></li>
+          <li>TTFT y TTFA miden cosas distintas.</li>
+          <li>La detección de turnos puede añadir un retraso considerable incluso antes de que el modelo empiece a responder.</li>
+          <li>Las herramientas externas pueden dominar la latencia aunque el modelo de IA sea extremadamente rápido.</li>
+          <li>Reducir la latencia de forma demasiado agresiva puede hacer que el agente interrumpa a quienes llaman.</li>
+          <li>La latencia promedio puede ocultar un mal rendimiento en los casos más lentos; P50, P90 o P95 suelen ser más útiles.</li>
+          <li>La latencia debe medirse desde la experiencia de la persona que llama, no solo a partir de los tiempos internos del modelo.</li>
+        </ul>
+      </section>
+
+      <h2>Por qué la latencia de la IA de voz es más difícil de lo que parece</h2>
+
+      <p>
+        Muchos debates sobre IA de voz reducen el rendimiento a una sola pregunta: <strong>“¿Qué tan rápido es el modelo?”</strong>
+      </p>
+
+      <p>
+        Ese es el nivel de abstracción equivocado.
+      </p>
+
+      <p>
+        La persona que llama no percibe la inferencia del modelo de forma aislada. Percibe la pausa total entre el momento en que termina de expresar una idea y el momento en que oye el siguiente fragmento de audio útil.
+      </p>
+
+      <div class="equation">
+        <span class="small-label">Un modelo mental práctico</span>
+        <div class="equation-main">
+          Retraso percibido de la respuesta ≈ Detección de turno + Comprensión del habla + Razonamiento + Recuperación/Herramientas + Generación de voz + Red/Reproducción
+        </div>
+        <p class="equation-note">
+          Este es un modelo conceptual de ingeniería, no una fórmula de protocolo universal. Algunas arquitecturas de audio en tiempo real nativas de audio combinan u ocultan varias de estas etapas.
+        </p>
+      </div>
+
+      <div class="thesis">
+        Un agente de voz puede tener un LLM muy rápido y aun así parecer lento si espera demasiado para decidir que la persona que llama ha terminado de hablar.
+      </div>
+
+      <h2>La cascada de latencia en la IA de voz</h2>
+
+      <p>
+        En una arquitectura de voz en cascada, un turno típico puede contener varias fuentes de retraso.
+      </p>
+
+      <div class="waterfall">
+        <h3>Cascada de latencia ilustrativa</h3>
+        <p class="waterfall-sub">Las barras muestran etapas relativas solo con fines explicativos. No son valores de referencia medidos.</p>
+
+        <div class="wf-row">
+          <div class="wf-label">Detección del fin de turno</div>
+          <div class="wf-bar w3"></div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label">Finalización del STT</div>
+          <div class="wf-bar w2"></div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label">Inferencia del modelo</div>
+          <div class="wf-bar w1"></div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label">Recuperación de información / llamada a herramienta</div>
+          <div class="wf-bar w4"></div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label">Primer audio del TTS</div>
+          <div class="wf-bar w5"></div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label">Red / almacenamiento temporal</div>
+          <div class="wf-bar w6"></div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label">Retraso percibido por el usuario</div>
+          <div class="wf-bar w7"></div>
+        </div>
+      </div>
+
+      <p>
+        No todos los turnos usan todas las etapas. Un saludo sencillo puede no requerir recuperación de información ni herramientas externas. Una solicitud de reserva puede necesitar una o más llamadas de red antes de que el sistema pueda dar una respuesta fiable.
+      </p>
+
+      <h2>Los seis lugares donde suele aparecer el retraso conversacional</h2>
+
+      <div class="six-stage">
+        <div class="stage">
+          <div class="stage-num">1</div>
+          <strong>Detenerse</strong>
+          <p>¿Cuánto tiempo espera el sistema antes de decidir que la persona que llama ha terminado?</p>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">2</div>
+          <strong>Comprender</strong>
+          <p>¿Con qué rapidez se puede convertir el habla o el audio en un significado conversacional utilizable?</p>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">3</div>
+          <strong>Pensar</strong>
+          <p>¿Con qué rapidez puede el modelo o el orquestador determinar el siguiente paso?</p>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">4</div>
+          <strong>Actuar</strong>
+          <p>¿Necesita el sistema un calendario, un CRM, una base de datos, una consulta RAG u otra API?</p>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">5</div>
+          <strong>Hablar</strong>
+          <p>¿Con qué rapidez puede la capa de voz empezar a producir una salida audible?</p>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">6</div>
+          <strong>Entregar</strong>
+          <p>¿Cuánto retraso introducen el transporte de medios, el enrutamiento del operador y el almacenamiento temporal de la reproducción?</p>
+        </div>
+      </div>
+
+      <h2>1. Latencia de fin de turno: el retraso antes de que la IA siquiera empiece</h2>
+
+      <p>
+        Un agente de voz no puede responder de forma natural hasta que decide que el turno de la persona que llama ha terminado. Esto puede resultar sorprendentemente difícil.
+      </p>
+
+      <p>
+        Un sistema basado en silencio puede esperar una cantidad fija de audio en silencio. Si se acorta ese umbral, las respuestas pueden empezar antes. Si se acorta demasiado, el sistema puede interrumpir a un usuario que solo estaba haciendo una pausa.
+      </p>
+
+      <div class="tradeoff">
+        <div class="trade-card">
+          <strong>Demasiado impaciente</strong>
+          <p>Menor tiempo de espera, pero mayor riesgo de cortar pausas, dudas o ideas incompletas.</p>
+        </div>
+
+        <div class="trade-vs">VS</div>
+
+        <div class="trade-card">
+          <strong>Demasiado paciente</strong>
+          <p>Menos respuestas prematuras, pero silencios más largos y una conversación que parece más lenta.</p>
+        </div>
+      </div>
+
+      <p>
+        Los sistemas modernos pueden ir más allá de los umbrales fijos de silencio. La detección semántica de turnos puede evaluar si la intervención del usuario parece completa.
+      </p>
+
+      <p>
+        Por ejemplo:
+      </p>
+
+      <p><strong>“Necesito una cita para... eh...”</strong></p>
+
+      <p>
+        Un sistema basado únicamente en el silencio puede interpretar la pausa como el fin del turno. Un sistema semántico puede reconocer que la idea probablemente está inconclusa y esperar más.
+      </p>
+
+      <div class="thesis">
+        El detector de fin de turno más rápido no es necesariamente el mejor. El verdadero objetivo es responder en el momento adecuado.
+      </div>
+
+      <h2>2. Latencia de voz a texto</h2>
+
+      <p>
+        En una arquitectura en cascada, el reconocimiento de voz puede transmitir texto parcial mientras la persona que llama todavía está hablando. La transcripción final utilizable puede llegar más tarde.
+      </p>
+
+      <p>
+        Eso plantea una decisión de ingeniería:
+      </p>
+
+      <ul>
+        <li>esperar más certeza y añadir retraso; o</li>
+        <li>empezar a razonar a partir de información parcial y aceptar un mayor riesgo de revisión.</li>
+      </ul>
+
+      <p>
+        Esta disyuntiva es especialmente importante para nombres, fechas, direcciones, números de cuenta y otras entidades en las que una corrección puede cambiar la acción comercial.
+      </p>
+
+      <h2>3. Inferencia del modelo y TTFT</h2>
+
+      <p>
+        TTFT (Time to First Token, tiempo hasta el primer token) es útil para medir con qué rapidez un modelo generador de texto empieza su respuesta.
+      </p>
+
+      <p>
+        Pero el TTFT no es lo mismo que la latencia conversacional.
+      </p>
+
+      <p>
+        Un modelo puede emitir su primer token rápidamente mientras el usuario sigue oyendo silencio porque:
+      </p>
+
+      <ul>
+        <li>la detección de turnos tardó demasiado;</li>
+        <li>el STT todavía estaba finalizando;</li>
+        <li>el TTS aún no ha empezado a hablar;</li>
+        <li>la aplicación está almacenando texto temporalmente;</li>
+        <li>la red está retrasada.</li>
+      </ul>
+
+      <div class="warning">
+        <strong>El TTFT es una métrica del modelo, no una métrica completa de la experiencia de voz.</strong> Puede ser valioso para depurar, pero no debe usarse por sí solo para describir lo rápida que se siente una conversación telefónica.
+      </div>
+
+      <h2>4. Latencia de recuperación de información y de herramientas</h2>
+
+      <p>
+        A veces el componente de “IA” más lento no es IA en absoluto.
+      </p>
+
+      <p>
+        Si la persona que llama pregunta:
+      </p>
+
+      <p><strong>“¿Tienen algo disponible mañana a las 3 p. m.?”</strong></p>
+
+      <p>
+        el agente puede tener que:
+      </p>
+
+      <ol>
+        <li>entender la solicitud de reserva;</li>
+        <li>llamar a una API de programación de citas;</li>
+        <li>esperar al sistema de calendario;</li>
+        <li>validar el resultado;</li>
+        <li>formular la respuesta;</li>
+        <li>empezar a hablar.</li>
+      </ol>
+
+      <p>
+        Una API de calendario que tarda 900 milisegundos puede dominar la experiencia aunque el propio modelo de lenguaje responda en una fracción de ese tiempo.
+      </p>
+
+      <div class="thesis">
+        La latencia de las herramientas es latencia de voz cuando la persona que llama está esperando la respuesta de la herramienta.
+      </div>
+
+      <h2>5. Texto a voz y tiempo hasta el primer audio</h2>
+
+      <p>
+        Un sistema en cascada, en algún momento, tiene que convertir el texto generado de nuevo en audio.
+      </p>
+
+      <p>
+        El TTS en streaming puede empezar a sintetizar antes de que se haya generado la respuesta completa. Eso permite que la voz empiece antes, pero la experiencia completa del usuario sigue dependiendo del almacenamiento temporal, la red y la reproducción.
+      </p>
+
+      <p>
+        Aquí es donde <strong>TTFA (Time to First Audio, tiempo hasta el primer audio)</strong> resulta especialmente útil.
+      </p>
+
+      <p>
+        En el contexto de un agente de voz, el TTFA busca, en general, capturar cuánto tiempo espera la persona que llama hasta que el agente empieza a ser audible tras el turno del usuario. Los límites exactos de la medición pueden variar según la plataforma, por lo que los equipos deben documentar su definición.
+      </p>
+
+      <h2>6. Latencia de red, de operador y de reproducción</h2>
+
+      <p>
+        El modelo puede terminar su trabajo y, aun así, la persona que llama puede percibir un retraso.
+      </p>
+
+      <p>
+        El audio puede atravesar:
+      </p>
+
+      <ul>
+        <li>infraestructura de telefonía;</li>
+        <li>redes de operadores;</li>
+        <li>conexiones WebSocket o WebRTC;</li>
+        <li>servidores de aplicaciones geográficamente distantes;</li>
+        <li>pasarelas de medios;</li>
+        <li>búferes de jitter;</li>
+        <li>búferes de reproducción del cliente.</li>
+      </ul>
+
+      <p>
+        Por eso las mediciones de latencia tomadas dentro de un servicio en la nube pueden no incluir la experiencia completa del último tramo entre la persona que llama y el borde de medios.
+      </p>
+
+      <h2>El TTFA, el TTFT y la latencia de fin de turno no son la misma métrica</h2>
+
+      <div class="metric-cards">
+        <div class="metric">
+          <h3>Latencia de fin de turno</h3>
+          <p>Cuánto tiempo espera o calcula el sistema antes de decidir que la persona que llama ha terminado.</p>
+        </div>
+
+        <div class="metric">
+          <h3>Latencia del STT</h3>
+          <p>Cuánto tiempo se tarda en producir un reconocimiento de voz utilizable después del turno de la persona que llama, o durante este.</p>
+        </div>
+
+        <div class="metric">
+          <h3>TTFT</h3>
+          <p>Cuánto tarda el modelo de razonamiento en empezar a generar texto o contenido de respuesta.</p>
+        </div>
+
+        <div class="metric">
+          <h3>Latencia de herramientas</h3>
+          <p>Tiempo de espera de una API externa, una base de datos, un calendario, un CRM o un sistema de flujo de trabajo.</p>
+        </div>
+
+        <div class="metric">
+          <h3>Latencia del primer audio del TTS</h3>
+          <p>Con qué rapidez la etapa de generación de voz empieza a producir audio después de recibir el contenido de la respuesta.</p>
+        </div>
+
+        <div class="metric">
+          <h3>TTFA</h3>
+          <p>Cuánto espera la persona que llama hasta que la respuesta del agente virtual se vuelve audible.</p>
+        </div>
+      </div>
+
+      <h2>¿Con qué rapidez debe responder un agente de voz con IA?</h2>
+
+      <p>
+        No existe un umbral universal que se aplique a todos los idiomas, arquitecturas, casos de uso y redes telefónicas.
+      </p>
+
+      <p>
+        Una confirmación breve como:
+      </p>
+
+      <p><strong>“Sí, el martes a las tres hay disponibilidad.”</strong></p>
+
+      <p>
+        genera expectativas distintas que:
+      </p>
+
+      <p><strong>“Permítame revisar el registro de ese cliente y verificar el estado de la cuenta.”</strong></p>
+
+      <p>
+        La segunda interacción implica, naturalmente, que puede estar ocurriendo trabajo externo.
+      </p>
+
+      <p>
+        La distinción importante es entre:
+      </p>
+
+      <ul>
+        <li><strong>silencio sin explicación</strong>, que se percibe como una falla;</li>
+        <li><strong>procesamiento esperado</strong>, que puede comunicarse de forma natural;</li>
+        <li><strong>respuestas rápidas pero prematuras</strong>, que interrumpen a la persona que llama.</li>
+      </ul>
+
+      <div class="benchmark-box">
+        <span class="small-label">Una referencia real de un proveedor, no una ley universal</span>
+        <h3>Twilio ConversationRelay</h3>
+        <span class="benchmark-number">&gt; 1.2 s</span>
+        <p class="benchmark-caption">
+          El panel actual de ConversationRelay Insights de Twilio marca las llamadas que superan 1.2 segundos como “high time to first audio” y recomienda apuntar a menos de 1,200 ms como límite superior para su sistema. Es una referencia operativa para ese producto, no una definición científica universal de la latencia de voz “humana”.
+        </p>
+      </div>
+
+      <p>
+        Las cifras específicas de una plataforma son útiles cuando indican cómo define y monitorea el rendimiento un sistema concreto. Se vuelven engañosas cuando se copian en afirmaciones universales como: <strong>“Todo agente de voz debe responder exactamente en 800 ms.”</strong>
+      </p>
+
+      <h2>Por qué optimizar la latencia puede empeorar la conversación</h2>
+
+      <p>
+        La experiencia de usuario en voz es un problema de coordinación.
+      </p>
+
+      <p>
+        Supongamos que la persona que llama dice:
+      </p>
+
+      <p><strong>“Quisiera algo el próximo viernes... bueno, más tarde por la tarde.”</strong></p>
+
+      <p>
+        Si el sistema se optimiza de forma agresiva para lograr el menor silencio posible, puede empezar a responder después de “el próximo viernes”.
+      </p>
+
+      <p>
+        Esa respuesta es rápida.
+      </p>
+
+      <p>
+        También es incorrecta desde el punto de vista conversacional.
+      </p>
+
+      <p>
+        De aquí surge un principio de diseño clave:
+      </p>
+
+      <div class="thesis">
+        La IA de voz debe minimizar la espera innecesaria, no minimizar cada milisegundo sin importar el contexto conversacional.
+      </div>
+
+      <h2>Las interrupciones también son una señal de latencia</h2>
+
+      <p>
+        Si los usuarios hablan con frecuencia por encima del agente virtual, eso no significa automáticamente que el sistema sea demasiado lento.
+      </p>
+
+      <p>
+        Pueden interrumpir porque:
+      </p>
+
+      <ul>
+        <li>el agente es demasiado extenso;</li>
+        <li>la persona que llama ya sabe lo que quiere decir;</li>
+        <li>el sistema empezó a responder demasiado tarde;</li>
+        <li>la respuesta no es relevante;</li>
+        <li>el comportamiento de los turnos de conversación resulta poco natural.</li>
+      </ul>
+
+      <p>
+        Del mismo modo, si el agente empieza a hablar repetidamente antes de que el cliente haya terminado, el problema puede ser una política de fin de turno demasiado agresiva y no la velocidad del modelo.
+      </p>
+
+      <h2>La latencia promedio puede ocultar un sistema de producción deficiente</h2>
+
+      <p>
+        Imagine 100 conversaciones:
+      </p>
+
+      <ul>
+        <li>90 turnos responden con rapidez;</li>
+        <li>5 turnos son un poco lentos;</li>
+        <li>5 turnos tardan varios segundos.</li>
+      </ul>
+
+      <p>
+        El promedio puede seguir pareciendo aceptable. Esos casos lentos de la cola pueden dominar la frustración del cliente.
+      </p>
+
+      <div class="percentile">
+        <span class="small-label">Piense en distribuciones</span>
+        <div class="percentile-grid">
+          <div class="percentile-card">
+            <strong>P50</strong> <span>La experiencia mediana. La mitad de los turnos medidos son más rápidos y la otra mitad, más lentos.</span>
+          </div>
+          <div class="percentile-card">
+            <strong>P90</strong> <span>Muestra cómo es una experiencia relativamente lenta, pero todavía común.</span>
+          </div>
+          <div class="percentile-card">
+            <strong>P95/P99</strong> <span>Útiles para exponer la latencia de cola y los retrasos poco frecuentes pero molestos.</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Las plataformas modernas de analítica de agentes de voz exponen cada vez más percentiles de latencia precisamente por este motivo.
+      </p>
+
+      <h2>El marco de depuración de latencia de B2B Voice</h2>
+
+      <p>
+        Cuando un agente de voz “se siente lento”, preguntar únicamente qué LLM se está usando rara vez es suficiente. Un proceso de depuración más útil consiste en recorrer la conversación en seis etapas.
+      </p>
+
+      <div class="debug-framework">
+        <div class="debug-head">
+          <h3>DETENERSE → COMPRENDER → PENSAR → ACTUAR → HABLAR → ENTREGAR</h3>
+          <p>Un marco de diagnóstico práctico para localizar dónde se introduce el retraso percibido por el usuario.</p>
+        </div>
+
+        <div class="debug-row">
+          <div class="debug-stage">DETENERSE</div>
+          <div class="debug-question">¿Esperó el sistema demasiado para decidir que el usuario había terminado?</div>
+          <div class="debug-signal">Revise el VAD, los umbrales de silencio, el EOT semántico, las pausas y los patrones de interrupción.</div>
+        </div>
+
+        <div class="debug-row">
+          <div class="debug-stage">COMPRENDER</div>
+          <div class="debug-question">¿Fue lento el reconocimiento de voz o la comprensión del audio?</div>
+          <div class="debug-signal">Revise la finalización del STT, las transcripciones parciales, el idioma y las condiciones de ruido.</div>
+        </div>
+
+        <div class="debug-row">
+          <div class="debug-stage">PENSAR</div>
+          <div class="debug-question">¿Fue la inferencia del modelo el cuello de botella?</div>
+          <div class="debug-signal">Revise el TTFT, el tamaño del prompt, la elección del modelo, el contexto y la estrategia de generación.</div>
+        </div>
+
+        <div class="debug-row">
+          <div class="debug-stage">ACTUAR</div>
+          <div class="debug-question">¿Estaba el agente esperando conocimiento o un sistema de negocio?</div>
+          <div class="debug-signal">Revise las duraciones de RAG, CRM, calendario, base de datos, webhooks y herramientas.</div>
+        </div>
+
+        <div class="debug-row">
+          <div class="debug-stage">HABLAR</div>
+          <div class="debug-question">¿Tardó en empezar la generación de voz?</div>
+          <div class="debug-signal">Revise el streaming del TTS, la fragmentación, la elección de voz/modelo y el tiempo del primer audio.</div>
+        </div>
+
+        <div class="debug-row">
+          <div class="debug-stage">ENTREGAR</div>
+          <div class="debug-question">¿Se generó la respuesta pero tardó en llegar a la persona que llama?</div>
+          <div class="debug-signal">Revise la ruta del operador, el RTT de WebSocket/WebRTC, el jitter, el almacenamiento temporal y la reproducción.</div>
+        </div>
+      </div>
+
+      <p>
+        El marco es deliberadamente sencillo. Su propósito es evitar que los equipos culpen al modelo de lenguaje antes de saber dónde se produjo realmente el retraso.
+      </p>
+
+      <h2>Cómo cambia la detección de turnos la latencia</h2>
+
+      <p>
+        Los sistemas actuales en tiempo real ofrecen varios enfoques para decidir cuándo ha terminado un turno.
+      </p>
+
+      <p>
+        Un detector basado en silencio puede reaccionar según un periodo configurado de audio en silencio. Un detector semántico también puede evaluar si la intervención parece completa.
+      </p>
+
+      <p>
+        Esto permite a los desarrolladores ajustar el sistema hacia distintos comportamientos conversacionales:
+      </p>
+
+      <ul>
+        <li>respuestas más impacientes;</li>
+        <li>una escucha más paciente;</li>
+        <li>un comportamiento distinto en entornos ruidosos;</li>
+        <li>políticas distintas para usuarios que hacen pausas con frecuencia.</li>
+      </ul>
+
+      <p>
+        Los sistemas de STT nativos para conversación también están empezando a integrar la predicción del fin de turno en el propio modelo de transcripción, en lugar de tratar el STT y la detección de fin de habla como módulos completamente independientes.
+      </p>
+
+      <div class="warning">
+        <strong>Las cifras de latencia de los proveedores deben seguir siendo específicas de cada proveedor.</strong> Por ejemplo, una plataforma puede publicar una cifra de fin de turno integrada en el modelo, obtenida bajo sus propias condiciones de prueba. Esa cifra es útil para evaluar ese modelo, pero no es la latencia de extremo a extremo de todas las llamadas telefónicas que lo usan.
+      </div>
+
+      <h2>Latencia en arquitecturas en cascada frente a nativas de audio</h2>
+
+      <p>
+        Resulta tentador suponer que una arquitectura de voz a voz nativa de audio tiene que ser siempre más rápida porque elimina los límites explícitos de STT y TTS.
+      </p>
+
+      <p>
+        En la práctica, la comparación tiene más matices.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Factor de latencia</th>
+              <th>Arquitectura en cascada</th>
+              <th>Arquitectura nativa de audio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Etapa de STT explícita</td>
+              <td>Normalmente visible y medible</td>
+              <td>Puede no existir como etapa intermedia obligatoria</td>
+            </tr>
+            <tr>
+              <td>Etapa de TTS explícita</td>
+              <td>Normalmente visible y medible</td>
+              <td>La generación de voz puede estar integrada en el modelo en tiempo real</td>
+            </tr>
+            <tr>
+              <td>Oportunidad de streaming</td>
+              <td>Sólida si los componentes funcionan en canalización de forma eficiente</td>
+              <td>Sólida</td>
+            </tr>
+            <tr>
+              <td>Latencia de herramientas</td>
+              <td>Sigue aplicándose</td>
+              <td>Sigue aplicándose</td>
+            </tr>
+            <tr>
+              <td>Latencia de red</td>
+              <td>Sigue aplicándose</td>
+              <td>Sigue aplicándose</td>
+            </tr>
+            <tr>
+              <td>Detección de turnos</td>
+              <td>Sigue siendo crítica</td>
+              <td>Sigue siendo crítica o está integrada en el modelo</td>
+            </tr>
+            <tr>
+              <td>Depuración por componentes</td>
+              <td>Normalmente más fácil</td>
+              <td>Puede ser menos explícita</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Eliminar una etapa visible de la canalización no elimina las API externas, la geografía, la telefonía ni los retrasos de la aplicación.
+      </p>
+
+      <h2>Cómo reducir la latencia de la IA de voz sin arruinar la conversación</h2>
+
+      <p>
+        La optimización correcta depende de qué etapa es realmente lenta. Los enfoques de ingeniería habituales incluyen:
+      </p>
+
+      <ul>
+        <li>transmitir en streaming en lugar de esperar a las salidas completas cuando sea seguro hacerlo;</li>
+        <li>reducir el tamaño innecesario del prompt y del contexto;</li>
+        <li>ubicar la infraestructura geográficamente más cerca de los endpoints de medios y de modelos;</li>
+        <li>evitar llamadas de red secuenciales innecesarias;</li>
+        <li>paralelizar lecturas independientes cuando el flujo de trabajo lo permita;</li>
+        <li>almacenar en caché la información estable en lugar de consultarla repetidamente;</li>
+        <li>optimizar las API externas y las consultas a bases de datos;</li>
+        <li>usar una detección de turnos adecuada al contexto conversacional;</li>
+        <li>iniciar el TTS a partir de contenido parcial de la respuesta que sea seguro, cuando la plataforma lo admita;</li>
+        <li>evitar respuestas del agente excesivamente largas;</li>
+        <li>medir la reproducción real del audio y no solo los tiempos internos del servidor.</li>
+      </ul>
+
+      <div class="warning">
+        <strong>No optimice a ciegas.</strong> Una métrica más baja solo es mejor si la precisión de la tarea, el comportamiento ante interrupciones, la calidad del reconocimiento y los resultados de negocio siguen siendo aceptables.
+      </div>
+
+      <h2>¿Qué deben monitorear los equipos de producción?</h2>
+
+      <p>
+        Un panel de latencia útil debería, idealmente, permitir separar:
+      </p>
+
+      <ul>
+        <li>el momento en que termina el turno del usuario;</li>
+        <li>la finalización del STT o de la comprensión;</li>
+        <li>el primer evento de respuesta del modelo;</li>
+        <li>la duración de la recuperación de información;</li>
+        <li>la duración de las herramientas y API;</li>
+        <li>el inicio del TTS;</li>
+        <li>el primer audio generado;</li>
+        <li>el primer audio reproducido;</li>
+        <li>el tiempo de ida y vuelta de la red;</li>
+        <li>los eventos de interrupción;</li>
+        <li>los eventos de error;</li>
+        <li>el resultado de negocio.</li>
+      </ul>
+
+      <p>
+        Los equipos también deben segmentar el rendimiento por dimensiones como idioma, tipo de llamada, modelo, herramienta, región y variante de experimento. Una única cifra global puede ocultar el verdadero cuello de botella.
+      </p>
+
+      <h2>La latencia no es lo mismo que la calidad de la llamada</h2>
+
+      <p>
+        Las conversaciones rápidas también pueden fallar.
+      </p>
+
+      <p>
+        Un agente podría responder en menos de un segundo y aun así:
+      </p>
+
+      <ul>
+        <li>entender mal la fecha de la cita;</li>
+        <li>interrumpir a la persona que llama;</li>
+        <li>inventar una respuesta;</li>
+        <li>llamar a la herramienta equivocada;</li>
+        <li>confirmar una reserva que nunca se completó.</li>
+      </ul>
+
+      <p>
+        Del mismo modo, un turno un poco más lento puede ser perfectamente aceptable si la persona que llama entiende por qué el sistema está comprobando algo y el resultado final es correcto.
+      </p>
+
+      <div class="thesis">
+        El objetivo no es la latencia más baja posible. El objetivo es la latencia más baja que preserve una realización de la tarea precisa, natural y confiable.
+      </div>
+
+      <h2>¿Cómo debe una empresa probar la latencia?</h2>
+
+      <p>
+        No pruebe una sola llamada con guion desde una conexión a internet perfecta.
+      </p>
+
+      <p>
+        Un conjunto de pruebas significativo debería incluir:
+      </p>
+
+      <ul>
+        <li>preguntas cortas;</li>
+        <li>preguntas largas y con dudas;</li>
+        <li>usuarios que hacen pausas a mitad de una frase;</li>
+        <li>interrupciones;</li>
+        <li>respuestas sin herramientas;</li>
+        <li>llamadas a calendarios o CRM;</li>
+        <li>respuestas lentas de las API;</li>
+        <li>distintos idiomas;</li>
+        <li>llamadas desde móviles y teléfonos fijos;</li>
+        <li>distintas regiones;</li>
+        <li>entornos ruidosos;</li>
+        <li>recuperaciones de conocimiento grandes y pequeñas.</li>
+      </ul>
+
+      <p>
+        Después, compare tanto las métricas del sistema como lo que realmente ocurrió con la tarea de negocio.
+      </p>
+
+      <h2>Ideas erróneas comunes sobre la latencia</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Idea errónea</th>
+              <th>Visión más precisa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>“El LLM más rápido da el agente de voz más rápido.”</td>
+              <td>El modelo es solo una etapa de la ruta de extremo a extremo.</td>
+            </tr>
+            <tr>
+              <td>“El TTFT es la latencia de voz.”</td>
+              <td>El TTFT mide cuándo empieza la generación de texto, no cuándo oye audio la persona que llama.</td>
+            </tr>
+            <tr>
+              <td>“Cuanto menor sea el tiempo de espera del turno, mejor.”</td>
+              <td>Una detección de turnos demasiado impaciente puede interrumpir a quienes llaman.</td>
+            </tr>
+            <tr>
+              <td>“La arquitectura de voz a voz siempre es más rápida.”</td>
+              <td>La arquitectura ayuda, pero las herramientas, la red, los turnos de conversación y la implementación siguen importando.</td>
+            </tr>
+            <tr>
+              <td>“La latencia promedio nos dice cómo experimentan los usuarios al agente.”</td>
+              <td>Los percentiles y la latencia de cola revelan experiencias lentas que los promedios ocultan.</td>
+            </tr>
+            <tr>
+              <td>“Un umbral de 1.2 segundos es un estándar humano universal.”</td>
+              <td>Es una referencia operativa útil y específica de una plataforma, no una ley científica universal.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="one-sentence">
+        <div class="label">La latencia de la IA de voz en una frase</div>
+        <p>La latencia de la IA de voz es el retraso acumulado en el tiempo de la conversación, la comprensión, el razonamiento, las herramientas, la generación de voz y la entrega de medios; y el mejor sistema es el que reduce la espera innecesaria sin responder antes de que la persona que llama haya terminado realmente.</p>
+      </div>
+
+      <h2>Preguntas frecuentes</h2>
+
+      <section class="faq">
+        <div class="faq-item">
+          <h3>¿Qué causa la latencia en los agentes de voz con IA?</h3>
+          <p>
+            El retraso puede provenir de la detección del fin de turno, el STT, la inferencia del modelo, la recuperación de información, las herramientas, el TTS, el transporte de red y el almacenamiento temporal.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Qué es el TTFA en la IA de voz?</h3>
+          <p>
+            TTFA significa Time to First Audio (tiempo hasta el primer audio). En general, mide cuánto tiempo espera el usuario desde el final de su turno hasta que la respuesta del agente se vuelve audible. Conviene verificar las definiciones exactas de cada plataforma antes de comparar sistemas.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Qué es el TTFT?</h3>
+          <p>
+            Time to First Token (tiempo hasta el primer token) mide con qué rapidez un modelo empieza a generar texto o tokens de respuesta. Es útil para evaluar el rendimiento del modelo, pero no incluye toda la canalización de voz.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Con qué rapidez debe responder un agente de voz con IA?</h3>
+          <p>
+            No existe un único objetivo universal. La latencia adecuada depende de la arquitectura, el idioma, las herramientas, las condiciones de red, el tipo de llamada y el comportamiento conversacional.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Por qué un LLM rápido puede producir, aun así, un agente de voz lento?</h3>
+          <p>
+            Porque la persona que llama puede seguir esperando la detección de turnos, el reconocimiento de voz, una herramienta externa, la síntesis de voz, la red o la reproducción.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Puede reducir la latencia causar más interrupciones?</h3>
+          <p>
+            Sí. Si un sistema se vuelve demasiado impaciente al tratar una pausa como el fin del turno de la persona que llama, puede responder antes de que esta haya terminado.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Debe medirse la latencia de la IA de voz con promedios?</h3>
+          <p>
+            Los promedios son útiles, pero incompletos. Las métricas de percentiles, como P50, P90, P95 o P99, pueden revelar casos lentos de la cola que los promedios ocultan.
+          </p>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Continúe con la serie técnica sobre IA de voz</h2>
+        <p>
+          La latencia es solo una parte de la calidad en producción. La guía de arquitectura explica cómo encaja toda la pila de un agente de voz.
+        </p>
+        <div class="cta-links">
+          <a class="button" href="https://b2b-voice.com/how-ai-voice-agents-work">Cómo funcionan los agentes de voz con IA →</a> <a class="button secondary" href="https://b2b-voice.com/what-is-an-ai-voice-agent">¿Qué es un agente de voz con IA? →</a>
+        </div>
+      </section>
+
+      <div class="next">
+        <strong>Próximo artículo de la serie de conocimiento de B2B Voice:</strong> <em>Confiabilidad de los agentes de voz con IA: modos de falla, alternativas de respaldo (fallback) y transferencia a una persona.</em>
+      </div>
+
+      <section class="sources">
+        <h2>Fuentes técnicas &amp; base de la investigación</h2>
+        <p>
+          Este artículo se basa en documentación primaria y en el informe de investigación técnica de B2B Voice sobre la arquitectura de agentes de voz en producción. Las cifras específicas de cada proveedor se indican como tales y no se presentan como estándares universales de rendimiento.
+        </p>
+        <ul>
+          <li>
+            <strong>Twilio — ConversationRelay Voice Insights:</strong> TTFA, latencia por componente, interrupciones, latencia de red y monitoreo en producción. <a href="https://www.twilio.com/docs/voice/voice-insights/conversation-relay-insights-dashboard">twilio.com/docs/voice/voice-insights/conversation-relay-insights-dashboard</a>
+          </li>
+          <li>
+            <strong>OpenAI — Voice Activity Detection:</strong> VAD de servidor, VAD semántico, detección de turnos y controles de impaciencia (eagerness). <a href="https://developers.openai.com/api/docs/guides/realtime-vad">developers.openai.com/api/docs/guides/realtime-vad</a>
+          </li>
+          <li>
+            <strong>ElevenLabs — Analytics:</strong> latencia de respuesta del agente, percentiles, errores de herramientas, errores del LLM y métricas de éxito en producción. <a href="https://elevenlabs.io/docs/eleven-agents/dashboard">elevenlabs.io/docs/eleven-agents/dashboard</a>
+          </li>
+          <li>
+            <strong>Deepgram — End of Speech Detection:</strong> VAD, detección de fin de habla (endpointing), detección de silencio y limitaciones frente al ruido de fondo. <a href="https://developers.deepgram.com/docs/understanding-end-of-speech-detection">developers.deepgram.com/docs/understanding-end-of-speech-detection</a>
+          </li>
+          <li>
+            <strong>Deepgram — Flux:</strong> detección del fin de turno integrada en el modelo y turnos de conversación. <a href="https://developers.deepgram.com/docs/flux/quickstart">developers.deepgram.com/docs/flux/quickstart</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tags" aria-label="Etiquetas del artículo">
+        <span class="tags-label">Etiquetas</span>
+        <div class="tag-list">
+          <span class="tag">Latencia de IA de voz</span> <span class="tag">Agente de voz con IA</span> <span class="tag">TTFA</span> <span class="tag">TTFT</span> <span class="tag">Detección de turnos</span> <span class="tag">VAD</span> <span class="tag">Voz a texto</span> <span class="tag">Texto a voz</span> <span class="tag">IA de voz en tiempo real</span> <span class="tag">Rendimiento de la IA de voz</span>
+        </div>
+      </section>
+    </article>
+  </main>

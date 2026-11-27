@@ -1,0 +1,307 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+.b2bv .b2bv-results { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Branchenlösungen</p>
+    <h1 id="b2bv-title">KI-Sprachagenten für Haustechnik- und Handwerksbetriebe: Heizung/Klima, Sanitär, Elektro und weitere Servicebetriebe</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Für einen Handwerksbetrieb kann ein guter Telefonablauf eine Serviceanfrage aufnehmen, während der Disponent beschäftigt ist, die Immobilie prüfen und der anrufenden Person den richtigen nächsten Schritt nennen. Die Anfrage muss im richtigen Zweig landen und genug Informationen enthalten, damit jemand handeln kann.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurzantwort</h2>
+        <p>Haustechnik- und Servicebetriebe können KI-Sprachagenten einsetzen, um Anfragen aufzunehmen, Einsatzgebiete zu prüfen, Anrufe weiterzuleiten und zulässige Kostenvoranschlagstermine zu buchen, sofern das Terminplanungssystem den Termin bestätigt. Die Zuweisung eines Technikers erfordert einen eigenen bestätigten Datensatz. Für dringende und sicherheitsrelevante Anrufe sollte ein freigegebener Weg zu Mitarbeitenden oder zum Notruf bestehen.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Leitfaden</p>
+      <ol>
+<li><a href="#first-workflows">Einen ersten Anruftyp wählen</a></li>
+<li><a href="#eligibility">Eignung und Kapazität prüfen</a></li>
+<li><a href="#dispatch">Dispositionsstatus verifizieren</a></li>
+<li><a href="#worked-estimate">Einen Anruf zum Kostenvoranschlag nachverfolgen</a></li>
+<li><a href="#after-hours">Erreichbarkeit außerhalb der Geschäftszeiten gestalten</a></li>
+<li><a href="#pilot">Die erste Route testen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Legen Sie Regeln für Einsatzgebiet, Gewerk, Besuchsart und verfügbare Kapazität fest, bevor Sie einen Termin anbieten.</li>
+<li>Halten Sie eingegangene Anfragen, gebuchte Besuche, Disposition und Abschluss getrennt.</li>
+<li>Testen Sie die Anfrageaufnahme außerhalb der Geschäftszeiten und den Notfallweg, bevor Sie echte Anrufe darauf leiten.</li>
+        </ul>
+      </section>
+<section id="first-workflows">
+  <h2>Welche Anrufe im Haustechnikbereich eignen sich als erste Workflows?</h2>
+  <p>Beginnen Sie mit einem Zweig und einer Art von Anruf, die der Betrieb häufig bearbeitet. Eine nicht dringende Anfrage für einen Kostenvoranschlag ist ein geeigneter Ausgangspunkt, wenn der Betrieb das Einsatzgebiet, die Auftragsart und das annehmende Team definieren kann. Vergleichen Sie die Gesprächsnotizen mit den späteren Buchungs- und Dispositionsdatensätzen. Das erste Pilotprojekt kann mit der Anfrageaufnahme starten, während die Freigaberegeln des Terminplanungssystems und die Telefonroute getestet werden.</p>
+  <p>B2B Voice entwickelt individuelle Telefon-Workflows rund um das Einsatzgebiet, die Regeln für Kostenvoranschläge und die Übergaben an die Disposition eines Handwerksbetriebs. Beginnen Sie mit einem Zweig und zeigen Sie, wie Sie eine geeignete Anfrage heute weiterleiten. So erhält das Implementierungsteam eine Möglichkeit, die Übergabe an Ihren Disponenten zu testen und den Kostenvoranschlags- oder Serviceeintrag zu verifizieren.</p>
+<p>Verschiedene Gewerke erfordern unterschiedliche Angaben. Für einen Kostenvoranschlag zum Heizungs- oder Klimaaustausch können die Postleitzahl der Immobilie und die Frage nötig sein, ob ein Vor-Ort-Termin sinnvoll ist. Bei einer Sanitäranfrage für Routinearbeiten können Einsatzadresse, Wohneinheit und bevorzugte Kontaktdaten erforderlich sein. Für einen Elektro-Kostenvoranschlag muss die anrufende Person unter Umständen eine vom Betrieb freigegebene Kategorie wählen, etwa eine Installation oder eine planmäßige Prüfung. Halten Sie die Beschreibung auf der administrativen Ebene und überlassen Sie die technische Diagnose der zuständigen Fachkraft des jeweiligen Gewerks.</p>
+  <div class="b2bv-table" role="region" aria-label="Anrufe im Haustechnikbereich und annehmende Mitarbeitende" tabindex="0">
+    <table>
+      <caption>Stimmen Sie Aufnahmefragen und Übergabe auf die Leistungen des Betriebs ab</caption>
+      <thead><tr><th scope="col">Betrieb oder Anrufart</th><th scope="col">Sinnvolle erste Maßnahme</th><th scope="col">Entscheidung durch Mitarbeitende</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Kostenvoranschlag Heizung/Klima</th><td>Objekt, Einsatzgebiet und freigegebene Kategorie für den Kostenvoranschlag ermitteln. Falls autorisiert, die Verfügbarkeit des Kalkulators prüfen.</td><td>Systemauswahl, Auftragspreis, nicht standardmäßiger Leistungsumfang und besondere Freigaben.</td></tr>
+        <tr><th scope="row">Sanitär-Serviceanfrage</th><td>Auftragsart, Objektadresse, Rückrufnummer der anrufenden Person und eine kurze Beschreibung erfassen.</td><td>Priorisierung zeitkritischer Arbeiten, Zuweisung und Anweisungen an den Techniker.</td></tr>
+        <tr><th scope="row">Elektro-Termin</th><td>Objekt, Art der Routineanfrage und ein passendes Terminfenster erfassen.</td><td>Elektrotechnische Sicherheitsbewertung, Genehmigungsfragen und Arbeitsfreigabe.</td></tr>
+        <tr><th scope="row">Dachdeckerei, Reinigung oder anderer Außendienst</th><td>Eignung des Einsatzorts bestätigen und klären, ob die anrufende Person einen Kostenvoranschlag oder eine Serviceleistung wünscht. Freigegebene Zugangsbeschränkungen erfassen.</td><td>Dach- oder Objektbesichtigung, Ausrüstungsbedarf, Preisausnahmen und Zusagen für wiederkehrende Leistungen.</td></tr>
+        <tr><th scope="row">Bestehende Buchung oder Garantieanfrage</th><td>Eine berechtigte anrufende Person einer bekannten Anfrage zuordnen und an den Zweig oder den Fallverantwortlichen weiterleiten.</td><td>Garantieentscheidung, Gebührenänderungen, Neuzuweisung und Offenlegung sensibler Datensätze.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Lassen Sie die für den Service verantwortliche Person einen Routinetermin von einem zeitkritischen Auftrag unterscheiden, der möglicherweise das Bereitschaftsteam benötigt. Richten Sie einen separaten Prozess für Meldungen über mögliche unmittelbare Gefahr ein. Vereinbaren Sie den sicheren Weg vor der Inbetriebnahme und testen Sie ihn mit einem synthetischen Anruf.</p>
+</section>
+
+<section id="eligibility">
+  <h2>Wann kann der Agent einen Termin anbieten?</h2>
+  <p>Ein bestätigter Termin setzt eine verifizierte Einsatzadresse oder ein verifiziertes Einsatzgebiet, eine geeignete Auftragskategorie und aktuelle Kapazität in dem System voraus, das die Terminplanung tatsächlich führt. Nutzen Sie die Karte des Disponenten oder die autorisierten Regeln der Geschäftseinheit. Fragen Sie früh nach der Postleitzahl und erfassen Sie bei Bedarf die freigegebenen Adressfelder. Eine Postleitzahl, die mehrere Einsatzgebiete überschneidet, kann als erster Filter dienen; für die endgültige Entscheidung braucht es dann die Straßenadresse oder den Disponenten. Bestätigen Sie den Ort, wenn eine gesprochene Adresse zu mehreren Orten passen könnte.</p>
+  <p>Prüfen Sie anschließend Art und Dauer des Besuchs. Ein zweistündiger Termin für einen Kostenvoranschlag bei einem geeigneten Kalkulator unterscheidet sich von einer Reparatur, die einen zugelassenen Techniker, Spezialausrüstung oder Anfahrtszeit erfordert. Trennen Sie die Buchungsregeln für neue Kostenvoranschläge, Wartung, Nachverfolgung bestehender Aufträge und Garantiearbeiten. Wenn für die Immobilie ein Zugangscode nötig ist oder ein Mieter eine Genehmigung erteilen muss, erfassen Sie nur die freigegebenen Angaben, die für die Weiterleitung der Anfrage erforderlich sind. Sonderfälle und Anweisungen an Techniker bleiben bei der Disposition.</p>
+  <p>Die Einsatzplanung im Außendienst kann von mehr abhängen als von einem gemeinsamen Kalender. Microsoft Dynamics 365 Field Service dokumentiert beispielsweise Planungsfilter, die Einsatzort, Gebiet, Ressourcentypen und Merkmale umfassen. Der Betrieb sollte dieselben Einschränkungen in seinem eigenen System und Mandanten bestätigen. Ein Zeitfenster, das ein Kalender anzeigt, kann dennoch an den Anforderungen des Auftrags an Ressource, Niederlassung oder Zeitzone scheitern. <a href="https://learn.microsoft.com/en-us/dynamics365/field-service/schedule-assistant">Microsoft Field Service scheduling filters</a></p>
+  <p>Halten Sie einen Ausnahmeweg für Einsatzgebiet und Kapazität bereit. Liegt die Adresse außerhalb des freigegebenen Gebiets, geben Sie der anrufenden Person die vom Betrieb autorisierte Antwort oder bitten Sie Mitarbeitende, eine Grenzfall-Adresse zu prüfen. Ist der Terminplan voll, bieten Sie einen anderen zulässigen Termin, eine betreute Warteliste oder einen Rückruf des Disponenten an. Teilen Sie mit, dass eine Anfrage so lange offen ist, bis das maßgebliche System eine gültige Buchung erfasst hat.</p>
+</section>
+
+<section id="dispatch">
+  <h2>Wie gelangt ein Anruf zur Disposition?</h2>
+  <p>Legen Sie schriftlich fest, welcher Nachweis jeden Status belegt, bevor Sie Bestätigungen formulieren. Ein CRM-Eintrag kann zeigen, dass die Anfrage der anrufenden Person erfasst wurde. Das Außendienstsystem kann zeigen, dass ein Besuch gebucht oder ein Techniker zugewiesen wurde, sofern der entsprechende Datensatz dies bestätigt. Ein Disponent muss unter Umständen dennoch eine Ausnahme quittieren, den Service prüfen oder ein Zeitfenster bestätigen, bevor der Betrieb eine Zusage machen kann.</p>
+  <div class="b2bv-table" role="region" aria-label="Meilensteine von Anfrage, Termin und Disposition" tabindex="0">
+    <table>
+      <caption>Gleichen Sie die Bestätigung gegenüber der anrufenden Person mit dem gespeicherten Status ab</caption>
+      <thead><tr><th scope="col">Status</th><th scope="col">Nachweis</th><th scope="col">Sichere Formulierung für diesen Workflow</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Anfrage eingegangen</th><td>Gespeicherte Anfrage-ID mit zuständigem Zweig oder zuständiger Arbeitsliste.</td><td>„Ich habe Ihre Anfrage für die Prüfung durch das Dispositionsteam aufgenommen.“</td></tr>
+        <tr><th scope="row">Besuch gebucht</th><td>Maßgebliche Buchungs-ID, bestätigtes Datum bzw. Zeitfenster, Ort und korrekte Kategorie.</td><td>„Ihr Termin für den Kostenvoranschlag ist für das bestätigte Zeitfenster gebucht.“</td></tr>
+        <tr><th scope="row">Techniker zugewiesen</th><td>Das Außendienstsystem bestätigt eine freigegebene Ressourcenzuweisung.</td><td>„Die Disposition hat einen Techniker zugewiesen.“ Nennen Sie nur dann eine voraussichtliche Ankunftszeit, wenn eine autorisierte, aktuelle Angabe vorliegt.</td></tr>
+        <tr><th scope="row">Arbeit abgeschlossen</th><td>Validierter Abschlussdatensatz des Außendienstsystems sowie bei Bedarf ein separater Nachweis über Rechnung oder Zahlung.</td><td>Mitarbeitende nutzen den tatsächlichen Abschluss- oder Abrechnungsdatensatz für die Nachverfolgung.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Microsoft dokumentiert Systemstatus von Arbeitsaufträgen, Unterstatus von Arbeitsaufträgen und Buchungsstatus als Teile eines Außendienst-Lebenszyklus. Fragen Sie für Ihre eigene Integration, welche Datensätze Disposition, Ankunft und Abschluss kennzeichnen. Eine in die Warteschlange gestellte Benachrichtigung zeigt lediglich, dass eine Nachricht zur Prüfung versendet wurde. Die Arbeitsliste oder der Dispositionsdatensatz sollte zeigen, wer die Verantwortung übernommen hat und was danach geschah. Siehe <a href="/de/ai-voice-agent-integrations">wie ein Sprach-Workflow einen gespeicherten Datensatz verifiziert</a>. <a href="https://learn.microsoft.com/en-us/dynamics365/field-service/work-order-status-booking-status">Microsoft Field Service work order and booking statuses</a></p>
+  <p>Bewahren Sie eine Anfrage-ID über wiederholte Anrufe hinweg auf. Eine Familie könnte zweimal anrufen, weil die Verbindung abgebrochen ist. Stimmen Objekt und Anliegen nach Ihren Regeln mit einem offenen Vorgang überein, suchen Sie diesen Vorgang für die Mitarbeitenden heraus, statt einen zweiten Besuch anzulegen. Endet ein Anruf, während die Anwendung auf einen Buchungsschreibvorgang wartet, geben Sie ihm den Ausgang „ausstehend“, bis das System das Ergebnis abgleichen kann. Halten Sie Neuanlagen, Terminänderungen und Dispositionsstatus getrennt, damit ein doppeltes Telefonereignis nicht zwei Techniker losschicken kann.</p>
+<p>Nutzen Sie den Leitfaden zu Geschäftssystemen, um den <a href="/de/how-to-integrate-ai-voice-agents" data-phase2-link="true">Aufwand der Außendienst-Integration einzuschätzen</a>, aufgeschlüsselt nach Schreibaktion und Mandantenberechtigungen.</p>
+</section>
+
+<section id="worked-estimate">
+  <h2>Wie sieht ein abgeschlossener Anruf zum Kostenvoranschlag aus?</h2>
+  <p>Stellen Sie sich einen fiktiven lokalen Heizungs- und Klimabetrieb mit getrennten Service- und Austauschteams vor. Eine anrufende Person bittet um einen Kostenvoranschlag für den routinemäßigen Austausch eines Heizkessels. Der Workflow verifiziert eine abgedeckte Postleitzahl und Adresse, bestätigt den Ort und fragt nach einer Rückrufnummer. Er prüft die zulässige Kategorie für den Kostenvoranschlag und sucht passende Zeitfenster der Kalkulatoren heraus. Die Regel gibt dem Kalkulator einen einzigen freigegebenen Kalender vor und überlässt Reparatur- oder Garantieentscheidungen den Mitarbeitenden.</p>
+  <ol class="b2bv-flow" aria-label="Service validieren, den Besuch buchen und Dispositionsnachweis zeigen">
+    <li><strong>Service validieren</strong><span>Objekt und Art des Kostenvoranschlags mit den Regeln des Zweigs abgleichen.</span></li>
+    <li><strong>Buchung verifizieren</strong><span>Ein zulässiges Zeitfenster festschreiben und dessen ID und Ort prüfen.</span></li>
+    <li><strong>Zweig benachrichtigen</strong><span>Anfrage, Buchung und etwaige Nachverfolgung in der Arbeitsliste der Mitarbeitenden anzeigen.</span></li>
+  </ol>
+  <p>Wird der Mittwochnachmittag angeboten und vom Terminplanungssystem bestätigt, erhält die anrufende Person Datum und freigegebenes Zeitfenster. Die Integration speichert oder verknüpft den Kundendatensatz und legt die Buchungs-ID dort ab, wo der Zweig sie finden kann. Wird das angebotene Zeitfenster vor dem Festschreiben vergeben, versuchen Sie ein anderes geeignetes Fenster. Ist das Ergebnis des Schreibvorgangs unklar, setzen Sie die Bestätigung aus und legen Sie genau einen betreuten Abgleichsvorgang an. Liegt die Anfrage außerhalb des Einsatzgebiets, folgen Sie der freigegebenen Antwort des Zweigs und reservieren Sie keinen Besuch.</p>
+  <p>Lassen Sie den Disponenten dasselbe Szenario mit einem Bestandskunden, einer neuen Adresse und einem vollen Terminplan testen. Prüfen Sie den primären Datensatz, die benachrichtigte Person oder Warteschlange, den tatsächlich gesprochenen Wortlaut und das, was in einer verknüpften CRM-Notiz erscheint. Ein Test kann zeigen, wie dieser Zweig Aufträge erhält; andere Zweige können abweichende Zeiten, Einsatzkarten und Auftragsregeln haben.</p>
+</section>
+
+<section id="after-hours">
+  <h2>Was ändert sich außerhalb der Geschäftszeiten oder bei einem Nachfrageschub?</h2>
+  <h3>Sicherheit als eigenen Anrufpfad behandeln</h3>
+  <p>Meldet eine anrufende Person eine mögliche unmittelbare Gefahr, etwa einen vermuteten Gasaustritt, beenden Sie die gewöhnliche Aufnahme von Verkaufs- oder Terminanfragen und folgen Sie dem vor Ort freigegebenen Notfallweg. PHMSA rät Personen, die Gas riechen, sich an einen sicheren Ort zu begeben und den Notruf 911 zu wählen. Verwenden Sie freigegebene Formulierungen und ein klares Notfallziel. Fehlersuche und technische Diagnose gehören nicht in den Aufgabenbereich des Telefonagenten. Eskalationsrichtlinien und Bereitschaftspersonal sollten geprüft werden, bevor eine Live-Erreichbarkeit außerhalb der Geschäftszeiten aktiviert wird. <a href="https://www.phmsa.dot.gov/incident-reporting">PHMSA incident reporting and pipeline emergency guidance</a></p>
+  <p>Trennen Sie eine dringende Serviceanfrage von der Meldung einer unmittelbaren Gefahr. Letztere sollte die freigegebene Notfallansage erreichen, ohne dass zuvor Routinefragen durchlaufen werden. Bei einer Serviceanfrage ohne Notfall, die der Betrieb dennoch als dringend einstuft, prüfen Sie, wer verfügbar ist und wie diese Person die Verantwortung übernimmt. Kann die Bereitschaftsroute einen Anruf nicht annehmen, folgen Sie dem freigegebenen Verfahren für fehlgeschlagene Übergaben. Nennen Sie der anrufenden Person einen wahrheitsgemäßen nächsten Schritt und halten Sie den Ausgang fest. Der <a href="/de/ai-voice-agent-reliability">Fallback-Leitfaden</a> beschreibt, wo Fehler bei Übergabe und Warteschlange auftreten können.</p>
+  <h3>Eingehende Nachfrage auf Personal und Teams abstimmen</h3>
+  <p>Laut BLS können die Arbeitspläne von Heizungs- und Klimatechnikern in der Hochsaison für Heizen und Kühlen Bereitschaftsdienst, unregelmäßige Zeiten oder Überstunden umfassen. Nutzen Sie Ihre eigenen Anrufmuster und Einsatzpläne, um den Überlauf zu gestalten. Eine Hitzewelle kann einen Ansturm von Anrufen auslösen, während die Teams bereits voll ausgebucht sind. Testen Sie gleichzeitigen eingehenden Verkehr, das Wiederherstellungsverhalten des Buchungssystems und die Zahl der Ausnahmen, die der Disponent bewältigen kann. <a href="https://www.bls.gov/ooh/Installation-Maintenance-and-Repair/Heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm">BLS Occupational Outlook Handbook for HVAC technicians</a></p>
+  <p>Legen Sie vor Feierabend fest, welche Anrufe sofort Live-Hilfe erhalten und welche in die Warteschlange der ersten Schicht gelangen. Geben Sie dieser Arbeitsliste einen benannten Verantwortlichen, ein freigegebenes Reaktionsfenster und eine Möglichkeit, lange wartende Einträge zu sortieren. Unterscheiden Sie am Morgen zwischen Serviceanfragen, bestätigten Besuchen, fehlgeschlagenen Übergaben und Duplikaten. Ohne diese Unterscheidung kann das Team mehr Zeit mit dem Aufräumen der Warteschlange verbringen als mit der Nachverfolgung bei den Anrufenden.</p>
+  <p>Messen Sie, was der Betrieb verändern kann. Nützliche Kennzahlen für das Pilotprojekt sind die Zeit bis zur Bestätigung durch den Disponenten, der Anteil geeigneter Anfragen, die mit dem richtigen Zweig gespeichert wurden, bestätigte Zeitfenster mit gültigem Datensatz, Fallbacks mit erreichbarem Verantwortlichen und wiederholte Kontakte zum selben Auftrag. Bewerten Sie das Pilotprojekt gemeinsam mit der Technikerkapazität. Ein beantworteter Anruf kann den Zugang verbessern, auch wenn die Kapazität einen Termin am selben Tag verhindert.</p>
+<p>Nutzen Sie den Leitfaden zu verpassten Anrufen, um die <a href="/de/cost-of-missed-business-calls" data-phase2-link="true">Kosten qualifizierter verpasster Anrufe abzuschätzen</a>, und vergleichen Sie sie mit den Rückrufen, die Sie bereits durchführen.</p>
+<p>Für einen Disponenten, der zwischen Einsatzzuweisungen und Anrufen wechselt, empfiehlt es sich, die <a href="/de/ai-receptionist-vs-human-receptionist" data-phase2-link="true">hybride Telefonabdeckung zu planen</a> und eine benannte Vertretung einzuplanen.</p>
+</section>
+
+<section id="pilot">
+  <h2>Wie sollte ein Handwerksbetrieb das erste Pilotprojekt testen?</h2>
+  <p>Beginnen Sie mit einer beaufsichtigten Testleitung, einer Überlaufroute oder einem anderen vereinbarten, begrenzten Weg. Geben Sie dem Agenten die freigegebenen Felder, die Gebietskarte, die aktuellen Terminplanungsregeln und die zulässigen Aktionen für einen einzelnen Zweig. Legen Sie fest, wer für die Telefonroute, den Serviceplan und die Dispositionswarteschlange verantwortlich ist. Halten Sie fest, was anrufende Personen hören sollen, wenn es keine bestätigte Buchung und keine Technikerzuweisung gibt.</p>
+  <div class="b2bv-table" role="region" aria-label="Abnahmetests für die Anrufaufnahme im Haustechnikbereich" tabindex="0">
+    <table>
+      <caption>Abnahmeanrufe, die vor einer Ausweitung der Route durchzuführen sind</caption>
+      <thead><tr><th scope="col">Synthetisches Szenario</th><th scope="col">Erforderliches Ergebnis</th><th scope="col">Zu prüfender Nachweis</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Geeigneter Kostenvoranschlag und verfügbares Zeitfenster</th><td>Eine korrekte Buchung oder eine zutreffend beschriebene Anfrage.</td><td>Anrufausgang, bestätigte Datensatz-ID und annehmender Zweig.</td></tr>
+        <tr><th scope="row">Voller Terminplan oder unbekanntes Buchungsergebnis</th><td>Eine autorisierte Alternative anbieten oder genau einen offenen Vorgang hinterlassen.</td><td>Keine doppelten Termine und ein Name oder eine Rolle, die für die Wiederherstellung verantwortlich ist.</td></tr>
+        <tr><th scope="row">Falsches Einsatzgebiet oder falsches Gewerk</th><td>Die veröffentlichte Serviceregel anwenden oder an den freigegebenen Verantwortlichen weiterleiten.</td><td>Angewandte Richtlinie, Nachricht an die anrufende Person und Lead-Ausgang.</td></tr>
+        <tr><th scope="row">Geschlossene oder ausgelastete Disposition</th><td>Den vereinbarten Fallback nutzen, ohne eine bestätigte Ankunft zu suggerieren.</td><td>Warteschlangeneintrag, Erwartung der anrufenden Person und verifizierter Eingang bei besetzter Disposition.</td></tr>
+        <tr><th scope="row">Gemeldete unmittelbare Gefahr</th><td>Den freigegebenen Notfallweg umgehend auslösen.</td><td>Den Anruf mit dem Sicherheitsverantwortlichen auswerten und bestätigen, dass die gewöhnliche Aufnahme beendet wurde.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Verwenden Sie Testdatensätze und ergänzen Sie einen doppelten Anruf, eine verspätete Antwort und eine unterbrochene Übergabe. Bestätigen Sie, wie Mitarbeitende die ursprüngliche Route wiederherstellen können, falls das Pilotprojekt gestoppt werden muss. Der Leitfaden zu <a href="/de/how-to-test-an-ai-voice-agent">Abnahmetests für Sprachagenten</a> kann helfen, Test und Nachweise zu strukturieren.</p>
+  <p>B2B Voice entwickelt individuelle KI-Telefon-Workflows für die Anfrageaufnahme und Nachverfolgung in Unternehmen. Bringen Sie ein freigegebenes Szenario für einen Kostenvoranschlag oder eine Serviceanfrage zu einer Demo mit, dazu den Namen des Systems, das den Datensatz führt, und den Zweig, der ihn erhalten würde. Nutzen Sie das Szenario, um die Regeln zum Einsatzgebiet, den Status, den die anrufende Person hören darf, und die Ausnahme, die Ihr Disponent verantworten muss, zu besprechen. <a href="/de/what-is-b2b-voice">B2B Voice company and implementation approach</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Kann ein einzelner KI-Rezeptionist Anrufe für Heizung/Klima, Sanitär und Elektro beantworten?</h3><p>Eine gemeinsame Geschäftsrufnummer kann nach freigegebenem Gewerk, Einsatzgebiet und Auftragsart weiterleiten, wenn der Betrieb die Regeln und die annehmenden Verantwortlichen festlegt. Testen Sie jeden Workflow und den Sicherheitsweg auf der tatsächlichen Telefonroute.</p></div>
+<div class="b2bv-faq-item"><h3>Kann ein KI-Sprachagent einen Termin für einen Kostenvoranschlag im Haustechnikbereich buchen?</h3><p>Er kann einen Kostenvoranschlagstermin nur bestätigen, wenn der Betrieb die Buchung autorisiert und das maßgebliche System den zulässigen Termin bestätigt. Andernfalls kann er eine Anfrage aufnehmen und mitteilen, dass die Prüfung noch aussteht.</p></div>
+<div class="b2bv-faq-item"><h3>Kann er einen Techniker automatisch disponieren?</h3><p>Das hängt von den Berechtigungen des Betriebs und seinem Terminplanungssystem ab. Bestätigen Sie eine Zuweisung erst, wenn der autorisierte Workflow einen maßgeblichen Dispositionsdatensatz sieht. Eine eingegangene Anfrage oder ein gebuchter Termin für einen Kostenvoranschlag kann der Zuweisung vorausgehen.</p></div>
+<div class="b2bv-faq-item"><h3>Was sollte der Agent sagen, wenn der Terminplan voll ist?</h3><p>Bieten Sie eine freigegebene Alternative an oder legen Sie die Anfrage in einer Arbeitsliste mit einem benannten Verantwortlichen ab. Erklären Sie den nächsten Schritt und nennen Sie eine Rückrufzeit, die das Team einhalten kann.</p></div>
+<div class="b2bv-faq-item"><h3>Wie sollte er mit der Meldung eines möglichen Gaslecks umgehen?</h3><p>Nutzen Sie sofort den freigegebenen Notfallweg des Betriebs. PHMSA rät Personen, die Gas riechen, sich an einen sicheren Ort zu begeben und 911 anzurufen. Beenden Sie die Routineaufnahme und nutzen Sie die freigegebene Eskalation.</p></div>
+<div class="b2bv-faq-item"><h3>Was sollte ich in einer Demo für Haustechnik verlangen?</h3><p>Stellen Sie eine fiktive Anfrage für einen Kostenvoranschlag, die tatsächlichen Gebiets- und Auftragsregeln sowie die Felder bereit, die die Disposition benötigt. Lassen Sie sich die gespeicherte Anfrage oder Buchung zeigen und wiederholen Sie dann den Anruf bei vollem Terminplan und nicht erreichbarem Disponenten.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Eine Anfrage für einen Kostenvoranschlag bis zur Disposition verfolgen</h2>
+        <p>Bringen Sie einen fiktiven Anruf, Ihre Regeln zum Einsatzgebiet und den Datensatz mit, den ein Disponent erhalten sollte. B2B Voice kann das Szenario nutzen, um einen eng umrissenen Workflow für Anfrageaufnahme oder Buchung zu besprechen.</p>
+        <a href="/demo">Demo für Haustechnik anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="https://learn.microsoft.com/en-us/dynamics365/field-service/schedule-assistant">Microsoft Field Service scheduling filters</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/dynamics365/field-service/work-order-status-booking-status">Microsoft Field Service work order and booking statuses</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://www.phmsa.dot.gov/incident-reporting">PHMSA incident reporting and pipeline emergency guidance</a> <span class="b2bv-source-note">(US Pipeline and Hazardous Materials Safety Administration)</span></li>
+<li><a href="https://www.bls.gov/ooh/Installation-Maintenance-and-Repair/Heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm">BLS Occupational Outlook Handbook for HVAC technicians</a> <span class="b2bv-source-note">(US Bureau of Labor Statistics)</span></li>
+<li><a href="/de/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>Haustechnik und Handwerk</li>
+<li>Terminbuchung für Kostenvoranschläge</li>
+<li>Dispositions-Workflows</li>
+<li>Anfrageaufnahme außerhalb der Geschäftszeiten</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

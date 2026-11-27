@@ -59,6 +59,7 @@ let shell = await readFile(path.join(publicDir, "index.html"), "utf8");
     .replace(/<!--(?!\[if)[\s\S]*?-->/g, "");
 }
 
+const OG_LOCALE = { en: "en_US", de: "de_DE", es: "es_ES" };
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 const canonical = (p) => (p === "/" ? `${SITE_URL}/` : `${SITE_URL}${p}`);
 
@@ -69,6 +70,12 @@ function headBlock({ meta, jsonLd }) {
     `<meta name="description" content="${esc(meta.description)}" />`,
     `<meta name="robots" content="${meta.noindex ? "noindex, nofollow" : "index, follow"}" />`,
     meta.noindex ? "" : `<link rel="canonical" href="${url}" />`,
+    // translated blog: every language version points at all the others (and x-default = English)
+    ...(meta.alternates ?? []).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}" />`),
+    ...(meta.lang ? [`<meta property="og:locale" content="${OG_LOCALE[meta.lang]}" />`] : []),
+    ...(meta.alternates ?? [])
+      .filter((a) => a.hreflang !== "x-default" && a.hreflang !== meta.lang)
+      .map((a) => `<meta property="og:locale:alternate" content="${OG_LOCALE[a.hreflang]}" />`),
     `<meta property="og:type" content="${meta.ogType}" />`,
     `<meta property="og:site_name" content="B2BVoice" />`,
     `<meta property="og:title" content="${esc(meta.title)}" />`,
@@ -134,6 +141,7 @@ function withCriticalCss(html, bodyHtml) {
 
 function assemble(page, bodyHtml) {
   let html = shell
+    .replace('<html lang="en">', `<html lang="${page.meta.lang ?? "en"}">`)
     // drop the shell's generic metadata; the page-specific block replaces it
     .replace(/\s*<title>[\s\S]*?<\/title>/, "")
     .replace(/\s*<meta name="(description|robots)"[^>]*>/g, "")
@@ -180,7 +188,8 @@ for (const page of pages) {
   const name = m.ogImage.match(/\/og\/([^/]+)\.jpg$/)?.[1];
   if (!name) continue;
   const raw = m.path === "/" ? "Your AI Voice Assistant Talks to Customers 24/7" : m.title.replace(/ \| .*$/, "");
-  const label = m.ogType === "article" ? "AI VOICE AGENT GUIDE" : m.path === "/" ? "24/7 AI VOICE ASSISTANT" : "B2BVOICE";
+  const ARTICLE_LABEL = { en: "AI VOICE AGENT GUIDE", de: "KI-SPRACHAGENT-RATGEBER", es: "GUÍA DE AGENTES DE VOZ CON IA" };
+  const label = m.ogType === "article" ? ARTICLE_LABEL[m.lang ?? "en"] : m.path === "/" ? "24/7 AI VOICE ASSISTANT" : "B2BVOICE";
   const size = raw.length <= 55 ? 68 : raw.length <= 105 ? 54 : 44;
   const lines = wrap(raw, Math.floor(1040 / (size * 0.52))).slice(0, 4);
   const tspans = lines.map((l, i) => `<tspan x="80" dy="${i === 0 ? 0 : Math.round(size * 1.18)}">${xmlEsc(l)}</tspan>`).join("");
@@ -218,12 +227,14 @@ const urls = pages
   .filter((p) => !p.meta.noindex)
   .map(
     (p) =>
-      `  <url>\n    <loc>${canonical(p.meta.path)}</loc>${p.lastmod ? `\n    <lastmod>${p.lastmod}</lastmod>` : ""}\n  </url>`,
+      `  <url>\n    <loc>${canonical(p.meta.path)}</loc>${p.lastmod ? `\n    <lastmod>${p.lastmod}</lastmod>` : ""}${(p.meta.alternates ?? [])
+        .map((a) => `\n    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${a.href}" />`)
+        .join("")}\n  </url>`,
   )
   .join("\n");
 await write(
   "sitemap.xml",
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`,
 );
 console.log(`sitemap.xml: ${pages.filter((p) => !p.meta.noindex).length} urls`);
 

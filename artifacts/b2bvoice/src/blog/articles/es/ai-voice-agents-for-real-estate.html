@@ -1,0 +1,298 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Saltar al artículo</a>
+  <header>
+    
+    <p class="b2bv-kicker">Soluciones por sector</p>
+    <h1 id="b2bv-title">Agentes de voz con IA para el sector inmobiliario: calificación de leads, consultas sobre propiedades y programación de citas</h1>
+    <p class="b2bv-byline">Por <a rel="author" href="/es/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Una llamada entrante sobre una propiedad puede llegar mucho después de que se publicó el anuncio o de que cambió el estado del listado. Diseñe el flujo de trabajo telefónico en torno a información verificada de la propiedad, un siguiente paso coherente y el registro de visita o de CRM que el personal realmente utiliza.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Respuesta rápida</h2>
+        <p>Utilice un agente de voz inmobiliario para identificar la solicitud de la persona que llama, leer la información pública autorizada del listado y encaminar una visita o una devolución de llamada. Aplique reglas de admisión neutrales y conserve siempre una vía hacia el personal. Confirme una visita solo después de que el sistema autorizado verifique la propiedad, el horario y cualquier aprobación requerida.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Tabla de contenido">
+      <p>En esta guía</p>
+      <ol>
+<li><a href="#intake">Encamine la primera llamada</a></li>
+<li><a href="#listing-data">Use datos de listado aprobados</a></li>
+<li><a href="#fair-housing">Revise los controles de vivienda justa</a></li>
+<li><a href="#showing-workflow">Verifique las citas de visita</a></li>
+<li><a href="#crm">Asigne el seguimiento en el CRM</a></li>
+<li><a href="#pilot">Mida y pruebe el piloto</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+<li>Revise el acceso a los listados y los campos aprobados, y asigne al personal la responsabilidad sobre la información desactualizada o contradictoria.</li>
+<li>Aplique controles de vivienda justa y compare llamadas sintéticas equivalentes para comprobar que haya igualdad de acceso a los siguientes pasos.</li>
+<li>Mantenga trazables entre sistemas las solicitudes de visita, las citas confirmadas y la responsabilidad en el CRM.</li>
+        </ul>
+      </section>
+<section id="intake">
+  <h2>¿Qué puede hacer un agente de voz inmobiliario en la primera llamada?</h2>
+  <p>La primera llamada suele comenzar con un identificador de propiedad incompleto. Alguien ve un letrero, escucha el nombre de una calle en un anuncio o llama a una oficina por un listado que pasó a estado pendiente durante la noche. Pregunte si la persona que llama quiere comprar, alquilar o vender, si desea consultar una cita existente o si intenta comunicarse con un administrador de la propiedad. Una admisión bien diseñada puede dirigir estas solicitudes a sus responsables sin tratar cada llamada como un lead de ventas.</p>
+  <p>B2B Voice puede diseñar un agente telefónico de entrada para las consultas sobre propiedades, la admisión neutral y las solicitudes de visita de una agencia inmobiliaria. Aporte los campos de listado aprobados, las reglas para confirmar una visita y el responsable del CRM para cada transferencia. Así, el diseño gestionado puede reflejar lo que la agencia está autorizada a compartir y qué casos requieren personal con licencia.</p>
+<p>Recopile una referencia de la propiedad y el siguiente paso que solicita la persona que llama. Con permiso para usar el canal de contacto aprobado, registre un nombre y un número de devolución de llamada si hace falta un seguimiento. Un comprador puede mencionar por iniciativa propia un plazo o un rango de precios. Esos datos pueden ayudar a un miembro del equipo con licencia a preparar una llamada conforme a las reglas aprobadas. Deje claro qué campos son opcionales y mantenga una forma de comunicarse con el equipo si la persona quiere hablar con alguien antes de compartirlos. Los residentes actuales, los proveedores y los agentes deben dirigirse al personal correspondiente sin completar un formulario de prospecto.</p>
+  <div class="b2bv-table" role="region" aria-label="Decisiones de admisión de llamadas inmobiliarias" tabindex="0">
+    <table>
+      <caption>El encaminamiento depende de la solicitud y de la información que la oficina puede verificar</caption>
+      <thead><tr><th scope="col">Solicitud de la persona que llama</th><th scope="col">Qué puede hacer el flujo de voz</th><th scope="col">Quién es responsable de la siguiente decisión</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Un comprador consulta por un listado concreto</th><td>Identificar la dirección o la referencia del listado y leer los campos aprobados para su divulgación pública.</td><td>El agente asignado se encarga de los términos de la oferta, la representación y cualquier dato no verificado.</td></tr>
+        <tr><th scope="row">Un inquilino pide una visita</th><td>Recopilar el listado, las preferencias de horario para la visita y los datos de devolución de llamada permitidos.</td><td>El equipo de arrendamientos es responsable de la revisión de solicitudes, las adaptaciones y las excepciones.</td></tr>
+        <tr><th scope="row">Un propietario quiere hablar</th><td>Registrar la ubicación de la propiedad y un horario preferido para la devolución de llamada.</td><td>Un agente con licencia se encarga de la fijación de precios, la valoración y el asesoramiento de marketing.</td></tr>
+        <tr><th scope="row">Un residente reporta un problema</th><td>Seguir el procedimiento de servicio de la propiedad o el encaminamiento de urgencias aprobado.</td><td>El personal de la propiedad decide la prioridad del servicio y da seguimiento.</td></tr>
+        <tr><th scope="row">Un agente pide instrucciones de visita</th><td>Identificar el listado y encaminar la solicitud por el canal de verificación aprobado.</td><td>El personal autorizado gestiona los códigos de acceso y las instrucciones específicas de cada ocupante.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Dé a la recepcionista una forma de distinguir entre el encaminamiento por menú telefónico, la atención automatizada de consultas y las solicitudes reservadas al personal. Una ruta sencilla resulta útil si la persona que llama ya sabe con quién quiere hablar. Una conversación estructurada ayuda cuando la oficina debe identificar una propiedad, una solicitud y un responsable a través de varios sistemas. Para saber más sobre dónde encaja cada diseño, consulte <a href="/es/ai-voice-agent-vs-ai-receptionist-vs-ivr">agentes de voz, recepcionistas y sistemas IVR</a>.</p>
+</section>
+
+<section id="listing-data">
+  <h2>¿Cómo debe responder el agente a las preguntas sobre un listado?</h2>
+  <p>Elija una fuente autorizada para cada campo. Una agencia podría usar un feed aprobado para el precio de venta y el estado del listado, un sistema de visitas independiente para las ventanas de citas y una base de conocimiento de la oficina para las instrucciones de solicitud. Asigne un responsable y una regla de caducidad para cada fuente. Verifique la dirección, la ciudad y la unidad o el ID del listado antes de hablar de los detalles. Dos casas adosadas con el mismo número de calle, o unidades vecinas, pueden tener disponibilidad y condiciones distintas.</p>
+  <p>La Real Estate Standards Organization publica un Data Dictionary con campos estandarizados y respalda métodos de intercambio estándar. RESO explica que el acceso real a los datos proviene del MLS o del proveedor de datos correspondiente. Confirme qué feed, qué credencial y qué derechos de uso cubren este flujo de trabajo telefónico. Que un campo exista en un estándar no establece el derecho a divulgarlo. Revise los campos específicos aprobados para uso telefónico, sus definiciones y sus requisitos de actualización. <a href="https://www.reso.org/data-dictionary/">RESO Data Dictionary</a> · <a href="https://www.reso.org/ht-faq/new-faq-question-156/">RESO and access to MLS data</a></p>
+  <p>Trate como tres situaciones distintas un campo ausente, una marca de tiempo antigua y una discrepancia entre dos fuentes. Si el último registro verificado supera el límite de actualización del equipo, el flujo de trabajo puede ofrecer una devolución de llamada y señalar el estado contradictorio. Cuando la oficina permita usar una marca de tiempo, indique cuándo se comprobó el estado por última vez. No deduzca que un listado se reabrió a partir de una respuesta vacía, no estime los pies cuadrados a partir de una fotografía ni diga a quien llama para qué financiamiento califica. Encamine las solicitudes de orientación sobre la transacción al miembro del equipo con licencia que corresponda.</p>
+  <p>Publique una lista de verificación breve, por campo, que el personal de listados pueda mantener. Para cada respuesta permitida, defina la fuente, si el público puede escucharla y qué debe hacer el agente cuando la fuente está incompleta. Incorpore esos controles en la integración real para que las observaciones privadas nunca lleguen al flujo de trabajo telefónico.</p>
+</section>
+
+<section id="fair-housing">
+  <h2>¿Qué debe revisar una agencia inmobiliaria en materia de vivienda justa?</h2>
+  <p>La Ley federal de Vivienda Justa (Fair Housing Act) prohíbe formas específicas de discriminación en las transacciones de vivienda cubiertas por la ley, por motivos de raza, color, origen nacional, religión, sexo, situación familiar y discapacidad. Los reglamentos del HUD describen la práctica discriminatoria de dirigir a los clientes hacia ciertas zonas (steering) e incluyen las declaraciones orales en las normas sobre anuncios, declaraciones y avisos discriminatorios. La agencia debe revisar las normas federales, estatales y locales aplicables a su mercado, incluidas las categorías protegidas y los requisitos adicionales que existan. <a href="https://uscode.house.gov/us/usc/119-124/t42/s3604/">42 USC § 3604</a> · <a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.70">24 CFR § 100.70 on prohibited sale and rental practices</a> · <a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.75">24 CFR § 100.75 on discriminatory statements</a></p>
+  <p>Defina la calificación de leads como la identificación del servicio solicitado, el mercado, la propiedad y las preferencias de horario de la persona que llama, con fines de encaminamiento. Haga preguntas neutrales que sirvan a ese propósito. Un flujo de trabajo telefónico con IA no debe clasificar a las personas, decidir la elegibilidad para una solicitud, deducir datos demográficos a partir de un nombre o de un acento, ni recomendar zonas en función de características protegidas. Utilice datos verificados y permitidos de la propiedad y una vía de seguimiento equivalente para quienes hagan solicitudes comparables. Las solicitudes de adaptaciones o de ayuda con el proceso de solicitud deben llegar al miembro del personal designado conforme a la política de la oficina.</p>
+  <p>Pensemos en alguien que pregunta: «¿Qué tipo de personas viven en ese edificio?». Una respuesta aprobada por la agencia puede ofrecer detalles verificables de la propiedad y el mismo proceso de visita disponible para las demás personas que llaman. Si la persona pide más ayuda, registre la solicitud para que la atienda un miembro del personal. El sistema no debe describir el vecindario como adecuado para un tipo concreto de hogar, tratar la información que la persona ofrece voluntariamente como una puntuación de admisión, ni excluir listados con base en ella.</p>
+  <p>Realice llamadas sintéticas equivalentes con la misma propiedad, las mismas preferencias y la misma disponibilidad. Cambie solo un detalle irrelevante que la persona mencione por iniciativa propia u otra condición que la agencia quiera probar, como la forma de pronunciar la dirección. Compare las propiedades ofrecidas, la redacción del siguiente paso, la ruta, las opciones de horario y la alternativa de respaldo (fallback). Inspeccione tanto la transcripción como el registro de decisiones. Revise las reglas que actúan sobre códigos postales, idioma u otro contexto para asegurarse de que sirvan a la actividad aprobada, como el soporte en el idioma que solicita la persona, y de que preserven la igualdad de acceso al siguiente paso. El permiso de entrada para devolver la llamada por una consulta concreta debe tratarse por separado de cualquier campaña saliente que se proponga. Si el equipo añade llamadas o mensajes de texto automatizados, pídale que revise las normas de comunicación aplicables y la configuración de los canales. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+</section>
+
+<section id="showing-workflow">
+  <h2>¿Cómo se convierte una solicitud de visita en una cita confirmada?</h2>
+  <p>El flujo de trabajo de admisión y visitas inmobiliarias de B2B Voice distingue entre un horario solicitado, un espacio ofrecido y una cita confirmada. Una agencia puede ejecutar los dos primeros pasos con una cola de seguimiento del personal. La reserva directa requiere además herramientas compatibles, autoridad de programación y evidencia del estado final.</p>
+  <ol class="b2bv-flow b2bv-flow--four" aria-label="Flujo de trabajo de admisión y visitas inmobiliarias">
+    <li><strong>Identificar la solicitud</strong><span>Confirme la referencia del listado, el siguiente paso de la persona que llama y el método de contacto aprobado.</span></li>
+    <li><strong>Comprobar las reglas de visita</strong><span>Confirme el estado actual del listado, la zona horaria, las ventanas de visita y cualquier aprobación necesaria.</span></li>
+    <li><strong>Registrar el resultado</strong><span>Guarde una cita verificada o una solicitud pendiente con un único miembro del equipo responsable.</span></li>
+    <li><strong>Conciliar el seguimiento</strong><span>Encamine correcciones, cancelaciones, solicitudes repetidas y transferencias fallidas a partir del registro guardado.</span></li>
+  </ol>
+  <p>El sistema de visitas puede exigir la aprobación del agente del listado, un aviso al ocupante u otra condición antes de que un horario sea definitivo. La persona asignada, la propiedad y el sistema de visitas real deben coincidir. Un calendario público puede indicarle al agente que un horario parece libre mientras el listado exige aprobación para el acceso. Después de que la persona que llama elija un horario, envíe la operación autorizada y verifique el estado final y la referencia. Use la misma referencia de solicitud si el resultado es incierto y compruebe si ya existe una cita antes de reintentar. Consulte <a href="/es/ai-voice-agent-integrations">cómo se conectan y verifican las acciones en los sistemas de negocio</a>.</p>
+  <div class="b2bv-table" role="region" aria-label="Estado de la cita de visita y mensajes a la persona que llama" tabindex="0">
+    <table>
+      <caption>Qué debe escuchar la persona que llama en cada estado de la visita</caption>
+      <thead><tr><th scope="col">Estado del sistema</th><th scope="col">Resultado que ve la persona que llama</th><th scope="col">Registro que se debe conservar</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Horario preferido registrado</th><td>El equipo recibió la solicitud y verificará la disponibilidad.</td><td>Propiedad, horario solicitado, zona horaria, responsable y siguiente paso.</td></tr>
+        <tr><th scope="row">Aprobación pendiente</th><td>El horario está a la espera de aprobación, con el texto de seguimiento aprobado por la oficina.</td><td>ID de la solicitud de visita y quién puede aprobarla o rechazarla.</td></tr>
+        <tr><th scope="row">Confirmada en el sistema de visitas</th><td>Indicar la fecha, la hora y la propiedad verificadas, y las instrucciones de encuentro aprobadas.</td><td>ID de la cita, estado final, ubicación y acuse de recibo.</td></tr>
+        <tr><th scope="row">Horario ocupado o cancelado</th><td>Ofrecer una alternativa disponible o ayudar a la persona a comunicarse con el personal.</td><td>Último estado de la propiedad y de la visita, incluida cualquier cita previa afectada.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>En un piloto ficticio, una persona llama para pedir ver la unidad 2 en 41 Alder Lane el miércoles después del trabajo. La oficina tiene una ventana a las 5:30 p. m. hora local, pero la propiedad requiere aprobación. El flujo de trabajo crea una única solicitud pendiente e informa a la persona qué ocurrirá a continuación. Si la misma persona vuelve a llamar, el CRM y el historial de visitas muestran la solicitud existente. Un horario concedido más adelante puede confirmarse por el canal aprobado. Si el horario se asignó a otra persona, el personal puede ofrecer otro horario verificado y conservar el rastro de la primera solicitud. Ejecute ambas versiones con el mismo registro de capacitación.</p>
+<p>Antes de prometer una visita, <a href="/es/how-to-integrate-ai-voice-agents" data-phase2-link="true">compruebe la compatibilidad con sus herramientas actuales</a> y quién controla la reserva.</p>
+</section>
+
+<section id="crm">
+  <h2>¿Qué debe guardarse en el CRM y quién da el seguimiento?</h2>
+  <p>Almacene cada interacción con el contacto y el contexto de propiedad correctos. Una segunda llamada sobre otro listado puede crear una oportunidad distinta. Una segunda llamada sobre una visita pendiente quizá solo requiera una nueva actividad en la misma solicitud. Use información de contacto normalizada junto con un ID de propiedad, un tipo de solicitud y una referencia estable de interacción o de reserva. Un número de teléfono compartido por un hogar no basta por sí solo para fusionar dos registros. Conserve las marcas de tiempo relevantes y los cambios de responsable sin pedir un conjunto más amplio de datos personales.</p>
+  <p>Elija la regla de la agencia que asigna la siguiente acción. Un agente de listado designado puede atender las preguntas sobre la propiedad, un equipo rotativo puede encargarse de las devoluciones de llamada de compradores y un gerente de arrendamientos puede revisar las solicitudes o las peticiones de adaptación. Establezca una alternativa de respaldo (fallback) atendida por personas para números equivocados, usuarios inactivos y horarios de oficina que varían según el mercado. Confirme si una transferencia llegó a alguien. Cuando no es así, la tarea receptora debe mostrar el siguiente paso solicitado y cuándo requiere atención. El responsable debe poder ver los elementos vencidos y sin asignar. Consulte <a href="/es/ai-voice-agent-reliability">cómo probar la transferencia en vivo y el comportamiento de la alternativa de respaldo</a>.</p>
+</section>
+
+<section id="pilot">
+  <h2>¿Cómo puede saber una agencia si un piloto de admisión ayudó?</h2>
+  <p>Comience con un número de consultas o un grupo de listados y compare días y horarios equivalentes. Cuente las consultas elegibles, las consultas completas y correctamente asignadas, las visitas confirmadas en el sistema de visitas, las reprogramaciones, los registros duplicados y las devoluciones de llamada vencidas. Muestre el número de llamadas que llegaron a un miembro del personal con licencia cuando hacía falta. Una mayor tasa de respuesta es significativa cuando los registros muestran cómo recibieron ayuda las personas que llamaron. Registre con qué frecuencia el equipo corrigió una respuesta o resolvió una coincidencia de propiedad faltante.</p>
+  <p>Use llamadas sintéticas para probar la unidad equivocada, un cambio de estado durante la llamada, un feed desactualizado, un tiempo de espera agotado en una API de visitas, una transferencia sin respuesta, una solicitud de adaptación y escenarios pareados de vivienda justa. Ensaye el retorno al número existente de la oficina y la conciliación de las acciones pendientes. Considere permitir que el agente de voz escriba visitas confirmadas solo después de que el equipo apruebe los estados y los controles de revisión. La <a href="/es/how-to-test-an-ai-voice-agent">guía de pruebas en producción</a> ofrece una estructura para esas comprobaciones.</p>
+  <p>B2B Voice diseña flujos de trabajo telefónicos a medida en torno a los datos aprobados, el personal y las reglas de encaminamiento de la agencia. Una demostración útil comienza con un listado ficticio, una pregunta que la oficina pueda responder y una política de visitas que el personal pueda verificar. Incluya a los responsables de licencias y de operaciones para que puedan decidir dónde puede actuar el flujo de trabajo y dónde conviene más una devolución de llamada.</p>
+<p>Si la agencia usa una comparación con devolución de llamada, <a href="/es/cost-of-missed-business-calls" data-phase2-link="true">mida por separado las oportunidades alcanzadas y las cumplidas</a> y registre la acción final en el CRM.</p>
+</section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+<div class="b2bv-faq-item"><h3>¿Puede una recepcionista con IA del sector inmobiliario responder preguntas sobre listados?</h3><p>Sí, cuando la agencia autoriza al flujo de trabajo a usar los campos públicos vigentes de la propiedad correcta. Un registro incompleto o desactualizado debe derivar en un seguimiento aprobado por parte del personal.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede un agente de voz leer directamente un feed del MLS?</h3><p>Depende del proveedor de datos, de los derechos de acceso, del uso permitido y de la integración de la agencia. Los estándares de RESO respaldan el intercambio de datos, mientras que el acceso proviene del MLS o del proveedor correspondiente.</p></div>
+<div class="b2bv-faq-item"><h3>¿Qué puede preguntar el agente para calificar una consulta?</h3><p>Use campos neutrales necesarios para entender y encaminar la solicitud, como la referencia del listado, el momento y el seguimiento preferido. Deje las decisiones sobre elegibilidad de vivienda y adaptaciones en manos del personal autorizado.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede el agente reservar una visita automáticamente?</h3><p>Puede confirmar una visita después de que el sistema de visitas autorizado verifique la propiedad, el horario y la aprobación requerida, y devuelva un registro de cita confirmada.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cómo debe probar la agencia sus controles de vivienda justa?</h3><p>Haga llamadas sintéticas pareadas con solicitudes equivalentes y compare los listados ofrecidos, las opciones de horario, la cola y el seguimiento. Pida a la agencia que revise sus guiones y las normas aplicables.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cómo aparecen las llamadas repetidas en el CRM?</h3><p>Vincule la interacción con el contacto adecuado y con la solicitud específica de la propiedad cuando la identidad y el contexto coincidan. Asigne un único responsable a cada solicitud pendiente y conserve su historial de estados.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Revise un flujo de trabajo de visitas inmobiliarias</h2>
+        <p>Traiga un listado ficticio, los campos que su equipo puede divulgar y la política de visitas aprobada. Use una demostración de B2B Voice para recorrer una solicitud y su confirmación.</p>
+        <a href="/demo">Solicite una demostración del flujo de trabajo inmobiliario</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Fuentes</h2>
+        <ul>
+<li><a href="https://www.reso.org/data-dictionary/">RESO Data Dictionary</a> <span class="b2bv-source-note">(Real Estate Standards Organization)</span></li>
+<li><a href="https://www.reso.org/ht-faq/new-faq-question-156/">RESO and access to MLS data</a> <span class="b2bv-source-note">(Real Estate Standards Organization)</span></li>
+<li><a href="https://uscode.house.gov/us/usc/119-124/t42/s3604/">42 USC § 3604</a> <span class="b2bv-source-note">(Office of the Law Revision Counsel)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.70">24 CFR § 100.70 on prohibited sale and rental practices</a> <span class="b2bv-source-note">(U.S. Department of Housing and Urban Development via eCFR)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.75">24 CFR § 100.75 on discriminatory statements</a> <span class="b2bv-source-note">(U.S. Department of Housing and Urban Development via eCFR)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/es/what-is-b2b-voice">B2B Voice: la empresa y su enfoque de implementación</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Temas</h2>
+        <ul class="b2bv-tags">
+<li>Admisión de leads inmobiliarios</li>
+<li>Vivienda justa</li>
+<li>Visitas a propiedades</li>
+<li>Flujos de trabajo de CRM</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

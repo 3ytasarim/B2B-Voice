@@ -1,0 +1,299 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+.b2bv .b2bv-results { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Ir al artículo</a>
+  <header>
+    
+    <p class="b2bv-kicker">Operaciones y casos de uso</p>
+    <h1 id="b2bv-title">Recepcionista con IA frente a recepcionista humana: costo, rendimiento y limitaciones</h1>
+    <p class="b2bv-byline">Por <a rel="author" href="/es/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Una recepción tiene una carga de trabajo que va más allá del teléfono. La misma persona puede recibir a los visitantes, reprogramar la cita de un cliente y gestionar una excepción de facturación. Comparar las opciones de recepción empieza por esas responsabilidades, los horarios en que se presentan y lo que necesita quien llama cuando la recepción habitual está ocupada o cerrada.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Respuesta rápida</h2>
+        <p>Una recepcionista con IA puede encargarse de tareas telefónicas rutinarias aprobadas y de reservas verificadas. Una recepcionista humana puede recibir a los visitantes, interpretar solicitudes ambiguas y ejercer criterio propio. Un modelo híbrido combina una automatización limitada con un escalamiento atendido por personas. Al estimar el costo, compare los mismos turnos, funciones y niveles de servicio.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Tabla de contenido">
+      <p>En esta guía</p>
+      <ol>
+<li><a href="#coverage">Definir la cobertura de la recepción</a></li>
+<li><a href="#staffing-cost">Comparar el costo del personal</a></li>
+<li><a href="#allocation">Asignar tareas y excepciones</a></li>
+<li><a href="#hybrid">Configurar una cobertura híbrida</a></li>
+<li><a href="#accessibility">Atender a distintos tipos de personas que llaman</a></li>
+<li><a href="#evaluation">Medir el piloto</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+<li>Mida por separado la cobertura con personal y los minutos de uso.</li>
+<li>Mantenga el trabajo que exige criterio y las responsabilidades presenciales a cargo de una persona designada.</li>
+<li>Pruebe las transferencias, la recuperación ante fallos y la compatibilidad de idiomas con el equipo que recibe las llamadas.</li>
+        </ul>
+      </section>
+<section id="coverage">
+  <h2>¿Qué necesita que cubra la recepción?</h2>
+  <p>Comience con una semana de trabajo. Anote cuándo llegan las llamadas y qué más está haciendo la recepcionista. Una pequeña oficina profesional puede necesitar a alguien que reciba a los visitantes, verifique accesos, gestione documentos y ayude con una excepción de facturación mientras el teléfono suena. Un negocio de reparaciones puede necesitar a un despachador que conozca la zona y pueda modificar una cita con poca antelación. Compare la cobertura por turno, carga telefónica y capacidad de decisión antes de poner precio a las alternativas.</p>
+  <p>B2B Voice diseña recepcionistas con IA a la medida para el trabajo telefónico que su equipo ha documentado. Si la recepción atiende a visitantes y llamadas complejas al mismo tiempo, traiga un calendario de turnos y una lista de las tareas para las que su personal necesita tiempo. Una implementación gestionada puede ofrecer una respuesta útil a quienes llaman por temas rutinarios y mantener una vía explícita hacia un empleado.</p>
+<p>Separe cada nivel de servicio que espera contratar. Indique los horarios, la proporción de llamadas aptas para la reserva estándar, quién puede aprobar excepciones y en cuánto tiempo la persona que llama llega a alguien con esa autoridad. Señale el trabajo físico de la recepción y el personal necesario durante descansos, ausencias y tareas simultáneas. La Oficina de Estadísticas Laborales de EE. UU. (BLS) incluye entre las funciones típicas de una recepcionista contestar el teléfono, recibir visitantes y mantener registros. Una organización puede repartir esas funciones de otra manera, siempre que cada una tenga un responsable designado. <a href="https://www.bls.gov/ooh/office-and-administrative-support/receptionists.htm">Receptionists Occupational Outlook Handbook</a></p>
+  <p>Parte del tráfico telefónico puede requerir un enrutamiento previsible mediante menús, otra parte puede requerir una recepcionista conversacional y otra necesita a una persona. Para una definición de las opciones telefónicas, consulte <a href="/es/ai-voice-agent-vs-ai-receptionist-vs-ivr">en qué se diferencian los agentes de voz con IA, las recepcionistas con IA y el IVR</a>. Decida qué tareas de quien llama pueden completarse en un sistema verificado antes de comparar los minutos atendidos entre modelos.</p>
+</section>
+
+<section id="staffing-cost">
+  <h2>¿Cuánto cuesta una recepción con personal?</h2>
+  <p>En mayo de 2025, el BLS informó una mediana salarial nacional en EE. UU. de <strong>$18.27 por hora</strong> para recepcionistas. Este salario proviene del programa Occupational Employment and Wage Statistics y ofrece un punto de referencia nacional. Los salarios reales varían según la ubicación, el sector, el turno y el puesto concreto. Solicite el costo total a quien administre su presupuesto. Considere los costos de nómina aplicables, los beneficios, la capacitación, la cobertura de reemplazos y el solapamiento programado. <a href="https://www.bls.gov/ooh/office-and-administrative-support/receptionists.htm">Receptionists Occupational Outlook Handbook</a> <a href="https://www.bls.gov/oes/2025/may/oes_tec.htm">BLS technical notes for May 2025 OEWS estimates</a></p>
+  <p>La cobertura pagada y el tiempo de conversación describen trabajos distintos. Una persona programada para un turno de dos horas puede contestar el teléfono, actualizar registros y recibir visitantes. Un medidor de uso describe la actividad telefónica cubierta por su contrato. Compare las horas disponibles, la demanda simultánea, el acceso a las cuentas, el tiempo del responsable y la gestión de la alternativa de respaldo (fallback), e identifique qué parte es responsable de cada componente.</p>
+  <div class="b2bv-table" role="region" aria-label="Comparación de costo y servicio de la recepción" tabindex="0">
+    <table>
+      <caption>Compare la cobertura con el mismo turno y la misma lista de tareas</caption>
+      <thead><tr><th scope="col">Opción</th><th scope="col">Componentes del costo</th><th scope="col">Cobertura que debe verificarse</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Recepcionista empleada</th><td>Horas pagadas y gastos del empleador, además de descansos, ausencias, capacitación y suplencias.</td><td>Trabajo presencial, conocimiento interno, capacidad de decisión y desborde cuando la línea o la recepción están ocupadas.</td></tr>
+        <tr><th scope="row">Servicio de contestación en vivo</th><td>Cuota fija, llamadas o tiempo facturados, escalamientos, implementación y cargos por exceso.</td><td>Disponibilidad del personal, conocimiento de sus políticas y autoridad para reservar o aprobar cambios.</td></tr>
+        <tr><th scope="row">Recepcionista con IA</th><td>Implementación, plataforma y uso del operador de telefonía, herramientas, revisiones y atención humana del trabajo no resuelto.</td><td>Tareas administrativas aprobadas, llamadas simultáneas probadas, compatibilidad de idiomas y alternativa de respaldo con una persona.</td></tr>
+        <tr><th scope="row">Cobertura híbrida</th><td>Horas con personal y cobertura automatizada, además de los costos de transferencia, coordinación y excepciones.</td><td>Responsabilidad clara por tarea, cobertura en los cambios de turno y una vía confirmada de regreso a una persona.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Estime las horas que realmente requieren a una persona</h3>
+  <p>Un puesto cubierto sin interrupciones toda la semana requiere 168 horas de cobertura. Con un supuesto hipotético de 40 horas por equivalente de jornada completa, la carga de trabajo base es de 4.2 equivalentes de jornada completa. Este cálculo no incluye la cobertura de descansos, ausencias, solapamientos ni capacitación. Un negocio que necesita dos horas adicionales de atención telefónica cada noche durante cinco noches requiere un presupuesto y un plan de respaldo distintos.</p>
+  <p>Una oficina ficticia que añade diez horas semanales de atención telefónica con personal programaría 520 horas en un año de 52 semanas, antes de considerar descansos o suplencias. Use las mismas horas y tareas para evaluar una opción híbrida. La recepción automatizada de solicitudes puede recoger una petición de cambio, mientras que el personal puede necesitar una cobertura aparte para revisar y aprobar esa noche una excepción de calendario.</p>
+  <p>Revise en el contrato la unidad facturable y el tratamiento de una transferencia, un desborde o una cita perdida. Evalúe el trabajo adicional que queda para la mañana siguiente, incluidas las devoluciones de llamada y las correcciones. Mida el cambio en las horas pagadas programadas y en la nómina por separado de los minutos dedicados a hablar con quienes llaman. Reasignar al personal a otras tareas puede generar capacidad sin que cambien las horas pagadas.</p>
+</section>
+
+<section id="allocation">
+  <h2>Marco de asignación de tareas entre personas e IA de B2B Voice</h2>
+  <p>Use el marco para asignar un responsable principal y una alternativa viable a cada motivo de llamada o función de la recepción. Describa la respuesta o acción requerida, la fuente de verdad, la autoridad de decisión, las consecuencias de un error y si la acción es reversible. Revise cada fila durante al menos un turno con personal y un período con cobertura limitada. La primera implementación debe tener un alcance reducido que el personal pueda revisar y corregir.</p>
+  <div class="b2bv-table" role="region" aria-label="Asignación de tareas de la recepción entre personas e IA" tabindex="0">
+    <table>
+      <caption>Ejemplo de asignación de tareas y evidencia de finalización</caption>
+      <thead><tr><th scope="col">Tarea</th><th scope="col">Modalidad principal</th><th scope="col">Regla y siguiente responsable</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Horarios de atención o indicaciones para llegar</th><td>IA con información aprobada</td><td>Verifique los horarios en días festivos, la sede y la vigencia de la fuente. Ofrezca la vía con personal cuando se solicite.</td></tr>
+        <tr><th scope="row">Cita rutinaria o reprogramación</th><td>IA con autoridad limitada</td><td>Verifique la identidad cuando sea necesario y confirme el registro de la cita. Asigne al responsable de la programación de citas cualquier escritura dudosa.</td></tr>
+        <tr><th scope="row">Disputa de facturación o ajuste discrecional de una tarifa</th><td>Dirigido por el personal, con recepción opcional de la solicitud</td><td>Recoja la información mínima de enrutamiento. Una persona con autoridad revisa el registro y decide.</td></tr>
+        <tr><th scope="row">Persona que llama angustiada, identidad ambigua o solicitud de hablar con una persona</th><td>Persona o vía de urgencia aprobada</td><td>Siga la política, reduzca las preguntas ordinarias y verifique el resultado de la transferencia.</td></tr>
+        <tr><th scope="row">Recibir a los visitantes, revisar documentos y controlar el acceso a las instalaciones</th><td>Persona</td><td>Mantenga la cobertura de la recepción y una suplencia. Mida la carga de trabajo ajena a la cola telefónica.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol class="b2bv-flow" aria-label="Flujo de trabajo de asignación de tareas">
+    <li><strong>Mapee el turno</strong><span>Haga un inventario de las funciones telefónicas, presenciales y de seguimiento tal como ocurren.</span></li>
+    <li><strong>Asigne autoridad</strong><span>Entregue al responsable principal la fuente aprobada, las acciones y los límites.</span></li>
+    <li><strong>Pruebe la alternativa de respaldo</strong><span>Verifique qué ocurre cuando quien llama necesita a una persona o falla una escritura.</span></li>
+  </ol>
+  <p>Para aplicar el marco, tome muestras del horario de apertura, el almuerzo, la hora de mayor tráfico y el período posterior al cierre. Pida al equipo de la recepción que etiquete las solicitudes reales y revise los errores de una prueba. Marque como pendientes las filas sin evidencia o con transferencias sin personal. Limite el agente a registrar una solicitud cuando no esté disponible la lectura del sistema correspondiente o una escritura confirmada. Aprenda a clasificar <a href="/es/what-is-an-ai-voice-agent">una tarea acotada para un agente de voz con IA</a> antes de modificar el resto del enrutamiento telefónico.</p>
+</section>
+
+<section id="hybrid">
+  <h2>¿Cómo funciona la recepción híbrida durante un turno real?</h2>
+  <p>Imagine una oficina ficticia a las 12:15 p. m. La recepcionista está atendiendo a un visitante. El agente de desborde contesta a una persona que pregunta por el horario de atención y lee el calendario aprobado de esa sede. Otra persona pide cambiar una cita, lo que incluye una excepción de tarifa. El flujo de trabajo de IA deja la excepción en manos de una persona y le transmite el motivo y el contexto mínimo que permite la oficina. La persona revisa el registro y explica la decisión.</p>
+  <p>Cuando el destino tiene personal, haga que el equipo receptor confirme que aceptó la conexión en vivo. Cuando está ocupado, haga que el flujo de trabajo cree una tarea con responsable y explique el plazo real de devolución de llamada. Cuando está cerrado, siga la política fuera de horario y dirija a las vías de urgencia disponibles según lo definido. Ofrezca a quien llama información útil sobre el estado de su solicitud y conserve el motivo de la transferencia para que no tenga que repetir los datos. Si no se puede alcanzar ni la transferencia ni la cola, restablezca la alternativa de respaldo aprobada para la línea. Consulte <a href="/es/ai-voice-agent-reliability">cómo manejar transferencias fallidas y destinos no disponibles</a>.</p>
+  <div class="b2bv-table" role="region" aria-label="Ejemplo de horario de recepción híbrida" tabindex="0">
+    <table>
+      <caption>Ejemplo de plan de cobertura para una recepción con desborde durante el almuerzo y por la noche</caption>
+      <thead><tr><th scope="col">Franja</th><th scope="col">Primera respuesta</th><th scope="col">Responsabilidad del personal</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Horario laboral ordinario</th><td>La recepción atiende las llamadas y las excepciones. El desborde rutinario aprobado puede dirigirse a la vía automatizada.</td><td>Recibir los escalamientos en vivo, verificar los registros y mantener la cobertura presencial.</td></tr>
+        <tr><th scope="row">Almuerzo y horas de mayor tráfico</th><td>Recepción automatizada de solicitudes rutinarias o desborde en vivo, según la capacidad probada.</td><td>Una suplencia designada se encarga de la cola y supervisa las solicitudes urgentes y las llamadas repetidas.</td></tr>
+        <tr><th scope="row">Después del cierre</th><td>Proporcionar información aprobada o registrar las solicitudes aptas para el siguiente turno con personal.</td><td>Vía de guardia adecuada solo cuando haya personal. En caso contrario, un responsable específico del turno de apertura revisa la cola.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Pruebe la línea en los cambios de turno y con llamadas simultáneas. Incluya tanto los límites del propio agente como la capacidad del equipo receptor. En un piloto, una recepcionista humana puede tener mayor criterio ante una pregunta delicada, mientras que la automatización puede encargarse del desborde repetitivo cuando llegan varias llamadas a la vez. Compare los resultados correctos y el acceso útil para quienes llaman en su cola real.</p>
+<p>Si el turno de la noche recibe sobre todo solicitudes nuevas, <a href="/es/cost-of-missed-business-calls" data-phase2-link="true">estime el valor de las llamadas perdidas calificadas</a> frente al proceso actual de devolución de llamadas.</p>
+</section>
+
+<section id="accessibility">
+  <h2>¿Cómo atender a distintos tipos de personas que llaman y a varios idiomas?</h2>
+  <p>Haga posible llegar a una persona cuando quien llama la pida, repita una corrección o necesite otra forma de comunicarse. Pruebe con acentos reales y con los idiomas admitidos, en condiciones normales y con ruido, incluidos nombres, direcciones, números y zonas horarias. Revise si el agente puede retomar la conversación tras una interrupción y si el destino del personal puede atender en el idioma solicitado. La <a href="/es/ai-voice-agent-turn-taking-interruptions">guía sobre turnos de conversación y reparación del diálogo</a> describe qué observar durante la revisión de llamadas.</p>
+  <p>La guía de comunicación efectiva de la ADA del Departamento de Justicia de EE. UU. aborda la aceptación de llamadas telefónicas mediante servicios de retransmisión de telecomunicaciones y de retransmisión de video por parte de las entidades obligadas. Si corresponde, revise toda la ruta telefónica con el responsable de accesibilidad. Pruebe la vía con un comportamiento de retransmisión representativo, deje tiempo para que un asistente de comunicaciones hable y acuerde con el personal una alternativa viable cuando quien llama necesite ayuda. <a href="https://www.ada.gov/resources/effective-communication/">ADA effective communication guidance</a></p>
+  <p>Una empresa puede medir cómo usan las personas las vías disponibles. Pida a los revisores que registren si quien llamó llegó al canal elegido, cuánto tardó y si el equipo receptor vio la tarea correspondiente. Conserve las notas de prueba sobre las necesidades de quienes llaman dentro de los registros aprobados. Una opción de menú es útil cuando el destino es realmente accesible y puede ayudar.</p>
+</section>
+
+<section id="evaluation">
+  <h2>¿Qué debe comparar después del piloto?</h2>
+  <p>Compare los mismos motivos de llamada, turnos y niveles de servicio. Registre la fracción de llamadas aptas que terminan en una respuesta verificada, una cita guardada o una transferencia a una persona completada. Cuente el primer contacto y los contactos repetidos en los casos no resueltos o incorrectos. En la recepción, registre las visitas sin cita atendidas, el trabajo pendiente en la cola, los tiempos de devolución de llamada y las correcciones de calendario. Revise las horas de mayor tráfico por separado del tráfico promedio.</p>
+  <p>Pida al personal que revise las llamadas con ambigüedad, preguntas delicadas, destinos cerrados y transferencias inesperadas. Decida quién puede corregir una cita o detener una vía poco segura y cómo sabrá cuándo intervenir. Amplíe el alcance solo cuando el equipo que gestiona las excepciones pueda sostener los horarios propuestos y el comprador entienda el costo y la cobertura del trabajo restante.</p>
+  <p>B2B Voice diseña flujos de trabajo telefónicos a la medida que pueden limitarse a un turno o a un tipo de llamada. Para una demostración, traiga las tareas que su equipo quiere delegar, la política o el calendario que el agente puede usar y las personas o listas de trabajo que reciben las excepciones. Con eso podrá analizar la transferencia real y las métricas de éxito que desea comparar. <a href="/es/what-is-b2b-voice">Enfoque de empresa e implementación de B2B Voice</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+<div class="b2bv-faq-item"><h3>¿Puede una recepcionista con IA reemplazar a una recepcionista de tiempo completo?</h3><p>Haga una lista del trabajo por turno antes de modificar la dotación de personal. Las llamadas rutinarias pueden ser aptas para la automatización, mientras que los visitantes, las decisiones discrecionales y las solicitudes delicadas pueden requerir a una persona. Presupueste la cobertura y el seguimiento que conservará.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cuánto cuesta una recepcionista humana en Estados Unidos?</h3><p>La Oficina de Estadísticas Laborales de EE. UU. informó una mediana de $18.27 por hora en mayo de 2025. Para el presupuesto, use el salario local y añada los costos aplicables del empleador, la cobertura y el respaldo para el puesto que necesite.</p></div>
+<div class="b2bv-faq-item"><h3>¿Pueden las personas que llaman seguir pidiendo hablar con una persona?</h3><p>Cree una vía clara hacia una persona y pruebe adónde conduce. Cuando el destino esté cerrado u ocupado, use la alternativa de respaldo acordada, explique a quien llama qué va a ocurrir y asigne la solicitud a un responsable del personal.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cuándo tiene sentido un servicio de contestación en vivo?</h3><p>Puede encajar en turnos con excepciones frecuentes, necesidades de idioma o accesibilidad, o decisiones que su propio personal no puede revisar con rapidez. Verifique la autoridad real, la cobertura, el enrutamiento y el costo total para las mismas llamadas.</p></div>
+<div class="b2bv-faq-item"><h3>¿Qué requiere una cobertura multilingüe confiable?</h3><p>Pruebe las tareas en cada idioma admitido con personas que llaman representativas. Compruebe si los nombres, los números, las correcciones y las transferencias se manejan con exactitud y si el personal receptor puede ayudar en ese idioma.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cómo puede una empresa probar la cobertura híbrida?</h3><p>Elija un turno limitado o una vía de desborde. Asigne al agente una tarea rutinaria, mantenga una vía aprobada hacia una persona y de recuperación, y compare en el piloto los resultados verificados y el efecto en la dotación de personal.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Mapee un turno con el equipo de su recepción</h2>
+        <p>Traiga una llamada rutinaria y una llamada que requiera personal. B2B Voice puede usar ambos ejemplos para analizar qué tareas se prestan a la automatización y cómo verificar la transferencia.</p>
+        <a href="/demo">Solicitar una demostración de cobertura híbrida</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Fuentes</h2>
+        <ul>
+<li><a href="https://www.bls.gov/ooh/office-and-administrative-support/receptionists.htm">Receptionists Occupational Outlook Handbook</a> <span class="b2bv-source-note">(Oficina de Estadísticas Laborales de EE. UU.)</span></li>
+<li><a href="https://www.bls.gov/oes/2025/may/oes_tec.htm">BLS technical notes for May 2025 OEWS estimates</a> <span class="b2bv-source-note">(Oficina de Estadísticas Laborales de EE. UU.)</span></li>
+<li><a href="https://www.ada.gov/resources/effective-communication/">ADA effective communication guidance</a> <span class="b2bv-source-note">(Departamento de Justicia de EE. UU.)</span></li>
+<li><a href="/es/what-is-b2b-voice">Enfoque de empresa e implementación de B2B Voice</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Temas</h2>
+        <ul class="b2bv-tags">
+<li>Recepcionistas con IA</li>
+<li>Recepción híbrida</li>
+<li>Operaciones de recepción</li>
+<li>Transferencia a una persona</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

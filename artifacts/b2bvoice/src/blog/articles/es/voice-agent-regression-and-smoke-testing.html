@@ -1,0 +1,445 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Saltar al artículo</a><header><h1 id="article-title">Pruebas automatizadas de regresión y de humo para agentes de voz: guía práctica</h1>
+<p class="b2bv3-byline">Por B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Las pruebas de regresión automatizadas de un agente de voz verifican si una nueva versión rompió un comportamiento que ya funcionaba. Utilice pruebas de humo (smoke tests) para un conjunto breve de rutas críticas, casos de regresión dirigidos al cambio realizado, y pruebas controladas con audio o por teléfono cuando la evidencia dependa de una llamada real. Un calendario simulado puede mostrar qué argumentos envió el agente. Una llamada realizada por la ruta prevista puede mostrar si la persona que llama escuchó la confirmación y si el personal recibió la transferencia.</p>
+<p>B2B Voice define el alcance de las implementaciones personalizadas en función del flujo de trabajo del cliente y de sus responsabilidades de publicación. Para un equipo de programación de citas, eso puede incluir decidir quién puede detener un despliegue, qué resultados bloquean una publicación y cómo gestionará el personal las reservas que sigan pendientes después de una reversión.</p>
+<h2 id="key-takeaways">Puntos clave</h2>
+<ul>
+<li>Versione los ajustes que pueden cambiar el comportamiento, incluidos el prompt, el modelo, el flujo de trabajo, la voz, el contrato de herramientas y la ruta.</li>
+<li>Seleccione las pruebas según lo que cambió y lo que la superficie de prueba disponible puede verificar.</li>
+<li>Conserve el historial completo de resultados cuando una prueba sea inestable. Investigue las inconsistencias relevantes antes de la publicación.</li>
+<li>Asigne responsables explícitos al canary, a la reversión y a las transacciones pendientes.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">En este artículo</p>
+<ol>
+<li><a href="#match-the-test-suite-to-the-change">Adapte el conjunto de pruebas al cambio</a></li>
+<li><a href="#know-what-each-test-surface-can-prove">Sepa qué puede demostrar cada superficie de prueba</a></li>
+<li><a href="#a-runnable-regression-test-for-an-uncertain-booking">Una prueba de regresión ejecutable para una reserva incierta</a></li>
+<li><a href="#b2b-voice-automated-voice-agent-regression-pipeline">Pipeline de regresión automatizada de agentes de voz de B2B Voice</a></li>
+<li><a href="#preserve-useful-evidence-when-a-test-is-flaky">Conserve evidencia útil cuando una prueba es inestable</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+<li><a href="#references-heading">Referencias</a></li>
+</ol></nav><h2 id="match-the-test-suite-to-the-change">Adapte el conjunto de pruebas al cambio</h2>
+<p>Un conjunto de pruebas de humo pregunta si la ruta esencial todavía inicia y termina. Un conjunto de regresión pregunta si un defecto anterior o un comportamiento requerido ha reaparecido después de un cambio. El mismo caso de reserva puede cumplir ambos propósitos cuando ejercita una ruta crítica. Una publicación motivada por un cambio en el esquema del calendario también necesita casos que pongan a prueba específicamente el esquema, el comportamiento de reintentos y la lectura de confirmación (read-back).</p>
+<p>Mantenga un manifiesto de publicación con el prompt, el modelo, la voz, los ajustes de voz, los esquemas de herramientas, el adaptador de la aplicación, el flujo de trabajo, los datos de prueba y la configuración de telefonía, cuando corresponda. Un alias de proveedor puede permanecer igual mientras cambia la implementación subyacente. Registre la versión que expone el servicio y los casos en los que no pudo observar ninguna. Mantenga accesible una línea base anterior que funcionaba, para poder investigar un resultado distinto.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Cobertura de pruebas según el tipo de cambio</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Cambio</th>
+<th scope="col">Empiece con</th>
+<th scope="col">Agregue cuando el riesgo vaya más allá de la primera prueba</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Prompt o política del servicio</th>
+<td>Pruebas de regresión del prompt para acciones permitidas, confirmación, rechazo y transferencia.</td>
+<td>Reproduzca frases ambiguas o use una llamada controlada cuando puedan cambiar los tiempos o el comportamiento del habla.</td>
+</tr>
+<tr class="even">
+<th scope="row">Modelo, voz o ajustes de voz</th>
+<td>Casos con audio para interrupciones, silencios, pronunciación y datos corregidos.</td>
+<td>Confirme la reproducción del lado de quien llama en la ruta telefónica correspondiente.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Flujo de trabajo o integración</th>
+<td>Pruebas de contrato en sandbox para la selección de herramientas, los argumentos confirmados, la demora y la lectura de confirmación autorizada.</td>
+<td>Pruebe los casos en los que una respuesta podría declarar un éxito antes de que se verifique la transacción.</td>
+</tr>
+<tr class="even">
+<th scope="row">Esquema de herramientas</th>
+<td>Revise los campos obligatorios y opcionales, los errores de validación y el comportamiento del adaptador.</td>
+<td>Incluya una verificación en sandbox de que la integración real interpreta la carga útil como se pretende.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Ruta telefónica o cola</th>
+<td>Revise el reenvío, los horarios locales y los identificadores de destino.</td>
+<td>Verifique la respuesta real del destino, el audio y la alternativa de respaldo (fallback) aprobada en la ruta de llamada autorizada.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La automatización de pruebas de agentes de voz funciona mejor cuando el conjunto puede mostrar qué cambio debía detectar cada prueba seleccionada. Una ejecución grande e indiferenciada puede tardar más y dificultar la identificación de la causa de un fallo. Registre qué verificaciones se omitieron y mantenga visible en el control de publicación toda evidencia requerida.</p>
+<h2 id="know-what-each-test-surface-can-prove">Sepa qué puede demostrar cada superficie de prueba</h2>
+<p>Un mock puede devolver un error a demanda, capturar una solicitud y permitir que una aserción determinista verifique sus argumentos. Las herramientas de mock de la biblioteca estándar de Python permiten definir efectos secundarios e inspeccionar las llamadas. Un mock solo sigue el contrato que usted le dio. Si el adaptador real interpreta una fecha o una respuesta de error de forma distinta, tanto la prueba como la implementación pueden parecer correctas de manera aislada. <a class="b2bv3-ref" href="#source-mock">Documentación de Python unittest.mock</a></p>
+<p>Una prueba de contrato en sandbox puede ejercitar el cliente de integración real con datos de prueba aislados. Úsela para verificar la forma de la respuesta, los permisos, los cambios de estado y la conciliación. Una reproducción de audio ejercita lo que un modelo o agente recibió y devolvió en una condición controlada. Cuando la afirmación es que una persona que llama o un miembro del personal puede usar la ruta, realice una llamada autorizada por la ruta telefónica prevista y obtenga evidencia del receptor. La <a href="/es/ivr-and-conversational-voice-ai-testing">guía de IVR y enrutamiento telefónico</a> muestra qué observaciones de ruta y de transferencia conviene conservar.</p>
+<p>En conversaciones no deterministas, defina los resultados permitidos y el significado requerido. Un rechazo cortés puede adoptar varias formas. Una escritura prohibida debe seguir prohibida sin importar la formulación. Compare el candidato y la línea base con la misma familia de casos y los mismos ajustes, y conserve todos los intentos. Use <a href="/es/voice-agent-evaluation-data">datos de resultados versionados</a> para que un guion o una expectativa modificados no se hagan pasar por un cambio en el agente.</p>
+<h2 id="a-runnable-regression-test-for-an-uncertain-booking">Una prueba de regresión ejecutable para una reserva incierta</h2>
+<p>Este ejemplo en Python usa solo la biblioteca estándar y dobles de prueba. Guárdelo como <code>test_booking.py</code> y ejecute <code>python -m unittest test_booking.py</code>. Los nombres de adaptadores del ejemplo pertenecen al fixture. La prueba no realiza llamadas de red ni usa datos de producción.</p>
+<pre class="python" tabindex="0"><code>import unittest
+from unittest.mock import Mock
+
+
+def reserve_with_readback(calendar, request_id, slot):
+    try:
+        calendar.reserve(request_id, slot)
+    except TimeoutError:
+        # The save might have committed before the reply timed out.
+        pass
+
+    saved = calendar.lookup(request_id)
+    if saved and saved["request_id"] == request_id and saved["slot"] == slot:
+        return "confirmed"
+    return "pending"
+
+
+class BookingRegression(unittest.TestCase):
+    def setUp(self):
+        self.calendar = Mock(spec=["reserve", "lookup"])
+        self.calendar.reserve.side_effect = TimeoutError("fixture timeout")
+        self.request_id = "fixture-booking"
+        self.slot = "thursday-east-morning"
+
+    def test_readback_can_confirm_a_committed_booking(self):
+        self.calendar.lookup.return_value = {
+            "request_id": self.request_id,
+            "slot": self.slot,
+        }
+        outcome = reserve_with_readback(
+            self.calendar, self.request_id, self.slot
+        )
+        self.assertEqual(outcome, "confirmed")
+        self.calendar.reserve.assert_called_once_with(self.request_id, self.slot)
+        self.calendar.lookup.assert_called_once_with(self.request_id)
+
+    def test_wrong_booking_stays_pending(self):
+        self.calendar.lookup.return_value = {
+            "request_id": self.request_id,
+            "slot": "friday-west-afternoon",
+        }
+        outcome = reserve_with_readback(
+            self.calendar, self.request_id, self.slot
+        )
+        self.assertEqual(outcome, "pending")
+        self.calendar.reserve.assert_called_once_with(self.request_id, self.slot)
+
+    def test_no_record_stays_pending(self):
+        self.calendar.lookup.return_value = None
+        outcome = reserve_with_readback(
+            self.calendar, self.request_id, self.slot
+        )
+        self.assertEqual(outcome, "pending")
+        self.calendar.reserve.assert_called_once_with(self.request_id, self.slot)</code></pre>
+<p>En el caso ficticio, un servicio externo pudo haber guardado la reserva antes de que su respuesta agotara el tiempo de espera. Un único intento de escritura seguido de una lectura de confirmación coincidente permite confirmar. Un registro ausente o contradictorio mantiene el flujo de trabajo en estado pendiente. El código no modela reintentos específicos del proveedor, consistencia diferida, errores de consulta, controles de acceso ni audio telefónico. Una implementación necesita pruebas independientes para esos comportamientos. Un adaptador de prueba puede proporcionar el registro esperado mientras un calendario real devuelve otro. Agregue una lectura de confirmación en sandbox antes de confiar en la integración durante una publicación.</p>
+<h3 id="keep-one-trace-for-an-interruption-regression">Conserve una traza para una regresión de interrupciones</h3>
+<p>Un registro de la conversación puede mostrar que el agente generó una respuesta completa aunque la persona que llama lo interrumpió antes de escucharla. En una prueba de regresión con audio, marque el nuevo habla de la persona que llama, el punto donde se detuvo la reproducción y los eventos posteriores. Si el agente volvió a hablar, revise si retomó la confirmación anterior o atendió la corrección. Se necesita una llamada por la ruta prevista cuando el almacenamiento en búfer de la pasarela o un receptor modifican lo que la persona escucha.</p>
+<p>Compare el candidato y la línea base con la misma condición de grabación y los mismos ajustes del operador. En los casos con redacción variable, acepte el significado de negocio requerido y verifique los efectos secundarios ordenados de forma independiente. Una traza esperada puede exigir que una corrección llegue antes de una acción de reemplazo sin pedirle al modelo que genere palabras concretas. Informe las razones alternativas por las que pueden faltar los eventos esperados, incluida una grabación perdida o una llamada que terminó antes de la corrección.</p>
+<h2 id="b2b-voice-automated-voice-agent-regression-pipeline">Pipeline de regresión automatizada de agentes de voz de B2B Voice</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-2-caption">
+<table>
+<caption id="table-2-caption">Evidencia y decisiones del pipeline de publicación</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Etapa</th>
+<th scope="col">Disparador y evidencia</th>
+<th scope="col">Decisión de publicación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Revisión del cambio</th>
+<td>Registre las versiones afectadas, los modos de fallo conocidos y las pruebas que deberían responder al cambio.</td>
+<td>Asigne un responsable y documente toda evidencia requerida que un ejecutor no pueda recopilar.</td>
+</tr>
+<tr class="even">
+<th scope="row">Prueba de humo en el pull request</th>
+<td>Verifique la ruta autorizada esencial y un rechazo o alternativa de respaldo crítico usando datos de prueba controlados.</td>
+<td>Detenga la publicación ante un control de integridad fallido o una verificación requerida que no pudo ejecutarse.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Regresión dirigida</th>
+<td>Compare con la línea base los eventos de herramientas en orden, los resultados de conversación permitidos y los casos de defectos anteriores.</td>
+<td>Investigue los fallos nuevos y los resultados inestables. Conserve el historial completo de intentos.</td>
+</tr>
+<tr class="even">
+<th scope="row">Verificación de audio y telefonía</th>
+<td>Reproduzca los casos de habla relevantes y realice llamadas controladas en rutas aprobadas.</td>
+<td>Exija el audio real, el destino y el estado resultante cuando estos determinen la publicación.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Canary y monitoreo</th>
+<td>Dirija una cohorte aprobada al candidato y compárela con un control estable.</td>
+<td>Pause, amplíe o revierta según los criterios de publicación acordados.</td>
+</tr>
+<tr class="even">
+<th scope="row">Reversión y conciliación</th>
+<td>Deje de enviar tráfico nuevo a la versión afectada, gestione las llamadas en curso y resuelva las operaciones pendientes.</td>
+<td>Confirme que la ruta anterior está activa y que los registros pendientes tienen un resultado documentado.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Use integración continua y entrega continua (CI/CD) para conservar un resultado junto con el cambio, incluidos la versión probada, el fixture, el resultado observado, la referencia a la traza, el entorno y las verificaciones omitidas. Mantenga los artefactos con acceso restringido y elimine las cargas útiles innecesarias. El CI/CD para IA de voz puede ejecutar verificaciones deterministas más rápidas en los cambios habituales y reservar las llamadas telefónicas controladas para los cambios que puedan afectar la ruta o la experiencia de la persona que llama.</p>
+<h2 id="preserve-useful-evidence-when-a-test-is-flaky">Conserve evidencia útil cuando una prueba es inestable</h2>
+<p>Una prueba inestable (flaky) puede pasar y fallar sin que cambie la versión que se espera publicar. Busque registros compartidos en el sandbox, dependencias del reloj, rutas telefónicas inconsistentes, variación del modelo y ajustes del agente que no se capturaron. La documentación de pytest identifica el estado del sistema no controlado y el aislamiento insuficiente como fuentes comunes de pruebas automatizadas inestables. Vuelva a ejecutar para investigar las condiciones. Deje constancia del fallo original. <a class="b2bv3-ref" href="#source-flak">Guía de pytest sobre pruebas inestables</a></p>
+<p>Si una verificación menor de redacción es inestable, asígnele un responsable y una decisión con plazo mientras el equipo corrige la prueba. Una verificación inestable de autorización o de escritura duplicada debe seguir siendo una preocupación para la publicación hasta que se comprenda el comportamiento correspondiente. El control de calidad automatizado de IA de voz necesita una forma clara de marcar la evidencia faltante. Un informe de terminal limpio tras un reintento no puede establecer lo que ocurrió durante un intento fallido.</p>
+<p>El tráfico canary debe tener un responsable, rutas conocidas y una comparación estable. Ensaye cómo dejará el equipo de enviar llamadas nuevas al candidato, cómo conservará o drenará las sesiones actuales y cómo verificará el estado final de las acciones ya en curso. El Site Reliability Workbook de Google describe la evaluación de publicaciones parciales frente a controles. Restablezca la ruta de servicio esperada y concilie el registro de negocio antes de marcar la recuperación como completa. <a class="b2bv3-ref" href="#source-can">Guía de Google SRE sobre canary</a></p>
+<p>Use la <a href="/es/how-to-test-an-ai-voice-agent">guía de pruebas de agentes de voz en producción</a> para la cobertura inicial de los modos de fallo. Use la <a href="/es/rag-vs-tool-calling-vs-prompt-context">comparación entre recuperación y llamadas a herramientas</a> al decidir si un cambio afecta una respuesta de conocimiento, una acción externa o ambas.</p>
+<h3 id="set-release-gates-that-a-test-operator-can-interpret">Defina controles de publicación que un operador de pruebas pueda interpretar</h3>
+<p>Decida si cada verificación es bloqueante, informativa o está a la espera de evidencia antes de ejecutar el candidato. Una verificación bloqueada de integridad de reservas debe ser reconocible aunque una revisión de la calidad de voz parezca buena. Una traza de destino ausente debe dejar abierta la afirmación sobre la transferencia. Entregue al responsable de la publicación un enlace al evento exacto y una forma independiente de ver el registro resultante cuando la decisión dependa de una integración. Esto también ayuda a la persona de guardia a distinguir un problema de la aplicación de un problema del ejecutor.</p>
+<p>Algunas herramientas de pruebas de agentes de voz pueden reproducir conversaciones del modelo y comparar texto. Verifique cuáles ejercitan audio real y cuáles pueden observar el extremo remoto de una llamada. Mantenga esos límites explícitos en el resultado para que una ejecución automatizada de pruebas de agentes de voz no sustituya silenciosamente una verificación de ruta en un entorno de preproducción.</p>
+<p>Aplique la misma disciplina a la reversión. Si se restablece la versión elegida pero una operación diferida todavía se está reintentando, el incidente sigue activo para ese registro de negocio. Compruebe que la ruta anterior está recibiendo llamadas nuevas, identifique el trabajo vinculado a la publicación retirada y concilie el estado final antes de cerrar el incidente.</p>
+<h3 id="include-the-checks-an-operator-needs-after-rollout">Incluya las verificaciones que un operador necesita después del despliegue</h3>
+<p>Un responsable de publicación debe saber qué versión atendió una llamada con un incidente reportado y qué fixture podría reproducirlo. Mantenga un manifiesto de ejecución legible con la versión candidata, la ruta de la llamada, la dependencia afectada y una referencia aprobada al resultado. Si un problema involucró datos que una audiencia amplia no debería ver, registre el límite del evento y deje la evidencia subyacente disponible solo para el revisor autorizado. Reproduzca el problema con un caso inventado antes de agregarlo al conjunto de pruebas continuo.</p>
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3 id="how-is-a-smoke-test-different-from-a-regression-test">¿En qué se diferencia una prueba de humo de una prueba de regresión?</h3>
+<p>Una prueba de humo verifica si una ruta esencial funciona después de un cambio. Una prueba de regresión verifica el comportamiento que debe seguir siendo correcto, a menudo incluido un fallo histórico conocido. Un caso crítico de reserva o de transferencia puede pertenecer a ambos conjuntos.</p>
+<h3 id="can-a-mock-prove-that-a-phone-transfer-works">¿Puede un mock demostrar que una transferencia telefónica funciona?</h3>
+<p>Un mock puede verificar el argumento de destino y la respuesta de la aplicación ante un resultado simulado. Confirme la transferencia en la ruta telefónica autorizada observando la respuesta del destino y el audio bidireccional.</p>
+<h3 id="should-a-later-pass-clear-an-earlier-failed-run">¿Debe un resultado correcto posterior borrar una ejecución fallida anterior?</h3>
+<p>Conserve ambos resultados. Un fallo intermitente puede importar en producción. Determine si la variación provino de la prueba, el entorno, una dependencia o el agente antes de modificar la decisión de publicación.</p>
+<h3 id="what-should-i-run-after-a-prompt-change">¿Qué debería ejecutar después de un cambio de prompt?</h3>
+<p>Empiece con los casos de política y de confirmación afectados. Agregue casos de regresión para los fallos conocidos y pruebas de audio o telefonía si el cambio puede afectar las interrupciones, la comprensión de la persona que llama o las transferencias.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Converse sobre cómo su equipo publicará los cambios de flujo de trabajo</h2>
+<p>Traiga un cambio reciente, su posible efecto en quien llama y a la persona que puede pausar un despliegue. <a href="/demo">Converse sobre los requisitos de publicación de su flujo de trabajo de voz personalizado</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Referencias</h2>
+<ul>
+<li id="source-mock">Efectos secundarios de mock y aserciones de llamadas usados en el ejemplo. <a href="https://docs.python.org/3/library/unittest.mock.html">unittest.mock — mock object library</a>
+</li>
+<li id="source-flak">Estado no controlado y aislamiento en conjuntos de pruebas automatizadas. <a href="https://docs.pytest.org/en/stable/explanation/flaky.html">Flaky tests</a>
+</li>
+<li id="source-can">Publicaciones limitadas y comparaciones con un control estable. <a href="https://sre.google/workbook/canarying-releases/">Canarying Releases</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Temas">
+<li>Pruebas de regresión</li>
+<li>Pruebas de humo</li>
+<li>CI/CD</li>
+<li>Lanzamientos canary</li>
+<li>Reversión</li>
+</ul></article>
+</main>

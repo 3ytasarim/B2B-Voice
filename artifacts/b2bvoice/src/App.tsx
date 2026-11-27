@@ -79,6 +79,11 @@ function Router() {
         <Route path="/legal-notice" component={LegalNotice} />
         <Route path="/demo" component={DemoPage} />
         <Route path="/blog" component={BlogPage} />
+        {/* Translated blog: /de/... and /es/... (the page reads its language from the URL) */}
+        <Route path="/de/blog" component={BlogPage} />
+        <Route path="/es/blog" component={BlogPage} />
+        <Route path="/de/:slug" component={BlogPostPage} />
+        <Route path="/es/:slug" component={BlogPostPage} />
         <Route path="/404" component={NotFound} />
         <Route path="/:slug" component={BlogPostPage} />
         <Route component={NotFound} />

@@ -1,0 +1,361 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">Wie geht Sprach-KI mit fehlenden Wörtern und unregelmäßigem Sprechtempo um?</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Ein Sprachagent kann mit fehlenden Wörtern und unregelmäßigem Sprechtempo umgehen, indem er einen unfertigen Gedanken abwartet, nach einem fehlenden Detail fragt oder bestätigt, was er verstanden hat, bevor er eine Aktion ausführt. Die richtige Korrektur hängt davon ab, wo das Detail verloren gegangen ist. Eine Pause kann eine zu frühe Antwort auslösen. Telefonaudio kann einen Teil eines Wortes verlieren. Ein Spracherkenner kann ein Wort auslassen, das deutlich angekommen ist. Selbst ein korrektes Transkript kann zum falschen Termin führen, wenn das System ein Datum beibehält, das die anrufende Person bereits korrigiert hat.</p>
+<p>Wenn B2B Voice einen individuellen Terminworkflow konzipiert, legt das Unternehmen fest, welche Felder bestätigt werden müssen und was das Personal tun soll, wenn eine anrufende Person sie nicht deutlich nennen kann. Eine Straßenadresse für einen Einsatzauftrag erfordert eine stärkere Prüfung als die Frage, ob die anrufende Person das Gespräch mit „Hallo“ begonnen hat.</p>
+<h2 id="key-takeaways">Wichtigste Erkenntnisse</h2>
+<ul>
+<li>Verfolgen Sie ein fehlendes Detail durch Aufnahme, Übertragung, Erkennung, Gesprächszustand und die daraus folgende geschäftliche Aktion.</li>
+<li>Vergleichen Sie, was die anrufende Person gemeint hat, mit dem exakten Namen, Datum oder der exakten Adresse, die die Aktion benötigt.</li>
+<li>Klären Sie das kleinste unsichere Feld und lesen Sie folgenreiche Korrekturen vor, bevor Sie sie übernehmen.</li>
+<li>Prüfen Sie nach der Aktion den Kalender, den Einsatzdatensatz oder das andere System, das das Personal tatsächlich verwendet.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#where-a-word-can-disappear-when-voice-ai-drops-words">Wo ein Wort verloren gehen kann, wenn Sprach-KI Wörter verliert</a></li>
+<li><a href="#how-to-repair-a-conversation-before-an-action">Wie Sie ein Gespräch vor einer Aktion korrigieren</a></li>
+<li><a href="#b2b-voice-speech-robustness-test-matrix">B2B Voice Testmatrix zur Sprachrobustheit</a></li>
+<li><a href="#what-to-record-when-a-customer-reports-a-dropped-word">Was Sie festhalten sollten, wenn ein Kunde ein fehlendes Wort meldet</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="where-a-word-can-disappear-when-voice-ai-drops-words">Wo ein Wort verloren gehen kann, wenn Sprach-KI Wörter verliert</h2>
+<h3 id="the-microphone-and-the-phone-path">Das Mikrofon und der Telefonweg</h3>
+<p>Beginnen Sie mit dem Audiomaterial, das das System tatsächlich erreicht hat. Wer zu sprechen beginnt, während ein Prompt startet oder ein Audio-Gate sich öffnet, kann die erste Silbe verlieren, bevor der Erkennungsdienst überhaupt etwas empfängt. Eine verrauschte Verbindung kann ein aufgenommenes Wort schwer verständlich machen, selbst wenn jedes Paket ankommt. Hören Sie sich die Aufnahme auf der Empfangsseite an und vergleichen Sie sie mit einer autorisierten Referenzaufnahme oder einer kontrollierten Wiedergabe über dasselbe Mikrofon. Mit einem Transkript allein können beide Ursachen identisch aussehen.</p>
+<p>Paketverlust bedeutet, dass ein Teil des übertragenen Audios nicht angekommen ist. Jitter beschreibt Schwankungen im zeitlichen Eintreffen der Pakete. Ein Empfänger kann zu früh oder in falscher Reihenfolge eintreffende Pakete puffern, um die Wiedergabe zu glätten. Ein Paket, das nach seinem geplanten Wiedergabezeitpunkt eintrifft, kann dennoch unbrauchbar sein. Prüfen Sie die jeweils relevante Teilstrecke des Anrufs. Netzbetreiber, Media Gateway und Erkennungsdienst können unterschiedliche Versionen des Audios sehen, insbesondere wenn ein Gateway einen Stream beendet und einen neuen startet. Sequenznummern und Berichte des Real-time Transport Protocol (RTP) können helfen, Lücken und Zeitschwankungen in einem bestimmten Stream zu lokalisieren. Ein ausgelassenes Wort in einer Adresse können sie allein nicht identifizieren. <a class="b2bv3-ref" href="#source-rtp">IETF RFC 3550</a></p>
+<p>Sofern der eingesetzte Codec und der Empfänger es unterstützen, kann die Paketverlust-Verschleierung (Packet Loss Concealment) eine Lücke mit plausiblem Audio füllen, um eine hörbare Unterbrechung zu verringern. Die Opus-Spezifikation beschreibt Verschleierung und in bestimmten Modi auch Vorwärtsfehlerkorrektur. Die anrufende Person kann einen glatteren Stream hören, obwohl dem Empfänger für eine bestimmte Hausnummer weiterhin verlässliche Belege fehlen. Fragen Sie die Nummer erneut ab, wenn eine fehlende Ziffer einen Techniker zum falschen Ort schicken würde. <a class="b2bv3-ref" href="#source-opus">IETF RFC 6716</a></p>
+<h3 id="the-recognizer-and-the-boundary-between-turns">Der Spracherkenner und die Grenze zwischen Sprecherwechseln</h3>
+<p>Bei der Evaluierung der Spracherkennung eines KI-Sprachagenten wird ein fehlendes Wort in einem abgeglichenen Transkript als Auslassung (Deletion) bezeichnet. Die automatische Spracherkennung (ASR) erzeugt das Transkript, das verglichen wird. Eine Substitution ersetzt ein gesprochenes Wort durch ein anderes Wort. Eine Insertion fügt ein Wort hinzu, das die anrufende Person nicht gesagt hat. Die Bezeichnung Deletion beschreibt das Transkript und die Referenz. Sie sagt für sich genommen nicht, ob Aufnahme, Übertragung, Segmentierung oder Erkennung den Fehler verursacht hat. Vergleichen Sie das endgültige Transkript mit dem tatsächlichen Audio, das der Erkenner verarbeiten durfte, bevor Sie Auslassungsfehler der Spracherkennung dem Erkenner zuschreiben. <a class="b2bv3-ref" href="#source-wer">Microsoft Speech documentation</a></p>
+<p>Die Sprachaktivitätserkennung (Voice Activity Detection, VAD) schätzt, wann Sprache beginnt und endet. Die akustische Endpunkterkennung kann eine Stillephase als Hinweis nutzen, dass die anrufende Person fertig ist. Die semantische Endpunkterkennung berücksichtigt zusätzlich, ob die Äußerung im Kontext vollständig klingt. „Können Sie meinen Termin verschieben auf …“ kann nach einer Pause unvollständig bleiben, auch wenn der Sprachaktivitätsdetektor die Stille korrekt meldet. Auch wer „Dienstag“ sagt, zögert und dann „eigentlich Donnerstag“ ergänzt, kann vollständig klingen, bevor die Korrektur beginnt. OpenAI dokumentiert für seine Realtime API sowohl akustische als auch semantische Einstellungen zur Erkennung des Äußerungsendes. Ihr Verhalten veranschaulicht die Designentscheidungen, die in dieser Implementierung zur Verfügung stehen. <a class="b2bv3-ref" href="#source-vad">OpenAI Realtime VAD documentation</a></p>
+<p>Nutzen Sie Audio von der Anruferseite, um den Zielkonflikt zu messen. Längeres Warten kann ein Zögern bewahren, aber einen bereits abgeschlossenen Austausch träge wirken lassen. Zu frühes Antworten kann dazu führen, dass zwei Personen gleichzeitig sprechen. Testen Sie Pausen, Füllwörter, wiederholte Ansätze und unvollständige Sätze aus den Arten von Anrufen, die das Unternehmen erhält. Lassen Sie eine Prüferin oder einen Prüfer den erwarteten Abschlusspunkt unabhängig vom Ereignis des Detektors markieren. Der Leitfaden zu <a href="/de/ai-voice-agent-turn-taking-interruptions">Sprecherwechsel und Umgang mit Unterbrechungen</a> erläutert, wie diese Ereignisse die Wiedergabe und das Barge-in-Verhalten steuern.</p>
+<h3 id="conversation-state-and-the-business-record">Gesprächszustand und geschäftlicher Datensatz</h3>
+<p>Ein Agent kann eine Umbuchungsanfrage erkennen und dennoch das erste Datum beibehalten. Vergleichen Sie das endgültige Transkript mit dem extrahierten Slot, dem Dialogzustand nach der Korrektur, der ausgehenden Operation und dem gespeicherten Datensatz. Sagt der Sprachagent Donnerstag und sendet Dienstag an den Kalender, prüfen Sie die Argumentzuordnung und veralteten Zustand, bevor Sie die Spracherkennung anpassen. Sendet das Tool Donnerstag und ein anderer Datensatz zeigt Dienstag, prüfen Sie die Integration, die Zeitzone und die Abfrage, mit der der Schreibvorgang verifiziert wurde.</p>
+<p>In einem kaskadierten System sind Spracherkennung, Dialoglogik und Text-to-Speech getrennte Verarbeitungsschritte. Sofern verfügbar, helfen ihre Zwischenergebnisse dabei, die Schnittstelle zu bestimmen, an der ein Detail verloren ging oder verändert wurde. Ein audio-natives System kann eingehendes Audio interpretieren, ohne dasselbe sichtbare Transkript als einzige Zwischendarstellung zu verwenden. Ein Transkript, das parallel zur Sitzung erzeugt wird, kann von einem separaten Erkenner stammen. Beurteilen Sie ein solches System anhand des Audios, das auf jeder Teilstrecke zu hören war, der beobachtbaren Tool-Ereignisse und des endgültigen geschäftlichen Datensatzes. Der <a href="/de/how-ai-voice-agents-work">Leitfaden zur Architektur von Sprachagenten</a> erklärt die beiden Ansätze.</p>
+<h2 id="how-to-repair-a-conversation-before-an-action">Wie Sie ein Gespräch vor einer Aktion korrigieren</h2>
+<h3 id="ask-for-the-smallest-detail-that-changes-the-outcome">Fragen Sie nach dem kleinsten Detail, das das Ergebnis verändert</h3>
+<p>Hat der Agent Stadt und Straße verstanden, aber die Wohnungsnummer verpasst, fragen Sie nach der Wohnungsnummer. Ein Prompt, der eine ganze Adresse wiederholt, bietet mehr Gelegenheiten, dass die anrufende Person Angaben ändert oder auslässt. In einem fiktiven Einsatzgespräch könnte der Agent sagen: „Ich habe Linden Spur in Riverton. Wie lautet die Wohnungsnummer?“ Ist die Straße selbst unsicher, fragen Sie nach dem Straßennamen oder dessen Schreibweise, bevor Sie fortfahren. Eine verifizierte Abfrage kann die verfügbaren Optionen eingrenzen, sofern die anrufende Person bestätigt, welche zutrifft.</p>
+<p>Ein Name hat eine andere Fehlerart. „Mara Bell“ und „Mara Dell“ können zu zwei Datensätzen führen, die beide plausibel klingen. Bestätigen Sie die Schreibweise oder verwenden Sie ein anderes Feld, das der Workflow zulässt. Ein hoher Konfidenzwert der Erkennung allein berechtigt nicht zu einer Kontozuordnung. Wenn der Dienst die erforderliche Identität oder das erforderliche Detail nicht feststellen kann, bietet eine Übergabe an eine Mitarbeiterin oder einen Mitarbeiter oder eine ausdrücklich als offen gekennzeichnete Anfrage dem Unternehmen ein behebbares Ergebnis.</p>
+<h3 id="let-a-correction-supersede-an-old-value">Eine Korrektur den alten Wert ersetzen lassen</h3>
+<p>Nehmen wir einen fiktiven Servicetermin. Die anrufende Person sagt: „Tragen Sie mich für Freitagnachmittag ein … Entschuldigung, Donnerstagnachmittag, im Büro West.“ Ein Agent, der schon während des Zuhörens eine Suche für Freitag startet, kann sich dennoch sicher erholen, wenn diese erste Aktion nur lesend ist, das Ergebnis verworfen wird und die Anfrage für Donnerstag das ist, was die anrufende Person bestätigt. Wiederholen Sie vor der Aktualisierung des Kalenders Donnerstag, die gewählte Uhrzeit und den Standort West. Prüfen Sie nach dem Schreibvorgang den Termin anhand des Buchungsdatensatzes, den das Büro sieht.</p>
+<p>Unterbricht die anrufende Person das Vorlesen der Bestätigung mit „Ich meinte das Büro Ost“, verwenden Sie den zuvor bestätigten Standort nicht mehr. Suchen Sie den verfügbaren Termin im neuen Büro und fragen Sie erneut nach der Bestätigung. Ist bereits ein Schreibvorgang erfolgt, folgen Sie dem Änderungs- oder Stornierungsverfahren des Unternehmens. Ein überstürzter zweiter Schreibvorgang kann dazu führen, dass das Personal zwei Reservierungen hat und die anrufende Person widersprüchliche Bestätigungen erhält.</p>
+<p>Unregelmäßiges Sprechtempo kann auch Anrufende betreffen, die stottern oder einen Satz neu ansetzen. In einer Studie zu Sprachassistenten verglichen Forschende Erkennungseinstellungen anhand von Sprache von Menschen, die stottern, und verwendeten eine Transkription der beabsichtigten Sprache als Zielwert. Das ist eine nützliche Unterscheidung, wenn ein Test sowohl eine Aufzeichnung der tatsächlich gesprochenen Wörter als auch eine Annotation der beabsichtigten Aktion der anrufenden Person benötigt. Die Studie hat ihre eigenen Teilnehmenden und ihr eigenes Erkennungs-Setup untersucht. Ein produktiver Buchungsablauf benötigt weiterhin Tests mit den eigenen Anrufbedingungen. <a class="b2bv3-ref" href="#source-dys">Mitra and colleagues</a></p>
+<h2 id="b2b-voice-speech-robustness-test-matrix">B2B Voice Testmatrix zur Sprachrobustheit</h2>
+<p>Beginnen Sie mit einem erfundenen Referenzfall, den eine unabhängige Prüferin oder ein unabhängiger Prüfer nachvollziehen kann. Führen Sie ihn über klares Audio und über den betroffenen Telefonweg aus, oder nehmen Sie eine dokumentierte Änderung an einer Testaufnahme vor. Bewahren Sie die Referenzwörter, die beabsichtigten Feldwerte und die zulässige Aktion getrennt auf. Vergleichen Sie über mehrere Releases hinweg dieselben Bedingungen, bevor Sie einen Unterschied einer Endpunkt-Einstellung oder einem Modellwechsel zuschreiben.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Fiktive Fälle zur Sprachrobustheit und erwartete Korrekturen</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Fiktive Testbedingung</th>
+<th scope="col">Erwartetes Verhalten des Agenten</th>
+<th scope="col">Zu prüfende Belege</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Der Anruf verliert einen Teil der Wohnungsnummer in einer Einsatzadresse</th>
+<td>Die Wohnungsnummer erneut erfragen. Den Einsatzauftrag offen halten, bis sie eindeutig ist.</td>
+<td>Empfangenes Audio, relevante Medienereignisse, Rückfrage und gespeicherte Einsatzadresse.</td>
+</tr>
+<tr class="even">
+<th scope="row">Das endgültige Transkript lässt einen hörbaren Straßennamen aus</th>
+<td>Die anrufende Person nach der Straße fragen. Prüfen, ob das fehlende Wort im übermittelten Segment enthalten war.</td>
+<td>Abgeglichenes Referenzaudio, Segmentgrenze, endgültiges Transkript und Tool-Argumente.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Nach „könnten Sie es verschieben auf“ entsteht eine lange Pause</th>
+<td>Die anrufende Person ausreden lassen oder sie einladen, das Datum zu nennen.</td>
+<td>Annotierte Grenze des Sprecherwechsels, Zeitpunkt der Wiedergabe durch den Agenten und Ausbleiben eines voreiligen Schreibvorgangs.</td>
+</tr>
+<tr class="even">
+<th scope="row">Die anrufende Person ändert gegen Ende der Äußerung Dienstag in Donnerstag</th>
+<td>Das offene Datum auf Donnerstag setzen und es vor dem Schreiben bestätigen lassen.</td>
+<td>Zustandsübergang, bestätigtes Datum, Tool-Eingabe und der Kalendereintrag.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Zwei ähnliche Namen passen zu verschiedenen Konten</th>
+<td>Um zulässige Klärung bitten oder eskalieren, ohne einen der beiden Datensätze preiszugeben.</td>
+<td>Ergebnis des Datensatzabgleichs, Verifizierungsentscheidung und Ausbleiben einer nicht autorisierten Aktion.</td>
+</tr>
+<tr class="even">
+<th scope="row">Die anrufende Person unterbricht eine Bestätigung mit einem neuen Bürostandort</th>
+<td>Den alten Standort als überholt behandeln. Vor einer Buchung das gewünschte Büro verifizieren.</td>
+<td>Beide Audiorichtungen, Abbruch der Wiedergabe, Standortzustand und Buchungsbeleg.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Überlappende Hintergrundgespräche liefern eine andere Adresse</th>
+<td>Die gewünschte Adresse mit der primär anrufenden Person bestätigen.</td>
+<td>Bewertungen der Prüfer, Bestätigungsrunde und der endgültige Einsatzdatensatz.</td>
+</tr>
+<tr class="even">
+<th scope="row">Eine deutlich gesprochene Anfrage erreicht den erwarteten Pfad</th>
+<td>Die Anfrage lösen, ohne über die vereinbarte Richtlinie hinaus unnötig zu bestätigen.</td>
+<td>Saubere Referenz, Aufwand der anrufenden Person, validierte Angaben und resultierender Zustand.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Eine Rückfrage kann ein angemessenes Ergebnis sein, selbst wenn der Agent die Aufgabe nicht sofort abschließen kann. Eine Anfrage, die nach einem ungeklärten Namen offen bleibt, sollte als offen sichtbar sein. Ein Test benötigt außerdem Kontrollfälle mit klarem Audio, damit eine Änderung, die alle zum Wiederholen auffordert, nicht durchgehend als besser erscheint. Dokumentieren Sie, ob sich falsch verstandene Wörter, vorzeitige Sprecherwechsel, übermäßige Rückfragen und falsche Schreibvorgänge in jedem Szenario verändert haben.</p>
+<h3 id="keep-a-comparable-control-for-voice-ai-speech-robustness">Eine vergleichbare Kontrolle für die Sprachrobustheit von Sprach-KI beibehalten</h3>
+<p>Wenn Sprach-KI während einer Buchung Wörter verloren hat, bestimmen Sie den ersten Punkt, an dem sich das Detail verändert hat, und isolieren Sie jeweils eine Variable. Spielen Sie vor und nach der Änderung der Endpunkt-Richtlinie einen festen Satz über dieselbe Testroute ab. Vergleichen Sie das empfangene Audio, das akzeptierte Segment und die bestätigten Felder. Fügen Sie anschließend nicht vorgegebene Varianten hinzu, um zu sehen, ob die Korrektur auch funktioniert, wenn Sprechende andere Formulierungen verwenden. Der <a href="/de/multilingual-voice-agent-testing">Leitfaden zum mehrsprachigen Testen</a> erläutert, wie Sie Hörerinnen und Hörer gewinnen und sprachspezifische Fälle entwerfen. Setzen Sie eine Prüferin oder einen Prüfer ein, die oder der erkennen kann, wo die anrufende Person aufgehört hat und welche Details hörbar waren.</p>
+<p>Ein KI-Sprachagent, der Pausen behandelt, braucht eine angemessene Reaktion, wenn eine Pause beabsichtigt ist, und eine andere, wenn die Äußerung unvollständig ist. Der praktische Test für die sprachliche Klärung durch einen Sprachagenten ist, ob die anrufende Person das fehlende Detail nennen und dort weitermachen kann, wo sie aufgehört hat.</p>
+<h2 id="what-to-record-when-a-customer-reports-a-dropped-word">Was Sie festhalten sollten, wenn ein Kunde ein fehlendes Wort meldet</h2>
+<p>Speichern Sie die zulässigen Belege, die die Frage zum Vorfall beantworten. Nützliche Ereignisse sind der Beginn der Audioaufnahme, der Teil des Anrufs, den das System als abgeschlossenen Sprecherwechsel behandelt hat, die finalisierte Erkennungsausgabe (falls zutreffend), das bestätigte Feld, die an die Integration gesendete Anfrage und die Referenz auf den resultierenden Datensatz. Korrelieren Sie diese nach Möglichkeit auf einer gemeinsamen Sitzungszeitleiste. Kennzeichnen Sie fehlendes Audio oder einen nicht verfügbaren Zwischenzustand, damit die nächste Prüferin oder der nächste Prüfer erkennen kann, was ungeklärt bleibt.</p>
+<p>Trennen Sie den technischen Vorfall von seiner geschäftlichen Auswirkung. Ein abgeschnittener Satz, der zu einer Rückfrage führte, kann die anrufende Person eine zusätzliche Runde gekostet haben. Ein korrigiertes Datum, das nie im Kalender ankam, kann dazu führen, dass der Empfang den Kunden kontaktieren und den Datensatz berichtigen muss. Teams, die den zweiten Fall untersuchen, können <a href="/de/how-voice-ai-accuracy-is-measured">Genauigkeitsmaße für Sprache und Aufgaben</a> nutzen, um Transkript, extrahiertes Datum und verifizierte Buchung als getrennte Ergebnisse auszuweisen.</p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="can-a-voice-agent-recover-a-word-that-was-never-captured">Kann ein Sprachagent ein Wort wiederherstellen, das nie erfasst wurde?</h3>
+<p>Der Kontext kann ein wahrscheinliches Wort nahelegen. Verändert das fehlende Wort einen Termin, eine Adresse oder eine Kontoaktion, braucht der Agent eine erneute Bestätigung oder eine andere autorisierte Quelle, bevor er es verwendet.</p>
+<h3 id="why-did-the-agent-reply-while-the-caller-was-still-thinking">Warum hat der Agent geantwortet, während die anrufende Person noch nachdachte?</h3>
+<p>Ein akustischer Endpunktdetektor kann eine Pause als Ende des Sprecherwechsels werten. Auch ein semantischer Detektor kann eine Wendung falsch einschätzen, die vollständig klingt. Vergleichen Sie den erkannten Endpunkt mit dem tatsächlichen Abschlusspunkt der anrufenden Person und dem Beginn der Wiedergabe durch den Agenten.</p>
+<h3 id="what-if-the-transcript-shows-the-right-date-and-the-booking-shows-the-wrong-date">Was ist, wenn das Transkript das richtige Datum zeigt und die Buchung das falsche?</h3>
+<p>Prüfen Sie in dieser Reihenfolge den aktuellen Slot des Agenten, die Tool-Argumente, die Zeitzonenumrechnung und den Kalendereintrag. Der erste Punkt, an dem diese voneinander abweichen, zeigt Ihnen, welchen Teil des Workflows Sie untersuchen sollten.</p>
+<h3 id="should-an-agent-repeat-every-name-and-address">Sollte ein Agent jeden Namen und jede Adresse wiederholen?</h3>
+<p>Orientieren Sie sich an den Bestätigungsregeln des Workflows und an den Folgen eines Fehlers. Ein ungewöhnlicher Name, der mit einem Konto verknüpft ist, oder eine Wohnungsnummer, die für den Einsatz verwendet wird, verdient eine gezielte Prüfung. Routineangaben können einer leichteren Bestätigungsrichtlinie folgen, wenn das Unternehmen dieses Risiko akzeptiert.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Einen Buchungs- oder Einsatzworkflow prüfen</h2>
+<p>Bringen Sie einen Anruf mit, den Ihr Team sicher bearbeiten können muss, die Angaben, die das Personal verifiziert, und den Fallback, den es tatsächlich unterstützen kann. <a href="/demo">Besprechen Sie einen individuellen Buchungs- oder Einsatzworkflow</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-rtp">RTP-Signalisierungskontext, Paketsequenznummern und Empfangsberichte. <a href="https://www.rfc-editor.org/info/rfc3550/">RTP: A Transport Protocol for Real-Time Applications</a>
+</li>
+<li id="source-opus">Verhalten des Opus-Codecs, In-Band-Redundanz und Paketverlust-Verschleierung. <a href="https://www.rfc-editor.org/info/rfc6716/">Definition of the Opus Audio Codec</a>
+</li>
+<li id="source-wer">Fehlerklassen bei der Worterkennung und Vergleich mit der Referenz. <a href="https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-custom-speech-evaluate-data?pivots=ai-foundry-portal">Test accuracy of a custom speech model</a>
+</li>
+<li id="source-vad">Ein anbieterspezifisches Beispiel für akustische und semantische Erkennung des Äußerungsendes. <a href="https://developers.openai.com/api/docs/guides/realtime-vad">Voice activity detection (VAD)</a>
+</li>
+<li id="source-dys">Eine Interspeech-Studie zur Erkennung durch Sprachassistenten bei dysfluenter Sprache mit Referenzen der beabsichtigten Sprache. <a href="https://www.isca-archive.org/interspeech_2021/mitra21_interspeech.pdf">Analysis and Tuning of a Voice Assistant System for Dysfluent Speech</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>Spracherkennung</li>
+<li>Sprachaktivitätserkennung</li>
+<li>Gesprächskorrektur</li>
+<li>Telefonaudio</li>
+</ul></article>
+</main>

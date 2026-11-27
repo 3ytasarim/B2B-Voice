@@ -3,6 +3,9 @@
 // write the metadata into the first HTML response, and by usePageMeta() to
 // keep it correct during client-side navigation.
 
+import { LOCALES, LOCALE_INFO, localizePath, parseLocale, type Locale } from "@/lib/i18n";
+import { BLOG_UI } from "@/lib/blogUi";
+
 export const SITE_URL = "https://b2b-voice.com";
 export const SITE_NAME = "B2BVoice";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
@@ -10,7 +13,7 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
 /** Per-page social card (1200x630), generated at build time by scripts/prerender.mjs. */
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
-export const ogFileFor = (path: string) => (path === "/" ? "home" : path.slice(1));
+export const ogFileFor = (path: string) => (path === "/" ? "home" : path.slice(1).split("/").join("-"));
 export const ogImageFor = (path: string) => `${SITE_URL}/og/${ogFileFor(path)}.jpg`;
 
 export interface PageMeta {
@@ -22,6 +25,10 @@ export interface PageMeta {
   noindex?: boolean;
   /** ISO dates, articles only. */
   published?: string;
+  /** Language of the page (translated blog); English when absent. */
+  lang?: Locale;
+  /** hreflang alternates, incl. x-default, for pages that exist in several languages. */
+  alternates?: { hreflang: string; href: string }[];
 }
 
 const HOME_BASE: PageMeta = {
@@ -84,8 +91,34 @@ const STATIC_BASE: PageMeta[] = [
   },
 ];
 
+/** hreflang links (every language + x-default = English) for a page that exists in all three languages. */
+export function alternatesFor(restPath: string): { hreflang: string; href: string }[] {
+  const links = LOCALES.map((l) => ({ hreflang: LOCALE_INFO[l].hreflang, href: `${SITE_URL}${localizePath(restPath, l) === "/" ? "/" : localizePath(restPath, l)}` }));
+  return [...links, { hreflang: "x-default", href: `${SITE_URL}${restPath}` }];
+}
+
 /** Every static page uses its own social card. */
-export const STATIC_PAGES: PageMeta[] = STATIC_BASE.map((p) => ({ ...p, ogImage: ogImageFor(p.path) }));
+export const STATIC_PAGES: PageMeta[] = STATIC_BASE.map((p) => ({
+  ...p,
+  ogImage: ogImageFor(p.path),
+  // the English blog index is one of three language versions
+  ...(p.path === "/blog" ? { lang: "en" as Locale, alternates: alternatesFor("/blog") } : {}),
+}));
+
+/** Blog index in the given language. English is the entry in STATIC_PAGES. */
+export function blogIndexMeta(locale: Locale): PageMeta {
+  if (locale === "en") return STATIC_PAGES.find((p) => p.path === "/blog")!;
+  const path = localizePath("/blog", locale);
+  return {
+    path,
+    title: BLOG_UI[locale].indexTitle,
+    description: BLOG_UI[locale].indexDescription,
+    ogType: "website",
+    ogImage: ogImageFor(path),
+    lang: locale,
+    alternates: alternatesFor("/blog"),
+  };
+}
 export const HOME_META: PageMeta = STATIC_PAGES[0];
 
 export const NOT_FOUND_META: PageMeta = {
@@ -123,9 +156,12 @@ export function postMeta(post: {
   /** Approved <title> / meta description when they differ from the H1 / archive excerpt. */
   seoTitle?: string;
   metaDescription?: string;
-}): PageMeta {
+}, locale: Locale = "en"): PageMeta {
+  const path = localizePath(`/${post.slug}`, locale);
   return {
-    path: `/${post.slug}`,
+    path,
+    lang: locale,
+    alternates: alternatesFor(`/${post.slug}`),
     title: post.seoTitle ?? `${post.title} | ${SITE_NAME}`,
     description: post.metaDescription ?? snippet(post.excerpt),
     ogType: "article",
@@ -133,7 +169,7 @@ export function postMeta(post: {
       ? post.coverImage.startsWith("http")
         ? post.coverImage
         : `${SITE_URL}${post.coverImage}`
-      : ogImageFor(`/${post.slug}`),
+      : ogImageFor(path),
     published: post.date,
   };
 }

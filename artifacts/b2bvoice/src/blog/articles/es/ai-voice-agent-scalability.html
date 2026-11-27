@@ -1,0 +1,354 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Saltar al artículo</a><header><h1 id="article-title">Cómo evaluar la escalabilidad de un agente de voz con IA en empresas en crecimiento</h1>
+<p class="b2bv3-byline">Por B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Para evaluar la escalabilidad de un agente de voz con IA, rastree qué debe ampliarse a medida que crecen las llamadas. El operador de telefonía debe admitir las llamadas, el sistema debe mantener cada conversación en vivo, las integraciones con los sistemas del negocio deben seguir el ritmo y debe haber personal disponible para los escalamientos. Revise los límites de falla y el plan de recuperación de cada ubicación. Agregar procesos de trabajo de la aplicación puede ayudar cuando la aplicación es el recurso limitado. Las cuotas del operador, los límites del calendario o una cola sin personal requieren sus propias soluciones.</p>
+<p>B2B Voice define el alcance de las implementaciones personalizadas de agentes de voz en torno a los recorridos de las personas que llaman y al modelo operativo que el cliente planea atender. Antes de extender el servicio a más oficinas, identifique qué reglas puede compartir cada ubicación, qué registros y agendas son específicos de cada sede y quién responde cuando la vía automatizada no puede concluir la llamada.</p>
+<h2 id="key-takeaways">Puntos clave</h2>
+<ul>
+<li>Localice la restricción más estrecha entre el operador de telefonía, el flujo de medios, el modelo, la base de datos, las integraciones y el personal.</li>
+<li>Decida dónde residen la titularidad de las sesiones y el estado de recuperación antes de escalar horizontalmente.</li>
+<li>Defina qué debe ocurrir cuando falla una dependencia compartida o una ubicación.</li>
+<li>Haga que el despliegue, la lista de escalamiento y el plan de reversión puedan ser revisados por los equipos responsables de cada uno.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">En este artículo</p>
+<ol>
+<li><a href="#trace-capacity-across-the-whole-caller-journey">Rastree la capacidad a lo largo de todo el recorrido de la llamada</a></li>
+<li><a href="#plan-overload-behavior-and-fault-isolation">Planifique el comportamiento ante sobrecarga y el aislamiento de fallas</a></li>
+<li><a href="#scale-staffed-coverage-across-locations">Escale la cobertura con personal en todas las ubicaciones</a></li>
+<li><a href="#b2b-voice-voice-agent-scalability-readiness-checklist">Lista de verificación de B2B Voice para evaluar la preparación de un agente de voz para escalar</a></li>
+<li><a href="#prepare-recovery-before-adding-a-location">Prepare la recuperación antes de añadir una ubicación</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+<li><a href="#references-heading">Referencias</a></li>
+</ol></nav><h2 id="trace-capacity-across-the-whole-caller-journey">Rastree la capacidad a lo largo de todo el recorrido de la llamada</h2>
+<p>El escalamiento de un agente de voz con IA comienza con un mapa de dependencias. Siga una llamada entrante desde el operador de telefonía y la ruta telefónica hasta el audio en streaming, el procesamiento de voz, la inferencia de diálogo o en tiempo real y la herramienta que actualiza el sistema del negocio. Siga las llamadas sin resolver hasta las colas atendidas por personas. Enumere los responsables y los límites de cada etapa. Una revisión de la infraestructura de IA de voz también debe indicar qué evidencia existe para cada límite. El documento de cuotas de un proveedor, una prueba bien definida y el calendario de una cola con personal responden preguntas distintas.</p>
+<p>Un operador de telefonía puede limitar por separado el inicio de llamadas y las sesiones activas. Un servicio de medios puede tener límites en transmisiones activas, sockets o recursos de los procesos de trabajo. Un servicio de modelos puede tener sus propios límites de sesiones o de frecuencia. El sistema de gestión de relaciones con los clientes (CRM) o el calendario podría imponer límites de la interfaz de programación de aplicaciones (API) por cuenta o por endpoint. La descripción que ofrece Twilio de las llamadas por segundo es un ejemplo útil de una política de inicio de llamadas ligada a un producto concreto. Pregunte al operador real qué política se aplica a la ruta, la cuenta y la dirección que usted utilizará. <a class="b2bv3-ref" href="#source-cps">Glosario de CPS de Twilio</a></p>
+<p>Revise los grupos de conexiones a la base de datos, los bloqueos y las solicitudes de registros compartidos. Aumentar el número de procesos de trabajo puede generar más consultas simultáneas y sobrecargar una base de datos compartida. Si todos los procesos nuevos leen la misma disponibilidad al mismo tiempo, el servicio de citas sigue necesitando proteger la escritura frente a conflictos o duplicados. Mapee los recursos compartidos antes de concluir que otro grupo de procesos de trabajo resolverá el problema.</p>
+<h3 id="choose-vertical-or-horizontal-scaling-by-component">Elija escalamiento vertical u horizontal según el componente</h3>
+<p>El escalamiento vertical le da más recursos a cada proceso de trabajo de un componente. Puede ser útil cuando un proceso de medios o de la aplicación necesita más memoria o capacidad de procesamiento en los periodos de mayor actividad. El escalamiento horizontal agrega más instancias de trabajo y distribuye la carga entre ellas. Una capa de enrutamiento sin estado suele poder enviar distintas llamadas entrantes a distintos procesos sin compartir mucho estado local. Una sesión de audio en vivo, en cambio, suele tener historial de conversación, tiempos, titularidad del flujo y, posiblemente, una acción de negocio pendiente que debe conservarse.</p>
+<p>Decida qué debe permanecer en el proceso de trabajo actual, qué puede almacenarse en un sistema compartido y qué partes puede recuperar otro proceso. Una regla de afinidad de sesión puede mantener el tráfico conectado con el titular actual durante una llamada. Una ruta de recuperación también puede necesitar un punto de control seguro, un identificador de operación duradero y acceso al contexto aprobado de la persona que llama. Poder colocar una llamada nueva en otro proceso no implica que exista una forma de trasladar una llamada que ya está en curso. Deje clara esa distinción en el diseño de la recuperación.</p>
+<h2 id="plan-overload-behavior-and-fault-isolation">Planifique el comportamiento ante sobrecarga y el aislamiento de fallas</h2>
+<h3 id="separate-traffic-that-can-wait-from-work-that-keeps-a-caller-on-the-line">Separe el tráfico que puede esperar del trabajo que mantiene a la persona en la línea</h3>
+<p>Poner tareas en cola puede suavizar trabajos como generar un resumen interno después de una llamada. Una persona que espera en vivo una consulta al calendario necesita un siguiente paso audible y oportuno. Use esperas acotadas y una alternativa de respaldo (fallback) aprobada para la ruta en vivo. Aplique límites de frecuencia para evitar que un inquilino con mucha actividad o los reintentos repetidos de una integración consuman recursos que necesitan llamadas no relacionadas. Decida a quién se notifica cuando una cola crece o cuando una integración rechaza trabajo. <a class="b2bv3-ref" href="#source-load">Guía de Google SRE sobre sobrecarga</a></p>
+<p>Una organización que opera varias sucursales puede compartir un operador de telefonía y un flujo de trabajo, y aislar al mismo tiempo las credenciales, las colas y las asignaciones de capacidad de cada inquilino. El patrón de mamparos (bulkhead) divide los recursos en particiones para que una falla en un grupo afecte menos a los demás. La guía de arquitectura de Azure explica el equilibrio entre aislamiento y eficiencia de los recursos compartidos. Mantenga los límites visibles en el monitoreo para que quien atienda un incidente pueda saber si la falla afectó a una sede o a toda la implementación. <a class="b2bv3-ref" href="#source-bulk">Guía de Azure sobre bulkhead</a></p>
+<h3 id="review-what-the-autoscaler-actually-observes">Revise qué observa realmente el escalador automático</h3>
+<p>Un escalador automático reactivo observa una métrica seleccionada y modifica el número de réplicas con el tiempo. Una ráfaga de llamadas puede llegar mientras se recopilan las métricas o mientras los procesos nuevos se preparan. Kubernetes documenta que su controlador de escalamiento horizontal funciona de forma periódica y que la disponibilidad (readiness), las métricas y el comportamiento de estabilización influyen en las decisiones de escalamiento. Elija una señal que refleje el cuello de botella real, como las sesiones activas o el trabajo en cola, cuando la plataforma lo admita. Valide por separado el arranque y el comportamiento de drenaje. <a class="b2bv3-ref" href="#source-hpa">Documentación de Kubernetes sobre escalamiento automático</a></p>
+<p>Mantenga observables al mismo tiempo la admisión de llamadas, las sesiones de audio activas, los límites del servicio de modelos, la latencia de las dependencias posteriores, la antigüedad de la cola y las transferencias a personas. Si la antigüedad de la cola aumenta mientras los procesos de la aplicación están inactivos, revise la admisión de llamadas en el origen y la espera en los servicios posteriores. Si la única alerta es el uso elevado del procesador de la aplicación, el equipo podría pasar por alto una restricción del operador de telefonía o una cola receptora sobrecargada. La guía de Site Reliability Engineering de Google describe cómo observar de forma conjunta la latencia, el tráfico, los errores y la saturación. <a class="b2bv3-ref" href="#source-sre">Guía de Google SRE sobre monitoreo</a></p>
+<h2 id="scale-staffed-coverage-across-locations">Escale la cobertura con personal en todas las ubicaciones</h2>
+<p>La escalabilidad técnica describe la capacidad de la ruta para atender una carga adicional dentro de sus restricciones. La escalabilidad operativa incluye si las personas pueden gestionar las excepciones, dar soporte a la implementación y tomar decisiones cuando un servicio falla. Los agentes de voz con IA de alto volumen pueden admitir llamadas más rápido de lo que un equipo pequeño puede atender las transferencias. Antes de ampliar una ruta, obtenga los horarios con personal, la cobertura de habilidades e idiomas, las reglas de días festivos y las responsabilidades de devolución de llamada del destino.</p>
+<p>En un despliegue ficticio de servicios inmobiliarios, tres oficinas comparten un mismo número de entrada y cuentan con equipos de guardia distintos. Una llamada sobre una orden de trabajo existente llega a la política de servicio correcta. Aun así, la lista de escalamiento la enruta a la región operativa equivocada después de que cierra la primera oficina. Más procesos de medios admitirían más llamadas hacia esa misma ruta incorrecta. La revisión de escalabilidad debe verificar los horarios locales, el punto de contacto que recibe la transferencia y quién asume la responsabilidad cuando la oficina correcta no está disponible.</p>
+<p>Para una automatización escalable del centro de llamadas, acuerden qué llamadas pueden permanecer en una cola, cuáles requieren atención inmediata del personal y cuáles deben pasar por una ruta alternativa aprobada. La capacidad del personal incluye el tiempo dedicado a gestionar la transferencia y a cerrar el caso. Que una persona haya sido aceptada en una cola no significa necesariamente que haya recibido ayuda. Use la <a href="/es/ivr-and-conversational-voice-ai-testing">verificación de la ruta telefónica para las transferencias al personal</a> para comprobar el flujo de trabajo receptor antes de añadir tráfico.</p>
+<h3 id="identify-who-can-change-the-system-under-pressure">Identifique quién puede modificar el sistema bajo presión</h3>
+<p>Pregunte a los responsables de cada dependencia qué ocurre si una política o una cuota cambia en el momento de mayor actividad del día. El equipo del operador de telefonía quizá pueda desviar las llamadas nuevas. El equipo del flujo de trabajo quizá pueda pausar una integración no esencial. El gerente de operaciones quizá pueda abrir una ruta alternativa con personal. Indique qué equipo puede realizar cada acción, cómo se autoriza y cómo se entera del estado actual el siguiente responsable. Esto forma parte de la planificación de la capacidad del agente de voz, especialmente cuando las aprobaciones abarcan más de una oficina.</p>
+<p>Los agentes de voz con IA escalables necesitan una forma de evitar que todo el tráfico recuperado se envíe a la misma dependencia débil. Durante las revisiones de incidentes, pregunte qué volvería a provocar la falla, por ejemplo reabrir una ruta sobrecargada o liberar de golpe un cúmulo de reintentos. Revise el plan de recepción de solicitudes con el receptor, incluidos los horarios con personal y el destino autorizado para cualquier trabajo pendiente que quede.</p>
+<h2 id="b2b-voice-voice-agent-scalability-readiness-checklist">Lista de verificación de B2B Voice para evaluar la preparación de un agente de voz para escalar</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Preparación operativa y técnica para escalar</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Área de preparación</th>
+<th scope="col">Evidencia que debe solicitarse</th>
+<th scope="col">Decisión que debería poder tomar el responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Telefonía y medios</th>
+<td>Rutas permitidas, límites de la cuenta, medios bidireccionales y destinos alternativos probados.</td>
+<td>A dónde van las llamadas nuevas si una ruta se llena o falla.</td>
+</tr>
+<tr class="even">
+<th scope="row">Servicios de voz y de modelos</th>
+<td>Límites de sesiones y solicitudes, comportamiento de arranque, contención monitoreada y comportamiento degradado aprobado.</td>
+<td>Qué funciones siguen disponibles cuando una dependencia se ralentiza.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Titularidad de las sesiones y límites de los datos</th>
+<td>Enrutamiento de sesiones, estado de recuperación seguro, reglas de acceso por inquilino y conciliación de escrituras.</td>
+<td>Si conviene drenar una llamada en vivo, mantenerla en la versión anterior o transferirla por una ruta alternativa aprobada.</td>
+</tr>
+<tr class="even">
+<th scope="row">Calendario, CRM y otras integraciones</th>
+<td>Límites documentados, dependencias compartidas, política de reintentos y lectura de verificación en el sistema de registro.</td>
+<td>Qué operaciones pueden ponerse en cola y cuáles requieren una alternativa de respaldo inmediata.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Personal y soporte operativo</th>
+<td>Horarios verificados, destinos con personal, criterios de escalamiento y el equipo responsable durante un incidente.</td>
+<td>Quién recibe a la persona que llama y qué ocurre mientras una cola está cerrada o llena.</td>
+</tr>
+<tr class="even">
+<th scope="row">Despliegue y recuperación ante desastres</th>
+<td>Ruta canary aprobada, plan de reversión, objetivos de recuperación y registro de un ensayo.</td>
+<td>Cómo restablecer el servicio y proteger las transacciones pendientes durante una falla o una reversión.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Clasifique los resultados de la lista de verificación como demostrados, documentados, sin resolver o bloqueados. Una cláusula contractual puede establecer el límite de una cuenta. Un ensayo puede establecer lo que ocurrió durante una falla concreta. La falta de resolución sobre el personal o sobre la titularidad del flujo de trabajo puede bloquear una expansión que, por lo demás, funcione. Mantenga un responsable de decisión con nombre para cada fila.</p>
+<h2 id="prepare-recovery-before-adding-a-location">Prepare la recuperación antes de añadir una ubicación</h2>
+<p>Defina el tiempo de recuperación aceptable y la pérdida de datos tolerable para los registros de negocio pertinentes. Un plan de conmutación por error regional debe distinguir entre enrutar llamadas nuevas y continuar las conversaciones existentes, y debe explicar cómo se conciliarán las escrituras pendientes. Verifique las reglas de acceso y de ubicación que se aplican a cualquier sistema de recuperación. Lo que parece una copia de respaldo disponible solo es útil si puede transportar medios, respetar los límites de cada cuenta y escribir en el registro correcto.</p>
+<p>Use pasos de despliegue reversibles. Envíe un grupo aprobado de llamadas entrantes a una versión nueva, monitoree la evidencia acordada y conserve una vía de regreso a la versión anterior. Mantenga las sesiones activas en la versión adecuada o drénelas cuando sea necesario. Después de una reversión, concilie las reservas y las devoluciones de llamada que ya se hayan iniciado. Una versión anterior puede reabrir la ruta y dejar sin resolver tareas individuales. Un despliegue canary controlado compara una versión candidata con una referencia estable mediante un procedimiento de lanzamiento acotado. <a class="b2bv3-ref" href="#source-can">Guía de Google SRE sobre canary</a></p>
+<p>Use las <a href="/es/voice-agent-load-testing">pruebas de carga controladas para verificar el margen de capacidad</a> una vez que la arquitectura, el personal y las decisiones ante fallas estén definidos. La <a href="/es/ai-voice-agent-reliability">guía de confiabilidad de agentes de voz</a> ayuda a identificar los requisitos de alternativas de respaldo durante un incidente de servicio más amplio.</p>
+<h3 id="rehearse-the-first-decision-in-a-failure">Ensaye la primera decisión ante una falla</h3>
+<p>Use un caso de simulación en mesa para localizar brechas antes de probar una conmutación por error. En un despliegue ficticio en sucursales, el calendario deja de estar disponible mientras las personas que llaman todavía están corrigiendo los datos de su cita. Pregunte si el agente debe retener la solicitud, ofrecer una devolución de llamada o indicar a la persona que pruebe otra vía. Identifique quién restablece la ruta del calendario, quién revisa las escrituras inciertas y quién informa al personal de lo que sigue pendiente. Una decisión por escrito y un ensayo controlado revelan si el mapa de rutas y el plan operativo coinciden.</p>
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3 id="can-adding-servers-increase-voice-agent-capacity">¿Agregar servidores puede aumentar la capacidad de un agente de voz?</h3>
+<p>Puede hacerlo cuando los procesos de trabajo de la aplicación son el recurso limitado y la ruta, la gestión de sesiones, los proveedores y los sistemas del negocio pueden sostener el cambio. Revise todo el recorrido de la llamada antes de ampliar una sola capa.</p>
+<h3 id="what-should-enterprise-voice-ai-capacity-planning-include">¿Qué debe incluir la planificación de capacidad de IA de voz para empresas?</h3>
+<p>Incluya la admisión de llamadas, las sesiones de audio, los límites de modelos e integraciones, la recuperación del estado, el escalamiento con personal y la titularidad operativa. Desglose las rutas y las tareas de negocio que son críticas para el despliegue.</p>
+<h3 id="can-autoscaling-absorb-every-arrival-spike">¿Puede el escalamiento automático absorber cualquier pico de llegadas?</h3>
+<p>El escalamiento automático reacciona a las señales observadas y necesita tiempo para que los recursos estén listos para usarse. Use una prueba controlada para verificar cómo manejan un tráfico abrupto el margen disponible, las reglas de admisión y las alternativas de respaldo aprobadas.</p>
+<h3 id="what-should-a-rollback-preserve">¿Qué debe preservar una reversión?</h3>
+<p>Mantenga las llamadas activas por la vía aprobada cuando sea posible, restablezca una ruta segura para las personas que llaman por primera vez y concilie las escrituras de negocio pendientes con los registros de referencia.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Revise la expansión a una ubicación o a un centro de contacto</h2>
+<p>Traiga la siguiente ubicación, sus horarios y su cobertura de transferencias, así como los sistemas del negocio de los que dependerán las personas que llaman. <a href="/es/what-is-b2b-voice">Lea cómo B2B Voice define el alcance de las implementaciones personalizadas</a> o <a href="/demo">converse sobre un despliegue de IA de voz en sus ubicaciones</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Referencias</h2>
+<ul>
+<li id="source-cps">Un ejemplo específico de un producto sobre el límite de inicio de llamadas salientes. <a href="https://www.twilio.com/docs/glossary/cps">CPS</a>
+</li>
+<li id="source-load">Protección del servicio, colas y limitación de tráfico. <a href="https://sre.google/sre-book/handling-overload/">Handling Overload</a>
+</li>
+<li id="source-bulk">Compromisos entre partición de recursos y aislamiento. <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/bulkhead">Bulkhead pattern</a>
+</li>
+<li id="source-hpa">Bucles de control de réplicas, disponibilidad y estabilización. <a href="https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/">Horizontal Pod Autoscaling</a>
+</li>
+<li id="source-sre">Monitoreo del tráfico, la latencia, los errores y la saturación. <a href="https://sre.google/sre-book/monitoring-distributed-systems/">Monitoring Distributed Systems</a>
+</li>
+<li id="source-can">Lanzamientos limitados y comparaciones con un control estable. <a href="https://sre.google/workbook/canarying-releases/">Canarying Releases</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Temas">
+<li>Planificación de capacidad</li>
+<li>Infraestructura de IA de voz</li>
+<li>Recuperación ante desastres</li>
+<li>Capacidad de escalamiento</li>
+</ul></article>
+</main>

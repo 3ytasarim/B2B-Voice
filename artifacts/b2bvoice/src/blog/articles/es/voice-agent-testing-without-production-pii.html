@@ -1,0 +1,390 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Saltar al artículo</a><header><h1 id="article-title">Cómo probar agentes de voz con IA sin exponer PII de producción</h1>
+<p class="b2bv3-byline">Por B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Para probar un agente de voz con IA sin exponer datos personales (PII) de producción, construya los escenarios a partir de reglas de negocio, utilice identidades y valores recién inventados y ejecute las pruebas en un entorno aislado. Conserve la decisión que el agente debe tomar. En una prueba de programación de citas, eso podría ser reconocer una solicitud autorizada y guardar un horario confirmado. El nombre de una persona real, la grabación original o el historial de su cuenta rara vez ayudan a probar esa regla.</p>
+<p>Cuando B2B Voice define el alcance de un flujo de trabajo personalizado, la empresa puede identificar qué campos necesita el personal para completar la llamada y qué sistemas pueden recibirlos. Ese inventario también le indica al equipo de control de calidad qué puede sustituir por valores ficticios y qué resultados requieren una revisión más detallada.</p>
+<h2 id="key-takeaways">Puntos clave</h2>
+<ul>
+<li>Utilice personas que llaman y resultados inventados de forma independiente siempre que respondan a la pregunta de la prueba.</li>
+<li>Revise las grabaciones, las transcripciones, los argumentos de las llamadas a herramientas, los registros y las exportaciones como lugares distintos donde pueden aparecer datos sensibles.</li>
+<li>Asigne a las cuentas y a las integraciones de prueba sus propios permisos y destinos.</li>
+<li>Designe a un responsable que apruebe el acceso, la retención, la eliminación y cualquier uso de material derivado de producción.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">En este artículo</p>
+<ol>
+<li><a href="#can-synthetic-voice-agent-tests-avoid-exposing-production-pii">¿Pueden las pruebas sintéticas de agentes de voz evitar la exposición de PII de producción?</a></li>
+<li><a href="#choose-a-treatment-that-fits-the-data">Elija un tratamiento adecuado para los datos</a></li>
+<li><a href="#rebuild-test-cases-from-business-rules">Reconstruya los casos de prueba a partir de reglas de negocio</a></li>
+<li><a href="#b2b-voice-privacy-preserving-voice-agent-evaluation-framework">Marco de evaluación de agentes de voz con preservación de la privacidad de B2B Voice</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+<li><a href="#references-heading">Referencias</a></li>
+</ol></nav><h2 id="can-synthetic-voice-agent-tests-avoid-exposing-production-pii">¿Pueden las pruebas sintéticas de agentes de voz evitar la exposición de PII de producción?</h2>
+<p>Sí, siempre que las identidades, el diálogo, las entradas de voz y los registros sembrados sean independientes de los datos de clientes de producción y que la prueba no pueda acceder a sistemas en vivo. Un equipo de programación de citas puede inventar a una persona que necesita reprogramar una cita y un calendario ficticio con las mismas reglas de reserva que la empresa. Ese entorno de prueba puede ejercitar las verificaciones de identidad, un horario no disponible y una confirmación sin manejar ningún registro de clientes.</p>
+<p>Los datos sintéticos no son anónimos de forma automática. Un ejemplo generado puede heredar datos identificativos si se copia una transcripción real en el prompt, si un generador se entrenó con material privado o si la voz real de una persona se usa como base para el habla sintética. Una prueba también puede introducir exposición después de la generación si una integración recupera un registro real o reenvía el resultado a un sistema en vivo. La guía de desidentificación del NIST aborda el riesgo de divulgación, los datos sintéticos y la gobernanza como decisiones relacionadas. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<h3 id="inventory-where-the-identity-can-appear">Inventaríe dónde puede aparecer la identidad</h3>
+<p>Los PII pueden incluir un identificador directo o información que se vuelve identificativa al combinarse con otra. En un escenario de soporte inventado, un problema particular, un lugar con nombre y el momento de una visita concreta pueden acotar la identidad aunque la transcripción omita el nombre de la persona. Decida qué información es necesaria para ejercitar la política antes de elegir los valores del conjunto de datos de prueba. <a class="b2bv3-ref" href="#source-pii">NIST SP 800-122</a> <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<p>Escuche las grabaciones además de leer el texto. El audio puede conservar una voz reconocible, a otra persona presente en la sala o anuncios de fondo que la transcripción no recogió. Una grabación y una huella de voz biométrica son artefactos distintos. Una huella de voz extrae rasgos identificativos para el reconocimiento o la verificación. Un audio con una conversación común puede revelar la identidad igualmente, por el contenido hablado o por una voz reconocible. Si un flujo de trabajo utiliza biometría de voz real, confirme la finalidad, el permiso, los destinos de procesamiento y los requisitos de revisión antes de incluir ese material en las pruebas.</p>
+<p>Una sola interacción también puede generar un registro de llamada, una transcripción, entradas y salidas del modelo, un resumen, solicitudes de integración, una entrada en una cola de reintentos, un registro en un panel y una copia de seguridad. Cada uno puede contener un campo distinto. La redacción de PII en el panel de control de calidad puede dejar la misma información en el argumento sin procesar de la llamada a la herramienta, en la traza de la aplicación, en una exportación o en la grabación original. Siga los datos a través de cada copia y revise los ejemplos que la ejecución realmente generó. <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h2 id="choose-a-treatment-that-fits-the-data">Elija un tratamiento adecuado para los datos</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Tratamiento de los datos y riesgo residual</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Tratamiento</th>
+<th scope="col">Qué hace</th>
+<th scope="col">Qué debe seguir verificando el equipo de pruebas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Datos de prueba sintéticos</th>
+<td>Crea valores, voces o escenarios nuevos para ejercitar el flujo de trabajo.</td>
+<td>De dónde provinieron las entradas, si el resultado conserva detalles privados poco comunes y si la ejecución permanece en un entorno aislado (sandbox).</td>
+</tr>
+<tr class="even">
+<th scope="row">Redacción (eliminación de datos)</th>
+<td>Elimina material seleccionado de una copia concreta. El audio y el texto pueden requerir un tratamiento por separado.</td>
+<td>Si el mismo material permanece en otras copias, en metadatos, en copias de seguridad o en un campo que la redacción no cubrió.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Enmascaramiento</th>
+<td>Oculta o sustituye parte de un valor para un uso determinado, por ejemplo mostrar solo una referencia mediante token en un informe de pruebas.</td>
+<td>Si alguien puede recuperar el original, vincular registros entre sistemas o inferir el valor a partir del contexto.</td>
+</tr>
+<tr class="even">
+<th scope="row">Seudonimización</th>
+<td>Sustituye el valor por un alias estable que puede seguir vinculado a una persona a través del contexto o de una tabla de correspondencias.</td>
+<td>Quién puede acceder al vínculo, si es necesario y cómo la combinación de varios registros podría identificar a una persona.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Anonimización o desidentificación formal</th>
+<td>Evalúa el riesgo residual de identificación con un método definido, un entorno de datos determinado y las normas aplicables.</td>
+<td>El alcance, el método, los destinatarios de los datos y las pruebas que respaldan el uso del término.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Eliminar los nombres no garantiza el anonimato. Una ubicación exacta, una transacción poco habitual y un audio distintivo pueden seguir señalando a alguien. Reducir los campos y restringir el acceso puede ayudar a disminuir la exposición. Que una divulgación cumpla un determinado estándar legal depende de los hechos y de los requisitos aplicables. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<h2 id="rebuild-test-cases-from-business-rules">Reconstruya los casos de prueba a partir de reglas de negocio</h2>
+<h3 id="a-fictional-clinic-fixture">Un conjunto de datos de prueba ficticio para una clínica</h3>
+<p>Antes, un diseño de ejemplo pide al ejecutor de pruebas que reproduzca una llamada a una clínica que contiene un nombre, el motivo de la visita, la voz original y los detalles de la cita. La pregunta de la prueba es si la persona que llama puede reprogramar una cita elegible tras la verificación. El diagnóstico y la voz original añaden sensibilidad sin determinar la rama del flujo.</p>
+<p>Después, el ejecutor utiliza un token ficticio de persona que llama, una cita simulada, un calendario en sandbox y audio con guion nuevo escrito desde cero. La acción permitida es una reprogramación tras una verificación sintética exitosa. Un segundo conjunto de datos deja la verificación sin resolver y comprueba que el agente no revela los detalles de la cita. Ambas pruebas conservan la regla de negocio y pueden repetirse sin recuperar la llamada original.</p>
+<h3 id="a-fictional-home-service-callback">Una devolución de llamada ficticia de un servicio a domicilio</h3>
+<p>Antes, un conjunto de datos incluye un registro de contacto con la misma estructura que la exportación de producción y dirige la herramienta de devolución de llamada a un campo de contacto de un cliente. Aunque el ejemplo use nombres inventados, la herramienta aún podría resolver el token en un sistema de gestión de relaciones con clientes (CRM) en vivo.</p>
+<p>Después, utilice un identificador de contacto de sandbox que se resuelva únicamente en un ticket de prueba o en un punto de conexión interno aprobado. Registre el permiso de la persona que llama en el guion y verifique que el sandbox receptor contenga la solicitud de devolución de llamada correspondiente. Dirija todas las acciones salientes a destinos de prueba. Mantenga el valor de contacto fuera de los registros de amplio acceso si el caso solo necesita un estado de la operación y un identificador de traza.</p>
+<p>Estos conjuntos de datos responden preguntas sobre el flujo de trabajo y los permisos. Cuando la prueba depende de dudas naturales al hablar, de nombres poco comunes o de audio telefónico realista, encargue grabaciones nuevas con el permiso adecuado o utilice voces con licencia. Revise los derechos de los hablantes por separado de los derechos sobre el guion escrito.</p>
+<h2 id="b2b-voice-privacy-preserving-voice-agent-evaluation-framework">Marco de evaluación de agentes de voz con preservación de la privacidad de B2B Voice</h2>
+<p>Comience con un inventario del flujo de datos que indique quién puede leer cada artefacto y de quién es la configuración que controla la retención. Utilice el marco durante el diseño del conjunto de datos de prueba y de nuevo después de la primera ejecución completa. En la segunda revisión suelen hacerse visibles para el equipo de pruebas los resultados adicionales, como una carga útil de reintento o una transcripción posterior.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-2-caption">
+<table>
+<caption id="table-2-caption">Etapas de la evaluación con preservación de la privacidad</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Etapa</th>
+<th scope="col">Acción</th>
+<th scope="col">Evidencia para la revisión previa al lanzamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Inventario</th>
+<td>Identifique los campos necesarios, las fuentes, los procesadores, los registros, las colas, las exportaciones y las copias de seguridad.</td>
+<td>Un mapa conecta cada campo y cada grabación con su necesidad de negocio y su destino.</td>
+</tr>
+<tr class="even">
+<th scope="row">Minimización</th>
+<td>Utilice valores inventados y evite cargas útiles innecesarias. Conserve solo el detalle suficiente para ejercitar la regla.</td>
+<td>Un revisor puede explicar por qué está presente cada campo conservado y cómo se creó.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Aislamiento</th>
+<td>Utilice un tenant de prueba dedicado, credenciales de prueba y puntos de conexión internos aprobados. Restrinja las escrituras y los contactos salientes a destinos de prueba.</td>
+<td>La revisión de la configuración y la evidencia de una verificación previa segura muestran adónde puede ir una escritura de prueba.</td>
+</tr>
+<tr class="even">
+<th scope="row">Validación</th>
+<td>Inspeccione el audio, las transcripciones, los metadatos, los resúmenes y llamadas a herramientas representativas, tanto exitosas como fallidas.</td>
+<td>El equipo revisa tanto los resultados esperados como los reintentos, incluido lo que ocurre cuando una tarea falla.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Restricción</th>
+<td>Limite el acceso a las trazas sin procesar y a las grabaciones. Mantenga los registros de estado ordinarios libres de valores privados innecesarios.</td>
+<td>Los derechos de acceso y los eventos de auditoría son adecuados para las personas y los sistemas que los necesitan.</td>
+</tr>
+<tr class="even">
+<th scope="row">Retiro</th>
+<td>Documente la retención de cada artefacto y verifique cómo funcionan la eliminación, el vencimiento de las copias de seguridad y la retención en procesadores externos.</td>
+<td>Los revisores pueden rastrear el vencimiento y cualquier excepción aprobada en todos los almacenes de datos.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="check-the-sandbox-and-the-error-path">Revise el sandbox y la ruta de error</h3>
+<p>Utilice credenciales de prueba dedicadas y confirme el entorno, la cuenta y el destino saliente antes de habilitar una escritura. Lo ideal es que la identidad de prueba no tenga ningún permiso sobre los registros de producción. Una etiqueta de sandbox en la aplicación sirve de poco si una cuenta de servicio compartida aún puede acceder al calendario real. Revise los argumentos de las llamadas a herramientas como un destino de datos sensibles. Una solicitud a una herramienta puede incluir un identificador de cuenta, una fecha de nacimiento o una dirección completa aunque la transcripción ya no los contenga.</p>
+<p>Revise las rutas de fallo con el mismo cuidado que las llamadas exitosas. Las excepciones pueden incluir cargas útiles sin procesar o datos de la solicitud. Un flujo de trabajo fallido puede enviar una copia a una cola de reintentos o de mensajes fallidos (dead-letter) con otra configuración de acceso y retención. Un revisor puede exportar trazas para depurar y crear así otra copia duradera. Aplique las mismas reglas de manejo al material exportado. El OWASP Logging Cheat Sheet describe cómo excluir o sanear los datos sensibles en los registros y proteger el acceso a ellos. <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h3 id="apply-regulated-environment-requirements-to-the-actual-workflow">Aplique los requisitos de los entornos regulados al flujo de trabajo real</h3>
+<p>Los entornos regulados de EE. UU., como el de la salud, el financiero, el jurídico y otros, pueden implicar obligaciones que dependen de la organización, de los datos, del uso y de los proveedores involucrados. Una prueba de privacidad puede demostrar que las identidades y los conjuntos de datos de prueba específicos del sandbox permanecen aislados. No puede establecer la situación legal de una implementación en producción. Pida al responsable de privacidad o al responsable legal que confirme las normas aplicables, los términos de los proveedores, los derechos y las políticas de retención antes de utilizar material protegido o de hacer una declaración de cumplimiento normativo.</p>
+<p>Utilice la <a href="/es/ai-voice-agent-security">guía existente sobre seguridad de agentes de voz</a> para los permisos de producción y la <a href="/es/voice-agent-evaluation-data">guía de diseño de conjuntos de datos de evaluación</a> para la estructura de los casos. Las pruebas de privacidad de agentes de voz plantean una pregunta más acotada: qué entra, qué sale y qué permanece en el entorno de evaluación. Ese alcance ayuda a una empresa regulada a darle a cada revisor una decisión concreta.</p>
+<h3 id="inspect-the-people-and-systems-that-can-retrieve-a-trace">Inspeccione a las personas y los sistemas que pueden recuperar una traza</h3>
+<p>Un flujo de trabajo seguro de pruebas de agentes de voz incluye a las personas que revisan las excepciones. Un analista de control de calidad puede necesitar una secuencia de eventos saneada, mientras que un responsable de privacidad necesita acceso a una grabación original autorizada para una investigación definida. Otorgue a cada rol solo la evidencia que necesita y verifique cómo puede retirarse el acceso. Aplique los mismos controles cuando su equipo <a href="/es/voice-agent-regression-and-smoke-testing">conserve la evidencia de pruebas de regresión automatizadas</a>. Trate una exportación compartida como una copia nueva, con su propio acceso y su propia fecha de caducidad. Una vista de la aplicación con datos redactados aporta poco a la protección de PII de producción si un informe de errores de amplia difusión contiene la solicitud original.</p>
+<p>La anonimización de datos en IA de voz puede implicar decisiones distintas para una transcripción, una representación derivada del hablante y una grabación de llamada. Registre qué artefacto se modificó y quién puede aún vincularlo con una persona. La revisión de un formato deja abiertos los demás hasta que el flujo de trabajo real muestre qué contienen. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a> <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3 id="does-redacting-the-transcript-protect-an-original-recording">¿Redactar la transcripción protege una grabación original?</h3>
+<p>La redacción de la transcripción modifica la copia en texto. La grabación puede seguir conteniendo las mismas palabras, una voz reconocible o detalles de fondo. Aplique los controles adecuados a ambas representaciones.</p>
+<h3 id="can-a-team-use-a-production-incident-to-design-a-fictional-test">¿Puede un equipo utilizar un incidente de producción para diseñar una prueba ficticia?</h3>
+<p>Un equipo puede reconstruir el comportamiento a partir de una descripción aprobada del fallo, con redacción nueva y registros inventados. La reutilización directa de una transcripción o una grabación original requiere una autorización independiente y un manejo adecuado para ese material.</p>
+<h3 id="how-can-i-tell-whether-tests-reach-a-production-system">¿Cómo puedo saber si las pruebas llegan a un sistema de producción?</h3>
+<p>Revise los permisos reales de las credenciales, los puntos de conexión de la cuenta y del tenant, y los destinos salientes. Utilice una verificación previa autorizada y compruebe el registro de prueba resultante en el sandbox previsto.</p>
+<h3 id="which-logs-does-compliance-qa-for-voice-agents-need-to-inspect">¿Qué registros debe inspeccionar el control de calidad de cumplimiento normativo de los agentes de voz?</h3>
+<p>Inspeccione los registros habituales, las trazas de herramientas, los registros de errores, las exportaciones y las copias posteriores que el flujo de trabajo aprobado realmente genera. Conserve la evidencia necesaria para la prueba y minimice los campos sensibles en los registros de amplio acceso.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Converse sobre un flujo de trabajo con datos ficticios de personas que llaman</h2>
+<p>Traiga las acciones que el agente debe realizar, los campos que el personal necesita ver y los sistemas aprobados para recibir esos campos. <a href="/demo">Converse con nosotros sobre un flujo de trabajo de pruebas aislado para su implementación personalizada</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Referencias</h2>
+<ul>
+<li id="source-deid">Métodos de desidentificación, riesgo de divulgación, datos sintéticos y gobernanza. <a href="https://csrc.nist.gov/pubs/sp/800/188/final">De-Identifying Government Datasets: Techniques and Governance</a>
+</li>
+<li id="source-pii">Protección basada en el contexto de la información identificable o vinculable. <a href="https://csrc.nist.gov/pubs/sp/800/122/final">Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)</a>
+</li>
+<li id="source-log">Exclusión de datos sensibles, acceso y protección de los registros. <a href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html">Logging Cheat Sheet</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Temas">
+<li>Datos de prueba sintéticos</li>
+<li>Minimización de datos</li>
+<li>Privacidad en agentes de voz</li>
+<li>Aislamiento de pruebas</li>
+</ul></article>
+</main>

@@ -1,0 +1,1161 @@
+
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --purple-soft: #f5f1ff;
+      --red-soft: #fff3f3;
+      --cyan-soft: #eef9fc;
+      --dark: #111a2e;
+      --max: 920px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 880px;
+      font-size: clamp(38px, 6vw, 61px);
+    }.blog-content h2 {
+      margin: 52px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 825px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer .label, .blog-content .mini-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .nuance {
+      margin: 28px 0;
+      padding: 22px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .nuance strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #78570b;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .three-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+      margin: 28px 0 38px;
+    }.blog-content .term-card {
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 21px;
+      background: #fff;
+    }.blog-content .term-card.voice { background: var(--accent-soft); border-color: #ccd6ff; }.blog-content .term-card.reception { background: var(--green-soft); border-color: #cfe9d8; }.blog-content .term-card.ivr { background: var(--purple-soft); border-color: #ddd2ff; }.blog-content .term-card h3 {
+      margin: 0 0 9px;
+      font-size: 21px;
+    }.blog-content .term-card p {
+      margin: 0;
+      font-size: 15px;
+      color: #465167;
+    }.blog-content .taxonomy {
+      margin: 30px 0 38px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fafbfc;
+    }.blog-content .taxonomy-row {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }.blog-content .taxonomy-row:last-child { border-bottom: 0; }.blog-content .taxonomy-name {
+      font-weight: 850;
+      color: #1b2941;
+    }.blog-content .taxonomy-desc {
+      color: #465167;
+    }.blog-content .spectrum {
+      margin: 28px 0 38px;
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #e7edf7;
+    }.blog-content .spectrum h3 {
+      color: #fff;
+      margin: 0 0 8px;
+    }.blog-content .spectrum p {
+      color: #d5ddeb;
+    }.blog-content .spectrum-line {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 20px;
+    }.blog-content .spectrum-box {
+      min-height: 94px;
+      padding: 14px 10px;
+      border-radius: 11px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(255,255,255,.07);
+      text-align: center;
+      display: grid;
+      align-content: center;
+      font-size: 13px;
+      font-weight: 800;
+    }.blog-content .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 15px;
+      margin: 25px 0 38px;
+    }.blog-content .scenario {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 19px 20px;
+      background: #fff;
+    }.blog-content .scenario .who {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f0f3f8;
+      color: #4c5870;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }.blog-content .scenario strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #17243c;
+    }.blog-content .scenario p {
+      margin: 0;
+      color: #4a566c;
+      font-size: 15px;
+    }.blog-content .decision {
+      margin: 30px 0 40px;
+      padding: 26px;
+      border: 1px solid #d8e2ef;
+      border-radius: 16px;
+      background: #fbfdff;
+    }.blog-content .decision-step {
+      position: relative;
+      padding: 0 0 23px 48px;
+      margin: 0;
+    }.blog-content .decision-step:last-child { padding-bottom: 0; }.blog-content .decision-step::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 31px;
+      bottom: 0;
+      width: 1px;
+      background: #cfd8e6;
+    }.blog-content .decision-step:last-child::before { display: none; }.blog-content .decision-num {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #17358f;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+    }.blog-content .decision-step strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #17243c;
+    }.blog-content .decision-step p {
+      margin: 0;
+      color: #4a566c;
+    }.blog-content .myths {
+      display: grid;
+      gap: 12px;
+      margin: 25px 0 38px;
+    }.blog-content .myth {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }.blog-content .myth-top {
+      padding: 14px 17px;
+      background: var(--red-soft);
+      color: #7d2929;
+      font-weight: 850;
+    }.blog-content .myth-bottom {
+      padding: 14px 17px;
+      color: #3f4c62;
+      background: #fff;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }.blog-content .cta a.button {
+      display: inline-block;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .cta a.button.secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.45);
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul { padding-left: 20px; }.blog-content .sources li { margin: 9px 0; overflow-wrap: anywhere; }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 760px) {.blog-content .three-cards, .blog-content .scenario-grid, .blog-content .spectrum-line {
+        grid-template-columns: 1fr;
+      }.blog-content .taxonomy-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .nuance, .blog-content .table-wrap, .blog-content .taxonomy, .blog-content .spectrum, .blog-content .decision, .blog-content .one-sentence, .blog-content .cta {
+        break-inside: avoid;
+      }.blog-content .spectrum, .blog-content .cta {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .spectrum h3, .blog-content .spectrum p, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.button.secondary {
+        color: #111;
+      }
+    }
+</style>
+<main class="page">
+    <article>
+      <header>
+        <span class="eyebrow">Terminología de IA de voz · Guía comparativa</span>
+        <h1>Agente de voz con IA, recepcionista con IA e IVR: ¿cuál es la diferencia?</h1>
+        <p class="dek">
+          Estos términos suelen usarse como si describieran tres productos que compiten entre sí. No es así. Uno es una categoría técnica amplia, otro es un rol de negocio y el tercero es un patrón de interacción telefónica ya consolidado.
+        </p>
+        <p class="meta">Publicado el 29 de agosto de 2026 · Por B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
+        <span class="label">Respuesta rápida</span>
+        <p>
+          <strong>Un agente de voz con IA es la categoría técnica amplia.</strong> Es un agente de software basado en voz que puede comprender el lenguaje hablado, mantener el contexto de la conversación y, potencialmente, usar herramientas o sistemas de la empresa. <strong>Una recepcionista con IA es un caso de uso asociado a un rol de negocio</strong>: normalmente, un agente de voz configurado para tareas de recepción, como atender llamadas, programar citas, recibir solicitudes, tomar mensajes y enrutar llamadas. <strong>El IVR es un enfoque automatizado de interacción y enrutamiento telefónico</strong> construido tradicionalmente en torno a menús, entrada por teclado o voz restringida. El IVR conversacional moderno también puede usar reconocimiento de voz y procesamiento del lenguaje natural, por lo que el límite entre un IVR avanzado y un agente de voz con IA no siempre es absoluto.
+        </p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+          <li><strong>Agente de voz con IA = tecnología/categoría.</strong></li>
+          <li><strong>Recepcionista con IA = rol/caso de uso.</strong></li>
+          <li><strong>IVR = patrón de interacción y enrutamiento telefónico.</strong></li>
+          <li>El IVR tradicional suele ser más predefinido y estar basado en menús.</li>
+          <li>El IVR conversacional moderno puede comprender el lenguaje hablado, por lo que la idea de que «IVR = solo marcar 1» está obsoleta.</li>
+          <li>Una recepcionista con IA puede construirse con tecnología de agentes de voz con IA.</li>
+          <li>Un agente de voz puede realizar muchas tareas además de la recepción.</li>
+          <li>La mejor forma de comparar productos es por sus capacidades y su flujo de trabajo, no solo por la etiqueta.</li>
+        </ul>
+      </section>
+
+      <h2>La forma más sencilla de entender los tres términos</h2>
+
+      <div class="three-cards">
+        <section class="term-card voice">
+          <span class="mini-label">Categoría técnica</span>
+          <h3>Agente de voz con IA</h3>
+          <p>
+            Un agente de software conversacional en tiempo real que interactúa mediante la voz y que puede usar conocimiento, herramientas, API o sistemas de la empresa para completar tareas.
+          </p>
+        </section>
+
+        <section class="term-card reception">
+          <span class="mini-label">Rol de negocio</span>
+          <h3>Recepcionista con IA</h3>
+          <p>
+            Un agente de voz configurado para desempeñar tareas de recepcionista o de recepción, como atender llamadas, reservar citas, recibir solicitudes, enrutar llamadas y gestionar mensajes.
+          </p>
+        </section>
+
+        <section class="term-card ivr">
+          <span class="mini-label">Patrón de telefonía</span>
+          <h3>IVR</h3>
+          <p>
+            Un sistema automatizado de interacción telefónica que recoge entradas por teclado o por voz para ofrecer información, completar tareas predefinidas o enrutar a las personas que llaman.
+          </p>
+        </section>
+      </div>
+
+      <div class="thesis">
+        Las categorías se superponen porque responden a preguntas distintas: «¿Qué tecnología es?», «¿Qué trabajo realiza?» y «¿Cómo está estructurada la interacción telefónica?».
+      </div>
+
+      <h2>Por qué la terminología resulta confusa</h2>
+
+      <p>
+        El mercado de la IA de voz no utiliza un vocabulario perfectamente estandarizado. Las empresas pueden describir sistemas similares como agentes telefónicos con IA, recepcionistas con IA, voicebots, IA conversacional, agentes virtuales, asistentes de voz o IVR conversacional.
+      </p>
+
+      <p>
+        Además, las etiquetas pueden describir capas distintas de una misma implementación.
+      </p>
+
+      <div class="taxonomy">
+        <div class="taxonomy-row">
+          <div class="taxonomy-name">Tecnología</div>
+          <div class="taxonomy-desc">Un sistema de agente de voz con IA en tiempo real.</div>
+        </div>
+        <div class="taxonomy-row">
+          <div class="taxonomy-name">Rol</div>
+          <div class="taxonomy-desc">Configurado para comportarse como una recepcionista.</div>
+        </div>
+        <div class="taxonomy-row">
+          <div class="taxonomy-name">Canal</div>
+          <div class="taxonomy-desc">Implementado en un número de teléfono de la empresa.</div>
+        </div>
+        <div class="taxonomy-row">
+          <div class="taxonomy-name">Patrón de interacción</div>
+          <div class="taxonomy-desc">Puede usar conversación abierta, un flujo de trabajo estructurado, enrutamiento al estilo IVR o una combinación de ellos.</div>
+        </div>
+        <div class="taxonomy-row">
+          <div class="taxonomy-name">Resultado de negocio</div>
+          <div class="taxonomy-desc">Reservar una cita, enrutar una llamada, captar un lead (cliente potencial), responder una pregunta o escalar a una persona.</div>
+        </div>
+      </div>
+
+      <p>
+        Por eso, comprar software basándose únicamente en la etiqueta puede inducir a error. Dos productos que se llaman «recepcionista con IA» pueden tener capacidades radicalmente distintas.
+      </p>
+
+      <h2>¿Qué es un agente de voz con IA?</h2>
+
+      <p>
+        Un agente de voz con IA es el término más amplio de los tres. Describe un software que puede participar en una conversación hablada en tiempo real y, potencialmente, actuar a partir de ella.
+      </p>
+
+      <p>
+        Según la implementación, un agente de voz con IA puede:
+      </p>
+
+      <ul>
+        <li>comprender el lenguaje hablado natural;</li>
+        <li>mantener el contexto a lo largo de varios turnos de conversación;</li>
+        <li>hacer preguntas de seguimiento;</li>
+        <li>usar una base de conocimiento de la empresa;</li>
+        <li>llamar a API o herramientas;</li>
+        <li>leer un registro del CRM;</li>
+        <li>consultar la disponibilidad de citas en tiempo real;</li>
+        <li>crear una reserva;</li>
+        <li>transferir a la persona que llama;</li>
+        <li>cambiar de idioma;</li>
+        <li>activar flujos de trabajo posteriores a la llamada.</li>
+      </ul>
+
+      <p>
+        La arquitectura concreta puede ser en cascada (voz a texto, un modelo de lenguaje y texto a voz) o basarse en modelos de audio nativos en tiempo real. La arquitectura técnica general se explica en <a href="https://b2b-voice.com/how-ai-voice-agents-work">How AI Voice Agents Work</a>.
+      </p>
+
+      <h2>¿Qué es una recepcionista con IA?</h2>
+
+      <p>
+        Una recepcionista con IA no es una arquitectura de IA fundamentalmente distinta. Es una <strong>descripción de puesto</strong>.
+      </p>
+
+      <p>
+        El sistema se configura en torno a las tareas que normalmente corresponden a una recepción o a una recepcionista.
+      </p>
+
+      <p>Entre sus responsabilidades habituales pueden figurar:</p>
+
+      <ul>
+        <li>atender las llamadas entrantes;</li>
+        <li>identificar el motivo por el que la persona se comunica con la empresa;</li>
+        <li>responder preguntas habituales;</li>
+        <li>recopilar nombres y datos de contacto;</li>
+        <li>reservar o reprogramar citas;</li>
+        <li>tomar mensajes;</li>
+        <li>calificar consultas sencillas;</li>
+        <li>enrutar las llamadas a la persona o al departamento correctos;</li>
+        <li>transferir a una persona cuando sea necesario.</li>
+      </ul>
+
+      <p>
+        En otras palabras:
+      </p>
+
+      <div class="thesis">
+        Toda recepcionista con IA puede ser un agente de voz con IA, pero no todo agente de voz con IA es una recepcionista.
+      </div>
+
+      <p>
+        En cambio, un agente de voz podría diseñarse para el triaje de soporte, la cobranza, la ayuda informática interna, los recordatorios de citas, la calificación de leads, las llamadas sobre el estado de pedidos u otro flujo de trabajo especializado.
+      </p>
+
+      <h2>¿Qué es el IVR?</h2>
+
+      <p>
+        IVR son las siglas de <strong>Interactive Voice Response</strong> (respuesta de voz interactiva). Es un enfoque de telefonía automatizada consolidado que se utiliza para recoger información de quienes llaman, ofrecer datos, completar tareas de autoservicio estructuradas o enrutar llamadas.
+      </p>
+
+      <p>
+        El IVR tradicional se asocia sobre todo con experiencias de árbol telefónico como:
+      </p>
+
+      <div class="spectrum">
+        <h3>Una interacción IVR conocida</h3>
+        <p>«Para ventas, marque 1. Para facturación, marque 2. Para volver a escuchar estas opciones, marque 9».</p>
+        <div class="spectrum-line">
+          <div class="spectrum-box">La persona que llama entra al menú</div>
+          <div class="spectrum-box">DTMF o voz restringida</div>
+          <div class="spectrum-box">Rama predefinida</div>
+          <div class="spectrum-box">Información o enrutamiento</div>
+        </div>
+      </div>
+
+      <p>
+        Sin embargo, el IVR moderno puede ser más sofisticado. Los sistemas IVR actuales pueden utilizar reconocimiento de voz y procesamiento del lenguaje natural en lugar de depender únicamente de la pulsación de teclas.
+      </p>
+
+      <div class="nuance">
+        <strong>Matiz importante</strong> Decir que «IVR significa marcar 1, marcar 2» es una simplificación excesiva. El IVR tradicional suele estar basado en menús, pero el IVR conversacional puede aceptar solicitudes habladas y usar PLN. Por eso, la diferencia entre un IVR conversacional avanzado y un agente de voz con IA puede ser un espectro y no un límite técnico rígido.
+      </div>
+
+      <h2>IVR tradicional frente a IVR conversacional</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>IVR tradicional</th>
+              <th>IVR conversacional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Entrada principal</td>
+              <td>Teclado DTMF o voz restringida</td>
+              <td>Lenguaje hablado natural</td>
+            </tr>
+            <tr>
+              <td>Estructura de la conversación</td>
+              <td>Árbol de menús mayormente predefinido</td>
+              <td>Interacción más flexible, basada en intenciones</td>
+            </tr>
+            <tr>
+              <td>Contexto</td>
+              <td>Normalmente limitado al estado actual del menú</td>
+              <td>Puede mantener un estado conversacional más rico</td>
+            </tr>
+            <tr>
+              <td>Enrutamiento</td>
+              <td>Capacidad central</td>
+              <td>Capacidad central</td>
+            </tr>
+            <tr>
+              <td>Autoservicio</td>
+              <td>Tareas estructuradas y predefinidas</td>
+              <td>Puede ofrecer un autoservicio más natural</td>
+            </tr>
+            <tr>
+              <td>¿Requiere un LLM?</td>
+              <td>No</td>
+              <td>No necesariamente; el PLN puede implementarse de varias maneras</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Agente de voz con IA frente a IVR</h2>
+
+      <p>
+        La diferencia más importante normalmente no es «IA frente a ausencia de IA». Es el grado de <strong>conversación abierta, contexto y flexibilidad de acción</strong>.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capacidad</th>
+              <th>IVR tradicional</th>
+              <th>Agente de voz con IA moderno</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Solicitudes en lenguaje natural</td>
+              <td>Limitadas o restringidas</td>
+              <td>Capacidad central</td>
+            </tr>
+            <tr>
+              <td>Contexto de varios turnos</td>
+              <td>Normalmente limitado</td>
+              <td>Normalmente se espera</td>
+            </tr>
+            <tr>
+              <td>Formulaciones inesperadas</td>
+              <td>Pueden quedar fuera de la intención o del menú predefinidos</td>
+              <td>Diseñado para manejar formulaciones más variadas</td>
+            </tr>
+            <tr>
+              <td>Preguntas de seguimiento dinámicas</td>
+              <td>En su mayoría predeterminadas</td>
+              <td>Pueden generarse a partir del contexto y del estado del flujo de trabajo</td>
+            </tr>
+            <tr>
+              <td>Uso de herramientas/API</td>
+              <td>Posible mediante la lógica de la aplicación</td>
+              <td>Parte habitual de los flujos de trabajo de agentes modernos</td>
+            </tr>
+            <tr>
+              <td>Estilo de conversación</td>
+              <td>Menú o autoservicio estructurado</td>
+              <td>Interacción conversacional más abierta</td>
+            </tr>
+            <tr>
+              <td>Enrutamiento</td>
+              <td>Caso de uso principal</td>
+              <td>Una de muchas acciones posibles</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Tenga en cuenta que el IVR también puede interactuar con sistemas de backend. Un IVR bien diseñado no es «tonto» por naturaleza. La distinción arquitectónica está en cómo interactúa la persona que llama con el sistema y en cuánta flexibilidad conversacional ofrece este.
+      </p>
+
+      <h2>Recepcionista con IA frente a IVR</h2>
+
+      <p>
+        Esta comparación es ligeramente distinta porque un término describe un rol y el otro describe un patrón de interacción.
+      </p>
+
+      <p>
+        En teoría, un flujo de trabajo propio de una recepcionista puede implementarse con un IVR tradicional:
+      </p>
+
+      <ul>
+        <li>Marque 1 para programar una cita.</li>
+        <li>Marque 2 para dejar un mensaje.</li>
+        <li>Marque 3 para comunicarse con ventas.</li>
+      </ul>
+
+      <p>
+        Una recepcionista con IA busca que esa interacción sea más conversacional:
+      </p>
+
+      <p>
+        <strong>Persona que llama:</strong> «Hola, quería saber si tienen algún espacio disponible el viernes por la tarde para una consulta».
+      </p>
+
+      <p>
+        En lugar de pedir a la persona que llama que identifique la ruta de menú correcta, el sistema puede inferir el objetivo a partir de la frase, reunir la información que falte y ejecutar el flujo de trabajo correspondiente.
+      </p>
+
+      <div class="thesis">
+        El IVR tradicional le pide a la persona que llama que navegue por el sistema. Una recepcionista conversacional con IA intenta navegar por el sistema en su nombre.
+      </div>
+
+      <h2>Agente de voz con IA frente a recepcionista con IA</h2>
+
+      <p>
+        Aquí la diferencia es principalmente de alcance.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Pregunta</th>
+              <th>Agente de voz con IA</th>
+              <th>Recepcionista con IA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>¿Qué es?</td>
+              <td>Categoría técnica o de producto amplia</td>
+              <td>Configuración específica de un rol de negocio</td>
+            </tr>
+            <tr>
+              <td>Canal habitual</td>
+              <td>Teléfono, navegador, aplicación u otra interfaz de voz</td>
+              <td>Normalmente llamadas telefónicas de la empresa</td>
+            </tr>
+            <tr>
+              <td>Finalidad habitual</td>
+              <td>Cualquier flujo de trabajo conversacional por voz</td>
+              <td>Recepción y gestión de llamadas entrantes</td>
+            </tr>
+            <tr>
+              <td>¿Puede reservar citas?</td>
+              <td>Potencialmente</td>
+              <td>Requisito habitual</td>
+            </tr>
+            <tr>
+              <td>¿Puede calificar leads?</td>
+              <td>Potencialmente</td>
+              <td>A veces</td>
+            </tr>
+            <tr>
+              <td>¿Puede realizar flujos de trabajo especializados?</td>
+              <td>Sí</td>
+              <td>Normalmente solo si encajan con el rol de recepcionista</td>
+            </tr>
+            <tr>
+              <td>¿Puede transferir llamadas?</td>
+              <td>Sí, si está implementado</td>
+              <td>Normalmente se espera</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>¿Dónde se superponen las categorías?</h2>
+
+      <p>
+        Las implementaciones reales suelen combinar los tres conceptos.
+      </p>
+
+      <p>
+        Imagine una empresa grande con un sistema telefónico automatizado:
+      </p>
+
+      <ol>
+        <li>El número de teléfono entra en una capa de IVR o de enrutamiento.</li>
+        <li>Un agente de voz con IA gestiona la conversación en lenguaje natural.</li>
+        <li>El agente está configurado para desempeñar el rol de recepcionista.</li>
+        <li>Algunas solicitudes se completan mediante API.</li>
+        <li>Otras personas que llaman se transfieren a una cola tradicional del centro de contacto.</li>
+      </ol>
+
+      <p>
+        En esa implementación, preguntarse si el producto es «un IVR o una recepcionista con IA» es la pregunta equivocada. Puede ser ambas cosas, en capas distintas.
+      </p>
+
+      <div class="nuance">
+        <strong>Las categorías no son mutuamente excluyentes.</strong> El IVR puede formar parte de un sistema de agente de voz. Una recepcionista con IA puede situarse detrás de una capa de enrutamiento telefónico. Un agente de voz también puede transferir a las personas que llaman a un IVR o a un flujo de trabajo del centro de contacto.
+      </div>
+
+      <h2>Diez escenarios de llamadas: ¿qué modelo encaja?</h2>
+
+      <div class="scenario-grid">
+        <div class="scenario">
+          <span class="who">Escenario 1</span> <strong>«Marque 1 para ventas, 2 para facturación».</strong>
+          <p>IVR tradicional clásico. Un menú predefinido es suficiente.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 2</span> <strong>«Cuénteme brevemente por qué llama».</strong>
+          <p>Podría ser un IVR conversacional o un agente de voz con IA, según cómo se implementen la detección de intenciones y la lógica posterior.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 3</span> <strong>«¿Puede reservarme un corte de pelo mañana después de las cuatro?».</strong>
+          <p>Caso de uso sólido para una recepcionista con IA con acceso a una herramienta de calendario.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 4</span> <strong>«Mi pedido se ha retrasado. ¿Puede verificar dónde está?».</strong>
+          <p>Un agente de voz con IA o un agente conversacional de autoservicio conectado a los datos de pedidos en tiempo real.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 5</span> <strong>«Necesito hablar con facturación».</strong>
+          <p>Un IVR tradicional, un IVR conversacional o un agente de voz con IA pueden resolverlo.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 6</span> <strong>«En realidad, cambie esa cita del viernes al lunes por la mañana».</strong>
+          <p>El contexto conversacional de varios turnos hace que un agente de voz con IA moderno sea especialmente adecuado.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 7</span> <strong>«Déjele un mensaje a Jennifer y envíeme los detalles por correo electrónico».</strong>
+          <p>Recepcionista con IA con captura de mensajes e integración con el flujo de trabajo.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 8</span> <strong>«¿Cuál es su horario de atención?».</strong>
+          <p>Cualquiera de los tres enfoques puede responder a esto. La IA no es necesaria de forma automática.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 9</span> <strong>«Tengo una queja complicada y quiero hablar con una persona».</strong>
+          <p>El mejor resultado puede ser un escalamiento inmediato a una persona, independientemente de la tecnología de la capa inicial.</p>
+        </div>
+
+        <div class="scenario">
+          <span class="who">Escenario 10</span> <strong>«Quiero cambiar dos reservas y hacer una pregunta sobre su política de cancelación».</strong>
+          <p>Un agente de voz con contexto, con recuperación de conocimiento y herramientas de reserva, encaja mejor que un simple árbol de menús.</p>
+        </div>
+      </div>
+
+      <h2>Cuándo el IVR tradicional sigue siendo la opción adecuada</h2>
+
+      <p>
+        La IA no es automáticamente superior para todos los flujos de trabajo telefónicos.
+      </p>
+
+      <p>El IVR tradicional puede ser una excelente opción cuando:</p>
+
+      <ul>
+        <li>el menú es corto y estable;</li>
+        <li>la persona que llama solo necesita llegar al departamento correcto;</li>
+        <li>las entradas están muy estructuradas;</li>
+        <li>la organización quiere un comportamiento determinista;</li>
+        <li>la conversación en lenguaje natural aporta poco valor;</li>
+        <li>el flujo de trabajo tiene muy pocas ramas.</li>
+      </ul>
+
+      <p>
+        Si quien llama solo necesita elegir entre ventas y facturación, una capa de conversación generativa compleja puede resolver un problema que no existe.
+      </p>
+
+      <h2>Cuándo tiene sentido una recepcionista con IA</h2>
+
+      <p>
+        Una recepcionista con IA resulta más útil cuando un flujo de trabajo de recepción implica conversaciones repetitivas pero con demasiada variación para un menú rígido.
+      </p>
+
+      <p>Algunos ejemplos son negocios donde las personas que llaman suelen necesitar:</p>
+
+      <ul>
+        <li>hacer preguntas de rutina;</li>
+        <li>reservar o cambiar citas;</li>
+        <li>explicar el motivo de su llamada;</li>
+        <li>dejar mensajes estructurados;</li>
+        <li>proporcionar información de leads o de admisión;</li>
+        <li>comunicarse con distintas personas según el contexto.</li>
+      </ul>
+
+      <h2>Cuándo se necesita el modelo más amplio de agente de voz con IA</h2>
+
+      <p>
+        Un diseño de agente de voz más amplio resulta relevante cuando el flujo de trabajo va más allá de las tareas de recepción.
+      </p>
+
+      <p>Algunos ejemplos:</p>
+
+      <ul>
+        <li>triaje de soporte técnico;</li>
+        <li>conversaciones de cobranza o de planes de pago;</li>
+        <li>flujos de trabajo de pedidos y cuentas;</li>
+        <li>recordatorios salientes o seguimientos autorizados;</li>
+        <li>calificación de leads en varios pasos;</li>
+        <li>soporte interno para empleados;</li>
+        <li>flujos de trabajo especializados de un sector;</li>
+        <li>varios agentes con responsabilidades distintas.</li>
+      </ul>
+
+      <h2>Cómo elegir entre un IVR, una recepcionista con IA y un agente de voz más amplio</h2>
+
+      <div class="decision">
+        <div class="decision-step">
+          <div class="decision-num">1</div>
+          <strong>¿La tarea consiste básicamente en enrutar mediante un menú fijo y pequeño?</strong>
+          <p>En ese caso, un IVR tradicional puede ser suficiente.</p>
+        </div>
+
+        <div class="decision-step">
+          <div class="decision-num">2</div>
+          <strong>¿Las personas que llaman describen de forma natural lo que quieren de muchas maneras distintas?</strong>
+          <p>En ese caso, la comprensión del lenguaje natural adquiere más valor.</p>
+        </div>
+
+        <div class="decision-step">
+          <div class="decision-num">3</div>
+          <strong>¿La tarea principal es, en esencia, trabajo de recepción?</strong>
+          <p>En ese caso, «recepcionista con IA» es una descripción de rol útil.</p>
+        </div>
+
+        <div class="decision-step">
+          <div class="decision-num">4</div>
+          <strong>¿El sistema debe realizar acciones especializadas más allá de la recepción?</strong>
+          <p>En ese caso, conviene pensar en términos de la categoría más amplia de agente de voz con IA.</p>
+        </div>
+
+        <div class="decision-step">
+          <div class="decision-num">5</div>
+          <strong>¿El flujo de trabajo requiere datos en vivo o acciones reales?</strong>
+          <p>Evalúe el acceso a herramientas, las API, los permisos, la lógica de confirmación y el manejo de fallos, y no solo la calidad de la conversación.</p>
+        </div>
+
+        <div class="decision-step">
+          <div class="decision-num">6</div>
+          <strong>¿Qué ocurre cuando la automatización no puede completar la tarea de forma segura?</strong>
+          <p>El diseño de la transferencia a una persona y de la alternativa de respaldo (fallback) debe formar parte de la decisión desde el principio.</p>
+        </div>
+      </div>
+
+      <h2>No compare sistemas por lo humana que suena la voz</h2>
+
+      <p>
+        El realismo de la voz es evidente, por lo que recibe mucha atención. Pero dice muy poco sobre si un sistema puede ejecutar de forma fiable el flujo de trabajo de la empresa.
+      </p>
+
+      <p>Una evaluación mejor plantea preguntas como estas:</p>
+
+      <ul>
+        <li>¿Puede comprender la intención real de la persona que llama?</li>
+        <li>¿Conserva el contexto después de una corrección?</li>
+        <li>¿Puede interrumpir y ser interrumpido con naturalidad?</li>
+        <li>¿Puede acceder al conocimiento adecuado?</li>
+        <li>¿Puede llamar a la herramienta de negocio correcta?</li>
+        <li>¿Confirma las acciones sensibles?</li>
+        <li>¿Se recupera cuando falla una herramienta?</li>
+        <li>¿Puede transferir a una persona?</li>
+        <li>¿Puede el equipo medir lo ocurrido después?</li>
+      </ul>
+
+      <h2>Ideas erróneas frecuentes</h2>
+
+      <div class="myths">
+        <div class="myth">
+          <div class="myth-top">«El IVR siempre es marcar 1, marcar 2».</div>
+          <div class="myth-bottom">El IVR tradicional suele funcionar así, pero el IVR moderno puede usar reconocimiento de voz y PLN.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-top">«Una recepcionista con IA es una tecnología completamente distinta de un agente de voz con IA».</div>
+          <div class="myth-bottom">La recepcionista con IA suele ser una implementación de la categoría más amplia de agente de voz, orientada a un rol específico.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-top">«Los agentes de voz con IA vuelven obsoleto el IVR».</div>
+          <div class="myth-bottom">El enrutamiento simple y determinista sigue teniendo casos de uso válidos, y los sistemas híbridos pueden combinar IVR e IA conversacional.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-top">«Si suena natural, es más avanzado».</div>
+          <div class="myth-bottom">La calidad de la voz es solo una dimensión. El contexto, el uso de herramientas, la precisión del flujo de trabajo, el manejo de fallos y la observabilidad también importan.</div>
+        </div>
+
+        <div class="myth">
+          <div class="myth-top">«Todas las empresas necesitan la IA de voz más avanzada que exista».</div>
+          <div class="myth-bottom">El sistema adecuado debe corresponder a la complejidad del flujo de trabajo telefónico real.</div>
+        </div>
+      </div>
+
+      <h2>Un mejor vocabulario para los compradores empresariales</h2>
+
+      <p>
+        En lugar de preguntar solo:
+      </p>
+
+      <p><strong>«¿Esto es una recepcionista con IA o un IVR?»</strong></p>
+
+      <p>
+        pregunte:
+      </p>
+
+      <ul>
+        <li>¿Pueden las personas que llaman hablar con naturalidad?</li>
+        <li>¿El sistema recuerda el contexto?</li>
+        <li>¿A qué información puede acceder?</li>
+        <li>¿Qué acciones puede realizar?</li>
+        <li>¿Qué acciones requieren confirmación?</li>
+        <li>¿Cómo se enrutan las llamadas?</li>
+        <li>¿Puede transferir a una persona?</li>
+        <li>¿Qué ocurre cuando falla?</li>
+        <li>¿Podemos revisar el resultado después?</li>
+      </ul>
+
+      <p>
+        Esas preguntas dicen mucho más que la etiqueta del producto.
+      </p>
+
+      <div class="one-sentence">
+        <div class="label">La terminología en una frase</div>
+        <p>Agente de voz con IA describe la tecnología conversacional más amplia, recepcionista con IA describe un rol de negocio que esa tecnología puede desempeñar, e IVR describe un patrón de interacción telefónica automatizada que puede abarcar desde menús simples hasta sistemas más conversacionales.</p>
+      </div>
+
+      <h2>Preguntas frecuentes</h2>
+
+      <section class="faq">
+        <div class="faq-item">
+          <h3>¿Cuál es la diferencia entre un agente de voz con IA y una recepcionista con IA?</h3>
+          <p>
+            El agente de voz con IA es la categoría técnica más amplia. La recepcionista con IA es una implementación orientada a un rol, centrada en tareas de recepción como atender, programar citas, recibir solicitudes, enrutar y tomar mensajes.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Cuál es la diferencia entre un agente de voz con IA y el IVR?</h3>
+          <p>
+            El IVR tradicional suele estar más estructurado en torno a menús predefinidos, enrutamiento y entradas restringidas. Los agentes de voz con IA suelen diseñarse para una conversación en lenguaje natural más abierta, un contexto más rico y el uso de herramientas. El IVR conversacional avanzado puede coincidir con algunas de esas capacidades.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Una recepcionista con IA es un IVR?</h3>
+          <p>
+            No necesariamente. Recepcionista con IA describe el trabajo que se realiza, mientras que IVR describe un modelo automatizado de interacción y enrutamiento telefónico. Una implementación puede contener ambos.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Puede el IVR comprender el lenguaje natural?</h3>
+          <p>
+            Sí. El IVR moderno puede incorporar reconocimiento de voz y procesamiento del lenguaje natural. El IVR tradicional de árbol telefónico está más basado en menús, pero el IVR conversacional es más flexible.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Es mejor una recepcionista con IA que un IVR?</h3>
+          <p>
+            No en todos los casos. Un menú de enrutamiento corto y determinista puede resolverse mejor con un IVR. Una recepcionista con IA resulta más útil cuando las personas que llaman necesitan una conversación natural, preguntas dinámicas, programación de citas, acceso a conocimiento o integración con herramientas de negocio.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Puede un agente de voz con IA transferir llamadas?</h3>
+          <p>
+            Sí, si la lógica de transferencia y la infraestructura de telefonía están configuradas. Las transferencias pueden activarse por solicitud de la persona que llama, por una política, por solicitudes no admitidas u otras reglas de escalamiento.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Puede una empresa usar un IVR y un agente de voz con IA a la vez?</h3>
+          <p>
+            Sí. Los sistemas híbridos pueden usar el IVR para un enrutamiento determinista y los agentes de voz con IA para tareas conversacionales, autoservicio o flujos de trabajo especializados.
+          </p>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Continúe con la serie sobre agentes de voz con IA</h2>
+        <p>
+          Si desea la definición más amplia de la categoría o la arquitectura técnica en mayor profundidad, continúe con las dos primeras guías de esta serie.
+        </p>
+        <div class="cta-links">
+          <a class="button" href="https://b2b-voice.com/what-is-an-ai-voice-agent">What Is an AI Voice Agent? →</a> <a class="button secondary" href="https://b2b-voice.com/how-ai-voice-agents-work">How AI Voice Agents Work →</a>
+        </div>
+      </section>
+
+      <div class="next">
+        <strong>Siguiente en la serie de conocimiento de B2B Voice:</strong> <em>Voice AI Latency: What Causes Delay and How Fast Should an AI Agent Respond?</em>
+      </div>
+
+      <section class="sources">
+        <h2>Fuentes técnicas &amp; base de investigación</h2>
+        <p>
+          Esta comparación utiliza documentación primaria sobre el IVR y las capacidades de los agentes de voz modernos. Términos como «recepcionista con IA» son una etiqueta de mercado y de rol de negocio, y no un estándar formal de telecomunicaciones, por lo que el artículo separa deliberadamente el rol del producto de la arquitectura subyacente.
+        </p>
+        <ul>
+          <li>
+            <strong>Twilio — Interactive Voice Response (IVR):</strong> <a href="https://www.twilio.com/docs/glossary/what-is-ivr">twilio.com/docs/glossary/what-is-ivr</a>
+          </li>
+          <li>
+            <strong>Twilio — Interactive Voice Response developer guide:</strong> <a href="https://www.twilio.com/docs/voice/interactive-voice-response">twilio.com/docs/voice/interactive-voice-response</a>
+          </li>
+          <li>
+            <strong>OpenAI — Voice Agents:</strong> <a href="https://developers.openai.com/api/docs/guides/voice-agents">developers.openai.com/api/docs/guides/voice-agents</a>
+          </li>
+          <li>
+            <strong>OpenAI — Realtime and Audio:</strong> <a href="https://developers.openai.com/api/docs/guides/realtime">developers.openai.com/api/docs/guides/realtime</a>
+          </li>
+          <li>
+            <strong>ElevenLabs — ElevenAgents:</strong> <a href="https://elevenlabs.io/docs/eleven-agents/overview/">elevenlabs.io/docs/eleven-agents/overview</a>
+          </li>
+          <li>
+            <strong>ElevenLabs — System Tools:</strong> <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tags" aria-label="Etiquetas del artículo">
+        <span class="tags-label">Etiquetas</span>
+        <div class="tag-list">
+          <span class="tag">Agente de voz con IA</span> <span class="tag">Recepcionista con IA</span> <span class="tag">IVR</span> <span class="tag">IVR conversacional</span> <span class="tag">IA de voz</span> <span class="tag">Automatización de la telefonía empresarial</span> <span class="tag">Enrutamiento de llamadas</span> <span class="tag">IA conversacional</span>
+        </div>
+      </section>
+    </article>
+  </main>

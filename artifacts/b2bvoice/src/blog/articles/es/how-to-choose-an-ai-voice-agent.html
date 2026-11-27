@@ -1,0 +1,358 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Saltar al artículo</a>
+  <header>
+    
+    <p class="b2bv-kicker">Guías de compra</p>
+    <h1 id="b2bv-title">Cómo elegir un agente de voz con IA para su empresa: guía de compra completa</h1>
+    <p class="b2bv-byline">Por <a rel="author" href="/es/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Una demostración de voz bien pulida le dice cómo podría sonar una llamada. Una decisión de compra necesita evidencia de que la persona que llama puede completar la tarea prevista, de que se crea el registro correcto en el sistema de la empresa y de que el personal puede tomar el control. Use un solo flujo de trabajo y un piloto repetible para comparar a los proveedores según esos resultados.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Respuesta rápida</h2>
+        <p>Elija un agente de voz con IA definiendo un resultado de negocio, probando a cada proveedor con llamadas que se ajusten a sus reglas reales y verificando los registros o las transferencias que resulten. Una recepcionista empaquetada puede servir para la recepción de solicitudes rutinarias. Una implementación gestionada puede encajar en un trabajo a medida que abarque varios sistemas. Haga obligatorios para el piloto la autorización, la transferencia a una persona y el plan de reversión.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Tabla de contenidos">
+      <p>En esta guía</p>
+      <ol>
+<li><a href="#business-outcome">Definir el resultado</a></li>
+<li><a href="#delivery-model">Comparar modelos de entrega</a></li>
+<li><a href="#readiness">Lista de verificación de preparación y tabla de puntuación</a></li>
+<li><a href="#pilot">Realizar un piloto justo</a></li>
+<li><a href="#agreement">Acordar el soporte y la salida</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+<li>Dé a cada proveedor el mismo conjunto de llamadas, las mismas condiciones de éxito y las mismas verificaciones en los sistemas de la empresa.</li>
+<li>Puntúe la evidencia en seis dimensiones y deje en blanco los elementos que no se hayan evaluado.</li>
+<li>Suspenda el lanzamiento cuando una puerta obligatoria de autorización, de transferencia a una persona o de reversión no se haya evaluado o no se supere.</li>
+        </ul>
+      </section>
+<section id="business-outcome">
+  <h2>¿Qué debe completar el agente en una llamada real?</h2>
+  <p>Elija una llamada recurrente que una persona de su equipo pueda describir de principio a fin. Una pequeña empresa de servicios podría elegir una cita para un presupuesto nuevo, mientras que una oficina profesional podría optar por tomar un mensaje con una franja horaria para devolver la llamada. Anote el objetivo de la persona que llama, los campos obligatorios, las decisiones que el agente puede tomar y la evidencia que indica al personal que el trabajo está completo. Un gerente debería poder revisar el resultado a la mañana siguiente sin escuchar la llamada completa.</p>
+  <p>Si desea ayuda para convertir esa llamada en un sistema funcional, B2B Voice ofrece diseño e implementación gestionados de agentes de voz con IA a medida. Aporte las reglas que sigue un empleado y el registro que demuestra que una tarea está completa. Con esos datos, ambos equipos pueden acordar el primer flujo de trabajo, el acceso necesario para el piloto y las decisiones que atenderá su personal.</p>
+<p>En el caso de una reserva, defina el éxito como una cita válida en el sistema designado, con el lugar y la hora correctos. En el caso de una devolución de llamada, exija una solicitud guardada con un medio de contacto, el motivo y un responsable del personal. En el caso de una transferencia en vivo, exija la conexión con el destinatario previsto. Defina una etiqueta aparte para una transferencia fallida o para un mensaje tomado cuando el destino está cerrado. Este vocabulario permite a los proveedores demostrar un trabajo comparable y da a su personal algo que investigar cuando la persona vuelve a llamar.</p>
+  <p>Use un conjunto reciente de motivos de llamada e incluya los turnos que los atienden. Identifique los tipos de personas que llaman o los idiomas que su personal puede atender, las solicitudes de alto riesgo, las franjas reales para devolver llamadas y los casos que requieren a una persona de inmediato. Entregue a los proveedores preseleccionados la misma descripción anonimizada. Un ejemplo ficticio basta para empezar y evita revelar información privada de clientes durante la fase de exploración.</p>
+</section>
+
+<section id="delivery-model">
+  <h2>¿Qué modelo de entrega se adapta a su equipo?</h2>
+  <p>Compare las personas y las responsabilidades que implica cada opción. El proveedor puede ser responsable de una aplicación, pero su empresa sigue siendo dueña de las reglas de enrutamiento, la cobertura del personal y el permiso para escribir en sus sistemas. Pregunte quién mantiene cada pieza cuando cambia una regla del calendario o cuando alguien se va y hay que reemplazar una credencial.</p>
+  <div class="b2bv-table" role="region" aria-label="Comparación de modelos de entrega de voz" tabindex="0">
+    <table>
+      <caption>Ajuste el modelo operativo a la llamada y a las personas que lo respaldarán</caption>
+      <thead><tr><th scope="col">Opción</th><th scope="col">Encaje habitual</th><th scope="col">Prueba o responsabilidad que debe confirmar</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Recepcionista con IA empaquetada</th><td>Contestación rutinaria, mensajes, enrutamiento estándar o una herramienta de reservas aprobada.</td><td>Demuestre que sus excepciones caben en su configuración e identifique al responsable de los cambios y de los casos fallidos.</td></tr>
+        <tr><th scope="row">Plataforma de voz sobre la que usted construye</th><td>Un equipo con tiempo de ingeniería, una práctica de control de calidad y la capacidad de mantener el flujo de trabajo telefónico.</td><td>Presupueste la lógica de la aplicación, la supervisión, las cuentas de servicio, las pruebas de alternativa de respaldo (fallback) y la responsabilidad de guardia.</td></tr>
+        <tr><th scope="row">Implementación personalizada gestionada</th><td>Un flujo de trabajo empresarial definido, con reglas a medida o varios sistemas, en el que un equipo de entrega externo puede ayudar a diseñarlo y construirlo.</td><td>Obtenga una declaración de trabajo que cubra la exploración del negocio, el acceso a los sistemas, las versiones, la supervisión, el mantenimiento y las responsabilidades del cliente.</td></tr>
+        <tr><th scope="row">Servicio de contestación en vivo o híbrido</th><td>Llamadas que con frecuencia requieren criterio, una respuesta atendida por personal o una combinación de trabajo repetitivo y decisiones humanas.</td><td>Verifique la capacitación, la cobertura por turnos y la autoridad que tiene el personal para actuar. Pruebe cómo llega una llamada a la persona responsable.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Use una vía atendida por personas para disputas, solicitudes delicadas, excepciones de consecuencia y personas que piden hablar con alguien. Algunas operaciones pueden comenzar con un menú telefónico automatizado existente, también llamado respuesta de voz interactiva (IVR), para un enrutamiento predecible. Un servicio atendido por personal puede tomar el control cuando la consulta requiere criterio. Consulte la <a href="/es/ai-voice-agent-vs-ai-receptionist-vs-ivr">comparación entre agentes de voz con IA, recepcionistas con IA e IVR</a> para ver cómo encajan esos roles.</p>
+  <p>En un proyecto de B2B Voice, el alcance, el volumen de llamadas, la complejidad del flujo de trabajo, las integraciones y el acuerdo comercial determinan el precio. Puede que no se requiera una tarifa de configuración inicial, según la implementación. Use el flujo de trabajo que desea probar para solicitar una <a href="/demo">demostración personalizada</a>.</p>
+<p>La guía sobre <a href="/es/ai-receptionist-vs-human-receptionist" data-phase2-link="true">dotación de personal y recepción híbrida</a> compara la cobertura por turno, por tarea y según la necesidad de criterio humano.</p>
+</section>
+
+<section id="readiness">
+  <h2>Lista de verificación de preparación del comprador de B2B Voice</h2>
+  <p>Pida al propietario del negocio, al administrador de sistemas y al equipo receptor que usen esta lista antes de preseleccionar proveedores. Cada elemento debe producir evidencia con la que todos los proveedores puedan trabajar. Si faltan recursos o aprobaciones, reduzca el alcance del primer piloto a una acción que pueda verificar.</p>
+  <div class="b2bv-table" role="region" aria-label="Lista de verificación de preparación del comprador" tabindex="0">
+    <table>
+      <caption>Cinco preguntas que responder antes de programar las demostraciones de los proveedores</caption>
+      <thead><tr><th scope="col">Pregunta</th><th scope="col">Aporte esta evidencia</th><th scope="col">Equipo responsable</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">¿Qué debe lograr la persona que llama?</th><td>Un único motivo de llamada, el volumen de referencia por turno, las necesidades de idioma y una definición de finalización.</td><td>Operaciones del negocio</td></tr>
+        <tr><th scope="row">¿Qué autoridad tiene el agente?</th><td>Campos que puede leer o escribir, verificación de la persona que llama, acciones permitidas, grabación y avisos.</td><td>Responsable del sistema y revisor de políticas</td></tr>
+        <tr><th scope="row">¿Dónde se registra la finalización?</th><td>El registro de referencia, una cuenta de prueba autorizada y un ejemplo ficticio que el responsable pueda comprobar.</td><td>Administrador del CRM, del calendario o de la aplicación</td></tr>
+        <tr><th scope="row">¿Qué sucede cuando falla la ruta?</th><td>Una ruta atendida por personal, el comportamiento en caso de línea ocupada o cerrada, el responsable de devolver la llamada y la ruta anterior para la reversión.</td><td>Equipo receptor y responsable de telefonía</td></tr>
+        <tr><th scope="row">¿Cómo seguirá operando después del lanzamiento o de la salida?</th><td>Responsables de soporte designados, derechos de cambio, exportación de datos, acceso al número de teléfono y plan de restauración.</td><td>Operaciones y compras</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol class="b2bv-flow" aria-label="Ruta de decisión para evaluar proveedores">
+    <li><strong>Defina el alcance</strong><span>Escriba un resultado para la persona que llama e identifique el registro que lo demuestra.</span></li>
+    <li><strong>Puntúe el piloto</strong><span>Califique la evidencia de las mismas llamadas para cada proveedor.</span></li>
+    <li><strong>Tome la decisión de lanzamiento</strong><span>Suspenda si fallan las puertas. Revise el alcance firmado cuando se superen todas.</span></li>
+  </ol>
+  <h3>Puntúe la evidencia que observe</h3>
+  <p>Califique cada dimensión de 0 a 5 para el mismo flujo de trabajo acotado. Use 0 cuando se haya confirmado que la capacidad no existe, 1 para una afirmación verbal, 2 para la documentación, 3 para una demostración controlada, 4 cuando su equipo la reproduce en un piloto y 5 cuando la reproduce y además inspecciona evidencia operativa, como los registros de recuperación. Deje un elemento sin evaluar hasta que tenga evidencia. Una política de datos escrita y una prueba de acceso exitosa son niveles de evidencia distintos.</p>
+  <p><strong>Puntuación ponderada</strong> = la suma de (peso de la dimensión en puntos × calificación de la evidencia ÷ 5). Los pesos predeterminados suman 100. Anote por qué cambió un peso y aplique los mismos pesos a todos los candidatos. La rúbrica ayuda a comparar las pruebas e identificar preguntas por resolver. Use un registro aparte para los requisitos obligatorios de su flujo de trabajo.</p>
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Ejemplo ficticio de tabla de puntuación del comprador" tabindex="0">
+    <table>
+      <caption>Candidato ficticio para un piloto de citas de servicio</caption>
+      <thead><tr><th scope="col">Dimensión</th><th scope="col">Peso</th><th scope="col">Calificación</th><th scope="col">Puntos</th><th scope="col">Ejemplo de evidencia observada</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Resultado de negocio y flujo de trabajo</th><td>25%</td><td>4</td><td>20</td><td>El comprador reproduce la reserva en el lugar correcto.</td></tr>
+        <tr><th scope="row">Integración y responsabilidad</th><td>20%</td><td>3</td><td>12</td><td>El proveedor muestra un acceso limitado al calendario en su demostración controlada.</td></tr>
+        <tr><th scope="row">Protección de datos y escalamiento</th><td>20%</td><td>4</td><td>16</td><td>El comprador repite una denegación de datos protegidos y una transferencia atendida por personal en horario diurno.</td></tr>
+        <tr><th scope="row">Conversación e idiomas</th><td>15%</td><td>3</td><td>9</td><td>El proveedor muestra una interrupción y una corrección de la persona que llama en un idioma compatible.</td></tr>
+        <tr><th scope="row">Soporte y recuperación</th><td>10%</td><td>3</td><td>6</td><td>El proveedor muestra una cola de fallos asignada en un entorno controlado.</td></tr>
+        <tr><th scope="row">Costo total y portabilidad</th><td>10%</td><td>2</td><td>4</td><td>El comprador tiene un borrador de términos y una descripción de la exportación.</td></tr>
+        <tr class="b2bv-emphasis"><th scope="row">Total</th><td>100%</td><td></td><td>67</td><td>Suspender hasta que se corrija la alternativa de respaldo (fallback) acordada para la cola cerrada y se superen las puertas obligatorias.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>En este ejemplo, el agente obtuvo 16 puntos por la evidencia que el comprador reprodujo en horario diurno. Una prueba aparte en horario nocturno falló porque la llamada volvió a una línea cerrada sin un responsable de devolver la llamada. Conserve la calificación de la evidencia y registre la puerta fallida de forma explícita. Una empresa que ya tenga una cola para la línea cerrada podría repetir la prueba con ese destino y nombrar a la persona que la atiende por la mañana.</p>
+  <form id="b2bv-score" class="b2bv-calculator" novalidate hidden>
+  <fieldset>
+    <legend>Puntúe a un candidato</legend>
+    <p>Reemplace las calificaciones ficticias por su evidencia. Use calificaciones de números enteros y haga que los pesos sumen 100 %.</p>
+    <div class="b2bv-table b2bv-assess" role="region" aria-label="Tabla de puntuación del comprador editable" tabindex="0">
+      <table>
+        <caption>Pesos y calificaciones de la evidencia por dimensión</caption>
+        <thead><tr><th scope="col">Dimensión</th><th scope="col">Peso</th><th scope="col">Calificación</th></tr></thead>
+        <tbody><tr><th scope="row">Resultado de negocio y flujo de trabajo</th><td><input type="number" data-weight aria-label="Peso del resultado de negocio y flujo de trabajo en porcentaje" min="0" max="100" step="any" value="25" required></td><td><select data-rating aria-label="Calificación del resultado de negocio y flujo de trabajo"><option value="">Sin evaluar</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Integración y responsabilidad</th><td><input type="number" data-weight aria-label="Peso de la integración y responsabilidad en porcentaje" min="0" max="100" step="any" value="20" required></td><td><select data-rating aria-label="Calificación de la integración y responsabilidad"><option value="">Sin evaluar</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Protección de datos y escalamiento</th><td><input type="number" data-weight aria-label="Peso de la protección de datos y escalamiento en porcentaje" min="0" max="100" step="any" value="20" required></td><td><select data-rating aria-label="Calificación de la protección de datos y escalamiento"><option value="">Sin evaluar</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Conversación e idiomas</th><td><input type="number" data-weight aria-label="Peso de la conversación e idiomas en porcentaje" min="0" max="100" step="any" value="15" required></td><td><select data-rating aria-label="Calificación de la conversación e idiomas"><option value="">Sin evaluar</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Soporte y recuperación</th><td><input type="number" data-weight aria-label="Peso del soporte y la recuperación en porcentaje" min="0" max="100" step="any" value="10" required></td><td><select data-rating aria-label="Calificación del soporte y la recuperación"><option value="">Sin evaluar</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Costo total y portabilidad</th><td><input type="number" data-weight aria-label="Peso del costo total y la portabilidad en porcentaje" min="0" max="100" step="any" value="10" required></td><td><select data-rating aria-label="Calificación del costo total y la portabilidad"><option value="">Sin evaluar</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr></tbody>
+      </table>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Puertas de decisión obligatorias</legend>
+    <div class="b2bv-fields"><label class="b2bv-field"><span>Autorización y controles de datos</span><select data-gate><option value="">Sin evaluar</option><option value="pass" selected>Superada</option><option value="fail">Fallida</option></select></label>
+<label class="b2bv-field"><span>Transferencia a una persona verificada</span><select data-gate><option value="">Sin evaluar</option><option value="pass">Superada</option><option value="fail" selected>Fallida</option></select></label>
+<label class="b2bv-field"><span>Restauración ensayada de la ruta anterior</span><select data-gate><option value="">Sin evaluar</option><option value="pass" selected>Superada</option><option value="fail">Fallida</option></select></label></div>
+  </fieldset>
+  <button type="submit">Calcular puntuación</button>
+  <div class="b2bv-status" role="status">
+    <p data-score-result></p>
+    <p data-gate-result></p>
+  </div>
+</form>
+<p>La <a href="/es/how-to-integrate-ai-voice-agents" data-phase2-link="true">guía sobre compatibilidad con herramientas empresariales</a> ayuda al responsable de sistemas a verificar la acción exacta en cada cuenta.</p>
+<p>Un despacho puede <a href="/es/ai-voice-agents-for-law-firms" data-phase2-link="true">delimitar la admisión jurídica administrativa</a> con permisos limitados, revisión de conflictos y una vía de escalamiento aprobada.</p>
+</section>
+
+<section id="pilot">
+  <h2>Cómo probar a los proveedores antes de firmar</h2>
+  <p>Haga pasar las mismas llamadas por cada proveedor, con registros ficticios, el mismo horario y las mismas condiciones iniciales. Deje que sea el comprador quien realice las llamadas, observe los registros resultantes e inspeccione la experiencia del equipo receptor. Pida al proveedor que identifique los pasos que están preconfigurados para la demostración y que repita la prueba en el entorno propuesto antes del despliegue.</p>
+  <div class="b2bv-table" role="region" aria-label="Pruebas piloto de ejemplo del agente de voz" tabindex="0">
+    <table>
+      <caption>Cinco llamadas piloto y qué debe inspeccionar el comprador después</caption>
+      <thead><tr><th scope="col">Prueba de llamada</th><th scope="col">Qué inspeccionar después de la llamada</th><th scope="col">Gestión esperada</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Cita de presupuesto ordinaria</th><td>Registro del calendario, zona horaria, lugar e identificador de contacto.</td><td>Una cita correcta y una redacción que coincida con el registro confirmado.</td></tr>
+        <tr><th scope="row">Línea con ruido y número de teléfono corregido</th><td>Valor corregido en el registro final y una corrección entendida de forma audible.</td><td>El agente gestiona la interrupción y confirma el dato actualizado antes de escribirlo.</td></tr>
+        <tr><th scope="row">El horario solicitado deja de estar disponible</th><td>Horario candidato y resultado final de la programación.</td><td>Ofrecer un horario disponible o registrar una solicitud pendiente. Conservar la distinción en el mensaje de la persona que llama.</td></tr>
+        <tr><th scope="row">La verificación de identidad queda incompleta</th><td>Resultado del acceso, campos divulgados, evento de auditoría y siguiente vía.</td><td>Bloquear la acción protegida y ofrecer la vía aprobada atendida por personal.</td></tr>
+        <tr><th scope="row">La persona que llama pide hablar con alguien fuera del horario del personal</th><td>Resultado final del enrutamiento, tarea de devolución de llamada y responsable designado.</td><td>Dar una alternativa de respaldo (fallback) veraz y asegurar que la solicitud llegue a una cola a cargo del personal.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Use revisores representativos para cada idioma incluido en el alcance. Deles nombres, lugares, números y correcciones que se den en su negocio. Incluya una adaptación o una ruta alternativa hacia el personal. Puntúe los resultados completados y la recuperación, además de la calidad del habla. Conserve juntos la grabación, el evento observado y el resultado esperado cuando sea apropiado y esté autorizado. Consulte <a href="/es/ai-voice-agent-turn-taking-interruptions">cómo gestionan las interrupciones los agentes de voz</a> y <a href="/es/how-to-test-an-ai-voice-agent">cómo diseñar un conjunto de datos de prueba para un agente de voz con IA</a>.</p>
+  <h3>Fije las puertas de lanzamiento antes de revisar las puntuaciones</h3>
+  <p>Exija una autorización y un tratamiento de datos aprobados, una alternativa de respaldo comprobada, atendida por personal o a cargo del personal, y un regreso ensayado a la ruta anterior. Defina qué evidencia supera cada puerta. Pida al responsable de sistemas que apruebe las acciones restringidas, al equipo receptor que verifique la transferencia y a la persona que controla la telefonía que demuestre la reversión. Un requisito crítico sin evaluar o fallido suspende el lanzamiento. La guía de riesgos de IA generativa del NIST puede servir de base para el plan de pruebas. OWASP recomienda limitar las funciones, los permisos y la autonomía que una aplicación da a un modelo. <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a></p>
+  <p>Registre lo que demuestra cada piloto para el tráfico, las herramientas, los idiomas y los horarios que abarca. Una prueba controlada de citas puede mostrar que las reglas de reserva funcionan en condiciones de prueba. Los picos de llamadas simultáneas, los fallos bajo carga y la recuperación cuando cambia una dependencia requieren cada uno sus propias verificaciones. Elija umbrales de aceptación que reflejen los riesgos de su negocio y recopile los recuentos de base en lugar de promediar los fallos hasta que desaparezcan.</p>
+<p>Use la <a href="/es/best-ai-voice-agent-for-call-centers" data-phase2-link="true">tabla de puntuación de proveedores para centros de contacto</a> cuando las colas de producción, el tráfico en horas pico y las responsabilidades del operador de telecomunicaciones determinen la selección.</p>
+</section>
+
+<section id="agreement">
+  <h2>¿Qué debe incluir el acuerdo de piloto y de soporte?</h2>
+  <p>Redacte un registro de aceptación para cada flujo de trabajo. Incluya los datos permitidos, la acción de negocio finalizada, la transferencia aprobada, las condiciones de prueba y qué responsable puede detener el despliegue. Especifique una primera ruta pequeña, como una sede durante el horario con personal, y una vía de regreso acordada antes de cambiar el enrutamiento de producción. Revise una factura recurrente, la política de cambios y el contacto de escalamiento como parte de la misma decisión.</p>
+  <ul>
+    <li><strong>Acceso y conservación.</strong> Documente adónde van las llamadas, las grabaciones, las transcripciones, los resúmenes y los registros del negocio. Establezca quién puede inspeccionarlos, exportarlos y eliminarlos, y quién asume el control si cambia el proveedor.</li>
+    <li><strong>Operaciones y soporte.</strong> Indique quién gestiona las acciones fallidas y quién puede pausar un flujo de trabajo. Acuerde los horarios, la responsabilidad ante incidentes, las condiciones de reversión y la aprobación de los cambios en el flujo de trabajo.</li>
+    <li><strong>Portabilidad del número y de los datos.</strong> Registre quién controla el número de la empresa, dónde se encuentran los registros históricos, qué formato de exportación recibe y cómo se puede restaurar la ruta anterior.</li>
+    <li><strong>Precio y renovación.</strong> Pida un ejemplo de factura que abarque meses tranquilos y meses de mucho movimiento. Use la misma cobertura de llamadas y el mismo trabajo retenido al comparar el costo total de cada propuesta.</li>
+  </ul>
+  <h3>Revise las llamadas salientes como un flujo de trabajo aparte</h3>
+  <p>Comience un piloto entrante con personas que se comunican con su empresa. Si el plan incluye llamadas salientes automatizadas, solicite una revisión independiente del propósito, el tipo de número, el consentimiento, la supresión, las exclusiones voluntarias y las normas federales y estatales aplicables. La FCC trata las voces humanas generadas por IA como voces artificiales a efectos de la Ley de Protección del Consumidor de Servicios de Telefonía de EE. UU. (TCPA). Los requisitos varían según la llamada y las normas aplicables. Asigne la responsabilidad de las aprobaciones y de los registros de consentimiento antes de realizar cualquier llamada de prueba saliente a destinatarios reales. Revise la grabación y los avisos según las jurisdicciones reales y el diseño. <a href="https://docs.fcc.gov/public/attachments/FCC-24-17A1_Rcd.pdf">FCC 24-17 declaratory ruling</a> <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+  <p>Decida después de revisar la evidencia. Un piloto breve que complete una tarea de negocio y transfiera las excepciones puede dar a compras un alcance claro para contratar. Cuando persista una brecha crítica, registre si el siguiente paso es un flujo de trabajo más acotado, una nueva prueba en su entorno u otro proveedor con la evidencia requerida.</p>
+</section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+<div class="b2bv-faq-item"><h3>¿Cuál es el mejor agente de voz con IA para mi empresa?</h3><p>Elija la opción que complete su flujo de llamadas prioritario dentro de las reglas que usted apruebe, que llegue a una persona cuando sea necesario y que tenga un modelo operativo que su equipo pueda respaldar. Pruebe a los candidatos con las mismas llamadas y verifique los registros que producen.</p></div>
+<div class="b2bv-faq-item"><h3>¿Necesito un agente personalizado o una recepcionista con IA empaquetada?</h3><p>Una recepcionista empaquetada puede servir para preguntas rutinarias, mensajes y enrutamiento estándar. Compare una solución a medida cuando el éxito dependa de reglas de elegibilidad, varias sedes, acciones protegidas o escrituras confirmadas en las herramientas existentes.</p></div>
+<div class="b2bv-faq-item"><h3>¿Cómo debo evaluar la calidad del idioma?</h3><p>Use revisores con dominio del idioma y familiarizados con la forma de hablar de sus clientes. Pruebe nombres, números, interrupciones, cambio de código lingüístico cuando proceda, solicitudes ambiguas y la finalización exitosa de la tarea en cada idioma que piense usar.</p></div>
+<div class="b2bv-faq-item"><h3>¿Quién debe ser el dueño del número de la empresa y de los registros?</h3><p>Incluya en el acuerdo las responsabilidades sobre el control del número, el acceso a los datos, el formato de exportación, la conservación y la transición. Pida ver un ejemplo de exportación y confirme quién puede cambiar el enrutamiento o iniciar una portabilidad si la relación termina.</p></div>
+<div class="b2bv-faq-item"><h3>¿Puede un proveedor con una puntuación alta no superar el piloto?</h3><p>Sí. Una puerta de autorización, protección de datos, transferencia a una persona o reversión que falle detiene el lanzamiento hasta que se corrija y se vuelva a probar. La puntuación refleja la solidez de la evidencia observada en todas las dimensiones.</p></div>
+<div class="b2bv-faq-item"><h3>¿Qué debo llevar a una demostración de B2B Voice?</h3><p>Lleve un escenario de llamada, la acción de negocio que debe seguir, el sistema que demuestra la finalización y la vía de escalamiento. Use nombres y registros ficticios para que la demostración se centre en el comportamiento y la adecuación.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Lleve un flujo de trabajo a una demostración personalizada</h2>
+        <p>Indique a B2B Voice qué debe lograr la persona que llama, qué debe registrar su sistema empresarial y cuándo debe intervenir el personal. Use información ficticia para la llamada de ejemplo.</p>
+        <a href="/demo">Solicitar una demostración del flujo de trabajo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Fuentes</h2>
+        <ul>
+<li><a href="/es/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+<li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <span class="b2bv-source-note">(NIST)</span></li>
+<li><a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a> <span class="b2bv-source-note">(OWASP)</span></li>
+<li><a href="https://docs.fcc.gov/public/attachments/FCC-24-17A1_Rcd.pdf">FCC 24-17 declaratory ruling</a> <span class="b2bv-source-note">(Federal Communications Commission)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Temas</h2>
+        <ul class="b2bv-tags">
+<li>Guía de compra de agentes de voz con IA</li>
+<li>Recepcionistas con IA</li>
+<li>Implementación gestionada</li>
+<li>Evaluación de proveedores</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

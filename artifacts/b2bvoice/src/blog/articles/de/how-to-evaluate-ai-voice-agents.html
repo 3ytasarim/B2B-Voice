@@ -1,0 +1,353 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Zum Artikel springen</a><header><h1 id="article-title">KI-Sprachagenten evaluieren: Metriken, Methoden und Leistungskriterien</h1>
+<p class="b2bv3-byline">Von B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Eine wirksame Evaluierung von KI-Sprachagenten verfolgt den gesamten Anruf bis zum geschäftlichen Ergebnis. Prüfen Sie Sprache und Timing an dem Audio, das die anrufende Person tatsächlich hört, verifizieren Sie Anfragen anhand des Integrationsvertrags und lesen Sie das Ergebnis aus dem führenden System zurück. Bei einem Terminbuchungsagenten kann ein freundliches „Alles erledigt“ neben einem leeren Kalender bestehen. Eine anrufende Person, die nach einer gescheiterten Buchung die richtige Ansprechperson erreicht, kann das als hilfreiche Fehlerbehebung erleben, obwohl kein Termin angelegt wurde.</p>
+<p>Bei einer individuellen Umsetzung legt B2B Voice die Evaluierung entlang der Workflows des Kunden fest. Die Terminplanung kann benennen, was als bestätigter Termin gilt. Ein Service Desk kann die Situationen nennen, die bei einem Menschen ankommen müssen. Diese Definitionen zeigen den Entwicklern, welche Traces, Datensätze und Hörproben ein Pilotprojekt braucht.</p>
+<h2 id="key-takeaways">Die wichtigsten Erkenntnisse</h2>
+<ul>
+<li>Nutzen Sie Evaluierungen auf Komponenten-, Gesprächs- und End-to-End-Ebene, um unterschiedliche Fragen zu beantworten.</li>
+<li>Ordnen Sie Metriken zur Evaluierung von Sprachagenten Nachweisen zu, die das Team tatsächlich einsehen kann.</li>
+<li>Prüfen Sie kritische Geschäftsaktionen mit deterministischen Assertions. Setzen Sie für qualitatives Verhalten menschliches Zuhören und eng abgegrenzte Modellbewertungen ein.</li>
+<li>Legen Sie Abnahmekriterien vor dem Test fest und erfassen Sie fehlende Nachweise als eigenes Ergebnis.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In diesem Artikel</p>
+<ol>
+<li><a href="#choose-the-level-of-evaluation-that-fits-the-decision">Die passende Evaluierungsebene für die Entscheidung wählen</a></li>
+<li><a href="#b2b-voice-voice-agent-evaluation-framework">B2B Voice Framework zur Evaluierung von Sprachagenten</a></li>
+<li><a href="#decide-what-a-machine-can-check-and-what-a-person-should-hear">Entscheiden, was eine Maschine prüfen kann und was ein Mensch hören sollte</a></li>
+<li><a href="#follow-a-fictional-appointment-that-sounded-successful">Ein fiktiver Termin, der erfolgreich klang</a></li>
+<li><a href="#make-results-comparable-between-releases">Ergebnisse zwischen Releases vergleichbar machen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+<li><a href="#references-heading">Quellen</a></li>
+</ol></nav><h2 id="choose-the-level-of-evaluation-that-fits-the-decision">Die passende Evaluierungsebene für die Entscheidung wählen</h2>
+<h3 id="evaluate-a-component-to-isolate-a-fault">Eine Komponente evaluieren, um einen Fehler einzugrenzen</h3>
+<p>Auf Komponentenebene testen Sie eine Schnittstelle mit einer bekannten Eingabe. Der <a href="/de/what-is-an-ai-voice-agent">grundlegende Leitfaden zu KI-Sprachagenten</a> zeigt, wo Sprache, Dialog und Geschäftsaktionen ansetzen. Bei der automatischen Spracherkennung (ASR) vergleichen Sie das eingehende Audio und die finalisierte Transkription mit einer Referenz. Bei der Entitätsextraktion vergleichen Sie das Datum, die Filiale oder die Rückrufnummer, die der Agent extrahiert hat, mit dem von der anrufenden Person bestätigten Wert. Ein vertrauter Name in abweichender Schreibweise kann in einem gewöhnlichen Transkript akzeptabel sein. Ein Name, der zur Auswahl eines Kontos dient, kann dagegen eine exakte Übereinstimmung oder einen Bestätigungsschritt erfordern.</p>
+<p>Eine KI-Sprachbewertung mit Schwerpunkt auf Text-to-Speech (TTS) beginnt mit den Worten, die der Agent tatsächlich abgespielt hat. Eine Hörprüfung kann klären, ob eine prüfende Person die Adresse verstanden und den Unterschied zwischen einem verfügbaren Zeitfenster und einem bestätigten Termin gehört hat. Prüfen Sie Aussprache, Verständlichkeit und Wiedergabe über den Zielkanal. Der Sektor Telekommunikationsstandardisierung der Internationalen Fernmeldeunion (ITU-T) beschreibt in der Empfehlung P.800 kontrollierte subjektive Methoden zur Beurteilung der Übertragungsqualität. Eine informelle Hörerprüfung kann einem Pilotprojekt helfen, ohne als standardisierter Test dargestellt zu werden. <a class="b2bv3-ref" href="#source-mos">ITU-T P.800</a></p>
+<p>Wenn Sie die Ursache einer langsamen Antwort suchen, vergleichen Sie das Ende der Äußerung der anrufenden Person, die Antwortzeit des Tools und das erste hörbare Audio des Agenten. Ein Log-Zeitstempel, der den Zeitpunkt der Textausgabe des Modells markiert, lässt Synthese, Übertragung und Wiedergabe außen vor. Einigen Sie sich auf beobachtbare Start- und Endereignisse, bevor Sie Leistungskennzahlen von Sprachagenten über mehrere Builds hinweg vergleichen.</p>
+<h3 id="evaluate-complete-turns-and-recovery-behavior">Vollständige Gesprächsrunden und das Verhalten bei Fehlern evaluieren</h3>
+<p>Eine Prüfung auf Gesprächsebene fragt, wie der Agent mit Änderungen, Unterbrechungen, Stille und unklarer Absicht umgeht. Prüfen Sie anhand einer Hörprobe oder einer Zeitleiste, wann der Agent zu sprechen begann, bevor die anrufende Person fertig war. Hören Sie bei der Erholung nach einer Unterbrechung darauf, ob die Wiedergabe gestoppt wurde, und prüfen Sie, ob die neue Anfrage der anrufenden Person die veraltete verdrängt hat. Bewerten Sie die Rückfrage danach, wozu sie dient. Eine gezielte Frage nach einer fehlenden Filiale kann der anrufenden Person helfen; die gesamte Interaktion zu wiederholen, kann Zeit verschwenden.</p>
+<p>Lesen Sie ein Transkript auf Richtliniensprache und Bedeutung. Nutzen Sie Audio, wenn der Nachweis vom Sprecherwechsel, von der Aussprache, vom Überlappen der Stimmen, von fehlenden Wörtern oder von der Dauer einer Stille auf Seiten der anrufenden Person abhängt. Text kann den Satz festhalten, den der Agent abspielen wollte, selbst wenn eine Unterbrechung die Wiedergabe mitten in diesem Satz gestoppt hat. Kombinieren Sie diese Beobachtungen, wenn es darauf ankommt, was die anrufende Person tatsächlich gehört hat.</p>
+<h3 id="evaluate-the-workflow-through-its-terminal-state">Den Workflow bis zu seinem Endzustand evaluieren</h3>
+<p>End-to-End-Voice-Evals beginnen mit einer zulässigen Anfrage der anrufenden Person und enden mit einem Zustand, den Mitarbeitende beobachten können. Das kann eine Buchung sein, ein ausstehender Rückruf, eine zulässige Ablehnung oder eine entgegengenommene Übergabe. Jeder dieser Fälle erfordert andere Nachweise. Eine externe Transaktion braucht ein verbindliches Zurücklesen. Eine Übergabe braucht einen Nachweis vom vorgesehenen Ziel oder einen klar definierten Fallback. Eine Ablehnung kann das erwartete Ergebnis sein, wenn eine Aktion die Befugnisse der anrufenden Person übersteigt.</p>
+<p>Der Forschungs-Benchmark τ-Voice evaluiert vollduplexe gesprochene Interaktion anhand fundierter Aufgaben, deren Ergebnisse mit annotierten Geschäftszielen verglichen werden können. Die Forschenden dokumentieren außerdem, welche Qualitätsdimensionen ihr Benchmark außerhalb des Umfangs lässt. Übertragen Sie diesen Gedanken auf die Abgrenzung eines Pilotprojekts. Ein Benchmark-Ergebnis allein belegt nicht, dass die Telefonroute oder die Kalenderintegration eines Kunden funktioniert. <a class="b2bv3-ref" href="#source-tau">Ray und Kollegen</a> <a class="b2bv3-ref" href="#source-taum">Methodik von τ-Voice</a></p>
+<h2 id="b2b-voice-voice-agent-evaluation-framework">B2B Voice Framework zur Evaluierung von Sprachagenten</h2>
+<p>Passen Sie dieses qualitative Framework an den Workflow und an die Nachweise an, die eine freigebende Person tatsächlich einsehen kann. Legen Sie die Abnahmekriterien fest, bevor Sie Systeme vergleichen. Ein fehlender Beleg lässt eine Buchung unverifiziert. Eine verifizierte nicht autorisierte Aktion ist ein release-blockierender Fehler, wenn die Richtlinie des Workflows sie untersagt.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Sechs Dimensionen der Evaluierung eines Sprachagenten</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Dimension</th>
+<th scope="col">Abnahmekriterium</th>
+<th scope="col">Zu prüfender Nachweis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Sprachleistung</th>
+<td>Die zuhörende Person versteht die Informationen, die sie zum Handeln braucht, und der Agent erfasst die von der anrufenden Person bestätigten Felder korrekt.</td>
+<td>Audio über den Telefonpfad, Referenzlabels für Entitäten, erkannter Text (sofern verfügbar) und eine Hörprüfung.</td>
+</tr>
+<tr class="even">
+<th scope="row">Gesprächsleistung</th>
+<td>Der Agent lässt die anrufende Person ausreden, geht mit Unterbrechungen um und kommuniziert die nächsten Schritte in einem angemessenen Tempo.</td>
+<td>Grenzen der Gesprächsrunden, tatsächliche Wiedergabe, Korrekturen der anrufenden Person und Notizen der Prüfer.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Korrektheit der Aktionen</th>
+<td>Der Agent wählt das zulässige Tool aus und übergibt die bestätigten Werte im erwarteten Format.</td>
+<td>Versioniertes Schema, geordnete Tool-Aufrufe sowie Status von Anfrage und Antwort.</td>
+</tr>
+<tr class="even">
+<th scope="row">Verhalten bei Fehlern</th>
+<td>Der Agent klärt Unsicherheiten oder folgt nach einem Fehler dem freigegebenen Fallback.</td>
+<td>Fehler oder Timeout, Rückfrage, Warteschlangen- oder Eskalationsereignisse und das beobachtete Ergebnis beim empfangenden Team.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Sicherheit und Befugnisse</th>
+<td>Das System befolgt die geltende Richtlinie zu Autorisierung und Offenlegung gegenüber der anrufenden Person.</td>
+<td>Richtlinienentscheidung, Zugriffsprotokolle mit begrenztem Geltungsbereich, Prüfungen auf untersagte Aktionen und jede festgeschriebene Änderung.</td>
+</tr>
+<tr class="even">
+<th scope="row">Verifizierte Geschäftsergebnisse</th>
+<td>Der tatsächliche Kalender, das Ticket oder die Warteschlange zeigt einen zulässigen Endzustand.</td>
+<td>Unabhängiges Zurücklesen oder Zielbeleg, der demselben Anruf zugeordnet ist.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Verwenden Sie für jedes Kriterium eine kurze Einstufung, etwa akzeptiert, fehlgeschlagen oder Nachweis fehlt. Halten Sie die Begründung schriftlich fest. Wenn das Contact Center nicht bestätigen kann, ob die Übergabe einen Menschen erreicht hat, halten Sie die Fehlerbehebung zur Prüfung offen. Ein einzelnes Qualitätslabel kann ein ernstes Problem in einer Dimension verbergen.</p>
+<h2 id="decide-what-a-machine-can-check-and-what-a-person-should-hear">Entscheiden, was eine Maschine prüfen kann und was ein Mensch hören sollte</h2>
+<h3 id="use-exact-assertions-when-the-business-rule-is-explicit">Exakte Assertions verwenden, wenn die Geschäftsregel eindeutig ist</h3>
+<p>Eine deterministische Assertion vergleicht eine konkrete Beobachtung mit einer vorab festgelegten Regel. Wenn eine anrufende Person den Donnerstag in der Filiale Ost bestätigt, stellen Sie sicher, dass das Tool die Kennung der Filiale Ost und das bestätigte Zeitfenster am Donnerstag übermittelt hat. Prüfen Sie, dass der Kalender nach dem Anruf den erwarteten Termin enthält. Untersuchen Sie den Aktionsverlauf auf nicht autorisierte oder doppelte Schreibvorgänge. Ein korrekter Endstand kann einen früheren fehlerhaften Schreibvorgang verbergen, wenn ihn ein Wiederholungsversuch oder eine Korrektur überschrieben hat.</p>
+<p>Auch die Tool-Auswahl verdient eine eigene Prüfung. Ein Agent, der gefragt wird, ob ein Zeitfenster verfügbar ist, sollte den freigegebenen Abfragepfad nutzen. Ein Testfall kann einen Buchungsschreibvorgang während dieser Anfrage untersagen. Die anrufende Person erhält womöglich auf beiden Wegen eine plausible Antwort, sodass eine Prüfung, die sich auf die sichtbare Antwort beschränkt, den Unterschied übersehen kann. Verwenden Sie eine <a href="/de/voice-agent-evaluation-data">Fixture mit explizitem Ergebnis-Orakel</a>, um die Regel wiederverwendbar zu machen.</p>
+<h3 id="give-reviewers-clear-listening-criteria">Prüfenden klare Hörkriterien geben</h3>
+<p>Stellen Sie den Prüfenden eine konkrete Frage zu einem beobachteten Ereignis. „Hat der Agent die anrufende Person die Korrektur des Datums beenden lassen?“ ist aussagekräftiger als „War das Gespräch gut?“. Lassen Sie die Prüfenden das relevante Audio-Intervall markieren und festhalten, was sie gehört haben. Geben Sie ihnen Beispiele für akzeptables Verhalten und eine Möglichkeit, einen mehrdeutigen Fall zu kennzeichnen. Vergleichen Sie Abweichungen zwischen den Prüfenden, bevor Sie eine Veränderung als Verbesserung des Modells deuten.</p>
+<p>Ein Large Language Model (LLM) in der Rolle eines Bewerters kann bei der Prüfung von Formulierungen helfen, etwa ob eine Zusammenfassung den genannten nächsten Schritt beibehalten hat. Geben Sie dem Bewerter ein eng gefasstes Raster und die Nachweise, die er heranziehen darf. Die Arbeit zu MT-Bench und Chatbot Arena dokumentierte, dass eine geänderte Reihenfolge der Antworten die paarweisen Bewertungen bei der Textevaluierung verändern kann. Vergleichen Sie automatisierte Bewertungen mit freigegebenen menschlichen Beispielen, prüfen Sie Abweichungen und nutzen Sie für Aktionen mit beobachtbarem Zustand eine direkte Systemprüfung. <a class="b2bv3-ref" href="#source-judge">Zheng und Kollegen</a></p>
+<h2 id="follow-a-fictional-appointment-that-sounded-successful">Ein fiktiver Termin, der erfolgreich klang</h2>
+<p>Eine anrufende Person bittet das Büro eines Haushaltsdienstleisters, einen Termin auf Donnerstagvormittag zu verschieben. Der Agent bestätigt das neue Zeitfenster mit klarer, natürlicher Stimme. Wegen der verspäteten Antwort des Terminplanungsdienstes geht der Agent davon aus, dass die Änderung durchgegangen ist. Der Testkalender zeigt weiterhin Mittwoch.</p>
+<p>Eine Komponentenprüfung kann feststellen, dass Erkennung und Entitätsextraktion den Donnerstag korrekt erfasst haben. Eine Gesprächsprüfung kann feststellen, dass der Agent die Anfrage zutreffend zusammengefasst hat. Der Tool-Trace zeigt möglicherweise einen versuchten Update-Aufruf, gefolgt von einem Timeout. Das Ergebnis der Terminplanung gilt als fehlgeschlagen, weil sich der Kalender nicht geändert hat. Erscheint später doch noch eine Aktualisierung, muss das Team den Vorgang abgleichen und prüfen, was der anrufenden Person mitgeteilt wurde.</p>
+<p>Die Erwartung an die Fehlerbehebung gehört in den Evaluierungsvertrag. Der Agent kann das Ergebnis über die ursprüngliche Vorgangskennung prüfen und die Änderung erst bestätigen, nachdem er sie zurückgelesen hat. Bleibt das Ergebnis ungewiss, sollte die anrufende Person hören, dass die Änderung aussteht, oder die freigegebene Übergabe erhalten. Ein Datensatz mit Mittwoch und eine Nachricht, die den Donnerstag verspricht, können zu einem verpassten Besuch führen, selbst wenn die Sprache des Agenten natürlich klingt.</p>
+<h2 id="make-results-comparable-between-releases">Ergebnisse zwischen Releases vergleichbar machen</h2>
+<p>Frieren Sie die Version des Testfalls, die Geschäftsregeln, den Ausgangszustand des Kalenders, den Tool-Vertrag und den getesteten Telefonpfad ein. Erfassen Sie die von den Diensten zurückgemeldeten Versionen von Agent, Modell, Stimme und Integration sowie jede Abhängigkeit, die ein Anbieter unabhängig ändern kann. Nutzen Sie dieselben Bedingungen, um eine eng begrenzte Änderung zu vergleichen. Setzen Sie bewusst unterschiedliche Anrufende, Formulierungen, Geräuschkulissen und Fehlermodi ein, um zu testen, ob die Schlussfolgerung über diesen Vergleich hinaus trägt.</p>
+<p>Führen Sie neben anspruchsvollen Fällen einen sauberen Satz routinemäßiger Anrufe. Ein Anreicherungsdatensatz mit vielen fehlgeschlagenen Übergaben ist für die Fehlersuche nützlich. Kennzeichnen Sie ihn getrennt von einem Satz, der gewöhnliches Anrufaufkommen abbilden soll. Versehen Sie die Fälle mit Tags nach Aktion, Berechtigung der anrufenden Person, Audiobedingung und Geschäftsrisiko. Wenn nur ein Sprecher dasselbe Skript auf mehrere Arten vorliest, können die Beispiele die Wiederholbarkeit verdeutlichen, lassen aber die breitere Abdeckung unterschiedlicher Anrufender offen.</p>
+<p>Halten Sie fest, was bei jedem versuchten Testfall geschehen ist, einschließlich nicht verfügbarer Daten und der Gründe für einen unvollständigen Durchlauf. Eine reine Audioprüfung eignet sich für manche Sprachprobleme. Ein vollständiger kontrollierter Anruf ist nötig, wenn die Freigabeentscheidung von Medien, Routing und dem Ergebnis eines externen Systems abhängt. Der umfassendere <a href="/de/how-to-test-an-ai-voice-agent">Leitfaden zum Testen eines Sprachagenten vor dem Produktivbetrieb</a> hilft Teams zu entscheiden, wo diese Evaluierungskriterien in den Testprozess passen. Nutzen Sie <a href="/de/how-voice-ai-accuracy-is-measured">Genauigkeitsmaße für konkrete Fehler bei Sprache, Entitäten und Aktionen</a>, wenn ein Pilotprojekt mehr Detail zu diesen Unterscheidungen braucht.</p>
+<h3 id="compare-two-releases-without-losing-the-callers-context">Zwei Releases vergleichen, ohne den Kontext der anrufenden Person zu verlieren</h3>
+<p>Angenommen, ein Team ersetzt eine synthetische Stimme und behält seinen Terminworkflow bei. Führen Sie abgestimmte Fälle durch, in denen die neue Stimme dieselbe freigegebene Bestätigung sowie mehrere weniger vorhersehbare Antworten spricht. Prüfen Sie, ob Zuhörende erkennen können, welche Filiale und welche Uhrzeit sie akzeptieren sollen. Verbessert sich die Sprachqualität, endet aber ein höherer Anteil der getesteten Anrufe, bevor die Bestätigung abgespielt wird, halten Sie diese Befunde getrennt fest. Eine Hörpräferenz entscheidet nicht über die Freigabe.</p>
+<p>Dokumentieren Sie in der Qualitätssicherung von Sprachagenten, wer eine Ausnahme genehmigen darf und welcher Nachweis sie klären kann. Ein Aussprachefehler in einer risikoarmen Menüansage kann für eine dokumentierte Nachverfolgung infrage kommen. Ein Testbericht zu Sprach-KI, der unvollständige Telefonanrufe auslässt, kann nicht belegen, ob kritische Übergaben funktioniert haben. Geben Sie den Prüfenden die Route, das erwartete Ziel und die im Bericht fehlende Beobachtung.</p>
+<h2 id="faq">Häufig gestellte Fragen</h2>
+<h3 id="can-a-transcript-prove-a-customer-was-booked">Kann ein Transkript belegen, dass ein Kunde gebucht wurde?</h3>
+<p>Ein Transkript hält die Wörter fest, die erkannt oder erzeugt wurden. Verifizieren Sie eine Buchung, indem Sie den tatsächlichen Termin abrufen und das bestätigte Datum, die Uhrzeit, den Ort und die Buchungsreferenz prüfen.</p>
+<h3 id="when-should-i-use-a-human-evaluator">Wann sollte ich einen menschlichen Bewerter einsetzen?</h3>
+<p>Setzen Sie eine zuhörende Person ein, wenn das Ergebnis vom Sprecherwechsel, von der Verständlichkeit, von der Aussprache oder von Sprache abhängt, die fachliches Urteilsvermögen erfordert. Fordern Sie das relevante Audio-Intervall und eine klare Begründung der Entscheidung an.</p>
+<h3 id="can-i-use-a-model-to-judge-every-call">Kann ich ein Modell einsetzen, um jeden Anruf zu bewerten?</h3>
+<p>Ein Modell kann bei bestimmten qualitativen Prüfungen anhand eines getesteten Rasters unterstützen. Die Terminanlage, Tool-Argumente, nicht autorisierte Aktionen und andere beobachtbare Fakten sollten anhand ihrer verbindlichen Datensätze geprüft werden.</p>
+<h3 id="what-should-block-release-during-a-voice-agent-evaluation">Was sollte bei der Evaluierung eines Sprachagenten die Freigabe blockieren?</h3>
+<p>Nutzen Sie die freigegebenen Abnahmekriterien des Workflows. Ein bestätigter nicht autorisierter Schreibvorgang, ein falsches Versprechen einer abgeschlossenen Transaktion oder eine fehlende erforderliche Eskalation sollten die Freigabe blockieren, wenn die Richtlinie sie als kritischen Fehler einstuft. Fehlende erforderliche Nachweise sollten die Entscheidung offen halten.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Ein Pilotprojekt definieren, das Ihr Betriebsteam verifizieren kann</h2>
+<p>Beginnen Sie mit einem Anruf, den Ihr Team automatisieren möchte, dem System, das Mitarbeitende prüfen würden, und einem Fehler, der die Freigabe blockieren sollte. <a href="/demo">Besprechen Sie eine individuelle Umsetzung eines Sprachagenten</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Quellen</h2>
+<ul>
+<li id="source-mos">Kontrollierte subjektive Methoden zur Beurteilung der Übertragungsqualität im Telefonnetz. <a href="https://www.itu.int/rec/dologin_pub.asp?id=T-REC-P.800-199608-I%21%21PDF-E&amp;lang=e&amp;type=items">Methods for subjective determination of transmission quality</a>
+</li>
+<li id="source-tau">Verlagseintrag zum Benchmark für vollduplexe, fundierte Aufgaben. <a href="https://proceedings.mlr.press/v306/ray26a.html">τ-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains</a>
+</li>
+<li id="source-taum">Annotierter Geschäftszustand, Messgrößen der Sprachinteraktion und Evaluierungsumfang. <a href="https://arxiv.org/html/2603.13686v1">τ-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains</a>
+</li>
+<li id="source-judge">Studie zu Modellbewertern, einschließlich der Empfindlichkeit gegenüber der Antwortreihenfolge beim Textvergleich. <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/91f18a1287b398d378ef22505bf41832-Paper-Datasets_and_Benchmarks.pdf">Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Themen">
+<li>Evaluierung von Sprachagenten</li>
+<li>Sprachqualität</li>
+<li>Tool-Aufrufe</li>
+<li>Abnahmekriterien</li>
+</ul></article>
+</main>

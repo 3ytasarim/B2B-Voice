@@ -1,0 +1,328 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Integrationen</p>
+    <h1 id="b2bv-title">KI-Sprachagenten in Ihre bestehenden Geschäftstools integrieren: ein praxisnaher Leitfaden</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Ein KI-Telefonagent kann mit den Tools arbeiten, die Sie bereits nutzen, wenn der Anbieter und die Verantwortlichen für Ihre Systeme die genauen Operationen nachweisen können, die der Workflow benötigt. Beginnen Sie mit einer einzelnen Aktion, etwa dem Speichern eines neuen Leads oder der Bestätigung eines Termins, und klären Sie, wer befugt ist, sie auszulösen.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurzantwort</h2>
+        <p>Um einen KI-Sprachagenten zu integrieren, listen Sie für jede Aktion das erforderliche System und den erforderlichen Zugriff auf, prüfen Sie das Ergebnis in dem System, das für den Datensatz maßgeblich ist, und legen Sie für Fehlerfälle einen Fallback fest. Prüfen Sie Lizenzen und Berechtigungen für CRM- und Kalenderanbindungen getrennt von Carrier und Telefonsystem. Bestätigen Sie Buchungen erst, wenn das maßgebliche System ein überprüfbares Ergebnis zurückgibt.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Leitfaden</p>
+      <ol>
+<li><a href="#compatibility">Bestehende Tools prüfen</a></li>
+<li><a href="#permission">Zugriff und Befugnisse festlegen</a></li>
+<li><a href="#effort">Implementierungsaufwand einschätzen</a></li>
+<li><a href="#telephony">Rufnummer behalten oder umleiten</a></li>
+<li><a href="#readiness">Checkliste zur Integrationsbereitschaft</a></li>
+<li><a href="#worked-flow">Eine Buchung durchspielen</a></li>
+<li><a href="#acceptance">Bereitschaft nachweisen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Bewerten Sie die genaue Aktion und Rolle in Ihrem Tenant, auch wenn es eine API oder einen Konnektor gibt.</li>
+<li>Halten Sie reine Lesezugriffe, reine Anfragen und bestätigte Schreibvorgänge im Workflow und in dem, was die anrufende Person hört, voneinander getrennt.</li>
+<li>Testen Sie die Telefonroute, die zuständige Stelle für Fehlerfälle und den Wiederherstellungspfad, bevor Sie das Anrufvolumen ausweiten.</li>
+        </ul>
+      </section>
+<section id="compatibility">
+  <h2>Können Sie die Geschäftstools behalten, die Sie bereits nutzen?</h2>
+  <p>Viele Teams können ihr CRM, ihren Kalender, ihr Help Desk und ihre Rufnummer behalten, sofern die erforderlichen Operationen in ihrer Umgebung unterstützt, erlaubt und getestet sind. Klären Sie die Kompatibilität Aktion für Aktion. Ein Produkt kann die Kontaktsuche erlauben und Schreibzugriffe auf bestimmte Felder beschränken. Dasselbe Unternehmen kann es einem Kalender gestatten, einen Termin anzulegen, und zugleich verlangen, dass ein Disponent die Buchung im Außendienst freigibt.</p>
+  <p>Die verwaltete Implementierung von B2B Voice beginnt mit der Geschäftsaktion, die Sie aus dem Anruf heraus auslösen möchten. Zeigen Sie Ihrem Systemadministrator, wie Mitarbeitende dieses Ergebnis heute lesen, schreiben oder überprüfen. Die Integration lässt sich dann anhand der konkreten CRM-, Kalender- oder API-Operation, ihrer Berechtigungen und des Fallbacks bewerten, falls das System nicht verfügbar ist.</p>
+<p>Erfassen Sie den tatsächlichen Tenant, die Produktedition, den Standort, die Rollen und den Verantwortlichen. Ein Tenant ist das Konto oder die Umgebung einer Organisation in einer Business-Anwendung. Zwei Teams, die dasselbe Produkt nutzen, können unterschiedliche Lizenzen, Zugriffsrichtlinien und Workflows haben. Fragen Sie den Administrator, welche Schnittstellen unterstützt werden und ob Sie eine Sandbox mit fiktiven Datensätzen verwenden können. Halten Sie fest, wer Zugriff gewähren und widerrufen darf.</p>
+  <div class="b2bv-table" role="region" aria-label="Geschäftstools und Nachweise zu Operationen" tabindex="0">
+    <table>
+      <caption>Festlegen, was jedes Tool in einem Telefon-Workflow belegen kann</caption>
+      <thead><tr><th scope="col">System</th><th scope="col">Mögliche Aktion</th><th scope="col">Nachweis vor dem Start</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">CRM</th><td>Einen Kontakt finden, einen Lead anlegen oder das Anrufergebnis zuordnen.</td><td>Korrekte Abgleichsregeln, eingeschränkte Felder, Datensatz-ID und ein zugewiesener Verantwortlicher. Legen Sie fest, wie doppelte Kontakte geprüft werden.</td></tr>
+        <tr><th scope="row">Kalender oder Terminplanungssystem</th><td>Verfügbare Zeitfenster lesen, dann einen Termin anlegen oder anfragen.</td><td>Richtiger Standort, richtiger Kalender, richtige Mitarbeitende oder Ressource, Zeitzone und eine dauerhafte Bestätigung des Termins oder der Anfrage.</td></tr>
+        <tr><th scope="row">Help Desk</th><td>Ein Support-Ticket eröffnen oder zulässigen Kontext zu einem Ticket hinzufügen.</td><td>Ticket-ID, Kategorisierung, Routing, zulässige Sichtbarkeit und zuständige Person für die Nachverfolgung.</td></tr>
+        <tr><th scope="row">Enterprise Resource Planning (ERP) oder Außendienst</th><td>Den Auftragsstatus lesen oder eine zulässige Serviceanfrage anlegen.</td><td>Maßgeblicher Auftragsstatus oder Anfrage-ID, Verifizierung der anrufenden Person und eine davon getrennte Disposition.</td></tr>
+        <tr><th scope="row">Freigegebener Export oder Altdatenbank</th><td>Einen Snapshot mit bekanntem Datum lesen oder eine Anfrage an Mitarbeitende senden.</td><td>Zulässige Felder, Aktualisierungsrhythmus, Richtlinie für veraltete Daten und ein von Mitarbeitenden verantworteter Weg für Änderungen.</td></tr>
+        <tr><th scope="row">Carrier oder Telefonsystem</th><td>Eine bestimmte Rufnummer, einen Anschluss oder ein Zeitfenster umleiten, mit einem freigegebenen Rückweg.</td><td>Echter eingehender Trace, Ergebnis der Übergabe und Wiederherstellungstest unter der vorgesehenen Routing-Richtlinie.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Wenn ein Team nur einen nächtlichen Export bereitstellen kann, halten Sie dessen Aktualisierungszeitpunkt fest und vereinbaren Sie, welche Fragen er beantworten kann. Ein datiertes Verzeichnis kann für allgemeine öffentliche Informationen genügen. Eine Anfrage nach aktuellem Bestand oder nach der heutigen Terminverfügbarkeit erfordert eine aktuelle, autorisierte Quelle oder die Prüfung durch Mitarbeitende. Zu den technischen Grundlagen siehe <a href="/de/ai-voice-agent-integrations">wie Sprachagenten APIs, Webhooks und Systemdatensätze nutzen</a>.</p>
+<p>Um <a href="/de/ai-voice-agents-for-real-estate" data-phase2-link="true">freigegebene Objekt- und Besichtigungsdaten anzubinden</a>, prüfen Sie, welche Felder das Maklerbüro lesen kann und welches System einen Besichtigungstermin bestätigen kann.</p>
+</section>
+
+<section id="permission">
+  <h2>Welche Berechtigung benötigt jede CRM- oder Kalenderaktion?</h2>
+  <h3>Die Person und den vorgesehenen Datensatz zuordnen</h3>
+  <p>Lassen Sie die Abgleichsregel vom CRM-Verantwortlichen festlegen. Eine Telefonnummer kann von einem Haushalt gemeinsam genutzt oder neu vergeben werden. Eine E-Mail-Adresse oder eine externe Datensatz-ID kann für ein bestimmtes Unternehmen der bessere Schlüssel sein. Wenn mehr als ein Datensatz passt, legen Sie fest, wer die Mehrdeutigkeit auflöst und welche Angaben der Agent wiederholen darf. Halten Sie maßgebliche Felder und Notizen getrennt, damit eine Gesprächszusammenfassung keinen freigegebenen Datensatz überschreiben kann.</p>
+  <p>Die Dokumentation zu Kontakten von HubSpot beschreibt Kontaktoperationen und dokumentierte Kennungen. Salesforce dokumentiert das Upsert eines Datensatzes über eine externe ID, bei dem ein passender Datensatz aktualisiert oder, falls keiner passt, ein neuer angelegt werden kann. Entscheiden Sie vorab, ob ein neuer Datensatz zulässig ist und ob die Zugriffsrolle diese Aktion ausführen darf. Zeigen Sie im Tenant-Test eine neue anrufende Person und einen mehrdeutigen Treffer. <a href="https://developers.hubspot.com/docs/api-reference/legacy/crm/objects/contacts/guide">HubSpot CRM contacts API</a> <a href="https://developer.salesforce.com/docs/platform/api-rest/guide/resources-sobject-upsert-patch.html">Salesforce external ID upsert</a></p>
+  <h3>Verfügbarkeit prüfen, dann das gebuchte Zeitfenster verifizieren</h3>
+  <p>Google Calendar bietet getrennte Operationen für Frei/Belegt-Abfragen und für das Anlegen von Ereignissen. Microsoft Graph dokumentiert in ähnlicher Weise die Abfrage der Verfügbarkeit und das Anlegen von Ereignissen. In beiden Fällen muss das Unternehmen entscheiden, welcher Kalender oder welcher Terminplanungsdienst für die tatsächliche Buchung maßgeblich ist, welche Mitarbeitenden oder Ressourcen sie annehmen können, welche Reservierungen gelten und wie gleichzeitige Anfragen behandelt werden. Ein verfügbares Zeitfenster ist eine Momentaufnahme. Eine andere anrufende Person oder ein Mitarbeitender könnte es belegen, bevor der Termin gespeichert ist. <a href="https://developers.google.com/workspace/calendar/api/v3/reference/freebusy/query">Google Calendar Freebusy query</a> <a href="https://developers.google.com/workspace/calendar/api/v3/reference/events/insert">Google Calendar Events insert</a> <a href="https://learn.microsoft.com/en-us/graph/api/calendar-getschedule?view=graph-rest-1.0">Microsoft Graph getSchedule</a> <a href="https://learn.microsoft.com/en-us/graph/api/calendar-post-events?view=graph-rest-1.0">Microsoft Graph Create event</a></p>
+  <p>Verlangen Sie vom Verantwortlichen für die Terminplanung, den zurückgegebenen Datensatz zu definieren, der dem Agenten erlaubt, den Termin als bestätigt zu bezeichnen. Prüfen Sie ID, Datum und Uhrzeit, Zeitzone, Standort und die relevante Ressource. Ein Kalenderprodukt kann ein Ereignis anlegen, während ein separates Praxissystem oder ein Disponent weiterhin die Freigabe erteilt. Wenn der Anruf nur einen Wunsch erfassen kann, teilen Sie der anrufenden Person mit, dass Mitarbeitende die Anfrage prüfen.</p>
+  <h3>Help-Desk-Aufnahme und ERP-Befugnisse verhältnismäßig halten</h3>
+  <p>Zendesk dokumentiert das Anlegen von Ticket-Datensätzen. Eine Ticket-ID kann belegen, dass die Anfrage eingegangen ist, während Zuweisung oder Lösung vom nachfolgenden Workflow abhängen. Microsoft Dynamics 365 Business Central dokumentiert das Abrufen eines Verkaufsauftrags. Ein Team, das einen autorisierten Lesezugriff auf den Auftragsstatus benötigt, kann genau diese Operation eingrenzen und Änderungen an der Auftragsabwicklung den Mitarbeitenden überlassen. Verwenden Sie die vom Systemverantwortlichen freigegebene Identitätsprüfung, bevor Sie kundenspezifische Statusangaben weitergeben. <a href="https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/">Zendesk Tickets API</a> <a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/resources/dynamics_salesorder">Microsoft Dynamics 365 Business Central sales orders</a></p>
+  <p>Geben Sie der Anwendung die kleinstmögliche sinnvolle Menge an Feldern und Aktionen. Dokumentieren Sie, was in Aufzeichnungen, Transkripten, Workflow-Protokollen und Geschäftsdatensätzen landet. Vereinbaren Sie Zugriff, Aufbewahrung, Löschung, Richtlinienänderungen und den Weg für strittige Angaben. OWASP empfiehlt, die Funktionen und Berechtigungen zu beschränken, die Anwendungen mit Sprachmodellen zur Verfügung stehen. Siehe <a href="/de/ai-voice-agent-security">wie Sie Berechtigungen für Geschäftsaktionen begrenzen</a>. <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a></p>
+<p>Für ein Praxisverwaltungssystem sollten Sie <a href="/de/ai-voice-agents-for-dental-practices" data-phase2-link="true">die Berechtigungen für die Terminplanung in der Zahnarztpraxis planen</a>, und zwar auf der Ebene von Termin, Behandler und Behandlungszimmer.</p>
+</section>
+
+<section id="effort">
+  <h2>Wie aufwendig wird die Implementierung?</h2>
+  <p>Klassifizieren Sie jede Aktion, bevor Sie nach Zeitplan oder Budget fragen. Nutzen Sie die folgenden Status, um den Aufwand mit dem Systemverantwortlichen und dem Anbieter zu besprechen. Zwei Aktionen im selben Produkt können in unterschiedliche Zeilen fallen. Fordern Sie Aufwandsschätzungen für Telefonrouting, Identität, Feldzuordnung, Tests, Ausnahmebehandlung und laufende Wartung an.</p>
+  <div class="b2bv-table" role="region" aria-label="Implementierungsaufwand der Integration nach Kompatibilität" tabindex="0">
+    <table>
+      <caption>Kompatibilitätskategorien und ihre Folgen für die Implementierung</caption>
+      <thead><tr><th scope="col">Einstufung</th><th scope="col">Vor der Auswahl nachzuweisen</th><th scope="col">Typischer Umfang für die Kalkulation</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Nativ verifiziert</th><td>Der verfügbare Konnektor kann das genaue Lesen oder Schreiben im vorgesehenen Tenant und in der vorgesehenen Rolle ausführen.</td><td>Konfiguration, Abgleich, Testdaten, Fehlerrouting und dauerhafte Verantwortung für Zugangsdaten.</td></tr>
+        <tr><th scope="row">Individuell verifiziert</th><td>Ein unterstützter API- oder Middleware-Pfad und freigegebene Zugangsdaten ermöglichen die erforderliche Operation, mit zuverlässigen Ergebnissen in der Testumgebung.</td><td>Adapterentwicklung, Timeouts, Wiederholung und Abgleich, Monitoring und Regressionstests.</td></tr>
+        <tr><th scope="row">Nur lesend oder nur Anfragen</th><td>Das Unternehmen kann auf freigegebene Informationen zugreifen oder eine Anfrage in einer kontrollierten Warteschlange erfassen, während direkte Schreibzugriffe nicht verfügbar oder nicht genehmigt sind.</td><td>Aktualitätsprüfungen und der Weg über Mitarbeitende, einschließlich der Frage, wie anrufende Personen erfahren, was eingegangen ist und wann es jemand prüfen wird.</td></tr>
+        <tr><th scope="row">Nicht verfügbar</th><td>Der Operation fehlen eine unterstützte Schnittstelle, ein Zugriff, eine Freigabe durch die Richtlinien oder ein praktikabler Fallback.</td><td>Schließen Sie die Aktion vom Start aus. Prüfen Sie gemeinsam mit dem Systemverantwortlichen eine unterstützte Alternative.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Ein Beispiel: Ein Team mit einer unterstützten Kontaktsuche, einem noch nicht freigegebenen Kalenderzugriff und einer ungetesteten Telefonübergabe kann die Kontaktoperation demonstrieren und Terminanfragen erfassen. Eine Buchung lässt sich eingrenzen, sobald der Kalenderzugriff freigegeben und getestet ist. Solange die Telefonroute nicht nachgewiesen ist, kann eine separate Leitung oder ein überwachter Test die Hauptwarteschlange unberührt lassen. Planen Sie die offenen Punkte im Leistungsverzeichnis als Abhängigkeiten ein.</p>
+<p>Nutzen Sie den Kaufratgeber, um <a href="/de/how-to-choose-an-ai-voice-agent" data-phase2-link="true">Liefermodelle für KI-Sprachagenten zu vergleichen</a>, nachdem Sie geklärt haben, was die erforderlichen Systeme leisten können.</p>
+</section>
+
+<section id="telephony">
+  <h2>Kann ein KI-Telefonagent Ihre bestehende Geschäftsrufnummer nutzen?</h2>
+  <p>Oft kann eine bestehende Rufnummer beim Carrier bleiben, während ausgewählte Anrufe an den Agenten geleitet werden. Fragen Sie den Carrier und den Verantwortlichen für die Telefonanlage (PBX), das Cloud-Telefonsystem oder die Contact-Center-Plattform, wie sich die Anrufe weiterleiten lassen. Mögliche Varianten sind eine dedizierte Testleitung, ein Zweig des aktuellen IVR, eine Weiterleitung außerhalb der Geschäftszeiten oder bei Überlauf oder eine unterstützte Integration über das Session Initiation Protocol (SIP). Welche Route passt, hängt von Carrier, Anbieter, Konfiguration des Telefonsystems und der erforderlichen Übergabe ab.</p>
+  <p>Prüfen Sie, wem die Rufnummer gehört, welche Kosten die Weiterleitung verursacht, welche Anruferkennung auf beiden Seiten ankommt, welche Zeiten gelten, wie sich die Übergabe verhält, wo die Grenzen der Aufzeichnung liegen und wer die vorherige Route wiederherstellen kann. Wenn Ihr Team möchte, dass Mitarbeitende vor der Annahme eines Anrufs Kontext erhalten, bitten Sie den Anbieter, die vorgesehene Übergabe im tatsächlichen Telefonpfad vorzuführen. Ein produktspezifisches SIP-Übergabeverfahren dokumentiert eine mögliche Konstellation. Weisen Sie nach, dass Ihre empfangende Warteschlange sie unter normalen, ausgelasteten und geschlossenen Bedingungen bewältigt. <a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a></p>
+  <p>Beginnen Sie mit einer beobachtbaren, umkehrbaren Route. Leiten Sie zum Beispiel die Abendanfragen eines Standorts an ein für Tests freigegebenes Ziel und lassen Sie den Verantwortlichen für das Telefonsystem die bestehende Voicemail oder den Anrufbeantworterdienst wiederherstellen, falls eine Abhängigkeit ausfällt. Testen Sie auf Routing-Schleifen, wenn der Agent einen Überlaufanruf an das Unternehmen zurückgibt. Erhalten Sie einen klaren Weg für anrufende Personen, die einen Menschen sprechen möchten, und benennen Sie den verantwortlichen Mitarbeitenden, wenn außerhalb der Geschäftszeiten nur ein Rückruf möglich ist. Siehe <a href="/de/ai-voice-agent-reliability">wie Sie Übergabe- und Fallback-Pfade testen</a>.</p>
+<p>Eine bestehende Warteschlange kann einen umfassenderen Routing- und Rollback-Plan erfordern. Lesen Sie, wie Sie <a href="/de/ai-voice-agent-call-center-implementation" data-phase2-link="true">in ein bestehendes Callcenter integrieren</a>.</p>
+</section>
+
+<section id="readiness">
+  <h2>B2B Voice Checkliste zur Integrationsbereitschaft</h2>
+  <p>Verwenden Sie eine Zeile pro kundenseitiger Aktion. Eine Zeile sollte das maßgebliche System, die genauen Berechtigungen, die Lizenzierung und den Verantwortlichen, den Erfolgsnachweis, die Reaktion auf Fehler und den laufenden Support benennen. Dies ist ein vorgeschlagenes Vorgehen, um Integrationsarbeiten einzugrenzen. Eine unterstützte Produktfunktion muss für Ihren Tenant und Ihre Geschäftsregeln dennoch nachgewiesen werden.</p>
+  <div class="b2bv-table" role="region" aria-label="Checkliste zur Integrationsbereitschaft" tabindex="0">
+    <table>
+      <caption>Was Käufer und Umsetzer in jedem Schritt zusammentragen sollten</caption>
+      <thead><tr><th scope="col">Schritt</th><th scope="col">Zu sammelnde Angaben</th><th scope="col">Abzulegende Nachweise</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Erhebung</th><td>Anrufgrund, Aktion, maßgebliche Quelle, Systemverantwortlicher, Kontoversion und Tarif.</td><td>Bestandsaufnahme der zulässigen Lese- und Schreibzugriffe sowie Anfragepfade.</td></tr>
+        <tr><th scope="row">Zugriff</th><td>Sandbox, eingeschränkte Rolle, Lizenz und Freigabe für Identität der anrufenden Person, Daten und Aufzeichnungen.</td><td>Erlaubte und abgelehnte Tests unter dem vorgesehenen Zugriff, mit einem benannten Verantwortlichen für die Zugangsdaten.</td></tr>
+        <tr><th scope="row">Design</th><td>Felder, Datensatz-IDs, Zeitzonen, Erfolgskriterien und synchrone gegenüber Hintergrundverarbeitung.</td><td>Eine Feldzuordnung, die festhält, was anrufende Personen vor und nach einem Schreibvorgang hören.</td></tr>
+        <tr><th scope="row">Implementierung</th><td>Konnektor oder API, Telefonroute und ein einheitlicher Weg, einen Anruf und seine Aktionen nachzuverfolgen.</td><td>Datensätze vor und nach der Aktion sowie ein Trace vom Anruf zu jeder Geschäftsaktion.</td></tr>
+        <tr><th scope="row">Tests</th><td>Fiktive Datensätze, gleichzeitige Anfragen, doppelte Ereignisse, abgelaufene Zugangsdaten und fehlgeschlagene Übergaben.</td><td>Ein dauerhafter Datensatz pro beabsichtigter Aktion, wahrheitsgemäße Formulierungen und der richtige Ausnahmepfad zu einem Menschen.</td></tr>
+        <tr><th scope="row">Inbetriebnahme</th><td>Änderungsfenster, kontrollierte Routing-Gruppe, besetzter Fallback, Zugriffsverantwortlicher und Wiederherstellungspfad.</td><td>Freigegebene Release-Kriterien, eine Rollback-Übung und ein Verantwortlicher für den Abgleich.</td></tr>
+        <tr><th scope="row">Laufender Support</th><td>Änderungen bei Zugangsdaten und APIs, Personalwechsel, Datenrichtlinie und Supportvertrag.</td><td>Benannte Verantwortliche für Alarme, Lösungsverfahren und Regressionsprüfungen nach Änderungen.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Kennzeichnen Sie bei einer ersten Implementierung die drei Aktionen in einem gemeinsamen Zeilensatz. Beispielsweise kann der CRM-Verantwortliche eine reine Lesesuche erlauben, der Verantwortliche für Buchungen einen Terminschreibvorgang unter eng definierten Regeln gestatten, und der Verantwortliche für das Telefonsystem muss möglicherweise noch eine besetzte Übergabe testen. Die ersten beiden Ergebnisse lassen sich getrennt von der Übergabe eingrenzen. Verschieben Sie einen Live-Wechsel, der von einer ungetesteten Übergabe abhängt.</p>
+</section>
+
+<section id="worked-flow">
+  <h2>Ein durchgespieltes Beispiel mit einer bestätigten Buchung und einer ausstehenden CRM-Aktualisierung</h2>
+  <p>Angenommen, ein fiktives Unternehmen hat zwei Standorte und möchte, dass anrufende Personen einen Termin für einen Kostenvoranschlag vereinbaren können. Das CRM ist für die Kontaktidentität und die Nachverfolgung zuständig. Der Terminplanungsdienst verantwortet den eigentlichen Termin. Das Support-Team akzeptiert einen Rückruf, wenn das System ein Zeitfenster nicht bestätigen kann. Legen Sie fest, auf welche Operationen die anrufende Person warten muss und welche nach dem Gespräch abgeschlossen werden können.</p>
+  <ol class="b2bv-flow" aria-label="Beispiel für einen Workflow zur Systembestätigung">
+    <li><strong>Kontakt finden</strong><span>Die zulässigen Felder prüfen und den richtigen Standort ermitteln.</span></li>
+    <li><strong>Buchung bestätigen</strong><span>Ein verfügbares Zeitfenster verbindlich buchen und den gespeicherten Termin verifizieren.</span></li>
+    <li><strong>Ergebnis erfassen</strong><span>Den Termin mit dem CRM verknüpfen und jede fehlende Aktualisierung in die Warteschlange stellen.</span></li>
+  </ol>
+  <p>Wenn die Terminplanung den Termin bestätigt und die spätere CRM-Aktualisierung in einen Timeout läuft, behalten Sie den Termin bei und weisen Sie die fehlende Aktualisierung einer Warteschlange mit zuständiger Person zu. Die anrufende Person kann die verifizierte Uhrzeit erhalten. Mitarbeitende können die fehlenden Notizen anhand der Termin-ID verknüpfen, ohne einen weiteren Termin anzulegen. Ein CRM-Fehler sollte das Ergebnis für die anrufende Person nur dann verändern, wenn ein CRM-Schreibvorgang selbst Voraussetzung dafür war, dass der Termin gültig ist.</p>
+  <p>Läuft die Terminanfrage in einen Timeout, kann sie bereits verbucht worden sein. Halten Sie eine stabile Kennung für die beabsichtigte Aktion fest, gleichen Sie mit dem Terminplanungsdienst ab und wiederholen Sie die Anfrage nur unter Bedingungen, die einen einzigen Datensatz sicherstellen. Manche Schnittstellen unterstützen dafür eine Anfragekennung. Ein AWS-Designleitfaden erklärt, warum Anfrage-IDs Wiederholungen sicher machen können, sofern der Dienst dieses Verhalten unterstützt. Validieren Sie die tatsächliche API und was geschieht, wenn jemand das angefragte Zeitfenster ändert. <a href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">AWS guidance on making retries safe</a></p>
+  <p>Wenn das Terminplanungssystem das Ergebnis nicht bestätigen kann, während die anrufende Person noch in der Leitung ist, teilen Sie mit, dass der Termin noch aussteht, und leiten Sie den Fall an das vereinbarte Team weiter. Protokollieren Sie den Grund für den ausstehenden Status, die zu prüfenden Nachweise und die Richtlinie für den Rückkontakt. Bei einer Ereigniszustellung wie einem Webhook validieren Sie den Absender mit der dokumentierten Methode des Produkts und behandeln wiederholte Zustellungen gesondert. Die Absenderprüfung stellt die Herkunft fest. Die Deduplizierung verhindert, dass eine wiederholte Zustellung einen zweiten Schreibvorgang auslöst. <a href="https://www.twilio.com/docs/usage/webhooks/webhooks-security">Twilio secure webhooks</a></p>
+<p>Für eine Klinik mit mehreren Standorten sollten Sie <a href="/de/ai-voice-agents-for-veterinary-clinics" data-phase2-link="true">die tierärztliche Terminplanung anhand eines PIMS verifizieren</a>, und zwar mit dem richtigen Kunden, Tier, Standort und der richtigen Terminart.</p>
+</section>
+
+<section id="acceptance">
+  <h2>Woran erkennt man, dass der Workflow bereit ist?</h2>
+  <p>Fordern Sie ein Abnahmepaket an: einen abgeschlossenen Anruf, den zugehörigen Systemdatensatz und einen Fehlerfall, der von der Person geprüft wurde, die ihn später erhält. Nehmen Sie einen abgelehnten Schreibvorgang, zwei anrufende Personen, die dasselbe Zeitfenster belegen wollen, eine doppelt zugestellte Nachricht, einen Timeout nach einem bestätigten Schreibvorgang, einen veralteten Lesezugriff und ein geschlossenes Übergabeziel auf. Führen Sie die Kombination durch, die für Ihr Unternehmen zählt, etwa die Weiterleitung der Hauptrufnummer nach Geschäftsschluss, während das Buchungssystem eine Änderung ablehnt.</p>
+  <p>Ein Sandbox-Durchlauf liefert nützliche Evidenz für das vereinbarte Szenario. Bevor Sie ausweiten, führen Sie eine kontrollierte Prüfung in der Produktion durch, mit genau den Rollen, der Telefonroute und den Alarmverantwortlichen, die für den Release vorgesehen sind. Der Betrieb sollte ungelöste Anfragen finden können, ohne sich auf Anruftranskripte stützen zu müssen. Der Verantwortliche für die Telefonie sollte die Route deaktivieren können, und der Systemverantwortliche sollte Datensätze abgleichen und bei Bedarf Zugriffe widerrufen können.</p>
+  <p>B2B Voice entwickelt individuelle Sprachagenten, die auf Geschäftsabläufe zugeschnitten sind. Bringen Sie für ein Integrationsgespräch Name und Edition jedes Systems, den Verantwortlichen, eine Beispielaktion und das Ergebnis mit, das Sie verifizieren möchten. Verwenden Sie für einen Registrierungs- oder Terminplanungs-Workflow fiktive anrufende Personen und den freigegebenen Fehlerpfad des empfangenden Teams. So haben beide Teams eine Grundlage, um Kompatibilität, Zuständigkeiten und Implementierungsaufwand zu klären. <a href="/de/what-is-b2b-voice">B2B Voice company and implementation approach</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Kann ich meine bestehende Geschäftsrufnummer behalten?</h3><p>Möglicherweise können Sie die Rufnummer behalten und ausgewählte Anrufe über eine Weiterleitung, einen PBX-Zweig oder eine andere freigegebene Telefonkonfiguration leiten. Klären Sie vor jeder Änderung der Routen die Möglichkeiten des Carriers, die Anruferkennung, das Übergabeverhalten, die Kosten und den Rollback.</p></div>
+<div class="b2bv-faq-item"><h3>Kann sich ein KI-Sprachagent mit HubSpot oder Salesforce verbinden?</h3><p>Diese Produkte dokumentieren CRM-Schnittstellen, die bestimmte Kontakt- und Datensatzoperationen unterstützen. Klären Sie die jeweilige Produktedition, den Kontozugriff, die Abgleichsregeln und die Berechtigungen. Bitten Sie Ihren Implementierungsanbieter, die genaue Aktion in einer zulässigen Umgebung vorzuführen.</p></div>
+<div class="b2bv-faq-item"><h3>Genügt eine Kalenderanbindung, um einen Termin zu bestätigen?</h3><p>Ein bestätigter Termin setzt einen akzeptierten Schreibvorgang im maßgeblichen Terminplanungssystem des Unternehmens voraus. Prüfen Sie Uhrzeit, Standort und Ressource und verifizieren Sie den Datensatz, der die Bestätigung erlaubt. Steht die Bestätigung noch aus, teilen Sie dies der anrufenden Person mit und weisen Sie einen menschlichen Verantwortlichen zu.</p></div>
+<div class="b2bv-faq-item"><h3>Was, wenn unser ERP keine unterstützte Schreibschnittstelle hat?</h3><p>Nutzen Sie eine freigegebene Anfragewarteschlange oder einen manuellen Prozess und teilen Sie der anrufenden Person mit, dass die Anfrage noch aussteht. Ein unterstützter Lesezugriff oder ein datierter Export kann bestimmte Abfragebedürfnisse weiterhin abdecken. Bitten Sie den ERP-Verantwortlichen, jede Middleware und jeden neuen Zugriff freizugeben.</p></div>
+<div class="b2bv-faq-item"><h3>Wie verhindern wir, dass eine Wiederholung doppelt bucht?</h3><p>Verwenden Sie eine stabile Kennung für die beabsichtigte Buchung und klären Sie die Wiederholungssemantik der API. Ist die Antwort uneindeutig, suchen Sie vor einer Wiederholung nach einem bestehenden Datensatz. Leiten Sie ungelöste Fälle an die Person weiter, die für den Abgleich zuständig ist.</p></div>
+<div class="b2bv-faq-item"><h3>Wer sollte die Integration nach dem Start betreuen?</h3><p>Legen Sie Verantwortliche für die Telefonroute, die Geschäftsrichtlinien, die Zugangsdaten, geänderte Felder, das Monitoring und die Ausnahmewarteschlangen fest. Halten Sie ihre Zuständigkeiten im Supportvertrag fest und wiederholen Sie nach Änderungen die relevanten Abnahmetests.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Kompatibilität mit Ihren aktuellen Tools prüfen</h2>
+        <p>Teilen Sie uns Ihr Telefon-Setup, Ihre Anwendungen und eine Aktion mit, die Sie verifizieren möchten. B2B Voice kann dieses Szenario nutzen, um Berechtigungen, Testnachweise und Implementierungsumfang zu besprechen.</p>
+        <a href="/demo">Integrationsdemo anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="/de/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+<li><a href="https://developers.hubspot.com/docs/api-reference/legacy/crm/objects/contacts/guide">HubSpot CRM contacts API</a> <span class="b2bv-source-note">(HubSpot)</span></li>
+<li><a href="https://developer.salesforce.com/docs/platform/api-rest/guide/resources-sobject-upsert-patch.html">Salesforce external ID upsert</a> <span class="b2bv-source-note">(Salesforce)</span></li>
+<li><a href="https://developers.google.com/workspace/calendar/api/v3/reference/freebusy/query">Google Calendar Freebusy query</a> <span class="b2bv-source-note">(Google)</span></li>
+<li><a href="https://developers.google.com/workspace/calendar/api/v3/reference/events/insert">Google Calendar Events insert</a> <span class="b2bv-source-note">(Google)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/graph/api/calendar-getschedule?view=graph-rest-1.0">Microsoft Graph getSchedule</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/graph/api/calendar-post-events?view=graph-rest-1.0">Microsoft Graph Create event</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/">Zendesk Tickets API</a> <span class="b2bv-source-note">(Zendesk)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/resources/dynamics_salesorder">Microsoft Dynamics 365 Business Central sales orders</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a> <span class="b2bv-source-note">(OWASP)</span></li>
+<li><a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">AWS guidance on making retries safe</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://www.twilio.com/docs/usage/webhooks/webhooks-security">Twilio secure webhooks</a> <span class="b2bv-source-note">(Twilio)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>KI-Sprachagent-Integrationen</li>
+<li>CRM</li>
+<li>Terminplanung</li>
+<li>Geschäftstelefonie</li>
+<li>Workflow-Automatisierung</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

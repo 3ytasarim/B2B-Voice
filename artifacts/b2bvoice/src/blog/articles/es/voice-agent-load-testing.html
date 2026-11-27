@@ -1,0 +1,447 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Saltar al artículo</a><header><h1 id="article-title">Pruebas de carga de agentes de voz: concurrencia, escalabilidad y rendimiento en producción</h1>
+<p class="b2bv3-byline">Por B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Una prueba de carga de voz muestra qué ocurre cuando un flujo controlado de llamadas llega a un agente de voz, a su ruta telefónica y a los sistemas de los que depende. Úsela para establecer la carga de trabajo que una configuración concreta puede manejar manteniendo un audio inteligible, respuestas oportunas, acciones correctas y una alternativa de respaldo (fallback) utilizable. Una llamada que se conecta pero nunca llega al calendario ni a una cola atendida por personas forma parte del resultado.</p>
+<p>B2B Voice define el alcance de las implementaciones personalizadas de agentes de voz en función de los periodos de mayor demanda del cliente y de sus acciones de negocio. Un centro de contacto que atiende solicitudes sencillas de enrutamiento y un servicio de asistencia que consulta un calendario en vivo pueden encontrar límites distintos en la misma ruta telefónica. Antes de iniciar una prueba, defina qué llamadas deben completarse y qué debe hacer el sistema cuando una dependencia se ralentiza.</p>
+<h2 id="key-takeaways">Puntos clave</h2>
+<ul>
+<li>Mida por separado, como partes distintas de la ejecución, el tráfico ofrecido, las llamadas admitidas, las sesiones simultáneas y los resultados verificados.</li>
+<li>Use perfiles de carga constante, de pico, de estrés y de resistencia prolongada (soak) para exponer distintos modos de fallo.</li>
+<li>Observe en conjunto el operador de telefonía, el audio en streaming, el modelo, la aplicación y las dependencias de back-end.</li>
+<li>Pruebe un regreso controlado al servicio normal y tenga en cuenta el trabajo en cola y las transacciones inciertas.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">En este artículo</p>
+<ol>
+<li><a href="#name-the-boundary-before-reporting-capacity">Defina el límite antes de informar la capacidad</a></li>
+<li><a href="#choose-a-workload-the-team-can-safely-reproduce">Elija una carga de trabajo que el equipo pueda reproducir con seguridad</a></li>
+<li><a href="#observe-the-first-constrained-dependency">Observe la primera dependencia limitada</a></li>
+<li><a href="#b2b-voice-load-testing-framework">Marco de pruebas de carga de B2B Voice</a></li>
+<li><a href="#a-fictional-example-of-a-misleading-load-test">Un ejemplo ficticio de una prueba de carga engañosa</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+<li><a href="#references-heading">Referencias</a></li>
+</ol></nav><h2 id="name-the-boundary-before-reporting-capacity">Defina el límite antes de informar la capacidad</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Términos de llamadas y capacidad</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Término</th>
+<th scope="col">Qué describe</th>
+<th scope="col">Por qué importa durante una ejecución</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Tasa de llegada ofrecida</th>
+<td>Nuevos intentos de llamada presentados en un intervalo. Las llamadas por segundo (CPS) expresan la tasa de intentos o inicios de llamada en un límite especificado.</td>
+<td>Un generador puede ofrecer tráfico que la ruta nunca admite. Identifique en qué lado de la admisión mide el contador.</td>
+</tr>
+<tr class="even">
+<th scope="row">Concurrencia promedio</th>
+<td>Ocupación activa típica durante una ventana de observación definida.</td>
+<td>Una parte tranquila de la ejecución puede reducir el promedio aunque un aumento breve haya agotado la capacidad.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Concurrencia máxima</th>
+<td>La mayor ocupación simultánea observada en la ventana y el límite definidos.</td>
+<td>Un muestreo poco detallado puede pasar por alto picos breves. Use eventos de inicio y fin cuando estén disponibles.</td>
+</tr>
+<tr class="even">
+<th scope="row">Capacidad aprovisionada</th>
+<td>Los recursos o las sesiones configurados para estar disponibles en una capa determinada.</td>
+<td>Un grupo de procesos aprovisionado no establece cuántas personas que llaman completan sus tareas dentro de la experiencia acordada.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Límite impuesto por el proveedor</th>
+<td>Una cuota que un proveedor aplica a una ruta, cuenta, dirección, sesión o tipo de solicitud.</td>
+<td>Los límites de inicio de llamadas del operador y los límites de sesiones simultáneas pueden activarse en momentos distintos. Valide los valores que se aplican a la configuración específica.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Algunas plataformas telefónicas usan CPS para una política de inicio de llamadas salientes propia de cada proveedor. El glosario de Twilio describe su comportamiento de colas para las llamadas salientes iniciadas por API. Confirme el comportamiento de entrada o de salida pertinente en el operador y el producto que se están probando. Una llamada de mayor duración promedio puede elevar la ocupación cuando las llegadas se mantienen constantes. Una cifra de ocupación sin cambios aún puede ocultar a personas que esperan fuera del límite que eligió medir. <a class="b2bv3-ref" href="#source-cps">Twilio CPS glossary</a></p>
+<p>Antes de una prueba de carga de un agente de voz, defina cuándo empieza y cuándo termina una sesión. Puede contar las sesiones de medios activas desde el establecimiento del flujo hasta su cierre, y contar por separado las llamadas que esperan ser admitidas. Decida si los tramos de llamada conectados mediante puente consumen sesiones de proveedor distintas. Conserve la definición junto con el resultado para que un ingeniero de telefonía y un responsable de la aplicación puedan comparar la misma evidencia.</p>
+<h2 id="choose-a-workload-the-team-can-safely-reproduce">Elija una carga de trabajo que el equipo pueda reproducir con seguridad</h2>
+<p>Ejecute tráfico de red únicamente en entornos de prueba autorizados, con puntos de conexión, cuentas y límites máximos de carga aprobados. Comience con componentes aislados o con un bucle de medios interno cuando eso responda a la pregunta. Use una ruta telefónica controlada para obtener evidencia sobre el operador y el dispositivo receptor. Use identidades y datos sintéticos, y dirija todos los efectos externos a entornos aislados (sandbox) aprobados. Detenga la ejecución cuando se supere un umbral de protección o falle un control de integridad del negocio.</p>
+<h3 id="give-the-traffic-a-realistic-mix">Dé al tráfico una mezcla realista</h3>
+<p>Use un periodo de alta demanda que el negocio reconozca. Una llamada breve para pedir indicaciones de ubicación ocupa el sistema de forma distinta que una larga búsqueda de citas. Incluya llamadas que interrumpen al agente, que esperan a una herramienta o que solicitan una transferencia. Mantenga estable la mezcla al comparar versiones. Conserve la variabilidad de forma intencional cuando la pregunta se refiera a distintas duraciones de llamada o tipos de servicio.</p>
+<p>Elija cómo presenta el generador los nuevos intentos. Un generador que espera a que terminen las llamadas anteriores resulta cómodo para ejercitar un grupo fijo, pero reduce la presión de llegadas cuando el sistema se ralentiza. Un generador que sigue un calendario de llegadas controlado de forma independiente puede revelar colas que se acumulan e intentos rechazados. Verifique que el generador, la ruta de red y el sistema de grabación puedan sostener el perfil ofrecido. Quien informe de la prueba debe poder distinguir una sesión del generador no disponible de un fallo de admisión.</p>
+<h3 id="pick-the-test-profile-that-matches-the-risk">Elija el perfil de prueba que corresponda al riesgo</h3>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-2-caption">
+<table>
+<caption id="table-2-caption">Perfiles de carga de trabajo y su evidencia</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Perfil</th>
+<th scope="col">Pregunta principal</th>
+<th scope="col">Evidencia que conservar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Carga constante</th>
+<td>¿El flujo de trabajo previsto sigue siendo utilizable con una mezcla típica de periodo de alta demanda?</td>
+<td>Admisión estable, demora percibida por la persona que llama, escrituras correctas y alternativa de respaldo disponible.</td>
+</tr>
+<tr class="even">
+<th scope="row">Rampa</th>
+<td>¿Qué dependencia se vuelve limitante a medida que aumentan las llegadas o la ocupación?</td>
+<td>El primer punto en el que la antigüedad de la cola, el tráfico rechazado o los tiempos empiezan a cambiar.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Pico</th>
+<td>¿Puede la ruta absorber una oleada breve o convertirla en una alternativa aprobada?</td>
+<td>Momento de la ráfaga, disposición de la admisión, lo que oyeron las personas que llamaron y cómo se despejó la acumulación.</td>
+</tr>
+<tr class="even">
+<th scope="row">Estrés</th>
+<td>¿Qué falla primero dentro del límite máximo de prueba aprobado?</td>
+<td>Evidencia del cuello de botella, condición de detención y comportamiento de los controles de seguridad y de negocio.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Resistencia prolongada (soak)</th>
+<td>¿El trabajo sostenido revela fugas lentas o problemas que se acumulan?</td>
+<td>Limpieza de sesiones, rotación de procesos, comportamiento de las colas, reintentos y uso de recursos a lo largo del tiempo.</td>
+</tr>
+<tr class="even">
+<th scope="row">Recuperación</th>
+<td>¿Qué ocurre después de que se despeja un cuello de botella?</td>
+<td>Servicio restablecido, trabajo drenado o resuelto y conciliación de las escrituras inciertas.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="observe-the-first-constrained-dependency">Observe la primera dependencia limitada</h2>
+<p>Un operador de telefonía puede poner en cola, rechazar o aceptar llamadas aunque la aplicación tenga margen. Una pasarela de medios puede aceptar sesiones pero empezar a perder audio bajo presión. Un proveedor de modelos puede limitar las sesiones o solicitudes simultáneas. Una interfaz de programación de aplicaciones (API) puede limitar las consultas mientras los procesos de trabajo y las líneas telefónicas siguen disponibles. Pruebe una parte suficiente de la ruta para mostrar qué decisión falló primero.</p>
+<p>El Protocolo de inicio de sesión (SIP, Session Initiation Protocol) es una de las formas de establecer la llamada. En las pruebas de carga de SIP, capture la señalización y los medios por separado. Una invitación aceptada puede ir seguida de un flujo de audio inutilizable o con retraso. Compare los mensajes de establecimiento, la recepción de medios y las tareas completadas. En las pruebas de carga de un centro de llamadas, añada la disposición de la cola receptora y el resultado que vio el personal. La <a href="/es/ivr-and-conversational-voice-ai-testing">guía de pruebas de IVR y enrutamiento conversacional</a> explica qué verificar en el destino. <a class="b2bv3-ref" href="#source-sip">IETF RFC 3261</a></p>
+<h3 id="report-latency-as-callers-experience-it">Informe la latencia tal como la perciben las personas que llaman</h3>
+<p>Mantenga una cronología con el fin del turno de la persona que llama, el inicio de la reproducción del agente, los intentos de uso de herramientas, la entrada a la cola y el resultado final. Compare el centro y el extremo más lento de la distribución de latencia. El promedio puede mejorar cuando los intentos más lentos agotan el tiempo de espera y desaparecen de la vista de llamadas completadas. Informe los intentos admitidos, rechazados, abandonados y con tiempo de espera agotado junto con los tiempos de las llamadas completadas. La guía de Ingeniería de Confiabilidad de Sitios (SRE) de Google combina la latencia y los errores con el tráfico y la saturación para el diagnóstico. <a class="b2bv3-ref" href="#source-sre">Google SRE monitoring guidance</a></p>
+<p>Distinga la demora del turno de la configuración de la llamada, la espera en cola y una escritura en un sistema posterior. Una consulta lenta puede provocar un turno largo en silencio mientras el teléfono sigue conectado. Un mensaje de apertura puede sonar rápido mientras las llamadas abandonadas se acumulan en otro lugar. Use la <a href="/es/voice-ai-latency">guía de latencia de la IA de voz</a> para definir límites observables de la demora percibida por la persona que llama.</p>
+<h3 id="check-how-the-system-limits-work">Compruebe cómo limita el sistema el trabajo</h3>
+<p>La contrapresión (backpressure) da a los componentes ascendentes una señal para que reduzcan el ritmo, dejen de aceptar trabajo o lo difieran cuando una dependencia descendente no puede seguir el ritmo. En un turno de voz en vivo, una cola larga puede ser peor que una alternativa de respaldo aprobada y temprana. Decida qué trabajo puede esperar, como un resumen posterior a la llamada, y cuál requiere una respuesta inmediata a la persona que llama. Evite los reintentos ilimitados: pueden mantener ocupada una dependencia mucho después de que haya pasado la oleada inicial de tráfico. <a class="b2bv3-ref" href="#source-load">Google SRE overload guidance</a></p>
+<p>Use una ruta de recuperación acordada. Si un calendario agota el tiempo de espera cuando una cita ya pudo haberse guardado, el sistema puede leer el resultado usando el identificador de la operación original. Cuando el resultado sigue siendo incierto, confirme que la solicitud está pendiente y aplique la regla de transferencia del negocio. Verifique la recuperación en los límites de la persona que llama y del back-end. Una cola vacía no resuelve una cita duplicada que se creó durante el incidente.</p>
+<h3 id="inspect-the-behavior-of-concurrent-ai-voice-calls">Inspeccione el comportamiento de las llamadas simultáneas de voz con IA</h3>
+<p>En las pruebas de rendimiento de IA de voz, una llamada lenta puede cambiar la cantidad de trabajo que el sistema mantiene abierto. Los flujos activos, las consultas pendientes y las personas en espera pueden acumularse cada uno en un lugar distinto. El resultado debe identificar el primer punto que dejó de seguir el ritmo, la alternativa de respaldo que oyeron las personas que llamaron y el momento en que se recuperó la operación habitual.</p>
+<p>En las pruebas de estrés de IA de voz, defina el objetivo antes de añadir presión. Por ejemplo, el responsable de una ruta puede buscar un control de admisión seguro, mientras que el responsable de un flujo de trabajo verifica que el sistema nunca confirme una reserva no verificada. Esa distinción convierte la concurrencia del agente de voz en un hallazgo operativo sobre el que el negocio puede actuar.</p>
+<h2 id="b2b-voice-load-testing-framework">Marco de pruebas de carga de B2B Voice</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-3-caption">
+<table>
+<caption id="table-3-caption">Etapas de las pruebas de carga y evidencia de aceptación</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Etapa</th>
+<th scope="col">Qué hacer</th>
+<th scope="col">Evidencia práctica de aceptación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Alcance</th>
+<td>Acuerde los puntos de conexión autorizados, el tráfico permitido, los límites pertinentes del proveedor, la mezcla de flujos de trabajo y las condiciones de detención.</td>
+<td>Los responsables pueden identificar la ruta exacta, las versiones, los límites y las respuestas permitidas.</td>
+</tr>
+<tr class="even">
+<th scope="row">Establezca una referencia</th>
+<td>Ejercite primero cada ruta y cada flujo de trabajo con un perfil de funcionamiento conocido.</td>
+<td>Quien escucha oye medios utilizables, las acciones de negocio están verificadas y la instrumentación captura cada intento.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Varíe la presión</th>
+<td>Ejecute un perfil de carga definido a la vez antes de combinar condiciones.</td>
+<td>El registro identifica los cambios en las llegadas, la ocupación, la saturación de las dependencias y los resultados para las personas que llaman.</td>
+</tr>
+<tr class="even">
+<th scope="row">Pruebe una dependencia</th>
+<td>Introduzca una ralentización controlada o un fallo aprobado en un límite del entorno aislado (sandbox).</td>
+<td>Se ejecuta la alternativa de respaldo prevista y no aparecen escrituras prohibidas.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Observe la recuperación</th>
+<td>Retire la presión, espere a que el sistema se estabilice y concilie el trabajo en curso.</td>
+<td>Las colas vuelven al estado esperado y los sistemas de referencia muestran los registros finales correctos.</td>
+</tr>
+<tr class="even">
+<th scope="row">Informe el alcance</th>
+<td>Registre la ruta real, el perfil de prueba, la versión configurada, los límites observados y las brechas de visibilidad.</td>
+<td>Quien lea el informe puede saber qué escenario funcionó y qué sigue siendo desconocido.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="checklist-before-reporting-a-usable-workload">Lista de verificación antes de informar una carga de trabajo utilizable</h3>
+<ul>
+<li>Cada intento ofrecido tiene una admisión o una disposición final rastreable, o una brecha de medición registrada de forma explícita.</li>
+<li>No falló ningún control de integridad, incluida cualquier regla definida por el cliente contra falsas confirmaciones o escrituras duplicadas.</li>
+<li>El comportamiento de demora y de fallo se mantuvo dentro de los criterios acordados del flujo de trabajo.</li>
+<li>Una alternativa de respaldo probada funcionó cuando fue necesario y llegó a un destino verificado o a un estado autorizado.</li>
+<li>El sistema volvió a la condición de funcionamiento esperada y el equipo concilió las acciones inciertas. La <a href="/es/ai-voice-agent-reliability">guía de confiabilidad de los agentes de voz</a> describe la evidencia de alternativas de respaldo y de recuperación.</li>
+</ul>
+<h2 id="a-fictional-example-of-a-misleading-load-test">Un ejemplo ficticio de una prueba de carga engañosa</h2>
+<p>Un equipo de programación de citas reproduce llamadas limpias a través de un punto de conexión de voz interno. El modelo responde con rapidez y el sustituto de la herramienta devuelve la disponibilidad al instante. Luego el equipo ejercita la ruta telefónica autorizada con un calendario en un entorno aislado (sandbox) que a veces tarda más. Observa que más llamadas permanecen abiertas, que una cola crece y que un agente anuncia horarios disponibles antes de que se haya completado una consulta.</p>
+<p>La primera ejecución aportó evidencia sobre la ruta de voz y de aplicación seleccionada en sus condiciones de prueba. La segunda dejó al descubierto una dependencia que la primera había eludido. Durante la prueba repetida, compruebe las llamadas ofrecidas y admitidas, el estado del calendario, la reproducción real del audio y si la persona que llamó escuchó el mensaje aprobado de solicitud pendiente. Cuando el tráfico disminuya, confirme que las colas temporales se vacían y que el almacén de reservas contiene solo los registros previstos. Una sola prueba de carga es evidencia de su alcance registrado. Use la <a href="/es/ai-voice-agent-scalability">guía de escalabilidad de los agentes de voz</a> para las decisiones independientes sobre arquitectura, dotación de personal y expansión.</p>
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3 id="is-calls-per-second-the-same-as-simultaneous-calls">¿Las llamadas por segundo equivalen a las llamadas simultáneas?</h3>
+<p>Las llamadas por segundo describen la tasa de intentos o inicios en un límite especificado. La concurrencia describe cuántas llamadas o sesiones están activas al mismo tiempo. Registre ambas y documente dónde las contó el sistema.</p>
+<h3 id="can-average-concurrency-tell-me-the-peak">¿Puede la concurrencia promedio indicarme el máximo?</h3>
+<p>La concurrencia promedio describe la ocupación a lo largo de la ventana seleccionada. Use trazas de eventos u observaciones con suficiente granularidad para identificar el máximo observado y captar las ráfagas breves.</p>
+<h3 id="what-should-i-test-when-the-calendar-or-crm-slows-down">¿Qué debo probar cuando el calendario o el CRM se ralentizan?</h3>
+<p>Compruebe cómo responde el agente mientras la dependencia está lenta, si se acumulan colas o reintentos y qué ocurre después de la recuperación. Verifique el registro final de forma independiente.</p>
+<h3 id="what-makes-a-voice-load-test-result-reusable">¿Qué hace que el resultado de una prueba de carga de voz sea reutilizable?</h3>
+<p>Registre la ruta, la carga de trabajo, las versiones, las dependencias, las definiciones de inicio y fin, los criterios de aceptación y cualquier evidencia faltante. Compare una ejecución posterior en condiciones equivalentes antes de atribuir un cambio.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Lleve su patrón de llamadas más intenso a una conversación sobre el flujo de trabajo</h2>
+<p>Describa el trabajo que las personas que llaman necesitan completar durante un pico y quién puede atender la alternativa de respaldo aprobada. <a href="/demo">Converse sobre los requisitos de capacidad de un agente de voz personalizado</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Referencias</h2>
+<ul>
+<li id="source-cps">Un ejemplo específico de producto de un límite de inicio de llamadas salientes. <a href="https://www.twilio.com/docs/glossary/cps">CPS</a>
+</li>
+<li id="source-sip">Establecimiento de sesiones y semántica de la señalización. <a href="https://www.rfc-editor.org/info/rfc3261/">SIP: Session Initiation Protocol</a>
+</li>
+<li id="source-sre">Monitoreo del tráfico, la latencia, los errores y la saturación. <a href="https://sre.google/sre-book/monitoring-distributed-systems/">Monitoring Distributed Systems</a>
+</li>
+<li id="source-load">Protección del servicio, colas y limitación de tráfico. <a href="https://sre.google/sre-book/handling-overload/">Handling Overload</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Temas">
+<li>Pruebas de carga</li>
+<li>Concurrencia</li>
+<li>Contrapresión (backpressure)</li>
+<li>Rendimiento del centro de llamadas</li>
+</ul></article>
+</main>

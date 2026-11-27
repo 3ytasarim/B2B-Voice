@@ -1,0 +1,243 @@
+
+<style>
+:root{
+  --ink:#111827;--muted:#5b6472;--line:#e5e7eb;--soft:#f7f8fa;--accent:#111827;
+  --blue:#2563eb;--blue-soft:#eef4ff;--amber:#92400e;--amber-soft:#fff7ed;--green:#166534;
+  --green-soft:#f0fdf4;--max:1120px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}.blog-content a {color:#174ea6;text-decoration-thickness:1px;text-underline-offset:3px}.blog-content a:hover {color:#0f3f8c}.blog-content .wrap {width:min(var(--max),calc(100% - 40px));margin:0 auto}.blog-content header.site {border-bottom:1px solid var(--line);padding:18px 0;background:#fff}.blog-content .brand {font-weight:800;letter-spacing:-.02em;text-decoration:none;color:var(--ink);font-size:20px}.blog-content .breadcrumbs {font-size:14px;color:var(--muted);margin:30px 0 14px}.blog-content .hero {padding:8px 0 38px}.blog-content .kicker {text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:#4b5563}.blog-content h1 {font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.04em;max-width:1000px;margin:12px 0 18px}.blog-content .deck {font-size:clamp(19px,2.2vw,25px);line-height:1.5;color:#374151;max-width:900px;margin:0}.blog-content .meta {display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;color:var(--muted);font-size:14px}.blog-content .answer {margin:8px 0 42px;padding:26px 28px;border:1px solid #c9d7f3;background:var(--blue-soft);border-radius:18px}.blog-content .answer strong.label {display:block;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:#174ea6;margin-bottom:8px}.blog-content .answer p {font-size:20px;line-height:1.55;margin:0}.blog-content .layout {display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:64px;align-items:start}.blog-content article {min-width:0}.blog-content article h2 {font-size:34px;line-height:1.2;letter-spacing:-.025em;margin:56px 0 16px}.blog-content article h3 {font-size:24px;line-height:1.3;letter-spacing:-.015em;margin:34px 0 10px}.blog-content article p {font-size:17.5px;margin:0 0 18px}.blog-content article ul, .blog-content article ol {padding-left:24px;margin:8px 0 22px}.blog-content article li {margin:8px 0;font-size:17px}.blog-content aside.toc {position:sticky;top:24px;border-left:1px solid var(--line);padding-left:20px}.blog-content .toc b {font-size:13px;text-transform:uppercase;letter-spacing:.08em}.blog-content .toc a {display:block;color:#4b5563;text-decoration:none;font-size:14px;line-height:1.35;margin:10px 0}.blog-content .toc a:hover {color:#111827}.blog-content .callout {border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:28px 0;background:#fff}.blog-content .callout.note {background:var(--soft)}.blog-content .callout.misconception {background:var(--amber-soft);border-color:#fed7aa}.blog-content .callout.engineering {background:var(--green-soft);border-color:#bbf7d0}.blog-content .callout .eyebrow {font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:12px;margin-bottom:7px}.blog-content .diagram {margin:28px 0;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfbfc;overflow:auto}.blog-content .diagram-title {font-weight:800;margin-bottom:16px}.blog-content .flow {display:flex;align-items:stretch;gap:10px;min-width:760px}.blog-content .node {flex:1;border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:14px;text-align:center}.blog-content .node b {display:block;margin-bottom:5px}.blog-content .arrow {display:flex;align-items:center;font-weight:800;color:#9ca3af}.blog-content .stack {display:grid;gap:10px}.blog-content .stack .row {border:1px solid #d1d5db;border-radius:12px;padding:14px 16px;background:white}.blog-content .stack .row b {display:inline-block;min-width:180px}.blog-content table {width:100%;border-collapse:collapse;margin:26px 0;font-size:15.5px}.blog-content th, .blog-content td {text-align:left;vertical-align:top;padding:13px 12px;border-bottom:1px solid var(--line)}.blog-content th {font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#4b5563;background:#fafafa}.blog-content .qa {border-top:1px solid var(--line);padding:22px 0}.blog-content .qa h3 {font-size:20px;margin:0 0 8px}.blog-content .sources {margin-top:60px;padding-top:28px;border-top:1px solid var(--line)}.blog-content .sources ol {padding-left:22px}.blog-content .sources li {font-size:14px;color:#4b5563;margin:10px 0}.blog-content .tags {display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 10px}.blog-content .tag {display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:13px;color:#4b5563;background:#fafafa}.blog-content .next {margin:48px 0 20px;padding:24px;border-radius:18px;background:#111827;color:white}.blog-content .next a {color:white}.blog-content footer {border-top:1px solid var(--line);margin-top:60px;padding:28px 0 50px;color:#6b7280;font-size:14px}.blog-content sup a {text-decoration:none;font-weight:700}
+@media(max-width:900px){.blog-content .layout {grid-template-columns:1fr}.blog-content aside.toc {position:static;order:-1;border-left:0;border:1px solid var(--line);padding:18px;border-radius:14px}.blog-content .toc a {display:inline-block;margin:7px 12px 7px 0}
+}
+@media(max-width:640px){.blog-content .wrap {width:min(100% - 26px,var(--max))}.blog-content h1 {font-size:42px}.blog-content article h2 {font-size:29px}.blog-content .answer {padding:20px}.blog-content .answer p {font-size:18px}.blog-content table {display:block;overflow-x:auto;white-space:normal}
+}
+@media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
+}
+</style>
+<main class="wrap">
+<div class="breadcrumbs"><a href="https://b2b-voice.com/">Startseite</a> / <a href="https://b2b-voice.com/blog">Blog</a> / Wie KI-Sprachagenten mit Unterbrechungen und Sprecherwechsel umgehen: VAD, Erkennung des Äußerungsendes und Barge-in</div>
+
+<section class="hero">
+  <div class="kicker">B2B Voice Technische Wissensdatenbank · Artikel Nr. 6</div>
+  <h1>Wie KI-Sprachagenten mit Unterbrechungen und Sprecherwechsel umgehen: VAD, Erkennung des Äußerungsendes und Barge-in</h1>
+  <p class="deck">Ein produktiver Sprachagent muss ein Timing-Problem lösen, bevor er ein Sprachproblem lösen kann: Wann soll er weiter zuhören, wann antworten, und was soll passieren, wenn die anrufende Person zu sprechen beginnt, während der Agent noch redet?</p>
+  <div class="meta"><span>Veröffentlicht am 30. August 2026</span><span>~14 Min. Lesezeit</span><span>Sprach-KI · Echtzeitsysteme</span></div>
+</section>
+
+<div class="answer">
+  <strong class="label">Kurze Antwort</strong>
+  <p>Ein KI-Sprachagent entscheidet in der Regel anhand mehrerer Timing-Signale, wann er antwortet. Die Voice Activity Detection (VAD) kann erkennen, wann Sprache beginnt oder endet, während fortgeschrittenere Systeme zur Erkennung des Äußerungsendes zusätzlich abschätzen können, ob der Gedanke der sprechenden Person abgeschlossen ist. Unterbrechungen bringen ein weiteres Problem mit sich: Wenn die anrufende Person dem Agenten ins Wort fällt, muss das System unter Umständen die Generierung stoppen, noch nicht abgespielte Audiodaten verwerfen und abgleichen, was die anrufende Person tatsächlich gehört hat.</p>
+</div>
+
+<div class="layout">
+<article>
+  <h2 id="speech-activity">Sprachaktivität ist nicht dasselbe wie ein abgeschlossener Redebeitrag</h2>
+  <p>Einer der naheliegendsten Fehler in der Sprach-KI besteht darin, „das Mikrofon ist still geworden“ mit „die anrufende Person ist fertig“ gleichzusetzen. Das sind nicht dieselben Ereignisse.</p>
+  <p>Eine anrufende Person kann innehalten, weil sie nachdenkt, ein Datum sucht, Luft holt, sich korrigiert, auf eine Bestätigung wartet oder einfach langsam spricht. In einem Telefongespräch kann schon ein kurzes Zögern eine Bedeutung haben. Antwortet das System zu früh, unterbricht es die anrufende Person. Wartet es zu lange, wirkt die Interaktion schleppend.</p>
+  <p>Deshalb lässt sich der Sprecherwechsel in der Produktion besser als eine Abfolge von Entscheidungen verstehen denn als ein einzelner Detektor. Die aktuelle Realtime-Dokumentation von OpenAI unterscheidet beispielsweise einen stillebasierten Modus <code>server_vad</code> von <code>semantic_vad</code>, der anhand der gesprochenen Wörter berücksichtigt, ob die Äußerung der nutzenden Person vollständig erscheint.<sup><a href="#source-1">1</a></sup> Das ist eine anbieterspezifische Umsetzung, doch die Unterscheidung ist allgemein nützlich: Das Ende der akustischen Aktivität zu erkennen und zu entscheiden, dass das Rederecht abgegeben wurde, sind zwei getrennte Probleme.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">Sprechpause vs. Äußerungsende im Gespräch</div>
+    <div class="flow">
+      <div class="node"><b>Audioaktivität</b>Ist menschliche Sprache vorhanden?</div><div class="arrow">→</div>
+      <div class="node"><b>Akustischer Endpunkt</b>Hat die Sprache aufgehört?</div><div class="arrow">→</div>
+      <div class="node"><b>Abschluss des Redebeitrags</b>Wirkt der Gedanke vollständig?</div><div class="arrow">→</div>
+      <div class="node"><b>Antwortregel</b>Soll der Agent jetzt sprechen?</div>
+    </div>
+  </div>
+
+  <div class="callout engineering">
+    <div class="eyebrow">Engineering-Modell von B2B Voice</div>
+    <p><strong>Erkannte Sprache ≠ abgeschlossener Redebeitrag ≠ gehörte Ausgabe.</strong> Werden diese Zustände getrennt behandelt, lässt sich das Unterbrechungsverhalten leichter nachvollziehen, testen und debuggen.</p>
+  </div>
+
+  <h2 id="vad">Was ist VAD in der Sprach-KI?</h2>
+  <p><strong>Voice Activity Detection (VAD)</strong> ist ein Verfahren, das erkennt, ob in einem Audiostream menschliche Sprache vorhanden ist und – je nach Implementierung – wann diese Sprache beginnt oder endet. In Echtzeitsystemen lassen sich VAD-Ereignisse nutzen, um Audio zu segmentieren, die Transkription auszulösen, Redebeiträge zu markieren, Antworten zu starten oder einen Agenten zu unterbrechen, der bereits spricht.</p>
+  <p>Die Realtime API von OpenAI stellt Ereignisse wie <code>input_audio_buffer.speech_started</code> und <code>input_audio_buffer.speech_stopped</code> bereit. Der stillebasierte Modus bietet außerdem Einstellungen wie einen Aktivierungsschwellenwert, Prefix Padding und <code>silence_duration_ms</code>; kürzere Stilledauern erkennen Redebeiträge schneller.<sup><a href="#source-1">1</a></sup></p>
+  <p>Googles Live API bietet eine ähnliche Klasse von Timing-Steuerungen unter eigener Terminologie. Die automatische Aktivitätserkennung umfasst eine Empfindlichkeit für den Sprechbeginn, eine Empfindlichkeit für das Sprechende und eine Einstellung für die Stilledauer. Google dokumentiert den Zielkonflikt ausdrücklich: Eine längere Stilledauer erlaubt längere Pausen in der Sprache der nutzenden Person, erhöht aber die Latenz.<sup><a href="#source-3">3</a></sup></p>
+  <p>Entscheidend ist nicht, dass jeder Anbieter VAD auf dieselbe Weise umsetzt – das tun sie nicht. Entscheidend ist, dass Stilleschwellenwerte ein Stellhebel sind und keine allgemeingültige Definition dafür, wann ein Redebeitrag abgeschlossen ist.</p>
+
+  <h3 id="endpointing">VAD vs. Endpointing</h3>
+  <p>Die Begriffe <em>VAD</em>, <em>Endpointing</em> und <em>Erkennung des Äußerungsendes</em> werden mitunter unscharf verwendet, es ist aber hilfreich, sie begrifflich zu trennen.</p>
+  <table>
+    <thead><tr><th>Konzept</th><th>Zentrale Frage</th><th>Typische Signale</th></tr></thead>
+    <tbody>
+      <tr><td>VAD</td><td>Wird gerade gesprochen?</td><td>Audioenergie, Sprachwahrscheinlichkeit, akustische Merkmale</td></tr>
+      <tr><td>Endpointing</td><td>Ist das aktuelle Sprachsegment beendet?</td><td>Stilledauer, Endpoint-Modell, Zeitregeln</td></tr>
+      <tr><td>Äußerungsende im Gespräch</td><td>Hat die sprechende Person ihren Gedanken wahrscheinlich abgeschlossen?</td><td>Akustische Hinweise plus sprachlicher/semantischer Kontext</td></tr>
+      <tr><td>Antwortregel</td><td>Soll der Agent jetzt antworten?</td><td>Gesprächszustand, Geschäftslogik, Unterbrechungsregel, Modellzustand</td></tr>
+    </tbody>
+  </table>
+  <p>Diese Ebenen können in einem Produkt kombiniert oder auf mehrere Komponenten verteilt sein. Die Bezeichnungen sind kein formaler Branchenstandard, aber die Trennung hilft zu erklären, warum ein System Stille korrekt erkennen und die anrufende Person dennoch im falschen Moment unterbrechen kann.</p>
+
+  <h2 id="semantic-vad">Was ist semantisches VAD?</h2>
+  <p><strong>Semantisches VAD</strong> bezieht die sprachliche Vollständigkeit in die Timing-Entscheidung ein. Die aktuelle Implementierung von OpenAI verwendet einen semantischen Klassifikator, der bewertet, wie wahrscheinlich es ist, dass die nutzende Person fertig gesprochen hat. Ist diese Wahrscheinlichkeit niedrig, kann das System länger warten; ist sie hoch, kann es früher antworten. OpenAI nennt als Beispiel, dass eine Äußerung, die mit „ähm …“ ausklingt, ein längeres Timeout erhält als eine eindeutige Aussage.<sup><a href="#source-1">1</a></sup></p>
+  <p>Das ist kein Beleg dafür, dass ein bestimmtes semantisches VAD-Design allen anderen überlegen wäre. Es zeigt vielmehr, dass der Sprecherwechsel in der Produktion mehr als reine Stille nutzen kann. Auch die aktuelle Forschung bewegt sich in diese Richtung: Das JAL-Turn-Paper von 2026 kombiniert akustische und sprachliche Repräsentationen, um vorherzusagen, ob der Gesprächszustand <em>gehalten</em> oder <em>gewechselt</em> werden soll.<sup><a href="#source-4">4</a></sup> Die berichteten Ergebnisse gelten für die jeweiligen Datensätze und den Versuchsaufbau und sollten daher nicht zu einem allgemeingültigen Benchmark verallgemeinert werden.</p>
+
+  <div class="callout misconception">
+    <div class="eyebrow">Verbreitetes Missverständnis</div>
+    <p><strong>„VAD sagt der KI, wann die nutzende Person fertig ist.“</strong> Nicht unbedingt. VAD kann Sprachaktivität oder akustische Haltepunkte erkennen. Ob ein Redebeitrag im Gespräch abgeschlossen ist, kann zusätzliche semantische, zeitliche oder regelbasierte Logik erfordern.</p>
+  </div>
+
+  <h2 id="pauses">Warum Pausen, Füllwörter und Selbstkorrekturen schwierig sind</h2>
+  <p>Gesprochene Sprache besteht nicht aus einer sauberen Abfolge vollständiger Sätze. Menschen sagen „äh“, „einen Moment“, „eigentlich“, setzen bei Namen neu an, buchstabieren E-Mail-Adressen, pausieren vor Kardinalzahlen und Datumsangaben oder ändern ihre Terminanfrage mitten im Satz.</p>
+  <p>Nehmen wir an, eine anrufende Person sagt:</p>
+  <div class="callout note"><p><strong>„Ich brauche Dienstag um … ähm … eigentlich, haben Sie etwas nach drei?“</strong></p></div>
+  <p>Ein kurzer, fester Stilleschwellenwert kann die Pause nach „um“ als Ende des Redebeitrags deuten und zu früh mit der Antwort beginnen. Ein sehr langer Schwellenwert verringert dieses Risiko, macht aber eindeutige Redebeiträge langsamer. Das Designproblem lautet also nicht einfach „VAD schneller machen“. Es ist ein Zielkonflikt zwischen <strong>Sicherheit bei der Redebeitragsgrenze und Antwortlatenz</strong>.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">Der Zielkonflikt beim Sprecherwechsel</div>
+    <div class="stack">
+      <div class="row"><b>Kürzere Wartezeit</b>Schneller wirkende Antwort, aber höheres Risiko eines vorzeitigen Sprecherwechsels.</div>
+      <div class="row"><b>Längere Wartezeit</b>Mehr Toleranz für Zögern und Pausen, aber größere Verzögerung im Gespräch.</div>
+      <div class="row"><b>Adaptive Wartezeit</b>Nutzt mehr Kontext, um die Verzögerung zu variieren, erhöht aber die Komplexität der Umsetzung und bleibt fehleranfällig.</div>
+    </div>
+  </div>
+
+  <p>Deshalb gibt es auch keine belastbare allgemeingültige Aussage wie „500 ms ist der richtige Stilleschwellenwert“. Geeignete Werte hängen von Sprache, Audiobedingungen, Anrufergruppe, Produktverhalten, Modell-/Anbietereinstellungen und der geschäftlichen Aufgabe ab. Der richtige Wert ist etwas, das man evaluieren sollte, und nichts, was man ungeprüft aus einer Demo übernimmt.</p>
+
+  <h2 id="barge-in">Was ist Barge-in?</h2>
+  <p><strong>Barge-in</strong> bezeichnet die Möglichkeit, dass eine anrufende Person zu sprechen beginnt, während der Agent redet, und damit das Verhalten des Systems ändert. Es hängt mit VAD zusammen, ist aber nicht dasselbe.</p>
+  <p>VAD kann das Signal liefern, dass neue Sprache der nutzenden Person begonnen hat. Barge-in legt die Interaktionsregel fest, die darauf folgt: Soll die aktuelle Modellantwort abgebrochen werden? Soll die lokale Audiowiedergabe stoppen? Sollen gepufferte Audiodaten verworfen werden? Soll der Gesprächsverlauf gekürzt werden? Soll das neue Audio der nutzenden Person sofort akzeptiert werden?</p>
+  <p>Googles Live API macht diese Unterscheidung konkret. Die Standardbehandlung von Aktivität kann den Beginn der Nutzeraktivität als Unterbrechung werten und die aktuelle Modellantwort abbrechen. Google stellt zudem ein Signal <code>interrupted</code> bereit, mit dem ein Client seine Wiedergabewarteschlange anhalten und leeren kann.<sup><a href="#source-3">3</a></sup></p>
+
+  <div class="diagram">
+    <div class="diagram-title">Ein praxisnaher Barge-in-Ablauf</div>
+    <div class="flow">
+      <div class="node"><b>Agent spricht</b>Audio wird erzeugt und abgespielt</div><div class="arrow">→</div>
+      <div class="node"><b>Sprache der Person beginnt</b>Aktivität wird erkannt</div><div class="arrow">→</div>
+      <div class="node"><b>Unterbrechen</b>Aktuelle Antwort abbrechen oder stoppen</div><div class="arrow">→</div>
+      <div class="node"><b>Leeren</b>Nicht abgespielte Ausgabe verwerfen</div><div class="arrow">→</div>
+      <div class="node"><b>Fortsetzen</b>Neuen Redebeitrag der anrufenden Person verarbeiten</div>
+    </div>
+  </div>
+
+  <h2 id="reconciliation">Das Stoppen des Audios ist nur die halbe Unterbrechungsbehandlung</h2>
+  <p>Das wichtigste Unterbrechungsproblem liegt oft erst dort, wo die sprechende Person das Audio nicht mehr hört.</p>
+  <p>Ein Echtzeitsystem kann mehrere Fassungen einer Assistentenantwort gleichzeitig enthalten:</p>
+  <table>
+    <thead><tr><th>Zustand</th><th>Bedeutung</th></tr></thead>
+    <tbody>
+      <tr><td>Generierter Text</td><td>Inhalt, den das Modell zu erzeugen beschlossen hat.</td></tr>
+      <tr><td>Synthetisiertes Audio</td><td>Generierter Inhalt, der bereits in Sprache umgewandelt wurde.</td></tr>
+      <tr><td>Audio in der Warteschlange</td><td>Sprache, die in einem Wiedergabepuffer wartet.</td></tr>
+      <tr><td>Abgespieltes Audio</td><td>Sprache, die den Wiedergabepfad von Lautsprecher bzw. Telefonie tatsächlich verlassen hat.</td></tr>
+      <tr><td>Gehörter Inhalt</td><td>Der Teil, von dem man vernünftigerweise annehmen kann, dass die anrufende Person ihn gehört hat.</td></tr>
+    </tbody>
+  </table>
+  <p>Unterbricht die anrufende Person, nachdem sie nur die erste Hälfte einer Antwort gehört hat, darf sich der Gesprächszustand nicht so verhalten, als hätte sie die gesamte Antwort gehört. Das aktuelle Realtime Agents SDK von OpenAI adressiert dies ausdrücklich. In WebSocket-Szenarien kann das SDK die Wiedergabe verfolgen und das Assistenten-Audio auf das kürzen, was die nutzende Person tatsächlich gehört hat; die Dokumentation des Python-SDK empfiehlt für verzögerte oder entfernte Wiedergabe wie bei der Telefonie einen Playback-Tracker.<sup><a href="#source-2">2</a></sup></p>
+  <p>Daraus ergibt sich ein nützlicher Grundsatz für die Produktion:</p>
+  <div class="callout engineering">
+    <div class="eyebrow">Hinweis aus der Technik</div>
+    <p><strong>Das Stoppen der Wiedergabe ist nur die halbe Unterbrechungsbehandlung. Der Gesprächszustand sollte mit dem abgeglichen werden, was die anrufende Person tatsächlich gehört hat.</strong></p>
+  </div>
+  <p>Ohne diesen Abgleich kann sich das Modell später auf Anweisungen, Preise, Bestätigungsfragen oder Hinweise beziehen, die zwar generiert, der anrufenden Person aber nie übermittelt wurden. In einem Geschäftsprozess ist das nicht nur unangenehm – es kann die Korrektheit des nächsten Gesprächsschritts verändern.</p>
+
+  <h2 id="full-duplex">Barge-in ist nicht dasselbe wie Vollduplex</h2>
+  <p>Ein weiteres verbreitetes Terminologieproblem ist, jedes System mit Unterbrechungsunterstützung als „Vollduplex“ zu bezeichnen. Das ist zu weit gefasst.</p>
+  <p>Ein rundenbasiertes System kann Barge-in unterstützen, indem es während der Wiedergabe der Agentenantwort auf Sprache der nutzenden Person lauscht und diese Antwort dann abbricht. Eine echte Vollduplex-Dialogarchitektur geht weiter: Sie modelliert gleichzeitige oder überlappende Sprache als normalen Gesprächszustand und nicht als Ausnahme, die den Redebeitrag des Agenten einfach beendet.</p>
+  <p>Das Forschungssystem Moshi ist ein hilfreicher Bezugspunkt. Seine Architektur modelliert die Sprachströme von Nutzer und System parallel und wurde dafür entwickelt, überlappende Sprache, Unterbrechungen und Einwürfe ohne explizite Segmentierung nach Sprecherwechseln zu bewältigen.<sup><a href="#source-5">5</a></sup> Damit ist es ein Forschungsbeispiel für Vollduplex-Modellierung, aber kein Grund, jede Barge-in-Implementierung als Vollduplex umzudeuten.</p>
+
+  <table>
+    <thead><tr><th>Fähigkeit</th><th>Rundenbasiertes System mit Barge-in</th><th>Vollduplex-Dialogmodell</th></tr></thead>
+    <tbody>
+      <tr><td>Kann Sprache der Person erkennen, während der Agent spricht</td><td>Ja</td><td>Ja</td></tr>
+      <tr><td>Kann die aktuelle Antwort stoppen</td><td>Ja</td><td>Möglicherweise, aber Unterbrechung ist nicht das einzige Verhalten</td></tr>
+      <tr><td>Überlappende Sprache wird als normaler Modellzustand behandelt</td><td>In der Regel eingeschränkt</td><td>Zentrales Designziel</td></tr>
+      <tr><td>Backchannels/Einwürfe können gleichzeitig modelliert werden</td><td>Abhängig von der Implementierung</td><td>Potenziell ja</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="latency">Sprecherwechsel ist Teil der Latenz in der Sprach-KI</h2>
+  <p>Latenz ist nicht nur die Inferenzzeit des Modells. Ein Agent kann schnelle Spracherkennung, schnelles Schlussfolgern und schnelle Synthese haben und sich dennoch langsam anfühlen, weil das System zu lange wartet, bevor es entscheidet, dass die nutzende Person fertig ist.</p>
+  <p>Umgekehrt kann eine aggressive Verkürzung der Wartezeit bis zum Äußerungsende ein System schneller wirken lassen, während die Zahl vorzeitiger Unterbrechungen steigt. Deshalb sollte die Latenz der Redebeitragsentscheidung getrennt von der umfassenderen Ende-zu-Ende-Latenzkette bewertet werden, die in unserem Leitfaden zur <a href="https://b2b-voice.com/voice-ai-latency">Latenz in der Sprach-KI</a> behandelt wird.</p>
+  <p>Die Dokumentation der Live API von Google weist ausdrücklich darauf hin, dass eine längere geforderte Dauer ohne Sprache längere Pausen zulässt, ohne die Aktivität der nutzenden Person zu beenden, zugleich aber die Modelllatenz erhöht.<sup><a href="#source-3">3</a></sup> Auch beim Server-VAD von OpenAI ist dokumentiert, dass kürzere Werte für die Stilledauer Redebeiträge schneller erkennen.<sup><a href="#source-1">1</a></sup> Das sind implementierungsspezifische Steuerungen, doch beide verdeutlichen denselben technischen Zielkonflikt.</p>
+
+  <h2 id="failure-patterns">Häufige Fehlermuster beim Sprecherwechsel</h2>
+  <table>
+    <thead><tr><th>Fehler</th><th>Wie es für die anrufende Person aussieht</th><th>Was zu prüfen ist</th></tr></thead>
+    <tbody>
+      <tr><td>Vorzeitiger Endpunkt</td><td>Der Agent antwortet während einer Denkpause.</td><td>Stilleschwellenwerte, semantische Logik für den Redebeitrag, akustische Bedingungen.</td></tr>
+      <tr><td>Verspäteter Endpunkt</td><td>Die anrufende Person ist fertig und wartet dann unangenehm lange.</td><td>Turn-Timeout, VAD-Empfindlichkeit, Regel für semantische Vollständigkeit.</td></tr>
+      <tr><td>Falsches Barge-in</td><td>Hintergrundgeräusche brechen den Agenten ab.</td><td>Empfindlichkeit für den Sprechbeginn, Geräuschbehandlung, Kanal-Audio.</td></tr>
+      <tr><td>Verpasstes Barge-in</td><td>Die anrufende Person spricht, aber der Agent redet weiter.</td><td>Aktivitätserkennung, Echo-/Rauschunterdrückung, Wiedergabepfad.</td></tr>
+      <tr><td>Abweichung bei der Wiedergabe</td><td>Der Agent geht später davon aus, dass die anrufende Person Wörter gehört hat, die abgeschnitten wurden.</td><td>Wiedergabeverfolgung, Kürzung der Antwort, Gesprächsverlauf.</td></tr>
+      <tr><td>Verwirrung nach dem Neustart</td><td>Nach einer Unterbrechung wiederholt der Agent sich oder antwortet auf das falsche Fragment.</td><td>Abgleich des Gesprächszustands und Verhalten beim Übernehmen des Redebeitrags.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="testing">Wie sollte der Sprecherwechsel getestet werden?</h2>
+  <p>Der Sprecherwechsel sollte mit Audioverhalten getestet werden, das in echten Anrufen vorkommt, und nicht nur mit sauberen, geskripteten Sätzen. Eine nützliche Testmatrix vor dem Produktivbetrieb umfasst:</p>
+  <ul>
+    <li>kurze und lange Pausen mitten im Satz;</li>
+    <li>Füllwörter wie „ähm“, „äh“ und „einen Moment“;</li>
+    <li>Selbstkorrekturen und neu begonnene Sätze;</li>
+    <li>Namen, Daten und Zahlen, die zögernd gesprochen werden;</li>
+    <li>Sprache der anrufenden Person, die beginnt, während der Agent spricht;</li>
+    <li>kurze Backchannels wie „ja“ oder „genau“;</li>
+    <li>Hintergrundsprache oder Fernsehgeräusche, die falsche Aktivität auslösen können;</li>
+    <li>Telefon-Audio mit verzögerter Wiedergabe;</li>
+    <li>mehrere Unterbrechungen innerhalb derselben Agentenantwort;</li>
+    <li>Überprüfung, dass der Gesprächsverlauf dem tatsächlich abgespielten Teil des Audios entspricht.</li>
+  </ul>
+  <p>Ziel ist nicht der Nachweis, dass Unterbrechungen nie fehlschlagen können. Es geht darum zu ermitteln, wie sich die gewählte Regel für den Sprecherwechsel über die Anrufergruppen und Geschäftsabläufe hinweg verhält, auf die es ankommt. Dieses Thema wird Teil einer umfassenderen Regressionsstrategie in unserem kommenden Leitfaden zum <a href="https://b2b-voice.com/how-to-test-an-ai-voice-agent">Testen von KI-Sprachagenten vor dem Produktivbetrieb</a>.</p>
+
+
+<h2 id="phone-channel">Warum Telefonanrufe den Sprecherwechsel schwieriger machen als eine Demo mit sauberem Mikrofon</h2>
+<p>Die Erkennung von Redebeiträgen wird oft zuerst in einer ruhigen Browser-Demo bewertet, doch Telefon-Audio bringt zusätzliche Variablen mit. Das Audio kann schmalbandig oder komprimiert sein, anrufende Personen nutzen mitunter die Freisprecheinrichtung, die Echounterdrückung verhält sich je nach Gerät unterschiedlich, und Netzwerkpufferung kann das scheinbare Timing zwischen Sprache und Wiedergabe verschieben. In einer überbrückten Telefoniearchitektur kann die Komponente, die über die Unterbrechung entscheidet, zudem physisch von der Komponente getrennt sein, die das Audio tatsächlich abspielt.</p>
+<p>Diese Trennung ist wichtig. Das Modell hat womöglich bereits 1,5 Sekunden Sprache generiert, während der Telefonieanbieter erst 700 Millisekunden abgespielt hat. Unterbricht die anrufende Person in diesem Moment, sind „die Modellantwort abbrechen“ und „stoppen, was die anrufende Person hört“ zwei verwandte, aber verschiedene Operationen. Die Anwendung braucht eine konsistente Sicht auf generiertes, gepuffertes und abgespieltes Audio.</p>
+<p>Deshalb ist die Wiedergabeverfolgung besonders wertvoll bei entfernter oder verzögerter Wiedergabe. Die Dokumentation zu den Realtime Agents von OpenAI nennt die Telefonie ausdrücklich als Fall, in dem ein Playback-Tracker helfen kann, unterbrochene Antworten an der tatsächlichen Wiedergabeposition zu kürzen, statt anzunehmen, generiertes Audio sei bereits gehört worden.<sup><a href="#source-2">2</a></sup></p>
+
+<h3>Echo und Hintergrundsprache können falsche Unterbrechungssignale erzeugen</h3>
+<p>Ein Barge-in-System ist nur dann nützlich, wenn es die anrufende Person mit angemessener Zuverlässigkeit von anderem Audio unterscheiden kann. Echo bei Freisprecheinrichtung, ein Fernseher, eine weitere Person im Raum oder Hintergrundgespräche im Callcenter können die Wahrscheinlichkeit falscher Aktivitätserkennung erhöhen. Anbietersteuerungen wie die Empfindlichkeit für den Sprechbeginn können helfen, dieses Verhalten abzustimmen, aber es gibt keinen einzelnen Empfindlichkeitswert, der für jede Telefonumgebung richtig ist.</p>
+<p>Für geschäftliche Einsätze sollte der Testdatensatz denselben Kanal enthalten, den der Agent in der Produktion nutzen wird. Ein Test mit dem Browser-Mikrofon bildet das Verhalten von PSTN, SIP oder Mobilfunkanrufen nicht vollständig ab.</p>
+
+<h2 id="interruption-state-machine">Eine Unterbrechung ist ein Zustandsübergang und nicht nur ein Audioereignis</h2>
+<p>Es ist nützlich, Barge-in als kleinen Zustandsautomaten zu modellieren. Bevor die anrufende Person unterbricht, erzeugt der Agent möglicherweise gleichzeitig Text, synthetisiert Audio und sendet Audio an einen Wiedergabepuffer. Das Sprachereignis der Person zwingt das System zu entscheiden, welche dieser Prozesse enden und welcher Zustand erhalten bleiben soll.</p>
+<table>
+  <thead><tr><th>Zeitpunkt</th><th>Frage des Systems</th><th>Mögliche Aktion</th></tr></thead>
+  <tbody>
+    <tr><td>Sprache der Person erkannt</td><td>Ist das eine echte Unterbrechung oder Rauschen?</td><td>Aktivitäts-/Redebeitragsregel anwenden.</td></tr>
+    <tr><td>Unterbrechung akzeptiert</td><td>Soll die Generierung fortgesetzt werden?</td><td>Aktuelle Antwort abbrechen oder kürzen.</td></tr>
+    <tr><td>Wiedergabe noch gepuffert</td><td>Was wurde nicht gehört?</td><td>Audio in der Warteschlange leeren.</td></tr>
+    <tr><td>Gesprächsverlauf</td><td>Welcher Teil soll als übermittelter Kontext erhalten bleiben?</td><td>Assistentenzustand abgleichen/kürzen.</td></tr>
+    <tr><td>Neuer Redebeitrag der Person</td><td>Was hat die anrufende Person während der Unterbrechung gesagt?</td><td>Neue Eingabe übernehmen/verarbeiten.</td></tr>
+    <tr><td>Nächste Antwort</td><td>Soll der Agent fortfahren, nachfragen oder die Aufgabe wechseln?</td><td>Aus dem korrigierten Zustand heraus generieren.</td></tr>
+  </tbody>
+</table>
+<p>Verschiedene Anbieter stellen unterschiedliche Teile dieses Lebenszyklus bereit. Google liefert in seiner Live API Unterbrechungs- und Aktivitätsereignisse; das SDK von OpenAI stellt Unterbrechungsereignisse und ein wiedergabebewusstes Kürzungsverhalten bereit. Die genauen Ereignisnamen sind anbieterspezifisch, doch der zugrunde liegende technische Bedarf ist derselbe: Eine Unterbrechung verändert sowohl den Medienzustand als auch den Gesprächszustand.</p>
+
+  <h2 id="framework">Ein Fünf-Schritte-Modell für den Sprecherwechsel in der Produktion</h2>
+  <p>Für praxisnahe Architektur-Reviews nutzt B2B Voice das folgende konzeptionelle Modell. Es ist ein Engineering-Rahmen und kein Branchenstandard:</p>
+  <div class="diagram">
+    <div class="flow">
+      <div class="node"><b>Erkennen</b>Spricht die anrufende Person?</div><div class="arrow">→</div>
+      <div class="node"><b>Interpretieren</b>Ist der Redebeitrag wahrscheinlich abgeschlossen?</div><div class="arrow">→</div>
+      <div class="node"><b>Abgeben</b>Soll der Agent zu sprechen beginnen?</div><div class="arrow">→</div>
+      <div class="node"><b>Unterbrechen</b>Was passiert, wenn die anrufende Person dazwischenspricht?</div><div class="arrow">→</div>
+      <div class="node"><b>Abgleichen</b>Was hat die anrufende Person tatsächlich gehört?</div>
+    </div>
+  </div>
+  <p>Diese Betrachtung ist wichtig, weil eine ansprechende Stimme schwaches Timing-Verhalten verdecken kann. Natürliche Gespräche erfordern mehr als schnelle Sprachsynthese: Das System muss das Rederecht korrekt steuern.</p>
+
+  <h2 id="faq">Häufig gestellte Fragen</h2>
+  <div class="qa"><h3>Woher wissen KI-Sprachagenten, wann man aufgehört hat zu sprechen?</h3><p>Sie können akustische Spracherkennung, Stilleschwellenwerte, Endpointing-Modelle und – in fortgeschritteneren Implementierungen – semantische Signale nutzen, die abschätzen, ob Ihr Gedanke abgeschlossen ist. Dass die Sprache aufhört und dass ein Redebeitrag im Gespräch abgeschlossen ist, hängt zusammen, ist aber nicht identisch.</p></div>
+  <div class="qa"><h3>Was ist VAD in der Sprach-KI?</h3><p>Die Voice Activity Detection erkennt, wann menschliche Sprache vorhanden ist, und kann Ereignisse für Sprechbeginn und Sprechende markieren. Echtzeitsysteme nutzen diese Ereignisse für die Aufteilung des Audios in Abschnitte, die Steuerung von Redebeiträgen, die Transkription und die Behandlung von Unterbrechungen.</p></div>
+  <div class="qa"><h3>Was ist semantisches VAD?</h3><p>Semantisches VAD nutzt zusätzlich zu Timing- oder akustischen Signalen die sprachliche Bedeutung, um abzuschätzen, ob die sprechende Person eine Äußerung abgeschlossen hat. Die aktuelle Implementierung von OpenAI kann beispielsweise länger warten, wenn die Wörter darauf hindeuten, dass die nutzende Person noch nicht fertig ist.</p></div>
+  <div class="qa"><h3>Warum unterbricht mich ein KI-Sprachagent?</h3><p>Eine häufige Ursache ist, dass eine kurze Pause oder ein Zögern als Ende Ihres Redebeitrags gedeutet wird. Schwellenwerte der Redebeitragserkennung, semantische Vollständigkeitslogik, Hintergrundbedingungen und die Unterbrechungsregel der Anwendung können alle dazu beitragen.</p></div>
+  <div class="qa"><h3>Was ist Barge-in?</h3><p>Barge-in ist die Möglichkeit, dass eine anrufende Person spricht, während der Agent redet, und die aktuelle Antwort unterbricht. Eine vollständige Implementierung kann die Generierung stoppen, die Wiedergabe beenden, nicht abgespieltes Audio verwerfen und den Gesprächszustand aktualisieren, bevor sie den neuen Redebeitrag verarbeitet.</p></div>
+  <div class="qa"><h3>Ist Barge-in dasselbe wie Vollduplex?</h3><p>Nein. Barge-in kann in einem rundenbasierten System existieren, das die Antwort des Agenten einfach abbricht, wenn die anrufende Person spricht. Vollduplex-Dialog ist eine umfassendere Architektur, in der gleichzeitige und überlappende Sprache als Teil des Gesprächs modelliert werden kann.</p></div>
+  <div class="qa"><h3>Was geschieht mit KI-Audio, das generiert, aber nie abgespielt wurde?</h3><p>Das hängt von der Implementierung ab. Bei einem sorgfältigen Echtzeitdesign wird nicht abgespielte Ausgabe verworfen und der Gesprächsverlauf abgeglichen, damit das System nicht so handelt, als hätte die anrufende Person Inhalte gehört, die sie nie erreicht haben.</p></div>
+
+  <h2 id="conclusion">Das eigentliche Problem beim Sprecherwechsel ist der Zustand, nicht die Stille</h2>
+  <p>Die einfachsten Sprach-Demos können Stille als Auslöser behandeln: Die Person hört auf, der Agent spricht. Produktive Telefonsysteme brauchen ein sorgfältigeres Modell. Sie müssen Sprachaktivität von abgeschlossenen Redebeiträgen unterscheiden, Unterbrechungen als Steuerungsproblem behandeln und den generierten Zustand mit dem gehörten Zustand in Einklang halten.</p>
+  <p>Deshalb gehört der Sprecherwechsel neben die umfassenderen Diskussionen zu Architektur und Latenz und nicht in sie hinein. Wenn Sie die Gesamtsicht auf das System wünschen, beginnen Sie mit <a href="https://b2b-voice.com/how-ai-voice-agents-work">So funktionieren KI-Sprachagenten</a>. Wenn Sie die Zielkonflikte bei der Geschwindigkeit verstehen möchten, lesen Sie <a href="https://b2b-voice.com/voice-ai-latency">Was Latenz in der Sprach-KI verursacht</a>.</p>
+
+<div class="sources">
+<h2>Technische Quellen &amp; Forschungsgrundlage</h2>
+<p>Anbieterspezifisches Verhalten wird als Beispiel und nicht als allgemeiner Standard gekennzeichnet. Die in diesem Artikel beschriebenen Engineering-Rahmen sind redaktionelle Modelle von B2B Voice, die auf den zitierten Primärquellen und der Forschung aufbauen.</p>
+<ol><li id="source-1"><a href="https://developers.openai.com/api/docs/guides/realtime-vad" rel="noopener">OpenAI — Voice activity detection (VAD), Realtime API</a>. Offizielle Dokumentation zu <code>server_vad</code>, <code>semantic_vad</code>, Sprachereignissen und Steuerungen der Redebeitragserkennung.</li><li id="source-2"><a href="https://openai.github.io/openai-agents-python/realtime/guide/" rel="noopener">OpenAI — Agents SDK Realtime guide</a> und <a href="https://openai.github.io/openai-agents-js/guides/voice-agents/build/" rel="noopener">Building Realtime Agents</a>. Offizielle SDK-Dokumentation zu Unterbrechungsereignissen, Wiedergabeverfolgung und dem Kürzen unterbrochenen Audios auf die gehörte Wiedergabe.</li><li id="source-3"><a href="https://ai.google.dev/api/live" rel="noopener">Google — Gemini Live API WebSockets reference</a>. Offizielle Dokumentation zu Aktivitätsbehandlung, Barge-in, automatischer Aktivitätserkennung, Stilledauer und dem Wiedergabesignal <code>interrupted</code>.</li><li id="source-4"><a href="https://arxiv.org/abs/2603.26515" rel="noopener">Yang et al. — JAL-Turn: Joint Acoustic-Linguistic Modeling for Real-Time and Robust Turn-Taking Detection in Full-Duplex Spoken Dialogue Systems</a>, arXiv, 2026.</li><li id="source-5"><a href="https://arxiv.org/abs/2410.00037" rel="noopener">Défossez et al. — Moshi: a speech-text foundation model for real-time dialogue</a>, arXiv, 2024. Hier speziell für die Unterscheidung zwischen Vollduplex und überlappender Sprache herangezogen.</li></ol>
+</div>
+<div class="tags"><span class="tag">KI-Sprachagenten</span><span class="tag">Sprecherwechsel</span><span class="tag">VAD</span><span class="tag">Barge-in</span><span class="tag">Echtzeit-KI</span><span class="tag">Conversational AI</span></div>
+<div class="next"><strong>Die Serie wird fortgesetzt:</strong><br><a href="https://b2b-voice.com/rag-vs-tool-calling-vs-prompt-context">RAG vs. Tool Calling vs. Prompt-Kontext: Wie KI-Sprachagenten auf Unternehmenswissen und Live-Daten zugreifen →</a></div>
+</article>
+</div>
+</main>

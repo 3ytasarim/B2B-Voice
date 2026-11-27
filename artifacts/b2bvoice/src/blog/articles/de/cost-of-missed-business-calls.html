@@ -1,0 +1,336 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+.b2bv .b2bv-results { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Geschäftliche Telefonie</p>
+    <h1 id="b2bv-title">Was verpasste Geschäftsanrufe wirklich kosten: Wie KI-Rezeptionisten helfen, entgangenen Umsatz zurückzugewinnen</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Ein unbeantworteter Anruf kann der Beginn einer wertvollen Kundenanfrage sein. Es kann aber auch ein wiederholter Anruf sein, eine Nachfrage zu einem laufenden Service oder etwas, das Ihr Team ohnehin am nächsten Tag nachholt. Um die Wirkung einer schnelleren Erreichbarkeit abzuschätzen, verfolgen Sie jede infrage kommende Anfrage über Erreichung, Leistungserbringung und Zahlung.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurz gesagt</h2>
+        <p>Der gefährdete Wert hängt davon ab, wie viele unbeantwortete Anfragen sich qualifizieren, wie viele davon der aktuelle Rückrufprozess erreicht und wie oft erreichte Anrufende zu erbrachten Verkäufen werden. Schätzen Sie die Differenz für dieselbe Kohorte und legen Sie dann Ihren eigenen vereinnahmten Umsatz und Ihre Deckungsbeitragsmarge zugrunde.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Leitfaden</p>
+      <ol>
+<li><a href="#eligible-inquiries">Infrage kommende Anfragen identifizieren</a></li>
+<li><a href="#evidence">Belege aus Ihrem Betrieb auswählen</a></li>
+<li><a href="#framework">Umsatzmodell für verpasste Anrufe</a></li>
+<li><a href="#calculator">Ihr Potenzial abschätzen</a></li>
+<li><a href="#measurement">Tatsächliche Rückgewinnung messen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Bereinigen Sie Dubletten nach anrufender Person und Anliegen, bevor Sie verpasste Neukundenanfragen klassifizieren.</li>
+<li>Rechnen Sie dem bestehenden Rückrufprozess die Kundinnen und Kunden an, die er bereits erreicht.</li>
+<li>Messen Sie erbrachte und bezahlte Leistungen. Prüfen Sie, ob das Unternehmen zusätzliche Aufträge überhaupt ausführen kann.</li>
+        </ul>
+      </section>
+<section id="eligible-inquiries">
+  <h2>Welche verpassten Anrufe sind echte Chancen?</h2>
+  <p>Gehen Sie von einem Protokoll eingehender Anrufe für einen bestimmten Standort, eine Route, einen Zeitraum und eine Servicekategorie aus. Legen Sie fest, was Ihr Team unter einem verpassten Anruf versteht. Bei einer neuen Geschäftsanfrage könnten Sie ein unbeantwortetes Klingeln zählen, eine anrufende Person, die die Warteschlange verlässt, bevor jemand antwortet, oder einen Anruf, der auf der Mailbox landet, bevor ein sinnvolles Gespräch zustande kommt. Erfassen Sie diese Ergebnisse getrennt. „Außerhalb der Geschäftszeiten“ beschreibt lediglich, wann der Anruf stattfand. Ein Anruf, den ein Bereitschaftsdienst außerhalb der Geschäftszeiten annimmt, erhält ein eigenes Ergebnis.</p>
+  <p>B2B Voice kann einen individuellen KI-Rezeptionisten für eine Überlauf- oder Nachtannahme entwickeln, die Ihr Team messen kann. Bringen Sie eine Stichprobe der Gründe für unbeantwortete Anrufe mit und zeigen Sie, wie bestehende Rückrufe Kundinnen und Kunden erreichen. So können Sie entscheiden, welche Anfragen der neue Workflow übernehmen kann und welche weiterhin eine besetzte Zuständigkeit brauchen.</p>
+<p>Lesen Sie die Statusdefinitionen Ihrer Telefonanlage. In Twilio Programmable Voice kann ein abgeschlossener Anruf eine Verbindung zu einer Person, einem Sprachmenü oder einer Mailbox bedeuten. Nutzen Sie die Routing-Ereignisse, das Nachfassprotokoll des Teams und das Fallergebnis, um festzustellen, ob die anrufende Person jemanden erreicht hat, der das Anliegen voranbringen konnte. Prüfen Sie die gesamte Route, wenn ein Anruf über mehrere Teilstrecken weitergeleitet oder übergeben wird. Der <a href="/de/how-ai-voice-agents-work">Leitfaden zum Sprachagenten-Stack</a> erklärt, wo ein geschäftlicher Anruf beginnt und was die Anwendung beobachten kann. <a href="https://www.twilio.com/docs/voice/api/call-resource">Twilio Call resource and status values</a></p>
+  <div class="b2bv-table" role="region" aria-label="Beispiele für die Einordnung verpasster Anrufe" tabindex="0">
+    <table>
+      <caption>Anliegen und Ergebnis klassifizieren, bevor Sie die Neukundengewinnung abschätzen</caption>
+      <thead><tr><th scope="col">Telefonereignis</th><th scope="col">So gehen Sie damit um</th><th scope="col">Was zu prüfen ist</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Klingelt aus oder die anrufende Person legt in der Warteschlange auf</th><td>Prüfen Sie, ob sich eine infrage kommende Anfrage mit der vorgeschlagenen Abdeckung hätte bearbeiten lassen.</td><td>Eingehende Route, Zeitstempel, Geschäftszeiten und Ergebnis über alle Teilstrecken.</td></tr>
+        <tr><th scope="row">Mailbox-Nachricht oder wiederholter Anruf zum selben Anliegen</th><td>Dem bestehenden Fall zuordnen und die tatsächliche erste sowie die späteren Reaktionen erhalten.</td><td>Schlüssel der anrufenden Person oder des freigegebenen Kontakts, Anliegen, Zeitraum und Fallverantwortliche.</td></tr>
+        <tr><th scope="row">Anruf zu einem bestehenden Termin oder einer bestehenden Bestellung</th><td>Die Wiederherstellung der Servicequalität in einer eigenen Warteschlange messen.</td><td>Offener Vorgang, Grund und abgeschlossenes Service-Ereignis.</td></tr>
+        <tr><th scope="row">Neue Serviceanfrage aus einem abgedeckten Gebiet</th><td>Einmal als qualifizierte Anfrage zählen, wenn sie die Regeln des Unternehmens erfüllt.</td><td>Servicekategorie, Abdeckung, Richtlinie zur Erreichbarkeit und vereinbarte Eignungskriterien.</td></tr>
+        <tr><th scope="row">Spam, Anbieter oder interner Anruf</th><td>Aus der adressierbaren Neukundenkohorte entfernen.</td><td>Dokumentierte Einordnung und ein einheitliches Ausschlussverfahren.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Verwenden Sie innerhalb eines festgelegten Zeitfensters einen Fall pro anrufender Person und Anliegen. Zwei Anrufe aus demselben Haushalt zu derselben Sanitäranfrage gehören in der Regel zu einem Fall. Anfragen für unterschiedliche Objekte oder getrennte Aufträge können eigene Fälle sein, wenn die Angaben das stützen. Führen Sie eine Kategorie „unbekannt“ für unterdrückte Rufnummern oder unklare Mailbox-Nachrichten ein, statt jeden nicht klassifizierten Anruf als Interessenten zu werten. Lassen Sie Mitarbeitende eine Stichprobe prüfen. Wenden Sie dieselben Regeln auf Anrufe, Webformulare und spätere Rückrufe an, sofern sich diese Datensätze rechtmäßig verknüpfen lassen.</p>
+  <p>Tragen Sie im Rechner die infrage kommenden eindeutigen Anfragen vor der Qualifizierung ein. Ein fiktiver Standort könnte beispielsweise 200 Telefondatensätze prüfen, 30 doppelte Ereignisse und 50 Anrufe außerhalb der Neukundenkohorte entfernen und damit 120 infrage kommende eindeutige unbeantwortete Anfragen auswerten. Qualifizieren sich 54 davon, beträgt die Qualifizierungsquote 45 %. Halten Sie schriftlich fest, warum ein Fall als qualifiziert gilt, damit Pilot- und Vergleichsgruppe denselben Maßstab verwenden.</p>
+</section>
+
+<section id="evidence">
+  <h2>Welche Belege sollten Sie zur Schätzung des Verlusts heranziehen?</h2>
+  <p>Ihre Anrufhistorie, die aktuellen Rückrufergebnisse und die bezahlten Rechnungen beschreiben die geschäftliche Chance direkt. Menschen rufen am selben Tag erneut an, buchen über die Website, werden von einer Mitarbeiterin oder einem Mitarbeiter zurückgerufen oder lassen die Anfrage fallen. Nutzen Sie Kontakt- und Vertriebsdaten, um zu sehen, was in Ihrem üblichen Ablauf geschehen ist. Prüfen Sie, ob Lücken entstehen, weil das Team die anrufende Person nicht erreichen konnte oder weil das Ergebnis nie erfasst wurde.</p>
+  <p>Definieren Sie einen aussagekräftigen Kontakt innerhalb desselben Beobachtungszeitraums für beide Gruppen. Das Team könnte beispielsweise eine infrage kommende anrufende Person als erreicht werten, wenn bis zum Ende des nächsten Geschäftstags ein echtes Gespräch oder ein freigegebener beidseitiger Austausch stattgefunden hat. Ein Klingeln, eine automatische Ansage, ein ausgehender Anrufversuch oder eine hinterlassene Nachricht sind eigene Kennzahlen. In manchen Workflows kann eine verifizierte Selbstbuchung als aussagekräftiger Kontakt gelten, wenn die anrufende Person die infrage kommende Aktion abgeschlossen hat. Legen Sie die Regel vor dem Test fest und wenden Sie sie einheitlich an.</p>
+  <p>Messen Sie die Leistungserbringung getrennt von der Erreichung. Eine verantwortliche Person kann die Status kontaktiert, terminiert, erbracht, storniert, erstattet und bezahlt nachverfolgen. Nutzen Sie Rechnungen und Zahlungsabwicklungsdaten, um den Umsatz zu ermitteln, der nach Rabatten und Erstattungen übrig bleibt. Ziehen Sie die variablen Kosten für die zusätzliche Leistung ab, um den Deckungsbeitrag zu erhalten. Ein landesweiter Prozentsatz verpasster Anrufe kann Qualifizierung, Rückrufe und Abschlussverhalten Ihrer eigenen Anrufenden nicht ersetzen.</p>
+</section>
+
+<section id="framework">
+  <h2>B2B Voice Umsatzrechner für verpasste Anrufe</h2>
+  <p>Der Rechner schätzt den Deckungsbeitrag, den ein Unternehmen gewinnen oder verlieren könnte, wenn es seinen Umgang mit unbeantworteten Anfragen ändert. Er vergleicht den aktuellen Prozess mit einem vorgeschlagenen Workflow in derselben Kohorte. Tragen Sie die aktuelle Rückrufquote in die Ausgangsbasis ein, einschließlich aller anderen Kanäle, die diese Anfragen nach Ihrer Regel bereits zurückgewinnen.</p>
+  <ol class="b2bv-flow" aria-label="Trichter der Chancen aus verpassten Anrufen">
+    <li><strong>Anfragen filtern</strong><span>Telefonereignisse bereinigen und dieselben Qualifizierungsregeln anwenden.</span></li>
+    <li><strong>Erreichung vergleichen</strong><span>Schätzen Sie, wen der aktuelle Workflow erreicht und wen der vorgeschlagene Workflow erreichen würde.</span></li>
+    <li><strong>Leistungserbringung prüfen</strong><span>Wahrgenommene Termine, abgeschlossene Arbeiten und vereinnahmten Umsatz heranziehen, um die Differenz zu bewerten.</span></li>
+  </ol>
+  <div class="b2bv-callout">
+    <h3>Das zusätzliche erwartete Ergebnis berechnen</h3>
+    <ul class="b2bv-formulas">
+      <li><strong>Qualifizierte Anfragen</strong> = infrage kommende eindeutige verpasste Anfragen × Qualifizierungsquote.</li>
+      <li><strong>Erwartete erbrachte Verkäufe je Ansatz</strong> = qualifizierte Anfragen × Erreichungsquote × Wahrscheinlichkeit eines erbrachten Verkaufs bei Erreichung.</li>
+      <li><strong>Erwartete zusätzliche Verkäufe</strong> = erwartete Verkäufe des vorgeschlagenen Ansatzes − erwartete Verkäufe des aktuellen Ansatzes.</li>
+      <li><strong>Erwarteter zusätzlicher vereinnahmter Umsatz</strong> = erwartete zusätzliche Verkäufe × netto vereinnahmter Umsatz je Verkauf.</li>
+      <li><strong>Erwarteter zusätzlicher Deckungsbeitrag</strong> = erwarteter zusätzlicher vereinnahmter Umsatz × Deckungsbeitragsmarge.</li>
+    </ul>
+  </div>
+  <p>Ist die Konversion nach der Erreichung in beiden Gruppen gleich, verwenden Sie qualifizierte Anfragen × Änderung der Erreichung × Wahrscheinlichkeit eines erbrachten Verkaufs. Die allgemeine Formel erlaubt jeder Gruppe eine eigene Wahrscheinlichkeit. Geben Sie diese Wahrscheinlichkeit unter der Bedingung an, dass eine qualifizierte anrufende Person erreicht wurde. Wenn Sie getrennte Buchungs- und Abschlussquoten haben, multiplizieren Sie sie zur kombinierten Wahrscheinlichkeit. Verwenden Sie getrennte Kohorten, wenn sich der vereinnahmte Umsatz oder die variablen Leistungskosten deutlich unterscheiden. Ermitteln Sie die Deckungsbeitragsmarge, indem Sie den netto vereinnahmten Umsatz abzüglich der variablen Leistungskosten durch den netto vereinnahmten Umsatz teilen. Ist dieser Nenner null, ist die Marge nicht definiert. Verwenden Sie dann eine belegte Marge für vergleichbare Arbeiten oder berichten Sie die operativen Ergebnisse, bis Sie genügend Belege für eine finanzielle Schätzung haben.</p>
+
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Beispielhafte Eingangsannahmen für verpasste Anrufe nach Branche" tabindex="0">
+    <table>
+      <caption>Vier voneinander unabhängige fiktive Monatskohorten</caption>
+      <thead><tr><th scope="col">Eingabe</th><th scope="col">Haushaltsnahe Dienstleistungen</th><th scope="col">Immobilien</th><th scope="col">Zahnmedizin</th><th scope="col">Tiermedizin</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Infrage kommende Anfragen</th><td>120</td><td>80</td><td>90</td><td>60</td></tr>
+        <tr><th scope="row">Qualifizierter Anteil</th><td>45%</td><td>30%</td><td>40%</td><td>50%</td></tr>
+        <tr><th scope="row">Erreichung aktuell → vorgeschlagen</th><td>40% → 65%</td><td>50% → 65%</td><td>50% → 70%</td><td>45% → 65%</td></tr>
+        <tr><th scope="row">Wahrscheinlichkeit eines erbrachten Verkaufs bei Erreichung</th><td>35%</td><td>10%</td><td>50%</td><td>40%</td></tr>
+        
+        
+      </tbody>
+    </table>
+  </div>
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Beispielhafte operative Ergebnisse nach Branche" tabindex="0">
+    <table>
+      <caption>Beispielhafte operative Ergebnisse über den aktuellen Rückrufen</caption>
+      <thead><tr><th scope="col">Branche</th><th scope="col">Qualifizierte Anfragen</th><th scope="col">Erwartete zusätzliche Erreichungen</th><th scope="col">Erwartete zusätzliche erbrachte Verkäufe</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Haushaltsnahe Dienstleistungen</th><td>54</td><td>13.5</td><td>4.725</td></tr>
+        <tr><th scope="row">Immobilien</th><td>24</td><td>3.6</td><td>0.36</td></tr>
+        <tr><th scope="row">Zahnmedizin</th><td>36</td><td>7.2</td><td>3.6</td></tr>
+        <tr><th scope="row">Tiermedizin</th><td>30</td><td>6</td><td>2.4</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Bei haushaltsnahen Dienstleistungen ergeben 120 infrage kommende Anfragen bei 45 % Qualifizierung 54 qualifizierte Anfragen. Steigt die Erreichung von 40 % auf 65 %, kommen 13,5 erwartete Kontakte hinzu. Bei gleichbleibenden 35 % Abschluss nach Erreichung ergibt die Änderung über den Zeitraum 4,725 erwartete zusätzliche Aufträge. In den Betriebsunterlagen hat jeder Auftrag seinen eigenen Status. Planen Sie genug Zeit ein, um stornierte Buchungen, abgeschlossene Aufträge und Rechnungen abzugleichen.</p>
+  <p>Verwenden Sie, was das Unternehmen für erbrachte Leistungen tatsächlich vereinnahmt. Bei einem Maklerbüro ist das der vereinnahmte Betrag, den das Büro aus einem abgeschlossenen Geschäft erhält. Bei einer Zahn- oder Tierarztpraxis verwenden Sie die Einnahmen aus vergleichbaren abgeschlossenen Behandlungen und berücksichtigen deren variable Leistungskosten. Nutzen Sie Ihre eigenen Transaktionsdaten sowohl für den Umsatzwert als auch für die Marge.</p>
+</section>
+
+<section id="calculator">
+  <h2>Schätzen Sie Ihr eigenes Potenzial aus verpassten Anrufen ab</h2>
+  <p>Geben Sie einen Monat infrage kommender Anfragen und Ihre eigenen Finanzwerte ein. Für Anrufzahlen und Quoten können Sie einen fiktiven Betriebsfall laden. Beim Wechsel des Falls werden die Finanzfelder geleert. Geben Sie ganze Anfragezahlen, Quoten zwischen 0 und 100 % und nichtnegative vereinnahmte Umsätze ein. Ein negatives Ergebnis zeigt einen modellierten Rückgang gegenüber dem aktuellen Prozess.</p>
+  <form id="b2bv-missed" class="b2bv-calculator" novalidate hidden>
+  <label class="b2bv-field"><span>Betriebsbeispiel laden</span><select data-preset><option value="">Mit leeren Eingaben beginnen</option><option value="home services" data-values='{"count": 120, "qualified": 45.0, "baseline": 40.0, "proposed": 65.0, "oldFulfilled": 35.0, "newFulfilled": 35.0}'>Haushaltsnahe Dienstleistungen</option><option value="real estate" data-values='{"count": 80, "qualified": 30.0, "baseline": 50.0, "proposed": 65.0, "oldFulfilled": 10.0, "newFulfilled": 10.0}'>Immobilien</option><option value="dental" data-values='{"count": 90, "qualified": 40.0, "baseline": 50.0, "proposed": 70.0, "oldFulfilled": 50.0, "newFulfilled": 50.0}'>Zahnmedizin</option><option value="veterinary" data-values='{"count": 60, "qualified": 50.0, "baseline": 45.0, "proposed": 65.0, "oldFulfilled": 40.0, "newFulfilled": 40.0}'>Tiermedizin</option></select></label>
+  <fieldset>
+    <legend>Monatliche Kohorte unbeantworteter Anfragen</legend>
+    <div class="b2bv-fields"><label class="b2bv-field"><span>Infrage kommende eindeutige verpasste Anfragen</span><input type="number" name="count" min="0" step="1" required></label><label class="b2bv-field"><span>Qualifizierter Anteil (%)</span><input type="number" name="qualified" min="0" max="100" step="any" required></label><label class="b2bv-field"><span>Aktuelle Erreichung (%)</span><input type="number" name="baseline" min="0" max="100" step="any" required></label><label class="b2bv-field"><span>Vorgeschlagene Erreichung (%)</span><input type="number" name="proposed" min="0" max="100" step="any" required></label><label class="b2bv-field"><span>Aktueller Abschluss bei Erreichung (%)</span><input type="number" name="oldFulfilled" min="0" max="100" step="any" required></label><label class="b2bv-field"><span>Vorgeschlagener Abschluss bei Erreichung (%)</span><input type="number" name="newFulfilled" min="0" max="100" step="any" required></label><label class="b2bv-field"><span>Netto vereinnahmter Umsatz je Verkauf (USD)</span><input type="number" name="revenue" min="0" step="any" required></label><label class="b2bv-field"><span>Deckungsbeitragsmarge (%)</span><input type="number" name="margin" min="0" max="100" step="any" required></label></div>
+  </fieldset>
+  
+  <button type="submit">Berechnen</button>
+  <p class="b2bv-status" role="status"></p>
+  <dl class="b2bv-results" hidden>
+    <dt>Erwartete qualifizierte Anfragen</dt><dd data-result="qualified"></dd>
+<dt>Erwartete vom aktuellen Prozess erreichte Anfragen</dt><dd data-result="baselineReach"></dd>
+<dt>Erwartete vom vorgeschlagenen Prozess erreichte Anfragen</dt><dd data-result="proposedReach"></dd>
+<dt>Erwartete zusätzlich erreichte Anfragen</dt><dd data-result="changeReach"></dd>
+<dt>Aktuell erwartete erbrachte Verkäufe</dt><dd data-result="baselineSales"></dd>
+<dt>Vorgeschlagen erwartete erbrachte Verkäufe</dt><dd data-result="proposedSales"></dd>
+<dt>Erwartete zusätzliche erbrachte Verkäufe</dt><dd data-result="changeSales"></dd>
+<dt>Erwarteter zusätzlicher vereinnahmter Umsatz</dt><dd data-result="revenue"></dd>
+<dt>Erwarteter zusätzlicher Deckungsbeitrag</dt><dd data-result="contribution"></dd>
+  </dl>
+</form>
+  <p>In einer Variante des Falls haushaltsnaher Dienstleistungen steigt die Erreichung von 40 % auf 65 %, während die Wahrscheinlichkeit eines erbrachten Verkaufs bei Erreichung von 35 % auf 20 % sinkt. Die Differenz der gemeinsamen Wahrscheinlichkeiten beträgt (0,65 × 0,20) − (0,40 × 0,35) = −0,01. Bei 54 qualifizierten Anfragen bedeutet das 0,54 erwartete erbrachte Aufträge weniger im Monat. Prüfen Sie die Zusammensetzung der Anrufenden, das Nachfassen und die Verfügbarkeit der Teams, bevor Sie die Differenz dem Antwort-Workflow zuschreiben.</p>
+</section>
+
+<section id="measurement">
+  <h2>So messen Sie den tatsächlich zurückgewonnenen Umsatz</h2>
+  <h3>Fälle zuweisen, bevor sich die Reaktion ändert</h3>
+  <p>Wählen Sie eine feste Route und eine Reihe vergleichbarer Schichten. Wo der Betrieb es zulässt, weisen Sie infrage kommendes Überlaufaufkommen vorab entweder dem aktuellen Rückrufprozess oder der neuen Abdeckung zu. Wenden Sie dieselben Ausschlüsse, dieselbe operative Kapazität und denselben Nachverfolgungszeitraum an. Ein Unternehmen kann auch zueinander passende Schichten oder Standorte mit ähnlichem Aufkommen und ähnlicher Kundenstruktur vergleichen. Definieren Sie die Eignung anhand der eingehenden Route und der Geschäftsregeln. Wer nach der Einführung nur Anrufe vergleicht, die weiterhin unbeantwortet blieben, kann die Stichprobe verändern und das Ergebnis verzerren.</p>
+  <p>Protokollieren Sie eine Fall-ID, das erste Telefonereignis, den Erreichungsversuch, die Zeit bis zum ersten aussagekräftigen Kontakt, den endgültigen Leistungsstatus und den vereinnahmten Betrag. Halten Sie Mailbox-Nachrichten, Rückrufe, Online-Buchungen und spätere Live-Anrufe mit dem ursprünglichen Fall verknüpft, wenn Identität und Anliegen übereinstimmen. Ersetzt ein neuer Termin eine bestehende Buchung oder verlagert er einen Auftrag zwischen Filialen, behalten Sie eine einzige Transaktion bei und ordnen sie nach der festgelegten Regel zu. Lassen Sie eine verantwortliche Person Dubletten und Erstattungen nach demselben Zeitfenster in jeder Gruppe abgleichen. Siehe <a href="/de/how-to-test-an-ai-voice-agent">So gestalten Sie ein wiederholbares Pilotprojekt</a>.</p>
+  <h3>Eine Anfrage bis zur Zahlung abgleichen</h3>
+  <p>Angenommen, eine anrufende Person verlangt um 18:40 Uhr einen Kostenvoranschlag und legt auf, bevor jemand abnimmt. Dieselbe Person füllt am Abend ein Formular aus und erreicht am nächsten Morgen einen Mitarbeiter. Stimmen Objekt und Anliegen überein, ordnen Sie diese Ereignisse einem Fall zu und behalten das erste eingehende Ereignis bei. Die Anfrage würde nur einmal in die Rückruf-Ausgangsbasis eingehen. Bucht der Kunde, storniert und schließt später einen neu terminierten Besuch ab, zählen Sie eine abgeschlossene Transaktion, sobald die Rechnung bezahlt ist. Prüfen Sie den Fall gemeinsam mit der Person, die den Zeitplan verantwortet, damit Statuswechsel nachvollziehbar dokumentiert sind.</p>
+  <p>Berichten Sie bei einem Kohortenvergleich dieselben Vollständigkeitsregeln. Führen im bisherigen Prozess 18 von 90 infrage kommenden Fällen zu erbrachten Verkäufen und im Pilotprojekt 27 von 110, betragen die Quoten 20,0 % und etwa 24,5 %. Bei einem Vergleichsumfang von 110 Fällen beträgt die geschätzte Differenz 27 − (110 × 20 %) = fünf erbrachte Verkäufe. Die Differenz der Rohzahlen von neun enthält eine Verschiebung im eingehenden Aufkommen. Halten Sie sich mit einer ursächlichen Deutung zurück, wenn sich Servicegebiet, Kundenstruktur oder Kapazität wesentlich verändert haben.</p>
+  <h3>Die Eingaben mit der schwächsten Beleglage einem Belastungstest unterziehen</h3>
+  <p>Variieren Sie die Annahme mit der schwächsten Beleglage. Erreicht das Beispiel haushaltsnaher Dienstleistungen 55 %, 65 % oder 75 % der qualifizierten Anfragen bei gleichbleibender Abschlussquote, schätzt das Modell etwa 2,8, 4,7 bzw. 6,6 zusätzliche erbrachte Aufträge. Vergleichen Sie diese Ergebnisse mit der Zahl der Aufträge, die das Unternehmen annehmen kann. Prüfen Sie eine Stichprobe unbeantworteter Anfragen, um Qualifizierung und die bestehende Rückrufleistung zu kontrollieren. Könnten ungeklärte Fälle die Schätzung wesentlich verändern, zeigen Sie eine Spanne und beschreiben Sie, was die Datensätze offenlassen.</p>
+  <h3>Unvollständige Ergebnisse berichten, bevor Sie eine Ausgangsbasis wählen</h3>
+  <p>Angenommen, das Unternehmen bestätigt 20 Erreichungen bei 54 qualifizierten Anfragen und kennt nur für 42 das Ergebnis. Die erfasste Erreichung beträgt 20 ÷ 54, also etwa 37,0 %. Wären alle 12 unbekannten Fälle erreicht worden, läge das Maximum mit diesen Datensätzen bei 32 ÷ 54, also etwa 59,3 %. Die Quote 20 ÷ 42 beschreibt nur die bekannten Ergebnisse. Verwenden Sie eine dokumentierte Spanne, bis das Personal die fehlenden Fälle klären kann. Gleichen Sie die Büroschlusszeiten und die Länge des Beobachtungszeitraums ab, bevor Sie Filialen oder Schichten mit unterschiedlichen Zeitplänen zusammenführen.</p>
+  <h3>Anhand des Ergebnisses entscheiden, was der Telefon-Workflow leisten soll</h3>
+  <p>Ein Inhaber kann damit beginnen, Abendanrufe für eine Auftragsart zu beantworten und qualifizierte Anfragen aufzunehmen, wenn die Disposition nicht erreichbar ist. Die empfangende Warteschlange braucht eine Kontaktrichtlinie, eine benannte Abdeckung, ein Antwortfenster und einen Fallback für den Fall, dass das erste Ziel geschlossen ist. Der <a href="/de/ai-voice-agent-reliability">Leitfaden zu Fallback und Übergabe an einen Menschen</a> beschreibt, wie ein Fall sichtbar bleibt, wenn ein Schritt fehlschlägt. Verfolgen Sie besetzte Rückrufe und jeden freigegebenen Selbstbedienungsweg nach. Legen Sie Kontaktregeln mit dem Unternehmen fest, bevor Sie einen automatisierten ausgehenden Schritt aktivieren. In den USA können Einschränkungen für Anrufe mit künstlicher Stimme gelten, deren Anforderungen von Anrufart und Umständen abhängen. Lassen Sie die für den Workflow verantwortliche Person die geltende Einwilligung, Zustimmung und den Umgang mit Widersprüchen bestätigen. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+  <p>Prüfen Sie auch die Kapazität. Ist der Terminplan bereits voll, kann die Beantwortung weiterer Anrufe Arbeit lediglich zwischen Zeitpunkten oder Kunden verschieben. Messen Sie, ob die insgesamt erbrachte Arbeit im Servicegebiet gestiegen ist oder ob eine schnellere Reaktion ein anderes Ergebnis verbessert hat, etwa die zeitnahe Betreuung bestehender Kunden. Verwenden Sie den zusätzlichen Deckungsbeitrag in einem umfassenderen Investitionsmodell, übernehmen Sie ihn nur einmal und ziehen Sie dort die tatsächlichen Projektkosten ab.</p>
+  <p>B2B Voice entwickelt individuelle KI-Telefonagenten rund um die Anrufe und Nachfassregeln, die ein Unternehmen tragen kann. Bringen Sie in ein Erstgespräch eine Route mit verpassten Anrufen, anonymisierte Beispiele und das Fallergebnis mit, das der Disponent oder die Rezeptionistin sehen soll. Besprechen Sie auf dieser Grundlage Anfrageaufnahme, Übergabe und die zu messenden Kennzahlen. <a href="/de/what-is-b2b-voice">B2B Voice company and implementation approach</a></p>
+<p>Verknüpfen Sie zurückgewonnene Anfragen mit der <a href="/de/ai-voice-agents-for-home-services" data-phase2-link="true">Anfrageaufnahme für Kostenvoranschläge im Außendienst</a> des Handwerksbetriebs und prüfen Sie, was beim Disponenten ankommt.</p>
+<p>Nutzen Sie das Schichtmodell, um <a href="/de/ai-receptionist-vs-human-receptionist" data-phase2-link="true">besetzten und hybriden Empfang zu vergleichen</a>, wenn Sie entscheiden, wer die neue Route abdeckt.</p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Was ist ein verpasster Geschäftsanruf wert?</h3><p>Sein erwarteter Wert hängt davon ab, ob er sich qualifiziert hat, ob die neue Reaktion mehr Menschen erreicht und wie viel abgeschlossene Arbeit nach variablen Kosten beiträgt. Nutzen Sie Ihre eigenen Anruf- und Transaktionsdaten.</p></div>
+<div class="b2bv-faq-item"><h3>Zählt jedes unbeantwortete Klingeln als neue Vertriebschance?</h3><p>Zählen Sie infrage kommende eindeutige Anfragen, nachdem Sie Dubletten, Spam, interne Anrufe, Nachfassen bei Bestandskunden und Anfragen außerhalb des Leistungsumfangs geprüft haben. Lassen Sie unklare Fälle für die Prüfung durch Mitarbeitende sichtbar.</p></div>
+<div class="b2bv-faq-item"><h3>Was sollte ich als Rückrufquote des bestehenden Prozesses zählen?</h3><p>Zählen Sie qualifizierte Anrufende, die Ihr aktueller Prozess innerhalb des definierten Beobachtungszeitraums erreicht. Erfassen Sie eine echte Reaktion und das endgültige geschäftliche Ergebnis getrennt von einem Wählversuch oder einer Mailbox-Nachricht.</p></div>
+<div class="b2bv-faq-item"><h3>Kann ein KI-Rezeptionist mehr Umsatz zurückgewinnen, indem er außerhalb der Geschäftszeiten antwortet?</h3><p>Er kann helfen, wenn infrage kommende Anrufende schneller eine nützliche Antwort erhalten und das Unternehmen die zusätzliche Arbeit erbringen kann. Vergleichen Sie abgeschlossene Transaktionen über Ihrem bestehenden Prozess hinaus, einschließlich Rückrufen und Online-Buchungen.</p></div>
+<div class="b2bv-faq-item"><h3>Was ist, wenn mehr Anrufende erreicht werden, aber seltener buchen oder abschließen?</h3><p>Verwenden Sie für jeden Workflow eine eigene Wahrscheinlichkeit eines erbrachten Verkaufs bei Erreichung. Eine höhere Erreichungsquote kann trotzdem eine negative Differenz ergeben, wenn der Rückgang beim Abschluss groß genug ist.</p></div>
+<div class="b2bv-faq-item"><h3>Sollte ich die Kundenbindung bestehender Kunden einbeziehen?</h3><p>Erfassen Sie Service und Kundenbindung bei Bestandskunden in einer eigenen Kohorte. Rechnen Sie einen finanziellen Nutzen erst an, wenn Beobachtung und Geschäftsunterlagen eine zusätzliche Veränderung belegen.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Eine Route mit verpassten Anrufen testen</h2>
+        <p>Bringen Sie eine anonymisierte Anrufart, Ihren aktuellen Rückrufprozess und den Datensatz mit, den Ihre Mitarbeitenden erhalten würden. Nutzen Sie eine B2B-Voice-Demo, um zu prüfen, was die anrufende Person hört und wie die Anfrage nachverfolgt wird.</p>
+        <a href="/demo">Demo einer Nachtannahme anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="https://www.twilio.com/docs/voice/api/call-resource">Twilio Call resource and status values</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/de/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>Verpasste Anrufe</li>
+<li>Anrufbearbeitung außerhalb der Geschäftszeiten</li>
+<li>Lead-Zuordnung</li>
+<li>Umsatzrechner</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

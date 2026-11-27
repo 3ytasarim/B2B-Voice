@@ -1,0 +1,243 @@
+
+<style>
+:root{
+  --ink:#111827;--muted:#5b6472;--line:#e5e7eb;--soft:#f7f8fa;--accent:#111827;
+  --blue:#2563eb;--blue-soft:#eef4ff;--amber:#92400e;--amber-soft:#fff7ed;--green:#166534;
+  --green-soft:#f0fdf4;--max:1120px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}.blog-content a {color:#174ea6;text-decoration-thickness:1px;text-underline-offset:3px}.blog-content a:hover {color:#0f3f8c}.blog-content .wrap {width:min(var(--max),calc(100% - 40px));margin:0 auto}.blog-content header.site {border-bottom:1px solid var(--line);padding:18px 0;background:#fff}.blog-content .brand {font-weight:800;letter-spacing:-.02em;text-decoration:none;color:var(--ink);font-size:20px}.blog-content .breadcrumbs {font-size:14px;color:var(--muted);margin:30px 0 14px}.blog-content .hero {padding:8px 0 38px}.blog-content .kicker {text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:#4b5563}.blog-content h1 {font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.04em;max-width:1000px;margin:12px 0 18px}.blog-content .deck {font-size:clamp(19px,2.2vw,25px);line-height:1.5;color:#374151;max-width:900px;margin:0}.blog-content .meta {display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;color:var(--muted);font-size:14px}.blog-content .answer {margin:8px 0 42px;padding:26px 28px;border:1px solid #c9d7f3;background:var(--blue-soft);border-radius:18px}.blog-content .answer strong.label {display:block;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:#174ea6;margin-bottom:8px}.blog-content .answer p {font-size:20px;line-height:1.55;margin:0}.blog-content .layout {display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:64px;align-items:start}.blog-content article {min-width:0}.blog-content article h2 {font-size:34px;line-height:1.2;letter-spacing:-.025em;margin:56px 0 16px}.blog-content article h3 {font-size:24px;line-height:1.3;letter-spacing:-.015em;margin:34px 0 10px}.blog-content article p {font-size:17.5px;margin:0 0 18px}.blog-content article ul, .blog-content article ol {padding-left:24px;margin:8px 0 22px}.blog-content article li {margin:8px 0;font-size:17px}.blog-content aside.toc {position:sticky;top:24px;border-left:1px solid var(--line);padding-left:20px}.blog-content .toc b {font-size:13px;text-transform:uppercase;letter-spacing:.08em}.blog-content .toc a {display:block;color:#4b5563;text-decoration:none;font-size:14px;line-height:1.35;margin:10px 0}.blog-content .toc a:hover {color:#111827}.blog-content .callout {border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:28px 0;background:#fff}.blog-content .callout.note {background:var(--soft)}.blog-content .callout.misconception {background:var(--amber-soft);border-color:#fed7aa}.blog-content .callout.engineering {background:var(--green-soft);border-color:#bbf7d0}.blog-content .callout .eyebrow {font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:12px;margin-bottom:7px}.blog-content .diagram {margin:28px 0;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfbfc;overflow:auto}.blog-content .diagram-title {font-weight:800;margin-bottom:16px}.blog-content .flow {display:flex;align-items:stretch;gap:10px;min-width:760px}.blog-content .node {flex:1;border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:14px;text-align:center}.blog-content .node b {display:block;margin-bottom:5px}.blog-content .arrow {display:flex;align-items:center;font-weight:800;color:#9ca3af}.blog-content .stack {display:grid;gap:10px}.blog-content .stack .row {border:1px solid #d1d5db;border-radius:12px;padding:14px 16px;background:white}.blog-content .stack .row b {display:inline-block;min-width:180px}.blog-content table {width:100%;border-collapse:collapse;margin:26px 0;font-size:15.5px}.blog-content th, .blog-content td {text-align:left;vertical-align:top;padding:13px 12px;border-bottom:1px solid var(--line)}.blog-content th {font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#4b5563;background:#fafafa}.blog-content .qa {border-top:1px solid var(--line);padding:22px 0}.blog-content .qa h3 {font-size:20px;margin:0 0 8px}.blog-content .sources {margin-top:60px;padding-top:28px;border-top:1px solid var(--line)}.blog-content .sources ol {padding-left:22px}.blog-content .sources li {font-size:14px;color:#4b5563;margin:10px 0}.blog-content .tags {display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 10px}.blog-content .tag {display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:13px;color:#4b5563;background:#fafafa}.blog-content .next {margin:48px 0 20px;padding:24px;border-radius:18px;background:#111827;color:white}.blog-content .next a {color:white}.blog-content footer {border-top:1px solid var(--line);margin-top:60px;padding:28px 0 50px;color:#6b7280;font-size:14px}.blog-content sup a {text-decoration:none;font-weight:700}
+@media(max-width:900px){.blog-content .layout {grid-template-columns:1fr}.blog-content aside.toc {position:static;order:-1;border-left:0;border:1px solid var(--line);padding:18px;border-radius:14px}.blog-content .toc a {display:inline-block;margin:7px 12px 7px 0}
+}
+@media(max-width:640px){.blog-content .wrap {width:min(100% - 26px,var(--max))}.blog-content h1 {font-size:42px}.blog-content article h2 {font-size:29px}.blog-content .answer {padding:20px}.blog-content .answer p {font-size:18px}.blog-content table {display:block;overflow-x:auto;white-space:normal}
+}
+@media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
+}
+</style>
+<main class="wrap">
+<div class="breadcrumbs"><a href="https://b2b-voice.com/">Inicio</a> / <a href="https://b2b-voice.com/blog">Blog</a> / Cómo gestionan los agentes de voz con IA las interrupciones y los turnos de conversación: VAD, detección del fin de turno e interrupción (barge-in)</div>
+
+<section class="hero">
+  <div class="kicker">Base de conocimiento técnico de B2B Voice · Artículo n.º 6</div>
+  <h1>Cómo gestionan los agentes de voz con IA las interrupciones y los turnos de conversación: VAD, detección del fin de turno e interrupción (barge-in)</h1>
+  <p class="deck">Un agente de voz en producción tiene que resolver un problema de tiempos antes de resolver un problema de lenguaje: cuándo debe seguir escuchando, cuándo debe responder y qué debe ocurrir si la persona que llama empieza a hablar mientras el agente aún está hablando.</p>
+  <div class="meta"><span>Publicado el 30 de agosto de 2026</span><span>~14 min de lectura</span><span>IA de voz · Sistemas en tiempo real</span></div>
+</section>
+
+<div class="answer">
+  <strong class="label">Respuesta rápida</strong>
+  <p>Un agente de voz con IA suele decidir cuándo responder a partir de más de una señal de temporización. La detección de actividad de voz (VAD) puede identificar cuándo empieza o termina el habla, mientras que los sistemas de detección de turnos más avanzados también pueden estimar si la idea del hablante está completa. Las interrupciones añaden otro problema: cuando quien llama habla por encima del agente, el sistema puede necesitar detener la generación, vaciar el audio que aún no se ha reproducido y reconciliar lo que la persona realmente alcanzó a oír.</p>
+</div>
+
+<div class="layout">
+<article>
+  <h2 id="speech-activity">La actividad de voz no equivale a la finalización del turno</h2>
+  <p>Uno de los errores más fáciles de cometer en la IA de voz es tratar “el micrófono se quedó en silencio” como si fuera lo mismo que “la persona que llama ya terminó”. No son el mismo evento.</p>
+  <p>Quien llama puede hacer una pausa porque está pensando, buscando una fecha, respirando, corrigiéndose, esperando una confirmación o simplemente porque habla despacio. En una conversación telefónica, incluso una breve vacilación puede tener significado. Si el sistema responde demasiado pronto, interrumpe a la persona. Si espera demasiado, la interacción se siente lenta.</p>
+  <p>Por eso conviene entender los turnos de conversación en producción como una secuencia de decisiones y no como un único detector. La documentación actual de Realtime de OpenAI, por ejemplo, distingue un modo basado en silencio, <code>server_vad</code>, de <code>semantic_vad</code>, que evalúa si el enunciado del usuario parece completo a partir de las palabras que ha dicho.<sup><a href="#source-1">1</a></sup> Se trata de una implementación específica de un proveedor, pero la distinción es útil en general: detectar el final de la actividad acústica y decidir que se ha cedido la palabra son problemas distintos.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">Fin del habla frente a fin de turno conversacional</div>
+    <div class="flow">
+      <div class="node"><b>Actividad de audio</b>¿Hay voz humana?</div><div class="arrow">→</div>
+      <div class="node"><b>Punto final acústico</b>¿Se detuvo el habla?</div><div class="arrow">→</div>
+      <div class="node"><b>Fin de turno</b>¿Parece completa la idea?</div><div class="arrow">→</div>
+      <div class="node"><b>Política de respuesta</b>¿Debe hablar ahora el agente?</div>
+    </div>
+  </div>
+
+  <div class="callout engineering">
+    <div class="eyebrow">Modelo de ingeniería de B2B Voice</div>
+    <p><strong>Habla detectada ≠ turno completado ≠ salida escuchada.</strong> Tratar estos elementos como estados separados facilita razonar sobre el comportamiento ante interrupciones, probarlo y depurarlo.</p>
+  </div>
+
+  <h2 id="vad">¿Qué es el VAD en la IA de voz?</h2>
+  <p><strong>La detección de actividad de voz (VAD, por sus siglas en inglés)</strong> es un mecanismo que detecta si hay voz humana en un flujo de audio y, según la implementación, cuándo empieza o termina esa voz. En los sistemas en tiempo real, los eventos de VAD pueden usarse para segmentar el audio, activar la transcripción, marcar turnos, iniciar respuestas o interrumpir a un agente que ya está hablando.</p>
+  <p>La API Realtime de OpenAI expone eventos como <code>input_audio_buffer.speech_started</code> e <code>input_audio_buffer.speech_stopped</code>. Su modo basado en silencio también ofrece ajustes como un umbral de activación, el relleno de prefijo y <code>silence_duration_ms</code>; con duraciones de silencio más cortas, los turnos se detectan más rápido.<sup><a href="#source-1">1</a></sup></p>
+  <p>La Live API de Google ofrece una clase similar de controles de temporización con su propia terminología. Su detección automática de actividad incluye sensibilidad de inicio del habla, sensibilidad de fin del habla y un ajuste de duración del silencio. Google documenta de forma explícita el equilibrio que hay que asumir: una duración de silencio mayor admite pausas más largas en el habla del usuario, pero aumenta la latencia.<sup><a href="#source-3">3</a></sup></p>
+  <p>Lo importante no es que todos los proveedores implementen el VAD de la misma manera, porque no lo hacen. Lo importante es que los umbrales de silencio son una superficie de control, no una definición universal de cuándo termina una conversación.</p>
+
+  <h3 id="endpointing">VAD frente a detección de punto final</h3>
+  <p>Los términos <em>VAD</em>, <em>detección de punto final</em> (endpointing) y <em>detección del fin de turno</em> a veces se usan con poco rigor, pero resulta útil separarlos conceptualmente.</p>
+  <table>
+    <thead><tr><th>Concepto</th><th>Pregunta principal</th><th>Señales habituales</th></tr></thead>
+    <tbody>
+      <tr><td>VAD</td><td>¿Hay voz en este momento?</td><td>Energía del audio, probabilidad de voz, características acústicas</td></tr>
+      <tr><td>Detección de punto final (endpointing)</td><td>¿Terminó el segmento de voz actual?</td><td>Duración del silencio, modelo de punto final, reglas de temporización</td></tr>
+      <tr><td>Fin de turno conversacional</td><td>¿Es probable que el hablante haya terminado su idea?</td><td>Señales acústicas más contexto lingüístico y semántico</td></tr>
+      <tr><td>Política de respuesta</td><td>¿Debe responder ya el agente?</td><td>Estado del turno, lógica de negocio, política de interrupción, estado del modelo</td></tr>
+    </tbody>
+  </table>
+  <p>Estas capas pueden combinarse en un mismo producto o repartirse entre varios componentes. Los nombres no son un estándar formal de la industria, pero la separación ayuda a explicar por qué un sistema puede detectar correctamente el silencio y aun así interrumpir a la persona que llama en el momento equivocado.</p>
+
+  <h2 id="semantic-vad">¿Qué es el VAD semántico?</h2>
+  <p><strong>El VAD semántico</strong> añade la finalización lingüística a la decisión de temporización. La implementación actual de OpenAI usa un clasificador semántico que puntúa la probabilidad de que el usuario haya terminado de hablar. Cuando esa probabilidad es baja, el sistema puede esperar más; cuando es alta, puede responder antes. OpenAI da el ejemplo de un enunciado que se va apagando con un “mmm…”, al que se concede un tiempo de espera mayor que a una afirmación categórica.<sup><a href="#source-1">1</a></sup></p>
+  <p>Esto no demuestra que un diseño concreto de VAD semántico sea superior en todos los casos. Sí es una prueba de que los turnos de conversación en producción pueden apoyarse en algo más que el silencio en bruto. La investigación reciente avanza en la misma dirección: el artículo JAL-Turn de 2026 combina representaciones acústicas y lingüísticas para predecir si el estado de la conversación debe <em>mantenerse</em> o <em>cambiar</em>.<sup><a href="#source-4">4</a></sup> Los resultados que reporta corresponden a sus conjuntos de datos y a su configuración experimental, por lo que no deben generalizarse como un referente universal.</p>
+
+  <div class="callout misconception">
+    <div class="eyebrow">Idea errónea frecuente</div>
+    <p><strong>“El VAD le dice a la IA cuándo el usuario ha terminado.”</strong> No necesariamente. El VAD puede detectar actividad de voz o puntos de parada acústicos. Determinar que la conversación ha terminado puede requerir lógica adicional semántica, de temporización o de políticas.</p>
+  </div>
+
+  <h2 id="pauses">Por qué las pausas, las muletillas y las autocorrecciones son difíciles</h2>
+  <p>El habla humana no es una secuencia limpia de oraciones completas. La gente dice “eh”, “un momento”, “en realidad”, reinicia nombres, deletrea direcciones de correo electrónico, hace una pausa antes de dar números y fechas, o cambia la solicitud de una cita a mitad de la frase.</p>
+  <p>Imagine que quien llama dice:</p>
+  <div class="callout note"><p><strong>“Necesito el martes a las… eh… en realidad, ¿tiene algo después de las tres?”</strong></p></div>
+  <p>Un umbral de silencio fijo y corto puede interpretar la pausa tras “a las” como el final del turno y empezar a responder demasiado pronto. Un umbral muy largo reduce ese riesgo, pero vuelve más lentos los turnos que sí estaban claros. Por tanto, el problema de diseño no consiste simplemente en “hacer más rápido el VAD”. Es un equilibrio entre la <strong>confianza en el límite del turno y la latencia de respuesta</strong>.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">El equilibrio en los turnos de conversación</div>
+    <div class="stack">
+      <div class="row"><b>Espera más corta</b>Respuesta aparentemente más rápida, pero mayor riesgo de tomar el turno de forma prematura.</div>
+      <div class="row"><b>Espera más larga</b>Mayor tolerancia a las vacilaciones y a las pausas, pero mayor retraso en la conversación.</div>
+      <div class="row"><b>Espera adaptativa</b>Usa más contexto para variar el retraso, pero añade complejidad de implementación y sigue siendo falible.</div>
+    </div>
+  </div>
+
+  <p>Por eso tampoco existe una afirmación defendible como “500 ms es el umbral de silencio correcto”. Los valores adecuados dependen del idioma, las condiciones del audio, el perfil de quienes llaman, el comportamiento del producto, la configuración del modelo o proveedor y la tarea de negocio. El valor correcto es algo que hay que evaluar, no algo que se deba heredar sin más de una demostración.</p>
+
+  <h2 id="barge-in">¿Qué es el barge-in?</h2>
+  <p><strong>La interrupción (barge-in)</strong> es la capacidad de que quien llama empiece a hablar mientras el agente está hablando y haga que el sistema cambie lo que está haciendo. Está relacionada con el VAD, pero no es lo mismo.</p>
+  <p>El VAD puede aportar la señal de que ha empezado a oírse una nueva intervención del usuario. La interrupción define la política de interacción que sigue: ¿debe cancelarse la respuesta actual del modelo? ¿Debe detenerse la reproducción local del audio? ¿Debe descartarse el audio almacenado en búfer? ¿Debe truncarse el historial de la conversación? ¿Debe aceptarse de inmediato el nuevo audio del usuario?</p>
+  <p>La Live API de Google concreta esta distinción. Su gestión de actividad por defecto puede tratar el inicio de la actividad del usuario como una interrupción y cortar la respuesta actual del modelo. Google también expone una señal <code>interrupted</code> que un cliente puede usar para detener y vaciar su cola de reproducción.<sup><a href="#source-3">3</a></sup></p>
+
+  <div class="diagram">
+    <div class="diagram-title">Una secuencia práctica de interrupción</div>
+    <div class="flow">
+      <div class="node"><b>El agente habla</b>Se genera y se reproduce audio</div><div class="arrow">→</div>
+      <div class="node"><b>Empieza el habla del usuario</b>Se detecta actividad</div><div class="arrow">→</div>
+      <div class="node"><b>Interrumpir</b>Cancelar o detener la respuesta actual</div><div class="arrow">→</div>
+      <div class="node"><b>Vaciar</b>Descartar la salida no reproducida</div><div class="arrow">→</div>
+      <div class="node"><b>Reanudar</b>Procesar el nuevo turno de quien llama</div>
+    </div>
+  </div>
+
+  <h2 id="reconciliation">Detener el audio es solo la mitad de la gestión de interrupciones</h2>
+  <p>El problema de interrupción más importante suele quedar oculto una vez que el hablante deja de oír el audio.</p>
+  <p>Un sistema en tiempo real puede contener varias versiones de una respuesta del asistente a la vez:</p>
+  <table>
+    <thead><tr><th>Estado</th><th>Significado</th></tr></thead>
+    <tbody>
+      <tr><td>Texto generado</td><td>Contenido que el modelo ha decidido producir.</td></tr>
+      <tr><td>Audio sintetizado</td><td>Contenido generado que ya se ha convertido en voz.</td></tr>
+      <tr><td>Audio en cola</td><td>Voz a la espera en un búfer de reproducción.</td></tr>
+      <tr><td>Audio reproducido</td><td>Voz que realmente salió por la ruta de reproducción del altavoz o de la telefonía.</td></tr>
+      <tr><td>Contenido escuchado</td><td>La parte que razonablemente se puede suponer que la persona que llama ha oído.</td></tr>
+    </tbody>
+  </table>
+  <p>Si quien llama interrumpe después de oír solo la primera mitad de una respuesta, el estado de la conversación no debería comportarse como si hubiera oído la respuesta completa. El SDK actual de Realtime Agents de OpenAI aborda esto de forma explícita. En escenarios con WebSocket, el SDK puede seguir la reproducción y truncar el audio del asistente a lo que el usuario realmente oyó; la documentación de su SDK de Python recomienda un rastreador de reproducción para reproducciones retrasadas o remotas, como la telefonía.<sup><a href="#source-2">2</a></sup></p>
+  <p>De aquí se desprende un principio útil en producción:</p>
+  <div class="callout engineering">
+    <div class="eyebrow">Nota de ingeniería</div>
+    <p><strong>Detener la reproducción es solo la mitad de la gestión de interrupciones. El estado de la conversación debe reconciliarse con lo que la persona que llama realmente oyó.</strong></p>
+  </div>
+  <p>Sin esa reconciliación, el modelo puede hacer referencia más adelante a instrucciones, precios, preguntas de confirmación o avisos que se generaron pero nunca llegaron a quien llama. En un flujo de trabajo empresarial, eso no es solo incómodo: puede alterar la corrección del siguiente turno.</p>
+
+  <h2 id="full-duplex">Interrupción (barge-in) no es lo mismo que dúplex completo</h2>
+  <p>Otro problema habitual de terminología es llamar “dúplex completo” a cualquier sistema que admita interrupciones. Es una generalización excesiva.</p>
+  <p>Un sistema por turnos puede admitir la interrupción escuchando el habla del usuario mientras reproduce la respuesta del agente y cancelando después esa respuesta. Una arquitectura de diálogo genuinamente dúplex completo va más allá: modela el habla simultánea o superpuesta como un estado normal de la conversación y no como una excepción que simplemente pone fin al turno del agente.</p>
+  <p>El sistema de investigación Moshi es un punto de referencia útil. Su arquitectura modela en paralelo los flujos de voz del usuario y del sistema, y se diseñó para manejar el habla superpuesta, las interrupciones y las interjecciones sin depender de una segmentación explícita de los turnos de cada hablante.<sup><a href="#source-5">5</a></sup> Eso lo convierte en un ejemplo de investigación de modelado dúplex completo, no en un motivo para rebautizar como dúplex completo cualquier implementación de interrupción.</p>
+
+  <table>
+    <thead><tr><th>Capacidad</th><th>Sistema por turnos con capacidad de interrupción</th><th>Modelo de diálogo dúplex completo</th></tr></thead>
+    <tbody>
+      <tr><td>Puede detectar el habla del usuario mientras habla el agente</td><td>Sí</td><td>Sí</td></tr>
+      <tr><td>Puede detener la respuesta actual</td><td>Sí</td><td>Posiblemente, pero la interrupción no es el único comportamiento</td></tr>
+      <tr><td>El habla superpuesta se trata como un estado normal del modelo</td><td>Normalmente limitado</td><td>Objetivo central del diseño</td></tr>
+      <tr><td>Las señales de asentimiento y las interjecciones pueden modelarse de forma simultánea</td><td>Depende de la implementación</td><td>Potencialmente sí</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="latency">Los turnos de conversación forman parte de la latencia de la IA de voz</h2>
+  <p>La latencia no es solo el tiempo de inferencia del modelo. Un agente puede tener reconocimiento de voz rápido, razonamiento rápido y síntesis rápida, y aun así parecer lento porque el sistema espera demasiado antes de decidir que el usuario ha terminado.</p>
+  <p>A la inversa, reducir de forma agresiva la espera para el fin de turno puede hacer que un sistema parezca más rápido a costa de aumentar las interrupciones prematuras. Por eso la latencia de la decisión de turno debe evaluarse por separado de la cascada de latencia de extremo a extremo que se trata en nuestra guía sobre la <a href="https://b2b-voice.com/voice-ai-latency">latencia de la IA de voz</a>.</p>
+  <p>La documentación de la Live API de Google señala de forma explícita que aumentar la duración exigida de ausencia de voz permite pausas más largas sin dar por terminada la actividad del usuario, pero también aumenta la latencia del modelo.<sup><a href="#source-3">3</a></sup> El VAD de servidor de OpenAI documenta asimismo que los valores más cortos de duración del silencio detectan los turnos más rápido.<sup><a href="#source-1">1</a></sup> Son controles específicos de cada implementación, pero ambos ilustran el mismo equilibrio de ingeniería.</p>
+
+  <h2 id="failure-patterns">Patrones frecuentes de fallo en los turnos de conversación</h2>
+  <table>
+    <thead><tr><th>Fallo</th><th>Cómo lo percibe quien llama</th><th>Qué revisar</th></tr></thead>
+    <tbody>
+      <tr><td>Punto final prematuro</td><td>El agente responde durante una vacilación.</td><td>Umbrales de silencio, lógica semántica de turnos, condiciones acústicas.</td></tr>
+      <tr><td>Punto final tardío</td><td>La persona termina y luego espera, incómoda.</td><td>Tiempo de espera del turno, sensibilidad del VAD, política de finalización semántica.</td></tr>
+      <tr><td>Interrupción falsa</td><td>Un sonido de fondo cancela al agente.</td><td>Sensibilidad de inicio del habla, tratamiento del ruido, audio del canal.</td></tr>
+      <tr><td>Interrupción no detectada</td><td>La persona habla, pero el agente sigue hablando.</td><td>Detección de actividad, supresión de eco y ruido, ruta de reproducción.</td></tr>
+      <tr><td>Desajuste de reproducción</td><td>Más adelante, el agente da por hecho que la persona oyó palabras que se cortaron.</td><td>Seguimiento de la reproducción, truncamiento de la respuesta, historial de la conversación.</td></tr>
+      <tr><td>Confusión al reanudar</td><td>Tras la interrupción, el agente repite o responde a un fragmento equivocado.</td><td>Reconciliación del estado de la conversación y comportamiento de confirmación del turno.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="testing">¿Cómo deben probarse los turnos de conversación?</h2>
+  <p>Los turnos de conversación deben probarse con comportamientos de audio que ocurren en llamadas reales, no solo con frases limpias y guionizadas. Una matriz de pruebas útil antes de pasar a producción incluye:</p>
+  <ul>
+    <li>pausas cortas y largas a mitad de frase;</li>
+    <li>muletillas como “eh”, “mm” y “un momento”;</li>
+    <li>autocorrecciones y frases reiniciadas;</li>
+    <li>nombres, fechas y números dichos con vacilación;</li>
+    <li>la persona que llama empieza a hablar mientras habla el agente;</li>
+    <li>breves señales de asentimiento como “sí” o “claro”;</li>
+    <li>voces de fondo o ruido de televisión que pueden activar una falsa detección de actividad;</li>
+    <li>audio telefónico con reproducción retrasada;</li>
+    <li>varias interrupciones dentro de una misma respuesta del agente;</li>
+    <li>verificación de que el historial de la conversación coincide con la parte del audio que realmente se reprodujo.</li>
+  </ul>
+  <p>El objetivo no es demostrar que las interrupciones nunca pueden fallar, sino determinar cómo se comporta la política de turnos elegida con la población de quienes llaman y los flujos de trabajo de negocio que importan. Este tema pasa a formar parte de una estrategia de regresión más amplia en nuestra próxima guía sobre <a href="https://b2b-voice.com/how-to-test-an-ai-voice-agent">cómo probar agentes de voz con IA antes de producción</a>.</p>
+
+
+<h2 id="phone-channel">Por qué las llamadas telefónicas complican los turnos de conversación más que una demostración con micrófono limpio</h2>
+<p>La detección de turnos suele evaluarse primero en una demostración tranquila en el navegador, pero el audio telefónico introduce variables adicionales. El audio puede ser de banda estrecha o estar comprimido, quienes llaman pueden usar el altavoz del teléfono, la cancelación de eco puede comportarse de forma distinta según el dispositivo, y el almacenamiento en búfer de la red puede desplazar la sincronía aparente entre el habla y la reproducción. En una arquitectura de telefonía con puente, el componente que decide interrumpir puede además estar físicamente separado del componente que realmente reproduce el audio.</p>
+<p>Esa separación importa. Puede que el modelo ya haya generado 1,5 segundos de voz mientras el proveedor de telefonía solo ha reproducido 700 milisegundos. Si la persona interrumpe en ese momento, “cancelar la respuesta del modelo” y “detener lo que oye quien llama” son dos operaciones relacionadas pero distintas. La aplicación necesita una visión coherente del audio generado, almacenado en búfer y reproducido.</p>
+<p>Por eso el seguimiento de la reproducción resulta especialmente valioso en reproducciones remotas o retrasadas. La documentación de Realtime Agents de OpenAI menciona específicamente la telefonía como un caso en el que un rastreador de reproducción puede ayudar a truncar las respuestas interrumpidas en la posición real de reproducción, en lugar de suponer que el audio generado ya se ha oído.<sup><a href="#source-2">2</a></sup></p>
+
+<h3>El eco y las voces de fondo pueden generar señales de interrupción falsas</h3>
+<p>Un sistema de interrupción solo es útil si puede distinguir a quien llama de otros audios con una fiabilidad razonable. El eco del altavoz del teléfono, un televisor, otra persona en la habitación o las voces de fondo de un centro de llamadas pueden aumentar la probabilidad de una falsa detección de actividad. Los controles de los proveedores, como la sensibilidad de inicio del habla, pueden ayudar a ajustar este comportamiento, pero no existe un único valor de sensibilidad que sea correcto para todos los entornos telefónicos.</p>
+<p>En implementaciones empresariales, el conjunto de pruebas debe incluir el mismo canal que el agente usará en producción. Una prueba con el micrófono del navegador no representa por completo el comportamiento de PSTN, SIP ni de las llamadas móviles.</p>
+
+<h2 id="interruption-state-machine">Una interrupción es una transición de estado, no solo un evento de audio</h2>
+<p>Resulta útil modelar la interrupción como una pequeña máquina de estados. Antes de que la persona interrumpa, el agente puede estar generando texto, sintetizando audio y enviando audio a un búfer de reproducción al mismo tiempo. El evento de habla del usuario obliga al sistema a decidir cuáles de esos procesos deben detenerse y qué estado debe conservarse.</p>
+<table>
+  <thead><tr><th>Momento</th><th>Pregunta del sistema</th><th>Acción posible</th></tr></thead>
+  <tbody>
+    <tr><td>Se detecta habla del usuario</td><td>¿Es una interrupción real o ruido?</td><td>Aplicar la política de actividad y de turnos.</td></tr>
+    <tr><td>Interrupción aceptada</td><td>¿Debe continuar la generación?</td><td>Cancelar o truncar la respuesta actual.</td></tr>
+    <tr><td>Reproducción aún en el búfer</td><td>¿Qué no se ha oído?</td><td>Vaciar el audio en cola.</td></tr>
+    <tr><td>Historial de la conversación</td><td>¿Qué parte debe conservarse como contexto entregado?</td><td>Reconciliar o truncar el estado del asistente.</td></tr>
+    <tr><td>Nuevo turno del usuario</td><td>¿Qué dijo la persona que llama por encima de la interrupción?</td><td>Confirmar y procesar la nueva entrada.</td></tr>
+    <tr><td>Siguiente respuesta</td><td>¿Debe el agente retomar, aclarar o cambiar de tarea?</td><td>Generar a partir del estado corregido.</td></tr>
+  </tbody>
+</table>
+<p>Los distintos proveedores exponen diferentes partes de este ciclo de vida. Google muestra eventos de interrupción y de actividad en su Live API; el SDK de OpenAI expone eventos de interrupción y un comportamiento de truncamiento basado en la reproducción. Los nombres exactos de los eventos son específicos de cada proveedor, pero la necesidad de ingeniería de fondo es la misma: una interrupción cambia tanto el estado del medio como el estado de la conversación.</p>
+
+  <h2 id="framework">Un modelo de cinco pasos para los turnos de conversación en producción</h2>
+  <p>En las revisiones prácticas de arquitectura, B2B Voice utiliza el siguiente modelo conceptual. Es un marco de ingeniería, no un estándar de la industria:</p>
+  <div class="diagram">
+    <div class="flow">
+      <div class="node"><b>Detectar</b>¿Está hablando la persona que llama?</div><div class="arrow">→</div>
+      <div class="node"><b>Interpretar</b>¿Es probable que el turno esté completo?</div><div class="arrow">→</div>
+      <div class="node"><b>Ceder</b>¿Debe empezar a hablar el agente?</div><div class="arrow">→</div>
+      <div class="node"><b>Interrumpir</b>¿Qué ocurre si la persona que llama interrumpe?</div><div class="arrow">→</div>
+      <div class="node"><b>Reconciliar</b>¿Qué oyó realmente la persona que llama?</div>
+    </div>
+  </div>
+  <p>Este planteamiento importa porque una voz pulida puede ocultar un comportamiento de temporización deficiente. La conversación natural exige algo más que una síntesis de voz rápida: el sistema tiene que gestionar correctamente quién tiene la palabra.</p>
+
+  <h2 id="faq">Preguntas frecuentes</h2>
+  <div class="qa"><h3>¿Cómo saben los agentes de voz con IA que usted dejó de hablar?</h3><p>Pueden usar detección acústica del habla, umbrales de silencio, modelos de detección de punto final y, en implementaciones más avanzadas, señales semánticas que estiman si su idea está completa. Que el habla se detenga y que el turno conversacional se complete están relacionados, pero no son lo mismo.</p></div>
+  <div class="qa"><h3>¿Qué es el VAD en la IA de voz?</h3><p>La detección de actividad de voz identifica cuándo hay voz humana y puede marcar eventos de inicio y de fin del habla. Los sistemas en tiempo real usan esos eventos para dividir el audio en fragmentos, gestionar turnos, transcribir y manejar las interrupciones.</p></div>
+  <div class="qa"><h3>¿Qué es el VAD semántico?</h3><p>El VAD semántico usa el significado lingüístico, además de las señales de temporización o acústicas, para estimar si el hablante ha completado un enunciado. La implementación actual de OpenAI, por ejemplo, puede esperar más cuando las palabras sugieren que el usuario aún no ha terminado.</p></div>
+  <div class="qa"><h3>¿Por qué me interrumpe un agente de voz con IA?</h3><p>Una causa frecuente es que una pausa breve o una vacilación se interprete como el final de su turno. Los umbrales de detección de turnos, la lógica semántica de finalización, las condiciones de fondo y la política de interrupción de la aplicación pueden contribuir a ello.</p></div>
+  <div class="qa"><h3>¿Qué es el barge-in?</h3><p>El barge-in es la capacidad de que quien llama hable mientras el agente está hablando e interrumpa la respuesta actual. Una implementación completa puede detener la generación, detener la reproducción, vaciar el audio no reproducido y actualizar el estado de la conversación antes de procesar el nuevo turno.</p></div>
+  <div class="qa"><h3>¿El barge-in es lo mismo que el dúplex completo?</h3><p>No. El barge-in puede existir en un sistema por turnos que simplemente cancela la respuesta del agente cuando la persona habla. El diálogo dúplex completo es una arquitectura más amplia en la que el habla simultánea y superpuesta puede modelarse como parte de la conversación.</p></div>
+  <div class="qa"><h3>¿Qué ocurre con el audio de IA que se generó pero nunca se reprodujo?</h3><p>Depende de la implementación. En un diseño en tiempo real cuidadoso, la salida no reproducida se vacía y el historial de la conversación se reconcilia, de modo que el sistema no actúe como si la persona hubiera oído contenido que nunca le llegó.</p></div>
+
+  <h2 id="conclusion">El verdadero problema de los turnos de conversación es el estado, no el silencio</h2>
+  <p>Las demostraciones de voz más sencillas pueden tratar el silencio como un disparador: el usuario deja de hablar, el agente habla. Los sistemas telefónicos en producción necesitan un modelo más cuidadoso. Deben distinguir la actividad de voz de la finalización del turno, tratar las interrupciones como un problema de control y mantener alineado el estado generado con el estado escuchado.</p>
+  <p>Por eso mismo los turnos de conversación merecen un tratamiento junto a, y no dentro de, los debates más amplios sobre arquitectura y latencia. Si desea la visión completa del sistema, empiece por <a href="https://b2b-voice.com/how-ai-voice-agents-work">cómo funcionan los agentes de voz con IA</a>. Si quiere entender los equilibrios de velocidad, consulte <a href="https://b2b-voice.com/voice-ai-latency">qué causa la latencia de la IA de voz</a>.</p>
+
+<div class="sources">
+<h2>Fuentes técnicas y base de investigación</h2>
+<p>Los comportamientos específicos de cada proveedor se presentan como ejemplos y no como estándares universales. Los marcos de ingeniería de este artículo son modelos editoriales de B2B Voice elaborados a partir de las fuentes primarias y la investigación citadas.</p>
+<ol><li id="source-1"><a href="https://developers.openai.com/api/docs/guides/realtime-vad" rel="noopener">OpenAI — Voice activity detection (VAD), Realtime API</a>. Documentación oficial sobre <code>server_vad</code>, <code>semantic_vad</code>, eventos de voz y controles de detección de turnos.</li><li id="source-2"><a href="https://openai.github.io/openai-agents-python/realtime/guide/" rel="noopener">OpenAI — Agents SDK Realtime guide</a> y <a href="https://openai.github.io/openai-agents-js/guides/voice-agents/build/" rel="noopener">Building Realtime Agents</a>. Documentación oficial del SDK sobre eventos de interrupción, seguimiento de la reproducción y truncamiento del audio interrumpido a lo realmente reproducido.</li><li id="source-3"><a href="https://ai.google.dev/api/live" rel="noopener">Google — Gemini Live API WebSockets reference</a>. Documentación oficial sobre gestión de actividad, barge-in, detección automática de actividad, duración del silencio y la señal de reproducción <code>interrupted</code>.</li><li id="source-4"><a href="https://arxiv.org/abs/2603.26515" rel="noopener">Yang et al. — JAL-Turn: Joint Acoustic-Linguistic Modeling for Real-Time and Robust Turn-Taking Detection in Full-Duplex Spoken Dialogue Systems</a>, arXiv, 2026.</li><li id="source-5"><a href="https://arxiv.org/abs/2410.00037" rel="noopener">Défossez et al. — Moshi: a speech-text foundation model for real-time dialogue</a>, arXiv, 2024. Se utiliza aquí específicamente para la distinción entre dúplex completo y habla superpuesta.</li></ol>
+</div>
+<div class="tags"><span class="tag">Agentes de voz con IA</span><span class="tag">Turnos de conversación</span><span class="tag">VAD</span><span class="tag">Barge-in</span><span class="tag">IA en tiempo real</span><span class="tag">IA conversacional</span></div>
+<div class="next"><strong>Continúe con la serie:</strong><br><a href="https://b2b-voice.com/rag-vs-tool-calling-vs-prompt-context">RAG vs llamadas a herramientas vs contexto en el prompt: cómo acceden los agentes de voz con IA al conocimiento del negocio y a los datos en vivo →</a></div>
+</article>
+</div>
+</main>

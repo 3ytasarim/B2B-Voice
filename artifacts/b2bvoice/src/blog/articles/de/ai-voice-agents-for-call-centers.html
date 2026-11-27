@@ -1,0 +1,344 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table:not(.b2bv-assess) tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Contact-Center-Betrieb</p>
+    <h1 id="b2bv-title">KI-Sprachagenten für Callcenter: So automatisieren Sie den Kundenservice und skalieren den Betrieb</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Ein Contact Center kann mit Sprachautomatisierung mehr Anrufe bewältigen und Kunden dennoch mehr Nacharbeit hinterlassen. Beginnen Sie mit einer Warteschlange, in der das Unternehmen nachweisen kann, welche Anliegen gelöst wurden, was bei den Mitarbeitenden angekommen ist und welche Anrufenden es erneut versuchen mussten.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurzantwort</h2>
+        <p>Setzen Sie KI-Sprachagenten für häufige Callcenter-Anliegen ein, die klaren Regeln folgen, auf eine aktuelle maßgebliche Datenquelle zurückgreifen und ein überprüfbares Ergebnis haben. Halten Sie für Ausnahmen einen besetzten Weg bereit. Beginnen Sie mit einer Warteschlange oder einer Schicht, messen Sie verifizierte Lösungen und Übergaben getrennt und testen Sie den gesamten Serviceweg bei Spitzenlast, bevor Sie ausweiten.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Leitfaden</p>
+      <ol>
+<li><a href="#prioritize">Erste Warteschlange auswählen</a></li>
+<li><a href="#opportunity-matrix">Matrix der Automatisierungspotenziale</a></li>
+<li><a href="#handoff">Übergabe an Menschen und Fallback planen</a></li>
+<li><a href="#measurement">Geschäftsergebnisse messen</a></li>
+<li><a href="#worked-example">Ein fiktives Pilotprojekt auswerten</a></li>
+<li><a href="#scale">Spitzenkapazität planen</a></li>
+<li><a href="#pilot">Vor der Ausweitung verifizieren</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Priorisieren Sie Anliegen nach Entscheidungsbefugnis des Unternehmens, Verlässlichkeit der Datenquelle und einem Ergebnis, das das Team überprüfen kann.</li>
+<li>Vergleichen Sie Containment, Erstlösungsquote und verifizierte Verbindung zu einem Menschen anhand eindeutig definierter Bezugsgrößen.</li>
+<li>Testen Sie sowohl die technische Kapazität als auch die verfügbare Besetzung für die Fallbacks.</li>
+        </ul>
+      </section>
+<section id="prioritize">
+  <h2>Welche Kundenservice-Anrufe sollte ein Contact Center zuerst automatisieren?</h2>
+  <p>Wählen Sie ein Anliegen, das regelmäßig auftritt, einen klaren Verantwortlichen hat und mit einem Ergebnis endet, das Ihr Team überprüfen kann. Bestellstatus, veröffentlichte Servicezeiten und eine genehmigte Kategorie von Terminänderungen können gute Ausgangspunkte sein, sofern die erforderlichen Datensätze aktuell sind. Bei einem Anruf zu einer strittigen Abbuchung oder einer Ausnahme von der Regel ist eine Person mit Entscheidungsbefugnis nötig. Sprachautomatisierung ist dann nützlich, wenn sie den Aufwand verringert, den Anrufende und ein Serviceteam haben, um ein Anliegen abzuschließen.</p>
+  <p>B2B Voice entwickelt maßgeschneiderte Sprachagenten für Contact Center, die auf genehmigten Anliegen, vorhandenen Kundenservice-Systemen und besetzter Eskalation aufbauen. Bringen Sie die Regeln der aufnehmenden Warteschlange und eine Stichprobe der Dispositionen mit, denen Ihr Team vertraut. Wenn mehrsprachiger Service wichtig ist, nehmen Sie jede Sprache in den Testumfang auf, damit das Center sowohl das Geschäftsergebnis als auch die Übergabe überprüfen kann.</p>
+<p>Beginnen Sie mit einer klar definierten Route, etwa einer einzelnen Kundenservice-Warteschlange an Werktagnachmittagen. Ziehen Sie für denselben Zeitraum eine Stichprobe von Telefonaufzeichnungen und Servicefällen. Verknüpfen Sie den angebotenen Anruf, jede Weiterleitung oder jeden Rückruf und das endgültige Geschäftsergebnis. Beziehen Sie Rückrufe, Abbrüche und wiederholte Anrufe ein, damit Sie sehen, welcher Arbeitsaufwand in eine andere Warteschlange wandern würde. Ein eingehender Anruf mit zwei Weiterleitungen gehört weiterhin zu einem einzigen Kundenanliegen, wenn der ursprüngliche Bedarf derselbe ist.</p>
+  <p>Verwenden Sie einen überschaubaren Katalog von Anliegen, den Mitarbeitende und Supervisoren wiedererkennen. Dokumentieren Sie für jeden Eintrag den typischen Anlass, die Spitzenzeit, die Geschäftsregel, die Anspruchsvoraussetzungen, die maßgebliche Datenquelle und die aufnehmende Warteschlange mit Menschen. Lassen Sie das Personal einen gewöhnlichen Anruf und eine Ausnahme prüfen, bevor Sie eine Automatisierungsregel vorschlagen. Aus einer Zusammenfassung abgeleitete Labels können für die Triage nützlich sein. Validieren Sie sie anhand der Fall-Dispositionen und beobachteten Ergebnisse, bevor Sie Entscheidungsbefugnis zuweisen.</p>
+  <h3>Den richtigen Endpunkt für jede Aufgabe festlegen</h3>
+  <p>Bei einem Anruf zum Bestellstatus kann der Endpunkt ein korrekt übermittelter Status aus einem aktuellen Datensatz nach der genehmigten Identitätsprüfung sein. Bei einer Terminverschiebung kann der Endpunkt ein gespeicherter, zulässiger Termin sein. Bei einer Beschwerde kann der Endpunkt des automatisierten Abschnitts eine sichere Verbindung zum Beschwerdeteam sein. Messen Sie weiterhin, was die Mitarbeitenden anschließend lösen. Wenn diese Endpunkte explizit festgelegt sind, hat das Center eine gemeinsame Sprache für Supervision und Reporting zur Kundenerfahrung.</p>
+  <p>Halten Sie auch die Route außerhalb des Umfangs fest. Ein Kunde, der mit dem Bestellstatus beginnt und dann nach einer Rückerstattung fragt, kann von einer automatisierten Auskunft zu einer Entscheidung durch Mitarbeitende wechseln. Geben Sie verifizierten Kontext weiter, soweit die Richtlinie dies erlaubt, und halten Sie fest, welche Aktion der Agent tatsächlich abgeschlossen hat. Der Leitfaden zu <a href="/de/ai-voice-agent-vs-ai-receptionist-vs-ivr">Sprachagenten, Rezeptionisten und IVR</a> erklärt, wo sich klassische Menüs und Conversational Workflows jeweils eignen.</p>
+</section>
+
+<section id="opportunity-matrix">
+  <h2>B2B Voice: Matrix der Automatisierungspotenziale im Callcenter</h2>
+  <p>Nutzen Sie die Matrix, um jedem Anrufgrund einen Betriebsmodus und einen Fallback zuzuweisen. Beginnen Sie mit Häufigkeit und Wiederholbarkeit und prüfen Sie dann, ob eine aktuelle Datenquelle, zulässige Aktionen, ein umkehrbares Ergebnis und ein besetzter Verantwortlicher für Ausnahmen vorhanden sind. Ein Anliegen kann von der unterstützten Aufnahme zur begrenzten Automatisierung wechseln, sobald der Verantwortliche Belege dafür sieht, dass der erforderliche Datensatz und der Wiederherstellungsweg funktionieren.</p>
+  <div class="b2bv-table" role="region" aria-label="Matrix der Automatisierungspotenziale im Callcenter" tabindex="0">
+    <table>
+      <caption>Wählen Sie den Betriebsmodus danach, was der Workflow nachweisen kann</caption>
+      <thead><tr><th scope="col">Beispielanliegen</th><th scope="col">Betriebsmodus und Voraussetzung</th><th scope="col">Zu erfassender Nachweis</th><th scope="col">Fehler- oder Ausnahmeweg</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Öffentliche Öffnungszeiten oder Rückgabehinweise</th><td>Eine genehmigte, aktuelle Antwort automatisieren. Den richtigen Standort und das richtige Richtliniendatum verwenden.</td><td>Antwort und Quellenversion mit der Disposition verknüpft.</td><td>Veraltete, widersprüchliche oder nicht verfügbare Richtlinien an Mitarbeitende weiterleiten.</td></tr>
+        <tr><th scope="row">Bestellstatus oder einfache Terminänderung</th><td>Begrenzte Automatisierung nach der genehmigten Identitätsprüfung und Tool-Autorisierung nutzen.</td><td>Maßgebliche Abfrage oder bestätigte Datensatz-ID und verifizierte Angaben.</td><td>Abweichungen, fehlgeschlagene Schreibvorgänge und Richtlinienausnahmen an den zuständigen Verantwortlichen übergeben.</td></tr>
+        <tr><th scope="row">Komplexe Störung oder wiederholte Servicebeschwerde</th><td>Die Lösung bleibt in menschlicher Hand. Eine genehmigte Zusammenfassung des Anliegens erfassen, wenn sie die Aufnahme unterstützt.</td><td>Eingang beim richtigen Team und ein Fall mit verifizierten relevanten Fakten.</td><td>Dem besetzten Weg zügig folgen und für die Nachbearbeitung einen benannten Verantwortlichen festlegen.</td></tr>
+        <tr><th scope="row">Streitfall mit hoher Tragweite, sensible Entscheidung oder belastete anrufende Person</th><td>Für die Entscheidung eine Person oder den genehmigten Dringlichkeitsweg nutzen.</td><td>Erfasste Disposition und Empfänger gemäß der geltenden Richtlinie.</td><td>Die reguläre Aufnahme unterbrechen und dem genehmigten Eskalationsverfahren folgen.</td></tr>
+        <tr><th scope="row">Genehmigter Statusrückruf</th><td>Nur innerhalb eines genehmigten Outbound-Umfangs und -Zwecks durchführen.</td><td>Prüfung von Einwilligung und Sperrliste, Routing und endgültige Disposition.</td><td>Den Anruf zurückhalten, wenn die Einwilligung unklar ist, und an den Verantwortlichen weiterleiten.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Wenden Sie die Matrix auf einen fiktiven Händler mit einer sehr aufkommensstarken Warteschlange für Sendungsstatus an. Der aktuelle Sendungsdatensatz ist verlässlich, doch die Personen, die die Anrufe annehmen, bearbeiten auch Schadensmeldungen. Beginnen Sie mit dem Status für eine berechtigte Sendung nach der Identitätsprüfung. Belassen Sie Schadensmeldungen bei geschulten Mitarbeitenden, mit einer einzigen genehmigten Übergabe. Gewähren Sie im ersten Pilotprojekt nur den Lesezugriff, den die Statusaufgabe benötigt. Ist der Datensatz veraltet, kann die Route eine besetzte Warteschlange anbieten oder gemäß Richtlinie eine Anfrage mit zugewiesenem Verantwortlichen speichern.</p>
+  <h3>Kundenspezifische Grenzen für ein BPO festlegen</h3>
+  <p>Ein Business-Process-Outsourcing-Anbieter kann dasselbe Anliegen kundenübergreifend inventarisieren und die Aktion anschließend in der Umgebung jedes Kunden separat verifizieren. Zwei Einzelhandelskunden können dieselbe Fallkategorie verwenden und dennoch unterschiedliche Identitätsprüfungen, Rückgabefristen und Felder zulassen. Legen Sie für jeden Kunden eine genehmigte Richtlinienquelle, eine Datensatzgrenze, Regeln zur Datenaufbewahrung und eine aufnehmende Warteschlange fest. Prüfen Sie Begrüßung, Zugriff, Übergabe und Audit-Berechtigungen für den jeweiligen Mandanten, bevor Sie Traffic zuweisen.</p>
+  <p>Fordern Sie in der vom Käufer genehmigten Testumgebung sowohl negative als auch positive Autorisierungsnachweise an. Verwenden Sie synthetische Datensätze und prüfen Sie, dass ein Test für die Warteschlange eines Kunden ausschließlich dessen zulässige Informationen offenlegt. Der Verantwortliche der Warteschlange sollte einen Kunden oder eine Route unabhängig pausieren können und sehen, welche Arbeit in den Warteschlangen der Mitarbeitenden verbleibt.</p>
+  <p>Halten Sie die Entscheidung für jede Zeile der Matrix fest und überprüfen Sie sie, sobald Erkenntnisse aus dem Produktivbetrieb vorliegen. Eine häufig angefragte Aktion mit schwacher Datenquelle oder ohne erreichbaren Fallback kann im Aufnahmemodus bleiben, auch wenn das Volumen attraktiv ist. Eine Aufgabe mit geringerem Volumen und verlässlichem Datensatz kann sich besser als erstes Pilotprojekt eignen. Das Risikoprofil des NIST für generative KI bietet einen Rahmen, um Tests, Monitoring und Governance rund um den vorgesehenen Einsatzzweck zu betrachten. <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a></p>
+</section>
+
+<section id="handoff">
+  <h2>Wie teilen sich KI und menschliche Agenten eine Warteschlange?</h2>
+  <p>Geben Sie einem System die Hoheit über die Route. Die automatische Anrufverteilung (Automatic Call Distributor, ACD) kann die Servicezeiten, die Skill-Gruppe und die Überlaufregeln anwenden. Ein begrenzter Workflow kann eine Option im IVR-Menü (Interactive Voice Response) beantworten, bei einem Standardanliegen helfen, sobald die Warteschlange eine definierte Wartezeit erreicht, oder eine begrenzte Menge an Anfragen außerhalb der Geschäftszeiten annehmen. Das passende Muster hängt davon ab, ob die Mitarbeitenden die Eskalation annehmen können und ob der KI-Weg die Arbeit verifizieren kann, bevor die anrufende Person auflegt.</p>
+  <p>Definieren Sie ein Eskalationsereignis, einen Übergabeversuch, eine besetzte Verbindung und einen angenommenen Fall als getrennte Datensätze. Eine verbundene anrufende Person kann trotzdem bei einem anderen als dem erwarteten Team landen. Prüfen Sie das tatsächliche Ziel und geben Sie dem Empfänger eine nützliche Zusammenfassung, die er einsehen darf. Wenn eine Übergabe zustande kommt, sollte das aufnehmende Team die Identität erneut prüfen können, falls die Richtlinie das verlangt, das konkrete Anliegen wieder aufnehmen und den nächsten Schritt festhalten.</p>
+  <ol class="b2bv-flow" aria-label="Callcenter-Automatisierung und Workflow der Übergabe an Menschen">
+    <li><strong>Warteschlangenregel anwenden</strong><span>Gewünschtes Ergebnis, genehmigte Aktion und aktuelle Verfügbarkeit prüfen.</span></li>
+    <li><strong>Abschließen oder eskalieren</strong><span>Das Ergebnis verifizieren oder das genehmigte Ziel mit Menschen anfordern.</span></li>
+    <li><strong>Zuständigkeit bestätigen</strong><span>Das gespeicherte Ergebnis, die besetzte Verbindung oder den Fallback mit zugewiesenem Verantwortlichen festhalten.</span></li>
+  </ol>
+  <p>Legen Sie fest, was passiert, wenn das Ziel geschlossen, belegt oder nicht erreichbar ist. Die anrufende Person benötigt unter Umständen die vorherige Route oder einen genehmigten Rückrufservice. Eine Rückrufanfrage braucht einen verfügbaren Verantwortlichen, das zulässige Zeitfenster und einen Endstatus. Wenn das Center eine Rückführungsroute nutzt, testen Sie, dass sie die anrufende Person nicht durch denselben Automatisierungszweig zurückschickt. Der <a href="/de/ai-voice-agent-reliability">Leitfaden zur Zuverlässigkeit von Sprachagenten</a> behandelt Transaktionssicherheit, Fallback und Übergabe ausführlicher.</p>
+  <p>Grenzen Sie ausgehende Aktivitäten gesondert ab. In den USA können Einschränkungen für Anrufe mit künstlicher Stimme gelten. Lassen Sie das zuständige Team Zweck, erforderliche Einwilligungen, geltende Zustimmung und Sperrlisten sowie den korrekten Rückrufweg prüfen, bevor Sie eine Outbound-Warteschlange aktivieren. Halten Sie einen unabhängigen Stopp für ausgehende Aktivitäten bereit und dokumentieren Sie den tatsächlich genehmigten Workflow. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+</section>
+
+<section id="measurement">
+  <h2>Wie sollten Sie die Callcenter-Automatisierung messen?</h2>
+  <p>Schreiben Sie vor dem Pilotprojekt ein Metrikglossar. Jede Kennzahl braucht eine Zulassungsregel, ein Ereignis- oder Beobachtungsfenster, eine Bezugsgröße und einen Verantwortlichen. Nutzen Sie die vorhandenen Dashboards des Centers, um Ereignisse zu finden, und prüfen Sie dann, was die Plattform tatsächlich misst. So basiert etwa die dokumentierte Service-Level-Kennzahl von Amazon Connect auf Kontakten, die innerhalb eines Schwellenwerts aus einer Warteschlange entfernt wurden, und kann Agentenverbindungen, Abbrüche und Rückrufanfragen einschließen. Wenn Ihr Serviceversprechen eine besetzte Annahme innerhalb dieses Schwellenwerts ist, definieren Sie es direkt über die relevanten Annahme- und Warteschlangenereignisse. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html">Amazon Connect metric definitions</a></p>
+  <div class="b2bv-table" role="region" aria-label="KPI-Definitionen für die Callcenter-Automatisierung" tabindex="0">
+    <table>
+      <caption>Arbeitskennzahlen für ein ergebnisorientiertes Pilotprojekt</caption>
+      <thead><tr><th scope="col">Kennzahl</th><th scope="col">Arbeitsdefinition</th><th scope="col">Zusätzlich erfassen</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Containment</th><td>Zulässige angebotene Kontakte, die den automatisierten Weg ohne Übergabe an einen Menschen abschließen ÷ alle zulässigen angebotenen Kontakte.</td><td>Abbrüche, Fehler und wiederholte Anrufe sowie eine separate Kennzahl für verifizierte Lösungen.</td></tr>
+        <tr><th scope="row">Erstlösungsquote (First-Contact Resolution, FCR)</th><td>Zulässige eindeutige Anliegen, die beim ersten Kontakt gelöst wurden und innerhalb des festgelegten Zeitfensters keinen erneuten Anruf zum selben Anliegen auslösen ÷ zulässige eindeutige Anliegen.</td><td>Verifizierungsmethode, Wiederholungsfenster, Gruppierung von Duplikaten und noch offene Fälle.</td></tr>
+        <tr><th scope="row">Quote der Verbindungen zu Menschen</th><td>Übergaben, die mit dem richtigen besetzten Ziel verbunden wurden ÷ Übergabeversuche.</td><td>Versuchsquote und Zeit bis zu einer Person, wobei belegte und geschlossene Ziele, Fehler und spätere Rückrufe nachverfolgt werden.</td></tr>
+        <tr><th scope="row">Durchschnittliche Bearbeitungszeit (Average Handle Time, AHT)</th><td>Gesamte Gesprächs-, Warte- und Nachbearbeitungszeit ÷ bearbeitete Kontakte innerhalb eines festgelegten Agentenumfangs.</td><td>Welche Rückfrage- und Übergabeabschnitte zählen, die Anliegenmischung und die Nacharbeit der Mitarbeitenden.</td></tr>
+        <tr><th scope="row">Durchschnittliche Annahmezeit (Average Speed of Answer, ASA)</th><td>Gesamte Wartezeit in der Warteschlange für angenommene Kontakte ÷ angenommene Kontakte im Umfang.</td><td>Wartezeiten bei Abbrüchen und welche Warteschlange oder welches Ereignis die Zeitmessung startet.</td></tr>
+        <tr><th scope="row">Service Level</th><td>Zulässige angebotene Kontakte, die innerhalb des vereinbarten Zeitschwellenwerts angenommen wurden ÷ zulässige angebotene Kontakte.</td><td>Der Schwellenwert und die Behandlung von kurzen Abbrüchen, Rückrufen und weitergeleiteten Kontakten.</td></tr>
+        <tr><th scope="row">Abbruchquote</th><td>Kontakte, die während des Wartens enden ÷ zulässige Kontakte in der Warteschlange.</td><td>Trennungen vor der Warteschlange und kurze Abbrüche als explizite Dispositionen.</td></tr>
+        <tr><th scope="row">Kundenzufriedenheit (CSAT)</th><td>Positive Antworten ÷ gültige Umfrageantworten auf einer festgelegten Skala.</td><td>Rücklaufquote, Kanal, Zeitpunkt und ob die Stichprobe abgeschlossene Anrufe überrepräsentiert.</td></tr>
+        <tr><th scope="row">Kosten pro gelöstem Kontakt</th><td>Zurechenbare Betriebskosten, einschließlich menschlicher Bearbeitung und Nacharbeit, ÷ eindeutige verifizierte Lösungen.</td><td>Zeitraum, Kostenbestandteile und Lösungsnachweis. Bei null verifizierten Lösungen sind die Stückkosten nicht definiert.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Messen Sie die Latenz aus Sicht der anrufenden Person dort, wo sie sie tatsächlich wahrnehmen kann. Berichten Sie mindestens ein typisches Ergebnis und ein Tail-Ergebnis, etwa p50 und p95, für vergleichbare Gesprächsrunden und Routen. Der p95 ist die Verzögerung, bei oder unter der etwa 95 % der erfassten Beobachtungen liegen. Gruppieren Sie kurze Antworten getrennt von Anrufen, die auf ein Geschäftssystem warten. Verwenden Sie für Vergleiche dieselbe Zeitmessung und geben Sie Stichprobengröße, Sprache und Last an. Die <a href="/de/voice-ai-latency">Aufschlüsselung der Latenz bei Sprach-KI</a> zeigt die Komponenten, die die wahrgenommene Verzögerung beeinflussen.</p>
+</section>
+
+<section id="worked-example">
+  <h2>Was kann eine Kennzahl zum abgeschlossenen Pfad verbergen?</h2>
+  <p>Betrachten Sie ein fiktives Pilotprojekt mit 100 zulässigen angebotenen Kontakten, die 100 eindeutige Anliegen darstellen. Siebzig Anrufe schließen den automatisierten Pfad ab, 20 versuchen eine Übergabe an Mitarbeitende und 10 brechen vor dem Service ab. Das Team verwendet ein Sieben-Tage-Fenster, um einen weiteren Anruf zum selben Anliegen zu erkennen. In diesem Fenster melden sich 12 der 70 erneut mit demselben Anliegen, die übrigen 58 haben verifizierte automatisierte Ergebnisse. Die Falldaten zeigen außerdem, dass 16 von 20 Versuchen die richtige besetzte Warteschlange erreichten, wo 13 beim ersten Kontakt verifiziert gelöst wurden. Die übrigen Versuche oder Ergebnisse bleiben zur Prüfung sichtbar.</p>
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Abgleich der Ergebnisse eines fiktiven Callcenter-Pilotprojekts" tabindex="0">
+    <table>
+      <caption>Unterschiedliche Bezugsgrößen zeigen für dieselben 100 Anliegen unterschiedliche Ergebnisse</caption>
+      <thead><tr><th scope="col">Kennzahl</th><th scope="col">Nachweis</th><th scope="col">Ergebnis</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Containment</th><td>70 schließen den automatisierten Pfad ab ÷ 100 zulässige Angebote</td><td>70%</td></tr>
+        <tr><th scope="row">Verifizierte automatisierte Erstlösung</th><td>58 verifizierte automatisierte Erstergebnisse ÷ 100 zulässige Anliegen</td><td>58%</td></tr>
+        <tr><th scope="row">Erfolgreiche besetzte Verbindung bei Übergabe</th><td>16 korrekte besetzte Verbindungen ÷ 20 Versuche</td><td>80%</td></tr>
+        <tr><th scope="row">Kombinierte FCR</th><td>(58 verifizierte automatisierte + 13 verifizierte durch Mitarbeitende erzielte Erstergebnisse) ÷ 100 zulässige Anliegen</td><td>71%</td></tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <p>Berechnen Sie die Kosten pro gelöstem Kontakt für dieselbe Warteschlange und denselben Zeitraum anhand Ihrer eigenen Betriebsdaten. Teilen Sie die zurechenbaren Betriebskosten, einschließlich der Bearbeitung durch Mitarbeitende und der Nacharbeit, durch die Anzahl der eindeutigen verifizierten Lösungen. Wenden Sie für beide Zeiträume dieselben Kostengrenzen und dieselbe Definition von Lösung an. Ist der Nenner null, weisen Sie die Kennzahl als nicht definiert aus und zeigen Sie die Anzahl null.</p><p>Dieses Beispiel zählt die Lösungen durch Mitarbeitende, die innerhalb des ursprünglichen Kontakts erfolgen und dasselbe Wiederholungsfenster überstehen. Ein späterer gelöster Rückruf kann dennoch ein verifiziertes Ergebnis ergeben und sollte eine eigene Zeile erhalten. Untersuchen Sie die 12 wiederholten Kontakte, die vier fehlgeschlagenen Übergaben und die frühen Abbrüche als operative Kohorten. So kann beispielsweise eine Häufung wiederholter Anrufe bei Statusanfragen auf einen veralteten vorgelagerten Datensatz hindeuten. Ein Ausfall der besetzten Warteschlange kann eine Änderung des Dienstplans oder des Routings erfordern. Eine aggregierte Quote kann beide Ursachen verbergen.</p>
+  <p>Setzen Sie beim Vergleich mit einer Baseline dieselben Zulassungskriterien und dasselbe Zeitfenster an. Schließen Sie unvollständige Beobachtungen in der vereinbarten Weise aus und geben Sie an, wie viele noch ausstehen. Beziehen Sie in einem Center mit gemischten internen und spezialisierten Warteschlangen die Prüfung durch Mitarbeitende und den Umgang mit fehlgeschlagenen Schreibvorgängen in die Kostenberechnung ein. Verknüpfen Sie jedes Ergebnis mit einem Fall, den der Verantwortliche einsehen kann, ohne eine komplette Anrufaufzeichnung zu benötigen.</p>
+</section>
+
+<section id="scale">
+  <h2>Wie planen Sie die Kapazität für Spitzenlast?</h2>
+  <p>Schätzen Sie Ankunftsmuster in kleinen Zeitintervallen ab, nicht nur anhand der monatlichen Anrufzahl. Wenn in einer gleichmäßigen Stunde 600 Anrufe beginnen und jeder im Schnitt drei aktive Minuten dauert, ergibt das 1.800 aktive Minuten pro Stunde, also im Durchschnitt 30 gleichzeitige Anrufe unter den angenommenen gleichmäßigen Bedingungen. Eine konzentrierte Minute oder ein Schichtwechsel kann eine höhere Spitze erzeugen. Weitergeleitete oder überbrückte Anrufe können mehrere Anrufabschnitte belegen, und das aufnehmende Team kann gleichzeitig an seiner Kapazitätsgrenze sein.</p>
+  <p>Fragen Sie jeden Verantwortlichen nach der getesteten Grenze seiner Ebene. Carrier, Sprachumgebung, Contact-Center-Warteschlange, Geschäftssystem und menschliches Ziel können jeweils eine andere Beschränkung setzen. Amazon Connect dokumentiert getrennte Einstellungen für die Warteschlangengröße und für Service-Kontingente. Die Startrate einer API, die Anzahl aktiver Sitzungen, Trunk-Anrufabschnitte und die maximale Anzahl wartender Kontakte in einer Warteschlange beschreiben unterschiedliche Kapazitäten. Prüfen Sie das tatsächliche Konto des Käufers, die Region, die Route und aktuelle Änderungen der Limits. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a></p>
+  <div class="b2bv-table" role="region" aria-label="Spitzenlast und Fehlerbehandlung" tabindex="0">
+    <table>
+      <caption>Vereinbaren Sie, was passiert, wenn eine Komponente ihre Grenze erreicht</caption>
+      <thead><tr><th scope="col">Ebene</th><th scope="col">Zu beobachtende Belastung</th><th scope="col">Genehmigtes Verhalten</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Eingehende Route oder Carrier</th><td>Ankunftsspitze, lange Anrufe und überlappende Übergaben.</td><td>Die alternative Route mit verifizierter Kapazität nutzen und die sich ergebende Disposition erfassen.</td></tr>
+        <tr><th scope="row">KI und Geschäftssystem</th><td>Gleichzeitige Gesprächsrunden, langsame Lesezugriffe, fehlende Schreibvorgänge und ausstehende Bestätigung.</td><td>Die anrufende Person informiert halten, nicht verifizierte Bestätigungen zurückhalten und ausstehende Aktionen zuweisen.</td></tr>
+        <tr><th scope="row">Besetzte Warteschlange</th><td>Gleichzeitige Eskalationen, Dienstplanänderungen oder Nichtverfügbarkeit des Ziels.</td><td>Eine besetzte Alternative oder den vereinbarten Rückrufumfang nutzen und den Schichtverantwortlichen alarmieren.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Spielen Sie in einer genehmigten Testumgebung eine realistische Mischung aus Wartezeiten, Unterbrechungen, langen Tool-Runden und Übergaben nach. Testen Sie die belegte oder nicht verfügbare Route und bestätigen Sie, welche Arbeitslast bei den Mitarbeitenden verbleibt. Ein realistischer Spitzenlastplan umfasst die Reaktion der Bediener auf technische Grenzen ebenso wie auf fehlgeschlagene Übergaben. Benennen Sie eine verantwortliche Person, die die vorherige Route wiederherstellt, wenn das Pilotprojekt eine vereinbarte Abbruchbedingung überschreitet.</p>
+</section>
+
+<section id="pilot">
+  <h2>Was sollte ein Contact Center vor der Ausweitung verifizieren?</h2>
+  <p>Wählen Sie ein zulässiges Anliegen, eine Schicht oder Warteschlange und eine wiederholbare Stichprobe. Legen Sie Anforderungen an verifizierte Ergebnisse, Datenschutz, Zugang zu Menschen, Fallback und Nacharbeit fest. Dokumentieren Sie, welches System jedes Ergebnis liefert und wie der Käufer es mit der Baseline vergleichen kann. Testanrufe mit geringem Risiko können mehrere Sprachen und Akzente abdecken, außerdem wiederholte Anliegen der anrufenden Person und Hintergrundgeräusche. Ein Prüfer kann das Endergebnis einsehen, selbst wenn die erste gesprochene Antwort plausibel klang.</p>
+  <p>Stoppen Sie die Ausweitung, wenn eine geschützte Aktion ohne Autorisierung stattfindet, eine gemeldete Bestätigung keinen festgeschriebenen Datensatz hat oder anrufende Personen ihren genehmigten Fallback nicht erreichen können. Das unmittelbare Ziel ist, die sichere Route wiederherzustellen und ausstehende Transaktionen abzugleichen. Führen Sie nach einer Korrektur das Szenario erneut aus und prüfen Sie die weitere Kohorte auf dasselbe Problem. Beschränken Sie das Vorfallprotokoll auf die Nachweise und Aufbewahrungsregeln, die das Center genehmigt hat.</p>
+  <p>Legen Sie fest, wer prüft und handelt. Der Verantwortliche der Warteschlange kontrolliert Wartezeit, Verbindungen und betroffene Anrufende, der Verantwortliche des Geschäftssystems kümmert sich um unklare Datensätze, und der Verantwortliche für die Richtlinien prüft Ausnahmen vom genehmigten Umfang. Vereinbaren Sie, wie ein Schichtleiter eine Pause anfordert und den Fall in einen besetzten Kanal bringt. Testen Sie, wer den Service außerhalb der Hauptschicht wiederherstellen kann. Siehe <a href="/de/how-to-test-an-ai-voice-agent">So führen Sie Abnahmetests für einen Sprachagenten durch</a>.</p>
+  <p>B2B Voice entwickelt maßgeschneiderte Telefonagenten rund um den Workflow des Käufers. Bringen Sie eine anonymisierte Warteschlange, ihre Zulassungsregeln, ein aufnehmendes Team und ein Beispiel für das Ergebnis mit, das Sie prüfen möchten. Nutzen Sie das Gespräch, um abzustecken, was sich in einem begrenzten Pilotprojekt nachweisen lässt und welche Nachweise Sie verlangen würden, bevor Sie dem Workflow mehr Traffic geben. <a href="/de/what-is-b2b-voice">B2B Voice: Unternehmen und Implementierungsansatz</a></p>
+<p>Sobald Sie ein Anliegen gewählt haben, nutzen Sie den Implementierungsleitfaden, um mit einer umkehrbaren Route <a href="/de/ai-voice-agent-call-center-implementation" data-phase2-link="true">in ein bestehendes Callcenter einzubinden</a>.</p>
+<p>Nutzen Sie den Kaufratgeber, um <a href="/de/best-ai-voice-agent-for-call-centers" data-phase2-link="true">Contact-Center-Anbieter anhand desselben Pilotprojekts zu bewerten</a>, sobald Machbarkeit und Zuständigkeiten im Support geklärt sind.</p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Welche Callcenter-Aufgaben sollte ich zuerst automatisieren?</h3><p>Wählen Sie ein wiederkehrendes Anliegen mit klaren Regeln, einer aktuellen maßgeblichen Datenquelle und einem Ergebnis, das das Center überprüfen kann. Öffentliche Informationen oder begrenzte Anfragen zum Bestellstatus können sich eignen, wenn Anspruchsvoraussetzungen und ein besetzter Fallback definiert sind.</p></div>
+<div class="b2bv-faq-item"><h3>Worin unterscheidet sich Containment von der Erstlösungsquote?</h3><p>Containment zählt zulässige Anrufe, die den automatisierten Pfad ohne Übergabe an einen Menschen abschließen. Die Erstlösungsquote setzt ein verifiziertes Ergebnis des Anliegens beim ersten Kontakt und keinen erneuten Anruf zum selben Anliegen innerhalb Ihres festgelegten Beobachtungsfensters voraus.</p></div>
+<div class="b2bv-faq-item"><h3>Was gilt als erfolgreiche Übergabe an einen Menschen?</h3><p>Eine Übergabe zählt als besetzte Verbindung, sobald die anrufende Person das vorgesehene besetzte Ziel erreicht. Verwenden Sie getrennte Dispositionen für einen Übergabeversuch, eine Rückrufanfrage und eine verifizierte Lösung.</p></div>
+<div class="b2bv-faq-item"><h3>Wie dimensioniere ich Sprach-KI für Spitzen im Anrufvolumen?</h3><p>Nutzen Sie beobachtete Ankunftsspitzen und Anrufdauern, einschließlich Übergaben und Überlappungen. Prüfen Sie die Limits von Konto, Trunk, Warteschlange, Geschäftssystem und menschlichem Team. Testen Sie, dass die Überlauf- oder Rückführungsroute den vereinbarten Traffic aufnehmen kann.</p></div>
+<div class="b2bv-faq-item"><h3>Kann Automatisierung den Kundenservice außerhalb der Geschäftszeiten unterstützen?</h3><p>Sie kann genehmigte Informationen und verifizierte Aktionen innerhalb ihres Umfangs abwickeln. Legen Sie für Ausnahmen einen nutzbaren besetzten Weg oder Rückrufweg fest, mit korrekten Zeiten und einem benannten Verantwortlichen.</p></div>
+<div class="b2bv-faq-item"><h3>Kann ein BPO Sprachautomatisierung für mehrere Kunden einsetzen?</h3><p>Ein BPO kann sie Kunde für Kunde evaluieren. Prüfen Sie für jeden Mandanten Vertrag, Richtlinien, Zugriff, Routing, Datenverarbeitung und Fallback. Testen Sie, dass die Route ausschließlich die Informationen des genehmigten Kunden verwendet und offenlegt.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Eine Warteschlange für ein Contact-Center-Pilotprojekt abbilden</h2>
+        <p>Bringen Sie einen anonymisierten Anruftyp, ein Ergebnis, das Ihr Team überprüfen kann, und die aufnehmende Warteschlange mit. Nutzen Sie eine B2B-Voice-Demo, um den Workflow und die erforderlichen Nachweise zu besprechen.</p>
+        <a href="/demo">Callcenter-Demo anfordern</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html">Amazon Connect metric definitions</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <span class="b2bv-source-note">(NIST)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/de/what-is-b2b-voice">B2B Voice: Unternehmen und Implementierungsansatz</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>Callcenter-Automatisierung</li>
+<li>Erstlösungsquote</li>
+<li>Übergabe an Menschen</li>
+<li>Spitzenkapazität</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

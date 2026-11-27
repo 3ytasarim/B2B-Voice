@@ -1,0 +1,364 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Saltar al artículo</a><header><h1 id="article-title">Cómo probar sistemas IVR y de IA de voz conversacional</h1>
+<p class="b2bv3-byline">Por B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Probar un sistema de respuesta de voz interactiva (IVR) consiste en comprobar si una persona que llama puede entrar por una ruta telefónica real, elegir o describir la opción correcta y llegar al destino previsto o a una alternativa de respaldo aprobada. Un evento de teclado, una clasificación correcta del habla y una solicitud de transferencia aceptada son señales intermedias. Cuando una transferencia debe llegar a facturación, verifique el destino que contestó, el audio bidireccional y el contexto que necesita el equipo receptor. Cuando la cola está cerrada, verifique la acción de negocio que promete la alternativa de respaldo.</p>
+<p>En un flujo de trabajo de voz personalizado, B2B Voice define el alcance según el número de teléfono existente, las rutas que la empresa puede controlar y las transferencias que el personal realmente puede recibir. Una ruta que técnicamente conecta con la oficina equivocada o con una cola sin personal deja a la persona que llama con el mismo problema sin resolver.</p>
+<h2 id="key-takeaways">Puntos clave</h2>
+<ul>
+<li>Pruebe los menús IVR tradicionales y las rutas de voz del IVR conversacional con las mismas reglas de enrutamiento del negocio.</li>
+<li>Registre por separado el dígito, la intención reconocida, la rama seleccionada, la disposición de la cola y la evidencia del destino.</li>
+<li>Ponga a prueba entradas no válidas, silencios, tiempos de espera agotados, colas cerradas y fallos en el tramo de transferencia.</li>
+<li>Revise el registro del sistema de backend cuando una alternativa de respaldo prometa un ticket o una devolución de llamada.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">En este artículo</p>
+<ol>
+<li><a href="#build-a-route-inventory-before-placing-a-call">Cree un inventario de rutas antes de realizar una llamada</a></li>
+<li><a href="#decide-what-to-assert-for-keypad-and-speech-routes">Defina qué verificar en las rutas por teclado y por voz</a></li>
+<li><a href="#b2b-voice-ivr-and-conversational-ai-test-matrix">Matriz de pruebas de IVR e IA conversacional de B2B Voice</a></li>
+<li><a href="#verify-the-destination-after-a-transfer">Verifique el destino después de una transferencia</a></li>
+<li><a href="#keep-call-traces-usable-for-operations">Mantenga los registros de llamadas útiles para operaciones</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+<li><a href="#references-heading">Referencias</a></li>
+</ol></nav><h2 id="build-a-route-inventory-before-placing-a-call">Cree un inventario de rutas antes de realizar una llamada</h2>
+<p>IVR son las siglas de respuesta de voz interactiva (interactive voice response). Un IVR tradicional puede reproducir mensajes, recoger la entrada por tonos del teclado y dirigir a las personas que llaman por un árbol definido. Un IVR conversacional puede interpretar solicitudes habladas y hacer una pregunta aclaratoria antes de elegir una ruta. Ambos pueden coexistir en una misma línea telefónica. Una persona podría pulsar un dígito para elegir el idioma, describir de viva voz un problema con una factura y terminar hablando con alguien de la cola de facturación. La <a href="/es/ai-voice-agent-vs-ai-receptionist-vs-ivr">comparación entre IVR y agentes de voz con IA</a> explica dónde encaja cada enfoque.</p>
+<p>Haga un inventario del número de teléfono publicado, la ruta inicial del operador o de la central telefónica privada (PBX), las reglas de reenvío, la versión del menú, los departamentos, el horario comercial y los responsables designados. Para cada rama, registre el destino durante el horario comercial y la alternativa de respaldo fuera de horario. Un número nacional compartido puede dirigir a la persona que llama a una oficina que usa otra zona horaria. Pruebe el horario local real de la oficina y las excepciones por días festivos. La prueba también debe tener en cuenta un número marcado o reenviado inesperado, siempre que la implementación exponga esa información.</p>
+<h3 id="separate-signaling-input-and-media">Separe la señalización, la entrada y el audio</h3>
+<p>El Protocolo de Inicio de Sesión (SIP, por sus siglas en inglés) puede establecer, modificar y finalizar una sesión. Una respuesta de señalización puede indicar que se estableció una llamada en un salto concreto. Aun así, el lado receptor puede tener silencio, audio en un solo sentido o el mensaje equivocado. Inspeccione la señalización y el audio de forma independiente en los tramos relevantes de la llamada. <a class="b2bv3-ref" href="#source-sip">IETF RFC 3261</a></p>
+<p>La multifrecuencia de doble tono (DTMF) es la conocida entrada por tonos del teclado telefónico. Una ruta puede transportar esos tonos dentro de la banda, como audio, o transmitir eventos telefónicos con nombre mediante el Protocolo de Transporte en Tiempo Real (RTP). Compruebe qué modo negociaron realmente los extremos. Cuando use eventos RTP, inspeccione la identidad del evento y su marca de finalización en lugar de contar cada paquete como una pulsación distinta. Un registro que contiene el dígito correcto aún debe mostrar cómo lo interpretó el menú. <a class="b2bv3-ref" href="#source-dtmf">IETF RFC 4733</a></p>
+<p>Una persona que pulsa una tecla sin asignar requiere una prueba distinta a la de alguien que no dice nada. Pruebe la entrada no válida, el manejo de la ausencia de entrada y la espera previa a cada tiempo de espera agotado. La especificación VoiceXML del World Wide Web Consortium (W3C) distingue entre los eventos de ausencia de entrada y los de entrada que no coincide con lo esperado. Una ruta moderna puede aplicar la misma distinción aunque use otra implementación. Pruebe los fallos repetidos y verifique que la ruta llegue finalmente a la alternativa de respaldo aprobada por la empresa. <a class="b2bv3-ref" href="#source-vxml">W3C VoiceXML 2.0</a></p>
+<h2 id="decide-what-to-assert-for-keypad-and-speech-routes">Defina qué verificar en las rutas por teclado y por voz</h2>
+<p>Para una versión fija del menú, envíe la secuencia de teclas esperada y verifique la rama, el mensaje y el destino exactos de esa ruta. Compruebe el recorrido del menú tanto con entradas completas como interrumpidas. En un banco de pruebas automatizado de IVR, conserve los dígitos enviados, los eventos de la llamada y la evidencia del oyente en el mismo registro del caso. La grabación de un menú puede sonar correcta aunque el dígito seleccione un destino obsoleto.</p>
+<p>El enrutamiento por voz admite varias formulaciones. «Hay un cargo que no reconozco» y «¿Alguien puede explicarme mi factura?» pueden pertenecer ambas a facturación en un inquilino de prueba ficticio. Use frases guionizadas, paráfrasis naturales y variaciones en la calidad del audio. Para un habla ambigua, como «Necesito ayuda con mi cuenta», defina cuándo debe el agente hacer una pregunta de seguimiento. Evalúe a qué destino se llegó finalmente y si la aclaración fue apropiada. La clasificación elegida por el modelo, por sí sola, deja ambas preguntas sin responder.</p>
+<p>En las pruebas de bots de voz, compare la ruta seleccionada durante la reproducción de un diálogo con la ruta observada en una llamada controlada. Una solución de pruebas de bots de voz puede informar qué destino eligió el agente, mientras que el responsable de telefonía verifica la ruta real de reenvío y de cola. Use las pruebas de IA conversacional para el comportamiento del lenguaje y verificaciones directas para los resultados observables de ruta, transferencia o ticket.</p>
+<h3 id="check-the-input-at-the-menu-boundary">Verifique la entrada en el límite del menú</h3>
+<p>Repita una ruta con entrada durante el saludo y con entrada una vez terminado el mensaje. El comportamiento correcto depende de si la ruta admite entrada anticipada y de cuándo empieza a escuchar. En una llamada controlada, observe qué vio el receptor de la entrada y qué estado del menú estaba activo. Un dígito válido enviado antes de que comenzara la captura de entrada puede no llegar nunca a la rama prevista.</p>
+<p>Documente de dónde provienen los mensajes y si la parte receptora escuchó la versión actual. Un saludo almacenado en caché o mal enrutado puede indicar a las personas que pulsen una tecla que ahora pertenece a otro departamento. La prueba del menú debe comparar las instrucciones que escuchó la persona que llama con el comportamiento de enrutamiento activo.</p>
+<h2 id="b2b-voice-ivr-and-conversational-ai-test-matrix">Matriz de pruebas de IVR e IA conversacional de B2B Voice</h2>
+<p>Use números de prueba aprobados y un mapa de rutas con control de versiones. Asigne a alguien para que observe el destino. Si se espera que la llamada llegue a una cola, acuerden qué evento distingue la entrada a la cola, la respuesta del personal y una devolución de llamada autorizada.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Casos ficticios de IVR, rutas previstas y evidencia del resultado</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Caso de prueba ficticio</th>
+<th scope="col">Ruta esperada y alternativa de respaldo</th>
+<th scope="col">Evidencia y resultado de negocio aceptable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">La persona que llama selecciona facturación con el teclado dentro del horario publicado</th>
+<td>Recorrer el menú configurado hasta la cola de facturación con personal. Usar la alternativa aprobada si la cola no está disponible.</td>
+<td>Evento del dígito, rama, cola de destino y evidencia, por parte del receptor, de una llamada utilizable o de una alternativa de respaldo autorizada.</td>
+</tr>
+<tr class="even">
+<th scope="row">La persona que llama dice que una factura tiene un cargo desconocido</th>
+<td>Clasificar la solicitud como facturación o pedir una aclaración cuando la frase grabada sea ambigua.</td>
+<td>Frase final, decisión de enrutamiento y respuesta verificada de facturación.</td>
+</tr>
+<tr class="odd">
+<th scope="row">La persona que llama permanece en silencio después del saludo</th>
+<td>Repetir el mensaje según la política de ausencia de entrada y luego ofrecer la salida aprobada.</td>
+<td>Finalización del mensaje, tiempo de espera agotado, rama de ausencia de entrada y disposición final.</td>
+</tr>
+<tr class="even">
+<th scope="row">La persona que llama introduce una opción sin asignar</th>
+<td>Ofrecer las opciones válidas y seguir una alternativa de respaldo acotada si la persona no puede avanzar.</td>
+<td>Entrada real, rama de entrada no válida, mensaje accionable y disposición final.</td>
+</tr>
+<tr class="odd">
+<th scope="row">La llamada llega después del cierre de la oficina de destino</th>
+<td>Seguir el horario local de la oficina y cualquier excepción por día festivo. Ofrecer un siguiente paso compatible.</td>
+<td>Ubicación, datos de prueba del horario, registro del destino y una solicitud de devolución de llamada guardada si la persona está de acuerdo.</td>
+</tr>
+<tr class="even">
+<th scope="row">El reenvío dirige la llamada a una línea de servicio compartida</th>
+<td>Identificar la ubicación prevista a partir del contexto de ruta disponible o preguntar a la persona que llama.</td>
+<td>Tramo reenviado, asignación de ubicación y confirmación de la oficina receptora.</td>
+</tr>
+<tr class="odd">
+<th scope="row">El destino suena y nunca contesta</th>
+<td>Aplicar la cola alternativa aprobada o la ruta de devolución de llamada.</td>
+<td>Resultado de la transferencia, ruta secundaria, alternativa de respaldo audible y tarea resultante si se solicitó una.</td>
+</tr>
+<tr class="even">
+<th scope="row">La persona que llama cuelga mientras espera</th>
+<td>Detener la interacción y aplicar la política acordada para llamadas abandonadas.</td>
+<td>Evento de desconexión, última etapa del menú o de la cola y cualquier operación autorizada resultante.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Haga que la evidencia de la alternativa de respaldo sea lo bastante sólida como para usarla en la operación. Un registro puede mostrar que un agente de voz intentó usar una herramienta de devolución de llamada. Compruebe en la cola de tareas real del equipo de destino que exista la misma referencia. Si la persona colgó antes de dar su autorización y la política lo exige, verifique que el sistema no creó la solicitud. Informe como dos resultados distintos una transferencia sin respuesta y una devolución de llamada aceptada.</p>
+<h2 id="verify-the-destination-after-a-transfer">Verifique el destino después de una transferencia</h2>
+<h3 id="use-the-evidence-the-transfer-method-exposes">Use la evidencia que expone el método de transferencia</h3>
+<p>Algunas implementaciones SIP usan el método REFER para pedir a otro componente que inicie una acción referida. Cuando corresponda, las notificaciones de estado posteriores pueden describir cómo avanzó esa acción. Una transferencia también puede estar a cargo de una plataforma telefónica que crea y conecta otro tramo sin exponer REFER a quien lee este artículo. Identifique el método implementado antes de decidir qué eventos deben aparecer. <a class="b2bv3-ref" href="#source-refer">IETF RFC 3515</a></p>
+<p>Determine la cola o la persona previstas, correlacione el tramo original con el tramo saliente y verifique quién o qué contestó. Un sistema de contestación automática puede generar un evento de conexión cuando el flujo de trabajo requiere a una persona. Escuche, o use un observador receptor controlado, para establecer que el audio es bidireccional. En una transferencia asistida, verifique que el agente receptor reciba el contexto aprobado y que la persona que llama siga conectada durante la presentación. En una transferencia ciega, tenga claro cómo se entera el sistema original de que el destino falló, si es que recibe esa información.</p>
+<h3 id="check-the-receiving-workflow">Revise el flujo de trabajo receptor</h3>
+<p>Considere un servicio de atención ficticio de una empresa de administración de inmuebles con varias sedes. Una persona que se encuentra en otra zona horaria llama al número principal de un edificio en Phoenix. La ruta de voz identifica correctamente que se trata de mantenimiento, pero transfiere a una cola cerrada que aun así reproduce un saludo. El operador muestra una respuesta. Nunca hubo un empleado real disponible para atender.</p>
+<p>La prueba pertinente abarca más que el IVR. Necesita el edificio identificado, el horario del destino, la disposición de la cola y, si la persona acepta una devolución de llamada, una tarea real en un entorno de pruebas de la oficina correcta. Incluya una verificación por parte del equipo receptor de que la tarea contiene solo los datos necesarios para continuar. Si el servicio no ofrece devolución de llamada fuera del horario con personal, la respuesta debe explicar con claridad la vía disponible.</p>
+<h3 id="test-what-happened-at-the-transfer-edge">Pruebe lo ocurrido en el punto de transferencia</h3>
+<p>Una ruta puede parecer correcta en una grabación reproducida desde el lado de origen aunque el lado receptor haya escuchado silencio. Verifique ambos sentidos con un observador en el extremo aprobado. Durante una transferencia asistida, confirme que cualquier consulta privada con el personal terminó antes de que el cliente se uniera, si así está configurado el flujo de trabajo. Durante una transferencia fallida, verifique si la persona que llama regresa al agente original, entra en otra cola o escucha una opción de devolución de llamada que pueda llevarse a cabo. Un evento en el primer tramo no puede determinar cómo se comportó el segundo.</p>
+<p>En las pruebas de bots de voz con IA, repita la misma verificación del destino cuando cambie un prompt de voz o la ruta del operador. Los cambios que dejan intacta la política de diálogo pueden aun así alterar el momento en que empieza un saludo o si el agente recibe la entrada del teclado. Un responsable de operaciones puede usar la matriz para decidir qué evidencia exigir a cada cambio.</p>
+<h2 id="keep-call-traces-usable-for-operations">Mantenga los registros de llamadas útiles para operaciones</h2>
+<p>Registre la versión del menú o del mensaje, una referencia de llamada que proteja la privacidad, la zona horaria, la ruta elegida, los tramos de transferencia, el estado del destino y el registro de negocio resultante. Distinga la finalización de la llamada de una transferencia exitosa. Una persona puede colgar porque la cola está ocupada, después de escuchar lo que necesita o antes de que se resuelva la ruta. Marque la última etapa observada y evite atribuir un motivo que los registros no puedan establecer.</p>
+<p>Use la misma secuencia de evidencia al comparar las rutas por teclado y por voz. Una configuración defectuosa puede afectar a ambas rutas aunque la evaluación del lenguaje sea buena. La <a href="/es/ai-voice-agent-reliability">guía sobre fallos, alternativas de respaldo y transferencia a una persona</a> explica cómo definir el comportamiento de recuperación. Una <a href="/es/voice-agent-load-testing">prueba de carga de voz controlada</a> independiente puede comprobar la ruta ya verificada cuando cambie el tráfico.</p>
+<h3 id="test-an-integration-failure-as-part-of-the-call">Pruebe un fallo de integración como parte de la llamada</h3>
+<p>Dé al sistema de devolución de llamadas del entorno de pruebas un modo de fallo controlado. Una devolución de llamada prometida debe requerir el acuse de recibo de la tarea por parte del destino. Si el servicio agota el tiempo de espera, el agente debe explicar el estado pendiente o alternativo que permite el flujo de trabajo. Compruebe si se duplica la tarea cuando se reintenta la integración. Conserve la decisión de ruta, el resultado de la transferencia, el mensaje dirigido a la persona que llama y el estado final de la tarea en el mismo registro del caso. Cada elemento ayuda a un equipo distinto a reparar el fallo.</p>
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3 id="can-a-keypad-menu-and-a-conversational-voice-agent-share-the-same-phone-number">¿Pueden un menú por teclado y un agente de voz conversacional compartir el mismo número de teléfono?</h3>
+<p>Sí. Una llamada puede usar el teclado para una elección predecible y pasar a un agente conversacional para una solicitud hablada. Pruebe la transición, el destino y la alternativa de respaldo como una sola ruta.</p>
+<h3 id="does-an-accepted-transfer-request-prove-that-a-person-answered">¿Demuestra una solicitud de transferencia aceptada que una persona contestó?</h3>
+<p>La aceptación de una solicitud solo indica que un componente aceptó la solicitud de transferencia. Verifique el tramo posterior, la respuesta del destino previsto y el audio utilizable cuando el flujo de trabajo lo requiera.</p>
+<h3 id="how-do-i-test-after-hours-ivr-routing">¿Cómo pruebo el enrutamiento del IVR fuera de horario?</h3>
+<p>Configure una llamada controlada que coincida con el horario local de la oficina o con el calendario de días festivos. Verifique que evite una cola cerrada y siga la alternativa prometida. Revise la tarea guardada si se ofrece y se acepta una devolución de llamada.</p>
+<h3 id="what-should-i-capture-when-callers-hang-up-in-the-queue">¿Qué debo registrar cuando las personas cuelgan en la cola?</h3>
+<p>Registre la última etapa observada, la disposición de la cola, la desconexión y cualquier acción autorizada en el backend. Mantenga las llamadas abandonadas separadas de las transferencias contestadas con éxito.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Hablemos de su ruta telefónica actual y su alternativa de respaldo</h2>
+<p>Traiga la ruta que su personal usa hoy, el destino con personal y lo que debería ocurrir cuando nadie conteste. <a href="/demo">Converse con nosotros sobre una implementación de voz personalizada para su flujo de trabajo telefónico</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Referencias</h2>
+<ul>
+<li id="source-sip">Establecimiento de sesiones y semántica de la señalización. <a href="https://www.rfc-editor.org/info/rfc3261/">SIP: Session Initiation Protocol</a>
+</li>
+<li id="source-dtmf">Eventos telefónicos RTP para dígitos del teclado y otras señales. <a href="https://www.rfc-editor.org/info/rfc4733/">RTP Payload for DTMF Digits, Telephony Tones, and Telephony Signals</a>
+</li>
+<li id="source-vxml">Manejo de la entrada y eventos separados de ausencia de entrada y de falta de coincidencia con la gramática. <a href="https://www.w3.org/TR/voicexml20/">Voice Extensible Markup Language (VoiceXML) Version 2.0</a>
+</li>
+<li id="source-refer">Aceptación de la solicitud de transferencia y notificación posterior de la operación referida. <a href="https://www.rfc-editor.org/info/rfc3515/">The Session Initiation Protocol (SIP) Refer Method</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Temas">
+<li>Pruebas de IVR</li>
+<li>DTMF</li>
+<li>SIP</li>
+<li>Enrutamiento de llamadas</li>
+<li>Transferencia a una persona</li>
+</ul></article>
+</main>

@@ -17,7 +17,7 @@ interface LanguageContextType {
   t: Translations;
 }
 
-const LanguageContext = createContext<LanguageContextType>({
+export const LanguageContext = createContext<LanguageContextType>({
   lang: "en",
   setLang: () => {},
   t: T.en,
@@ -35,6 +35,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       {children}
     </LanguageContext.Provider>
   );
+}
+
+/**
+ * Pins the language for a subtree (the blog pages take theirs from the URL: /de/..., /es/...).
+ * `onSwitch` replaces the language dropdown's behaviour, e.g. to navigate to the translated URL.
+ */
+export function LanguageScope({ lang, onSwitch, children }: { lang: Lang; onSwitch: (lang: Lang) => void; children: React.ReactNode }) {
+  return <LanguageContext.Provider value={{ lang, setLang: onSwitch, t: T[lang] }}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {

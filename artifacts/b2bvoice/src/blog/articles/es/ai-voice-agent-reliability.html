@@ -1,0 +1,1317 @@
+
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --green-soft: #eef9f3;
+      --amber-soft: #fff8e8;
+      --red-soft: #fff2f2;
+      --purple-soft: #f5f1ff;
+      --cyan-soft: #eef9fc;
+      --dark: #111a2e;
+      --max: 930px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(38px, 6vw, 61px);
+    }.blog-content h2 {
+      margin: 52px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content .dek {
+      max-width: 850px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer .label, .blog-content .small-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content .key-takeaways {
+      margin: 30px 0 42px;
+      padding: 25px 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }.blog-content .key-takeaways h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .warning {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      border: 1px solid #f0dfa9;
+    }.blog-content .warning strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #78570b;
+    }.blog-content .danger {
+      margin: 28px 0;
+      padding: 21px 23px;
+      border-radius: 12px;
+      background: var(--red-soft);
+      border: 1px solid #f0cece;
+    }.blog-content .danger strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #8b2d2d;
+    }.blog-content .five-layer {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin: 28px 0 38px;
+    }.blog-content .reliability-layer {
+      min-height: 160px;
+      padding: 18px 13px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }.blog-content .reliability-layer .num {
+      display: grid;
+      place-items: center;
+      width: 31px;
+      height: 31px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: #17358f;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+    }.blog-content .reliability-layer strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #19263d;
+      font-size: 14px;
+    }.blog-content .reliability-layer p {
+      margin: 0;
+      color: #556176;
+      font-size: 13px;
+      line-height: 1.5;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 790px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .failure-path {
+      margin: 28px 0 38px;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fbfcfe;
+    }.blog-content .failure-flow {
+      display: grid;
+      gap: 8px;
+      max-width: 650px;
+      margin: 18px auto 0;
+    }.blog-content .failure-box {
+      padding: 14px 16px;
+      border: 1px solid #d8dfea;
+      border-radius: 10px;
+      background: white;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+    }.blog-content .failure-arrow {
+      text-align: center;
+      color: #7b8699;
+      font-weight: 900;
+      line-height: 1;
+    }.blog-content .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 15px;
+      margin: 25px 0 38px;
+    }.blog-content .card {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }.blog-content .card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }.blog-content .card p {
+      margin: 0;
+      color: #4d596f;
+      font-size: 14px;
+    }.blog-content .timeout-story {
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .timeout-story h3 {
+      margin: 0 0 9px;
+      color: #fff;
+    }.blog-content .timeout-story p {
+      color: #dce3ee;
+    }.blog-content .timeline {
+      margin-top: 19px;
+      display: grid;
+      gap: 9px;
+    }.blog-content .timeline-row {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 12px;
+      align-items: start;
+    }.blog-content .timeline-key {
+      padding: 4px 6px;
+      border-radius: 7px;
+      background: rgba(255,255,255,.1);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 900;
+      color: white;
+    }.blog-content .timeline-text {
+      color: #e3e9f3;
+      font-size: 14px;
+    }.blog-content .handoff {
+      margin: 28px 0 38px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }.blog-content .handoff-card {
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }.blog-content .handoff-card span {
+      display: inline-block;
+      margin-bottom: 9px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2b48aa;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .05em;
+    }.blog-content .handoff-card h3 {
+      margin: 0 0 7px;
+      font-size: 19px;
+    }.blog-content .handoff-card p {
+      margin: 0;
+      color: #4d596f;
+      font-size: 14px;
+    }.blog-content .control-stack {
+      margin: 28px 0 38px;
+      padding: 25px;
+      border: 1px solid #d7dcf0;
+      border-radius: 16px;
+      background: var(--purple-soft);
+    }.blog-content .control-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }.blog-content .control-item {
+      padding: 17px;
+      border-radius: 11px;
+      background: #fff;
+      border: 1px solid #dfd8f0;
+    }.blog-content .control-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #463582;
+    }.blog-content .control-item p {
+      margin: 0;
+      color: #5d5870;
+      font-size: 13px;
+    }.blog-content .testing-pyramid {
+      margin: 28px 0 38px;
+      display: grid;
+      gap: 8px;
+    }.blog-content .test-level {
+      margin: 0 auto;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 800;
+      color: #27344c;
+    }.blog-content .l1 { width: 45%; }.blog-content .l2 { width: 58%; }.blog-content .l3 { width: 70%; }.blog-content .l4 { width: 82%; }.blog-content .l5 { width: 94%; }.blog-content .observability {
+      margin: 28px 0 38px;
+      padding: 26px;
+      border-radius: 16px;
+      background: var(--cyan-soft);
+      border: 1px solid #cde7ef;
+    }.blog-content .observability-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }.blog-content .obs {
+      padding: 16px;
+      border-radius: 11px;
+      background: #fff;
+      border: 1px solid #d7e8ed;
+      font-size: 13px;
+      font-weight: 750;
+      color: #355363;
+    }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }.blog-content .cta a.button {
+      display: inline-block;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .cta a.secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.42);
+    }.blog-content .sources {
+      margin-top: 52px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }.blog-content .sources h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }.blog-content .sources ul { padding-left: 20px; }.blog-content .sources li { margin: 9px 0; overflow-wrap: anywhere; }.blog-content .tags {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }.blog-content .tags-label {
+      display: block;
+      margin-bottom: 12px;
+      color: #6a7487;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }.blog-content .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #d7ddea;
+      background: #f8f9fb;
+      color: #364258;
+      font-size: 13px;
+      font-weight: 700;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 800px) {.blog-content .five-layer {
+        grid-template-columns: 1fr;
+      }.blog-content .two-col, .blog-content .control-grid, .blog-content .observability-grid, .blog-content .handoff {
+        grid-template-columns: 1fr;
+      }.blog-content .l1, .blog-content .l2, .blog-content .l3, .blog-content .l4, .blog-content .l5 {
+        width: 100%;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .key-takeaways, .blog-content .thesis, .blog-content .warning, .blog-content .danger, .blog-content .table-wrap, .blog-content .failure-path, .blog-content .timeout-story, .blog-content .control-stack, .blog-content .observability, .blog-content .one-sentence, .blog-content .cta {
+        break-inside: avoid;
+      }.blog-content .timeout-story, .blog-content .cta {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .timeout-story h3, .blog-content .timeout-story p, .blog-content .timeline-text, .blog-content .timeline-key, .blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button, .blog-content .cta a.secondary {
+        color: #111;
+      }
+    }
+</style>
+<main class="page">
+    <article>
+      <header>
+        <span class="eyebrow">Confiabilidad de la IA de voz · Guía de producción</span>
+        <h1>Confiabilidad de los agentes de voz con IA: modos de fallo, alternativas de respaldo y transferencia a una persona</h1>
+        <p class="dek">
+          La confiabilidad no consiste en que la llamada de demostración suene bien. Consiste en que el sistema siga comportándose correctamente cuando el habla no es clara, las API fallan, los usuarios cambian de opinión, las transferencias no son atendidas y la red deja al sistema sin saber si una acción realmente se completó.
+        </p>
+        <p class="meta">Publicado el 29 de agosto de 2026 · Por B2B Voice</p>
+      </header>
+
+      <section class="quick-answer">
+        <span class="label">Respuesta rápida</span>
+        <p>
+          <strong>Un agente de voz con IA confiable debe funcionar correctamente en la conversación, las acciones de negocio, la recuperación, la transferencia a una persona y la observabilidad.</strong> Debe entender la información crítica lo suficientemente bien como para no adivinar, usar herramientas autorizadas para los datos reales del negocio, confirmar las acciones de escritura importantes, recuperarse de forma segura ante tiempos de espera agotados y fallos de integración, escalar cuando la tarea ya no deba seguir automatizada, y dejar suficientes registros y datos de resultados para explicar después lo ocurrido. Por lo tanto, la confiabilidad no es una métrica de un único modelo. Es una propiedad de extremo a extremo del sistema de voz completo.
+        </p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Puntos clave</h2>
+        <ul>
+          <li><strong>Hablar de forma natural no es lo mismo que ejecutar de forma confiable.</strong></li>
+          <li>Un agente de voz en producción debe tener rutas de fallo explícitas, no solo un camino ideal.</li>
+          <li>Las acciones de lectura, de escritura y destructivas requieren distintos niveles de control.</li>
+          <li>Los tiempos de espera agotados son peligrosos porque la acción externa puede haberse completado aunque el agente no haya recibido la respuesta.</li>
+          <li>Los reintentos a ciegas pueden crear citas, mensajes o transacciones duplicados.</li>
+          <li>La transferencia a una persona requiere un disparador, un mecanismo de telefonía y la transmisión del contexto.</li>
+          <li>El principio de mínimo privilegio, la validación y la aprobación humana importan más a medida que aumenta la autoridad de las herramientas.</li>
+          <li>Si no puede explicar por qué falló una llamada, todavía no cuenta con suficiente observabilidad.</li>
+        </ul>
+      </section>
+
+      <h2>¿Qué significa «confiable» para un agente de voz con IA?</h2>
+
+      <p>
+        La confiabilidad suele confundirse con la disponibilidad. La disponibilidad importa, pero un agente de voz puede estar en línea todo el día y aun así tener un mal desempeño.
+      </p>
+
+      <p>
+        Un sistema en producción puede fallar y seguir técnicamente «disponible».
+      </p>
+
+      <p>Por ejemplo, puede:</p>
+
+      <ul>
+        <li>entender mal el nombre de un cliente;</li>
+        <li>responder una pregunta fuera de su conocimiento aprobado;</li>
+        <li>elegir la herramienta equivocada;</li>
+        <li>pasar un ID de cliente incorrecto a un CRM;</li>
+        <li>decirle a la persona que llama que se agendó una cita cuando la escritura en el calendario falló;</li>
+        <li>reintentar una reserva que agotó el tiempo de espera y crearla dos veces;</li>
+        <li>transferir la llamada sin suficiente contexto;</li>
+        <li>entrar en un bucle tras malentendidos repetidos;</li>
+        <li>fallar en silencio sin dejar telemetría utilizable.</li>
+      </ul>
+
+      <div class="thesis">
+        La confiabilidad de un agente de voz es la capacidad de producir el resultado conversacional y de negocio correcto, o de fallar de forma segura cuando ese resultado no puede completarse.
+      </div>
+
+      <h2>El modelo de confiabilidad de cinco capas</h2>
+
+      <p>
+        Una forma útil de evaluar la IA de voz es separar la confiabilidad en cinco capas.
+      </p>
+
+      <div class="five-layer">
+        <div class="reliability-layer">
+          <div class="num">1</div>
+          <strong>Confiabilidad de la conversación</strong>
+          <p>¿Entendió el sistema correctamente a la persona que llama, el contexto, las entidades y el estado de la conversación?</p>
+        </div>
+
+        <div class="reliability-layer">
+          <div class="num">2</div>
+          <strong>Confiabilidad de las acciones</strong>
+          <p>¿Se ejecutó la herramienta correcta con los permisos, las entradas y las reglas de negocio adecuados?</p>
+        </div>
+
+        <div class="reliability-layer">
+          <div class="num">3</div>
+          <strong>Confiabilidad de la recuperación</strong>
+          <p>¿Qué ocurre cuando fallan el habla, las herramientas, las redes o los sistemas externos?</p>
+        </div>
+
+        <div class="reliability-layer">
+          <div class="num">4</div>
+          <strong>Confiabilidad de la transferencia</strong>
+          <p>¿Puede el sistema escalar a una persona sin perder a quien llama ni el contexto de la conversación?</p>
+        </div>
+
+        <div class="reliability-layer">
+          <div class="num">5</div>
+          <strong>Observabilidad</strong>
+          <p>¿Pueden los ingenieros demostrar qué ocurrió e identificar por qué hubo éxito o fallo?</p>
+        </div>
+      </div>
+
+      <p>
+        Este modelo ayuda a evitar un error común: evaluar un agente solo escuchando su voz y comprobando si respondió algunas preguntas de demostración.
+      </p>
+
+      <h2>1. Confiabilidad de la conversación</h2>
+
+      <p>
+        La primera clase de fallo ocurre antes de cualquier acción de negocio. El sistema puede entender mal lo que dijo la persona que llama o lo que pretende.
+      </p>
+
+      <p>Algunos ejemplos de alto riesgo son:</p>
+
+      <ul>
+        <li>nombres;</li>
+        <li>fechas;</li>
+        <li>números de teléfono;</li>
+        <li>direcciones;</li>
+        <li>identificadores de cuenta;</li>
+        <li>horarios de citas;</li>
+        <li>importes y cantidades.</li>
+      </ul>
+
+      <p>
+        Si el modelo tiene dudas sobre una entidad crítica, la «mejor suposición» suele ser el comportamiento equivocado.
+      </p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Patrón inseguro</h3>
+          <p>La persona que llama dice un apellido difícil, el sistema tiene dudas y el agente elige en silencio la transcripción más probable.</p>
+        </div>
+
+        <div class="card">
+          <h3>Patrón más seguro</h3>
+          <p>El agente le pide a la persona que llama que repita o deletree la entidad crítica y luego la confirma antes de usarla en una acción de negocio.</p>
+        </div>
+      </div>
+
+      <h2>2. Confiabilidad de las acciones</h2>
+
+      <p>
+        Entender correctamente a la persona que llama no significa que el flujo de trabajo haya tenido éxito.
+      </p>
+
+      <p>
+        Un modelo puede inferir correctamente:
+      </p>
+
+      <p><strong>«La persona quiere el martes a las 3 p. m.».</strong></p>
+
+      <p>
+        Pero el sistema externo todavía tiene que:
+      </p>
+
+      <ul>
+        <li>comprobar si existe el horario de las 3 p. m.;</li>
+        <li>verificar si ese servicio se puede reservar;</li>
+        <li>identificar al cliente correcto;</li>
+        <li>validar la autorización;</li>
+        <li>realizar la escritura;</li>
+        <li>devolver el éxito de la operación.</li>
+      </ul>
+
+      <p>
+        La arquitectura más sólida mantiene un límite claro entre el razonamiento del modelo y la ejecución autorizada de las operaciones de negocio.
+      </p>
+
+      <div class="thesis">
+        El modelo puede decidir que se debe intentar una reserva. El sistema de reservas determina si la reserva realmente existe.
+      </div>
+
+      <h2>Las acciones de lectura, de escritura y destructivas requieren controles distintos</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo de acción</th>
+              <th>Ejemplo</th>
+              <th>Control de confiabilidad habitual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lectura básica</td>
+              <td>Consultar el horario de atención público</td>
+              <td>Consulta de baja fricción</td>
+            </tr>
+            <tr>
+              <td>Lectura en vivo</td>
+              <td>Consultar la disponibilidad del calendario</td>
+              <td>Validar la respuesta del sistema autorizado</td>
+            </tr>
+            <tr>
+              <td>Lectura sensible</td>
+              <td>Obtener los datos de la cuenta de un cliente</td>
+              <td>Autenticación + autorización</td>
+            </tr>
+            <tr>
+              <td>Escritura reversible</td>
+              <td>Agregar una nota en el CRM</td>
+              <td>Validación + registro de auditoría</td>
+            </tr>
+            <tr>
+              <td>Escritura visible para el cliente</td>
+              <td>Crear una cita</td>
+              <td>Confirmación explícita + verificación del éxito</td>
+            </tr>
+            <tr>
+              <td>Acción financiera o sensible</td>
+              <td>Cobrar, reembolsar o actualizar información sensible</td>
+              <td>Validación estricta, permisos y política de aprobación</td>
+            </tr>
+            <tr>
+              <td>Acción destructiva</td>
+              <td>Cancelar o eliminar un registro importante</td>
+              <td>Confirmación explícita, mínimo privilegio y, posiblemente, aprobación humana</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning">
+        <strong>Un JSON correcto no es lo mismo que una acción correcta.</strong> Una llamada a una herramienta puede cumplir el esquema y aun así apuntar al cliente, la cita o el importe equivocados. La validación de sintaxis y la validación de negocio son problemas de confiabilidad distintos.
+      </div>
+
+      <h2>3. Confiabilidad de la recuperación: ¿qué ocurre cuando algo falla?</h2>
+
+      <p>
+        Un agente en producción debe tener un comportamiento definido ante los fallos, y no improvisarlo en el momento.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Fallo</th>
+              <th>Lo que el agente debe evitar</th>
+              <th>Patrón de recuperación más seguro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nombre o número crítico poco claro</td>
+              <td>Adivinar</td>
+              <td>Aclarar y repetir la entidad crítica</td>
+            </tr>
+            <tr>
+              <td>La persona que llama guarda silencio</td>
+              <td>Esperar indefinidamente</td>
+              <td>Volver a preguntar y, después, terminar o derivar la llamada con naturalidad</td>
+            </tr>
+            <tr>
+              <td>Pregunta fuera del alcance</td>
+              <td>Inventar una respuesta</td>
+              <td>Explicar la limitación, recuperar conocimiento aprobado o escalar</td>
+            </tr>
+            <tr>
+              <td>La evidencia recuperada es débil</td>
+              <td>Rellenar los vacíos con contenido sin respaldo</td>
+              <td>Aclarar, indicar que la información no está disponible o escalar</td>
+            </tr>
+            <tr>
+              <td>Falla la API del calendario</td>
+              <td>Decir «Ya quedó agendado»</td>
+              <td>Explicar el fallo temporal y ofrecer una alternativa de respaldo</td>
+            </tr>
+            <tr>
+              <td>No hay horarios disponibles</td>
+              <td>Inventar disponibilidad</td>
+              <td>Ofrecer solo alternativas respaldadas por el sistema autorizado</td>
+            </tr>
+            <tr>
+              <td>La solicitud de escritura agota el tiempo de espera</td>
+              <td>Repetir la escritura a ciegas</td>
+              <td>Comprobar el estado de la operación o usar un reintento idempotente cuando sea posible</td>
+            </tr>
+            <tr>
+              <td>El destino de la transferencia no contesta</td>
+              <td>Dejar a la persona que llama en la incertidumbre</td>
+              <td>Política de destino alternativo, devolución de llamada, cola o buzón de voz</td>
+            </tr>
+            <tr>
+              <td>Se corta la conexión</td>
+              <td>Repetir acciones irreversibles</td>
+              <td>Recuperar el estado persistente y evitar efectos secundarios duplicados</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="danger">
+        <strong>La frase peligrosa es: «Creo que probablemente funcionó».</strong> Un agente en producción no debe convertir la incertidumbre sobre una escritura externa en una confirmación segura dirigida al cliente.
+      </div>
+
+      <h2>El problema del tiempo de espera agotado: ¿falló la acción o solo falló la respuesta?</h2>
+
+      <p>
+        Este es uno de los problemas de confiabilidad más importantes en la automatización de voz, porque es fácil pasarlo por alto en una demostración.
+      </p>
+
+      <div class="timeout-story">
+        <h3>Ejemplo: la persona que llama dice «Resérvela».</h3>
+
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="timeline-key">T1</div>
+            <div class="timeline-text">El agente de voz envía <strong>create_appointment()</strong> a la API de reservas.</div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-key">T2</div>
+            <div class="timeline-text">El sistema de reservas crea la cita correctamente.</div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-key">T3</div>
+            <div class="timeline-text">La conexión de red agota el tiempo de espera antes de que la respuesta de éxito llegue a la aplicación de voz.</div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-key">T4</div>
+            <div class="timeline-text">Ahora la aplicación de voz no sabe si la escritura tuvo éxito.</div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-key">T5</div>
+            <div class="timeline-text">Un reintento a ciegas puede crear una segunda cita.</div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Este no es, en esencia, un problema del modelo de lenguaje. Es un problema de sistemas distribuidos.
+      </p>
+
+      <p>
+        Un patrón de confiabilidad habitual es la <strong>idempotencia</strong>: asignar un identificador de operación a las solicitudes repetidas para que el servicio externo pueda reconocer que el reintento corresponde a la misma acción prevista y no a una nueva.
+      </p>
+
+      <p>
+        El mecanismo exacto depende de la API. No todos los sistemas de negocio admiten claves de idempotencia, por lo que el diseño de la integración puede requerir comprobaciones del estado de la transacción, identificadores de operación únicos u otras estrategias para evitar duplicados.
+      </p>
+
+      <div class="thesis">
+        Para reintentar de forma confiable hay que saber si es seguro repetir una solicitud.
+      </div>
+
+      <h2>Las alternativas de respaldo deben diseñarse antes del lanzamiento</h2>
+
+      <p>
+        Una «alternativa de respaldo» (fallback) no debería ser una sola frase genérica como: <strong>«Lo siento, no entendí».</strong>
+      </p>
+
+      <p>
+        Cada tipo de fallo requiere un comportamiento de recuperación distinto.
+      </p>
+
+      <div class="failure-path">
+        <span class="small-label">Ejemplo de ruta de decisión de respaldo</span>
+        <div class="failure-flow">
+          <div class="failure-box">¿Puede el agente entender la solicitud con confianza?</div>
+          <div class="failure-arrow">↓</div>
+          <div class="failure-box">Si no → aclarar</div>
+          <div class="failure-arrow">↓</div>
+          <div class="failure-box">¿Hay conocimiento aprobado disponible?</div>
+          <div class="failure-arrow">↓</div>
+          <div class="failure-box">Si no → usar una herramienta autorizada, si corresponde</div>
+          <div class="failure-arrow">↓</div>
+          <div class="failure-box">Si la tarea aún no puede completarse → alternativa definida de transferencia a una persona, devolución de llamada o mensaje</div>
+        </div>
+      </div>
+
+      <p>
+        La ruta exacta variará según el negocio. El principio es que la incertidumbre debe llevar al sistema hacia la aclaración, los datos autorizados o el escalamiento, y no hacia la invención.
+      </p>
+
+      <h2>4. Confiabilidad de la transferencia a una persona</h2>
+
+      <p>
+        La transferencia a una persona suele describirse como una simple función de transferencia. En producción, implica al menos tres cuestiones de confiabilidad independientes.
+      </p>
+
+      <div class="handoff">
+        <div class="handoff-card">
+          <span>1 · Disparador</span>
+          <h3>¿Cuándo debe detenerse la IA?</h3>
+          <p>Solicitud de la persona que llama, malentendidos repetidos, solicitud no admitida, acción sensible, caída de una herramienta, disparador de una política u otra condición de escalamiento.</p>
+        </div>
+
+        <div class="handoff-card">
+          <span>2 · Telefonía</span>
+          <h3>¿A dónde va la llamada?</h3>
+          <p>Número de teléfono, destino SIP, cola del centro de contacto, especialista, buzón de voz u otro destino controlado.</p>
+        </div>
+
+        <div class="handoff-card">
+          <span>3 · Contexto</span>
+          <h3>¿Qué sabe la persona que atiende?</h3>
+          <p>Motivo de la llamada, información ya recopilada, acciones intentadas, errores encontrados y siguiente paso solicitado.</p>
+        </div>
+      </div>
+
+      <div class="thesis">
+        Una transferencia que se conecta correctamente pero obliga a la persona que llama a repetir toda la conversación es técnicamente exitosa y operativamente débil.
+      </div>
+
+      <h2>Transferencia en frío frente a transferencia asistida</h2>
+
+      <p>
+        Estos términos tienen un significado real en telefonía.
+      </p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Transferencia en frío / a ciegas</h3>
+          <p>La llamada se transfiere al destino receptor sin que la parte que transfiere consulte primero con el destinatario.</p>
+        </div>
+
+        <div class="card">
+          <h3>Transferencia asistida / con consulta</h3>
+          <p>La parte que transfiere establece primero contacto o consulta con la parte receptora antes de completar la transferencia.</p>
+        </div>
+      </div>
+
+      <p>
+        Pasar a una persona un resumen generado por IA puede mejorar el contexto, pero no debe llamarse automáticamente transferencia asistida a menos que el comportamiento de telefonía incluya realmente un paso de consulta o de atención previa.
+      </p>
+
+      <h2>¿Y si la persona no contesta?</h2>
+
+      <p>
+        Un diseño de transferencia confiable tiene una alternativa de respaldo para la propia transferencia.
+      </p>
+
+      <p>Las políticas posibles incluyen:</p>
+
+      <ul>
+        <li>derivar a un segundo destino;</li>
+        <li>enviar a una cola;</li>
+        <li>ofrecer una devolución de llamada;</li>
+        <li>registrar un mensaje estructurado;</li>
+        <li>enviar a la persona que llama al buzón de voz;</li>
+        <li>programar un seguimiento.</li>
+      </ul>
+
+      <p>
+        La mejor opción depende del flujo de trabajo del negocio, pero «la transferencia falló» no debería ser el final del diseño.
+      </p>
+
+      <h2>La conservación del contexto importa durante la transferencia</h2>
+
+      <p>
+        El contexto útil de una transferencia puede incluir:
+      </p>
+
+      <ul>
+        <li>nombre de la persona que llama e identificadores verificados;</li>
+        <li>motivo de la llamada;</li>
+        <li>preguntas ya respondidas;</li>
+        <li>información ya recopilada;</li>
+        <li>herramientas ya utilizadas;</li>
+        <li>acciones fallidas;</li>
+        <li>por qué se activó el escalamiento;</li>
+        <li>qué espera a continuación la persona que llama.</li>
+      </ul>
+
+      <p>
+        Las plataformas de agentes modernas pueden conservar el historial de la conversación entre transferencias de agentes de IA y también pueden proporcionar mensajes o resúmenes independientes a un operador humano en los flujos de transferencia telefónica compatibles.
+      </p>
+
+      <h2>5. Observabilidad: ¿puede explicar qué ocurrió?</h2>
+
+      <p>
+        Es difícil mejorar la confiabilidad sin observabilidad.
+      </p>
+
+      <p>
+        Si una persona que llama dice: <strong>«La IA agendó la cita equivocada»</strong>,
+      </p>
+
+      <p>
+        el equipo necesita saber:
+      </p>
+
+      <div class="observability">
+        <span class="small-label">Traza mínima útil</span>
+        <div class="observability-grid">
+          <div class="obs">ID de llamada / sesión</div>
+          <div class="obs">Eventos de inicio y fin del habla</div>
+          <div class="obs">Transcripción o eventos de audio</div>
+          <div class="obs">Decisión / salida del modelo</div>
+          <div class="obs">Herramienta seleccionada</div>
+          <div class="obs">Argumentos de la herramienta</div>
+          <div class="obs">Respuesta / estado de la herramienta</div>
+          <div class="obs">Evento de confirmación</div>
+          <div class="obs">Intento de transferencia</div>
+          <div class="obs">Errores / tiempos de espera agotados</div>
+          <div class="obs">Resultado posterior a la llamada</div>
+          <div class="obs">Resultado de negocio según el sistema autorizado</div>
+        </div>
+      </div>
+
+      <p>
+        El último elemento es especialmente importante. Si el sistema de citas indica que no se creó ninguna cita, un resumen de la llamada generado por un LLM que diga <strong>«cita agendada»</strong> no debe prevalecer sobre el sistema de registro autorizado.
+      </p>
+
+      <h2>El resultado de negocio debe pesar más que la seguridad conversacional</h2>
+
+      <p>
+        Una conversación puede sonar excelente mientras la transacción de negocio falla.
+      </p>
+
+      <p>
+        Eso significa que las métricas de confiabilidad deben incluir más que:
+      </p>
+
+      <ul>
+        <li>la naturalidad del habla;</li>
+        <li>la duración promedio de las llamadas;</li>
+        <li>la calidad de la transcripción.</li>
+      </ul>
+
+      <p>
+        Algunas métricas más significativas pueden ser:
+      </p>
+
+      <ul>
+        <li>tasa de finalización de tareas;</li>
+        <li>tasa de éxito de las llamadas a herramientas;</li>
+        <li>tasa de acciones incorrectas;</li>
+        <li>tasa de correcciones manuales;</li>
+        <li>tasa de uso de alternativas de respaldo (fallback);</li>
+        <li>tasa de escalamiento a una persona;</li>
+        <li>tasa de transferencias exitosas;</li>
+        <li>incidentes de escritura duplicada;</li>
+        <li>tasa de tiempos de espera agotados sin resolver;</li>
+        <li>exactitud del resultado de negocio.</li>
+      </ul>
+
+      <h2>Los permisos de las herramientas son parte de la confiabilidad</h2>
+
+      <p>
+        Darle a un modelo acceso a más herramientas puede aumentar su capacidad. También aumenta el daño que puede causar una decisión equivocada.
+      </p>
+
+      <p>
+        Una arquitectura de herramientas más segura limita lo que se puede ejecutar.
+      </p>
+
+      <div class="control-stack">
+        <span class="small-label">Un límite de herramientas para producción</span>
+
+        <div class="control-grid">
+          <div class="control-item">
+            <strong>Autenticación</strong>
+            <p>¿Tiene la persona que llama o la aplicación permiso para acceder a este sistema?</p>
+          </div>
+
+          <div class="control-item">
+            <strong>Autorización</strong>
+            <p>¿Está permitida esta lectura o escritura específica para esta identidad?</p>
+          </div>
+
+          <div class="control-item">
+            <strong>Mínimo privilegio</strong>
+            <p>¿Tiene el agente únicamente el acceso mínimo necesario para su función?</p>
+          </div>
+
+          <div class="control-item">
+            <strong>Validación de esquema</strong>
+            <p>¿Están bien formados sintácticamente los argumentos?</p>
+          </div>
+
+          <div class="control-item">
+            <strong>Validación de negocio</strong>
+            <p>¿Tiene sentido la acción solicitada según las reglas de negocio reales?</p>
+          </div>
+
+          <div class="control-item">
+            <strong>Límite de confirmación</strong>
+            <p>¿Ha confirmado la persona que llama las escrituras importantes o visibles para el cliente?</p>
+          </div>
+
+          <div class="control-item">
+            <strong>Aprobación humana</strong>
+            <p>¿Debe una operación privilegiada o de alto riesgo requerir la intervención de una persona?</p>
+          </div>
+
+          <div class="control-item">
+            <strong>Registro de auditoría</strong>
+            <p>¿Puede la organización reconstruir quién o qué inició la acción?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning">
+        <strong>La persona que llama es una entrada no confiable.</strong> La voz no elimina el riesgo de inyección de prompts ni de uso indebido de herramientas. Las instrucciones habladas aún pueden intentar manipular al agente para que exponga datos o realice una acción no autorizada.
+      </div>
+
+      <h2>¿Cómo se debe probar la confiabilidad?</h2>
+
+      <p>
+        Probar solo conversaciones de demostración exitosas da una imagen falsa de la preparación para producción.
+      </p>
+
+      <div class="testing-pyramid">
+        <div class="test-level l1">Casos de prueba de regresión derivados de producción</div>
+        <div class="test-level l2">Pruebas adversarias y de permisos</div>
+        <div class="test-level l3">Inyección de fallos</div>
+        <div class="test-level l4">Conversaciones con audio real</div>
+        <div class="test-level l5">Pruebas deterministas de herramientas y reglas de negocio</div>
+      </div>
+
+      <h3>Pruebas deterministas de herramientas</h3>
+
+      <p>
+        Verifique que:
+      </p>
+
+      <ul>
+        <li>se seleccione la herramienta correcta;</li>
+        <li>estén presentes los parámetros obligatorios;</li>
+        <li>se validen los identificadores de cliente;</li>
+        <li>no se pueda llamar a herramientas no autorizadas;</li>
+        <li>los tiempos de espera agotados y los fallos se notifiquen correctamente;</li>
+        <li>se eviten las escrituras duplicadas cuando corresponda.</li>
+      </ul>
+
+      <h3>Pruebas de conversaciones con audio</h3>
+
+      <p>
+        Incluya:
+      </p>
+
+      <ul>
+        <li>interrupciones;</li>
+        <li>vacilaciones;</li>
+        <li>acentos;</li>
+        <li>ruido de fondo;</li>
+        <li>nombres y números;</li>
+        <li>cambios de idioma;</li>
+        <li>personas que cambian de opinión a mitad del flujo de trabajo.</li>
+      </ul>
+
+      <h3>Inyección de fallos</h3>
+
+      <p>
+        Provoque deliberadamente fallos en sistemas importantes:
+      </p>
+
+      <ul>
+        <li>el calendario devuelve un error 500;</li>
+        <li>el CRM agota el tiempo de espera;</li>
+        <li>el sistema de reservas indica que no hay disponibilidad;</li>
+        <li>el destino de la transferencia no contesta;</li>
+        <li>la red se desconecta durante una escritura;</li>
+        <li>la recuperación de conocimiento devuelve evidencia débil.</li>
+      </ul>
+
+      <h3>Pruebas adversarias</h3>
+
+      <p>
+        Compruebe si una persona que llama puede:
+      </p>
+
+      <ul>
+        <li>anular las instrucciones del agente;</li>
+        <li>solicitar la información de otro cliente;</li>
+        <li>forzar una llamada no autorizada a una herramienta;</li>
+        <li>manipular una escritura sensible;</li>
+        <li>convencer al sistema de que omita una confirmación obligatoria.</li>
+      </ul>
+
+      <p>
+        Las plataformas actuales de pruebas de agentes también pueden validar la selección y los parámetros esperados de las herramientas antes del despliegue, lo cual resulta especialmente útil para transferencias, consultas e integraciones externas.
+      </p>
+
+      <h2>Conceptos erróneos frecuentes sobre la confiabilidad</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto erróneo</th>
+              <th>Visión más precisa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>«La llamada sonó natural, así que funcionó».</td>
+              <td>La calidad de la conversación y el resultado de negocio son dimensiones distintas.</td>
+            </tr>
+            <tr>
+              <td>«Si el modelo produjo un JSON válido, la acción era segura».</td>
+              <td>Una estructura válida no demuestra que la identidad, la autorización o la semántica de negocio sean correctas.</td>
+            </tr>
+            <tr>
+              <td>«Si una API agotó el tiempo de espera, la operación falló».</td>
+              <td>La operación puede haberse completado y haberse perdido solo la respuesta.</td>
+            </tr>
+            <tr>
+              <td>«Reintentar siempre es seguro».</td>
+              <td>Las escrituras con efectos secundarios pueden crear duplicados si el comportamiento de los reintentos no se diseña con cuidado.</td>
+            </tr>
+            <tr>
+              <td>«Con RAG el agente no puede alucinar».</td>
+              <td>La recuperación de información mejora el fundamento de las respuestas, pero no garantiza su corrección.</td>
+            </tr>
+            <tr>
+              <td>«Transferir a una persona es tener un botón de transferencia».</td>
+              <td>La lógica de los disparadores, la disponibilidad del destino y la transmisión del contexto también forman parte de la confiabilidad de la transferencia.</td>
+            </tr>
+            <tr>
+              <td>«Más acceso a herramientas hace mejor al agente».</td>
+              <td>La capacidad debe equilibrarse con el mínimo privilegio y una autoridad controlada.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Una lista de verificación práctica de confiabilidad previa al lanzamiento</h2>
+
+      <ol>
+        <li><strong>Entidades críticas:</strong> ¿Qué nombres, números, fechas o ID deben confirmarse?</li>
+        <li><strong>Autoridad de las herramientas:</strong> ¿Qué sistemas puede leer el agente y en cuáles puede escribir?</li>
+        <li><strong>Confirmación:</strong> ¿Qué escrituras requieren una confirmación explícita de la persona que llama?</li>
+        <li><strong>Comportamiento ante tiempos de espera agotados:</strong> ¿Qué ocurre cuando se desconoce el resultado de la escritura?</li>
+        <li><strong>Prevención de duplicados:</strong> ¿Es seguro reintentar cada acción con efectos secundarios?</li>
+        <li><strong>Fundamento de las respuestas:</strong> ¿Qué hace el agente cuando la evidencia es débil?</li>
+        <li><strong>Alternativas de respaldo (fallbacks):</strong> ¿Existe una ruta definida para cada clase importante de fallo?</li>
+        <li><strong>Escalamiento a una persona:</strong> ¿Cuándo debe detenerse la IA?</li>
+        <li><strong>Alternativa de respaldo de la transferencia:</strong> ¿Qué ocurre si la persona no contesta?</li>
+        <li><strong>Transmisión del contexto:</strong> ¿Qué sabrá la persona que reciba la llamada?</li>
+        <li><strong>Permisos:</strong> ¿Operan las herramientas con el acceso mínimo necesario?</li>
+        <li><strong>Observabilidad:</strong> ¿Se puede reconstruir cada acción crítica y cada fallo?</li>
+        <li><strong>Pruebas:</strong> ¿Se han probado los errores de herramientas, los fallos de red y las personas que llaman con intenciones adversarias?</li>
+        <li><strong>Regresión:</strong> ¿Se volverán a ejecutar los escenarios de fallo importantes después de los cambios en el sistema?</li>
+      </ol>
+
+      <div class="one-sentence">
+        <div class="label">La confiabilidad de un agente de voz con IA en una frase</div>
+        <p>Un agente de voz confiable no es el que nunca se enfrenta a un fallo, sino el que detecta la incertidumbre, protege las acciones de negocio, se recupera de forma segura, escala correctamente y deja suficiente evidencia para entender lo ocurrido.</p>
+      </div>
+
+      <h2>Preguntas frecuentes</h2>
+
+      <section class="faq">
+        <div class="faq-item">
+          <h3>¿Qué hace confiable a un agente de voz con IA?</h3>
+          <p>
+            La confiabilidad proviene de una comprensión correcta, una ejecución precisa de las herramientas, permisos controlados, una recuperación segura, la transferencia a una persona y una observabilidad suficiente, y no solo de la calidad de la voz.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Qué debe ocurrir cuando un agente de voz con IA no sabe la respuesta?</h3>
+          <p>
+            El agente debe usar una alternativa de respaldo definida, como pedir una aclaración, recuperar información aprobada, usar una herramienta autorizada, tomar un mensaje o escalar, en lugar de inventar información sin respaldo.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Qué ocurre si una API agota el tiempo de espera durante una reserva?</h3>
+          <p>
+            El sistema debe tratar el resultado como incierto hasta que pueda determinar si la escritura tuvo éxito. Reintentar a ciegas puede crear duplicados, por lo que se deben usar comprobaciones del estado de la transacción o solicitudes idempotentes cuando el sistema externo las admita.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Qué es la idempotencia?</h3>
+          <p>
+            La idempotencia es un patrón de confiabilidad que permite reintentar la misma operación prevista sin producir un efecto secundario adicional. Las implementaciones concretas dependen de la API externa.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Cuándo debe transferir un agente de voz con IA a una persona?</h3>
+          <p>
+            Los disparadores habituales incluyen una solicitud explícita del usuario, malentendidos repetidos, solicitudes no admitidas, decisiones sensibles, reglas de política, caídas de herramientas o situaciones que requieren criterio humano.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Cuál es la diferencia entre una transferencia en frío y una transferencia asistida?</h3>
+          <p>
+            En una transferencia en frío, la llamada se pasa al destino sin consulta previa. En una transferencia asistida o con consulta, la parte que transfiere consulta o se conecta con la parte receptora antes de completar la transferencia.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Cómo debe medirse la confiabilidad de un agente de voz con IA?</h3>
+          <p>
+            Las mediciones útiles pueden incluir la finalización de tareas, el éxito de las herramientas, la tasa de uso de alternativas de respaldo, el éxito de las transferencias, la tasa de acciones incorrectas, las correcciones manuales, los incidentes de tiempos de espera agotados y la exactitud del resultado de negocio.
+          </p>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Continúe con la serie sobre IA de voz en producción</h2>
+        <p>
+          La confiabilidad se basa en la arquitectura y la latencia. Las guías anteriores explican cómo funciona el sistema y de dónde proviene el retraso conversacional.
+        </p>
+        <div class="cta-links">
+          <a class="button" href="https://b2b-voice.com/how-ai-voice-agents-work">Cómo funcionan los agentes de voz con IA →</a> <a class="button secondary" href="https://b2b-voice.com/voice-ai-latency">Latencia de la IA de voz →</a>
+        </div>
+      </section>
+
+      <div class="next">
+        <strong>Próximo análisis en profundidad posible:</strong> <em>Cómo gestionan los agentes de voz con IA la transferencia a una persona: transferencias, contexto y diseño del escalamiento.</em>
+      </div>
+
+      <section class="sources">
+        <h2>Fuentes técnicas y base de investigación</h2>
+        <p>
+          Esta guía se basa en la investigación sobre arquitectura técnica de B2B Voice de 2026 y en documentación primaria actual sobre ejecución de herramientas, transferencias, pruebas de agentes, análisis posterior a la llamada, controles de seguridad y comportamiento seguro de reintentos. Los patrones de fallo recomendados son orientación de ingeniería, salvo que se vinculen explícitamente con la implementación de un proveedor.
+        </p>
+        <ul>
+          <li>
+            <strong>OpenAI — Responses / Tool Calling:</strong> llamadas a herramientas del modelo y ejecución de herramientas controlada por la aplicación. <a href="https://developers.openai.com/api/reference/resources/responses/methods/create">developers.openai.com/api/reference/resources/responses/methods/create</a>
+          </li>
+          <li>
+            <strong>ElevenLabs — Transfer to Number:</strong> condiciones de transferencia a una persona, números externos/SIP, comportamiento de conferencia, transferencia a ciegas y SIP REFER, y mensajes de contexto para el operador. <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/transfer-to-number">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/transfer-to-number</a>
+          </li>
+          <li>
+            <strong>ElevenLabs — Agent Transfer:</strong> condiciones de transferencia y conservación de la transcripción y el contexto entre agentes durante la transferencia. <a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/agent-transfer">elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/agent-transfer</a>
+          </li>
+          <li>
+            <strong>ElevenLabs — Agent Testing:</strong> llamadas a herramientas esperadas, validación de parámetros y casos de prueba de herramientas de alto riesgo. <a href="https://elevenlabs.io/docs/eleven-agents/customization/agent-testing">elevenlabs.io/docs/eleven-agents/customization/agent-testing</a>
+          </li>
+          <li>
+            <strong>ElevenLabs — Post-call Webhooks:</strong> transcripciones posteriores a la llamada, análisis, metadatos y flujos de trabajo para eventos de fallo. <a href="https://elevenlabs.io/docs/eleven-agents/workflows/post-call-webhooks">elevenlabs.io/docs/eleven-agents/workflows/post-call-webhooks</a>
+          </li>
+          <li>
+            <strong>Twilio — Warm Transfer:</strong> comportamiento de consulta previa a la transferencia en telefonía. <a href="https://www.twilio.com/docs/flex/end-user-guide/warm-transfer">twilio.com/docs/flex/end-user-guide/warm-transfer</a>
+          </li>
+          <li>
+            <strong>OWASP GenAI — Prompt Injection:</strong> mínimo privilegio, controles de privilegios, aprobación humana para operaciones de alto riesgo y pruebas adversarias. <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">genai.owasp.org/llmrisk/llm01-prompt-injection</a>
+          </li>
+          <li>
+            <strong>Stripe — Idempotent Requests:</strong> un ejemplo oficial de cómo reintentar de forma segura solicitudes de API con efectos secundarios sin duplicar una operación por accidente. <a href="https://docs.stripe.com/api/idempotent_requests">docs.stripe.com/api/idempotent_requests</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tags" aria-label="Etiquetas del artículo">
+        <span class="tags-label">Etiquetas</span>
+        <div class="tag-list">
+          <span class="tag">Confiabilidad de agentes de voz con IA</span> <span class="tag">IA de voz</span> <span class="tag">Transferencia a una persona</span> <span class="tag">Recuperación ante fallos</span> <span class="tag">Alternativas de respaldo</span> <span class="tag">Llamadas a herramientas</span> <span class="tag">Idempotencia</span> <span class="tag">Pruebas de agentes de IA</span> <span class="tag">Observabilidad</span> <span class="tag">Seguridad de agentes de IA</span>
+        </div>
+      </section>
+    </article>
+  </main>

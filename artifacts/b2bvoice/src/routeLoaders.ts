@@ -1,3 +1,5 @@
+import { parseLocale } from "@/lib/i18n";
+
 // Single place that defines how each lazily loaded page is imported, so the
 // router (React.lazy) and the client entry (which preloads the current
 // route's chunk before hydrating) always use the same dynamic imports.
@@ -25,14 +27,15 @@ export function loaderForPath(path: string): (() => Promise<unknown>) | null {
   if (p === "/terms-of-use") return routeLoaders.terms;
   if (p === "/legal-notice") return routeLoaders.legalNotice;
   if (p === "/demo") return routeLoaders.demo;
-  if (p === "/blog") return routeLoaders.blog;
-  if (/^\/[^/]+$/.test(p)) {
+  const { locale, rest } = parseLocale(p);
+  if (rest === "/blog") return routeLoaders.blog;
+  if (/^\/[^/]+$/.test(rest)) {
     // A post page also needs its (separately loaded) article markup before it can hydrate.
-    const slug = p.slice(1);
+    const slug = rest.slice(1);
     return async () => {
       await routeLoaders.blogPost();
       const { preloadPostContent } = await import("@/lib/blogContent");
-      await preloadPostContent(slug);
+      await preloadPostContent(slug, locale);
     };
   }
   return routeLoaders.notFound;

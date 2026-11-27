@@ -1,0 +1,355 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Ir al artículo</a><header><h1 id="article-title">Cómo probar agentes de voz con IA multilingües: idiomas, acentos y dialectos</h1>
+<p class="b2bv3-byline">Por B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Las pruebas de un agente de voz multilingüe deben verificar la tarea del negocio en cada idioma y en cada condición de llamada que importe. Compruebe si el agente reconoce el habla, elige o sigue el idioma de la persona que llama, pronuncia con claridad los datos importantes y actúa con la información correcta. Un ajuste de idioma anunciado puede demostrar que existe un modo disponible. Para demostrar la calidad en un flujo de trabajo concreto se necesita escuchar las llamadas, contar con un registro verificado y, en ocasiones, una transferencia que alguien conteste.</p>
+<p>B2B Voice define el alcance de los flujos de voz personalizados según los idiomas que usan las personas que llaman, los datos que necesita el personal y los equipos que pueden retomar la llamada cuando alguien pide ayuda. En un servicio de atención en EE. UU., que una persona diga el nombre de una calle en inglés dentro de una conversación en español puede ser algo habitual. La prueba debe reflejar esa llamada, incluido lo que ve el equipo que la recibe.</p>
+<h2 id="key-takeaways">Puntos clave</h2>
+<ul>
+<li>Revise por separado el reconocimiento de voz, el habla sintetizada y las acciones completadas en cada flujo de trabajo y cada idioma.</li>
+<li>Incluya el cambio de código natural, nombres propios, fechas, números y correcciones de la persona que llama.</li>
+<li>Pida a revisores nativos o con un dominio muy alto del idioma que evalúen el significado, la inteligibilidad y el registro.</li>
+<li>Verifique que quien pide hablar con una persona llegue a un destino preparado para ayudarle en el idioma acordado.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">En este artículo</p>
+<ol>
+<li><a href="#define-the-language-conditions-the-business-actually-serves">Defina las condiciones de idioma que el negocio realmente atiende</a></li>
+<li><a href="#test-the-fields-and-conversation-moves-that-can-break-a-call">Pruebe los campos y las maniobras de conversación que pueden romper una llamada</a></li>
+<li><a href="#b2b-voice-multilingual-evaluation-matrix">Matriz de evaluación multilingüe de B2B Voice</a></li>
+<li><a href="#compare-results-by-cohort-and-workflow">Compare los resultados por cohorte y flujo de trabajo</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+<li><a href="#references-heading">Referencias</a></li>
+</ol></nav><h2 id="define-the-language-conditions-the-business-actually-serves">Defina las condiciones de idioma que el negocio realmente atiende</h2>
+<p>Comience por las rutas de entrada, las ubicaciones y las tareas que se están considerando. Un sistema de IA de voz multilingüe puede usar componentes separados de reconocimiento y síntesis de voz, o bien un modelo nativo de audio. Sus ajustes de identificación de idioma, la voz de salida, la compatibilidad con cambios dentro de un mismo turno y la ruta de alternativa de respaldo (fallback) pueden variar. En las pruebas de idiomas de un agente de voz con IA, haga un inventario de esos ajustes por tarea y observe cuáles usó realmente el entorno de ejecución.</p>
+<p>Ofrezca a las personas que llaman una forma de elegir o corregir el idioma cuando el flujo de trabajo lo permita. Un saludo breve puede aportar poca evidencia sobre el idioma que la persona quiere usar. El nombre de una calle, de una organización o un número de pieza en otro idioma no indica necesariamente un cambio de preferencia. Defina cuándo debe el agente continuar en el idioma elegido, preguntar qué idioma prefiere la persona o seguir el escalamiento aprobado.</p>
+<p>Use las mismas tareas del negocio en varias cohortes para comparar resultados, y encargue casos independientes en cada cohorte para descubrir problemas locales. Una traducción literal de una prueba en inglés puede pasar por alto las formas habituales de decir el nombre de una empresa, una fecha o un tipo de servicio. Pida a los autores que incluyan paráfrasis naturales que lleguen al mismo registro final previsto, y condiciones que requieran una aclaración.</p>
+<h3 id="recruit-speakers-without-treating-an-accent-as-a-label-for-ability">Reclute hablantes sin tratar el acento como una etiqueta de capacidad</h3>
+<p>Las pruebas de reconocimiento de acentos son más útiles cuando comprueban qué tan bien entiende el sistema a hablantes de toda la población prevista. Reclute varios hablantes, dispositivos y entornos de llamada para las tareas importantes. Ofrezca descripciones voluntarias y pertinentes de la variedad lingüística cuando corresponda. Evite inferir la identidad a partir de una pronunciación particular o suponer que un hablante representa a un grupo regional o nacional.</p>
+<p>Un estudio publicado en EE. UU. comparó sistemas de reconocimiento con habla de entrevistas estructuradas de distintos grupos de hablantes y encontró diferencias de rendimiento. Sus observaciones son específicas de su muestra de habla y de los sistemas evaluados. El estudio justifica revisar los resultados por subgrupos en las condiciones reales de implementación. No puede predecir el habla de una persona en particular ni el rendimiento de un proveedor actual. <a class="b2bv3-ref" href="#source-disp">Koenecke y colaboradores</a></p>
+<h2 id="test-the-fields-and-conversation-moves-that-can-break-a-call">Pruebe los campos y las maniobras de conversación que pueden romper una llamada</h2>
+<h3 id="names-addresses-dates-and-numbers">Nombres, direcciones, fechas y números</h3>
+<p>Revise primero los campos de mayor impacto. Un agente de voz puede producir un habla fluida y, aun así, deformar un nombre propio o leer una fecha de una manera que la persona que llama malinterprete. Pregunte a los revisores qué variantes de pronunciación son aceptables y qué aclaración suena natural. Conserve la ortografía y los signos diacríticos que tengan significado cuando el sistema los use para distinguir registros. Compare los campos normalizados de dirección y fecha con el sistema del negocio, además del audio que escuchó la persona que llama.</p>
+<p>Escuche cómo se agrupan en cada idioma los dígitos de un número de devolución de llamada, cómo se expresan las fechas y cómo se indica la hora. Proporcione al caso de prueba la ubicación de la oficina y la zona horaria esperada. Use la corrección de la persona que llama para verificar que el registro final represente la hora confirmada. Si la tarea implica un flujo de trabajo regulado o sujeto a permisos, aplique los mismos requisitos de acceso en todos los idiomas.</p>
+<h3 id="code-switching-and-interruptions">Cambio de código e interrupciones</h3>
+<p>El cambio de código (code-switching) ocurre cuando un hablante pasa de un idioma a otro mientras habla. Puede incluir un término técnico, el nombre de una calle o un cambio del idioma en que se termina la llamada. Indique a los revisores si el ejemplo debe mantener el idioma de respuesta actual o respetar un cambio explícito. En una llamada ficticia de programación de citas en español de EE. UU., el cliente da el nombre de una calle en inglés, corrige el número del edificio y pide continuar en español. La prueba debe conservar el nombre y el número, y mantener la respuesta y la transferencia en el idioma solicitado.</p>
+<p>Para las pruebas de agentes de voz en hindi, la investigación MUCS ofrece un ejemplo de referencia que estudió de forma explícita el cambio de código entre hindi e inglés. Su contexto y su conjunto de datos son insumos de investigación, con sus propios límites. Encargue casos por teléfono para los términos del negocio y las solicitudes en idiomas mezclados que el servicio realmente espera. Distinga una pausa previa a un cambio de idioma de una invitación para que el agente hable. Use la <a href="/es/how-voice-ai-handles-dropped-words-and-irregular-pacing">guía sobre palabras omitidas y ritmo irregular</a> cuando una interrupción haga desaparecer el dato crítico. <a class="b2bv3-ref" href="#source-mucs">Diwan y colaboradores</a></p>
+<h3 id="courtesy-clarity-and-human-escalation">Cortesía, claridad y escalamiento a una persona</h3>
+<p>Las convenciones de cortesía y el registro profesional dependen de la llamada, de la política del negocio y de la preferencia del hablante. Pida a revisores locales que identifiquen redacciones aceptables, sin exigir el mismo saludo predefinido en todas las cohortes. Pregunte si la persona que llama puede distinguir una reserva confirmada de una solicitud pendiente. Cuando el agente ofrezca comunicar con una persona, verifique el idioma que solicitó quien llama, la ruta que recibió la llamada y si había alguien calificado disponible para continuarla.</p>
+<h2 id="b2b-voice-multilingual-evaluation-matrix">Matriz de evaluación multilingüe de B2B Voice</h2>
+<p>Estas asignaciones ficticias de revisores ilustran distintas condiciones de prueba. Son cohortes de investigación para diseñar flujos de trabajo orientados a EE. UU. Tome muestras de las variedades y tareas pertinentes para la implementación que pretende evaluar.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Asignaciones de prueba multilingües ficticias y resultados aceptables</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Cohorte</th>
+<th scope="col">Condición de llamada que se debe ejercitar</th>
+<th scope="col">Evidencia de un resultado aceptable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Inglés de EE. UU.</th>
+<td>La persona que llama hace una pausa y cambia el día solicitado en una llamada con ruido de fondo habitual.</td>
+<td>El agente espera o pide una aclaración, confirma la fecha corregida y registra la cita correcta.</td>
+</tr>
+<tr class="even">
+<th scope="row">Español de EE. UU.</th>
+<td>La persona que llama da el nombre de una calle en inglés, hace una pregunta en español y pide hablar con alguien que hable español.</td>
+<td>Los campos de dirección sobreviven al cambio de idioma, la transferencia respeta la preferencia y el equipo receptor cuenta con el contexto aprobado.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Alemán</th>
+<td>Un revisor diseña una interacción de servicio formal con un nombre propio y un cambio de cita.</td>
+<td>El revisor confirma que el registro es adecuado y la pronunciación inteligible, y el calendario refleja el horario corregido.</td>
+</tr>
+<tr class="even">
+<th scope="row">Francés</th>
+<td>La persona que llama dice un apellido compuesto de varias palabras y agrupa de forma natural los dígitos del número de devolución de llamada.</td>
+<td>El agente confirma el apellido y la secuencia de dígitos correctos, guarda los datos permitidos y aplica el seguimiento aprobado.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Hindi</th>
+<td>Un revisor escribe el guion de un intercambio en hindi e inglés con un término del negocio y una hora corregida.</td>
+<td>Las etiquetas conservan el término y la hora. El agente respeta la preferencia de idioma y el sistema almacena el horario correcto.</td>
+</tr>
+<tr class="even">
+<th scope="row">Vietnamita</th>
+<td>Un revisor aporta un nombre de varias sílabas, una expresión local de fecha y una corrección.</td>
+<td>El agente verifica el nombre de forma adecuada, conserva las distinciones relevantes del nombre y comprueba la fecha en el registro del negocio.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="give-listeners-a-task-rather-than-a-general-impression">Dé a los oyentes una tarea en lugar de pedirles una impresión general</h3>
+<p>Pida a los revisores que escuchen primero sin la transcripción. Haga que anoten el nombre, la hora o la instrucción que oyeron. Después muéstreles la tarea esperada y las marcas de audio del turno crítico. Un revisor que ve primero la frase correcta puede deducirla a partir de una reproducción incompleta. En una pasada aparte, pregunte por la naturalidad, el tono, el registro y la forma en que el agente gestiona las aclaraciones. Verifique el estado del negocio de forma independiente.</p>
+<p>Recurra a revisores que conozcan la variedad lingüística y el contexto profesional, y documente las alternativas aceptables que identifiquen. Cuando haya un desacuerdo con consecuencias, pida a un segundo revisor que anote por su cuenta y luego resuelva la diferencia con base en el caso de prueba y en los requisitos del responsable del flujo de trabajo. Use una etiqueta de «sin resolver» si el audio o la política no zanjan la cuestión. El Sector de Normalización de las Telecomunicaciones de la Unión Internacional de Telecomunicaciones (ITU-T) describe la evaluación subjetiva formal de la transmisión telefónica, incluida la importancia del método y de las condiciones de la prueba, en la Recomendación P.800. Un panel de escucha de una empresa debe describir su propio procedimiento. <a class="b2bv3-ref" href="#source-mos">ITU-T P.800</a></p>
+<h2 id="compare-results-by-cohort-and-workflow">Compare los resultados por cohorte y flujo de trabajo</h2>
+<p>FLEURS ofrece habla leída en paralelo en muchos idiomas. Puede servir para obtener entradas de reconocimiento comparables y es una referencia útil para diseñar conjuntos de datos. Su formato de habla leída no abarca las correcciones espontáneas, las transferencias ni las restricciones de una ruta telefónica en vivo. Combine frases comparables con casos encargados específicamente que reflejen a las personas que llaman, los dispositivos y los entornos que el negocio se prepara para atender. Compruebe los derechos de los datos y los permisos de los hablantes para el material que se use en la prueba real. <a class="b2bv3-ref" href="#source-flow">Conneau y colaboradores</a></p>
+<p>Para las pruebas de agentes de voz en vietnamita, decida cómo segmentar las transcripciones multilingües y si va a comparar palabras léxicas, unidades delimitadas por sílabas o caracteres. Mantenga el mismo criterio dentro de cada comparación. Un tokenizador distinto puede afectar el resultado aparente del reconocimiento sin que cambien el audio ni el desenlace. En una comprobación aparte, compare el nombre o la fecha exactos confirmados por la persona que llama con el registro resultante. La <a href="/es/how-voice-ai-accuracy-is-measured">guía sobre la precisión de la IA de voz</a> explica cómo cada medida responde a una pregunta diferente. <a class="b2bv3-ref" href="#source-viet">Nguyen y colaboradores</a></p>
+<p>Informe lo que realmente se probó, incluidos la variedad lingüística, la tarea, el canal, la cobertura de revisores y las condiciones concurrentes. Un resultado agregado puede quedar dominado por la cohorte más grande y ocultar un problema en una más pequeña. Mantenga visibles los problemas críticos para el lanzamiento. Una organización puede tener buena evidencia sobre cómo se gestionan los cambios de cita en inglés de EE. UU. y evidencia incompleta de la misma acción en francés. Trate esos casos como decisiones de implementación distintas.</p>
+<h3 id="decide-whether-the-problem-is-language-delivery-or-the-route">Determine si el problema es el idioma, la locución o la ruta</h3>
+<p>En una llamada ficticia de reparación, una persona que habla francés oye con claridad su apellido, pero el agente usa una pronunciación incorrecta al transferir la llamada a un recepcionista. Es posible que el reconocimiento inicial haya capturado el registro correcto. Inspeccione la transferencia sintetizada, el audio que el recepcionista realmente escuchó y el contexto escrito antes de decidir qué componente necesita trabajo. Si el recepcionista no recibe ningún contexto, una pronunciación inteligible por sí sola no puede restituir los detalles del caso.</p>
+<p>Las pruebas de dialectos en IA de voz deben dejar espacio para más de una realización aceptable de un nombre o de una frase. Incluya variedad de locución y de dispositivos dentro de cada flujo de trabajo importante, y etiquete lo que el negocio considera correcto. En el caso del cambio de código en IA de voz, pruebe ambos sentidos del cambio previsto cuando corresponda. Un modelo puede seguir a la persona que llama al español y luego no volver al inglés cuando ella lo pide de forma explícita. Mantenga ese resultado junto con la tarea o acción asistida a la que afectó, y verifique cualquier cola receptora fuera del modelo.</p>
+<h3 id="tie-a-language-decision-to-a-real-release-boundary">Vincule la decisión sobre un idioma con un límite de lanzamiento real</h3>
+<p>Antes de añadir un idioma a un flujo de trabajo, acuerde qué aceptará el personal como evidencia para esa acción concreta. Si la prueba valida el horario de atención y la recepción de solicitudes de cita, pero nunca ejercita la cancelación ni una transferencia a una persona, mantenga ese alcance más acotado en las notas de la versión. Cuando cambie la dotación de personal, repita la parte de la prueba que dependía de un destino calificado.</p>
+<h3 id="keep-fallback-language-visible-in-the-business-result">Mantenga visible el idioma de la alternativa de respaldo en el resultado del negocio</h3>
+<p>Registre como observaciones separadas el idioma que eligió la persona que llama, el idioma de la respuesta y el idioma o la capacidad de personal del destino. Una transferencia a la cola de recepción general puede reproducir un saludo grabado en el idioma solicitado, aunque el empleado disponible no pueda continuar la llamada en ese idioma. Si el resultado aprobado es una cola de intérpretes o una devolución de llamada, verifique qué se le dijo a la persona que llamó y qué registró realmente el equipo receptor.</p>
+<p>Para comparar idiomas de forma justa, haga coincidir la tarea y su regla de negocio, dejando margen para una redacción natural. Un prompt que, sin querer, le indique a una cohorte las palabras exactas que se requieren para el enrutamiento puede hacer que esa cohorte resulte más fácil de evaluar sobre el papel y más difícil de comparar.</p>
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3 id="does-advertised-language-support-demonstrate-real-call-quality">¿Un idioma anunciado como compatible demuestra una calidad real en las llamadas?</h3>
+<p>Puede identificar un ajuste de idioma disponible. Demuestre la calidad con las tareas reales de quienes llaman, el canal, los campos críticos y los destinos con personal. Conserve la evidencia por idioma y por flujo de trabajo.</p>
+<h3 id="how-should-reviewers-grade-an-acceptable-code-switch">¿Cómo deben calificar los revisores un cambio de código aceptable?</h3>
+<p>Especifique si la persona que llama pidió un cambio de idioma, si el agente debe conservar un nombre o término en otro idioma y qué debe mostrar la acción final. Acepte las variantes naturales que cumplan esos requisitos.</p>
+<h3 id="who-should-review-pronunciation-and-politeness">¿Quién debe revisar la pronunciación y la cortesía?</h3>
+<p>Recurra a hablantes nativos o con un dominio muy alto del idioma, familiarizados con la variedad pertinente y con el contexto del negocio. Pídales que escuchen de forma independiente cuando la decisión tenga consecuencias y resuelva los desacuerdos con un proceso documentado.</p>
+<h3 id="what-should-happen-when-no-qualified-staff-member-is-available">¿Qué debe ocurrir cuando no hay ningún miembro del personal calificado disponible?</h3>
+<p>Use la alternativa de respaldo (fallback) aprobada del flujo de trabajo, como una devolución de llamada debidamente enrutada u otra opción de contacto compatible. El agente debe describir ese estado con exactitud y evitar prometer una transferencia inmediata que no pueda completar.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Hable con nosotros sobre los idiomas y las transferencias que necesitan sus clientes</h2>
+<p>Traiga las tareas del negocio que las personas que llaman necesitan completar, los idiomas que usan y las rutas de personal o de devolución de llamada disponibles para continuar la llamada. <a href="/demo">Converse sobre un flujo de trabajo multilingüe para una implementación personalizada</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Referencias</h2>
+<ul>
+<li id="source-disp">Evidencia de habla de entrevistas muestreada en EE. UU. para evaluar los grupos por separado. <a href="https://www.pnas.org/content/pnas/117/14/7684.full.pdf">Racial disparities in automated speech recognition</a>
+</li>
+<li id="source-mucs">Evaluación en Interspeech de habla multilingüe y de habla con cambio de código entre hindi e inglés. <a href="https://www.isca-archive.org/interspeech_2021/diwan21_interspeech.pdf">MUCS 2021: Multilingual and Code-Switching ASR Challenges for Low Resource Indian Languages</a>
+</li>
+<li id="source-mos">Métodos subjetivos controlados para evaluar la calidad de la transmisión telefónica. <a href="https://www.itu.int/rec/dologin_pub.asp?id=T-REC-P.800-199608-I%21%21PDF-E&amp;lang=e&amp;type=items">Methods for subjective determination of transmission quality</a>
+</li>
+<li id="source-flow">Diseño y cobertura de un conjunto de referencia de habla leída en paralelo. <a href="https://arxiv.org/pdf/2205.12446">FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech</a>
+</li>
+<li id="source-viet">Segmentación de palabras y función del espacio en blanco entre las sílabas del vietnamita. <a href="https://aclanthology.org/L18-1410.pdf">A Fast and Accurate Vietnamese Word Segmenter</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Temas">
+<li>IA de voz multilingüe</li>
+<li>Cambio de código</li>
+<li>Robustez frente a acentos</li>
+<li>Revisión humana</li>
+</ul></article>
+</main>

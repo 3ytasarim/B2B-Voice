@@ -1,0 +1,365 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Saltar al artículo</a><header><h1 id="article-title">¿Cómo se mide la precisión de la IA de voz? Más allá de la tasa de error de palabras</h1>
+<p class="b2bv3-byline">Por B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">La precisión de la IA de voz debe medirse en el punto donde un error importa. La tasa de error de palabras (WER) describe las diferencias de transcripción. Las comprobaciones de entidades y de intención indican si un agente de voz entendió los datos críticos y la solicitud. Las comprobaciones de argumentos de herramientas y de finalización de la tarea revelan si el agente usó esos datos correctamente y si el resultado previsto llegó al sistema en el que se apoya el personal.</p>
+<p>En una implementación personalizada, B2B Voice adapta estas comprobaciones al flujo de trabajo del cliente. En un servicio de citas, la empresa puede identificar qué sede, fecha, hora y datos de contacto deben ser correctos antes de que la persona que llama escuche una confirmación. En cambio, un servicio de soporte puede exigir la cuenta correcta, el tipo de incidencia y el resultado del callback.</p>
+<h2 id="key-takeaways">Puntos clave</h2>
+<ul>
+<li>La tasa de error de palabras (WER) y la tasa de error de caracteres (CER) describen el resultado del reconocimiento según una política de comparación definida.</li>
+<li>La precisión de entidades, la precisión de intención y una respuesta verificada de la transacción responden a preguntas de negocio distintas.</li>
+<li>Conserve los errores en campos importantes y en resultados críticos, incluso cuando los resultados agregados parezcan sanos.</li>
+<li>Defina la normalización, la coincidencia y la elegibilidad antes de comparar resultados entre llamadas o idiomas.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">En este artículo</p>
+<ol>
+<li><a href="#read-word-error-rate-at-the-transcription-boundary">Cómo interpretar la tasa de error de palabras en el límite de la transcripción</a></li>
+<li><a href="#follow-a-recognizable-request-to-the-saved-appointment">Seguir una solicitud reconocible hasta la cita guardada</a></li>
+<li><a href="#b2b-voice-speech-and-task-accuracy-measurement-framework">Marco de medición de precisión del habla y de las tareas de B2B Voice</a></li>
+<li><a href="#interpret-accuracy-measures-in-the-context-of-risk">Interpretar las medidas de precisión en función del riesgo</a></li>
+<li><a href="#build-an-accuracy-report-someone-can-reproduce">Elaborar un informe de precisión que otra persona pueda reproducir</a></li>
+<li><a href="#faq">Preguntas frecuentes</a></li>
+<li><a href="#references-heading">Referencias</a></li>
+</ol></nav><h2 id="read-word-error-rate-at-the-transcription-boundary">Cómo interpretar la tasa de error de palabras en el límite de la transcripción</h2>
+<p>La tasa de error de palabras (WER) compara las palabras de una transcripción de referencia con las palabras que produce el reconocedor de voz. Una sustitución cambia una palabra por otra. Una eliminación omite una palabra de la referencia. Una inserción coloca en el resultado una palabra que la referencia no contiene. La medida describe cuánta edición se necesita en relación con la referencia. Las palabras añadidas pueden hacer que el error medido supere la longitud de la referencia, por lo que la WER reportada no tiene un límite superior fijo. <a class="b2bv3-ref" href="#source-wer">Documentación de Microsoft Speech</a></p>
+<p>La tasa de error de caracteres (CER) compara caracteres según una política de texto definida. Puede ayudar a identificar diferencias de ortografía o apoyar un análisis en el que la segmentación de palabras es difícil. Los resultados por caracteres pueden cambiar según cómo trate el evaluador los espacios, la puntuación, los signos combinados y las formas Unicode visualmente equivalentes. Un error de caracteres bajo no establece la identidad de una persona. Una sola letra puede distinguir dos registros o cambiar el nombre de una calle.</p>
+<h3 id="define-the-reference-before-choosing-the-tool">Defina la referencia antes de elegir la herramienta</h3>
+<p>Especifique si la referencia es el habla literal, incluidas las vacilaciones y repeticiones significativas, o una representación normalizada de lo que se dijo. Para las métricas de precisión de la IA de voz, registre cómo trata el evaluador las mayúsculas, la puntuación, las contracciones, la expansión de números, los acentos en nombres escritos y las grafías alternativas. Conserve la anotación original siempre que sea posible, para poder explicar qué cambió la normalización.</p>
+<p>Una persona ficticia que llama podría decir «cero siete» como los últimos dígitos de una referencia. Si el sistema de la empresa considera significativo el cero inicial, consérvelo en la entidad que se verifica. Un normalizador que trate cada cadena de dígitos como un número puede hacer que la comparación de la transcripción se vea mejor mientras destruye el identificador. Mantenga la normalización de la transcripción separada de la validación de los campos de negocio.</p>
+<p>En el trabajo multilingüe, seleccione una tokenización adecuada para el idioma y para la comparación prevista. En algunos idiomas, el espacio en blanco es un mal sustituto de los límites de palabra. En vietnamita, un espacio puede separar sílabas dentro de una misma palabra léxica, de modo que una comparación basada en espacios puede responder a una pregunta distinta de la de una comparación por palabras léxicas. Registre el tokenizador y compare elementos equivalentes. Un silencio aislado o un clip totalmente inaudible exige su propia decisión de reporte. JiWER documenta una convención, según la versión, para las referencias vacías. Mantenga visibles las inserciones durante el silencio y documente qué convención se utilizó. <a class="b2bv3-ref" href="#source-jiw">Documentación de JiWER</a> <a class="b2bv3-ref" href="#source-viet">Nguyen y colaboradores</a></p>
+<h2 id="follow-a-recognizable-request-to-the-saved-appointment">Seguir una solicitud reconocible hasta la cita guardada</h2>
+<p>En una llamada ficticia, un cliente dice: «Por favor, cambie mi cita al jueves por la tarde en la oficina Este». La transcripción dice: «Por favor, cambie mi cita al martes por la tarde en la oficina Este». La intención general de reprogramar es clara. El día de la semana distinto cambia la acción que realizaría la empresa.</p>
+<p>Un revisor puede etiquetar la sustitución del día de la semana y marcar como incorrecta la entidad de fecha de la cita. Si el agente de voz pide una aclaración, confirma el jueves y luego encuentra el jueves en el registro de calendario resultante, la tarea final puede tener éxito tras un error de reconocimiento. Si el agente registra el martes, fallan tanto la captura de la fecha como la tarea. El mismo error de reconocimiento puede dar lugar a resultados de negocio distintos según la recuperación.</p>
+<p>Considere ahora el caso inverso. La transcripción dice correctamente jueves en la oficina Este. La herramienta suministra el identificador del calendario de la oficina Oeste porque un campo obsoleto persistió desde un turno anterior. El agente confirma el jueves con total seguridad. Una consulta independiente muestra la cita en el calendario de la oficina equivocada. Las comprobaciones de transcripción y de intención se superan. Fallan los argumentos de la herramienta y el resultado registrado. Una frase de confirmación por sí sola no le dice a la recepción qué cita debe respetar.</p>
+<p>Estos casos explican por qué la precisión de las tareas del agente de voz merece su propia evidencia. Inspeccione los datos confirmados, la acción enviada al calendario y el registro de referencia, usando una referencia de correlación. Cuando un tiempo de espera o un retraso deja el registro en duda, marque la acción como no verificada mientras el flujo de trabajo la concilia. Un estado pendiente debe seguir siendo visible en el informe.</p>
+<h2 id="b2b-voice-speech-and-task-accuracy-measurement-framework">Marco de medición de precisión del habla y de las tareas de B2B Voice</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Medidas de precisión, límites y evidencia requerida</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Medida</th>
+<th scope="col">Qué captura</th>
+<th scope="col">Qué queda fuera de su alcance</th>
+<th scope="col">Cuándo usarla y qué evidencia conservar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Tasa de error de palabras (WER)</th>
+<td>Inserciones, eliminaciones y sustituciones de palabras documentadas frente a una referencia.</td>
+<td>La autoridad de la persona que llama, el significado y el impacto de negocio de una palabra concreta.</td>
+<td>Diagnosticar cambios en la transcripción. Conserve el texto de referencia, el resultado, la normalización y la política de alineación.</td>
+</tr>
+<tr class="even">
+<th scope="row">Tasa de error de caracteres (CER)</th>
+<td>Diferencias de caracteres según una política de comparación explícita.</td>
+<td>Si un nombre o una dirección se resuelve en el registro previsto.</td>
+<td>Inspeccionar diferencias de ortografía o de escritura. Documente el tratamiento de caracteres y la normalización Unicode.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Precisión del reconocimiento de entidades</th>
+<td>Si los valores requeridos coinciden con los valores confirmados por la persona que llama o autorizados.</td>
+<td>Si el agente seleccionó el flujo de trabajo correcto o usó los campos de forma adecuada.</td>
+<td>Verificar fechas, nombres, direcciones e identificadores. Conserve los valores esperados y las reglas de coincidencia.</td>
+</tr>
+<tr class="even">
+<th scope="row">Precisión de intención</th>
+<td>Si el agente seleccionó la categoría de solicitud prevista o una vía de aclaración permitida.</td>
+<td>Si es correcta la información que la solicitud requiere.</td>
+<td>Evaluar la selección de ruta. Conserve las intenciones anotadas y una política definida para los casos ambiguos.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Precisión (precision), exhaustividad (recall) y F1</th>
+<td>Distintas perspectivas sobre las etiquetas seleccionadas o reconocidas y sobre las que se omiten.</td>
+<td>La gravedad de errores concretos y el resultado final de la tarea.</td>
+<td>Comparar el comportamiento de extracción o clasificación con definiciones de etiquetas coherentes y ejemplos elegibles.</td>
+</tr>
+<tr class="even">
+<th scope="row">Corrección de los argumentos de herramientas</th>
+<td>Si la acción solicitada usó la herramienta permitida y los argumentos normalizados correctos.</td>
+<td>Si el sistema externo registró la acción.</td>
+<td>Comparar el contrato de la solicitud autorizada con la operación y la carga de datos reales.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Resultado de la tarea verificado</th>
+<td>Si el sistema de negocio alcanzó un estado final permitido.</td>
+<td>Cada error de voz o cada momento de esfuerzo de la persona que llama a lo largo del proceso.</td>
+<td>Leer de vuelta el calendario, el ticket u otro resultado de referencia, e inspeccionar el historial de operaciones.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="interpret-accuracy-measures-in-the-context-of-risk">Interpretar las medidas de precisión en función del riesgo</h2>
+<h3 id="distinguish-missed-values-from-invented-values">Distinguir los valores omitidos de los valores inventados</h3>
+<p>La precisión (precision) indica cuánto se puede confiar en los elementos que un sistema etiquetó o extrajo. En un agente de reservas, una fecha inventada puede llevar al agente a actuar con información que la persona que llama no proporcionó. La exhaustividad (recall) indica qué parte de la información relevante encontró el sistema. Una fecha omitida puede provocar una aclaración innecesaria o impedir una reserva. Un equipo puede mejorar un tipo de error mientras empeora otro.</p>
+<p>La medida F1 combina la precisión y la exhaustividad en un único resumen de ambas. Puede ayudar a comparar clasificadores una vez definidos las etiquetas, la coincidencia y el tratamiento de las etiquetas ausentes. Un fallo que implique el registro de un cliente equivocado puede seguir importando más que varios problemas de ortografía. Conserve las categorías de error subyacentes y los ejemplos. La documentación de scikit-learn explica las definiciones y cómo las distintas opciones de promediado cambian lo que representa un resumen. <a class="b2bv3-ref" href="#source-prf">Documentación de métricas de scikit-learn</a></p>
+<p>Para la precisión del reconocimiento de entidades, indique si una coincidencia exige todas las partes de un campo compuesto. «Jueves por la tarde» puede bastar para una búsqueda de disponibilidad. Confirmar una reserva puede requerir una fecha, hora, ubicación y zona horaria exactas. Un campo ausente o sin confirmar no debe desaparecer de la revisión si era obligatorio. Permita formas alternativas solo cuando se resuelvan en el mismo valor de negocio permitido.</p>
+<h3 id="keep-the-consequential-cases-visible">Mantenga visibles los casos de consecuencias importantes</h3>
+<p>Una oficina con mucho volumen que atiende sobre todo preguntas sobre horarios puede mostrar pocos errores en general. Un flujo más pequeño que cancela citas puede cometer errores repetidos sobre la fecha confirmada por la persona que llama. Reporte los resultados por flujo de trabajo, por idioma o canal cuando corresponda, y por gravedad. Muestre por separado la evidencia que falta. Un resumen que pretende representar el tráfico habitual responde a una pregunta distinta de la que responde un conjunto de revisión enriquecido con errores poco frecuentes pero graves.</p>
+<p>Distinga la precisión del reconocimiento de voz de la corrección conversacional. El reconocimiento puede captar las palabras mientras el agente responde a una suposición desactualizada. Una voz agradable puede leer de vuelta una dirección incorrecta. Escuche la parte de la conversación que importa y luego compruebe si la persona que llamaba pudo corregir la respuesta antes de que el sistema actuara. Para la atribución, utilice la <a href="/es/how-voice-ai-handles-dropped-words-and-irregular-pacing">guía de diagnóstico sobre palabras omitidas y pausas</a>.</p>
+<h2 id="build-an-accuracy-report-someone-can-reproduce">Elabore un informe de precisión que otra persona pueda reproducir</h2>
+<p>Identifique el flujo de trabajo, la versión probada, la fuente de la verdad de referencia y los canales representados. Anote qué casos eran elegibles para cada medida y qué hizo el equipo con los resultados sin resolver, el silencio y las trazas no disponibles. Use el mismo conjunto de casos y las mismas políticas en las comparaciones entre versiones siempre que sea posible. Resumir todas las palabras en conjunto da más peso a las llamadas largas. Resumir cada llamada por separado da a las llamadas muy cortas una influencia similar a la de las largas. Elija la vista que se ajuste a la pregunta de diagnóstico y nómbrela de forma explícita.</p>
+<p>Incluya ejemplos de recuperación aceptable además de los fallos. Un error de ASR reparado mediante una aclaración es evidencia sobre el habla y, potencialmente, una transacción exitosa. Una solicitud no autorizada rechazada de forma adecuada es un resultado de política exitoso para ese caso de prueba, sin ser una reserva completada. La <a href="/es/how-to-evaluate-ai-voice-agents">guía de evaluación de agentes de voz</a> muestra cómo encajan estas medidas en una decisión de lanzamiento. La <a href="/es/ai-voice-agent-integrations">guía de integración con sistemas de negocio</a> explica dónde los agentes leen y escriben registros.</p>
+<h3 id="report-conversation-accuracy-when-corrections-change-the-outcome">Reporte la precisión de la conversación cuando las correcciones cambian el resultado</h3>
+<p>Registre cuándo la empresa trata un valor como provisional y cuándo pasa a estar aprobado para su uso. Si una persona que llama dice «en el mostrador Norte» y luego lo corrige a «en el mostrador Sur», una transcripción correcta contiene ambos. Un evaluador que solo comprueba si aparece «Sur» puede pasar por alto un valor obsoleto que aún llega a la herramienta. Revise el punto en que la confirmación cambió la intención o la entidad activa y compare ese estado con el registro aprobado.</p>
+<p>Para una revisión de la precisión de un agente de voz con IA, presente un conjunto reducido de resultados etiquetados que una persona pueda seguir de principio a fin. Incluya un fallo de reconocimiento reparado de forma segura, una solicitud correcta enviada al destino equivocado y un caso en el que no había evidencia disponible. Esto ofrece a un responsable de operaciones una mejor manera de priorizar errores que ver la métrica principal sin las decisiones que la sustentan.</p>
+<h3 id="protect-comparisons-when-the-eligible-cases-change">Proteja las comparaciones cuando cambian los casos elegibles</h3>
+<p>La misma entrada puede ser elegible para una comprobación del habla, una comprobación de aclaración y una comprobación del resultado de negocio. El silencio durante un saludo es útil para medir palabras no solicitadas o respuestas prematuras. No aporta una referencia de transcripción normal. Una solicitud de cambio no autorizada es útil para verificar el rechazo y la ausencia de escrituras. No pertenece a una medida pensada para describir reservas exitosas y elegibles. Conserve la política de elegibilidad junto con el informe para que el siguiente revisor pueda reproducir la comparación.</p>
+<p>Separe los resultados sin resolver de un fallo confirmado. Si falta la lectura de vuelta del calendario pero la transcripción contiene la confirmación correcta, la auditoría sigue sin la evidencia necesaria para llegar a una conclusión sobre la precisión de la transacción.</p>
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3 id="does-a-low-word-error-rate-mean-a-voice-agent-is-accurate-enough-for-bookings">¿Una tasa de error de palabras baja significa que un agente de voz es lo bastante preciso para gestionar reservas?</h3>
+<p>Una tasa de error de palabras baja indica que la transcripción se acerca a su referencia según las reglas establecidas. Para las reservas, verifique los campos confirmados, la acción solicitada y la cita en el calendario correcto.</p>
+<h3 id="when-does-character-error-rate-help">¿Cuándo es útil la tasa de error de caracteres?</h3>
+<p>Ayuda a mostrar diferencias de ortografía o a comparar el resultado del reconocimiento cuando la segmentación de palabras es difícil. Indique la política de caracteres y de normalización, e inspeccione los campos críticos de forma independiente.</p>
+<h3 id="can-a-call-succeed-even-if-the-transcript-contains-an-error">¿Puede una llamada tener éxito aunque la transcripción contenga un error?</h3>
+<p>Sí. El agente puede hacer una pregunta aclaratoria, capturar el valor corregido y completar la acción autorizada. Verifique esa recuperación frente al dato confirmado y al registro de negocio real.</p>
+<h3 id="which-accuracy-result-should-block-a-launch">¿Qué resultado de precisión debería bloquear un lanzamiento?</h3>
+<p>Use la política aprobada del flujo de trabajo. Una acción registrada que sea incorrecta o no autorizada puede bloquear el lanzamiento aunque el resultado agregado de transcripción se vea bien. Muestre la evidencia y la consecuencia de ese caso.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Defina la precisión para las acciones que su equipo gestiona</h2>
+<p>Aporte los campos que verifica su personal y el registro que determina si una acción tuvo éxito. <a href="/demo">Converse sobre los requisitos de aceptación de un flujo de voz personalizado</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">Referencias</h2>
+<ul>
+<li id="source-wer">Clases de error de reconocimiento de palabras y comparación con la referencia. <a href="https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-custom-speech-evaluate-data?pivots=ai-foundry-portal">Test accuracy of a custom speech model</a>
+</li>
+<li id="source-jiw">Medidas de error de reconocimiento y tratamiento documentado de las referencias vacías. <a href="https://jitsi.github.io/jiwer/">JiWER documentation</a>
+</li>
+<li id="source-viet">Segmentación de palabras y función del espacio en blanco entre sílabas en vietnamita. <a href="https://aclanthology.org/L18-1410.pdf">A Fast and Accurate Vietnamese Word Segmenter</a>
+</li>
+<li id="source-prf">Definiciones de precisión, exhaustividad, medida F y opciones de promediado. <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html">precision_recall_fscore_support</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Temas">
+<li>Tasa de error de palabras</li>
+<li>Precisión de entidades</li>
+<li>Finalización de tareas</li>
+<li>Verificación de transacciones</li>
+</ul></article>
+</main>

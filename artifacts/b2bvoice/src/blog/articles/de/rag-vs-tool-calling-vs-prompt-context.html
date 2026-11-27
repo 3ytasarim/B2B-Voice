@@ -1,0 +1,281 @@
+
+<style>
+:root{
+  --ink:#111827;--muted:#5b6472;--line:#e5e7eb;--soft:#f7f8fa;--accent:#111827;
+  --blue:#2563eb;--blue-soft:#eef4ff;--amber:#92400e;--amber-soft:#fff7ed;--green:#166534;
+  --green-soft:#f0fdf4;--max:1120px;
+}.blog-content * {box-sizing:border-box}.blog-content html {scroll-behavior:smooth}.blog-content body {margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}.blog-content a {color:#174ea6;text-decoration-thickness:1px;text-underline-offset:3px}.blog-content a:hover {color:#0f3f8c}.blog-content .wrap {width:min(var(--max),calc(100% - 40px));margin:0 auto}.blog-content header.site {border-bottom:1px solid var(--line);padding:18px 0;background:#fff}.blog-content .brand {font-weight:800;letter-spacing:-.02em;text-decoration:none;color:var(--ink);font-size:20px}.blog-content .breadcrumbs {font-size:14px;color:var(--muted);margin:30px 0 14px}.blog-content .hero {padding:8px 0 38px}.blog-content .kicker {text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:#4b5563}.blog-content h1 {font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.04em;max-width:1000px;margin:12px 0 18px}.blog-content .deck {font-size:clamp(19px,2.2vw,25px);line-height:1.5;color:#374151;max-width:900px;margin:0}.blog-content .meta {display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;color:var(--muted);font-size:14px}.blog-content .answer {margin:8px 0 42px;padding:26px 28px;border:1px solid #c9d7f3;background:var(--blue-soft);border-radius:18px}.blog-content .answer strong.label {display:block;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:#174ea6;margin-bottom:8px}.blog-content .answer p {font-size:20px;line-height:1.55;margin:0}.blog-content .layout {display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:64px;align-items:start}.blog-content article {min-width:0}.blog-content article h2 {font-size:34px;line-height:1.2;letter-spacing:-.025em;margin:56px 0 16px}.blog-content article h3 {font-size:24px;line-height:1.3;letter-spacing:-.015em;margin:34px 0 10px}.blog-content article p {font-size:17.5px;margin:0 0 18px}.blog-content article ul, .blog-content article ol {padding-left:24px;margin:8px 0 22px}.blog-content article li {margin:8px 0;font-size:17px}.blog-content aside.toc {position:sticky;top:24px;border-left:1px solid var(--line);padding-left:20px}.blog-content .toc b {font-size:13px;text-transform:uppercase;letter-spacing:.08em}.blog-content .toc a {display:block;color:#4b5563;text-decoration:none;font-size:14px;line-height:1.35;margin:10px 0}.blog-content .toc a:hover {color:#111827}.blog-content .callout {border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:28px 0;background:#fff}.blog-content .callout.note {background:var(--soft)}.blog-content .callout.misconception {background:var(--amber-soft);border-color:#fed7aa}.blog-content .callout.engineering {background:var(--green-soft);border-color:#bbf7d0}.blog-content .callout .eyebrow {font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:12px;margin-bottom:7px}.blog-content .diagram {margin:28px 0;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfbfc;overflow:auto}.blog-content .diagram-title {font-weight:800;margin-bottom:16px}.blog-content .flow {display:flex;align-items:stretch;gap:10px;min-width:760px}.blog-content .node {flex:1;border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:14px;text-align:center}.blog-content .node b {display:block;margin-bottom:5px}.blog-content .arrow {display:flex;align-items:center;font-weight:800;color:#9ca3af}.blog-content .stack {display:grid;gap:10px}.blog-content .stack .row {border:1px solid #d1d5db;border-radius:12px;padding:14px 16px;background:white}.blog-content .stack .row b {display:inline-block;min-width:180px}.blog-content table {width:100%;border-collapse:collapse;margin:26px 0;font-size:15.5px}.blog-content th, .blog-content td {text-align:left;vertical-align:top;padding:13px 12px;border-bottom:1px solid var(--line)}.blog-content th {font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#4b5563;background:#fafafa}.blog-content .qa {border-top:1px solid var(--line);padding:22px 0}.blog-content .qa h3 {font-size:20px;margin:0 0 8px}.blog-content .sources {margin-top:60px;padding-top:28px;border-top:1px solid var(--line)}.blog-content .sources ol {padding-left:22px}.blog-content .sources li {font-size:14px;color:#4b5563;margin:10px 0}.blog-content .tags {display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 10px}.blog-content .tag {display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:13px;color:#4b5563;background:#fafafa}.blog-content .next {margin:48px 0 20px;padding:24px;border-radius:18px;background:#111827;color:white}.blog-content .next a {color:white}.blog-content footer {border-top:1px solid var(--line);margin-top:60px;padding:28px 0 50px;color:#6b7280;font-size:14px}.blog-content sup a {text-decoration:none;font-weight:700}
+@media(max-width:900px){.blog-content .layout {grid-template-columns:1fr}.blog-content aside.toc {position:static;order:-1;border-left:0;border:1px solid var(--line);padding:18px;border-radius:14px}.blog-content .toc a {display:inline-block;margin:7px 12px 7px 0}
+}
+@media(max-width:640px){.blog-content .wrap {width:min(100% - 26px,var(--max))}.blog-content h1 {font-size:42px}.blog-content article h2 {font-size:29px}.blog-content .answer {padding:20px}.blog-content .answer p {font-size:18px}.blog-content table {display:block;overflow-x:auto;white-space:normal}
+}
+@media print{.blog-content header.site, .blog-content aside.toc, .blog-content footer {display:none}.blog-content .wrap {width:100%}.blog-content .layout {display:block}.blog-content body {font-size:11pt;color:#000}.blog-content a {color:#000;text-decoration:none}.blog-content .callout, .blog-content .diagram, .blog-content .answer {break-inside:avoid}
+}
+</style>
+<main class="wrap">
+<div class="breadcrumbs"><a href="https://b2b-voice.com/">Startseite</a> / <a href="https://b2b-voice.com/blog">Blog</a> / RAG vs. Tool Calling vs. Prompt-Kontext: Wie KI-Sprachagenten auf Unternehmenswissen und Live-Daten zugreifen</div>
+
+<section class="hero">
+  <div class="kicker">Technische Wissensdatenbank von B2B Voice · Artikel #7</div>
+  <h1>RAG vs. Tool Calling vs. Prompt-Kontext: Wie KI-Sprachagenten auf Unternehmenswissen und Live-Daten zugreifen</h1>
+  <p class="deck">Wenn ein Sprachagent eine geschäftliche Frage beantwortet, geht es nicht einfach darum, ob er etwas „weiß“. Entscheidend ist, woher die Antwort stammt, wie aktuell diese Quelle ist und ob sie für genau diese Frage maßgeblich ist.</p>
+  <div class="meta"><span>Veröffentlicht am 30. August 2026</span><span>ca. 15 Min. Lesezeit</span><span>Sprach-KI · RAG · Unternehmensdaten</span></div>
+</section>
+
+<div class="answer">
+  <strong class="label">Kurzantwort</strong>
+  <p>Ein KI-Sprachagent kann Informationen aus vier verschiedenen Quellen beziehen: dem vorhandenen Wissen des Modells, dem Prompt- bzw. Laufzeitkontext, abgerufenem Unternehmenswissen und Live-Geschäftssystemen. Diese Quellen sind nicht austauschbar. RAG eignet sich, um relevante Dokumente zu finden; Live-APIs sind in der Regel besser geeignet, wenn es um den aktuellen, maßgeblichen Zustand geht, etwa die Kalenderverfügbarkeit oder einen Kundendatensatz.</p>
+</div>
+
+<div class="layout">
+<article>
+  <h2 id="four-sources">Hinter einer gesprochenen Antwort können vier verschiedene Quellen stehen</h2>
+  <p>„Die KI kennt unser Unternehmen“ klingt einfach, verbirgt aber mehrere technisch unterschiedliche Mechanismen. Ein produktiver Sprachagent beantwortet eine Frage womöglich aus Anweisungen, die direkt in seinem Laufzeitkontext stehen, eine zweite aus einem abgerufenen Richtliniendokument und eine dritte erst nach einer Abfrage in einem Kalender oder CRM.</p>
+  <p>Diese Quellen haben unterschiedliche Stärken, Fehlerarten und Vertrauenseigenschaften. Wer sie als eine einzige, undifferenzierte „Wissensdatenbank“ behandelt, provoziert vermeidbare Fehler.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">Konzeptmodell von B2B Voice: Woher kommt die Antwort?</div>
+    <div class="stack">
+      <div class="row"><b>1. Modellwissen</b>Was das Basismodell im Training gelernt hat.</div>
+      <div class="row"><b>2. Prompt-/Laufzeitkontext</b>Anweisungen, Gesprächszustand und kleine, explizite Fakten, die zur Laufzeit bereitgestellt werden.</div>
+      <div class="row"><b>3. Abgerufenes Wissen</b>Relevante Textpassagen aus externen Dokumenten oder indexierten Inhalten.</div>
+      <div class="row"><b>4. Maßgeblicher Live-Zustand</b>Aktuelle Daten, die aus einem CRM, Kalender, Bestellsystem, einer Datenbank oder einem anderen Quellsystem gelesen werden.</div>
+    </div>
+  </div>
+
+  <p>Dieses Vier-Schichten-Modell ist ein technisches Rahmenwerk, kein API-Standard. Es lässt sich aber gut auf das Verhalten aktueller Produktivsysteme übertragen. Die Retrieval API von OpenAI etwa führt eine semantische Suche über externe Daten durch, während der Function-Calling-Ablauf die Ausgabe des Modells von der Codeausführung auf Anwendungsseite trennt.<sup><a href="#source-1">1</a></sup><sup><a href="#source-2">2</a></sup></p>
+
+  <div class="callout engineering">
+    <div class="eyebrow">Grundprinzip</div>
+    <p><strong>Wissen ist nicht Handeln.</strong> Eine Rückerstattungsrichtlinie zu finden, ist ein Wissensproblem. Zu prüfen, ob Kunde 48121 bereits eine Rückerstattung erhalten hat, ist ein Problem des aktuellen Zustands. Eine Rückerstattung auszulösen, ist ein Handlungsproblem.</p>
+  </div>
+
+  <h2 id="model-knowledge">1. Modellwissen: nützlich und breit, aber nicht Ihre private Wahrheitsquelle</h2>
+  <p>Ein Sprachmodell bringt allgemeine Fähigkeiten und im Training erlernte Informationen mit. Das ist hilfreich für Sprachverständnis, logisches Schlussfolgern, gängige Fachbegriffe und allgemeinen Weltkontext. Als maßgebliche Quelle für private oder sich schnell ändernde Geschäftsfakten sollte es nicht betrachtet werden.</p>
+  <p>Ein Basismodell weiß nicht automatisch, was vor fünf Minuten in Ihrem CRM passiert ist. Es weiß von sich aus nicht, welche Terminfenster heute Nachmittag frei sind, ob eine bestimmte Rechnung bezahlt ist oder ob Ihr Unternehmen gestern die Stornierungsbedingungen geändert hat. Wenn die Anwendung diese Informationen weder über Kontext noch über Retrieval noch über eine Live-Systemanbindung bereitgestellt hat, sollte nicht davon ausgegangen werden, dass das Modell sie besitzt.</p>
+  <p>Das ist eine Frage der Datenherkunft. Trainingswissen und privater Laufzeitzustand sind unterschiedliche Informationsebenen.</p>
+
+  <h2 id="prompt-context">2. Prompt- und Laufzeitkontext: am besten für kleine, explizite, sitzungsrelevante Informationen</h2>
+  <p>Prompt- oder Laufzeitkontext sind Informationen, die dem Modell für die aktuelle Sitzung direkt mitgegeben werden. Dazu können die Rolle des Agenten, der Tonfall, Geschäftsregeln, der Gesprächszustand, der verifizierte Name einer anrufenden Person, die gewählte Sprache oder eine kleine Menge von Fakten gehören, die stabil genug sind, um sie direkt bereitzustellen.</p>
+  <p>Ein Sprachagent könnte zum Beispiel Folgendes erhalten:</p>
+  <div class="callout note">
+    <ul>
+      <li>„Sie sind der Assistent am Empfang der Northside Dental.“</li>
+      <li>„Stellen Sie keine medizinischen Diagnosen.“</li>
+      <li>„Der verifizierte Vorname der anrufenden Person lautet Maria.“</li>
+      <li>„Die Praxis ist sonntags geschlossen.“</li>
+      <li>„Lassen Sie sich die Terminerstellung bestätigen, bevor Sie einen Termin anlegen.“</li>
+    </ul>
+  </div>
+  <p>Prompt-Kontext ist attraktiv, weil er direkt ist. Es gibt keinen Retrieval-Schritt und keine externe Abfrage, auf die gewartet werden müsste. Zu einer schlechten Wahrheitsquelle wird er jedoch, sobald Teams beginnen, große, sich häufig ändernde operative Datensätze in den Prompt zu kopieren. Lagerbestände, Kundensalden, Terminverfügbarkeit und Bestellstatus ändern sich unabhängig von der Sitzung des Sprachmodells.</p>
+  <p>Dieser letzte Punkt ist eine technische Empfehlung und keine allgemeingültige Regel: Verwenden Sie Prompt-Kontext für kompakte Anweisungen und sitzungsspezifische Fakten; bevorzugen Sie für den operativen Live-Zustand lesende Zugriffe auf die maßgeblichen Systeme.</p>
+
+  <h2 id="rag">3. RAG: relevantes Wissen abrufen, bevor geantwortet wird</h2>
+  <p><strong>Retrieval-Augmented Generation (RAG)</strong> ist ein Ansatz, bei dem die Anwendung relevante Informationen aus externen Wissensquellen abruft und sie dem Modell als Kontext für seine Antwort bereitstellt.</p>
+  <p>Die aktuelle Retrieval API von OpenAI beschreibt dies als semantische Suche über Ihre Daten. Eine semantische Suche kann Ergebnisse liefern, die inhaltlich ähnlich sind, selbst wenn Anfrage und Dokument kaum oder gar keine gemeinsamen Schlüsselwörter haben. Die Suchergebnisse können relevante Chunks, Ähnlichkeitswerte und die Quelldatei enthalten.<sup><a href="#source-1">1</a></sup></p>
+  <p>Eine übliche Retrieval-Pipeline sieht so aus:</p>
+
+  <div class="diagram">
+    <div class="flow">
+      <div class="node"><b>Dokumente</b>Richtlinien, FAQs, Handbücher, Produktinformationen</div><div class="arrow">→</div>
+      <div class="node"><b>Index</b>Inhalte in Chunks zerlegen und für den Abruf repräsentieren</div><div class="arrow">→</div>
+      <div class="node"><b>Anfrage</b>Die anrufende Person stellt eine Frage</div><div class="arrow">→</div>
+      <div class="node"><b>Abruf</b>Relevante Passagen finden</div><div class="arrow">→</div>
+      <div class="node"><b>Antwort</b>Aus den abgerufenen Belegen generieren</div>
+    </div>
+  </div>
+
+  <p>RAG ist besonders nützlich, wenn die Antwort in Dokumentationen steht, die zu umfangreich oder zu veränderlich sind, um sie in jeden Prompt einzufügen: Rückerstattungsrichtlinien, Leistungsbeschreibungen, Produktkataloge, interne Verfahren, Garantiebedingungen oder standortspezifische FAQs.</p>
+  <p>Die konkrete Umsetzung – Chunk-Größe, Embedding-Modell, Ranking-Verfahren, Hybridsuche, Reranking und Indexierungsverhalten – sind jedoch Implementierungsentscheidungen. Die Dokumentation von OpenAI ist ein Beispiel für ein aktuelles Retrieval-System, keine Definition, der jeder RAG-Stack folgen müsste.</p>
+
+  <h2 id="semantic-vs-exact">Semantisches Retrieval ist nicht dasselbe wie ein exakter Datensatzabruf</h2>
+  <p>Diese Unterscheidung gehört zu den wichtigsten Designentscheidungen bei Sprach-KI für Unternehmen.</p>
+  <table>
+    <thead><tr><th>Frage</th><th>Um welche Art von Problem handelt es sich?</th><th>Besserer Ausgangspunkt</th></tr></thead>
+    <tbody>
+      <tr><td>„Wie lautet Ihre Rückerstattungsrichtlinie?“</td><td>Eine passende Richtlinienerklärung finden</td><td>RAG / Wissensabruf</td></tr>
+      <tr><td>„Bieten Sie einen Notdienst an?“</td><td>Stabile Geschäftsinformation</td><td>Prompt-Kontext oder Wissensdatenbank</td></tr>
+      <tr><td>„Ist heute um 15:00 Uhr noch etwas frei?“</td><td>Aktueller operativer Zustand</td><td>Live-Kalenderabfrage</td></tr>
+      <tr><td>„Wurde Kunde 48121 bereits erstattet?“</td><td>Exakter, privater Transaktionszustand</td><td>Authentifizierte CRM-/Zahlungsabfrage</td></tr>
+      <tr><td>„Buchen Sie bitte 15:00 Uhr für mich.“</td><td>Änderung des Zustands in einem externen System</td><td>Autorisiertes Schreib-Tool</td></tr>
+    </tbody>
+  </table>
+  <p>Semantisches Retrieval beantwortet eine Relevanzfrage: <em>Welche Passage hat die größte Nähe zu dem, was die anrufende Person gefragt hat?</em> Eine exakte Systemabfrage beantwortet eine Zustandsfrage: <em>Was sagt der maßgebliche Datensatz aktuell?</em></p>
+  <p>Wenn ein exakter CRM- oder Datenbankdatensatz über eine geeignete API verfügbar ist, bringt es unnötige Unsicherheit mit sich, diese Abfrage durch eine ungefähre semantische Ähnlichkeit zu ersetzen. Dies ist eine technische Schlussfolgerung, die sich aus den unterschiedlichen Mechanismen von Retrieval und Function Calling ergibt, keine Anforderung eines Anbieters.</p>
+
+  <div class="callout misconception">
+    <div class="eyebrow">Verbreiteter Irrtum</div>
+    <p><strong>„Eine Vektordatenbank ist im Grunde das CRM für die KI.“</strong> Nein. Ein Vektorspeicher eignet sich für den Abruf nach semantischer Ähnlichkeit. Ein CRM ist ein operatives System mit konkreten Datensätzen, Berechtigungen, Kennungen, Workflows und aktuellem Transaktionszustand.</p>
+  </div>
+
+  <h2 id="freshness">RAG hat eine versteckte Variable: Aktualität</h2>
+  <p>Ein Retrieval-System kann das richtige Dokument finden und trotzdem eine veraltete Antwort liefern.</p>
+  <p>Angenommen, ein Unternehmen hat zwei Dokumente zur Stornierungsrichtlinie. Das ältere besagt, dass Kunden bis zu 24 Stunden vor einem Termin stornieren können; die neuere Fassung nennt 48 Stunden. Ein Retriever kann beide Dokumente als semantisch relevant einstufen. Wenn die Strategie für Indexierung und Metadaten nicht zwischen aktueller und überholter Richtlinie unterscheidet, kann die Retrieval-Relevanz allein nicht festlegen, welches Dokument für die Antwort maßgeblich sein soll.</p>
+  <p>Die Preview von Azure AI Search, die Microsoft 2026 vorgestellt hat, macht Aktualität ausdrücklich zu einem Retrieval-Thema. Die aktualitätsbewusste Suche kann das Ranking zugunsten neuerer Dokumente verschieben; Microsoft weist jedoch darauf hin, dass Aktualität ein Ranking-Signal bleibt und kein harter Filter ist: Ältere Dokumente können weiterhin erscheinen, wenn sie sehr relevant sind.<sup><a href="#source-3">3</a></sup> Das ist eine anbieterspezifische Funktion, verdeutlicht aber einen allgemeinen Punkt: <strong>Relevanz und Aktualität sind unterschiedliche Dimensionen.</strong></p>
+
+  <div class="callout engineering">
+    <div class="eyebrow">Wissenskonfidenz-Modell von B2B Voice</div>
+    <p>Für produktive Antworten sollten Sie vier getrennte Fragen betrachten: <strong>Retrieval-Relevanz, Autorität der Quelle, Aktualität der Quelle und Faktentreue der Antwort.</strong> Ein hoher Ähnlichkeitswert beantwortet nur die erste dieser Fragen.</p>
+  </div>
+
+  <table>
+    <thead><tr><th>Dimension</th><th>Zu stellende Frage</th><th>Beispiel für einen Fehler</th></tr></thead>
+    <tbody>
+      <tr><td>Retrieval-Relevanz</td><td>Haben wir Inhalte gefunden, die zur Frage passen?</td><td>Ein irrelevanter FAQ-Chunk gewinnt im Ranking.</td></tr>
+      <tr><td>Autorität der Quelle</td><td>Ist dies das System bzw. Dokument, das die Antwort bestimmen sollte?</td><td>Eine alte Verkaufsbroschüre widerspricht der rechtlichen Richtlinie.</td></tr>
+      <tr><td>Aktualität der Quelle</td><td>Ist die Quelle aktuell?</td><td>Überholte Öffnungszeiten werden abgerufen.</td></tr>
+      <tr><td>Faktentreue der Antwort</td><td>Ist das Modell bei den abgerufenen Belegen geblieben?</td><td>Das Modell fügt eine nicht belegte Ausnahme hinzu.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="live-data">4. Maßgeblicher Live-Zustand: wenn die Antwort aus dem Geschäftssystem kommen muss</h2>
+  <p>Manche Fragen sollten überhaupt nicht aus dem Modellgedächtnis oder aus statischen Dokumenten beantwortet werden.</p>
+  <p>Die Kalenderverfügbarkeit ist ein naheliegendes Beispiel. Die FreeBusy API von Google Calendar liefert Frei/Belegt-Informationen für eine definierte Menge von Kalendern und Zeiträumen.<sup><a href="#source-4">4</a></sup> Ein produktiver Agent, der gefragt wird „Ist heute um 15:00 Uhr etwas frei?“, kann über ein authentifiziertes Anwendungs-Tool den Kalender abfragen, statt die Verfügbarkeit aus einem Dokument abzuleiten.</p>
+  <p>Dasselbe Prinzip gilt für:</p>
+  <ul>
+    <li>den aktuellen Bestellstatus;</li>
+    <li>den Zustand von Kundenkonten;</li>
+    <li>Lagerbestände;</li>
+    <li>den Zahlungsstatus;</li>
+    <li>aktive Service-Tickets;</li>
+    <li>aktuelle Preise, sofern sie sich dynamisch ändern;</li>
+    <li>die aktuelle Verfügbarkeit von Personal oder Ressourcen.</li>
+  </ul>
+  <p>Bei diesen Fragen sollte das Quellsystem die Antwort bestimmen. Die Aufgabe des Sprachmodells besteht darin, die Anfrage der anrufenden Person zu verstehen, die passende Operation auszuwählen und das zurückgegebene Ergebnis natürlich zu erklären.</p>
+
+  <h2 id="tool-calling">Wo Tool Calling ins Spiel kommt</h2>
+  <p>Tool Calling ist die Brücke zwischen dem Modell und dem Anwendungscode. Es ist nicht dasselbe wie RAG, auch wenn beide dem Modell Informationen liefern können.</p>
+  <p>OpenAI beschreibt Function Calling als mehrstufigen Austausch: Die Anwendung übergibt dem Modell Tools, das Modell liefert einen Tool-Aufruf zurück, die Anwendung führt Code mit den Eingaben dieses Aufrufs aus, die Anwendung sendet die Tool-Ausgabe zurück, und das Modell erzeugt daraufhin eine Antwort oder fordert weitere Tools an.<sup><a href="#source-2">2</a></sup></p>
+
+  <div class="diagram">
+    <div class="flow">
+      <div class="node"><b>Anrufende Person</b>„Ist 15:00 Uhr verfügbar?“</div><div class="arrow">→</div>
+      <div class="node"><b>Modell</b>Fordert <code>get_availability</code> an</div><div class="arrow">→</div>
+      <div class="node"><b>Anwendung</b>Führt autorisierten Code aus</div><div class="arrow">→</div>
+      <div class="node"><b>Kalender</b>Liefert den aktuellen Zustand</div><div class="arrow">→</div>
+      <div class="node"><b>Modell</b>Erklärt das Ergebnis</div>
+    </div>
+  </div>
+
+  <p>Diese Architektur stützt eine wichtige Unterscheidung: Das Modell kann eine Abfrage <em>anfordern</em>, aber die Anwendung führt sie aus. Diese Trennung wird noch wichtiger, wenn das Tool den Zustand eines externen Systems verändert. Unser nächster Artikel zu <a href="https://b2b-voice.com/ai-voice-agent-integrations">Integrationen für KI-Sprachagenten</a> behandelt APIs, Webhooks, CRM-Schreibzugriffe, Kalenderbuchungen und die Verifizierung von Transaktionen ausführlich.</p>
+
+  <h2 id="decision-table">Prompt vs. RAG vs. Live-Tool: eine praxisnahe Entscheidungstabelle</h2>
+  <table>
+    <thead><tr><th>Informationsart</th><th>Beispiel</th><th>Typische erste Wahl</th><th>Warum</th></tr></thead>
+    <tbody>
+      <tr><td>Verhaltensanweisung</td><td>„Bestätigen Sie vor der Buchung immer das Datum.“</td><td>Prompt</td><td>Direkte Verhaltensregel für den Agenten.</td></tr>
+      <tr><td>Kleiner stabiler Fakt</td><td>„Sonntags haben wir geschlossen.“</td><td>Prompt oder Wissensdatenbank</td><td>Information mit geringer Änderungshäufigkeit.</td></tr>
+      <tr><td>Umfangreiche Dokumentation</td><td>Rückerstattungs-, Garantie- und Serviceregelungen</td><td>RAG</td><td>Nur die relevanten Passagen abrufen.</td></tr>
+      <tr><td>Aktueller, quasi öffentlicher Zustand</td><td>Heute verfügbare Zeitfenster</td><td>Lesendes Live-Tool</td><td>Das Quellsystem ist maßgeblich.</td></tr>
+      <tr><td>Privater Kundenzustand</td><td>Bestell-, Zahlungs- bzw. Kontostatus</td><td>Authentifizierte Live-Abfrage</td><td>Exakter, zugriffsgeschützter Datensatz.</td></tr>
+      <tr><td>Externe Aktion</td><td>Termin anlegen/stornieren</td><td>Autorisiertes Schreib-Tool</td><td>Der Geschäftszustand muss geändert und verifiziert werden.</td></tr>
+    </tbody>
+  </table>
+  <p>Diese Tabelle ist eine Empfehlung für den Produktivbetrieb, kein allgemeingültiger Standard. Manche Architekturen laden stabile Fakten vorab in den Kontext, manche rufen sie dynamisch ab, und manche kombinieren Retrieval mit Tools. Das Design sollte sich an Autorität, Änderungshäufigkeit, Vertraulichkeit und Transaktionssemantik der Daten orientieren.</p>
+
+  <h2 id="failure-modes">Was kann in den einzelnen Wissensschichten schiefgehen?</h2>
+  <table>
+    <thead><tr><th>Schicht</th><th>Fehlerart</th><th>Beispiel</th></tr></thead>
+    <tbody>
+      <tr><td>Modellwissen</td><td>Nicht belegte oder veraltete Annahme</td><td>Das Modell erfindet eine unternehmensspezifische Richtlinie.</td></tr>
+      <tr><td>Prompt-Kontext</td><td>Kontext-Drift oder veralteter eingebetteter Fakt</td><td>Der Prompt nennt noch die Öffnungszeiten des Vormonats.</td></tr>
+      <tr><td>RAG</td><td>Kein Treffer, schlechter Treffer, widersprüchliche Dokumente, veraltete Quelle</td><td>Der Retriever liefert eine alte Stornierungsrichtlinie.</td></tr>
+      <tr><td>Live-Tool</td><td>Authentifizierungsfehler, Timeout, fehlerhaftes Ergebnis, falscher Datensatz</td><td>Die CRM-Abfrage schlägt fehl oder betrifft den falschen Kunden.</td></tr>
+    </tbody>
+  </table>
+  <p>Ein robuster Agent sollte diese Fehler nicht in einem einzigen Fallback wie „Ich weiß es nicht“ zusammenfassen. Das richtige Verhalten hängt davon ab, was ausgefallen ist. Ein fehlender Wissenstreffer kann einen sicheren Fallback oder eine Übergabe an einen Menschen rechtfertigen. Bei einer Live-Abfrage eines Kundendatensatzes kann eine erneute Authentifizierung nötig sein. Ein Timeout kann bedeuten, dass der Zustand unbekannt ist und nicht negativ.</p>
+
+  <h2 id="rag-hallucinations">Verhindert RAG Halluzinationen?</h2>
+  <p>Nein. RAG kann die Verankerung in Fakten verbessern, indem es dem Modell relevante Belege liefert, garantiert aber nicht mathematisch eine korrekte Antwort.</p>
+  <p>Mehrere Dinge können dennoch schiefgehen:</p>
+  <ul>
+    <li>Der Retriever findet keine relevante Quelle;</li>
+    <li>die am höchsten eingestufte Passage ist nicht die maßgebliche;</li>
+    <li>die Quelle selbst ist falsch oder veraltet;</li>
+    <li>zwei Quellen widersprechen sich;</li>
+    <li>Zugriffskontrollen erlauben den Abruf von Inhalten, die die anrufende Person nicht erhalten sollte;</li>
+    <li>das Modell geht beim Generieren seiner Antwort über die abgerufenen Belege hinaus.</li>
+  </ul>
+  <p>Der OWASP-Leitfaden zu Schwachstellen bei Vektoren und Embeddings nennt ausdrücklich unautorisierten Zugriff und Datenabfluss als Risiken in RAG-Systemen, wenn die Zugriffskontrollen auf der Retrieval-Ebene unzureichend oder fehlerhaft abgestimmt sind.<sup><a href="#source-5">5</a></sup> Das ist ein Grund dafür, dass sich Wissensarchitektur und Sicherheitsarchitektur nicht unabhängig voneinander entwerfen lassen.</p>
+
+  <div class="callout misconception">
+    <div class="eyebrow">Verbreiteter Irrtum</div>
+    <p><strong>„Wenn das Retrieval einen hohen Ähnlichkeitswert liefert, ist die Antwort wahr.“</strong> Die Ähnlichkeit misst die Relevanz für die Anfrage. Sie beweist nicht, dass die Quelle aktuell und maßgeblich ist, dass sie für diese anrufende Person freigegeben ist oder dass sie in der generierten Antwort faktentreu wiedergegeben wird.</p>
+  </div>
+
+  <h2 id="security-preview">Auch RAG braucht Berechtigungen</h2>
+  <p>Ein Unternehmen kann ein einziges Dokumenten-Repository haben, das öffentliche FAQs, interne Verfahren, kundenspezifische Dateien und vertrauliche Finanzunterlagen enthält. Alles in ein einziges Retrieval-System zu indexieren bedeutet nicht, dass jede anrufende Person jeden Chunk abrufen können sollte.</p>
+  <p>Produktives Retrieval braucht daher Zugriffsgrenzen, die zum geschäftlichen Kontext passen. Je nach System können dazu getrennte Indizes, Metadatenfilter, Mandantengrenzen, identitätsbewusstes Retrieval, Berechtigungen auf Dokumentebene oder eine Anwendungsschicht gehören, die steuert, welche Quellen einer Sitzung zur Verfügung stehen.</p>
+  <p>Das tiefergehende Bedrohungsmodell – Prompt Injection, Least Privilege, personenbezogene Daten (PII), Tool-Berechtigungen und Datenabfluss bei RAG – gehört in unseren eigenen Leitfaden zur <a href="https://b2b-voice.com/ai-voice-agent-security">Sicherheit von KI-Sprachagenten</a>.</p>
+
+  <h2 id="architecture">Wie sich diese Schichten in eine produktive Sprach-Architektur einfügen</h2>
+  <p>Der Wissenspfad ist Teil der umfassenderen Architektur von Sprachagenten, die in <a href="https://b2b-voice.com/how-ai-voice-agents-work">Wie KI-Sprachagenten funktionieren</a> beschrieben wird. Die Sprache der anrufenden Person wird zunächst zu einem Gesprächsbeitrag, über den das System schlussfolgern kann. Die Reasoning-Ebene entscheidet dann, welche Informationsquelle für die Frage geeignet ist.</p>
+  <div class="diagram">
+    <div class="flow">
+      <div class="node"><b>Gesprächsbeitrag</b>Intent + Entitäten</div><div class="arrow">→</div>
+      <div class="node"><b>Quellenentscheidung</b>Prompt, RAG oder Live-Tool?</div><div class="arrow">→</div>
+      <div class="node"><b>Verankerung</b>Belege/Zustand sammeln</div><div class="arrow">→</div>
+      <div class="node"><b>Antwort</b>Aus der gewählten Quelle antworten</div>
+    </div>
+  </div>
+  <p>Die Architektur wird deutlich sicherer, wenn das System intern erklären kann, woher eine Antwort stammt – nicht unbedingt bei jedem Anruf laut. Diese Herkunftsangabe ermöglicht Fehlersuche, Evaluierung und Richtlinienentscheidungen, die unmöglich sind, wenn jede Antwort mit „das Modell wusste es“ abgetan wird.</p>
+
+
+<h2 id="large-context">Warum ein größeres Kontextfenster das Retrieval-Problem nicht beseitigt</h2>
+<p>Moderne Modelle können große Kontextmengen verarbeiten, was dazu verleiten kann, bei jedem Anruf ein ganzes Unternehmenshandbuch, einen Produktkatalog und ein Richtlinienarchiv zu laden. Ein großer Kontext kann nützlich sein, beseitigt aber nicht die Architekturfragen, für die RAG gedacht ist.</p>
+<p>Erstens löst ein großer Kontext nicht automatisch die <strong>Quellenauswahl</strong>. Enthält der Prompt mehrere Versionen derselben Richtlinie, muss das Modell trotzdem entscheiden, welche maßgeblich ist. Zweitens löst er nicht automatisch das Problem der <strong>Aktualität</strong>. Ein langer Prompt kann veraltete Daten ebenso leicht enthalten wie ein Vektorspeicher. Drittens kann er <strong>Berechtigungen</strong> erschweren, wenn jede Sitzung Informationen erhält, auf die die anrufende Person nie Zugriff haben sollte. Und schließlich kann das Laden unnötigen Materials in jeden Gesprächsbeitrag Kosten und Komplexität erhöhen.</p>
+<p>Aus diesen Gründen ist „RAG oder langer Kontext“ keine Frage, bei der ein Ansatz alles gewinnt. Praktisch geht es darum, welche Informationen standardmäßig vorhanden sein sollten und welche nur bei Bedarf abgerufen werden. Stabile globale Anweisungen können in den Kontext gehören; große oder berechtigungsgeschützte Wissenssammlungen lassen sich unter Umständen besser selektiv abrufen.</p>
+
+<h2 id="no-hit">Was sollte passieren, wenn das Retrieval nichts findet?</h2>
+<p>Ein produktiver Agent braucht eine ausdrückliche Regel für den Fall ohne Treffer. Liefert das Retrieval schwache oder keine Belege, sollte der Agent Unsicherheit nicht stillschweigend in Gewissheit verwandeln.</p>
+<p>Mögliche sichere Verhaltensweisen sind eine Rückfrage, eine andere Retrieval-Anfrage, der Wechsel zu einem Live-System, wenn die Frage eigentlich transaktional ist, eine eingeschränkte Antwort, die klar die verfügbare Beleglage widerspiegelt, oder die Eskalation an einen Menschen. Der richtige Fallback hängt vom geschäftlichen Risiko ab.</p>
+<p>Dasselbe Prinzip gilt, wenn sich Quellen widersprechen. Wenn zwei Dokumente voneinander abweichen, sollte das System eine Regel für die Autorität haben – etwa Dokumentstatus, Gültigkeitsdatum, Zuständigkeit der Fachabteilung oder eine festgelegte maßgebliche Quelle – statt das Sprachmodell raten zu lassen, welche Richtlinie „plausibler klingt“.</p>
+<div class="callout engineering">
+  <div class="eyebrow">Hinweis aus der Technik</div>
+  <p><strong>Retrieval-Fehler sollten beobachtbar sein.</strong> Protokollieren Sie, ob die Antwort aus dem Prompt-Kontext, einer abgerufenen Quelle oder einem Live-Tool stammt, und erfassen Sie genügend Metadaten, um schwache Fälle und Fälle ohne Treffer nachzustellen, ohne dabei unnötig sensible Inhalte offenzulegen.</p>
+</div>
+
+<h2 id="source-attribution">Quellenangaben sind nützlich, auch wenn die anrufende Person nie eine Quelle hört</h2>
+<p>Eine anrufende Person möchte in der Regel nach jeder Antwort keine gesprochene Literaturliste hören. Das Backend kann die Herkunft aber trotzdem festhalten: welcher Dokument-Chunk abgerufen wurde, welches Tool den aktuellen Zustand geliefert hat, welche Datensatz-ID verwendet wurde und welche Quellversion aktiv war.</p>
+<p>Diese Herkunftsinformation hat mehrere betriebliche Vorteile. Sie erleichtert die Fehlersuche bei falschen Antworten, unterstützt Regressionstests nach einer Aktualisierung der Wissensdatenbank und hilft, Probleme der Modellgenerierung von Problemen der Quelldaten zu trennen. Gibt ein Agent eine veraltete Antwort, können Teams klären, ob der Retriever das falsche Dokument gewählt hat, ob der Index veraltete Inhalte enthielt oder ob das Modell gute Belege ignoriert hat.</p>
+<p>Das ist ein weiterer Grund, die vage Formulierung „die KI wusste es“ zu vermeiden. In Produktivsystemen sollte die Herkunft nachprüfbar sein, auch wenn sie für die anrufende Person unsichtbar bleibt.</p>
+
+  <h2 id="evaluation">Was sollten Teams evaluieren?</h2>
+  <p>Wissenstests sollten nicht bei „der Agent hat einmal richtig geantwortet“ aufhören. Ein brauchbarer Evaluierungsdatensatz sollte das Verhalten jeder Quellenschicht getrennt prüfen:</p>
+  <ul>
+    <li>Fragen, die aus stabilem Prompt-Kontext beantwortet werden sollten;</li>
+    <li>semantische Umformulierungen derselben Richtlinienfrage;</li>
+    <li>Anfragen, auf die die Wissensdatenbank keine Antwort enthält;</li>
+    <li>widersprüchliche aktuelle und überholte Dokumente;</li>
+    <li>Fragen zum Live-Zustand, deren Antworten sich zwischen Testläufen ändern;</li>
+    <li>exakte Kundenabfragen mit ähnlichen Namen oder IDs;</li>
+    <li>Berechtigungstests für Dokumente, die nicht zugänglich sein sollten;</li>
+    <li>Tool-Fehler und Timeouts;</li>
+    <li>Prüfungen, ob generierte Antworten den zurückgegebenen Belegen treu bleiben.</li>
+  </ul>
+  <p>Damit entsteht eine saubere Übergabe an die späteren Artikel der Reihe: #8 behandelt die Ausführung, #9 die wiederholbare Evaluierung und #10 Autorisierung und Sicherheit. Werden diese Grenzen klar gehalten, verkommen „RAG“, „Tools“ und „Integrationen“ nicht zu vagen Synonymen.</p>
+
+  <h2 id="faq">Häufig gestellte Fragen</h2>
+  <div class="qa"><h3>Woher weiß ein KI-Sprachagent etwas über mein Unternehmen?</h3><p>Unternehmensinformationen können über den Prompt- bzw. Laufzeitkontext bereitgestellt, aus einer Wissensdatenbank abgerufen oder aus Live-Geschäftssystemen wie einem CRM oder Kalender gelesen werden. Die richtige Quelle hängt davon ab, ob die Information stabil, dokumentarisch, privat oder zeitkritisch ist.</p></div>
+  <div class="qa"><h3>Was ist RAG bei Sprach-KI?</h3><p>RAG ruft relevante Informationen aus externen Wissensquellen ab und stellt sie dem Modell als Kontext bereit, bevor es antwortet. Semantisches Retrieval kann inhaltlich verwandte Passagen auch dann finden, wenn die anrufende Person andere Formulierungen verwendet.</p></div>
+  <div class="qa"><h3>Worin unterscheiden sich RAG und eine API-Abfrage?</h3><p>RAG löst in der Regel ein Relevanzproblem: Welches Dokument oder welche Passage hilft, diese Frage zu beantworten? Eine API-Abfrage kann einen bestimmten aktuellen Datensatz aus einem maßgeblichen externen System lesen. Richtlinienfragen passen oft zu RAG; Live-Verfügbarkeit und Kundenzustand passen oft zu APIs.</p></div>
+  <div class="qa"><h3>Verhindert RAG Halluzinationen?</h3><p>Nein. RAG kann die Verankerung in Fakten verbessern, aber abgerufene Inhalte können fehlen, veraltet, widersprüchlich, unautorisiert oder falsch interpretiert sein. Es ist eine Schicht der Faktenkontrolle, keine Garantie.</p></div>
+  <div class="qa"><h3>Woher weiß ein KI-Agent, wann ein Kalender frei ist?</h3><p>Ein produktiver Agent kann den aktuellen Zustand des Kalenders über ein authentifiziertes Tool oder eine API abfragen. Die FreeBusy API von Google Calendar ist ein Beispiel für einen Endpunkt eines Quellsystems, der Frei/Belegt-Informationen für definierte Kalender und Zeiträume zurückgibt.</p></div>
+  <div class="qa"><h3>Kennt ein KI-Sprachagent automatisch mein CRM?</h3><p>Nein. Der CRM-Zugriff erfordert eine Integration, Zugangsdaten, Berechtigungen und Anwendungslogik. Das Modell kann nur private CRM-Daten nutzen, die das umgebende System bereitstellen darf und dafür ausgelegt ist.</p></div>
+  <div class="qa"><h3>Wann sollten Live-Tools statt RAG verwendet werden?</h3><p>Live-Tools sind in der Regel die bessere Quelle, wenn die Antwort vom aktuellen operativen Zustand, einem exakten privaten Datensatz oder einer externen Aktion abhängt. RAG eignet sich im Allgemeinen besser, um erklärendes Wissen aus Dokumenten abzurufen.</p></div>
+
+  <h2 id="conclusion">Die wichtige Frage lautet nicht „Weiß die KI es?“</h2>
+  <p>Die bessere Frage lautet: <strong>Welche Quelle hat diese Antwort geliefert, und ist diese Quelle für diese Frage maßgeblich?</strong></p>
+  <p>Modellwissen, Prompt-Kontext, RAG und Live-Geschäftssysteme lösen unterschiedliche Probleme. Ein zuverlässiger Sprachagent setzt sie bewusst ein. Stabile Anweisungen können im Kontext stehen. Umfangreiche Dokumentation kann abgerufen werden. Der aktuelle Geschäftszustand sollte aus dem System kommen, dem er gehört. Externe Aktionen sollten über kontrollierte Tools ausgeführt und verifiziert werden.</p>
+  <p>Diese Trennung ist die Grundlage für die nächste Ebene der Produktivarchitektur: <a href="https://b2b-voice.com/ai-voice-agent-integrations">wie KI-Sprachagenten sich mit APIs, CRMs, Kalendern und Workflow-Systemen verbinden</a>.</p>
+
+<div class="sources">
+<h2>Technische Quellen &amp; Forschungsgrundlage</h2>
+<p>Anbieterspezifisches Verhalten wird als Beispiel und nicht als allgemeiner Standard gekennzeichnet. Die technischen Rahmenwerke in diesem Artikel sind redaktionelle Modelle von B2B Voice, die auf den zitierten Primärquellen und der zitierten Forschung aufbauen.</p>
+<ol><li id="source-1"><a href="https://developers.openai.com/api/docs/guides/retrieval" rel="noopener">OpenAI — Retrieval</a>. Offizielle Dokumentation zu semantischer Suche, Vektorspeichern, relevanten Chunks, Ähnlichkeitswerten und Quelldateien.</li><li id="source-2"><a href="https://developers.openai.com/api/docs/guides/function-calling" rel="noopener">OpenAI — Function calling</a>. Offizielle Dokumentation, die den Tool-Calling-Lebenszyklus vom Modell zur Anwendung und die Ausführung auf Anwendungsseite zeigt.</li><li id="source-3"><a href="https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-how-to-configure-freshness" rel="noopener">Microsoft — Configure freshness-aware retrieval in Azure AI Search</a>. Offizielle Dokumentation, die Aktualität als eigenständigen Aspekt des Retrieval-Rankings veranschaulicht; die zitierte Funktion ist eine Preview-Implementierung von Microsoft.</li><li id="source-4"><a href="https://developers.google.com/workspace/calendar/api/v3/reference/freebusy" rel="noopener">Google — Calendar API FreeBusy</a>. Offizielle Referenz zum Abfragen aktueller Frei/Belegt-Informationen aus Kalendern.</li><li id="source-5"><a href="https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/" rel="noopener">OWASP GenAI Security Project — Vector and Embedding Weaknesses</a>. Sicherheitsleitfaden zu RAG-/Vektorrisiken, darunter unautorisierter Zugriff und Datenabfluss.</li></ol>
+</div>
+<div class="tags"><span class="tag">KI-Sprachagenten</span><span class="tag">RAG</span><span class="tag">Tool Calling</span><span class="tag">Wissensdatenbanken</span><span class="tag">Unternehmensdaten</span><span class="tag">Retrieval</span></div>
+<div class="next"><strong>Weiter in der Reihe:</strong><br><a href="https://b2b-voice.com/ai-voice-agent-integrations">Wie KI-Sprachagenten sich mit Geschäftssystemen verbinden: APIs, Webhooks, CRMs, Kalender und Workflow-Automatisierung →</a></div>
+</article>
+</div>
+</main>

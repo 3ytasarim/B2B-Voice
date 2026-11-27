@@ -1,0 +1,298 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Branchenlösungen</p>
+    <h1 id="b2bv-title">KI-Sprachagenten für die Immobilienbranche: Lead-Qualifizierung, Objektanfragen und Terminplanung</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Ein eingehender Anruf zu einem Objekt kann lange nach der Veröffentlichung der Anzeige oder nach einer Änderung des Inseratsstatus eintreffen. Richten Sie den Telefon-Workflow an verifizierten Objektinformationen, einem einheitlichen nächsten Schritt und dem Besichtigungs- oder CRM-Eintrag aus, den Ihr Team tatsächlich nutzt.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurzantwort</h2>
+        <p>Setzen Sie einen Sprachagenten für die Immobilienbranche ein, um das Anliegen der anrufenden Person zu erfassen, freigegebene öffentliche Inseratsinformationen vorzulesen und eine Besichtigung oder einen Rückruf weiterzuleiten. Wenden Sie neutrale Aufnahmeregeln an und erhalten Sie den Weg zu Mitarbeitenden. Bestätigen Sie eine Besichtigung erst, wenn das autorisierte System das Objekt, den Termin und eine gegebenenfalls erforderliche Freigabe verifiziert hat.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Ratgeber</p>
+      <ol>
+<li><a href="#intake">Den ersten Anruf weiterleiten</a></li>
+<li><a href="#listing-data">Freigegebene Inseratsdaten nutzen</a></li>
+<li><a href="#fair-housing">Fair-Housing-Kontrollen prüfen</a></li>
+<li><a href="#showing-workflow">Besichtigungstermine verifizieren</a></li>
+<li><a href="#crm">CRM-Nachfassaktionen zuweisen</a></li>
+<li><a href="#pilot">Das Pilotprojekt messen und testen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Prüfen Sie den Zugriff auf Inserate und die freigegebenen Felder, und legen Sie die Verantwortung für veraltete oder widersprüchliche Informationen beim Team fest.</li>
+<li>Wenden Sie Fair-Housing-Kontrollen an und vergleichen Sie gleichwertige synthetische Anrufe daraufhin, ob alle den gleichen Zugang zu nächsten Schritten haben.</li>
+<li>Halten Sie Besichtigungsanfragen, bestätigte Termine und die CRM-Zuständigkeit systemübergreifend nachvollziehbar.</li>
+        </ul>
+      </section>
+<section id="intake">
+  <h2>Was kann ein Sprachagent für die Immobilienbranche beim ersten Anruf leisten?</h2>
+  <p>Der erste Anruf beginnt oft mit einer unvollständigen Objektangabe. Jemand sieht ein Schild, hört in einer Anzeige einen Straßennamen oder ruft im Büro wegen eines Inserats an, das über Nacht auf „reserviert“ gesetzt wurde. Fragen Sie, ob die anrufende Person kaufen, mieten oder verkaufen möchte, einen bestehenden Termin prüfen will oder eine Hausverwaltung erreichen möchte. Eine gut gestaltete Anfrageaufnahme kann diese Anliegen den jeweils Zuständigen zuordnen, ohne jeden Anruf als Verkaufs-Lead zu behandeln.</p>
+  <p>B2B Voice kann einen eingehenden Telefonagenten für Objektanfragen, neutrale Anfrageaufnahme und Besichtigungswünsche eines Maklerbüros entwerfen. Bringen Sie die freigegebenen Inseratsfelder, die Regeln zur Bestätigung einer Besichtigung und die CRM-Zuständigkeit für jede Übergabe mit. Das betreute Design kann dann abbilden, was das Maklerbüro weitergeben darf und welche Fälle lizenziertes Personal erfordern.</p>
+<p>Erfassen Sie einen Objektbezug und den gewünschten nächsten Schritt. Mit Erlaubnis zur Nutzung des freigegebenen Kontaktkanals halten Sie einen Namen und eine Rückrufnummer fest, falls ein Nachfassen nötig ist. Interessenten für einen Kauf nennen mitunter von sich aus einen Zeitrahmen oder eine Preisspanne. Diese Angaben können einem lizenzierten Teammitglied helfen, sich nach den freigegebenen Regeln auf ein Gespräch vorzubereiten. Machen Sie deutlich, welche Felder optional sind, und halten Sie einen Weg zum Team offen, falls die anrufende Person mit jemandem sprechen möchte, bevor sie diese Angaben macht. Bestehende Mieter, Dienstleister und Makler sollten an die zuständigen Mitarbeitenden weitergeleitet werden, ohne ein Interessentenformular auszufüllen.</p>
+  <div class="b2bv-table" role="region" aria-label="Entscheidungen bei der Anrufaufnahme in der Immobilienbranche" tabindex="0">
+    <table>
+      <caption>Die Weiterleitung richtet sich nach dem Anliegen und nach den Informationen, die das Büro verifizieren kann</caption>
+      <thead><tr><th scope="col">Anliegen der anrufenden Person</th><th scope="col">Was der Sprach-Workflow tun kann</th><th scope="col">Wer die nächste Entscheidung trifft</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Kaufinteressent fragt nach einem einzelnen Inserat</th><td>Die Adresse oder Inseratsnummer abgleichen und die für die Öffentlichkeit freigegebenen Felder vorlesen.</td><td>Die zuständige Maklerin oder der zuständige Makler klärt Angebotsbedingungen, Vertretung und alle nicht verifizierten Fakten.</td></tr>
+        <tr><th scope="row">Mietinteressent bittet um eine Besichtigung</th><td>Das Inserat, die gewünschten Besichtigungszeiten und zulässige Rückrufdaten erfassen.</td><td>Das Vermietungsteam verantwortet die Prüfung von Anträgen, Vorkehrungen für Menschen mit Behinderung und Ausnahmen.</td></tr>
+        <tr><th scope="row">Eigentümer möchte verkaufen und sprechen</th><td>Den Standort des Objekts und eine bevorzugte Rückrufzeit erfassen.</td><td>Ein lizenzierter Makler klärt Preisfindung, Bewertung und Vermarktungsberatung.</td></tr>
+        <tr><th scope="row">Bewohner meldet ein Problem</th><td>Dem Service-Verfahren des Objekts oder dem freigegebenen Verfahren für dringende Fälle folgen.</td><td>Das Objektpersonal verantwortet die Priorisierung und die Nachverfolgung.</td></tr>
+        <tr><th scope="row">Makler möchte Besichtigungshinweise</th><td>Das Inserat identifizieren und die Anfrage über den freigegebenen Verifizierungskanal weiterleiten.</td><td>Autorisiertes Personal verwaltet Zugangscodes und bewohnerspezifische Anweisungen.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Geben Sie der Empfangskraft eine Möglichkeit, Weiterleitungen über ein Sprachmenü, automatisierte Anfragebearbeitung und Anliegen nur für Mitarbeitende voneinander zu unterscheiden. Eine einfache Weiterleitung ist nützlich, wenn die anrufende Person bereits weiß, wen sie braucht. Ein strukturiertes Gespräch hilft, wenn das Büro Objekt, Anliegen und Zuständigen über mehrere Systeme hinweg ermitteln muss. Mehr dazu, wo welches Design passt, finden Sie unter <a href="/de/ai-voice-agent-vs-ai-receptionist-vs-ivr">Sprachagenten, Rezeptionisten und IVR</a>.</p>
+</section>
+
+<section id="listing-data">
+  <h2>Wie sollte der Agent Fragen zu einem Inserat beantworten?</h2>
+  <p>Wählen Sie für jedes Feld eine maßgebliche Quelle. Ein Maklerbüro könnte einen freigegebenen Feed für Angebotspreis und Inseratsstatus nutzen, ein separates Besichtigungssystem für Terminfenster und eine Wissensdatenbank des Büros für Hinweise zum Antragsverfahren. Legen Sie für jede Quelle eine verantwortliche Person und eine Ablaufregel fest. Verifizieren Sie Adresse, Ort und Einheit oder Inseratsnummer, bevor Sie Details besprechen. Zwei Reihenhäuser mit derselben Hausnummer oder benachbarte Einheiten können unterschiedliche Verfügbarkeiten und Konditionen haben.</p>
+  <p>Die Real Estate Standards Organization veröffentlicht ein Data Dictionary mit standardisierten Feldern und unterstützt standardisierte Austauschmethoden. RESO erklärt, dass der tatsächliche Datenzugriff über den jeweils zuständigen MLS oder Datenanbieter erfolgt. Klären Sie, welcher Feed, welche Zugangsdaten und welche Nutzungsrechte diesen Telefon-Workflow abdecken. Dass ein Feld in einem Standard existiert, begründet nicht das Recht, es offenzulegen. Prüfen Sie die für die telefonische Nutzung freigegebenen Felder, ihre Definitionen und ihre Aktualitätsanforderungen. <a href="https://www.reso.org/data-dictionary/">RESO Data Dictionary</a> · <a href="https://www.reso.org/ht-faq/new-faq-question-156/">RESO and access to MLS data</a></p>
+  <p>Behandeln Sie ein fehlendes Feld, einen veralteten Aktualisierungszeitstempel und eine Abweichung zwischen zwei Quellen als drei getrennte Zustände. Liegt der zuletzt verifizierte Datensatz jenseits der Aktualitätsgrenze des Teams, kann der Workflow einen Rückruf anbieten und den widersprüchlichen Status markieren. Wenn das Büro die Verwendung eines Zeitstempels erlaubt, nennen Sie, wann der Status zuletzt geprüft wurde. Schließen Sie aus einer leeren Antwort nicht, dass ein Inserat wieder verfügbar ist, schätzen Sie keine Wohnfläche anhand eines Fotos, und sagen Sie der anrufenden Person nicht, für welche Finanzierung sie sich qualifiziert. Leiten Sie Anfragen nach Beratung zur Transaktion an das zuständige lizenzierte Teammitglied weiter.</p>
+  <p>Veröffentlichen Sie eine kurze Checkliste auf Feldebene, die das Inseratspersonal pflegen kann. Legen Sie für jede zulässige Antwort die Quelle fest, ob die Öffentlichkeit sie hören darf und was der Agent tun soll, wenn die Quelle unvollständig ist. Verankern Sie diese Kontrollen in der tatsächlichen Integration, damit private Anmerkungen nie in den Telefon-Workflow gelangen.</p>
+</section>
+
+<section id="fair-housing">
+  <h2>Was sollte ein Maklerbüro in Bezug auf Fair Housing prüfen?</h2>
+  <p>Der bundesrechtliche Fair Housing Act verbietet bestimmte Formen der Diskriminierung bei erfassten Wohnungsgeschäften aufgrund von Rasse, Hautfarbe, nationaler Herkunft, Religion, Geschlecht, Familienstand mit Kindern und Behinderung. Die Vorschriften des HUD beschreiben diskriminierendes Steering und beziehen mündliche Aussagen in die Regeln zu diskriminierenden Anzeigen, Aussagen und Mitteilungen ein. Das Maklerbüro sollte die für seinen Markt geltenden bundesstaatlichen, einzelstaatlichen und lokalen Regeln prüfen, einschließlich zusätzlicher geschützter Kategorien und Anforderungen. <a href="https://uscode.house.gov/us/usc/119-124/t42/s3604/">42 USC § 3604</a> · <a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.70">24 CFR § 100.70 on prohibited sale and rental practices</a> · <a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.75">24 CFR § 100.75 on discriminatory statements</a></p>
+  <p>Definieren Sie Lead-Qualifizierung als das Erfassen der gewünschten Leistung, des Marktes, des Objekts und der zeitlichen Präferenzen der anrufenden Person für die Weiterleitung. Stellen Sie neutrale Fragen, die diesem Zweck dienen. Ein KI-Telefon-Workflow sollte Personen nicht bewerten, nicht über die Eignung für einen Antrag entscheiden, nicht aus einem Namen oder Akzent demografische Merkmale ableiten und keine Gegenden auf Grundlage geschützter Merkmale empfehlen. Nutzen Sie verifizierte, zulässige Objektfakten und einen gleichwertigen Nachfassweg für Anrufende mit vergleichbaren Anliegen. Anfragen nach Vorkehrungen für Menschen mit Behinderung oder nach Hilfe beim Antragsverfahren sollten gemäß der Büro-Richtlinie die benannte Mitarbeiterin oder den benannten Mitarbeiter erreichen.</p>
+  <p>Stellen Sie sich eine anrufende Person vor, die fragt: „Was für Menschen wohnen in diesem Gebäude?“ Eine vom Maklerbüro freigegebene Antwort kann überprüfbare Objektdetails und denselben Besichtigungsablauf nennen, der auch anderen Anrufenden offensteht. Halten Sie die Anfrage für ein Teammitglied fest, falls die anrufende Person weitere Hilfe wünscht. Das System sollte die Nachbarschaft nicht als geeignet für eine bestimmte Art von Haushalt beschreiben, die von der anrufenden Person freiwillig genannten Informationen nicht als Aufnahmewert behandeln und Inserate nicht auf dieser Grundlage ausschließen.</p>
+  <p>Führen Sie aufeinander abgestimmte synthetische Anrufe mit demselben Objekt, denselben Präferenzen und derselben Verfügbarkeit durch. Ändern Sie nur ein irrelevantes, freiwillig genanntes Detail oder eine andere Bedingung, die das Maklerbüro testen möchte, etwa die Aussprache der Adresse. Vergleichen Sie die angebotenen Objekte, die Formulierung des nächsten Schritts, die Weiterleitung, die Terminoptionen und den Fallback. Prüfen Sie sowohl das Transkript als auch das Entscheidungsprotokoll. Überprüfen Sie Regeln, die auf Postleitzahlen, Sprache oder anderem Kontext beruhen, damit sie der freigegebenen Tätigkeit dienen, etwa einer von der anrufenden Person gewünschten Sprachunterstützung, und den gleichen Zugang zum nächsten Schritt wahren. Die Einwilligung zum Rückruf bei einer bestimmten eingehenden Anfrage sollte getrennt von einer geplanten ausgehenden Kampagne behandelt werden. Falls das Team automatisierte Anrufe oder Textnachrichten hinzufügt, sollte es die geltenden Kommunikationsvorschriften und Kanaleinstellungen prüfen. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+</section>
+
+<section id="showing-workflow">
+  <h2>Wie wird aus einer Besichtigungsanfrage ein bestätigter Termin?</h2>
+  <p>Der B2B Voice Real Estate Intake and Showing Workflow trennt zwischen einem gewünschten Zeitpunkt, einem angebotenen freien Termin und einem bestätigten Termin. Ein Maklerbüro kann die ersten beiden Schritte mit einer Nachfass-Warteschlange für Mitarbeitende betreiben. Eine direkte Buchung erfordert zusätzlich kompatible Tools, Terminierungsbefugnis und einen Nachweis für den Endstatus.</p>
+  <ol class="b2bv-flow b2bv-flow--four" aria-label="Anfrageaufnahme und Besichtigungs-Workflow in der Immobilienbranche">
+    <li><strong>Das Anliegen erfassen</strong><span>Inseratsbezug, nächsten Schritt der anrufenden Person und freigegebene Kontaktmethode bestätigen.</span></li>
+    <li><strong>Die Besichtigungsregeln prüfen</strong><span>Aktuellen Inseratsstatus, Zeitzone, Besichtigungsfenster und eine gegebenenfalls erforderliche Freigabe bestätigen.</span></li>
+    <li><strong>Das Ergebnis festhalten</strong><span>Einen verifizierten Termin oder eine ausstehende Anfrage mit einem verantwortlichen Teammitglied speichern.</span></li>
+    <li><strong>Das Nachfassen abgleichen</strong><span>Korrekturen, Stornierungen, wiederholte Anfragen und gescheiterte Übergaben anhand des gespeicherten Eintrags weiterleiten.</span></li>
+  </ol>
+  <p>Das Besichtigungssystem kann eine Freigabe durch die Maklerin oder den Makler, eine Mitteilung an die Bewohner oder eine andere Bedingung verlangen, bevor ein Termin endgültig ist. Zuständige Person, Objekt und das tatsächliche Besichtigungssystem müssen übereinstimmen. Ein öffentlicher Kalender kann dem Agenten anzeigen, dass ein Zeitfenster frei erscheint, während für den Zutritt zum Inserat eine Freigabe nötig ist. Nachdem die anrufende Person einen Termin gewählt hat, übermitteln Sie den autorisierten Vorgang und verifizieren Sie den Endstatus und die Referenz. Verwenden Sie dieselbe Anfragereferenz, wenn das Ergebnis unklar ist, und prüfen Sie vor einem erneuten Versuch, ob bereits ein Termin existiert. Siehe <a href="/de/ai-voice-agent-integrations">wie Aktionen in Geschäftssystemen angebunden und verifiziert werden</a>.</p>
+  <div class="b2bv-table" role="region" aria-label="Status von Besichtigungsterminen und Nachrichten an die anrufende Person" tabindex="0">
+    <table>
+      <caption>Was die anrufende Person bei jedem Besichtigungsstatus hören sollte</caption>
+      <thead><tr><th scope="col">Systemzustand</th><th scope="col">Ergebnis aus Sicht der anrufenden Person</th><th scope="col">Zu erhaltender Eintrag</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Wunschzeit erfasst</th><td>Das Team hat die Anfrage erhalten und prüft die Verfügbarkeit.</td><td>Objekt, gewünschte Zeit, Zeitzone, Zuständige und nächster Schritt.</td></tr>
+        <tr><th scope="row">Freigabe ausstehend</th><td>Der Termin wartet auf Freigabe, mit der vom Büro freigegebenen Formulierung zum weiteren Vorgehen.</td><td>Besichtigungsanfrage-ID und wer sie freigeben oder ablehnen kann.</td></tr>
+        <tr><th scope="row">Im Besichtigungssystem bestätigt</th><td>Das verifizierte Datum, die Uhrzeit, das Objekt und die freigegebenen Treffpunkthinweise nennen.</td><td>Termin-ID, Endstatus, Ort und Bestätigung.</td></tr>
+        <tr><th scope="row">Termin vergeben oder storniert</th><td>Eine geeignete Alternative anbieten oder der anrufenden Person helfen, Mitarbeitende zu erreichen.</td><td>Aktueller Objekt- und Besichtigungsstatus, einschließlich eines gegebenenfalls betroffenen früheren Termins.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>In einem fiktiven Pilotprojekt bittet eine anrufende Person darum, Einheit 2 in der 41 Alder Lane am Mittwoch nach der Arbeit zu besichtigen. Das Büro hat ein Zeitfenster um 17:30 Uhr Ortszeit, doch das Objekt erfordert eine Freigabe. Der Workflow legt genau eine ausstehende Anfrage an und teilt der anrufenden Person mit, was als Nächstes geschieht. Ruft dieselbe Person erneut an, zeigen CRM und Besichtigungsverlauf die bestehende Anfrage. Ein später freigegebener Termin kann über den freigegebenen Kanal bestätigt werden. Wurde der Termin an eine andere Person vergeben, kann das Team einen anderen verifizierten Zeitpunkt anbieten und die ursprüngliche Anfrage nachvollziehbar halten. Führen Sie beide Varianten mit demselben Trainingsdatensatz durch.</p>
+<p>Bevor Sie eine Besichtigung zusagen, <a href="/de/how-to-integrate-ai-voice-agents" data-phase2-link="true">prüfen Sie die Kompatibilität mit Ihren bestehenden Tools</a> und wer die Buchung steuert.</p>
+</section>
+
+<section id="crm">
+  <h2>Was gehört ins CRM, und wer fasst nach?</h2>
+  <p>Speichern Sie eine Interaktion beim richtigen Kontakt und im richtigen Objektkontext. Ein zweiter Anruf zu einem anderen Inserat kann eine eigene Opportunity begründen. Ein zweiter Anruf zu einer ausstehenden Besichtigung erfordert möglicherweise nur eine neue Aktivität zur selben Anfrage. Verwenden Sie normalisierte Kontaktinformationen mit einer Objekt-ID, dem Anfragetyp und einer stabilen Interaktions- oder Buchungsreferenz. Eine gemeinsam genutzte Haushaltsnummer genügt allein nicht, um zwei Datensätze zusammenzuführen. Bewahren Sie relevante Zeitstempel und Zuständigkeitswechsel auf, ohne einen größeren Umfang personenbezogener Angaben abzufragen.</p>
+  <p>Wählen Sie die Regel des Maklerbüros, die die nächste Aktion zuweist. Ein benannter Inseratsmakler kann Objektfragen übernehmen, ein rotierendes Team Rückrufe von Kaufinteressenten, und ein Vermietungsleiter kann Anträge oder Anfragen zu Vorkehrungen für Menschen mit Behinderung prüfen. Legen Sie einen besetzten Fallback fest für falsche Nummern, inaktive Nutzer und Bürozeiten, die je nach Markt abweichen. Prüfen Sie, ob eine Übergabe tatsächlich jemanden erreicht hat. Ist das nicht der Fall, sollte die empfangende Aufgabe den gewünschten nächsten Schritt zeigen und wann sie Aufmerksamkeit braucht. Die zuständige Person sollte überfällige und nicht zugewiesene Einträge einsehen können. Siehe <a href="/de/ai-voice-agent-reliability">wie Sie die Live-Übergabe und das Fallback-Verhalten testen</a>.</p>
+</section>
+
+<section id="pilot">
+  <h2>Woran erkennt ein Maklerbüro, ob ein Pilotprojekt zur Anfrageaufnahme geholfen hat?</h2>
+  <p>Beginnen Sie mit einer Anfragenummer oder einer Inseratsgruppe und vergleichen Sie gleichwertige Tage und Uhrzeiten. Zählen Sie qualifizierte Anfragen, vollständige und korrekt zugewiesene Anfragen, aus dem Besichtigungssystem bestätigte Besichtigungen, Terminverschiebungen, doppelte Datensätze und überfällige Rückrufe. Weisen Sie aus, wie viele Anrufe ein lizenziertes Teammitglied erreicht haben, wenn dies erforderlich war. Eine höhere Annahmequote ist aussagekräftig, wenn die Datensätze zeigen, wie die Anrufenden Hilfe erhalten haben. Halten Sie fest, wie oft das Team eine Antwort korrigiert oder eine fehlende Objektzuordnung geklärt hat.</p>
+  <p>Testen Sie mit synthetischen Anrufen die falsche Einheit, einen Statuswechsel während des Gesprächs, einen veralteten Feed, einen Timeout der Besichtigungs-API, eine unbeantwortete Übergabe, eine Anfrage nach Vorkehrungen für Menschen mit Behinderung und gepaarte Fair-Housing-Szenarien. Proben Sie die Rückleitung zur bestehenden Büronummer und den Abgleich ausstehender Aktionen. Erwägen Sie, den Sprachagenten bestätigte Besichtigungen erst schreiben zu lassen, nachdem das Team die Zustände und Prüfkontrollen freigegeben hat. Der <a href="/de/how-to-test-an-ai-voice-agent">Leitfaden zum Produktionstest</a> bietet eine Struktur für diese Prüfungen.</p>
+  <p>B2B Voice entwirft maßgeschneiderte Telefon-Workflows rund um die freigegebenen Daten, das Personal und die Weiterleitungsregeln des Maklerbüros. Eine nützliche Demo beginnt mit einem fiktiven Inserat, einer Frage, die das Büro beantworten kann, und einer Besichtigungsrichtlinie, die das Team verifizieren kann. Beziehen Sie die Verantwortlichen für Lizenzierung und Betrieb ein, damit sie entscheiden können, wo der Workflow handeln darf und wo ein Rückruf besser passt.</p>
+<p>Wenn das Maklerbüro einen Rückrufvergleich nutzt, <a href="/de/cost-of-missed-business-calls" data-phase2-link="true">messen Sie erreichte und erfüllte Opportunities</a> getrennt und verfolgen Sie die letzte Aktion im CRM.</p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Kann ein KI-Rezeptionist in der Immobilienbranche Fragen zu Inseraten beantworten?</h3><p>Ja, wenn das Maklerbüro den Workflow autorisiert, aktuelle öffentliche Felder für das richtige Objekt zu verwenden. Ein unvollständiger oder veralteter Datensatz sollte zu einem freigegebenen Nachfassen durch Mitarbeitende führen.</p></div>
+<div class="b2bv-faq-item"><h3>Kann ein Sprachagent einen MLS-Feed direkt auslesen?</h3><p>Das hängt vom Datenanbieter, den Zugriffsrechten, der zulässigen Nutzung und der Integration des Maklerbüros ab. Die Standards von RESO unterstützen den Datenaustausch, der Zugriff erfolgt jedoch über den jeweils zuständigen MLS oder Anbieter.</p></div>
+<div class="b2bv-faq-item"><h3>Was darf der Agent fragen, um eine Anfrage zu qualifizieren?</h3><p>Verwenden Sie neutrale Felder, die nötig sind, um das Anliegen zu verstehen und weiterzuleiten, etwa Inseratsbezug, Zeitrahmen und bevorzugte Art des Nachfassens. Entscheidungen über die Eignung für eine Wohnung und über Vorkehrungen für Menschen mit Behinderung bleiben beim autorisierten Personal.</p></div>
+<div class="b2bv-faq-item"><h3>Kann der Agent eine Besichtigung automatisch buchen?</h3><p>Er kann eine Besichtigung bestätigen, nachdem das autorisierte Besichtigungssystem Objekt, Zeitpunkt und die erforderliche Freigabe verifiziert und einen bestätigten Termineintrag zurückgegeben hat.</p></div>
+<div class="b2bv-faq-item"><h3>Wie sollte das Maklerbüro seine Fair-Housing-Kontrollen testen?</h3><p>Geben Sie aufeinander abgestimmten synthetischen Anrufenden gleichwertige Anliegen und vergleichen Sie die angebotenen Inserate, Terminoptionen, Warteschlange und das Nachfassen. Lassen Sie das Maklerbüro seine Skripte und die geltenden Regeln prüfen.</p></div>
+<div class="b2bv-faq-item"><h3>Wie erscheinen wiederholte Anrufe im CRM?</h3><p>Verknüpfen Sie die Interaktion mit dem passenden Kontakt und der objektspezifischen Anfrage, wenn Identität und Kontext übereinstimmen. Weisen Sie jeder ausstehenden Anfrage genau eine verantwortliche Person zu und bewahren Sie ihren Statusverlauf auf.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Einen Besichtigungs-Workflow für die Immobilienbranche prüfen</h2>
+        <p>Bringen Sie ein fiktives Inserat, die Felder, die Ihr Team offenlegen darf, und die freigegebene Besichtigungsrichtlinie mit. Gehen Sie in einer B2B Voice Demo eine Anfrage und ihre Bestätigung durch.</p>
+        <a href="/demo">Demo eines Workflows für die Immobilienbranche anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="https://www.reso.org/data-dictionary/">RESO Data Dictionary</a> <span class="b2bv-source-note">(Real Estate Standards Organization)</span></li>
+<li><a href="https://www.reso.org/ht-faq/new-faq-question-156/">RESO and access to MLS data</a> <span class="b2bv-source-note">(Real Estate Standards Organization)</span></li>
+<li><a href="https://uscode.house.gov/us/usc/119-124/t42/s3604/">42 USC § 3604</a> <span class="b2bv-source-note">(Office of the Law Revision Counsel)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.70">24 CFR § 100.70 on prohibited sale and rental practices</a> <span class="b2bv-source-note">(U.S. Department of Housing and Urban Development via eCFR)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.75">24 CFR § 100.75 on discriminatory statements</a> <span class="b2bv-source-note">(U.S. Department of Housing and Urban Development via eCFR)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/de/what-is-b2b-voice">B2B Voice – Unternehmen und Umsetzungsansatz</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>Lead-Aufnahme in der Immobilienbranche</li>
+<li>Fair Housing</li>
+<li>Objektbesichtigungen</li>
+<li>CRM-Workflows</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

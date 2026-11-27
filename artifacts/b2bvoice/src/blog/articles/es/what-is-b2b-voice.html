@@ -1,0 +1,522 @@
+
+<style>
+:root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --line: #dce2ea;
+      --soft: #f5f7fa;
+      --accent: #2146d0;
+      --accent-soft: #eef2ff;
+      --success-soft: #eef9f3;
+      --max: 860px;
+    }.blog-content * { box-sizing: border-box; }.blog-content html { scroll-behavior: smooth; }.blog-content body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }.blog-content a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }.blog-content .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }.blog-content .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6ff;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #2741a8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }.blog-content h1, .blog-content h2, .blog-content h3 {
+      color: #101827;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }.blog-content h1 {
+      margin: 0;
+      max-width: 800px;
+      font-size: clamp(38px, 6vw, 62px);
+    }.blog-content .dek {
+      max-width: 780px;
+      margin: 22px 0 14px;
+      color: #445066;
+      font-size: 21px;
+      line-height: 1.55;
+    }.blog-content .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }.blog-content .quick-answer {
+      margin: 34px 0 42px;
+      padding: 24px 26px;
+      border: 1px solid #ccd6ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }.blog-content .quick-answer strong.label {
+      display: block;
+      margin-bottom: 8px;
+      color: #243b9b;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .quick-answer p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }.blog-content h2 {
+      margin: 50px 0 18px;
+      font-size: 31px;
+    }.blog-content h3 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+    }.blog-content p { margin: 0 0 18px; }.blog-content ul, .blog-content ol {
+      padding-left: 24px;
+      margin: 12px 0 22px;
+    }.blog-content li { margin: 7px 0; }.blog-content .thesis {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border-radius: 12px;
+      background: var(--success-soft);
+      border: 1px solid #cfe9d8;
+      font-size: 20px;
+      font-weight: 750;
+      line-height: 1.5;
+    }.blog-content .table-wrap {
+      margin: 26px 0 34px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }.blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      font-size: 15px;
+      line-height: 1.55;
+    }.blog-content th, .blog-content td {
+      padding: 15px 16px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }.blog-content th {
+      background: var(--soft);
+      color: #2a3548;
+      font-weight: 800;
+    }.blog-content tr:last-child td { border-bottom: 0; }.blog-content .note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: -16px;
+    }.blog-content .steps {
+      counter-reset: steps;
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }.blog-content .steps li {
+      counter-increment: steps;
+      position: relative;
+      padding: 0 0 23px 58px;
+      margin: 0;
+    }.blog-content .steps li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #152f91;
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+    }.blog-content .steps li strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #142038;
+    }.blog-content .cta {
+      margin: 54px 0 44px;
+      padding: 30px;
+      border-radius: 16px;
+      background: #111a2e;
+      color: #fff;
+    }.blog-content .cta h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 29px;
+    }.blog-content .cta p { color: #d9dfeb; }.blog-content .cta a.button {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #fff;
+      color: #111a2e;
+      font-weight: 800;
+      text-decoration: none;
+    }.blog-content .faq {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }.blog-content .faq-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }.blog-content .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }.blog-content .faq-item p { margin: 0; }.blog-content .one-sentence {
+      margin: 42px 0;
+      padding: 27px 28px;
+      border: 1px solid #ccd6ff;
+      border-radius: 14px;
+      background: #fafbff;
+    }.blog-content .one-sentence .label {
+      color: #516079;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }.blog-content .one-sentence p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: #13256e;
+    }.blog-content .next {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed #cdd4df;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm 16mm 18mm;
+    }
+
+    @media print {.blog-content body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: #111;
+      }.blog-content .page {
+        width: 100%;
+        padding: 0;
+      }.blog-content h1 { font-size: 27pt; }.blog-content h2 { font-size: 18pt; break-after: avoid; }.blog-content h3 { font-size: 13pt; break-after: avoid; }.blog-content a {
+        color: inherit;
+        text-decoration: none;
+      }.blog-content .quick-answer, .blog-content .thesis, .blog-content .one-sentence, .blog-content .cta, .blog-content .table-wrap {
+        break-inside: avoid;
+      }.blog-content .cta {
+        background: #f3f4f6;
+        color: #111;
+        border: 1px solid #d1d5db;
+      }.blog-content .cta h2, .blog-content .cta p, .blog-content .cta a.button {
+        color: #111;
+      }.blog-content .cta a.button {
+        border: 1px solid #999;
+      }
+    }
+</style>
+<main class="page">
+    <article>
+      <header>
+        <span class="eyebrow">Guía de B2B Voice · Definición de la empresa</span>
+        <h1>¿Qué es B2B Voice y qué hace?</h1>
+        <p class="dek">
+          B2B Voice diseña y desarrolla agentes de voz con IA y recepcionistas con IA a medida para empresas. La diferencia importante no es solo la tecnología, sino quién convierte esa tecnología en un sistema de negocio que funciona.
+        </p>
+        <p class="meta">Publicado el 12 de agosto de 2026 · Por B2B Voice</p>
+      </header>
+
+      <section class="quick-answer" aria-label="Respuesta rápida">
+        <strong class="label">Respuesta rápida</strong>
+        <p>
+          <strong>B2B Voice es una empresa de implementación de agentes de voz con IA a medida para las llamadas telefónicas de las empresas.</strong> En lugar de entregar a la empresa un constructor de agentes genérico y pedirle a su equipo que configure el sistema por su cuenta, B2B Voice aprende cómo funciona el negocio y luego diseña y construye el asistente telefónico en torno a sus servicios, las preguntas de sus clientes, el flujo de llamadas, las reglas de programación de citas, la lógica de transferencia y las herramientas de negocio conectadas. La empresa aporta el conocimiento y los requisitos; el equipo de B2B Voice se encarga de la implementación técnica.
+        </p>
+      </section>
+
+      <h2>¿Qué es B2B Voice?</h2>
+
+      <p>
+        B2B Voice es una empresa especializada en <strong>agentes de voz con IA, agentes telefónicos con IA, recepcionistas con IA y automatización telefónica empresarial</strong>. Sus sistemas están diseñados para atender conversaciones telefónicas reales de las empresas: responder las llamadas entrantes, entender qué necesita la persona que llama, recopilar información, apoyar los flujos de trabajo de citas o de recepción de leads, dirigir las solicitudes y conectar los resultados de las llamadas con sistemas de la empresa como CRM, calendarios, hojas de cálculo y herramientas de comunicación.
+      </p>
+
+      <p>
+        Sin embargo, la forma más clara de entender B2B Voice no es verla como «otro lugar donde crear un bot de IA». El posicionamiento público de la empresa se basa en un modelo de desarrollo a medida: cada asistente se prepara en torno a la empresa concreta, sus clientes, sus servicios y la manera en que realmente deben gestionarse sus llamadas.
+      </p>
+
+      <div class="thesis">
+        Su trabajo es explicar cómo funciona su negocio. Nuestro trabajo es convertirlo en el sistema.
+      </div>
+
+      <h2>La diferencia principal: una plataforma le da herramientas. B2B Voice le da la implementación.</h2>
+
+      <p>
+        La IA de voz es hoy mucho más accesible. Muchos productos modernos de IA de voz ofrecen paneles de control, constructores visuales de flujos de trabajo, API, prompts, ajustes de modelos, integraciones y controles de telefonía que permiten a las empresas o a los desarrolladores crear y configurar un agente por su cuenta.
+      </p>
+
+      <p>
+        Esos productos pueden ser potentes. El problema es que <strong>tener acceso a un constructor no es lo mismo que tener un sistema de negocio terminado</strong>. Alguien tiene que entender la empresa, decidir qué debe y qué no debe hacer el agente, escribir la lógica de la conversación, conectar las herramientas adecuadas, definir las condiciones de transferencia, probar los casos límite y lograr que todo el flujo de trabajo sea utilizable en una operación real.
+      </p>
+
+      <p>
+        B2B Voice adopta un enfoque más práctico. Usted le cuenta al equipo qué tipo de negocio dirige, por qué suelen llamar sus clientes, qué información hay que recopilar, cómo deben gestionarse las citas o las solicitudes, cuándo debe intervenir una persona, qué idiomas son importantes y qué sistemas ya forman parte de su operación. Después, la implementación se construye en torno a esos requisitos.
+      </p>
+
+      <div class="table-wrap">
+        <table aria-label="Comparación entre una plataforma de IA de voz de autoservicio y B2B Voice">
+          <thead>
+            <tr>
+              <th>Pregunta</th>
+              <th>Constructor de IA de voz de autoservicio típico</th>
+              <th>Enfoque de B2B Voice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>¿Por dónde se empieza?</td>
+              <td>Dentro de un panel de control, un constructor, una API o un editor de flujos de trabajo.</td>
+              <td>Por el negocio: servicios, personas que llaman, objetivos, reglas, sistemas y flujo de llamadas.</td>
+            </tr>
+            <tr>
+              <td>¿Quién diseña el comportamiento en las llamadas?</td>
+              <td>Normalmente su equipo configura los prompts, los flujos, las herramientas y la lógica.</td>
+              <td>B2B Voice diseña la implementación con la información de su negocio.</td>
+            </tr>
+            <tr>
+              <td>¿Quién conecta el flujo de trabajo?</td>
+              <td>Su equipo o su desarrollador conecta los sistemas necesarios.</td>
+              <td>Las integraciones necesarias se planifican como parte de la implementación a medida.</td>
+            </tr>
+            <tr>
+              <td>¿Quién piensa en la transferencia y en los casos límite?</td>
+              <td>Normalmente el cliente, el desarrollador o un socio de implementación.</td>
+              <td>Las reglas de transferencia y los escenarios específicos del negocio forman parte del proceso de diseño.</td>
+            </tr>
+            <tr>
+              <td>¿Cuál es el resultado final?</td>
+              <td>Un agente configurado dentro de una plataforma.</td>
+              <td>Un asistente telefónico diseñado en torno al flujo de trabajo real del negocio.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        Esta comparación describe un modelo habitual de constructor de autoservicio, no todo el mercado de la IA de voz. Distintos proveedores pueden combinar software, implementación, consultoría o servicios gestionados de diferentes maneras.
+      </p>
+
+      <h2>Entonces, ¿qué hace realmente B2B Voice?</h2>
+
+      <p>
+        Una implementación de B2B Voice puede combinar la conversación con acciones de negocio. La configuración exacta depende de la empresa, pero el servicio actual de B2B Voice describe capacidades como la gestión automatizada de llamadas, la programación de citas, la integración con CRM, la comunicación multilingüe, la recepción de leads, los resúmenes de llamadas y el enrutamiento o la lógica de flujo de trabajo específicos de cada negocio.
+      </p>
+
+      <h3>1. Responder las llamadas entrantes de la empresa</h3>
+      <p>
+        El asistente de IA puede responder las llamadas entrantes cuando los clientes se comunican con la empresa, incluso en situaciones en que el personal está ocupado o la empresa desea una mayor cobertura telefónica. Actualmente, B2B Voice presenta sus asistentes telefónicos como disponibles para la atención de llamadas 24/7.
+      </p>
+
+      <h3>2. Entender por qué llama el cliente</h3>
+      <p>
+        El asistente puede hacer preguntas e identificar la necesidad de la persona que llama, en lugar de obligar a todos a pasar por el mismo menú estático. Una consulta sobre un servicio, una solicitud de cita, un lead, una pregunta de soporte, una solicitud urgente o una necesidad de enrutamiento pueden seguir caminos distintos cuando la implementación está diseñada para ello.
+      </p>
+
+      <h3>3. Recopilar información útil durante la conversación</h3>
+      <p>
+        Según el flujo de trabajo, el sistema puede registrar datos como el nombre de la persona que llama, su número de teléfono, la solicitud de servicio, el horario preferido, la urgencia u otra información que la empresa necesite antes del siguiente paso.
+      </p>
+
+      <h3>4. Gestionar flujos de trabajo de citas y de recepción de leads</h3>
+      <p>
+        B2B Voice incluye públicamente la programación de citas y la recepción de leads entre sus casos de uso actuales. Esto puede abarcar la recopilación de la información necesaria para una solicitud de reserva, la organización de la solicitud y su conexión con el calendario o el flujo de trabajo correspondiente cuando la configuración de la empresa lo permita.
+      </p>
+
+      <h3>5. Dirigir la solicitud o transferir la conversación a una persona</h3>
+      <p>
+        No toda llamada debe terminar con la IA. Un buen flujo telefónico también necesita reglas sobre cuándo una persona, un departamento u otro proceso debe tomar el control. El proceso de configuración de B2B Voice pregunta de forma explícita cuándo debe responder directamente el asistente y cuándo debe transferirse la conversación a una persona. Además, su aviso legal establece que quienes interactúan con un asistente impulsado por B2B Voice pueden solicitar hablar con un representante humano.
+      </p>
+
+      <h3>6. Conectar las conversaciones telefónicas con los sistemas de la empresa</h3>
+      <p>
+        Una llamada telefónica adquiere más valor cuando su resultado no desaparece al colgar la persona que llamó. Según la implementación, B2B Voice puede conectar la información de las llamadas con sistemas como CRM, calendarios, hojas de cálculo y flujos de comunicación. El sitio web actual menciona ejemplos como HubSpot, Zoho CRM, Google Calendar, Calendly, Gmail, Microsoft Teams, Google Sheets, Excel y WhatsApp.
+      </p>
+
+      <h3>7. Enviar resúmenes de llamadas y datos de leads</h3>
+      <p>
+        Después de una conversación, el sistema puede generar un resumen estructurado con quién llamó, qué necesitaba, cuál era su intención y cuál es el siguiente paso recomendado. Así, la llamada resulta útil para el equipo aunque nadie de la empresa haya estado disponible durante la conversación original.
+      </p>
+
+      <h3>8. Admitir conversaciones multilingües</h3>
+      <p>
+        B2B Voice también ofrece configuraciones de asistentes de voz multilingües. La combinación de idiomas forma parte de la configuración a medida, por lo que la pregunta pertinente no es simplemente «¿cuántos idiomas existen?», sino qué idiomas necesita realmente la empresa para sus clientes y sus flujos de llamadas.
+      </p>
+
+      <h2>¿Qué debe hacer la empresa?</h2>
+
+      <p>
+        «Lo hacemos por usted» no significa que la empresa no aporte nada. La empresa conoce a sus clientes, sus reglas, sus servicios y sus casos límite mejor que nadie. B2B Voice necesita ese conocimiento del negocio para construir el sistema adecuado.
+      </p>
+
+      <p>
+        El proceso de configuración actual de B2B Voice pide a las empresas que aporten o aclaren aspectos como los siguientes:
+      </p>
+
+      <ul>
+        <li>qué tipo de negocio operan;</li>
+        <li>qué servicios ofrecen;</li>
+        <li>qué preguntas hacen con más frecuencia los clientes;</li>
+        <li>cómo deben programarse las citas o las llamadas;</li>
+        <li>qué información debe recopilarse;</li>
+        <li>qué puede responder directamente el asistente;</li>
+        <li>cuándo debe intervenir una persona;</li>
+        <li>qué tono desea usar la empresa;</li>
+        <li>qué idiomas se necesitan; y</li>
+        <li>qué herramientas de CRM, calendario, reservas o comunicación ya están en uso.</li>
+      </ul>
+
+      <p>
+        En otras palabras, <strong>la empresa aporta la verdad operativa; el equipo de B2B Voice convierte esa verdad en el sistema telefónico.</strong>
+      </p>
+
+      <h2>¿Cómo funciona el proceso de B2B Voice?</h2>
+
+      <ol class="steps">
+        <li>
+          <strong>Entender el negocio.</strong> El punto de partida no es un prompt en blanco, sino los servicios de la empresa, sus clientes, su tráfico telefónico, sus reglas y los resultados que desea.
+        </li>
+        <li>
+          <strong>Definir el flujo de llamadas.</strong> El equipo establece qué debe preguntar, responder, recopilar, dirigir, programar, resumir o escalar el asistente.
+        </li>
+        <li>
+          <strong>Construir el agente en torno a esos requisitos.</strong> La voz, el tono, el conocimiento del negocio, el comportamiento conversacional y la lógica del flujo de trabajo se configuran para el caso de uso específico.
+        </li>
+        <li>
+          <strong>Conectar los sistemas de negocio necesarios.</strong> El CRM, los calendarios, las hojas de cálculo, las herramientas de reservas y los flujos de comunicación se conectan donde la implementación lo requiere.
+        </li>
+        <li>
+          <strong>Probar los escenarios específicos del negocio.</strong> El sistema se prueba según cómo espera esa empresa que se comporten las llamadas reales, en lugar de tratar el proyecto como una demostración genérica.
+        </li>
+        <li>
+          <strong>Poner en marcha un asistente telefónico funcional.</strong> El objetivo no es dejar al cliente con un constructor que debe terminar por su cuenta, sino entregar el sistema implementado que la empresa solicitó.
+        </li>
+      </ol>
+
+      <h2>¿B2B Voice es solo para pequeñas empresas?</h2>
+
+      <p>
+        Ningún tamaño de empresa define el modelo. Una implementación enfocada puede atender una sola sede y un número reducido de tipos de llamadas. Una implementación más compleja puede requerir varios flujos de trabajo, departamentos, integraciones, idiomas o reglas de escalamiento.
+      </p>
+
+      <p>
+        Lo importante es que la implementación se diseña en función de la <strong>complejidad del flujo de trabajo</strong>, y no obligando a todos los clientes a usar el mismo asistente prediseñado.
+      </p>
+
+      <h2>Lo que B2B Voice no es</h2>
+
+      <ul>
+        <li><strong>No es un bot telefónico único para todos.</strong> El modelo de servicio público se basa en una configuración a medida para cada empresa.</li>
+        <li><strong>No es solo acceso a software.</strong> La propuesta de valor incluye el trabajo de diseño e implementación en torno al software.</li>
+        <li><strong>No promete que todas las llamadas deban quedarse con la IA.</strong> Las reglas de transferencia a una persona forman parte de un flujo de llamadas responsable.</li>
+        <li><strong>No es un menú IVR estático.</strong> El sistema está diseñado para la atención conversacional de llamadas y para acciones de flujo de trabajo.</li>
+        <li><strong>No es «IA mágica».</strong> La calidad del sistema sigue dependiendo de información clara del negocio, reglas, integraciones, pruebas y límites razonables.</li>
+      </ul>
+
+      <h2>¿Por qué elegir un modelo gestionado de desarrollo a medida?</h2>
+
+      <p>
+        La tecnología de IA de voz es solo una capa del problema. Un sistema telefónico en producción también necesita lógica de negocio, diseño de la conversación, conocimiento, telefonía, integraciones, reglas de acción, escalamiento, pruebas y responsabilidad operativa.
+      </p>
+
+      <p>
+        Una empresa puede, por supuesto, optar por construir internamente todas esas piezas con una plataforma para desarrolladores o un constructor sin código. Para los equipos que quieren ese control y cuentan con los recursos técnicos adecuados, puede tener sentido.
+      </p>
+
+      <p>
+        B2B Voice está pensado para otra preferencia: <strong>una empresa debería poder explicar el resultado que necesita sin tener que convertirse primero en un equipo de implementación de IA de voz.</strong>
+      </p>
+
+      <p>
+        Esa es la distinción fundamental. El cliente no compra tarea para hacer en casa. El cliente compra la implementación.
+      </p>
+
+      <div class="one-sentence">
+        <div class="label">B2B Voice en una frase</div>
+        <p>B2B Voice desarrolla agentes de voz con IA a medida que convierten las llamadas telefónicas de las empresas en conversaciones, acciones y flujos de trabajo conectados, sin exigir que el cliente construya el agente por su cuenta.</p>
+      </div>
+
+      <h2>Preguntas frecuentes</h2>
+
+      <section class="faq">
+        <div class="faq-item">
+          <h3>¿B2B Voice es un constructor de agentes de IA de autoservicio?</h3>
+          <p>
+            B2B Voice se posiciona principalmente en torno a la implementación a medida, y no simplemente a entregar al cliente un constructor genérico. El equipo conoce los requisitos del negocio y construye el asistente en torno al flujo de llamadas, los servicios, las preguntas y los sistemas de la empresa.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Tengo que construir yo mismo el agente de voz con IA?</h3>
+          <p>
+            Usted debe explicar cómo funciona su negocio y aprobar las reglas importantes. No necesita diseñar por sí mismo todo el sistema técnico. B2B Voice se encarga de la implementación en función de esos requisitos.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿B2B Voice puede contestar llamadas las 24 horas, los 7 días de la semana?</h3>
+          <p>
+            Sí. Actualmente, B2B Voice presenta sus asistentes telefónicos con IA para una cobertura de llamadas 24/7, y el comportamiento exacto en las llamadas se configura en torno al negocio.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿B2B Voice puede reservar citas?</h3>
+          <p>
+            La programación de citas es una de las capacidades actuales que B2B Voice menciona. El flujo de reservas exacto depende de las reglas del negocio y de las herramientas de calendario o de programación utilizadas en la implementación.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿B2B Voice puede conectarse a un CRM o a un calendario?</h3>
+          <p>
+            Sí. Actualmente, B2B Voice incluye la integración con CRM y calendarios como parte de su servicio, y las herramientas y los flujos de trabajo específicos se seleccionan según la configuración del cliente.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Se puede transferir una llamada a una persona?</h3>
+          <p>
+            La transferencia a una persona puede incorporarse al flujo de llamadas. El proceso de configuración de B2B Voice incluye específicamente decidir cuándo debe responder el asistente y cuándo debe transferirse la conversación a una persona.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Puedo ver cómo funcionaría B2B Voice en mi empresa antes de empezar?</h3>
+          <p>
+            Actualmente, B2B Voice ofrece una demostración personalizada gratuita, diseñada en torno al negocio, los servicios y el flujo de llamadas del posible cliente.
+          </p>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Vea cómo sería B2B Voice para su negocio.</h2>
+        <p>
+          Cuéntenos cómo funciona su empresa, por qué llaman sus clientes y qué desea que logre el sistema. B2B Voice puede usar esa información para preparar una demostración personalizada en torno a su flujo de llamadas real.
+        </p>
+        <a class="button" href="https://b2b-voice.com/">Solicitar una demostración personalizada gratuita →</a>
+      </section>
+
+      <div class="next">
+        <strong>Próximo artículo de la serie de conocimiento de B2B Voice:</strong> <em>What Is an AI Voice Agent? A Complete Guide to Business Phone Automation.</em>
+        <!-- Add internal link to /blog/what-is-an-ai-voice-agent after Article #1 is published. -->
+      </div>
+    </article>
+  </main>

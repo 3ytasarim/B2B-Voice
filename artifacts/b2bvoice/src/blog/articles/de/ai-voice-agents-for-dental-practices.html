@@ -1,0 +1,303 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Zum Artikel springen</a>
+  <header>
+    
+    <p class="b2bv-kicker">Branchenlösungen</p>
+    <h1 id="b2bv-title">KI-Sprachagenten für Zahnarztpraxen: Terminbuchung und Patientenkommunikation</h1>
+    <p class="b2bv-byline">Von <a rel="author" href="/de/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Ein zahnärztlicher Empfang muss Anrufenden helfen und zugleich einen Terminplan über Behandler, Behandlungsräume und Terminarten hinweg verwalten. Legen Sie fest, welche Anrufe mit einer freigegebenen Buchung enden können und welche administrative oder klinische Mitarbeitende benötigen.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Kurz gesagt</h2>
+        <p>Setzen Sie einen Sprachagenten für Zahnarztpraxen für freigegebene Praxisinformationen, die Aufnahme von Terminanfragen und die routinemäßige Terminplanung ein. Prüfen Sie die Identität der Patientin oder des Patienten und die Terminaktion so, wie es die Praxis vorsieht. Bestätigen Sie eine Buchung erst, nachdem das maßgebliche Praxissystem sie akzeptiert hat, und leiten Sie klinische Anliegen über den von der Praxis freigegebenen Weg zu besetzten Stellen oder in den Notfall weiter.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Inhaltsverzeichnis">
+      <p>In diesem Leitfaden</p>
+      <ol>
+<li><a href="#front-desk">Administrative Workflows auswählen</a></li>
+<li><a href="#scheduling">Einen Termin verifizieren</a></li>
+<li><a href="#privacy">Datenschutz und HIPAA-Geltungsbereich prüfen</a></li>
+<li><a href="#escalation">Die klinische Übergabe planen</a></li>
+<li><a href="#worked-example">Einen fiktiven Zahnarztanruf testen</a></li>
+<li><a href="#pilot">Das Pilotprojekt in der Zahnarztpraxis messen</a></li>
+<li><a href="#faq">Häufig gestellte Fragen</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Wichtigste Erkenntnisse</h2>
+        <ul>
+<li>Beginnen Sie mit einer Terminart und ordnen Sie den richtigen Behandler, das Behandlungszimmer, den Standort und die Berechtigung zu.</li>
+<li>Prüfen Sie vor der Nutzung von Patientendaten, ob HIPAA anwendbar ist, welche Rollen die Anbieter haben, welche Vereinbarungen bestehen und welche Offenlegungsregeln gelten.</li>
+<li>Geben Sie klinischen Anliegen einen getesteten Weg zu besetzten Stellen oder in den Notfall, einschließlich eines freigegebenen Fallbacks.</li>
+        </ul>
+      </section>
+<section id="front-desk">
+  <h2>Welche Anrufe lassen sich beim zahnärztlichen Empfang automatisieren?</h2>
+  <p>Beginnen Sie mit Anrufen, die der Empfang bereits nach einer schriftlichen Richtlinie bearbeitet. Ein KI-gestützter Telefon-Workflow kann öffentliche Praxisinformationen beantworten, eine Terminanfrage von Neupatienten aufnehmen oder einen Routinetermin verschieben, sofern die Freigabe der Praxis und ein verifizierter Systemzugriff vorliegen. Anrufende, die nach Symptomen, einer Behandlungsentscheidung oder einer unerwarteten Reaktion fragen, sollten einem von Zahnärztinnen und Zahnärzten freigegebenen Weg folgen. Richten Sie den Workflow an den Terminarten, Öffnungszeiten und Personen aus, die an jedem Standort tatsächlich existieren.</p>
+  <p>Für eine Zahnarztpraxis kann B2B Voice einen individuellen KI-Telefonagenten rund um einen einzelnen freigegebenen Terminworkflow zuschneiden. Teilen Sie uns Ihre Terminarten, die Regeln für Behandler und Behandlungszimmer sowie die Stellen mit, an denen Mitarbeitende Ausnahmen bearbeiten. So erhält das Projekt eine testbare Definition einer Buchung und einen klaren Weg zum Praxisteam, wenn die anrufende Person Hilfe benötigt.</p>
+<p>Wählen Sie für ein erstes Pilotprojekt eine Schicht und eine Terminart. Eine Zahnarztpraxis mit allgemeinzahnärztlichen und Prophylaxe-Terminkalendern kann an einem Standort mit Anfragen für Untersuchungstermine von Neupatienten beginnen. Richten Sie für Mitarbeitende eine Warteschlange für Fragen zu Versicherungsleistungen, Abrechnungsausnahmen oder komplexen Buchungswünschen ein. Führen Sie eine kurze Liste öffentlicher Fakten, die der Agent vorlesen darf, darunter Feiertagsöffnungszeiten und die Angabe, welche Standorte Neupatienten aufnehmen. Bestimmen Sie eine verantwortliche Person, die diese Fakten aktualisiert, sobald sich der Terminplan ändert.</p>
+  <div class="b2bv-table" role="region" aria-label="Telefon-Workflows in der Zahnarztpraxis und freigegebene Zuständigkeiten" tabindex="0">
+    <table>
+      <caption>Beginnen Sie mit administrativen Ergebnissen, die die Praxis verifizieren kann</caption>
+      <thead><tr><th scope="col">Anrufgrund</th><th scope="col">Sinnvolle automatisierte Aktion</th><th scope="col">Nachweis oder Weg zum Personal</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Untersuchung von Neupatienten</th><td>Die freigegebenen Aufnahmefelder erfassen, die geeignete Terminart wählen und einen zulässigen freien Termin anbieten.</td><td>Bestätigte Termin-ID oder eine zugewiesene Anfrage mit Standort und Terminart.</td></tr>
+        <tr><th scope="row">Bestehender Termin</th><td>Die anrufende Person nach dem Verfahren der Praxis verifizieren, bevor auf einen Termin zugegriffen oder darüber gesprochen wird.</td><td>Richtige Patientin oder richtiger Patient und richtiger Termin, oder ein Rückruf zur Verifizierung durch das Personal.</td></tr>
+        <tr><th scope="row">Prophylaxe-Recall oder Warteliste</th><td>Die Recall-Art sowie den autorisierten Behandler, die Räume, Terminwünsche und die Kontaktrichtlinie verwenden.</td><td>Ein reservierter und verifizierter Termin, oder ein Angebot mit klarem Ablaufzeitpunkt und zuständiger Person.</td></tr>
+        <tr><th scope="row">Leistungen oder Abrechnung</th><td>Freigegebene administrative Hinweise geben und Fragen zu Leistungen, Kostenvoranschlägen oder Abrechnung weiterleiten.</td><td>Das Praxispersonal prüft individuelle Kostenübernahme, Zahlung oder Behandlungskostenschätzungen.</td></tr>
+        <tr><th scope="row">Klinisches Anliegen</th><td>Dem von der Praxis freigegebenen Skript für die Weiterleitung zu besetzten Stellen oder in den Notfall folgen.</td><td>Tatsächliche Live-Verbindung oder dokumentierter alternativer Weg und verantwortliche Person.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Der Telefonablauf sollte deutlich machen, ob das Personal eine Anfrage prüft oder die anrufende Person bereits einen Termin hat. Wenn die Praxis später Standorte oder neue Behandler hinzufügt, prüfen Sie vor der Erweiterung die Regeln und Öffnungszeiten an jedem Standort. Nutzen Sie den <a href="/de/ai-voice-agent-vs-ai-receptionist-vs-ivr">Leitfaden zu Sprachagenten, Rezeptionisten und IVR</a>, um zu entscheiden, welche Routineaufgaben ein Gespräch rechtfertigen und welche ein bestehendes Sprachmenü übernehmen kann.</p>
+</section>
+
+<section id="scheduling">
+  <h2>Wann ist ein Zahnarzttermin buchbar?</h2>
+  <p>Ein Zahnarzttermin ist die Reservierung bestimmter klinischer Zeit und eines bestimmten Raums. Terminart, Dauer, Behandlungsteam, Standort und Behandlungszimmer müssen mit den Regeln der Praxis übereinstimmen. Ein Prophylaxe-Zeitfenster kann für eine Untersuchung von Neupatienten unbrauchbar sein, auch wenn es leer erscheint. Ein Behandler kann an verschiedenen Tagen in unterschiedlichen Räumen oder an unterschiedlichen Standorten arbeiten. Auch Sperren oder Geräteanforderungen können den verfügbaren Termin einschränken. Fragen Sie den Empfang, welche Quelle diese Bedingungen tatsächlich steuert.</p>
+  <p>Prüfen Sie die Terminverfügbarkeit und die Berechtigung zum Anlegen einer Buchung getrennt voneinander. Open Dental dokumentiert eine Terminabfrage und eine Operation zum Anlegen von Terminen. Welche Operation für eine Praxis die richtige ist, hängt von deren Konfiguration, Version und freigegebenem Zugriff ab. Stellen Sie sicher, dass der Workflow die Vorgaben zu Behandler, Behandlungszimmer, Standort und Terminart der jeweiligen Praxis einhält. Eine Kalenderanzeige kann die Terminplanung unterstützen, doch eine gültige Buchung setzt voraus, dass das maßgebliche Praxisverwaltungssystem sie akzeptiert. <a href="https://www.opendental.com/site/apiappointments.html">Open Dental API appointment operations</a></p>
+  <p>Der B2B Voice Dental Appointment Scheduling Workflow verknüpft die Patienten- und Terminregeln der Praxis mit einem maßgeblichen Termindatensatz.</p>
+  <ol class="b2bv-flow" aria-label="Workflow zur Terminplanung in der Zahnarztpraxis">
+    <li><strong>Anfrage zuordnen</strong><span>Autorisierte Identifikation sowie Standort- und Terminregeln verwenden.</span></li>
+    <li><strong>Termin reservieren</strong><span>Zulässige Kapazität prüfen und eine freigegebene Buchung übermitteln.</span></li>
+    <li><strong>Bestätigten Datensatz auslesen</strong><span>Termin-ID und Details verifizieren, bevor der anrufenden Person mitgeteilt wird, dass gebucht ist.</span></li>
+  </ol>
+  <p>Bestätigen Sie Datum, Ortszeit, Standort und Terminart anhand des gespeicherten Datensatzes. Behandeln Sie ein Angebot als ausstehend, bis der Schreibvorgang erfolgreich war. Wählen zwei Personen denselben freien Termin, bieten Sie eine andere geeignete Zeit an oder erstellen Sie eine Aufgabe für das Personal, wenn sich die Anfrage nicht abschließen lässt. Ist das Ergebnis eines Schreibvorgangs unklar, lassen Sie die Integration oder das Personal nach dem bereits bestehenden Termin suchen, bevor eine weitere Anfrage gesendet wird. So wird verhindert, dass aus einem Netzwerk-Timeout zwei Termine werden. Siehe <a href="/de/ai-voice-agent-integrations">wie ein KI-Agent Geschäftsaktionen ausliest und verifiziert</a>.</p>
+  <h3>Terminverschiebungen, Absagen und ein Wartelistenangebot abwickeln</h3>
+  <p>Verifizieren Sie bei einer Terminverschiebung die richtige Patientin oder den richtigen Patienten und den ursprünglichen Termin. Folgen Sie der vom Praxissystem unterstützten Änderungsfolge. Behalten Sie die ursprüngliche Reservierung bei, bis der Ersatztermin bestätigt ist, oder lassen Sie das Personal den Zustand abgleichen, wenn der Workflow die Änderung nicht sicher abschließen kann. Zeigen Sie bei einer Absage einer autorisierten Person oder einem autorisierten Workflow den endgültigen Status, bevor der Termin für die Warteliste freigegeben wird. Halten Sie das Ergebnis fest, damit eine erneut anrufende Person die richtige Auskunft erhält.</p>
+  <p>Ein Wartelistenangebot erfordert eine berechtigte Patientin oder einen berechtigten Patienten, die richtige Terminart, einen freigegebenen Kontaktweg, einen aktuellen freien Termin und einen klaren Ablaufzeitpunkt. Zwei Personen können auf denselben freien Termin reagieren. Prüfen Sie bei der Annahme Berechtigung und Verfügbarkeit erneut und senden Sie nach Festschreibung der Reservierung gemäß Richtlinie eine Bestätigung. Legen Sie unklare Ergebnisse in der Warteschlange der Praxis ab. Vermeiden Sie den Eindruck, das Angebot selbst reserviere klinische Zeit.</p>
+<p>Nutzen Sie die <a href="/de/how-to-integrate-ai-voice-agents" data-phase2-link="true">Checkliste zur Integrationsbereitschaft</a>, um den autorisierten Zugriff auf die genaue Terminplanungsoperation zu verifizieren.</p>
+</section>
+
+<section id="privacy">
+  <h2>Wie sollte eine Zahnarztpraxis Patientendaten schützen?</h2>
+  <p>Bewerten Sie den tatsächlichen Workflow, bevor Sie Patientendaten an einen Anbieter weitergeben. HHS erläutert, dass Zahnärztinnen und Zahnärzte zu den Leistungserbringern im Gesundheitswesen gehören, die als HIPAA Covered Entities gelten können, wenn sie Informationen elektronisch im Zusammenhang mit einer Transaktion übermitteln, für die HHS einen Standard festgelegt hat. Ein Anbieter, der im Auftrag einer erfassten Praxis Funktionen mit geschützten Gesundheitsinformationen (PHI) ausführt, kann ein Business Associate sein. Die Praxis sollte die Rollen, die geltenden Vereinbarungen und die Genehmigungsanforderungen für ihre eigenen Anbieter und Subunternehmer bestätigen. <a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> · <a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html">Business associate contracts</a></p>
+  <p>Zeichnen Sie den Informationsweg vom Netzbetreiber und Sprachdienst über Aufzeichnungen, Transkription, Terminplanungsintegration, Benachrichtigungen, Speicherung und Protokollierung nach. Beziehen Sie Daten ein, die bei Unterauftragsverarbeitern liegen, sowie die Möglichkeiten der Praxis, den Zugriff zu begrenzen, zu prüfen oder zu beenden. HHS beschreibt Bedingungen für die Nutzung von Cloud-Diensten zum Speichern oder Verarbeiten elektronischer PHI, darunter den Abschluss eines Business Associate Agreement, wenn der Anbieter ein Business Associate ist. Lassen Sie die oder den Datenschutzverantwortlichen der Praxis den Ablauf und jede relevante Vereinbarung prüfen, bevor echte Patientendaten gesendet werden. <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html">HIPAA and cloud computing guidance</a></p>
+  <div class="b2bv-table" role="region" aria-label="Datenfluss und Kontrollen in der Zahnarztpraxis" tabindex="0">
+    <table>
+      <caption>Festlegen, welche Informationen jeder Schritt benötigt und wer sie sieht</caption>
+      <thead><tr><th scope="col">Phase</th><th scope="col">Designentscheidung</th><th scope="col">Prüfnachweis</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Anruf geht ein</th><td>Für eine neue Anfrage nur minimale Felder verwenden. Die Berechtigung verifizieren, bevor über einen bestehenden Termin gesprochen oder Informationen an eine andere anrufende Person weitergegeben werden.</td><td>Freigegebenes Verfahren zur Identitätsprüfung und für Erziehungsberechtigte oder Vertreter, einschließlich einer fehlgeschlagenen Prüfung.</td></tr>
+        <tr><th scope="row">Termindatensatz</th><td>Zugriff nur für die autorisierte Patientin oder den autorisierten Patienten, die Praxis und die Aktion erlauben. Felder auf die freigegebene Aufgabe beschränken.</td><td>Rollenbasierter Anwendungszugriff, gespeichertes Ergebnis und sicherer Weg für ausstehende Fälle.</td></tr>
+        <tr><th scope="row">Sprache und Rückruf</th><td>Hinweis, Aufzeichnung, autorisierten Kontakt und den minimal sicheren Inhalt von Nachrichten prüfen.</td><td>Vom Team freigegebenes Skript, richtiger Kanal und Workflow für Opt-out oder eingeschränkten Kontakt.</td></tr>
+        <tr><th scope="row">Protokolle und Anbieter</th><td>Speicherung, Unterauftragsverarbeiter, Zugriff und Aufbewahrung für jede Kopie aufgezeichneter oder transkribierter Informationen dokumentieren.</td><td>Geltende Vereinbarungen, Berechtigungen, Tests und Zuständigkeiten bei Vorfällen.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Wenn der HIPAA-Standard „Minimum Necessary“ gilt, dürfen Informationen nur in dem Umfang verwendet, offengelegt oder angefordert werden, der für den Zweck angemessen erforderlich ist. Bauen Sie den Workflow unabhängig davon mit einer kurzen Feldliste auf. Fragen Sie die jeweils nächste Information nur ab, wenn sie für die autorisierte Aktion erforderlich ist. Nutzen Sie den Prüfweg des Praxispersonals, wenn die Identität der anrufenden Person oder ihre Beziehung zur Patientin oder zum Patienten unklar ist. Behalten Sie Termin- und Behandlungsdetails autorisierten Offenlegungen vor. Siehe <a href="/de/ai-voice-agent-security">den Sicherheitsleitfaden für Sprachagenten</a> zur Gestaltung des Zugriffs. <a href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html">HIPAA minimum necessary requirement</a></p>
+  <h3>Erinnerungsregeln als eigenen Verwendungszweck prüfen</h3>
+  <p>HHS behandelt Terminerinnerungen im Sinne der HIPAA Privacy Rule als Teil der Behandlung. Diese Hinweise betreffen die HIPAA-Autorisierung für die Erinnerung. Prüfen Sie davon getrennt die geltenden Telefon-, Aufzeichnungs- und Datenschutzvorschriften für den jeweiligen Kontaktweg, die Nachricht, den Empfänger und den Zweck. Dokumentieren Sie gemeinsam mit der Praxis Einwilligung oder sonstige geltende Berechtigungen, Kontaktpräferenzen, sichere Formulierungen für Mailbox-Nachrichten und den Umgang mit Opt-outs, bevor Sie von einem eingehenden Terminplaner zu einem ausgehenden Workflow übergehen. <a href="https://www.hhs.gov/hipaa/for-professionals/faq/are-appointment-reminders-allowed-under-hipaa-without-authorization/index.html">Appointment reminders and HIPAA authorization</a> · <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+</section>
+
+<section id="escalation">
+  <h2>Was geschieht, wenn eine anrufende Person klinische Hilfe benötigt?</h2>
+  <p>Die Praxis legt den Weg und die Formulierungen fest, die der Agent verwenden darf. Eine Bitte um Behandlungsrat, ein Anliegen zu einem Eingriff oder eine anrufende Person, die einen Notfall schildert, sollte den üblichen administrativen Ablauf verlassen. Leiten Sie gemäß der Richtlinie der Praxis umgehend an die freigegebene Zahnärztin oder den freigegebenen Zahnarzt, die Bereitschaftsregelung oder die Notfallanweisung weiter. Medizinische Beurteilung und die Einschätzung des Schweregrads bleiben qualifizierten Fachkräften vorbehalten. Die ADA-Hinweise für Praxen behandeln Notfallabdeckung und Ansagen bei geschlossener Praxis, einschließlich des Verweises auf den Rettungsdienst bei lebensbedrohlichen Situationen. <a href="https://www.ada.org/resources/practice/practice-management/emergency-treatment">Emergency treatment and closed-office messaging</a></p>
+  <p>Testen Sie, was passiert, wenn die Zahnärztin oder der Zahnarzt antwortet, wenn eine Vertretung im Dienst ist und wenn eine Nummer keine Verbindung herstellt. Der Agent sollte die freigegebene Alternative nutzen und der anrufenden Person wahrheitsgemäß mitteilen, was geschehen ist. Eine zugewiesene Aufgabe für eine nicht dringende administrative Frage kann angemessen sein. Ein dringender Anruf sollte in diesem Fall dem freigegebenen Dringlichkeitsweg folgen. Die anrufende Person sollte nicht in der Routineaufnahme gehalten werden, während die Praxis klärt, wer helfen kann.</p>
+  <p>Geben Sie der menschlichen Empfängerin oder dem menschlichen Empfänger den freigegebenen Übergabekontext, einschließlich des Weiterleitungsgrunds und gegebenenfalls des Verifizierungsstatus. Lassen Sie das Personal klinische Details nach der Richtlinie der Praxis im Praxissystem erfassen. Prüfen Sie die Zeit bis zu einem Live-Ziel und ob verpasste Übergaben eine verantwortliche Person erhalten. Der <a href="/de/ai-voice-agent-reliability">Leitfaden zu Wiederherstellung und Übergabe an einen Menschen</a> erklärt, wie sich eine Alternative gestalten lässt, wenn eine Warteschlange ausgelastet oder geschlossen ist.</p>
+</section>
+
+<section id="worked-example">
+  <h2>Wie wird aus dem Anruf einer Neupatientin oder eines Neupatienten ein bestätigter Termin?</h2>
+  <p>Nehmen wir eine fiktive Praxis mit einem Standort und getrennten Kalendern für Zahnärzte und Prophylaxe. Eine anrufende Person bittet um einen Untersuchungstermin als Neupatient in der kommenden Woche. Der Workflow erfasst die freigegebenen Rückrufinformationen, prüft die geeignete Untersuchungsart und bietet einen Termin mit dem passenden Behandler und Behandlungszimmer an. Die anrufende Person wählt einen freien Termin. Nachdem das Praxissystem den Termin akzeptiert hat, verifiziert der Workflow den gespeicherten Datensatz und nennt die bestätigte Uhrzeit und den Standort in freigegebener Formulierung.</p>
+  <p>Führen Sie denselben Anruf mit einem Termin durch, der sich füllt, bevor die Anfrage übermittelt wird. Das richtige Ergebnis ist eine zulässige Alternative oder eine ausstehende Aufgabe mit einer zuständigen Person im Personal. Testen Sie einen zweiten Anruf eines Erziehungsberechtigten, der nach einem bereits bestehenden Termin fragt. Die Praxis sollte ihre autorisierte Verifizierungs- und Offenlegungsentscheidung im Nachweis erkennen können. Prüfen Sie in einem dritten Durchlauf nach Praxisschluss die Weiterleitung und den alternativen Weg für ein mögliches dringendes Anliegen. Verwenden Sie für alle drei Durchläufe synthetische Identitäten und Datensätze.</p>
+  <p>Verifizieren Sie die Worte des Agenten, den endgültigen Status im Praxissystem, welche Personen die Aufgabe gesehen haben und jede spätere Nachverfolgung. Eine Implementierung kann mit der Erfassung von Anfragen beginnen, während Berechtigungen für die Terminplanung und Rückrufverfahren geprüft werden. Wechseln Sie zur Live-Buchung, nachdem die Praxis sowohl routinemäßige als auch unklare Ergebnisse verifiziert hat und die Verantwortlichen für Datenschutz und Klinik zugestimmt haben.</p>
+</section>
+
+<section id="pilot">
+  <h2>Was sollte eine Zahnarztpraxis im Pilotprojekt messen?</h2>
+  <p>Erfassen Sie berechtigte Anrufe, verifizierte Buchungen, Ergebnisse, die nur als Anfrage endeten, doppelte oder korrigierte Termine, erneute Kontaktaufnahmen und die Zeit bis zu einem Rückruf durch besetzte Stellen. Halten Sie fest, bei wie vielen Buchungsanfragen ein anderer Terminplan, Behandler oder ein anderes Behandlungszimmer erforderlich war. Berücksichtigen Sie fehlgeschlagene und nicht zugewiesene Übergaben. Gleichen Sie Anrufe regelmäßig mit dem Praxissystem ab und prüfen Sie, wer einen Termin korrigieren musste. Beziehen Sie bei der Messung der Arbeitslast am Empfang den Aufwand für die Pflege der Regeln und die Bearbeitung der Nachverfolgungswarteschlange ein. Siehe <a href="/de/how-to-test-an-ai-voice-agent">wie Sie Abnahmetests für Sprachagenten durchführen</a> zur Teststruktur.</p>
+  <p>B2B Voice entwirft individuelle Telefon-Workflows rund um freigegebene Geschäftsaufgaben. Bringen Sie zu einem Discovery-Gespräch für Zahnarztpraxen eine fiktive Patientin oder einen fiktiven Patienten, eine Terminart, die Verantwortlichen für die Terminplanung und den Eskalationsweg mit. Das Design kann mit der Entgegennahme einer freigegebenen Anfrage beginnen und die Nachweise zu Kompatibilität, Datenschutz und Bestätigung festlegen, die vor der Nutzung eines Live-Terminplans erforderlich sind.</p>
+<p>Nutzen Sie den Personalleitfaden, um <a href="/de/ai-receptionist-vs-human-receptionist" data-phase2-link="true">besetzte und hybride Empfangsabdeckung in der Zahnarztpraxis zu vergleichen</a>, bevor Sie das Pilotprojekt über eine Terminart hinaus ausweiten.</p>
+</section>
+
+      <section id="faq">
+        <h2>Häufig gestellte Fragen</h2>
+<div class="b2bv-faq-item"><h3>Kann ein KI-Rezeptionist für Zahnarztpraxen direkt in Open Dental buchen?</h3><p>Open Dental dokumentiert Terminoperationen. Eine bestimmte Praxis muss ihre Konfiguration, Berechtigungen, die Regeln für Behandler und Behandlungszimmer sowie den gespeicherten Datensatz verifizieren, bevor sie eine bestätigte Buchung zulässt.</p></div>
+<div class="b2bv-faq-item"><h3>Kann ein Sprachagent einer Patientin oder einem Patienten mitteilen, wann der nächste Termin ist?</h3><p>Nutzen Sie zuerst die freigegebenen Identitäts- und Offenlegungsprüfungen der Praxis. Der Agent kann autorisierte Informationen aus einem aktuellen Datensatz mitteilen oder einen Rückruf durch das Personal zuweisen, wenn die Verifizierung unvollständig ist.</p></div>
+<div class="b2bv-faq-item"><h3>Benötigt ein Sprachagent für Zahnarztpraxen ein Business Associate Agreement?</h3><p>Das hängt vom Status der Praxis und von der Rolle des Anbieters im Umgang mit geschützten Gesundheitsinformationen ab. Prüfen Sie den tatsächlichen Datenfluss und die geltenden Vereinbarungen gemeinsam mit der oder dem Datenschutzverantwortlichen der Praxis, bevor Sie echte Patientendaten weitergeben.</p></div>
+<div class="b2bv-faq-item"><h3>Kann ein Sprachagent für Zahnarztpraxen dringende Symptome behandeln?</h3><p>Er kann umgehend dem von der Praxis freigegebenen Weg zu besetzten Stellen oder in den Notfall folgen. Qualifiziertes klinisches Personal ist für Beurteilung und Beratung verantwortlich.</p></div>
+<div class="b2bv-faq-item"><h3>Kann eine Praxis automatisierte Terminerinnerungen versenden?</h3><p>HHS behandelt Erinnerungen im Rahmen der HIPAA Privacy Rule als Teil der Behandlung. Prüfen Sie die tatsächliche Nachricht, den zulässigen Kontaktkanal sowie die geltenden Telefon- und Datenschutzanforderungen getrennt.</p></div>
+<div class="b2bv-faq-item"><h3>Was geschieht, wenn ein ausgewählter Termin nicht mehr verfügbar ist?</h3><p>Bieten Sie eine verifizierte, geeignete Alternative an oder erfassen Sie eine zugewiesene Anfrage. Bestätigen Sie einen Termin erst, nachdem das Praxisverwaltungssystem den endgültigen Termindatensatz akzeptiert und zurückgegeben hat.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Einen einzelnen zahnärztlichen Terminworkflow testen</h2>
+        <p>Bringen Sie eine fiktive Patientin oder einen fiktiven Patienten, eine Terminart und Ihren freigegebenen Übergabeweg mit. Legen Sie mit einer B2B Voice Demo fest, wie die Praxis jedes Ergebnis verifizieren kann.</p>
+        <a href="/demo">Demo eines zahnärztlichen Workflows anfragen</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Quellen</h2>
+        <ul>
+<li><a href="https://www.opendental.com/site/apiappointments.html">Open Dental API appointment operations</a> <span class="b2bv-source-note">(Open Dental)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html">Business associate contracts</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html">HIPAA and cloud computing guidance</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html">HIPAA minimum necessary requirement</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/faq/are-appointment-reminders-allowed-under-hipaa-without-authorization/index.html">Appointment reminders and HIPAA authorization</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="https://www.ada.org/resources/practice/practice-management/emergency-treatment">Emergency treatment and closed-office messaging</a> <span class="b2bv-source-note">(American Dental Association)</span></li>
+<li><a href="/de/what-is-b2b-voice">B2B Voice als Unternehmen und Vorgehensweise bei der Implementierung</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Themen</h2>
+        <ul class="b2bv-tags">
+<li>Zahnärztlicher Empfang</li>
+<li>Terminbuchung</li>
+<li>Patientenkommunikation</li>
+<li>Klinische Übergabe</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>
