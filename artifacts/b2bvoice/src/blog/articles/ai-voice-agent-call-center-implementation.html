@@ -1,0 +1,343 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table:not(.b2bv-assess) tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Implementation Guides</p>
+    <h1 id="b2bv-title">How to Implement AI Voice Agents in an Existing Call Center Without Replacing Your Infrastructure</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">Adding voice AI to an existing call center starts with a routing decision. Find one path the carrier and contact center owners can test, observe and restore. Confirm the business task, the media path and the destination that takes over when something fails.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>Start with one approved route, such as a test number, after-hours forwarding, queue overflow or an IVR branch. Verify the carrier, phone system, media, staffed destination and business-system access. Keep the previous or an approved alternate route ready, rehearse recovery and expand only after the selected path passes.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#route">Choose the first route</a></li>
+<li><a href="#compatibility">Verify carrier and PBX compatibility</a></li>
+<li><a href="#framework">Follow the deployment framework</a></li>
+<li><a href="#reversible-pilot">Run and reverse a pilot</a></li>
+<li><a href="#scale">Expand in controlled cohorts</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Qualify the actual number, carrier, trunk, voice path and receiving queue for each intended route.</li>
+<li>Use observed connection and business outcomes to confirm a transfer or write.</li>
+<li>Document rollback authority, test restoration and reconcile pending work before expanding.</li>
+        </ul>
+      </section>
+<section id="route">
+  <h2>Where should the first AI route sit?</h2>
+  <p>Put the first workflow on the smallest route that represents the intended use. An established contact center can often keep the published number with its carrier and let the existing PBX or CCaaS platform decide which calls reach the AI service. Start with one internal test number, one queue condition or one interactive voice response (IVR) option. Establish how the caller reaches a staffed destination before opening the route to the selected group.</p>
+  <p>B2B Voice can scope a custom voice agent around an existing contact center route. Have the telephony owner identify where calls enter, who owns the PBX or cloud contact center, and how staff can restore the previous path. That information is the starting point for a reversible pilot and a compatibility check on your configuration.</p>
+<p>Map the path from the public number to the final destination. List the carrier, direct inward dialing (DID) numbers, private branch exchange (PBX) or cloud platform, automatic call distributor (ACD), agent service, business applications and receiving team. Record which component can change its route during an incident. Pull recent data on caller arrivals, active legs, after-hours behavior and staff capacity. Use the same records to verify the original path during rollback.</p>
+  <div class="b2bv-table" role="region" aria-label="Comparing first routes for a call center voice AI pilot" tabindex="0">
+    <table>
+      <caption>Pick a pilot entry point and define how the telephony owner can reverse it</caption>
+      <thead><tr><th scope="col">Entry point</th><th scope="col">Good fit and prerequisite</th><th scope="col">Acceptance and reversal</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Dedicated pilot DID</th><td>A new test number or spare line with an isolated route and approved destinations.</td><td>Call it from the expected networks, test the return path and stop publishing or routing the test number when ending the pilot.</td></tr>
+        <tr><th scope="row">After-hours rule or forwarding</th><td>A bounded night or weekend intent with defined local time, holidays and receiving owner.</td><td>Test closed, opening and holiday conditions with an external call. Restore the previous after-hours destination.</td></tr>
+        <tr><th scope="row">Queue overflow</th><td>The ACD supports an agreed trigger and a staffed return or other approved fallback.</td><td>Test the caller wait and receiving capacity under a burst. Remove the overflow destination while keeping the route owner in control.</td></tr>
+        <tr><th scope="row">Selected IVR branch</th><td>The center controls the menu, the routing destination and a way back to staff.</td><td>Verify the caller can select, leave and rejoin as intended. Restore the prior menu branch mapping.</td></tr>
+        <tr><th scope="row">Individual outbound workflow</th><td>One approved service purpose, validated permissions, suppression and a return route.</td><td>Check suppression and call disposition. Exercise an independent way to stop the workflow.</td></tr>
+        <tr><th scope="row">Department-by-department rollout</th><td>A proven pilot, versioned routing and operations ownership for each added queue.</td><td>Rehearse rollback per cohort and show the previous destination can accept that traffic.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A test DID is easy to isolate and can prove a call path before live involvement. A selected IVR or overflow route is closer to ordinary traffic and needs a stronger recovery path. Forwarding can preserve a published number under a carrier-supported design. Test the actual caller identity presentation, how the caller returns to staff and any chargeable legs created during the bridge.</p>
+  <p>For outbound automation, keep the initial scope and permission decision separate from the inbound implementation. U.S. restrictions may apply to artificial-voice calls, depending on the purpose and circumstances. Confirm the voice and telephony configuration, relevant consent and opt-out controls with the responsible team. Set the independent stop and verify the approved callback destination before approving any eligible traffic. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+<p>Use the automation matrix to <a href="/ai-voice-agents-for-call-centers" data-phase2-link="true">prioritize the first contact center workflow</a> before choosing the initial phone route.</p>
+</section>
+
+<section id="compatibility">
+  <h2>What must the carrier and PBX prove?</h2>
+  <p>Confirm the ownership of the inbound numbers and the permissions for each planned action. The existing system may be able to forward calls or send one menu choice to an approved SIP destination. The answer depends on the buyer's carrier account, PBX release, trunk, supported providers and feature entitlements. A session border controller (SBC) can be part of an approved boundary between phone systems. Ask the telephony owner which components govern signaling, media and authentication on each connection.</p>
+  <p>Session Initiation Protocol (SIP) signals the creation, modification and termination of sessions. The audio path has its own requirements. For each segment, confirm two-way audio, agreed voice codecs, touch-tone menu digits, network reachability and encryption at the configured endpoints. A keypad test should verify the digits the receiving menu actually gets. RFC 4733 documents a method for carrying touch-tone events in RTP. Verify the method accepted by every relevant system on the route. <a href="https://www.rfc-editor.org/rfc/rfc3261.html">RFC 3261 Session Initiation Protocol (SIP)</a> <a href="https://www.rfc-editor.org/rfc/rfc4733.html">RFC 4733 RTP payload for DTMF and telephony events</a></p>
+  <div class="b2bv-table" role="region" aria-label="PBX and carrier compatibility checklist" tabindex="0">
+    <table>
+      <caption>Verify the real route with all participating system owners</caption>
+      <thead><tr><th scope="col">What to examine</th><th scope="col">Evidence before cutover</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Ownership and routing</th><td>Present carrier, number control, routing authority, approved destination, service hours and the return route used by external callers.</td></tr>
+        <tr><th scope="row">Signaling and media</th><td>Supported methods and codecs, keypad events, authorized endpoints and successful two-way audio at each open and transfer path.</td></tr>
+        <tr><th scope="row">Caller and billing information</th><td>Permitted caller ID as observed on each hop, billable call legs, charges, and any authorized display or recording policy.</td></tr>
+        <tr><th scope="row">Transfer and failure</th><td>Actual pickup by the intended staffed destination, context received, plus busy, closed, unanswered and failed handoff outcomes.</td></tr>
+        <tr><th scope="row">Capacity and recovery</th><td>Configured calls, concurrent legs, queue and application limits, along with the approved route at saturation or outage.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Ask the carrier and platform owners to review the same call legs. A call can be billed and routed differently during forwarding and again while the agent holds or bridges a staffed transfer. Preserve a record of which party supplies each number, which timestamps are visible and which leg can be changed by the shift supervisor. Treat the presented caller number as routing context. Use the business's approved identity check before reading or changing protected records.</p>
+  <h3>Test the transfer all the way to a staffed connection</h3>
+  <p>SIP REFER requests that another party contact a target. RFC 3515 defines the method. A vendor such as Twilio documents specific trunk configuration and behavior for its implementation. Confirm whether the proposed route uses that method, a bridge or a platform-native transfer and how results are reported. Ask whether staff will receive only the call, or also an approved context record. Count a successful human transfer when the caller and intended staffed recipient connect. Record the telephony response, the staff connection and the business disposition separately. <a href="https://www.rfc-editor.org/rfc/rfc3515.html">RFC 3515 SIP REFER method</a> <a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a></p>
+  <p>Practice calling from a representative outside line and reaching the intended queue. Check two-way audio after transfer and confirm which caller number or approved identity reaches the staff. A forwarded call can present different permitted information across networks. The shift supervisor should see where the call arrived and which context can be viewed. With a busy or closed desk, follow the authorized alternate path and check whether the resulting callback has a named owner.</p>
+  <h3>Map recording, transcription and security at each boundary</h3>
+  <p>Separate signaling protection from protection of call media. Twilio describes Transport Layer Security (TLS) for signaling and Secure Real-time Transport Protocol (SRTP) for media on supported Elastic SIP Trunking connections. Confirm coverage on each relevant connection and check where media ends or passes through a legacy segment. Ask owners which component records the call, which creates a transcript and which system retains it. <a href="https://www.twilio.com/docs/sip-trunking">Twilio Elastic SIP Trunking documentation</a></p>
+  <p>Route only the data needed for the approved task. Agree on recording disclosure and permissions for the applicable jurisdictions, retention, access, deletion, and where approved logs or transcripts are stored. A handoff summary should include only the information the receiving team can use. The <a href="/ai-voice-agent-security">voice agent security guide</a> describes how to scope access to protected actions and data. The <a href="/how-ai-voice-agents-work">guide to the AI voice stack</a> explains the separate conversation and telephony components.</p>
+</section>
+
+<section id="framework">
+  <h2>B2B Voice Call Center Deployment Framework</h2>
+  <p>Make each phase end in a decision the named owner can sign. The smallest route is the one your team can operate, observe and restore. A functioning demo can help with discovery. A live pilot needs the evidence and operational ownership below.</p>
+  <div class="b2bv-table" role="region" aria-label="Nine stages of call center voice agent deployment" tabindex="0">
+    <table>
+      <caption>Use exit evidence to decide when the route can advance</caption>
+      <thead><tr><th scope="col">Stage</th><th scope="col">What the owner must provide</th><th scope="col">Evidence to move forward</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Discovery</th><td>One eligible intent, queue owner, DID, hours, expected volume and known fallback.</td><td>Scope and call-path record approved by operations.</td></tr>
+        <tr><th scope="row">Architecture</th><td>Route, handoff method, media and permission boundaries, and the prior route.</td><td>Real configuration validated by carrier and telephony owners.</td></tr>
+        <tr><th scope="row">Integration</th><td>Business record, permitted actions, timeouts, joined identifiers and recovery owner.</td><td>Successful and uncertain test transactions reconciled.</td></tr>
+        <tr><th scope="row">Security</th><td>Approved identity, authorization, restricted data, recording and retention controls.</td><td>Policy tests observed by security and the responsible business owner.</td></tr>
+        <tr><th scope="row">Pilot</th><td>Approved test route with staff coverage and enough demand for a bounded trial.</td><td>Test outcome, current capacity, fallback and rollback exercised.</td></tr>
+        <tr><th scope="row">Evaluation</th><td>Consistent baseline for verified outcomes, repeats, transfers, timing and cost.</td><td>Documented decision on the scoped population and thresholds.</td></tr>
+        <tr><th scope="row">Controlled rollout</th><td>Small cohorts, change window, stop conditions and a named rollback owner.</td><td>First production calls confirmed on the intended stabilized route.</td></tr>
+        <tr><th scope="row">Monitoring</th><td>Alerting for reach, delayed or failed actions, pending cases, customer impact and limits.</td><td>Owners can see and act on the agreed signals.</td></tr>
+        <tr><th scope="row">Optimization</th><td>Review of sampled outcomes and changed policies, tested under a new version.</td><td>Regression results and approval before adding intents or capacity.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>For each approved business action, correlate the inbound call and any later leg with the authoritative CRM, case or booking record. Store a pending disposition when the result is uncertain and reconcile before attempting another write. For example, if a request to change an appointment times out, the response could have been lost after a successful update. The receiving team should be able to find the existing record and determine its state. Use <a href="/ai-voice-agent-integrations">the guide to business-system actions and confirmations</a> to distinguish a committed action from a spoken answer.</p>
+<p>Use the integration checklist to <a href="/how-to-integrate-ai-voice-agents" data-phase2-link="true">verify business-tool compatibility</a> for each required operation.</p>
+</section>
+
+<section id="reversible-pilot">
+  <h2>How do you run a reversible pilot?</h2>
+  <p>Put the approved route and rollback choice in a change record. Record the exact route and test number, shift, previous destination, time window, named owner with access and how the buyer will confirm restoration. Keep the original route ready to accept new calls. Agree what to do with calls already in progress and outstanding writebacks, transfers or callback items. A route can be restored while work from the pilot is still pending.</p>
+  <ol class="b2bv-flow" aria-label="Reversible call center deployment sequence">
+    <li><strong>Keep the inbound route</strong><span>The existing carrier and ACD select the bounded pilot.</span></li>
+    <li><strong>Return to staff</strong><span>The pilot verifies the permitted outcome or connects to the approved staffed path.</span></li>
+    <li><strong>Restore when needed</strong><span>The routing owner switches new calls back and reconciles active cases.</span></li>
+  </ol>
+  <div class="b2bv-table" role="region" aria-label="Acceptance and rollback tests for a call center pilot" tabindex="0">
+    <table>
+      <caption>Run common calls and failures in an approved test environment</caption>
+      <thead><tr><th scope="col">Scenario</th><th scope="col">Required observation</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Ordinary call to the selected route</th><td>Correct branch, usable audio and expected saved or spoken outcome.</td></tr>
+        <tr><th scope="row">Staffed, busy and closed destinations</th><td>Actual staffed connection or correct alternate result, with ownership recorded.</td></tr>
+        <tr><th scope="row">Upstream delay or uncertain write</th><td>Truthful caller status, one pending record and named reconciliation owner.</td></tr>
+        <tr><th scope="row">Burst or capacity limit</th><td>Alternative route behaves as agreed under the tested load, including human queue capacity.</td></tr>
+        <tr><th scope="row">Pilot disabled and original route restored</th><td>External test call reaches the expected destination. Staff can find and close pending cases.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>In a fictional rollout, the existing carrier sends normal daytime traffic to the center's ACD. The supervisor enables one overflow branch for an order-status workflow with approved read access. When a caller requests a policy exception, the workflow returns them to a staffed queue with the case context. If media fails or the staffed path is unavailable beyond the agreed condition, the authorized routing owner restores the previous overflow destination. An external call confirms the route and an operations owner reconciles any records left open.</p>
+  <h3>Record the restore exercise in the change record</h3>
+  <p>For a fictional rehearsal, record a stop at 10:14 a.m., prior overflow destination selected at 10:15 and a successful outside test call reaching staff at 10:17. The measured time to verified restore is three minutes for that exercise. Separately record two pending cases that the owner reconciles after the call path comes back. This gives the buyer distinct evidence for routing recovery, unresolved transactions and the access needed to repeat the procedure under the agreed conditions.</p>
+  <p>Test the outside call from a network used by the intended callers. Check opening, closed and special schedule behavior if those schedules are part of scope. Confirm the relevant audio and keypad choices on the restored route. Record which owner makes the final decision and whether an alternate approval path is available when the primary contact is absent.</p>
+  <p>Pick stop conditions before real calls arrive. A confirmed unauthorized disclosure or a protected write beyond the approved scope should pause the route pending review. A failed arrival to a staffed destination should follow the agreed fallback and trigger an owner alert. Agree how many repeat failures or how much time at a bad level triggers restoration for the selected group. If the previous route relies on the same failed dependency, test an approved route that can still accept calls.</p>
+<p>Use the evaluation guide to <a href="/best-ai-voice-agent-for-call-centers" data-phase2-link="true">set contact center pilot acceptance criteria</a> for routing, workload and approved business outcomes.</p>
+</section>
+
+<section id="scale">
+  <h2>How do you expand without disrupting the existing queues?</h2>
+  <p>Size the complete call path. Observe how many active sessions and overlapping legs the carrier actually sees, which system owns each queue and which business APIs have limits. Test at the relevant hour and routing configuration. A documented queue limit describes the number of contacts the queue can hold. It belongs alongside the active call and platform quota checks, equipment capacity and availability of the receiving staff. Amazon Connect documents queue configuration and service quotas separately. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a></p>
+  <p>Expand one operational cohort at a time. Use the tested change procedure and make the traffic increase explicit. Check that the prior route can absorb the new cohort during a reversal. Compare verified outcomes, staffed transfer success, p95 delay, repeats and staff rework within the same scope. If a region, carrier or office behaves differently, qualify that path independently before sharing the same rollout decision. Verify monitoring and on-call ownership for the hours included.</p>
+  <p>For example, if an approved test route carries 20 concurrent inbound legs and six staff consults each temporarily add one leg, the measured overlap is 26 legs on a component that sees both sides. Confirm each provider's counting rules and how long those overlaps last during the peak period. Verify quota and failure behavior for each layer. A configurable queue can still fill while the carrier and AI platform have spare capacity, and an open staff queue can become unusable without the staffing agreed for the test.</p>
+  <p>Publish a monitoring owner and follow-up interval in the runbook. Include signals for reachable destinations, customer wait, caller-side audio, protected actions, failed or still-pending writes and alerts after hours. Test the notification path and who sees the approved evidence. Use the support agreement to confirm who can restore the call route and who can resolve open work, including cases that start during a change window.</p>
+  <p>Define the minimal launch log for each cohort. A supervisor should find the selected route, its current owner, the last successful outside verification and pending cases after a rollback. If the center changes carriers, desk hours or the permissions for a business action, treat those changes as new test conditions. Keep an approved version of the route and a record of the traffic it has handled, so a later reviewer can determine which tests apply to the new configuration.</p>
+  <h3>When does a specific infrastructure change become necessary?</h3>
+  <p>A carrier account, legacy PBX or subscription may lack a required supported route, secure media segment, transfer behavior, queue return or useful event data. Name the missing capability and the scope it affects. A buyer may be able to add a supported gateway, trunk, license or integration adapter while keeping the current main number and queue ownership. If that option still leaves an unsafe or unobservable path, keep the workflow limited until the owners can verify a supported topology.</p>
+  <p>B2B Voice can discuss a custom implementation around one approved route and a business-specific task. Bring an anonymized path map, the current fallback, the application owner and the requirement you need the pilot to prove. For any proposed deployment, establish compatibility and exact operating responsibilities in the scoped design. <a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>Can we keep our existing contact center and main phone number?</h3><p>Many centers can start with supported forwarding, a queue branch or a SIP route while the existing carrier holds the main number. Confirm control of routing, approved caller identity, costs, capacity and recovery with the actual providers.</p></div>
+<div class="b2bv-faq-item"><h3>What should a carrier and PBX verify for a voice AI pilot?</h3><p>Check trunk and destination support, signaling, two-way media, keypad events, recording boundaries and call-leg capacity. Test the actual staffed handoff and an approved return route.</p></div>
+<div class="b2bv-faq-item"><h3>Does SIP REFER prove the caller reached an agent?</h3><p>SIP REFER requests a transfer action. Verify the final staffed connection and business disposition on the actual call path, including what happens when the queue is closed or busy.</p></div>
+<div class="b2bv-faq-item"><h3>What is the lowest-risk first route?</h3><p>Choose a supervised test line or one bounded IVR, overflow or after-hours route that represents the intended use. The owner must be able to confirm the outcome and restore the previous destination.</p></div>
+<div class="b2bv-faq-item"><h3>How do we roll back the voice agent deployment?</h3><p>Have the authorized routing owner switch the selected traffic to the tested previous or alternate path. Confirm the route with an external call and reconcile pending work and calls already in progress.</p></div>
+<div class="b2bv-faq-item"><h3>When should we change the existing infrastructure?</h3><p>A specific change may be needed when the current carrier, phone system or license lacks an approved route, secure media, reliable transfer, visibility or recovery. Identify the missing capability and verify the smallest change that meets it.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Review one existing phone route</h2>
+        <p>Bring an anonymized route, the current fallback and the workflow the pilot needs to prove. Use a B2B Voice demo to discuss prerequisites and rollback.</p>
+        <a href="/demo">Request a deployment review demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc3261.html">RFC 3261 Session Initiation Protocol (SIP)</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4733.html">RFC 4733 RTP payload for DTMF and telephony events</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc3515.html">RFC 3515 SIP REFER method</a> <span class="b2bv-source-note">(IETF / RFC Editor)</span></li>
+<li><a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://www.twilio.com/docs/sip-trunking">Twilio Elastic SIP Trunking documentation</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>Voice AI Deployment</li>
+<li>SIP and PBX</li>
+<li>Call Routing</li>
+<li>Phased Rollout</li>
+<li>Rollback</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

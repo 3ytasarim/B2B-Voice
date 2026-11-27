@@ -120,11 +120,14 @@ export function postMeta(post: {
   excerpt: string;
   date: string;
   coverImage: string;
+  /** Approved <title> / meta description when they differ from the H1 / archive excerpt. */
+  seoTitle?: string;
+  metaDescription?: string;
 }): PageMeta {
   return {
     path: `/${post.slug}`,
-    title: `${post.title} | ${SITE_NAME}`,
-    description: snippet(post.excerpt),
+    title: post.seoTitle ?? `${post.title} | ${SITE_NAME}`,
+    description: post.metaDescription ?? snippet(post.excerpt),
     ogType: "article",
     ogImage: post.coverImage
       ? post.coverImage.startsWith("http")

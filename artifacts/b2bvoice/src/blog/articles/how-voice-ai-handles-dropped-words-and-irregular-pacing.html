@@ -1,0 +1,361 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Skip to article</a><header><h1 id="article-title">How Does Voice AI Handle Dropped Words and Irregular Pacing?</h1>
+<p class="b2bv3-byline">By B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">A voice agent can handle dropped words and irregular pacing by waiting through an unfinished thought, asking for a missing detail, or confirming what it heard before taking action. The right recovery depends on where the detail disappeared. A pause can trigger an early reply. Telephone audio can lose part of a word. A recognizer can omit a word that arrived clearly. Even a correct transcript can lead to the wrong appointment if the system keeps a date the caller already corrected.</p>
+<p>When B2B Voice scopes a custom appointment workflow, the business identifies which fields must be confirmed and what staff should do when a caller cannot supply them clearly. A street address for a dispatch job needs a stronger check than whether the caller opened with “hello.”</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Trace a missing detail through capture, transport, recognition, conversation state, and the resulting business action.</li>
+<li>Compare what the caller intended with the exact name, date, or address that the action requires.</li>
+<li>Clarify the smallest uncertain field and read back consequential corrections before committing.</li>
+<li>Check the calendar, dispatch record, or other system staff actually use after the action.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In this article</p>
+<ol>
+<li><a href="#where-a-word-can-disappear-when-voice-ai-drops-words">Where a word can disappear when voice AI drops words</a></li>
+<li><a href="#how-to-repair-a-conversation-before-an-action">How to repair a conversation before an action</a></li>
+<li><a href="#b2b-voice-speech-robustness-test-matrix">B2B Voice Speech Robustness Test Matrix</a></li>
+<li><a href="#what-to-record-when-a-customer-reports-a-dropped-word">What to record when a customer reports a dropped word</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+<li><a href="#references-heading">References</a></li>
+</ol></nav><h2 id="where-a-word-can-disappear-when-voice-ai-drops-words">Where a word can disappear when voice AI drops words</h2>
+<h3 id="the-microphone-and-the-phone-path">The microphone and the phone path</h3>
+<p>Start with the media that reached the system. A caller who starts speaking as a prompt or an audio gate opens can lose the first syllable before the recognition service receives anything. A noisy connection can make a captured word difficult to understand even when every packet arrives. Play the receiving-side recording and compare it with an authorized reference recording or a controlled replay from the same microphone. With only a transcript, those two causes can look identical.</p>
+<p>Packet loss means a piece of transmitted audio failed to arrive. Jitter describes variation in packet arrival timing. A receiver can buffer early or out-of-order packets to smooth playback. A packet that arrives after its scheduled playback time may still be unusable. Check the relevant leg of the call. The carrier, media gateway, and recognition service can see different versions of the audio, especially if a gateway terminates one stream and starts another. Real-time Transport Protocol (RTP) sequence numbers and reporting can help locate gaps and timing variation on a particular stream. They cannot identify an omitted address word on their own. <a class="b2bv3-ref" href="#source-rtp">IETF RFC 3550</a></p>
+<p>Where the deployed codec and receiver support it, packet loss concealment can fill a gap with plausible audio to reduce an audible break. The Opus specification describes concealment and, in certain modes, forward error correction. A caller can hear a smoother stream even though the receiver still lacks reliable evidence for a particular house number. Ask for the number again when a missing digit would send a technician to the wrong location. <a class="b2bv3-ref" href="#source-opus">IETF RFC 6716</a></p>
+<h3 id="the-recognizer-and-the-boundary-between-turns">The recognizer and the boundary between turns</h3>
+<p>In an evaluation of AI voice agent speech recognition, a missing word in an aligned transcript is labeled a deletion. Automatic speech recognition (ASR) produces the transcript being compared. A substitution replaces a spoken word with a different word. An insertion adds a word the caller did not say. A deletion label describes the transcript and reference. It does not by itself identify whether capture, transport, segmentation, or recognition caused the error. Compare the final transcript with the actual audio the recognizer was allowed to process before attributing speech recognition deletion errors to the recognizer. <a class="b2bv3-ref" href="#source-wer">Microsoft Speech documentation</a></p>
+<p>Voice activity detection (VAD) estimates when speech starts and stops. Acoustic endpointing can use a period of silence as a cue that the caller has finished. Semantic endpointing also considers whether the utterance sounds complete in context. “Can you move my appointment to …” can remain incomplete after a pause even when the voice activity detector correctly reports silence. A caller who says “Tuesday,” hesitates, and then says “actually Thursday” can also sound complete before the correction begins. OpenAI documents both acoustic and semantic turn detection settings for its Realtime API. Their behavior illustrates the design choices available in that implementation. <a class="b2bv3-ref" href="#source-vad">OpenAI Realtime VAD documentation</a></p>
+<p>Use caller-side audio to measure the trade-off. Waiting longer can preserve a hesitation but make a finished exchange feel slow. Responding too early can leave two people speaking at once. Test pauses, filler words, repeated starts, and incomplete sentences from the kinds of calls the business receives. Ask a reviewer to label the expected completion point independently of the detector’s event. The guide to <a href="/ai-voice-agent-turn-taking-interruptions">turn-taking and interruption handling</a> covers how those events drive playback and barge-in behavior.</p>
+<h3 id="conversation-state-and-the-business-record">Conversation state and the business record</h3>
+<p>An agent can recognize a rescheduling request and still retain the first date. Compare the final transcript with the extracted slot, dialogue state after the correction, outbound operation, and saved record. If the voice agent says Thursday and sends Tuesday to the calendar, inspect argument mapping and stale state before tuning speech recognition. If the tool sends Thursday and another record shows Tuesday, inspect the integration, time zone, and lookup used to verify the write.</p>
+<p>In a cascaded system, speech recognition, dialogue logic, and text-to-speech are distinct processing steps. When available, their intermediate outputs help pinpoint which boundary lost or changed a detail. An audio-native system can interpret incoming audio without using the same visible transcript as the sole intermediate representation. A transcript produced alongside the session may come from a separate recognizer. Judge that system using the audio heard on each leg, observable tool events, and the final business record. The <a href="/how-ai-voice-agents-work">voice agent architecture guide</a> explains the two approaches.</p>
+<h2 id="how-to-repair-a-conversation-before-an-action">How to repair a conversation before an action</h2>
+<h3 id="ask-for-the-smallest-detail-that-changes-the-outcome">Ask for the smallest detail that changes the outcome</h3>
+<p>When the agent heard the city and street but missed the unit, ask for the unit. A prompt that repeats an entire address creates more chances for the caller to change or omit details. In a fictional dispatch call, the agent could say, “I have Linden Spur in Riverton. What’s the unit number?” If the street itself is uncertain, ask for the street name or its spelling before proceeding. A verified lookup can narrow the available options, provided the caller confirms which one applies.</p>
+<p>A name has a different failure mode. “Mara Bell” and “Mara Dell” can lead to two records that sound plausible. Confirm the spelling or use another field authorized by the workflow. A high recognition confidence value alone does not authorize an account match. When the service cannot establish the required identity or detail, a staffed handoff or an explicitly pending request gives the business a recoverable outcome.</p>
+<h3 id="let-a-correction-supersede-an-old-value">Let a correction supersede an old value</h3>
+<p>Consider a fictional service appointment. The caller says, “Put me down for Friday afternoon … sorry, Thursday afternoon, at the West office.” An agent that starts a search for Friday while listening may still recover safely if that first action is read-only, the result is discarded, and the Thursday request is what the caller confirms. Before updating the calendar, repeat Thursday, the selected time, and the West location. After the write, verify the appointment using the reservation record the office sees.</p>
+<p>If the caller interrupts the read-back with “I meant the East office,” stop using the previously confirmed location. Find the available appointment at the new office and ask for confirmation again. If a write already occurred, follow the business’s change or cancellation procedure. A rushed second write can leave staff with two reservations and the caller with contradictory confirmations.</p>
+<p>Irregular speech pacing can also affect callers who stutter or restart a sentence. In a voice assistant study, researchers compared recognition settings using speech from people who stutter and used an intended-speech transcription target. That is a useful distinction when a test needs both a record of the words as spoken and an annotation of the caller’s intended action. The study measured its own participants and recognition setup. A production booking flow still needs tests with its own call conditions. <a class="b2bv3-ref" href="#source-dys">Mitra and colleagues</a></p>
+<h2 id="b2b-voice-speech-robustness-test-matrix">B2B Voice Speech Robustness Test Matrix</h2>
+<p>Start with an invented reference case that an independent reviewer can understand. Run it over clear audio and over the affected phone path, or introduce a documented change to a test recording. Preserve the reference words, the intended field values, and the permitted action separately. Compare the same conditions across releases before attributing a difference to an endpoint setting or model change.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Fictional speech robustness cases and expected repairs</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Fictional test condition</th>
+<th scope="col">Expected agent behavior</th>
+<th scope="col">Evidence to inspect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">The call loses part of the unit number in a dispatch address</th>
+<td>Ask for the unit again. Keep the dispatch request pending until it is clear.</td>
+<td>Receiving audio, relevant media events, clarification, and saved dispatch address.</td>
+</tr>
+<tr class="even">
+<th scope="row">The final transcript omits an audible street name</th>
+<td>Ask the caller for the street. Check whether the missing word was inside the submitted segment.</td>
+<td>Aligned reference audio, segment boundary, final transcript, and tool arguments.</td>
+</tr>
+<tr class="odd">
+<th scope="row">A long pause occurs after “could you move it to”</th>
+<td>Allow the caller to finish or invite them to provide the date.</td>
+<td>Annotated turn boundary, time of agent playback, and absence of a premature write.</td>
+</tr>
+<tr class="even">
+<th scope="row">The caller changes Tuesday to Thursday near the end of the turn</th>
+<td>Set the pending date to Thursday and confirm it before writing.</td>
+<td>State transition, confirmed date, tool input, and the calendar record.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Two similar names match different accounts</th>
+<td>Ask for permitted clarification or escalate without disclosing either record.</td>
+<td>Record-match result, verification decision, and absence of unauthorized action.</td>
+</tr>
+<tr class="even">
+<th scope="row">The caller interrupts a confirmation with a new office location</th>
+<td>Treat the old location as superseded. Verify the intended office before a booking.</td>
+<td>Both audio directions, playback cutoff, location state, and booking receipt.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Overlapping background speech supplies a different address</th>
+<td>Confirm the intended address with the primary caller.</td>
+<td>Reviewer labels, confirmation turn, and the final dispatch record.</td>
+</tr>
+<tr class="even">
+<th scope="row">A clearly spoken request reaches the expected path</th>
+<td>Resolve the request without unnecessary confirmation beyond the agreed policy.</td>
+<td>Clean reference, caller effort, validated details, and resulting state.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A clarification can be an appropriate outcome even when the agent cannot finish the task immediately. A request that remains pending after an unresolved name should be visible as pending. A test also needs clear-audio controls so a change that asks everyone to repeat everything does not look uniformly better. Document whether misheard words, premature turns, excessive clarification, and wrong writes changed in each scenario.</p>
+<h3 id="keep-a-comparable-control-for-voice-ai-speech-robustness">Keep a comparable control for voice AI speech robustness</h3>
+<p>If voice AI dropped words during a booking, identify the first point where the detail changed and isolate one variable at a time. Play a fixed sentence through the same test route before and after changing the endpoint policy. Compare the received audio, the accepted segment, and the confirmed fields. Add unprompted variants afterward to see whether the repair still works when speakers use different wording. The <a href="/multilingual-voice-agent-testing">multilingual testing guide</a> covers how to recruit listeners and design language-specific cases. Use a reviewer who can identify where the caller stopped and which details were audible.</p>
+<p>An AI voice agent handling pauses needs an appropriate response when a gap is deliberate and a different response when the speech is incomplete. The practical test of voice agent speech clarification is whether the caller can provide the missing detail and continue from where they left off.</p>
+<h2 id="what-to-record-when-a-customer-reports-a-dropped-word">What to record when a customer reports a dropped word</h2>
+<p>Save the allowed evidence that answers the incident question. Useful events include audio capture start, the part of the call the system treated as a completed turn, the finalized recognition output if applicable, the confirmed field, the request sent to the integration, and the resulting record reference. Correlate them on a shared session timeline when possible. Label absence of audio or an unavailable intermediate state so the next reviewer can tell what remains unresolved.</p>
+<p>Separate the technical incident from its business effect. A clipped sentence that led to a clarification may have cost the caller an extra turn. A corrected date that never reached the calendar can require the front desk to contact the customer and repair the record. Teams investigating the second case can use <a href="/how-voice-ai-accuracy-is-measured">speech and task accuracy measures</a> to report the transcript, extracted date, and verified booking as distinct outcomes.</p>
+<h2 id="faq">Frequently asked questions</h2>
+<h3 id="can-a-voice-agent-recover-a-word-that-was-never-captured">Can a voice agent recover a word that was never captured?</h3>
+<p>Context can suggest a likely word. When the missing word changes an appointment, address, or account action, the agent needs a fresh confirmation or another authorized source before using it.</p>
+<h3 id="why-did-the-agent-reply-while-the-caller-was-still-thinking">Why did the agent reply while the caller was still thinking?</h3>
+<p>An acoustic endpoint detector may treat a pause as the end of the turn. A semantic detector can also misjudge a phrase that sounds complete. Compare the detected endpoint with the caller’s actual completion point and the start of agent playback.</p>
+<h3 id="what-if-the-transcript-shows-the-right-date-and-the-booking-shows-the-wrong-date">What if the transcript shows the right date and the booking shows the wrong date?</h3>
+<p>Inspect the agent’s current slot, tool arguments, time zone conversion, and calendar record in that order. The first point where those disagree tells you which part of the workflow to investigate.</p>
+<h3 id="should-an-agent-repeat-every-name-and-address">Should an agent repeat every name and address?</h3>
+<p>Use the workflow’s confirmation rules and the consequence of an error. An unusual name tied to an account or a unit number used for dispatch deserves a targeted check. Routine details can follow a lighter confirmation policy when the business accepts that risk.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Review a booking or dispatch workflow</h2>
+<p>Bring one call your team would need to handle safely, the details staff verify, and the fallback they can actually support. <a href="/demo">Discuss a custom booking or dispatch workflow</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">References</h2>
+<ul>
+<li id="source-rtp">RTP signaling context, packet sequence numbers, and reception reports. <a href="https://www.rfc-editor.org/info/rfc3550/">RTP: A Transport Protocol for Real-Time Applications</a>
+</li>
+<li id="source-opus">Opus codec behavior, in-band redundancy, and packet loss concealment. <a href="https://www.rfc-editor.org/info/rfc6716/">Definition of the Opus Audio Codec</a>
+</li>
+<li id="source-wer">Word recognition error classes and reference comparison. <a href="https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-custom-speech-evaluate-data?pivots=ai-foundry-portal">Test accuracy of a custom speech model</a>
+</li>
+<li id="source-vad">A provider-specific example of acoustic and semantic turn detection. <a href="https://developers.openai.com/api/docs/guides/realtime-vad">Voice activity detection (VAD)</a>
+</li>
+<li id="source-dys">An Interspeech study of voice-assistant recognition using dysfluent speech and intended-speech references. <a href="https://www.isca-archive.org/interspeech_2021/mitra21_interspeech.pdf">Analysis and Tuning of a Voice Assistant System for Dysfluent Speech</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Topics">
+<li>Speech Recognition</li>
+<li>Voice Activity Detection</li>
+<li>Conversation Repair</li>
+<li>Telephone Audio</li>
+</ul></article>
+</main>

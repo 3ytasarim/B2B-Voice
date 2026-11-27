@@ -1,0 +1,328 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Integrations</p>
+    <h1 id="b2bv-title">How to Integrate AI Voice Agents with Your Existing Business Tools: A Practical Guide</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">An AI phone agent can work with the tools you already use when the vendor and your system owners can prove the exact operations the workflow needs. Start with one action, such as saving a new lead or confirming an appointment, and identify who has authority to make it happen.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>To integrate an AI voice agent, list the system and access required for every action, verify the result in the system that owns it, and assign a fallback for failures. Check licenses and permissions for CRM and calendar work separately from the carrier and phone system. Confirm bookings only after the authoritative system returns a verifiable result.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#compatibility">Check existing tools</a></li>
+<li><a href="#permission">Define access and authority</a></li>
+<li><a href="#effort">Estimate implementation effort</a></li>
+<li><a href="#telephony">Keep or route the phone number</a></li>
+<li><a href="#readiness">Integration readiness checklist</a></li>
+<li><a href="#worked-flow">Work through a booking</a></li>
+<li><a href="#acceptance">Verify readiness</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Evaluate the exact action and role in your tenant, even when an API or connector exists.</li>
+<li>Keep read-only, request-only and confirmed writes distinct in the workflow and in what the caller hears.</li>
+<li>Test the phone route, the failure owner and the restore path before expanding traffic.</li>
+        </ul>
+      </section>
+<section id="compatibility">
+  <h2>Can you keep the business tools you already use?</h2>
+  <p>Many teams can keep their CRM, calendar, help desk and phone number if the required operations are supported, permitted and tested in their environment. Determine compatibility one action at a time. A product can allow contact lookup while limiting writes to certain fields. The same business may let a calendar create a meeting while requiring a dispatcher to approve the field-service booking.</p>
+  <p>B2B Voice's managed implementation starts with the business action you want from the call. Show your system administrator how staff read, write or verify that result today. The integration can then be evaluated against the exact CRM, calendar or API operation, its permissions and the fallback if the system is unavailable.</p>
+<p>List the actual tenant, product edition, location, roles and owner. A tenant is the organization's account or environment in a business application. Two teams using the same product may have different licenses, access policies and workflows. Ask the administrator which interfaces are supported and whether you can use a sandbox with fictional records. Include who can grant and revoke access.</p>
+  <div class="b2bv-table" role="region" aria-label="Business tools and operation evidence" tabindex="0">
+    <table>
+      <caption>Choose what each tool can prove in a phone workflow</caption>
+      <thead><tr><th scope="col">System</th><th scope="col">Possible action</th><th scope="col">Evidence before launch</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">CRM</th><td>Find a contact, create a lead or attach the call outcome.</td><td>Correct matching rules, restricted fields, record ID and an assigned owner. Decide how duplicate contacts are reviewed.</td></tr>
+        <tr><th scope="row">Calendar or scheduling system</th><td>Read eligible slots, then create or request an appointment.</td><td>Right location, calendar, staff or resource, time zone and durable appointment or request confirmation.</td></tr>
+        <tr><th scope="row">Help desk</th><td>Open a support ticket or add permitted context to one.</td><td>Ticket ID, categorization, routing, permitted visibility and follow-up owner.</td></tr>
+        <tr><th scope="row">Enterprise resource planning (ERP) or field service</th><td>Read order status or create a permitted service request.</td><td>Authoritative order state or request ID, caller verification and separate dispatch authority.</td></tr>
+        <tr><th scope="row">Approved export or legacy database</th><td>Read a snapshot with a known date or send a request to staff.</td><td>Allowed fields, refresh schedule, stale-data policy and a staff-owned path for changes.</td></tr>
+        <tr><th scope="row">Carrier or phone system</th><td>Route a specific number, branch or time window, with an approved return path.</td><td>Real inbound trace, transfer outcome and restore test under the intended routing policy.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>When a team can provide only a nightly export, record its update time and agree on the questions it can answer. A dated directory may be suitable for routine public information. A request for current inventory or today's appointment availability needs a current, authorized source or a staff review. For the technical mechanics, see <a href="/ai-voice-agent-integrations">how voice agents use APIs, webhooks and system records</a>.</p>
+<p>To <a href="/ai-voice-agents-for-real-estate" data-phase2-link="true">connect approved listing and showing data</a>, check which fields the brokerage can read and which system can confirm a tour.</p>
+</section>
+
+<section id="permission">
+  <h2>What permission does each CRM or calendar action need?</h2>
+  <h3>Match the person and the intended record</h3>
+  <p>Have the CRM owner choose the matching rule. A phone number can be shared by a household or reused. An email address or external record ID may be a better key for a particular business. When more than one record matches, define who resolves the ambiguity and which details the agent is allowed to repeat. Keep source-of-truth fields and notes separate so a conversation summary cannot overwrite an approved record.</p>
+  <p>HubSpot's contacts documentation describes contact operations and documented identifiers. Salesforce documents upserting a record using an external ID, which can update a matching record or create one when there is no match. Decide in advance whether a new record is allowed and whether the access role can perform that action. Show a new caller and an ambiguous match during the tenant test. <a href="https://developers.hubspot.com/docs/api-reference/legacy/crm/objects/contacts/guide">HubSpot CRM contacts API</a> <a href="https://developer.salesforce.com/docs/platform/api-rest/guide/resources-sobject-upsert-patch.html">Salesforce external ID upsert</a></p>
+  <h3>Check availability, then verify the committed slot</h3>
+  <p>Google Calendar has separate free/busy and event creation operations. Microsoft Graph similarly documents schedule availability and event creation. In either case, the business must decide which calendar or scheduling service governs the real booking, which staff or resource can accept it, what holds apply and how to handle concurrent requests. An available slot is a snapshot. Another caller or employee could take it before the appointment is saved. <a href="https://developers.google.com/workspace/calendar/api/v3/reference/freebusy/query">Google Calendar Freebusy query</a> <a href="https://developers.google.com/workspace/calendar/api/v3/reference/events/insert">Google Calendar Events insert</a> <a href="https://learn.microsoft.com/en-us/graph/api/calendar-getschedule?view=graph-rest-1.0">Microsoft Graph getSchedule</a> <a href="https://learn.microsoft.com/en-us/graph/api/calendar-post-events?view=graph-rest-1.0">Microsoft Graph Create event</a></p>
+  <p>Require the scheduling owner to define the returned record that permits the agent to say the appointment is confirmed. Check the ID, date and time, time zone, location and relevant resource. A calendar product can create an event while a separate practice system or dispatcher still has approval authority. When the call can only capture a preference, tell the caller that staff will review the request.</p>
+  <h3>Keep help desk intake and ERP authority proportionate</h3>
+  <p>Zendesk documents creating ticket records. A ticket ID can prove the request was received, while assignment or resolution depends on subsequent workflow. Microsoft Dynamics 365 Business Central documents retrieving a sales order. A team that needs an authorized order-status read can scope that operation and leave fulfillment changes with staff. Use the system owner's approved identity check before sharing customer-specific status. <a href="https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/">Zendesk Tickets API</a> <a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/resources/dynamics_salesorder">Microsoft Dynamics 365 Business Central sales orders</a></p>
+  <p>Give the application the smallest useful set of fields and actions. Document what enters recordings, transcripts, workflow logs and business records. Agree on access, retention, deletion, policy changes and the path for disputed information. OWASP recommends restricting the functions and privileges available to applications using language models. See <a href="/ai-voice-agent-security">how to limit permissions for business actions</a>. <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a></p>
+<p>For a practice-management system, <a href="/ai-voice-agents-for-dental-practices" data-phase2-link="true">plan dental practice scheduling permissions</a> at the appointment, provider and operatory level.</p>
+</section>
+
+<section id="effort">
+  <h2>How difficult will the implementation be?</h2>
+  <p>Classify every action before asking for a timeline or budget. Use the statuses below to discuss effort with the system owner and provider. Two actions on the same product can occupy different rows. Ask for work estimates by phone routing, identity, field mapping, testing, exception handling and ongoing maintenance.</p>
+  <div class="b2bv-table" role="region" aria-label="Integration implementation effort by compatibility" tabindex="0">
+    <table>
+      <caption>Compatibility categories and their implementation consequences</caption>
+      <thead><tr><th scope="col">Classification</th><th scope="col">Prove before choosing it</th><th scope="col">Typical scope to price</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Verified native</th><td>The available connector can perform the exact read or write in the intended tenant and role.</td><td>Configuration, matching, test data, failure routing and ongoing credential ownership.</td></tr>
+        <tr><th scope="row">Verified custom</th><td>A supported API or middleware path and approved credentials allow the required operation, with reliable results in the test environment.</td><td>Adapter work, timeouts, retry and reconciliation, monitoring and regression tests.</td></tr>
+        <tr><th scope="row">Read-only or request-only</th><td>The business can access approved information or capture a request in a controlled queue, while direct writes remain unavailable or unapproved.</td><td>Freshness checks and the staff path, including how callers learn what was received and when someone will review it.</td></tr>
+        <tr><th scope="row">Unavailable</th><td>The operation lacks a supported interface, access, policy approval or a workable fallback.</td><td>Exclude the action from launch. Assess a supported alternative with the system owner.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>For example, a team with a supported contact lookup, calendar access awaiting approval and an untested phone transfer can demonstrate the contact operation and collect appointment requests. It can scope a booking after calendar access is approved and tested. Until the phone route is proven, a separate line or supervised test can keep the main queue untouched. Budget the unresolved items as dependencies in the statement of work.</p>
+<p>Use the buyer’s guide to <a href="/how-to-choose-an-ai-voice-agent" data-phase2-link="true">compare AI voice agent delivery models</a> after confirming what the required systems can do.</p>
+</section>
+
+<section id="telephony">
+  <h2>Can an AI phone agent use your existing business number?</h2>
+  <p>Often, an existing number can stay with its carrier while selected calls route to the agent. Ask the carrier and the owner of the private branch exchange (PBX), cloud phone system or contact center platform how they can route the calls. Possibilities include a dedicated test line, a branch of the current IVR, after-hours or overflow forwarding, or a supported Session Initiation Protocol (SIP) integration. Which route fits depends on the carrier, provider, phone-system configuration and required handoff.</p>
+  <p>Check who owns the number, forwarding costs, which caller ID reaches each side, hours, transfer behavior, recording boundaries and who can restore the previous route. If your team needs staff to receive context before accepting a call, ask the provider to demonstrate the proposed transfer in the actual phone path. A product-specific SIP transfer method documents a possible arrangement. Prove that your receiving queue handles it in normal, busy and closed conditions. <a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a></p>
+  <p>Start with an observable, reversible route. For example, route one office's evening inquiries to a test-approved destination and let the phone owner restore the existing voicemail or answering service if a dependency fails. Test for routing loops when the agent sends an overflow call back to the business. Preserve a clear route for a caller asking for a person and name the staff owner if a callback is the only option outside business hours. See <a href="/ai-voice-agent-reliability">how to test handoff and fallback paths</a>.</p>
+<p>An existing queue can require a fuller routing and rollback plan. Review how to <a href="/ai-voice-agent-call-center-implementation" data-phase2-link="true">deploy into an existing call center</a>.</p>
+</section>
+
+<section id="readiness">
+  <h2>B2B Voice Integration Readiness Checklist</h2>
+  <p>Use one row per customer-facing action. A row should identify the authoritative system, exact permissions, licensing and owner, proof of success, response to failure and ongoing support. This is a proposed way to scope integration work. A supported product feature still needs proof for your tenant and business rules.</p>
+  <div class="b2bv-table" role="region" aria-label="Integration readiness checklist" tabindex="0">
+    <table>
+      <caption>What the buyer and implementer should collect at each step</caption>
+      <thead><tr><th scope="col">Step</th><th scope="col">Inputs to collect</th><th scope="col">Evidence to file</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Discovery</th><td>Call reason, action, source of truth, system owner, account version and plan.</td><td>Inventory of permitted reads, writes and request paths.</td></tr>
+        <tr><th scope="row">Access</th><td>Sandbox, restricted role, license and approval for caller identity, data and recordings.</td><td>Allowed and denied tests under the intended access, with a named credential owner.</td></tr>
+        <tr><th scope="row">Design</th><td>Fields, record IDs, time zones, success criteria and synchronous versus background work.</td><td>A field map that identifies what callers can hear before and after a write.</td></tr>
+        <tr><th scope="row">Implementation</th><td>Connector or API, phone route and a common way to trace a call and its actions.</td><td>Before-and-after records and a trace from the call to each business action.</td></tr>
+        <tr><th scope="row">Testing</th><td>Fictional records, simultaneous requests, duplicate events, expired credentials and failed transfers.</td><td>One durable record per intended action, truthful wording and the right human exception path.</td></tr>
+        <tr><th scope="row">Deployment</th><td>Change window, controlled routing group, staffed fallback, access owner and restoration path.</td><td>Approved release criteria, a rollback exercise and a reconciliation owner.</td></tr>
+        <tr><th scope="row">Ongoing support</th><td>Credential and API changes, staff turnover, data policy and support agreement.</td><td>Named alert owners, resolution procedure and regression checks after changes.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>For a first implementation, annotate the three actions in one row set. For example, the CRM owner may permit read-only lookup, the booking owner may allow an appointment write under narrowly defined rules, and the phone owner may still need to test a staffed transfer. The first two outcomes can be scoped separately from the transfer. Delay live cutover that depends on an untested handoff.</p>
+</section>
+
+<section id="worked-flow">
+  <h2>A worked example with a confirmed booking and a pending CRM update</h2>
+  <p>Suppose a fictional business has two locations and wants callers to schedule an estimate. The CRM is responsible for contact identity and follow-up. The scheduling service owns the actual appointment. The support team accepts a callback if the system cannot confirm a slot. Agree on which operations the caller must wait for and which can complete after the conversation.</p>
+  <ol class="b2bv-flow" aria-label="Example system confirmation workflow">
+    <li><strong>Find the contact</strong><span>Verify the permitted fields and identify the right location.</span></li>
+    <li><strong>Confirm the booking</strong><span>Commit an eligible slot and verify the saved appointment.</span></li>
+    <li><strong>Record the outcome</strong><span>Link the appointment to the CRM and queue any missing update.</span></li>
+  </ol>
+  <p>If scheduling confirms the appointment and the later CRM update times out, keep the appointment and assign the missing update to an owned queue. The caller can receive the verified time. Staff can link the missing notes using the appointment ID without creating another appointment. A CRM failure should change the caller's outcome only if a CRM write was itself required for the appointment to be valid.</p>
+  <p>If the appointment request times out, it might already have committed. Record a stable identifier for the intended action, reconcile with the scheduling service and retry only under conditions that preserve a single record. Some interfaces support a request identifier for this purpose. An AWS design guide explains why request IDs can make retries safe when the service supports that behavior. Validate the actual API and what happens when someone changes the requested slot. <a href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">AWS guidance on making retries safe</a></p>
+  <p>If the scheduling system cannot confirm the result while the caller is on the line, say the time is pending and send the case to the agreed team. Log the pending reason, the evidence to inspect and the return-contact policy. For an event delivery such as a webhook, validate the sender using the product's documented method and handle repeated deliveries separately. Sender verification establishes origin. Deduplication keeps a repeated delivery from applying a second write. <a href="https://www.twilio.com/docs/usage/webhooks/webhooks-security">Twilio secure webhooks</a></p>
+<p>For a clinic with multiple locations, <a href="/ai-voice-agents-for-veterinary-clinics" data-phase2-link="true">verify veterinary scheduling against a PIMS</a> with the correct client, animal, site and visit type.</p>
+</section>
+
+<section id="acceptance">
+  <h2>What proves the workflow is ready?</h2>
+  <p>Ask for an acceptance packet with a completed call, the corresponding system record, and a failure case reviewed by the person who will receive it. Include a denied write, two callers trying for the same slot, a duplicated message, a timeout after a confirmed write, a stale read and a closed transfer destination. Run the combination that matters to your business, such as the main phone number forwarding after closing and the booking system rejecting a change.</p>
+  <p>A sandbox pass gives useful evidence about the agreed scenario. Before expanding, use a controlled production check with the exact roles, phone route and alert owners planned for release. Operations should be able to find unresolved requests without relying on call transcripts. The telephony owner should be able to disable the route, and the system owner should be able to reconcile records and revoke access if needed.</p>
+  <p>B2B Voice designs custom voice agents around business workflows. For an integration discussion, bring the name and edition of each system, the owner, an example action and the result you need to verify. For a registration or scheduling workflow, use fictional callers and the receiving team's approved failure path. That gives both teams a basis to determine compatibility, responsibilities and implementation effort. <a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>Can I keep my existing business phone number?</h3><p>You may be able to retain the number and route selected calls through forwarding, a PBX branch or another approved phone configuration. Confirm carrier capabilities, caller ID, transfer behavior, cost and rollback before changing routes.</p></div>
+<div class="b2bv-faq-item"><h3>Can an AI voice agent connect with HubSpot or Salesforce?</h3><p>Those products document CRM interfaces that support certain contact and record operations. Confirm the relevant product edition, account access, match rules and permissions. Ask your implementation provider to show the exact action in a permitted environment.</p></div>
+<div class="b2bv-faq-item"><h3>Is a calendar connection enough to confirm an appointment?</h3><p>A confirmed appointment requires an accepted write in the business's authoritative scheduling system. Check the time, location and resource and verify the record that permits confirmation. If confirmation is pending, tell the caller and assign a human owner.</p></div>
+<div class="b2bv-faq-item"><h3>What if our ERP has no supported write interface?</h3><p>Use an approved request queue or manual process and tell the caller the request is pending. A supported read or dated export can still serve certain lookup needs. Ask the ERP owner to approve any middleware or new access.</p></div>
+<div class="b2bv-faq-item"><h3>How do we prevent a retry from booking twice?</h3><p>Use a stable identifier for the intended booking and confirm the API's retry semantics. If the response is ambiguous, look for an existing record before retrying. Route unresolved cases to the person who owns reconciliation.</p></div>
+<div class="b2bv-faq-item"><h3>Who should maintain the integration after launch?</h3><p>Assign owners for the phone route, business policies, credentials, changed fields, monitoring and exception queues. Put their responsibilities in the support agreement and repeat relevant acceptance tests after changes.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Review compatibility with your current tools</h2>
+        <p>Share the phone setup, applications and one action you want to verify. B2B Voice can use that scenario to discuss permissions, test evidence and implementation scope.</p>
+        <a href="/demo">Request an integration demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+<li><a href="https://developers.hubspot.com/docs/api-reference/legacy/crm/objects/contacts/guide">HubSpot CRM contacts API</a> <span class="b2bv-source-note">(HubSpot)</span></li>
+<li><a href="https://developer.salesforce.com/docs/platform/api-rest/guide/resources-sobject-upsert-patch.html">Salesforce external ID upsert</a> <span class="b2bv-source-note">(Salesforce)</span></li>
+<li><a href="https://developers.google.com/workspace/calendar/api/v3/reference/freebusy/query">Google Calendar Freebusy query</a> <span class="b2bv-source-note">(Google)</span></li>
+<li><a href="https://developers.google.com/workspace/calendar/api/v3/reference/events/insert">Google Calendar Events insert</a> <span class="b2bv-source-note">(Google)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/graph/api/calendar-getschedule?view=graph-rest-1.0">Microsoft Graph getSchedule</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/graph/api/calendar-post-events?view=graph-rest-1.0">Microsoft Graph Create event</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/">Zendesk Tickets API</a> <span class="b2bv-source-note">(Zendesk)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/resources/dynamics_salesorder">Microsoft Dynamics 365 Business Central sales orders</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a> <span class="b2bv-source-note">(OWASP)</span></li>
+<li><a href="https://www.twilio.com/docs/sip-trunking/call-transfer">Twilio SIP REFER and call transfer</a> <span class="b2bv-source-note">(Twilio)</span></li>
+<li><a href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">AWS guidance on making retries safe</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://www.twilio.com/docs/usage/webhooks/webhooks-security">Twilio secure webhooks</a> <span class="b2bv-source-note">(Twilio)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>AI Voice Agent Integrations</li>
+<li>CRM</li>
+<li>Scheduling</li>
+<li>Business Telephony</li>
+<li>Workflow Automation</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

@@ -1,0 +1,298 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Industry Solutions</p>
+    <h1 id="b2bv-title">AI Voice Agents for Real Estate: Lead Qualification, Property Inquiries and Scheduling</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">An inbound property call can arrive long after the ad was published or the listing status changed. Design the phone workflow around verified property information, a consistent next step and the showing or CRM record staff actually use.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>Use a real estate voice agent to identify the caller's request, read authorized public listing information and route a showing or callback. Apply neutral intake rules and preserve a path to staff. Confirm a showing after the authorized system verifies the property, slot and any required approval.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#intake">Route the first call</a></li>
+<li><a href="#listing-data">Use approved listing data</a></li>
+<li><a href="#fair-housing">Review fair housing controls</a></li>
+<li><a href="#showing-workflow">Verify showing appointments</a></li>
+<li><a href="#crm">Assign CRM follow-up</a></li>
+<li><a href="#pilot">Measure and test the pilot</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Review listing access and approved fields, and give staff ownership of stale or conflicting information.</li>
+<li>Apply fair housing controls and compare equivalent synthetic calls for equal access to next steps.</li>
+<li>Keep showing requests, confirmed appointments and CRM ownership traceable across systems.</li>
+        </ul>
+      </section>
+<section id="intake">
+  <h2>What can a real estate voice agent do on the first call?</h2>
+  <p>The first call often starts with an incomplete property identifier. Someone sees a sign, hears a street name in an ad or calls an office about a listing that went pending overnight. Ask whether the caller is looking to buy, rent or sell, checking an existing appointment, or trying to reach a property manager. A well-designed intake can connect these requests to their owners without treating every call as a sales lead.</p>
+  <p>B2B Voice can design an inbound phone agent for a brokerage's property inquiries, neutral intake and showing requests. Bring approved listing fields, the rules for confirming a tour and the CRM owner for each handoff. The managed design can then reflect what the brokerage is authorized to share and which cases need licensed staff.</p>
+<p>Collect a property reference and the caller's requested next step. With permission to use the approved contact channel, record a name and a callback number if follow-up is needed. A buyer may volunteer a time frame or price range. Those fields can help a licensed team member prepare for a call under approved rules. Make optional fields clear, and keep a way to reach the team if the caller wants to speak to someone before sharing them. Existing residents, vendors and agents should route to the relevant staff without filling out a prospect form.</p>
+  <div class="b2bv-table" role="region" aria-label="Real estate call intake decisions" tabindex="0">
+    <table>
+      <caption>Routing follows the request and the information the office can verify</caption>
+      <thead><tr><th scope="col">Caller request</th><th scope="col">What the voice workflow can do</th><th scope="col">Who owns the next decision</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Buyer asks about an individual listing</th><td>Match the address or listing reference and read fields approved for public release.</td><td>The assigned agent handles offer terms, representation and any unverified facts.</td></tr>
+        <tr><th scope="row">Renter asks for a tour</th><td>Collect the listing, tour time preferences and permitted callback details.</td><td>The leasing team owns application review, accommodations and exceptions.</td></tr>
+        <tr><th scope="row">Seller wants to talk</th><td>Capture the property location and a preferred callback time.</td><td>A licensed agent handles pricing, valuation and marketing advice.</td></tr>
+        <tr><th scope="row">Resident reports an issue</th><td>Follow the property's service or approved urgent routing procedure.</td><td>Property staff own service priority and follow-through.</td></tr>
+        <tr><th scope="row">Agent wants showing instructions</th><td>Identify the listing and route the request through the approved verification channel.</td><td>Authorized staff handle access codes and occupant-specific instructions.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Give the receptionist a way to distinguish phone-menu routing, automated inquiry handling and staff-only requests. A simple route is useful if the caller already knows whom they need. A structured conversation helps when the office must identify a property, request and owner across several systems. For more on where each design fits, see <a href="/ai-voice-agent-vs-ai-receptionist-vs-ivr">voice agents, receptionists and IVR</a>.</p>
+</section>
+
+<section id="listing-data">
+  <h2>How should the agent answer questions about a listing?</h2>
+  <p>Choose an authoritative source for each field. A brokerage might use an approved feed for asking price and listing status, a separate showing system for appointment windows, and an office knowledge base for application instructions. Assign an owner and an expiration rule for each source. Verify the address, city and unit or listing ID before discussing details. Two townhomes with the same street number or neighboring units can have different availability and terms.</p>
+  <p>The Real Estate Standards Organization publishes a Data Dictionary with standardized fields and supports standard exchange methods. RESO explains that actual data access comes from the appropriate MLS or data provider. Confirm which feed, credential and use rights cover this telephone workflow. The existence of a field in a standard does not establish the right to disclose it. Review the specific fields approved for telephone use, their definitions and their freshness requirements. <a href="https://www.reso.org/data-dictionary/">RESO Data Dictionary</a> · <a href="https://www.reso.org/ht-faq/new-faq-question-156/">RESO and access to MLS data</a></p>
+  <p>Treat a missing field, an old update timestamp and a mismatch between two sources as three separate conditions. If the last verified record is beyond the team's freshness limit, the workflow can offer a callback and flag the conflicting status. Where the office permits use of a timestamp, say when the status was last checked. Do not infer a listing has reopened from an empty response, estimate square footage from a photograph, or tell a caller what financing they qualify for. Route requests for guidance about the transaction to the appropriate licensed team member.</p>
+  <p>Publish a short, field-level checklist that listing staff can maintain. For each allowed answer, define the source, whether the public is allowed to hear it, and what the agent should do when the source is incomplete. Put those controls in the actual integration so private remarks never reach the phone workflow.</p>
+</section>
+
+<section id="fair-housing">
+  <h2>What should a brokerage check for fair housing?</h2>
+  <p>The federal Fair Housing Act prohibits specified forms of discrimination in covered housing transactions based on race, color, national origin, religion, sex, familial status and disability. HUD's regulations describe discriminatory steering and include oral statements in rules on discriminatory advertisements, statements and notices. The brokerage should review applicable federal, state and local rules for its market, including any additional protected categories and requirements. <a href="https://uscode.house.gov/us/usc/119-124/t42/s3604/">42 USC § 3604</a> · <a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.70">24 CFR § 100.70 on prohibited sale and rental practices</a> · <a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.75">24 CFR § 100.75 on discriminatory statements</a></p>
+  <p>Define lead qualification as identifying the caller's requested service, market, property and time preferences for routing. Ask neutral questions that serve that purpose. An AI phone workflow should not rank people, decide application eligibility, infer demographics from a name or accent, or recommend areas based on protected characteristics. Use verified, permissible property facts and an equivalent follow-up route for callers making comparable requests. Requests for accommodations or help with the application process should reach the designated staff member under the office policy.</p>
+  <p>Consider a caller who asks, “What kinds of people live in that building?” A brokerage-approved response can offer verifiable property details and the same tour process available to other callers. Record the request for a staff member if the caller asks for further help. The system should not describe the neighborhood as suitable for a particular kind of household, treat the caller's volunteered information as an intake score, or exclude listings on that basis.</p>
+  <p>Run matched synthetic calls with the same property, preferences and availability. Change only an irrelevant volunteered detail or another condition the brokerage wants to test, such as how the address is pronounced. Compare the properties offered, next-step wording, route, time choices and fallback. Inspect both the transcript and decision record. Review rules that act on ZIP codes, language or other context to make sure they serve the approved activity, such as caller-requested language support, and preserve equal access to the next step. Inbound permission to return a specific inquiry should be handled separately from any proposed outbound campaign. If the team adds automated calls or texts, have it review the applicable communication rules and channel settings. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+</section>
+
+<section id="showing-workflow">
+  <h2>How does a showing request become a confirmed appointment?</h2>
+  <p>The B2B Voice Real Estate Intake and Showing Workflow separates a requested time, an offered opening and a confirmed appointment. A brokerage can run the first two steps with a staff follow-up queue. Direct booking also requires compatible tools, scheduling authority and evidence for the final state.</p>
+  <ol class="b2bv-flow b2bv-flow--four" aria-label="Real estate intake and showing workflow">
+    <li><strong>Identify the request</strong><span>Confirm the listing reference, caller's next step and approved contact method.</span></li>
+    <li><strong>Check the showing rules</strong><span>Confirm current listing status, timezone, showing windows and any approval required.</span></li>
+    <li><strong>Record the outcome</strong><span>Save a verified appointment or a pending request with one accountable team member.</span></li>
+    <li><strong>Reconcile follow-up</strong><span>Route corrections, cancellations, repeat requests and unsuccessful transfers using the saved record.</span></li>
+  </ol>
+  <p>The showing system may require listing-agent approval, an occupant notice or another condition before a time is final. The assigned person, property and actual showing system must match. A public calendar can tell the agent that a time appears free while the listing requires approval for access. After the caller selects a time, submit the authorized operation and verify the final status and reference. Use the same request reference if the result is uncertain, and check for an existing appointment before retrying. See <a href="/ai-voice-agent-integrations">how business-system actions are connected and verified</a>.</p>
+  <div class="b2bv-table" role="region" aria-label="Showing appointment status and caller messages" tabindex="0">
+    <table>
+      <caption>What the caller should hear at each showing status</caption>
+      <thead><tr><th scope="col">System state</th><th scope="col">Caller-facing outcome</th><th scope="col">Record to preserve</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Preferred time captured</th><td>The team received the request and will verify availability.</td><td>Property, requested time, timezone, owner and next step.</td></tr>
+        <tr><th scope="row">Approval pending</th><td>The time is awaiting approval, with the office's approved follow-up wording.</td><td>Showing request ID and who can approve or decline it.</td></tr>
+        <tr><th scope="row">Confirmed in showing system</th><td>State the verified date, time, property and approved meeting instructions.</td><td>Appointment ID, final status, location and acknowledgment.</td></tr>
+        <tr><th scope="row">Time taken or canceled</th><td>Offer an eligible alternative or help the caller reach staff.</td><td>Latest property and showing state, including any prior appointment affected.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>In a fictional pilot, a caller asks to see unit 2 at 41 Alder Lane on Wednesday after work. The office has a window at 5:30 p.m. local time, but the property requires approval. The workflow creates one pending request and tells the caller what will happen next. If the same caller rings again, the CRM and showing history show the existing request. A later granted slot can be confirmed through the approved channel. If the slot was assigned to someone else, staff can offer another verified time and keep a trace of the first request. Run both versions with the same training record.</p>
+<p>Before promising a showing, <a href="/how-to-integrate-ai-voice-agents" data-phase2-link="true">check compatibility with your existing tools</a> and who controls the booking.</p>
+</section>
+
+<section id="crm">
+  <h2>What belongs in the CRM and who follows up?</h2>
+  <p>Store an interaction against the correct contact and property context. A second call about a different listing may create a separate opportunity. A second call about a pending tour may only require a new activity on the same request. Use normalized contact information with a property ID, request type and a stable interaction or booking reference. A shared household number is insufficient on its own to merge two records. Retain relevant timestamps and ownership changes without asking for a wider set of personal details.</p>
+  <p>Choose the brokerage rule that assigns the next action. A named listing agent may handle property questions, a rotating team may handle buyer callbacks, and a leasing manager may review applications or accommodation requests. Set a staffed fallback for wrong numbers, inactive users, and office hours that differ by market. Confirm whether a transfer reached someone. When it does not, the receiving task should show the requested next step and when it needs attention. The owner should be able to see overdue and unassigned items. See <a href="/ai-voice-agent-reliability">how to test live transfer and fallback behavior</a>.</p>
+</section>
+
+<section id="pilot">
+  <h2>How can a brokerage tell whether an intake pilot helped?</h2>
+  <p>Start with one inquiry number or listing group and compare equivalent days and hours. Count eligible inquiries, complete and correctly assigned inquiries, confirmed tours from the showing system, reschedules, duplicate records and overdue callbacks. Show the number of calls that reached a licensed staff member when one was needed. A higher answer rate is meaningful when the records show how the callers received help. Record how often the team corrected an answer or resolved a missing property match.</p>
+  <p>Use synthetic calls to test the wrong unit, a status change mid-call, a stale feed, a showings API timeout, an unanswered transfer, an accommodation request and paired fair housing scenarios. Rehearse routing back to the existing office number and reconciling any pending actions. Consider letting the voice agent write confirmed showings only after the team signs off on the states and review controls. The <a href="/how-to-test-an-ai-voice-agent">production testing guide</a> provides a structure for those checks.</p>
+  <p>B2B Voice designs custom phone workflows around the brokerage's approved data, staff and routing rules. A useful demo starts with one fictional listing, a question the office can answer and a showing policy staff can verify. Include the licensing and operations owners so they can decide where the workflow can act and where a callback is the better fit.</p>
+<p>If the brokerage uses a callback comparison, <a href="/cost-of-missed-business-calls" data-phase2-link="true">measure reached and fulfilled opportunities</a> separately and track the final action in the CRM.</p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>Can a real estate AI receptionist answer listing questions?</h3><p>Yes, when the brokerage authorizes the workflow to use current public fields for the correct property. An incomplete or stale record should lead to an approved staff follow-up.</p></div>
+<div class="b2bv-faq-item"><h3>Can a voice agent read an MLS feed directly?</h3><p>That depends on the data provider, access rights, permitted use and the brokerage's integration. RESO's standards support data exchange, while access comes from the appropriate MLS or provider.</p></div>
+<div class="b2bv-faq-item"><h3>What can the agent ask to qualify an inquiry?</h3><p>Use neutral fields necessary to understand and route the request, such as listing reference, timing and preferred follow-up. Keep housing eligibility and accommodation decisions with authorized staff.</p></div>
+<div class="b2bv-faq-item"><h3>Can the agent book a showing automatically?</h3><p>It can confirm a showing after the authorized showing system verifies the property, time and required approval and returns a confirmed appointment record.</p></div>
+<div class="b2bv-faq-item"><h3>How should the brokerage test its fair housing controls?</h3><p>Give matched synthetic callers equivalent requests and compare the listings offered, time options, queue and follow-up. Have the brokerage review its scripts and applicable rules.</p></div>
+<div class="b2bv-faq-item"><h3>How do repeat calls appear in the CRM?</h3><p>Link the interaction to the appropriate contact and property-specific request when the identity and context match. Give each pending request a single owner and preserve its status history.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Review one real estate showing workflow</h2>
+        <p>Bring a fictional listing, the fields your team can disclose and the approved showing policy. Use a B2B Voice demo to walk through a request and its confirmation.</p>
+        <a href="/demo">Request a real estate workflow demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="https://www.reso.org/data-dictionary/">RESO Data Dictionary</a> <span class="b2bv-source-note">(Real Estate Standards Organization)</span></li>
+<li><a href="https://www.reso.org/ht-faq/new-faq-question-156/">RESO and access to MLS data</a> <span class="b2bv-source-note">(Real Estate Standards Organization)</span></li>
+<li><a href="https://uscode.house.gov/us/usc/119-124/t42/s3604/">42 USC § 3604</a> <span class="b2bv-source-note">(Office of the Law Revision Counsel)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.70">24 CFR § 100.70 on prohibited sale and rental practices</a> <span class="b2bv-source-note">(U.S. Department of Housing and Urban Development via eCFR)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-24/subtitle-B/chapter-I/part-100/subpart-B/section-100.75">24 CFR § 100.75 on discriminatory statements</a> <span class="b2bv-source-note">(U.S. Department of Housing and Urban Development via eCFR)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>Real Estate Lead Intake</li>
+<li>Fair Housing</li>
+<li>Property Showings</li>
+<li>CRM Workflows</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

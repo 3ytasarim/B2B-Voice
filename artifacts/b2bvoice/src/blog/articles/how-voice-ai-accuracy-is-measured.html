@@ -1,0 +1,365 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Skip to article</a><header><h1 id="article-title">How Is Voice AI Accuracy Measured? Beyond Word Error Rate</h1>
+<p class="b2bv3-byline">By B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Voice AI accuracy should be measured at the point where an error matters. Word Error Rate describes transcription differences. Entity and intent checks tell you whether a voice agent understood the critical details and the request. Tool-argument and task-completion checks reveal whether the agent used those details correctly and whether the intended result reached the system staff rely on.</p>
+<p>During a custom implementation, B2B Voice scopes these checks to the customer’s workflow. For an appointment desk, the business can identify which location, date, time, and contact details must be right before a caller hears a confirmation. A service desk may instead require the right account, issue type, and callback disposition.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Word Error Rate and Character Error Rate describe recognition output under a stated comparison policy.</li>
+<li>Entity accuracy, intent accuracy, and a verified transaction answer separate business questions.</li>
+<li>Retain errors on consequential fields and critical outcomes even when aggregate results look healthy.</li>
+<li>Define normalization, matching, and eligibility before comparing results across calls or languages.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In this article</p>
+<ol>
+<li><a href="#read-word-error-rate-at-the-transcription-boundary">Read Word Error Rate at the transcription boundary</a></li>
+<li><a href="#follow-a-recognizable-request-to-the-saved-appointment">Follow a recognizable request to the saved appointment</a></li>
+<li><a href="#b2b-voice-speech-and-task-accuracy-measurement-framework">B2B Voice Speech and Task Accuracy Measurement Framework</a></li>
+<li><a href="#interpret-accuracy-measures-in-the-context-of-risk">Interpret accuracy measures in the context of risk</a></li>
+<li><a href="#build-an-accuracy-report-someone-can-reproduce">Build an accuracy report someone can reproduce</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+<li><a href="#references-heading">References</a></li>
+</ol></nav><h2 id="read-word-error-rate-at-the-transcription-boundary">Read Word Error Rate at the transcription boundary</h2>
+<p>Word Error Rate (WER) compares the words in a reference transcript with the words in the speech recognizer’s output. A substitution changes one word to another. A deletion leaves out a word from the reference. An insertion places a word in the output that the reference does not contain. The measure describes how much editing is needed relative to the reference. Added words can make the measured error greater than the length of the reference, so the reported WER has no fixed upper bound. <a class="b2bv3-ref" href="#source-wer">Microsoft Speech documentation</a></p>
+<p>Character Error Rate (CER) compares characters under a stated text policy. It can help identify spelling differences or support an analysis where word segmentation is difficult. Character results can change depending on how the evaluator treats spaces, punctuation, combining marks, and visually equivalent Unicode forms. A low character error does not establish the identity of a person. One letter can distinguish two records or change a street name.</p>
+<h3 id="define-the-reference-before-choosing-the-tool">Define the reference before choosing the tool</h3>
+<p>Specify whether the reference is verbatim speech, including meaningful hesitations and repetitions, or a normalized representation of what was said. For voice AI accuracy metrics, record how the evaluator handles capitalization, punctuation, contractions, number expansion, accents in written names, and alternate spellings. Keep the underlying annotation when possible so you can explain what the normalization changed.</p>
+<p>A fictional caller might say “zero seven” as the last digits of a reference. If the business system treats the leading zero as meaningful, preserve it in the entity being verified. A normalizer that treats every digit string as a number can make the transcript comparison look better while destroying the identifier. Keep transcript normalization distinct from validation of business fields.</p>
+<p>For multilingual work, select tokenization that fits the language and intended comparison. Whitespace is a poor stand-in for word boundaries in some languages. In Vietnamese, a space can separate syllables within a lexical word, so a whitespace-based comparison may answer a different question from a lexical-word comparison. Record the tokenizer and compare like with like. An isolated silence or fully inaudible clip calls for its own reporting decision. JiWER documents a version-specific convention for empty references. Keep silence insertions visible and document which convention was used. <a class="b2bv3-ref" href="#source-jiw">JiWER documentation</a> <a class="b2bv3-ref" href="#source-viet">Nguyen and colleagues</a></p>
+<h2 id="follow-a-recognizable-request-to-the-saved-appointment">Follow a recognizable request to the saved appointment</h2>
+<p>In a fictional call, a customer says, “Please move my appointment to Thursday afternoon at the East office.” The transcript reads “Please move my appointment to Tuesday afternoon at the East office.” The high-level intent to reschedule is clear. The different weekday changes the action the business would take.</p>
+<p>A reviewer can label the weekday substitution and mark the appointment-date entity incorrect. If the voice agent asks for clarification, confirms Thursday, and then finds Thursday in the resulting calendar record, the final task can succeed after a recognition error. If the agent commits Tuesday, the date capture and task both fail. The same recognition mistake can lead to different business outcomes depending on recovery.</p>
+<p>Now consider the reverse case. The transcript correctly says Thursday at the East office. The tool supplies the West office’s calendar identifier after a stale field survives from a prior turn. The agent confidently confirms Thursday. An independent lookup shows the appointment in the wrong office’s calendar. The transcript and intent checks pass. The tool arguments and committed outcome fail. A confirmation phrase alone cannot tell the front desk which appointment to honor.</p>
+<p>These cases explain why voice agent task accuracy deserves its own evidence. Inspect the confirmed details, the action sent to the calendar, and the authoritative record using a correlation reference. Where a timeout or delay makes the record uncertain, mark the action unverified while the workflow reconciles it. A pending state should remain visible in the report.</p>
+<h2 id="b2b-voice-speech-and-task-accuracy-measurement-framework">B2B Voice Speech and Task Accuracy Measurement Framework</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Accuracy measures, boundaries, and required evidence</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Measure</th>
+<th scope="col">What it captures</th>
+<th scope="col">What remains outside its scope</th>
+<th scope="col">When to use it and what evidence to retain</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Word Error Rate</th>
+<td>Documented word insertions, deletions, and substitutions against a reference.</td>
+<td>Caller authority, meaning, and business impact of a particular word.</td>
+<td>Diagnose transcription changes. Keep reference text, output, normalization, and alignment policy.</td>
+</tr>
+<tr class="even">
+<th scope="row">Character Error Rate</th>
+<td>Character differences under an explicit comparison policy.</td>
+<td>Whether a name or address resolves to the intended record.</td>
+<td>Inspect spelling or script differences. Document character handling and Unicode normalization.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Entity recognition accuracy</th>
+<td>Whether required values match the caller-confirmed or authorized values.</td>
+<td>Whether the agent selected the right workflow or used the fields correctly.</td>
+<td>Check dates, names, addresses, and identifiers. Keep expected values and matching rules.</td>
+</tr>
+<tr class="even">
+<th scope="row">Intent accuracy</th>
+<td>Whether the agent selected the intended request category or an allowed clarification route.</td>
+<td>The correctness of the information the request requires.</td>
+<td>Evaluate route selection. Keep annotated intentions and a defined ambiguous-case policy.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Precision, recall, and F1</th>
+<td>Different views of selected or recognized labels and their misses.</td>
+<td>Severity of particular errors and final task outcome.</td>
+<td>Compare extraction or classification behavior with consistent label definitions and eligible examples.</td>
+</tr>
+<tr class="even">
+<th scope="row">Tool argument correctness</th>
+<td>Whether the requested action used the permitted tool and correct normalized arguments.</td>
+<td>Whether the outside system committed the action.</td>
+<td>Compare the authorized request contract with the actual operation and payload.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Verified task outcome</th>
+<td>Whether the business system reached an allowed terminal state.</td>
+<td>Every speech error or moment of caller effort along the way.</td>
+<td>Read back the authoritative calendar, ticket, or other outcome and inspect the operation history.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="interpret-accuracy-measures-in-the-context-of-risk">Interpret accuracy measures in the context of risk</h2>
+<h3 id="distinguish-missed-values-from-invented-values">Distinguish missed values from invented values</h3>
+<p>Precision asks how much you can trust the items a system labeled or extracted. For a booking agent, an invented date can make the agent act on information the caller did not supply. Recall asks how much of the relevant information the system found. A missed date can cause an unnecessary clarification or prevent a booking. A team can improve one kind of error while driving another in the wrong direction.</p>
+<p>F1 combines precision and recall into a single summary of those two measures. It can help compare classifiers once label definitions, matching, and treatment of absent labels are settled. A failure involving the wrong customer record may still matter more than several spelling issues. Retain the underlying error categories and examples. The scikit-learn documentation explains the definitions and how different averaging choices change what a summary represents. <a class="b2bv3-ref" href="#source-prf">scikit-learn metrics documentation</a></p>
+<p>For entity recognition accuracy, say whether a match requires all parts of a composite field. “Thursday afternoon” can be enough for an availability search. Committing a reservation may require an exact date, time, location, and time zone. A missing or unconfirmed slot should not disappear from the review if it was required. Allow alternate forms only when they resolve to the same permitted business value.</p>
+<h3 id="keep-the-consequential-cases-visible">Keep the consequential cases visible</h3>
+<p>A high-volume office that mostly handles questions about hours may show few errors overall. A smaller workflow that cancels appointments can still make repeated mistakes on the caller’s confirmed date. Report results by workflow, language or channel where relevant, and severity. Show missing evidence separately. A summary intended to represent usual traffic answers a different question from a review set enriched with rare but serious errors.</p>
+<p>Distinguish speech recognition accuracy from conversational correctness. Recognition can capture the words while the agent responds to an outdated assumption. A pleasant voice can read back an incorrect address. Listen to the part of the conversation that matters, then check whether the caller could correct the answer before the system acted. For attribution, use the <a href="/how-voice-ai-handles-dropped-words-and-irregular-pacing">diagnostic guide to dropped words and pauses</a>.</p>
+<h2 id="build-an-accuracy-report-someone-can-reproduce">Build an accuracy report someone can reproduce</h2>
+<p>Identify the workflow, tested build, source of ground truth, and channels represented. Write down which cases were eligible for each measure and what the team did with unresolved outcomes, silence, and unavailable traces. Use the same case set and policies for release comparisons where possible. Summarizing all words together gives more influence to longer calls. Summarizing each call individually gives very short calls a similar influence to long ones. Choose the view that fits the diagnostic question and name it explicitly.</p>
+<p>Include examples of acceptable recovery as well as failures. An ASR miss repaired through clarification is speech evidence and a potentially successful transaction. An unauthorized request appropriately refused is a successful policy outcome for that fixture, without being a completed booking. The <a href="/how-to-evaluate-ai-voice-agents">voice agent evaluation guide</a> shows how these measures fit into a release decision. The <a href="/ai-voice-agent-integrations">business systems integration guide</a> explains where agents read and write records.</p>
+<h3 id="report-conversation-accuracy-when-corrections-change-the-outcome">Report conversation accuracy when corrections change the outcome</h3>
+<p>Capture when the business treats a value as provisional and when it becomes approved for use. If a caller says “at the North desk” and later corrects it to “at the South desk,” a correct transcript contains both. An evaluator who only checks whether “South” appears can miss a stale value that still reaches the tool. Review the point where the confirmation changed the active intent or entity, and compare that state with the approved record.</p>
+<p>For an AI voice agent accuracy review, present a small set of labeled outcomes that a person can follow end to end. Include a safely repaired recognition failure, a correct request sent to the wrong destination, and a case where evidence was unavailable. This gives an operations manager a better way to prioritize errors than viewing the headline metric without its underlying decisions.</p>
+<h3 id="protect-comparisons-when-the-eligible-cases-change">Protect comparisons when the eligible cases change</h3>
+<p>The same input can be eligible for a speech check, a clarification check, and a business outcome check. Silence during a greeting is useful for measuring unprompted words or premature replies. It does not supply a normal transcript reference. An unauthorized change request is useful for verifying refusal and absence of writes. It does not belong in a measure intended to describe successful, eligible bookings. Keep the eligibility policy with the report so the next reviewer can reproduce the comparison.</p>
+<p>Separate unresolved results from a confirmed failure. If the calendar read-back is missing but the transcript contains the correct confirmation, the audit still lacks the evidence needed for a conclusion about transaction accuracy.</p>
+<h2 id="faq">Frequently asked questions</h2>
+<h3 id="does-a-low-word-error-rate-mean-a-voice-agent-is-accurate-enough-for-bookings">Does a low Word Error Rate mean a voice agent is accurate enough for bookings?</h3>
+<p>A low Word Error Rate indicates that the transcript is close to its reference under the stated rules. For bookings, verify confirmed fields, the requested action, and the appointment in the correct calendar.</p>
+<h3 id="when-does-character-error-rate-help">When does Character Error Rate help?</h3>
+<p>It helps show spelling differences or compare recognition output where word segmentation is difficult. State the character and normalization policy, and inspect critical fields independently.</p>
+<h3 id="can-a-call-succeed-even-if-the-transcript-contains-an-error">Can a call succeed even if the transcript contains an error?</h3>
+<p>Yes. The agent can ask a clarifying question, capture the corrected value, and complete the authorized action. Verify that recovery against the confirmed detail and the actual business record.</p>
+<h3 id="which-accuracy-result-should-block-a-launch">Which accuracy result should block a launch?</h3>
+<p>Use the approved workflow policy. A wrong or unauthorized committed action can block release even when the aggregate transcription result looks good. Show the evidence and consequence for that case.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Define accuracy for the actions your team owns</h2>
+<p>Bring the fields staff verify and the record that settles whether an action succeeded. <a href="/demo">Discuss the acceptance requirements for a custom voice workflow</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">References</h2>
+<ul>
+<li id="source-wer">Word recognition error classes and reference comparison. <a href="https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-custom-speech-evaluate-data?pivots=ai-foundry-portal">Test accuracy of a custom speech model</a>
+</li>
+<li id="source-jiw">Recognition error measures and documented handling of empty references. <a href="https://jitsi.github.io/jiwer/">JiWER documentation</a>
+</li>
+<li id="source-viet">Word segmentation and the role of whitespace between Vietnamese syllables. <a href="https://aclanthology.org/L18-1410.pdf">A Fast and Accurate Vietnamese Word Segmenter</a>
+</li>
+<li id="source-prf">Definitions of precision, recall, F-measure, and averaging options. <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html">precision_recall_fscore_support</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Topics">
+<li>Word Error Rate</li>
+<li>Entity Accuracy</li>
+<li>Task Completion</li>
+<li>Transaction Verification</li>
+</ul></article>
+</main>

@@ -3,197 +3,134 @@ import { Link } from "wouter";
 import { ArrowRight, Search } from "lucide-react";
 import { STATIC_PAGES } from "@/seo/pageMeta";
 import { usePageMeta } from "@/seo/usePageMeta";
-import { blogPosts, fmtDate, getCategories } from "@/lib/blogPosts";
+import { blogPosts, fmtDate, getTopics } from "@/lib/blogPosts";
+import { DemoModalCtx, Footer, Navbar } from "@/pages/home";
 
 const BLOG_META = STATIC_PAGES.find((p) => p.path === "/blog")!;
+const DEMO_MODAL_VALUE = { open: () => { window.location.href = "/demo"; } };
 
 export default function BlogPage() {
   usePageMeta(BLOG_META);
   const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const categories = useMemo(() => getCategories(), []);
-  const latestPosts = useMemo(
-    () => [...blogPosts].sort((a, b) => +new Date(b.date) - +new Date(a.date)).slice(0, 5),
-    [],
-  );
-
+  const [activeTopic, setActiveTopic] = useState<string | null>(null);
+  const topics = useMemo(() => getTopics(), []);
 
   const posts = useMemo(() => {
     const q = query.trim().toLowerCase();
     return blogPosts
-      .filter((p) => (activeCategory ? p.category === activeCategory : true))
+      .filter((p) => (activeTopic ? p.topic === activeTopic : true))
       .filter((p) =>
-        q ? p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q) : true,
+        q ? p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q) || p.tags.some((t) => t.toLowerCase().includes(q)) : true,
       )
       .sort((a, b) => +new Date(b.date) - +new Date(a.date));
-  }, [query, activeCategory]);
+  }, [query, activeTopic]);
+
+  const chip = (active: boolean) =>
+    `inline-flex min-h-11 items-center gap-2 rounded-full border px-5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+      active
+        ? "border-transparent bg-gradient-to-r from-[#00357a] to-[#0a84ff] text-white shadow-sm"
+        : "border-primary/40 bg-white text-primary hover:bg-primary/5"
+    }`;
 
   return (
-    <main id="main-content" className="min-h-screen bg-white">
-      <div className="container mx-auto px-6 py-16 max-w-6xl">
-        <Link href="/" className="inline-flex items-center gap-2 py-3 -mt-3 mb-7 text-sm text-primary font-semibold hover:underline">
-          ← Back to Home
-        </Link>
+    <DemoModalCtx.Provider value={DEMO_MODAL_VALUE}>
+      <Navbar />
+      <main id="main-content" className="min-h-screen bg-white pt-[72px]">
+        {/* Header */}
+        <section className="bg-gradient-to-b from-[#eef3fb] to-white px-4 sm:px-6 pb-12 pt-14 md:pt-20">
+          <div className="mx-auto max-w-5xl text-center">
+            <span className="inline-block rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 text-sm font-semibold text-primary">
+              Blog
+            </span>
+            <h1 className="mt-7 text-[clamp(2.1rem,6.4vw,4.6rem)] leading-[1.05] tracking-tight text-gray-900">
+              <span className="font-light">KNOWLEDGE &amp; </span>
+              <span className="font-extrabold bg-gradient-to-r from-[#00357a] to-[#0a84ff] bg-clip-text text-transparent">INSIGHTS.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-gray-600">
+              Practical guides on AI voice agents: how they work, how to choose one, and how to test it before it takes your calls.
+            </p>
 
-        <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 bg-primary/5 text-xs font-bold uppercase tracking-widest text-primary mb-5">
-            Blog
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3" role="group" aria-label="Filter articles by topic">
+              <button type="button" onClick={() => setActiveTopic(null)} aria-pressed={activeTopic === null} className={chip(activeTopic === null)}>
+                All <span className="text-xs opacity-80">{blogPosts.length}</span>
+              </button>
+              {topics.map(({ topic, count }) => (
+                <button key={topic} type="button" onClick={() => setActiveTopic(topic)} aria-pressed={activeTopic === topic} className={chip(activeTopic === topic)}>
+                  {topic} <span className="text-xs opacity-80">{count}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="relative mx-auto mt-6 max-w-md">
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" aria-hidden="true" />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search articles…"
+                aria-label="Search articles"
+                className="h-12 w-full rounded-full border border-gray-200 bg-white pl-11 pr-4 text-sm text-gray-700 placeholder:text-gray-500 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/10"
+              />
+            </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">B2BVoice Blog</h1>
-          <p className="text-gray-500 text-lg max-w-xl">
-            Insights on AI voice assistants, business automation, and customer communication.
-          </p>
-        </div>
+        </section>
 
-        <div className="grid lg:grid-cols-[1fr_320px] gap-16">
-          {/* Main post list */}
-          <div>
-            {posts.length === 0 ? (
-              <div className="py-20 text-center">
-                <p className="text-gray-500 text-sm">No articles match your search.</p>
-              </div>
-            ) : (
-              <div className="flex flex-col">
-                {posts.map((p) => (
-                  <article
-                    key={p.id}
-                    className="py-12 first:pt-0 border-b border-gray-100 last:border-0"
-                    data-testid={`blog-card-${p.slug}`}
-                  >
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-3">
-                      <Link href={`/${p.slug}`} className="hover:text-primary transition-colors">
+        {/* Articles: two columns */}
+        <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-24">
+          <p className="mb-6 text-sm text-gray-500" aria-live="polite">
+            {posts.length} {posts.length === 1 ? "article" : "articles"}
+            {activeTopic ? ` in ${activeTopic}` : ""}
+          </p>
+
+          {posts.length === 0 ? (
+            <div className="py-20 text-center">
+              <p className="text-gray-500">No articles match your search.</p>
+              <button type="button" onClick={() => { setQuery(""); setActiveTopic(null); }} className="mt-4 text-sm font-semibold text-primary hover:underline">
+                Show all articles
+              </button>
+            </div>
+          ) : (
+            <ul className="grid gap-6 md:grid-cols-2">
+              {posts.map((p) => (
+                <li key={p.id} className="relative flex" data-testid={`blog-card-${p.slug}`}>
+                  <article className="group relative flex w-full flex-col border border-gray-200 border-t-[3px] border-t-primary bg-white p-6 md:p-7 transition-shadow hover:shadow-[0_18px_44px_-22px_rgba(0,53,122,0.45)]">
+                    <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+                      <span className="font-bold uppercase tracking-widest text-primary">{p.topic}</span>
+                      <span aria-hidden="true" className="text-gray-300">•</span>
+                      <time dateTime={p.date} className="text-gray-500">{fmtDate(p.date)}</time>
+                    </div>
+
+                    <h2 className="text-xl md:text-[1.4rem] font-bold leading-snug text-gray-900">
+                      <Link href={`/${p.slug}`} className="transition-colors group-hover:text-primary after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-primary">
                         {p.title}
                       </Link>
                     </h2>
 
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500 mb-6">
-                      <span className="font-semibold text-gray-600">{p.author}</span>
-                      <span aria-hidden="true">·</span>
-                      <span>{fmtDate(p.date)}</span>
-                      <span aria-hidden="true">·</span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveCategory(p.category)}
-                        className="py-2 -my-2 font-bold uppercase tracking-wide text-primary hover:underline"
-                      >
-                        {p.category}
-                      </button>
-                    </div>
+                    {p.excerpt && <p className="mt-3 line-clamp-4 text-[15px] leading-relaxed text-gray-600">{p.excerpt}</p>}
 
-                    {p.coverImage && (
-                      <Link href={`/${p.slug}`} className="block aspect-[16/9] bg-gray-100 overflow-hidden mb-6 group">
-                        <img
-                          src={p.coverImage}
-                          alt={p.title}
-                          loading="lazy"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = "none"; }}
-                        />
-                      </Link>
-                    )}
-
-                    {p.excerpt && <p className="text-base text-gray-500 leading-relaxed mb-6">{p.excerpt}</p>}
-
-                    <Link
-                      href={`/${p.slug}`}
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-5 py-3 text-xs font-bold uppercase tracking-wider text-primary hover:bg-primary hover:text-white transition-colors mb-6"
-                    >
-                      Continue Reading<span className="sr-only">: {p.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-
-                    {p.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {p.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-gray-500 text-[11px] font-semibold uppercase tracking-wide rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </article>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <aside className="lg:pt-1">
-            <div className="mb-10">
-              <h3 className="text-sm font-black uppercase tracking-widest text-gray-900 mb-5">Latest Posts</h3>
-              <ul className="flex flex-col gap-4">
-                {latestPosts.map((p) => (
-                  <li key={p.id}>
-                    <Link href={`/${p.slug}`} className="flex items-center gap-3 group">
-                      {p.coverImage && (
-                        <span className="shrink-0 w-14 h-14 bg-gray-100 overflow-hidden rounded-md">
-                          <img
-                            src={p.coverImage}
-                            alt={p.title}
-                            loading="lazy"
-                            className="w-full h-full object-cover"
-                            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                          />
-                        </span>
+                    <div className="mt-auto pt-6">
+                      {p.tags.length > 0 && (
+                        <div className="mb-5 flex flex-wrap gap-2">
+                          {p.tags.slice(0, 3).map((tag) => (
+                            <span key={tag} className="rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       )}
-                      <span className="min-w-0">
-                        <span className="block text-sm font-semibold text-gray-800 leading-snug line-clamp-2 group-hover:text-primary transition-colors">
-                          {p.title}
-                        </span>
-                        <span className="block text-xs text-gray-500 mt-1">{fmtDate(p.date)}</span>
+                      <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary">
+                        Read article<span className="sr-only">: {p.title}</span>
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                       </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mb-10">
-              <h3 className="text-sm font-black uppercase tracking-widest text-gray-900 mb-5">Search</h3>
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-                <input
-                  type="search"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search articles…"
-                  className="w-full border border-gray-200 rounded-full pl-10 pr-4 py-2.5 text-sm text-gray-700 placeholder:text-gray-500 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-colors"
-                  aria-label="Search"
-                />
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-black uppercase tracking-widest text-gray-900 mb-5">Categories</h3>
-              <ul className="flex flex-col gap-2.5">
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => setActiveCategory(null)}
-                    className={`py-2 -my-2 text-sm transition-colors ${activeCategory === null ? "text-primary font-bold" : "text-gray-500 hover:text-primary"}`}
-                  >
-                    All
-                  </button>
+                    </div>
+                  </article>
                 </li>
-                {categories.map((cat) => (
-                  <li key={cat}>
-                    <button
-                      type="button"
-                      onClick={() => setActiveCategory(cat)}
-                      className={`py-2 -my-2 text-sm transition-colors ${activeCategory === cat ? "text-primary font-bold" : "text-gray-500 hover:text-primary"}`}
-                    >
-                      {cat}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </main>
+              ))}
+            </ul>
+          )}
+        </section>
+      </main>
+      <Footer />
+    </DemoModalCtx.Provider>
   );
 }

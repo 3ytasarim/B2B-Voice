@@ -1,0 +1,358 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Buyer Guides</p>
+    <h1 id="b2bv-title">How to Choose an AI Voice Agent for Your Business: A Complete Buyer's Guide</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">A polished voice demo tells you how a call might sound. A buying decision needs evidence that a caller can complete the intended task, the right business record is created, and staff can take over. Use one workflow and a repeatable pilot to compare providers on those outcomes.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>Choose an AI voice agent by defining one business outcome, testing each provider on calls that fit your actual rules, and verifying the records or handoffs that result. A packaged receptionist may fit routine intake. A managed implementation can fit custom work across systems. Make authorization, human fallback and rollback mandatory for the pilot.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#business-outcome">Define the outcome</a></li>
+<li><a href="#delivery-model">Compare delivery models</a></li>
+<li><a href="#readiness">Readiness checklist and scorecard</a></li>
+<li><a href="#pilot">Run a fair pilot</a></li>
+<li><a href="#agreement">Agree on support and exit</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Give every provider the same call set, success conditions and business-system checks.</li>
+<li>Score evidence on six dimensions and leave unassessed items blank.</li>
+<li>Hold launch when a mandatory authorization, human fallback or rollback gate is unassessed or fails.</li>
+        </ul>
+      </section>
+<section id="business-outcome">
+  <h2>What should the agent finish on a real call?</h2>
+  <p>Pick one recurring call that a person on your team could describe from start to finish. A small service company might choose a new estimate appointment, while a professional office might ask for a message with a callback window. Write down the caller's goal, the fields required, the decisions the agent may make and the evidence that tells staff the work is complete. It should be possible for a manager to review the outcome the next morning without listening to the entire call.</p>
+  <p>If you want help turning that call into a working system, B2B Voice provides managed design and implementation for custom AI voice agents. Bring the rules an employee follows and the record that proves a task is complete. Those inputs let both teams agree on the first workflow, access needed for the pilot and the decisions your staff will handle.</p>
+<p>For a booking, define success as a valid appointment in the designated system, with the right location and time. For a callback, require a saved request with a contact method, intent and staffed owner. For a live transfer, require a connection to the intended recipient. Set a separate label for a failed transfer or a message taken while the destination is closed. This vocabulary lets vendors demonstrate comparable work and gives your staff something to investigate when a caller returns.</p>
+  <p>Use a recent set of call reasons and include the shifts that handle them. Identify the caller types or languages your staff can support, high-risk requests, actual callback windows, and the cases that need a person immediately. Give shortlisted providers the same anonymized brief. A fictional sample is enough to start and avoids disclosing private customer information during discovery.</p>
+</section>
+
+<section id="delivery-model">
+  <h2>Which delivery model fits your team?</h2>
+  <p>Compare the people and responsibilities that come with each option. The supplier can be responsible for an application while your business still owns routing rules, staff coverage and permission to write into your systems. Ask who maintains every piece when a calendar rule changes or someone leaves and a credential has to be replaced.</p>
+  <div class="b2bv-table" role="region" aria-label="Voice delivery model comparison" tabindex="0">
+    <table>
+      <caption>Match the operating model to the call and the people who will support it</caption>
+      <thead><tr><th scope="col">Option</th><th scope="col">Typical fit</th><th scope="col">Proof or responsibility to confirm</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Packaged AI receptionist</th><td>Routine answering, messages, standard routing or an approved booking tool.</td><td>Show that your exceptions fit its configuration and identify the owner of changes and failed cases.</td></tr>
+        <tr><th scope="row">Voice platform you build on</th><td>A team with engineering time, a QA practice and the ability to maintain the phone workflow.</td><td>Budget application logic, monitoring, service accounts, fallback testing and on-call ownership.</td></tr>
+        <tr><th scope="row">Managed custom implementation</th><td>A defined business workflow with custom rules or multiple systems, where an outside delivery team can help design and build it.</td><td>Obtain a statement of work for business discovery, system access, releases, monitoring, maintenance and customer responsibilities.</td></tr>
+        <tr><th scope="row">Live answering or hybrid service</th><td>Calls that regularly require judgment, a staffed response or a mix of repetitive work and human decisions.</td><td>Verify training, shift coverage and the authority staff have to act. Test how a call reaches the person with responsibility.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Use a staffed path for disputes, sensitive requests, consequential exceptions and callers who ask for a person. Some operations can start with an existing automated phone menu, also called interactive voice response (IVR), for predictable routing. A staffed service can take over when the question calls for discretion. See the <a href="/ai-voice-agent-vs-ai-receptionist-vs-ivr">comparison of AI voice agents, AI receptionists and IVR</a> for how those roles fit together.</p>
+  <p>For a B2B Voice project, the scope, call volume, workflow complexity, integrations and commercial agreement determine pricing. An upfront setup fee may not be required, depending on the implementation. Use the workflow you want to test to request a <a href="/demo">personalized demo</a>.</p>
+<p>The guide to <a href="/ai-receptionist-vs-human-receptionist" data-phase2-link="true">staffing and hybrid reception</a> compares coverage by shift, task and need for human judgment.</p>
+</section>
+
+<section id="readiness">
+  <h2>B2B Voice Buyer Readiness Checklist</h2>
+  <p>Have the business owner, systems administrator and receiving team use this checklist before shortlisting providers. Each item should produce evidence that every provider can work from. If resources or approval are missing, reduce the first pilot's scope to an action you can verify.</p>
+  <div class="b2bv-table" role="region" aria-label="Buyer readiness checklist" tabindex="0">
+    <table>
+      <caption>Five questions to answer before you schedule provider demonstrations</caption>
+      <thead><tr><th scope="col">Question</th><th scope="col">Bring this evidence</th><th scope="col">Responsible team</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">What should the caller accomplish?</th><td>A single call reason, baseline volume by shift, language needs and a definition of completion.</td><td>Business operations</td></tr>
+        <tr><th scope="row">What authority does the agent have?</th><td>Fields it may read or write, caller verification, permitted actions, recording and disclosures.</td><td>System owner and policy reviewer</td></tr>
+        <tr><th scope="row">Where is completion recorded?</th><td>The authoritative record, a permitted test account and a fictional example the owner can check.</td><td>CRM, calendar or application administrator</td></tr>
+        <tr><th scope="row">What happens when the path fails?</th><td>A staffed route, busy/closed behavior, callback owner and the previous route for rollback.</td><td>Receiving team and telephony owner</td></tr>
+        <tr><th scope="row">How will you keep operating after launch or exit?</th><td>Named support owners, change rights, data export, phone number access and restoration plan.</td><td>Operations and procurement</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol class="b2bv-flow" aria-label="Provider evaluation decision path">
+    <li><strong>Set the scope</strong><span>Write one caller outcome and identify the record that proves it.</span></li>
+    <li><strong>Score the pilot</strong><span>Rate the evidence from the same calls for each provider.</span></li>
+    <li><strong>Make the launch decision</strong><span>Hold for failed gates. Review the signed scope once every gate passes.</span></li>
+  </ol>
+  <h3>Score the evidence you observe</h3>
+  <p>Rate each dimension from 0 to 5 for the same scoped workflow. Use 0 when the capability has been confirmed absent, 1 for a verbal claim, 2 for documentation, 3 for a controlled demonstration, 4 when your team reproduces it in a pilot, and 5 when you reproduce it and inspect operating evidence such as recovery records. Leave an item unassessed until you have evidence. A written data policy and a successful access test are different evidence levels.</p>
+  <p><strong>Weighted score</strong> = the sum of (dimension weight in points × evidence rating ÷ 5). The default weights total 100. Record why you changed a weight and apply the same weights to every candidate. The rubric helps compare proof and identify questions to resolve. Use a separate record for mandatory requirements for your workflow.</p>
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Fictional buyer scorecard example" tabindex="0">
+    <table>
+      <caption>Fictional candidate for a service appointment pilot</caption>
+      <thead><tr><th scope="col">Dimension</th><th scope="col">Weight</th><th scope="col">Rating</th><th scope="col">Points</th><th scope="col">Sample observed evidence</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Business outcome and workflow</th><td>25%</td><td>4</td><td>20</td><td>Buyer reproduces the booking at the right site.</td></tr>
+        <tr><th scope="row">Integration and ownership</th><td>20%</td><td>3</td><td>12</td><td>Provider shows limited calendar access in its controlled demo.</td></tr>
+        <tr><th scope="row">Data protection and escalation</th><td>20%</td><td>4</td><td>16</td><td>Buyer repeats a protected-data denial and a staffed daytime transfer.</td></tr>
+        <tr><th scope="row">Conversation and languages</th><td>15%</td><td>3</td><td>9</td><td>Provider shows an interruption and caller correction in a supported language.</td></tr>
+        <tr><th scope="row">Support and recovery</th><td>10%</td><td>3</td><td>6</td><td>Provider shows an assigned failure queue in a controlled environment.</td></tr>
+        <tr><th scope="row">Total cost and portability</th><td>10%</td><td>2</td><td>4</td><td>Buyer has draft terms and an export description.</td></tr>
+        <tr class="b2bv-emphasis"><th scope="row">Total</th><td>100%</td><td></td><td>67</td><td>Hold until the agreed closed-queue fallback is fixed and the required gates pass.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>In this example, the agent earned 16 points for evidence the buyer reproduced in daytime. A separate evening test failed because the call returned to a closed line with no callback owner. Keep the evidence rating and record the failed gate explicitly. A business that already has a closed-line queue could retest with that destination and name the person who owns it in the morning.</p>
+  <form id="b2bv-score" class="b2bv-calculator" novalidate hidden>
+  <fieldset>
+    <legend>Score a candidate</legend>
+    <p>Replace the fictional ratings with your evidence. Use whole-number ratings and make the weights total 100%.</p>
+    <div class="b2bv-table b2bv-assess" role="region" aria-label="Editable buyer scorecard" tabindex="0">
+      <table>
+        <caption>Weights and evidence ratings by dimension</caption>
+        <thead><tr><th scope="col">Dimension</th><th scope="col">Weight</th><th scope="col">Rating</th></tr></thead>
+        <tbody><tr><th scope="row">Business outcome and workflow</th><td><input type="number" data-weight aria-label="Weight for business outcome and workflow in percent" min="0" max="100" step="any" value="25" required></td><td><select data-rating aria-label="Rating for business outcome and workflow"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Integration and ownership</th><td><input type="number" data-weight aria-label="Weight for integration and ownership in percent" min="0" max="100" step="any" value="20" required></td><td><select data-rating aria-label="Rating for integration and ownership"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Data protection and escalation</th><td><input type="number" data-weight aria-label="Weight for data protection and escalation in percent" min="0" max="100" step="any" value="20" required></td><td><select data-rating aria-label="Rating for data protection and escalation"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Conversation and languages</th><td><input type="number" data-weight aria-label="Weight for conversation and languages in percent" min="0" max="100" step="any" value="15" required></td><td><select data-rating aria-label="Rating for conversation and languages"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Support and recovery</th><td><input type="number" data-weight aria-label="Weight for support and recovery in percent" min="0" max="100" step="any" value="10" required></td><td><select data-rating aria-label="Rating for support and recovery"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Total cost and portability</th><td><input type="number" data-weight aria-label="Weight for total cost and portability in percent" min="0" max="100" step="any" value="10" required></td><td><select data-rating aria-label="Rating for total cost and portability"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr></tbody>
+      </table>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Mandatory decision gates</legend>
+    <div class="b2bv-fields"><label class="b2bv-field"><span>Authorization and data controls</span><select data-gate><option value="">Unassessed</option><option value="pass" selected>Pass</option><option value="fail">Failed</option></select></label>
+<label class="b2bv-field"><span>Verified human fallback</span><select data-gate><option value="">Unassessed</option><option value="pass">Pass</option><option value="fail" selected>Failed</option></select></label>
+<label class="b2bv-field"><span>Rehearsed restoration of the prior route</span><select data-gate><option value="">Unassessed</option><option value="pass" selected>Pass</option><option value="fail">Failed</option></select></label></div>
+  </fieldset>
+  <button type="submit">Calculate score</button>
+  <div class="b2bv-status" role="status">
+    <p data-score-result></p>
+    <p data-gate-result></p>
+  </div>
+</form>
+<p>The <a href="/how-to-integrate-ai-voice-agents" data-phase2-link="true">guide to business-tool compatibility</a> helps the systems owner verify the exact action in each account.</p>
+<p>A firm can <a href="/ai-voice-agents-for-law-firms" data-phase2-link="true">scope administrative legal intake</a> with limited permissions, conflict review and an approved escalation path.</p>
+</section>
+
+<section id="pilot">
+  <h2>How to test providers before you sign</h2>
+  <p>Run the same calls through each provider with fictional records, the same hours and the same starting conditions. Let the buyer place the calls, observe the resulting records and inspect the receiving team's experience. Ask a provider to identify steps that are preconfigured for the demo and to repeat the test in the proposed environment before rollout.</p>
+  <div class="b2bv-table" role="region" aria-label="Sample voice agent pilot tests" tabindex="0">
+    <table>
+      <caption>Five pilot calls and what a buyer should inspect afterward</caption>
+      <thead><tr><th scope="col">Call test</th><th scope="col">Inspect after the call</th><th scope="col">Expected handling</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Ordinary estimate appointment</th><td>Calendar record, time zone, site and the contact identifier.</td><td>One correct appointment and wording that matches the confirmed record.</td></tr>
+        <tr><th scope="row">Noisy line and corrected phone number</th><td>Corrected value in the final record and an audibly understood correction.</td><td>The agent handles the interruption and confirms the updated detail before writing it.</td></tr>
+        <tr><th scope="row">Requested time becomes unavailable</th><td>Candidate slot and final scheduling disposition.</td><td>Offer an eligible slot or record a pending request. Preserve the distinction in the caller's message.</td></tr>
+        <tr><th scope="row">Identity check is incomplete</th><td>Access outcome, fields disclosed, audit event and next path.</td><td>Block the protected action and offer the approved staffed path.</td></tr>
+        <tr><th scope="row">Caller asks for a person outside staff hours</th><td>Final routing result, callback task and the named owner.</td><td>Give a truthful fallback and ensure the request reaches a staff-owned queue.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Use representative reviewers for each language in scope. Give them names, locations, numbers and corrections that occur in your business. Include an accommodation or an alternative route to staff. Score completed outcomes and recovery as well as speech quality. Keep the recording, observed event and expected result together when appropriate and authorized. See <a href="/ai-voice-agent-turn-taking-interruptions">how voice agents handle interruptions</a> and <a href="/how-to-test-an-ai-voice-agent">how to design an AI voice agent test set</a>.</p>
+  <h3>Set launch gates before you review scores</h3>
+  <p>Require approved authorization and data handling, a proven staffed or staff-owned fallback, and a rehearsed return to the previous route. Define what evidence passes each gate. Have the systems owner approve the restricted actions, the receiving team verify the handoff, and the person who controls telephony demonstrate the rollback. An unassessed or failed critical requirement puts launch on hold. NIST's generative AI risk guidance can inform the test plan. OWASP recommends limiting the functions, permissions and autonomy that an application gives a model. <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a></p>
+  <p>Record what each pilot proves for the traffic, tools, languages and hours it covers. A controlled appointment test can show that the booking rules work under test conditions. Peak simultaneous calls, failure under load and recovery when a dependency changes each need their own checks. Choose acceptance thresholds that reflect your business risks and collect the underlying counts instead of averaging away failures.</p>
+<p>Use the <a href="/best-ai-voice-agent-for-call-centers" data-phase2-link="true">contact center provider scorecard</a> when production queues, peak traffic and carrier responsibilities drive selection.</p>
+</section>
+
+<section id="agreement">
+  <h2>What belongs in the pilot and support agreement?</h2>
+  <p>Write an acceptance record for each workflow. Include the allowed data, finished business action, approved handoff, test conditions, and which owner can stop the rollout. Specify a small first route, such as one location during staffed hours, and an agreed return path before changing production routing. Review a recurring invoice, change policy and escalation contact as part of the same decision.</p>
+  <ul>
+    <li><strong>Access and retention.</strong> Document where calls, recordings, transcripts, summaries and business records go. Establish who can inspect, export and delete them, and who takes over if the provider changes.</li>
+    <li><strong>Operations and support.</strong> Name who handles failed actions and who can pause a workflow. Agree on hours, incident ownership, rollback conditions and approval for workflow changes.</li>
+    <li><strong>Number and data portability.</strong> Record who controls the business number, where historical records live, what export format you get and how the old route can be restored.</li>
+    <li><strong>Price and renewal.</strong> Ask for an invoice example across quiet and busy months. Use the same call coverage and retained work when comparing the full cost of each proposal.</li>
+  </ul>
+  <h3>Review outbound calls as a separate workflow</h3>
+  <p>Start an inbound pilot with callers who reach your business. If the plan includes automated outbound calls, get a separate review of purpose, number type, consent, suppression, opt-outs and the applicable federal and state rules. The FCC treats AI-generated human voices as artificial voices for purposes of the U.S. Telephone Consumer Protection Act. The requirements vary by the call and the applicable rules. Assign ownership of approvals and consent records before placing any outbound test calls to real recipients. Review recording and disclosures for the actual jurisdictions and design. <a href="https://docs.fcc.gov/public/attachments/FCC-24-17A1_Rcd.pdf">FCC 24-17 declaratory ruling</a> <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+  <p>Decide after the evidence review. A short pilot that completes one business task and hands off exceptions can give procurement a clear scope to buy. When a critical gap remains, record whether the next step is a narrower workflow, a retest in your environment or another provider with the required evidence.</p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>What is the best AI voice agent for my business?</h3><p>Choose the option that completes your priority call workflow within your approved rules, reaches a person when needed and has an operating model your team can support. Test candidates on the same calls and verify the records they produce.</p></div>
+<div class="b2bv-faq-item"><h3>Do I need a custom agent or a packaged AI receptionist?</h3><p>A packaged receptionist may fit routine questions, messages and standard routing. Compare a custom build when eligibility rules, multiple sites, protected actions or confirmed writes across existing tools determine success.</p></div>
+<div class="b2bv-faq-item"><h3>How should I test language quality?</h3><p>Use fluent reviewers familiar with how your callers speak. Test names, numbers, interruptions, code switching where appropriate, ambiguous requests and successful task completion in each language you plan to use.</p></div>
+<div class="b2bv-faq-item"><h3>Who should own the business number and records?</h3><p>Put number control, data access, export format, retention and transition responsibilities in the agreement. Ask to see a sample export and confirm who can change routing or initiate a port if the relationship ends.</p></div>
+<div class="b2bv-faq-item"><h3>Can a provider with a high score fail the pilot?</h3><p>Yes. A failed authorization, data protection, human fallback or rollback gate stops launch until it is fixed and retested. The score reflects the strength of observed evidence across dimensions.</p></div>
+<div class="b2bv-faq-item"><h3>What should I bring to a B2B Voice demo?</h3><p>Bring one call scenario, the business action that should follow, the system that proves completion and the escalation path. Use fictional names and records so the demo can concentrate on behavior and fit.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Bring one workflow to a custom demo</h2>
+        <p>Tell B2B Voice what the caller should accomplish, what your business system should record, and when staff should take over. Use fictional information for the example call.</p>
+        <a href="/demo">Request a workflow demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+<li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <span class="b2bv-source-note">(NIST)</span></li>
+<li><a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a> <span class="b2bv-source-note">(OWASP)</span></li>
+<li><a href="https://docs.fcc.gov/public/attachments/FCC-24-17A1_Rcd.pdf">FCC 24-17 declaratory ruling</a> <span class="b2bv-source-note">(Federal Communications Commission)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>AI Voice Agent Buyer’s Guide</li>
+<li>AI Receptionists</li>
+<li>Managed Implementation</li>
+<li>Vendor Evaluation</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

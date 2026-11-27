@@ -1,0 +1,303 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Industry Solutions</p>
+    <h1 id="b2bv-title">AI Voice Agents for Dental Practices: Appointment Booking and Patient Communication</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">A dental front desk needs a way to help callers while managing a schedule across providers, rooms and appointment types. Decide which calls can end with an approved booking and which require administrative or clinical staff.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>Use a dental voice agent for approved office information, appointment intake and routine scheduling. Verify the patient and scheduling action as the practice requires. Confirm a booking after the authoritative practice system accepts it, and route clinical concerns through the practice's approved staffed or emergency path.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#front-desk">Choose administrative workflows</a></li>
+<li><a href="#scheduling">Verify an appointment</a></li>
+<li><a href="#privacy">Review privacy and HIPAA scope</a></li>
+<li><a href="#escalation">Plan clinical handoff</a></li>
+<li><a href="#worked-example">Test a fictional dental call</a></li>
+<li><a href="#pilot">Measure the dental pilot</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Start with one appointment type and map the correct provider, operatory, location and authorization.</li>
+<li>Review HIPAA applicability, vendor roles, agreements and disclosure rules before using patient data.</li>
+<li>Give clinical concerns a tested staffed or emergency route, including an approved fallback.</li>
+        </ul>
+      </section>
+<section id="front-desk">
+  <h2>Which calls can a dental receptionist automate?</h2>
+  <p>Start with calls the front desk already handles using a written policy. An AI phone workflow can answer public office information, collect a new-patient appointment request or reschedule a routine visit when it has the practice's approval and verified system access. A caller asking about symptoms, a treatment choice or an unexpected reaction should follow a clinician-approved path. Configure the workflow around the appointment types, hours and people that actually exist at each location.</p>
+  <p>For a dental practice, B2B Voice can scope a custom AI phone agent around a single approved appointment workflow. Share your visit types, provider and operatory rules, and where staff handle exceptions. That gives the project a testable definition of a booking and a clear path to the practice team when the caller needs help.</p>
+<p>Choose one shift and one appointment type for a first pilot. A dental office with both general dentistry and hygiene schedules can start with new-patient exam requests at one site. Give staff a queue for questions about insurance benefits, billing exceptions or complex booking needs. Keep a short list of public facts the agent may read, including holiday hours and which locations accept new patients. Have one owner update those facts when the schedule changes.</p>
+  <div class="b2bv-table" role="region" aria-label="Dental phone workflows and approved responsibilities" tabindex="0">
+    <table>
+      <caption>Start with administrative outcomes the practice can verify</caption>
+      <thead><tr><th scope="col">Call reason</th><th scope="col">Useful automated action</th><th scope="col">Evidence or staff path</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">New-patient exam</th><td>Collect the approved intake fields, choose the eligible visit type and offer a permitted opening.</td><td>Confirmed appointment ID or owned request with location and visit type.</td></tr>
+        <tr><th scope="row">Existing appointment</th><td>Verify the caller through the practice's process before accessing or discussing a visit.</td><td>Correct patient and appointment, or a callback for staff verification.</td></tr>
+        <tr><th scope="row">Hygiene recall or waitlist</th><td>Use the recall type and the authorized provider, rooms, time preferences and contact policy.</td><td>A reserved and verified appointment, or an offer with a clear expiration and owner.</td></tr>
+        <tr><th scope="row">Benefits or billing</th><td>Share approved administrative instructions and route benefit, estimate or billing questions.</td><td>Office staff reviews individual coverage, payment or treatment estimates.</td></tr>
+        <tr><th scope="row">Clinical concern</th><td>Follow the practice's approved staffed or emergency routing script.</td><td>Actual live connection or documented alternate path and responsible owner.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The phone flow should make clear whether staff will review a request or the caller already has an appointment. If the office later adds locations or new providers, inspect the rules and hours at each location before expanding. Use the <a href="/ai-voice-agent-vs-ai-receptionist-vs-ivr">guide to voice agents, receptionists and IVR</a> to decide which routine tasks warrant a conversation and which can use an existing menu.</p>
+</section>
+
+<section id="scheduling">
+  <h2>What makes a dental appointment slot bookable?</h2>
+  <p>A dental appointment is a reservation of specific clinical time and space. The visit type, duration, care team, site and operatory have to agree with the practice's rules. A hygiene opening can be unusable for a new-patient exam even when it appears empty. A provider may work in different rooms or at different sites on different days. Holds or equipment requirements can also restrict the available slot. Ask the front desk which source actually controls those conditions.</p>
+  <p>Check appointment availability and permission to create a booking separately. Open Dental documents schedule lookup and an appointment creation operation. The right operation for a practice depends on its configuration, version and approved access. Verify that the workflow observes provider, operatory, location and visit-type constraints for the particular practice. A calendar display can support scheduling, but a valid booking requires the authoritative practice-management system to accept it. <a href="https://www.opendental.com/site/apiappointments.html">Open Dental API appointment operations</a></p>
+  <p>The B2B Voice Dental Appointment Scheduling Workflow links the practice’s patient and visit rules to an authoritative appointment record.</p>
+  <ol class="b2bv-flow" aria-label="Dental appointment scheduling workflow">
+    <li><strong>Match the request</strong><span>Use authorized identification, location and visit rules.</span></li>
+    <li><strong>Reserve the visit</strong><span>Check permitted capacity and submit one approved booking.</span></li>
+    <li><strong>Read the confirmed record</strong><span>Verify the appointment ID and details before telling the caller it is booked.</span></li>
+  </ol>
+  <p>Confirm the date, local time, location and appointment type from the saved record. Treat an offer as pending until the write succeeds. If two people select the same opening, offer another eligible time or create a staff-owned task when the request cannot be completed. When a write result is uncertain, have the integration or staff check for the existing appointment before sending another request. This keeps a network timeout from turning into two visits. See <a href="/ai-voice-agent-integrations">how an AI agent reads and verifies business actions</a>.</p>
+  <h3>Handle reschedules, cancellations and a waitlist offer</h3>
+  <p>For a reschedule, verify the correct patient and original appointment. Follow the practice system's supported change sequence. Keep the original reservation until the replacement is confirmed, or have staff reconcile the state if the workflow cannot complete the change safely. For a cancellation, show an authorized person or workflow the final state before opening the slot to the waitlist. Record the result so a patient calling again can get the right answer.</p>
+  <p>A waitlist offer needs an eligible patient, the right visit type, an approved contact method, a current opening and a clear expiration. Two patients may respond to the same opening. Recheck eligibility and availability at acceptance, then send a confirmation under policy after the reservation is committed. Put unclear outcomes in the practice's queue. Avoid implying the offer itself reserves clinical time.</p>
+<p>Use the <a href="/how-to-integrate-ai-voice-agents" data-phase2-link="true">integration readiness checklist</a> to verify authorized access to the exact scheduling operation.</p>
+</section>
+
+<section id="privacy">
+  <h2>How should a dental practice protect patient information?</h2>
+  <p>Assess the actual workflow before passing patient information to a provider. HHS explains that dentists are among the health care providers that can be HIPAA covered entities when they transmit information electronically in connection with a transaction for which HHS has adopted a standard. A vendor that performs functions involving protected health information (PHI) on behalf of a covered practice may be a business associate. The practice should confirm the roles, applicable agreements and approval requirements for its own vendors and subcontractors. <a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> · <a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html">Business associate contracts</a></p>
+  <p>Map the information path from the carrier and voice service through any recordings, transcription, scheduling integration, alerts, storage and logging. Include data held by subprocessors and how the practice can limit, audit or end access. HHS describes conditions for using cloud services to store or process electronic PHI, including entering a business associate agreement when the provider is a business associate. Assign the practice's privacy lead to review the flow and each relevant agreement before sending real patient information. <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html">HIPAA and cloud computing guidance</a></p>
+  <div class="b2bv-table" role="region" aria-label="Dental practice data flow and controls" tabindex="0">
+    <table>
+      <caption>Decide what information each step needs and who sees it</caption>
+      <thead><tr><th scope="col">Phase</th><th scope="col">Design decision</th><th scope="col">Review evidence</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Caller arrives</th><td>Use minimal fields for a new request. Verify authority before discussing an existing visit or disclosing information to another caller.</td><td>Approved identity and guardian or representative process, including a failed check.</td></tr>
+        <tr><th scope="row">Scheduling record</th><td>Permit access only to the authorized patient, clinic and action. Limit fields to the approved task.</td><td>Role-scoped application access, saved outcome and safe pending path.</td></tr>
+        <tr><th scope="row">Voice and callback</th><td>Review notice, recording, authorized contact and the minimum safe content for messages.</td><td>Team-approved script, correct channel and workflow for opt-out or restricted contact.</td></tr>
+        <tr><th scope="row">Logs and vendors</th><td>Document storage, subprocessors, access and retention for every copy of recorded or transcribed information.</td><td>Applicable agreements, permissions, testing and incident responsibilities.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>When the HIPAA minimum necessary standard applies, use, disclose or request only what is reasonably needed for the purpose. Build the workflow with a short field list regardless. Ask for the next piece of information only when required for the authorized action. Use the practice's staff review route when the caller’s identity or relationship to the patient is unclear. Reserve appointment and treatment details for authorized disclosures. See <a href="/ai-voice-agent-security">the voice agent security guide</a> for access design. <a href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html">HIPAA minimum necessary requirement</a></p>
+  <h3>Review reminder rules as a separate use</h3>
+  <p>HHS treats appointment reminders as part of treatment for purposes of the HIPAA Privacy Rule. That guidance addresses HIPAA authorization for the reminder. Separately review applicable telephone, recording and privacy rules for the specific outreach method, message, recipient and purpose. Document consent or other applicable permissions, contact preferences, safe voicemail wording and opt-out handling with the practice before moving from an inbound scheduler to an outbound workflow. <a href="https://www.hhs.gov/hipaa/for-professionals/faq/are-appointment-reminders-allowed-under-hipaa-without-authorization/index.html">Appointment reminders and HIPAA authorization</a> · <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+</section>
+
+<section id="escalation">
+  <h2>What happens when a caller needs clinical help?</h2>
+  <p>Let the practice set the route and the words the agent can use. A request for treatment advice, a concern about a procedure or a caller who describes an emergency should leave the ordinary administrative flow. Route promptly to the approved clinician, on-call arrangement or emergency instruction according to the practice's policy. Keep medical judgment and assessment of severity with qualified professionals. ADA guidance for practices addresses emergency coverage and closed-office messaging, including direction to emergency services in a life-threatening situation. <a href="https://www.ada.org/resources/practice/practice-management/emergency-treatment">Emergency treatment and closed-office messaging</a></p>
+  <p>Test when the clinician answers, when a substitute is on duty and when a number fails to connect. The agent should use the approved alternate and accurately tell the caller what happened. An owned task for a nonurgent administrative question can be appropriate. An urgent call should follow the approved urgent pathway in that condition. The caller should not be held in routine intake while the office determines who can help.</p>
+  <p>Give a human receiver the approved handoff context, including the reason for routing and the verification state where relevant. Let staff capture any clinical details in the practice system under the practice's policy. Review the time to a live destination and whether missed handoffs get an owner. The <a href="/ai-voice-agent-reliability">guide to recovery and human handoff</a> explains how to design an alternate when a queue is busy or closed.</p>
+</section>
+
+<section id="worked-example">
+  <h2>How does a new-patient call become a confirmed appointment?</h2>
+  <p>Consider a fictional practice with one location and separate dentist and hygiene calendars. A caller asks for a new-patient exam next week. The workflow collects the approved callback information, checks the eligible exam type and offers a slot that has the appropriate provider and operatory. The caller selects one opening. After the practice system accepts the appointment, the workflow verifies the saved record and gives the confirmed time and location using approved language.</p>
+  <p>Run the same call with a slot that fills before the request is submitted. The correct result is a permitted alternate or a pending task with one staff owner. Test a second call from a guardian who asks about a visit that already exists. The practice should see its authorized verification and disclosure decision in the evidence. In a third run after the office closes, check the transfer and the alternate path for a possible urgent concern. Use synthetic identities and records for all three runs.</p>
+  <p>Verify the agent's words, the final practice-system status, which people saw the task and any eventual follow-up. An implementation can start with request capture while scheduling permissions and callback procedures are reviewed. Advance to live booking after the practice verifies both routine and uncertain outcomes and its privacy and clinical owners sign off.</p>
+</section>
+
+<section id="pilot">
+  <h2>What should a dental office measure in the pilot?</h2>
+  <p>Track eligible calls, verified bookings, request-only outcomes, duplicate or corrected appointments, repeat contact and time to a staffed callback. Record how many booking requests required a different schedule, provider or operatory. Include failed and unassigned transfers. Periodically reconcile calls with the practice system and review who had to correct an appointment. When measuring front-desk workload, include the effort to maintain rules and work the follow-up queue. See <a href="/how-to-test-an-ai-voice-agent">how to run voice agent acceptance tests</a> for the test structure.</p>
+  <p>B2B Voice designs custom phone workflows around approved business tasks. Bring a fictional patient, one appointment type, the scheduling owner and the escalation route to a dental discovery discussion. The design can start with receiving an approved request and specify the compatibility, privacy and confirmation evidence needed before using a live schedule.</p>
+<p>Use the staffing guide to <a href="/ai-receptionist-vs-human-receptionist" data-phase2-link="true">compare staffed and hybrid dental front desk coverage</a> before extending the pilot beyond one appointment type.</p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>Can an AI dental receptionist book directly into Open Dental?</h3><p>Open Dental documents appointment operations. A particular practice must verify its configuration, permissions, provider and operatory rules and the saved record before allowing a confirmed booking.</p></div>
+<div class="b2bv-faq-item"><h3>Can a voice agent tell a patient when their next appointment is?</h3><p>Use the practice's approved identity and disclosure checks first. The agent can give authorized information from a current record or assign a staff callback when verification is incomplete.</p></div>
+<div class="b2bv-faq-item"><h3>Does a dental voice agent need a business associate agreement?</h3><p>That depends on the practice's status and the vendor's role with protected health information. Review the actual data flow and applicable agreements with the practice's privacy lead before sharing real patient information.</p></div>
+<div class="b2bv-faq-item"><h3>Can a dental voice agent handle urgent symptoms?</h3><p>It can follow a practice-approved staffed or emergency route promptly. Qualified clinical staff are responsible for assessment and advice.</p></div>
+<div class="b2bv-faq-item"><h3>Can a practice send automated appointment reminders?</h3><p>HHS addresses reminders under the HIPAA Privacy Rule as part of treatment. Review the actual message, permitted contact channel and applicable telephone and privacy requirements separately.</p></div>
+<div class="b2bv-faq-item"><h3>What if a selected appointment slot becomes unavailable?</h3><p>Offer a verified eligible alternative or record an owned request. Confirm a visit after the practice-management system accepts and returns the final appointment record.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Test a single dental appointment workflow</h2>
+        <p>Bring a fictional patient, one visit type and your approved handoff route. Use a B2B Voice demo to define how the practice can verify each outcome.</p>
+        <a href="/demo">Request a dental workflow demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="https://www.opendental.com/site/apiappointments.html">Open Dental API appointment operations</a> <span class="b2bv-source-note">(Open Dental)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html">Business associate contracts</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html">HIPAA and cloud computing guidance</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html">HIPAA minimum necessary requirement</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/faq/are-appointment-reminders-allowed-under-hipaa-without-authorization/index.html">Appointment reminders and HIPAA authorization</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="https://www.ada.org/resources/practice/practice-management/emergency-treatment">Emergency treatment and closed-office messaging</a> <span class="b2bv-source-note">(American Dental Association)</span></li>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>Dental Front Desk</li>
+<li>Appointment Booking</li>
+<li>Patient Communication</li>
+<li>Clinical Handoff</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

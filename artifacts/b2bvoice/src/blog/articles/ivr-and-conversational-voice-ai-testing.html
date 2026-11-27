@@ -1,0 +1,364 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Skip to article</a><header><h1 id="article-title">How to Test IVR and Conversational Voice AI Systems</h1>
+<p class="b2bv3-byline">By B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Interactive voice response testing checks whether a caller can enter through a real phone path, choose or describe the right option, and reach the intended destination or an approved fallback. A keypad event, a correct speech classification, and an accepted transfer request are intermediate signals. For a handoff that should reach billing, verify the answered destination, two-way audio, and any context the receiving team needs. When the queue is closed, verify the business action the fallback promises.</p>
+<p>In a custom voice workflow, B2B Voice scopes the existing phone number, the routes the business can control, and the handoffs staff can actually receive. A route that technically connects to the wrong office or into an unstaffed queue leaves the caller with the same unresolved problem.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Test traditional IVR menus and conversational IVR speech paths against the same business routing rules.</li>
+<li>Capture the digit, recognized intent, selected branch, queue disposition, and destination evidence separately.</li>
+<li>Exercise invalid input, silence, timeouts, closed queues, and failures on the transfer leg.</li>
+<li>Inspect the backend record when a fallback promises a ticket or callback.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In this article</p>
+<ol>
+<li><a href="#build-a-route-inventory-before-placing-a-call">Build a route inventory before placing a call</a></li>
+<li><a href="#decide-what-to-assert-for-keypad-and-speech-routes">Decide what to assert for keypad and speech routes</a></li>
+<li><a href="#b2b-voice-ivr-and-conversational-ai-test-matrix">B2B Voice IVR and Conversational AI Test Matrix</a></li>
+<li><a href="#verify-the-destination-after-a-transfer">Verify the destination after a transfer</a></li>
+<li><a href="#keep-call-traces-usable-for-operations">Keep call traces usable for operations</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+<li><a href="#references-heading">References</a></li>
+</ol></nav><h2 id="build-a-route-inventory-before-placing-a-call">Build a route inventory before placing a call</h2>
+<p>IVR stands for interactive voice response. A traditional IVR may play prompts, collect touch-tone input, and route callers through a defined tree. A conversational IVR can interpret spoken requests and ask a clarifying question before choosing a route. They can coexist on a single phone line. A caller could press a digit to choose a language, describe an invoice issue in speech, and finish with a person in the billing queue. The <a href="/ai-voice-agent-vs-ai-receptionist-vs-ivr">comparison of IVR and AI voice agents</a> explains where each approach fits.</p>
+<p>Inventory the published phone number, the initial carrier or private branch exchange (PBX) route, forwarding rules, menu version, departments, business hours, and designated owners. For each branch, record the destination during business hours and the fallback after hours. A shared national number can route a caller to an office using a different time zone. Test the office’s actual local hours and holiday exceptions. The test should also account for an unexpected dialed or forwarded number wherever the deployment exposes that information.</p>
+<h3 id="separate-signaling-input-and-media">Separate signaling, input, and media</h3>
+<p>Session Initiation Protocol (SIP) can establish, modify, and terminate a session. A signaling response can show that a call was established at a particular hop. The receiving side may still have silence, one-way audio, or the wrong prompt. Inspect signaling and media independently on the relevant call legs. <a class="b2bv3-ref" href="#source-sip">IETF RFC 3261</a></p>
+<p>Dual-tone multi-frequency (DTMF) is the familiar touch-tone keypad input. A route can carry those tones in-band as audio or convey named telephone events in Real-time Transport Protocol (RTP). Check which mode the actual endpoints negotiated. When using RTP events, inspect the event identity and end marker rather than counting each packet as a separate keypress. A trace that contains the correct digit still needs to show how the menu interpreted it. <a class="b2bv3-ref" href="#source-dtmf">IETF RFC 4733</a></p>
+<p>A caller who presses an unmapped key needs a different test from a caller who says nothing. Test invalid input, no-input handling, and the wait before each timeout. The World Wide Web Consortium (W3C) VoiceXML specification distinguishes events for no input and input that fails to match. A modern route can apply the same distinction even when it uses another implementation. Test repeated failures and verify that the route eventually reaches the business’s approved fallback. <a class="b2bv3-ref" href="#source-vxml">W3C VoiceXML 2.0</a></p>
+<h2 id="decide-what-to-assert-for-keypad-and-speech-routes">Decide what to assert for keypad and speech routes</h2>
+<p>For a fixed menu version, send the expected key sequence and assert the exact branch, prompt, and destination for that path. Check menu traversal with both complete and interrupted input. In an automated IVR testing harness, keep sent digits, call events, and listener evidence in the same case record. A menu recording can sound correct even when the digit selects a stale destination.</p>
+<p>Spoken routing accepts several phrasings. “There’s a charge I don’t recognize” and “Can someone explain my invoice?” may both belong to billing in a fictional test tenant. Use scripted phrases, natural paraphrases, and variations in audio quality. For ambiguous speech such as “I need help with my account,” define when the agent should ask a follow-up. Evaluate which destination was eventually reached and whether a clarification was appropriate. A model’s chosen classification alone leaves both questions open.</p>
+<p>In voice bot testing, compare the route selected during a dialogue replay with the route observed on a controlled call. A voicebot testing solution can report which destination the agent chose, while the telephony owner verifies the actual forwarding and queue path. Use conversational AI testing for language behavior and direct assertions for observable route, transfer, or ticket outcomes.</p>
+<h3 id="check-the-input-at-the-menu-boundary">Check the input at the menu boundary</h3>
+<p>Repeat a path with input during the greeting and with input after the prompt completes. The correct behavior depends on whether the route supports early input and when it starts listening. In a controlled call, observe what the input receiver saw and which menu state was active. A valid digit sent before input collection began may never reach the intended branch.</p>
+<p>Document where prompts come from and whether the receiving party heard the current version. A cached or misrouted greeting can tell callers to press a key that now belongs to another department. The menu test should compare the instructions the caller heard with the active routing behavior.</p>
+<h2 id="b2b-voice-ivr-and-conversational-ai-test-matrix">B2B Voice IVR and Conversational AI Test Matrix</h2>
+<p>Use approved test numbers and a versioned route map. Assign someone to observe the destination. If the call is expected to hit a queue, agree on which event distinguishes queue entry, a staff answer, and an authorized callback.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Fictional IVR cases, intended routes, and outcome evidence</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Fictional test case</th>
+<th scope="col">Expected route and fallback</th>
+<th scope="col">Evidence and acceptable business outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Caller selects billing with the keypad during posted hours</th>
+<td>Traverse the configured menu to the staffed billing queue. Use the approved alternate if the queue is unavailable.</td>
+<td>Digit event, branch, destination queue, and receiving party’s evidence of a usable call or authorized fallback.</td>
+</tr>
+<tr class="even">
+<th scope="row">Caller says an invoice has an unfamiliar charge</th>
+<td>Classify the request as billing or clarify when the recorded utterance is ambiguous.</td>
+<td>Final utterance, routing decision, and verified billing answer.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Caller stays silent after the greeting</th>
+<td>Re-prompt according to the no-input policy and then offer the approved exit.</td>
+<td>Prompt completion, timeout, no-input branch, and final disposition.</td>
+</tr>
+<tr class="even">
+<th scope="row">Caller enters an unmapped option</th>
+<td>Offer the valid choices and follow a bounded fallback if the caller cannot proceed.</td>
+<td>Actual input, invalid branch, actionable prompt, and eventual disposition.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Call arrives after the destination office closes</th>
+<td>Follow the office’s local schedule and any holiday override. Offer a supported next step.</td>
+<td>Location, schedule fixture, destination trace, and a saved callback request if the caller agrees.</td>
+</tr>
+<tr class="even">
+<th scope="row">Forwarding sends the call to a shared service line</th>
+<td>Identify the intended location from available route context or ask the caller.</td>
+<td>Forwarded leg, location mapping, and receiving office confirmation.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Destination rings and never answers</th>
+<td>Apply the approved alternate queue or callback path.</td>
+<td>Transfer result, secondary route, audible fallback, and resulting task if one was requested.</td>
+</tr>
+<tr class="even">
+<th scope="row">Caller disconnects while waiting</th>
+<td>Stop engagement and apply the agreed abandoned-call policy.</td>
+<td>Disconnect event, last menu or queue stage, and any authorized resulting operation.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Make the fallback evidence strong enough to use operationally. A trace may show that a voice agent tried a callback tool. Check the destination team’s actual task queue for the same reference. If the caller hung up before granting approval and the policy requires it, verify that the system did not create the request. Report an unanswered transfer and an accepted callback as two different outcomes.</p>
+<h2 id="verify-the-destination-after-a-transfer">Verify the destination after a transfer</h2>
+<h3 id="use-the-evidence-the-transfer-method-exposes">Use the evidence the transfer method exposes</h3>
+<p>Some SIP deployments use the REFER method to ask another component to initiate a referred action. Where applicable, subsequent status notifications can describe how that action progressed. A transfer may also be handled by a telephone platform that creates and bridges another leg without exposing REFER to the article’s reader. Identify the deployed method before deciding which events must appear. <a class="b2bv3-ref" href="#source-refer">IETF RFC 3515</a></p>
+<p>Resolve the intended queue or person, correlate the original leg with the outbound leg, and verify who or what answered. An answering system can produce a connected event when the workflow requires a person. Listen or use a controlled receiving observer to establish two-way media. For a warm transfer, verify that the receiving agent gets the approved context and that the caller remains connected through the introduction. For a blind transfer, be clear about how the original system learns that the destination failed, if it receives that information at all.</p>
+<h3 id="check-the-receiving-workflow">Check the receiving workflow</h3>
+<p>Consider a fictional multi-location property service desk. A caller in a different time zone calls the main number for a building in Phoenix. The voice route correctly identifies maintenance but transfers to a closed queue that still plays a greeting. The carrier shows an answer. An actual employee was never available to respond.</p>
+<p>The relevant test crosses more than the IVR. It needs the resolved building, destination schedule, queue disposition, and, if the caller accepts a callback, a real sandbox task in the correct office. Include a receiving-team check that the task contains only the facts needed to continue. If the service provides no callback outside staffed hours, the response should explain the available path clearly.</p>
+<h3 id="test-what-happened-at-the-transfer-edge">Test what happened at the transfer edge</h3>
+<p>A route can look correct in a recording played back from the originating side even when the receiving side heard silence. Verify both directions with an observer at the approved endpoint. During a warm transfer, confirm that any private staff briefing ended before the customer joined, if that is how the workflow is configured. During a failed transfer, verify whether the caller returns to the original agent, enters another queue, or hears an actionable callback choice. An event on the first leg cannot settle how the second leg behaved.</p>
+<p>For AI voicebot testing, repeat the same destination check when you change a voice prompt or the carrier route. Changes that leave the dialogue policy intact can still alter when a greeting begins or whether the agent receives keypad input. An operations owner can use the matrix to choose the evidence required from each change.</p>
+<h2 id="keep-call-traces-usable-for-operations">Keep call traces usable for operations</h2>
+<p>Record the menu or prompt version, privacy-safe call reference, time zone, route choice, transfer legs, destination status, and resulting business record. Separate call termination from a successful handoff. A caller may hang up because the queue is busy, after hearing what they need, or before the route is resolved. Mark the last observed stage and avoid assigning a reason the logs cannot establish.</p>
+<p>Use the same evidence sequence when comparing keypad and speech paths. A faulty configuration can affect both routes even when language evaluation looks good. The <a href="/ai-voice-agent-reliability">guide to failures, fallbacks, and human handoff</a> covers how to define recovery behavior. A separate <a href="/voice-agent-load-testing">controlled voice load test</a> can check the already verified route when traffic changes.</p>
+<h3 id="test-an-integration-failure-as-part-of-the-call">Test an integration failure as part of the call</h3>
+<p>Give the sandbox callback system a controlled failure mode. A promised callback should require the destination’s task receipt. If the service times out, the agent should explain the pending or alternate state the workflow allows. Check for a duplicate task when the integration is retried. Keep the route decision, transfer result, caller-facing message, and final task status in the same case record. Each helps a different team repair the failure.</p>
+<h2 id="faq">Frequently asked questions</h2>
+<h3 id="can-a-keypad-menu-and-a-conversational-voice-agent-share-the-same-phone-number">Can a keypad menu and a conversational voice agent share the same phone number?</h3>
+<p>Yes. A call can use keypad input for a predictable choice and move to a conversational agent for a spoken request. Test the transition, destination, and fallback as one route.</p>
+<h3 id="does-an-accepted-transfer-request-prove-that-a-person-answered">Does an accepted transfer request prove that a person answered?</h3>
+<p>A request acceptance shows that a component accepted the transfer request. Verify the subsequent leg, the intended destination’s answer, and usable media where the workflow requires them.</p>
+<h3 id="how-do-i-test-after-hours-ivr-routing">How do I test after-hours IVR routing?</h3>
+<p>Set up a controlled call that matches the office’s local hours or holiday schedule. Verify that it avoids a closed queue and follows the promised alternative. Check the saved task if a callback is offered and accepted.</p>
+<h3 id="what-should-i-capture-when-callers-hang-up-in-the-queue">What should I capture when callers hang up in the queue?</h3>
+<p>Record the last observed stage, queue disposition, disconnect, and any authorized backend action. Keep abandoned calls separate from successfully answered transfers.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Discuss your current phone route and fallback</h2>
+<p>Bring the route your staff use today, the staffed destination, and what should happen when nobody answers. <a href="/demo">Discuss a custom voice deployment on your phone workflow</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">References</h2>
+<ul>
+<li id="source-sip">Session establishment and signaling semantics. <a href="https://www.rfc-editor.org/info/rfc3261/">SIP: Session Initiation Protocol</a>
+</li>
+<li id="source-dtmf">RTP telephone events for keypad digits and other signals. <a href="https://www.rfc-editor.org/info/rfc4733/">RTP Payload for DTMF Digits, Telephony Tones, and Telephony Signals</a>
+</li>
+<li id="source-vxml">Input handling and separate no-input and grammar-mismatch events. <a href="https://www.w3.org/TR/voicexml20/">Voice Extensible Markup Language (VoiceXML) Version 2.0</a>
+</li>
+<li id="source-refer">Transfer request acceptance and subsequent notification of the referred operation. <a href="https://www.rfc-editor.org/info/rfc3515/">The Session Initiation Protocol (SIP) Refer Method</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Topics">
+<li>IVR Testing</li>
+<li>DTMF</li>
+<li>SIP</li>
+<li>Call Routing</li>
+<li>Human Handoff</li>
+</ul></article>
+</main>

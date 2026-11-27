@@ -1,0 +1,344 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table:not(.b2bv-assess) tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Contact Center Operations</p>
+    <h1 id="b2bv-title">AI Voice Agents for Call Centers: How to Automate Customer Service and Scale Operations</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">A contact center can handle more calls with voice automation and still leave customers with more follow-up. Start with a queue where the business can prove which issues were resolved, what staff received, and which callers had to try again.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>Use AI voice agents for frequent call center requests with clear rules, a current source of truth and a verifiable outcome. Keep a staffed path for exceptions. Start with one queue or shift, measure verified resolutions and handoffs separately, and test the full service path during peak traffic before expanding.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#prioritize">Choose a first queue</a></li>
+<li><a href="#opportunity-matrix">Automation opportunity matrix</a></li>
+<li><a href="#handoff">Plan live handoff and fallback</a></li>
+<li><a href="#measurement">Measure business outcomes</a></li>
+<li><a href="#worked-example">Review a fictional pilot</a></li>
+<li><a href="#scale">Plan peak capacity</a></li>
+<li><a href="#pilot">Verify before expansion</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Prioritize intents by business authority, source reliability and an outcome the team can verify.</li>
+<li>Compare containment, first-contact resolution and verified human connection using explicit denominators.</li>
+<li>Test both technical capacity and the staffing available to handle fallbacks.</li>
+        </ul>
+      </section>
+<section id="prioritize">
+  <h2>Which customer service calls should a contact center automate first?</h2>
+  <p>Choose an intent that recurs, has a clear owner and ends in an outcome your team can verify. Order status, published service hours and an approved class of appointment changes can be good starting points when the required records are current. A call about a disputed charge or an exception to policy needs a person with authority. Voice automation is useful when it reduces the work a caller and a service team have to do to finish an issue.</p>
+  <p>B2B Voice designs custom contact center voice agents around approved intents, existing customer service systems and staffed escalation. Bring the receiving queue's rules and a sample of the dispositions your team trusts. If multilingual service matters, include each language in the test scope so the center can verify both the business result and the transfer.</p>
+<p>Start with a defined route, such as a single customer service queue on weekday afternoons. Pull a sample of phone records and service cases for the same period. Connect the offered call, any transfer or callback and the final business outcome. Include callbacks, abandons and repeat calls so you can see which workload would move to a different queue. An inbound call with two transfers still belongs to one customer issue if the original need is the same.</p>
+  <p>Use a manageable intent catalog that agents and supervisors recognize. For each entry document the typical reason, peak period, business rule, eligibility, source of truth and human receiving queue. Ask staff to review an ordinary call and an exception before writing a proposed automation rule. Labels assigned from a summary can be useful for triage. Validate them against case dispositions and observed outcomes before assigning authority.</p>
+  <h3>Define the right endpoint for each task</h3>
+  <p>For an order-status call, the endpoint could be an accurately delivered status from a current record after the approved identity check. For a reschedule, the endpoint could be a saved eligible appointment. For a complaint, the endpoint for the automated segment might be a safe connection to the complaint team. Continue measuring what staff resolves afterward. Keeping these endpoints explicit gives the center a common language for supervision and customer experience reporting.</p>
+  <p>Record the out-of-scope route too. A customer who starts with order status and then asks for a refund may move from an automated read to a staff decision. Pass verified context allowed by the policy and record which action the agent did complete. The guide to <a href="/ai-voice-agent-vs-ai-receptionist-vs-ivr">voice agents, receptionists and IVR</a> explains where routine menus and conversational workflows can each fit.</p>
+</section>
+
+<section id="opportunity-matrix">
+  <h2>B2B Voice Call Center Automation Opportunity Matrix</h2>
+  <p>Use the matrix to assign each call reason one operating mode and one fallback. Start with frequency and repeatability, then check whether you have a current source, permitted actions, a reversible result and a staffed owner for exceptions. An issue can move from assisted intake to bounded automation after the owner sees evidence that the required record and recovery path work.</p>
+  <div class="b2bv-table" role="region" aria-label="Call center automation opportunity matrix" tabindex="0">
+    <table>
+      <caption>Choose an operating mode based on what the workflow can prove</caption>
+      <thead><tr><th scope="col">Example intent</th><th scope="col">Operating mode and precondition</th><th scope="col">Evidence to capture</th><th scope="col">Failure or exception path</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Public hours or return instructions</th><td>Automate an approved, current answer. Use the right location and policy date.</td><td>Answer and source version linked to disposition.</td><td>Route stale, conflicting or unavailable policies to staff.</td></tr>
+        <tr><th scope="row">Order status or simple appointment change</th><td>Use bounded automation after the approved identity check and tool authorization.</td><td>Authoritative lookup or committed record ID and verified details.</td><td>Send mismatches, failed writes and policy exceptions to the receiving owner.</td></tr>
+        <tr><th scope="row">Complex outage or repeat service complaint</th><td>Keep resolution human-led. Collect an approved issue summary if it helps intake.</td><td>Receipt by the correct team and a case with verified relevant facts.</td><td>Follow the staffed path promptly and keep a named owner for follow-up.</td></tr>
+        <tr><th scope="row">High-impact dispute, sensitive decision or distressed caller</th><td>Use a person or the approved urgent route for the decision.</td><td>Recorded disposition and recipient under the applicable policy.</td><td>Pause ordinary intake and follow the approved escalation procedure.</td></tr>
+        <tr><th scope="row">Approved status callback</th><td>Run only within an approved outbound scope and purpose.</td><td>Permission and suppression check, routing and final disposition.</td><td>Withhold the dial when permission is unknown and route to the owner.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Apply the matrix to a fictional retailer with a high-volume shipment-status queue. The current shipment record is reliable, but the people who take calls also troubleshoot damage claims. Start with status for an eligible shipment after identity verification. Keep damage claims with trained staff, using a single approved handoff. For the first pilot, grant only the read access that the status task needs. When the record is stale, the route can offer a staffed queue or save an owned request according to policy.</p>
+  <h3>Set client-specific boundaries for a BPO</h3>
+  <p>A business process outsourcing provider can inventory the same intent across clients, then verify the action separately in each client environment. Two retail clients may use the same case category while allowing different identity checks, return windows and fields. Give each client an approved policy source, records boundary, data retention rules and receiving queue. Review caller greeting, access, handoff and audit permissions for the specific tenant before assigning traffic.</p>
+  <p>Request negative as well as positive authorization evidence in the buyer-approved test environment. Use synthetic records and verify that a test for one client's queue reveals only that client's permitted information. The queue owner should be able to pause one client or route independently and see what work remains in staff queues.</p>
+  <p>Record the decision for each matrix row and revisit it after production evidence arrives. A frequently requested action with a weak source or no reachable fallback can stay in intake mode even when the volume is attractive. A lower-volume task with a reliable record may make a better first pilot. NIST's generative AI risk profile provides a framework for considering tests, monitoring and governance around the intended use. <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a></p>
+</section>
+
+<section id="handoff">
+  <h2>How do AI and live agents share a queue?</h2>
+  <p>Give one system authority over the route. The automatic call distributor, or ACD, can apply the service hours, skill group and overflow rules. A limited workflow can answer one option on the interactive voice response menu, help with a repetitive intent when the queue reaches a defined wait, or take a bounded set of after-hours requests. The right pattern depends on whether staff can accept the escalation and whether the AI path can verify the work before the caller leaves.</p>
+  <p>Define an escalation event, a transfer attempt, a staffed connection and an accepted case as separate records. A connected caller may still reach a different team from the one expected. Check the actual destination and give the recipient a useful summary they are permitted to see. When a transfer connects, the receiving team should be able to verify identity again if policy requires it, resume the specific issue and record the next step.</p>
+  <ol class="b2bv-flow" aria-label="Call center automation and human handoff workflow">
+    <li><strong>Apply the queue rule</strong><span>Check the intended outcome, approved action and current availability.</span></li>
+    <li><strong>Complete or escalate</strong><span>Verify the result or request the approved live destination.</span></li>
+    <li><strong>Confirm ownership</strong><span>Record the saved outcome, staffed connection or owned fallback.</span></li>
+  </ol>
+  <p>Agree on what happens if the destination is closed, busy or unreachable. The caller may need the previous route or an approved callback service. A callback request needs an available owner, the eligible time window and a final status. If the center uses a return route, test that it does not send the caller back through the same automation branch. The <a href="/ai-voice-agent-reliability">voice agent reliability guide</a> covers transaction safety, fallback and handoff in more detail.</p>
+  <p>Scope outbound activity separately. U.S. restrictions can apply to calls placed using an artificial voice. Have the responsible team review the purpose, required permissions, applicable consent and suppression, and the correct callback path before enabling an outbound queue. Keep an independent stop for outbound activity and document the actual approved workflow. <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a></p>
+</section>
+
+<section id="measurement">
+  <h2>How should you measure call center automation?</h2>
+  <p>Write a metric dictionary before the pilot. Each measure needs an eligibility rule, event or observation window, denominator and owner. Use the center's current dashboards to help locate events, then verify what the platform measures. For example, the documented Amazon Connect service-level measure is based on contacts removed from a queue within a threshold and can include agent connections, abandons and callback requests. If your service promise is a staffed answer within that threshold, define it directly with the relevant answer and queue events. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html">Amazon Connect metric definitions</a></p>
+  <div class="b2bv-table" role="region" aria-label="Call center automation KPI definitions" tabindex="0">
+    <table>
+      <caption>Working metrics for an outcome-based pilot</caption>
+      <thead><tr><th scope="col">Measure</th><th scope="col">Working definition</th><th scope="col">Record alongside it</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Containment</th><td>Eligible offered contacts completing the automated path without a live handoff ÷ all eligible offered contacts.</td><td>Abandons, failures and repeat calls, plus a separate verified resolution measure.</td></tr>
+        <tr><th scope="row">First-contact resolution (FCR)</th><td>Eligible unique issues resolved on first contact with no same-issue repeat inside the declared window ÷ eligible unique issues.</td><td>Verification method, repeat window, duplicate grouping and cases that are still open.</td></tr>
+        <tr><th scope="row">Human connection rate</th><td>Transfers connected to the correct staffed destination ÷ transfer attempts.</td><td>Attempt rate and time to a person, with busy, closed, failure and later callbacks tracked.</td></tr>
+        <tr><th scope="row">Average handle time (AHT)</th><td>Total interaction, hold and after-contact work time ÷ handled contacts under a declared agent scope.</td><td>Which consult and transfer legs count, the intent mix and staff rework.</td></tr>
+        <tr><th scope="row">Average speed of answer (ASA)</th><td>Total queue wait for answered contacts ÷ answered contacts in scope.</td><td>Abandoned wait times and which queue or event starts the clock.</td></tr>
+        <tr><th scope="row">Service level</th><td>Eligible offered contacts answered within the agreed time threshold ÷ eligible offered contacts.</td><td>The threshold and treatment of short abandons, callbacks and transferred contacts.</td></tr>
+        <tr><th scope="row">Abandonment rate</th><td>Contacts that end while waiting ÷ eligible queued contacts.</td><td>Pre-queue disconnects and short abandons as explicit dispositions.</td></tr>
+        <tr><th scope="row">Customer satisfaction (CSAT)</th><td>Positive responses ÷ valid survey responses on a declared scale.</td><td>Response rate, channel, timing and whether the sample overrepresents completed calls.</td></tr>
+        <tr><th scope="row">Cost per resolved contact</th><td>Attributable operating expense, including human handling and rework, ÷ unique verified resolutions.</td><td>Period, cost components and proof of resolution. Zero verified resolutions make the unit cost undefined.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Measure caller-side latency where the caller can actually observe it. Report at least a typical and a tail result such as p50 and p95 for comparable turns and routes. The p95 is the delay at or below which roughly 95% of the sampled observations fall. Group short answers separately from calls waiting on a business system. Use the same clock for comparisons and report the sample size, language and load. See <a href="/voice-ai-latency">the voice AI latency breakdown</a> for the components that affect perceived delay.</p>
+</section>
+
+<section id="worked-example">
+  <h2>What can a completed-path number hide?</h2>
+  <p>Consider a fictional pilot with 100 eligible offered contacts representing 100 unique issues. Seventy calls finish the automated path, 20 attempt a staff transfer and 10 abandon before service. The team uses a seven-day window to detect another call about the same issue. During that window, 12 of the 70 return with the same issue and the other 58 have verified automated outcomes. The case data also shows 16 of 20 attempts reached the right staffed queue, where 13 were verified resolved on the first contact. The other attempts or outcomes remain visible for review.</p>
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Fictional call center pilot outcome reconciliation" tabindex="0">
+    <table>
+      <caption>Different denominators show different outcomes for the same 100 issues</caption>
+      <thead><tr><th scope="col">Measure</th><th scope="col">Evidence</th><th scope="col">Result</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Containment</th><td>70 complete the automated path ÷ 100 eligible offers</td><td>70%</td></tr>
+        <tr><th scope="row">Verified automated first-contact resolution</th><td>58 verified automated first outcomes ÷ 100 eligible issues</td><td>58%</td></tr>
+        <tr><th scope="row">Successful staffed connection on transfer</th><td>16 correct staffed connections ÷ 20 attempts</td><td>80%</td></tr>
+        <tr><th scope="row">Combined FCR</th><td>(58 verified automated + 13 verified staffed first outcomes) ÷ 100 eligible issues</td><td>71%</td></tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <p>Use your own operating records to calculate cost per resolved contact for the same queue and period. Divide the attributable operating expense, including staffed handling and rework, by the count of unique verified resolutions. Apply the same cost boundaries and resolution definition to both periods. If the denominator is zero, report the metric as undefined and show the zero count.</p><p>This example counts the staffed resolutions that occur within the original contact and survive the same repeat window. A later resolved callback can still create a verified outcome and should have its own line. Inspect the 12 repeat contacts, the four failed transfers and the early abandons as operational cohorts. For example, a spike in repeats from status calls could point to a stale upstream record. A staffed queue failure may need a schedule or routing change. An aggregate rate can hide either cause.</p>
+  <p>When comparing against a baseline, set the same eligibility and time window. Exclude incomplete observations in the agreed manner and report how many are still pending. In a center with mixed in-house and specialist queues, include staff review and the handling of failed writes in the cost calculation. Tie each result to a case that the owner can inspect without needing an entire call recording.</p>
+</section>
+
+<section id="scale">
+  <h2>How do you plan capacity for peak demand?</h2>
+  <p>Estimate arrival patterns by small time buckets, not only a monthly call count. If 600 calls start in a steady hour and each uses an average of three active minutes, that is 1,800 active minutes per hour, or 30 concurrent calls on average under the assumed steady conditions. A concentrated minute or shift change can produce a higher peak. Forwarded or bridged calls can occupy multiple call legs, and the receiving team may be at capacity at the same time.</p>
+  <p>Ask each owner for the tested limit at their layer. The carrier, voice environment, contact center queue, business system and human destination can each set a different constraint. Amazon Connect documents separate queue size and service quota settings. An API's start rate, the number of active sessions, trunk call legs and the maximum number of contacts waiting in a queue describe different capacities. Verify the buyer's actual account, geography, route and recent limit changes. <a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a></p>
+  <div class="b2bv-table" role="region" aria-label="Peak traffic and failure handling" tabindex="0">
+    <table>
+      <caption>Agree on what happens when a component reaches its limit</caption>
+      <thead><tr><th scope="col">Layer</th><th scope="col">Stress to observe</th><th scope="col">Approved behavior</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Inbound route or carrier</th><td>Arrival burst, long calls and transfer overlap.</td><td>Use the alternate route with verified capacity and record the resulting disposition.</td></tr>
+        <tr><th scope="row">AI and business system</th><td>Concurrent turns, slow reads, missing writes and pending confirmation.</td><td>Keep the caller informed, withhold unverified confirmations and assign pending actions.</td></tr>
+        <tr><th scope="row">Staffed queue</th><td>Simultaneous escalation, schedule changes or destination unavailability.</td><td>Use a staffed alternate or agreed callback scope and alert the shift owner.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Replay a realistic mix of waits, interruptions, long tool turns and transfers in an approved test environment. Exercise the busy or unavailable route and confirm the staff workload left behind. A realistic peak plan includes the operator response to both technical limits and failed handoffs. Keep a designated person responsible for restoring the previous route if the pilot crosses an agreed stop condition.</p>
+</section>
+
+<section id="pilot">
+  <h2>What should a contact center verify before expanding?</h2>
+  <p>Pick one eligible intent, one shift or queue and a repeatable sample. Set requirements for verified outcomes, privacy protections, human access, fallback and rework. Document which system supplies each result and how the buyer can compare it with the baseline. Low-risk test calls can cover multiple languages and accented speech, plus repeated caller requests and background noise. A reviewer can inspect the final outcome even when the first spoken answer sounded plausible.</p>
+  <p>Hold rollout when a protected action occurs without authorization, a reported confirmation lacks a committed record, or callers cannot reach their approved fallback. The immediate goal is to restore the safe route and reconcile any pending transactions. After a fix, rerun the scenario and check the wider cohort for the same issue. Keep the incident log scoped to the evidence and retention rules the center approved.</p>
+  <p>Decide who reviews and acts. The queue owner checks wait, connections and affected callers, the business-system owner handles uncertain records, and the policy owner reviews exceptions to approved scope. Agree on how a shift supervisor requests a pause and gets the case to a staffed channel. Test who can restore service outside the main shift. See <a href="/how-to-test-an-ai-voice-agent">how to run acceptance tests for a voice agent</a>.</p>
+  <p>B2B Voice designs custom phone agents around a buyer's workflow. Bring one anonymized queue, its eligibility rules, a receiving team and an example of the outcome you want to audit. Use the discussion to scope what can be proven in a limited pilot and what evidence you would require before giving the workflow more traffic. <a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a></p>
+<p>Once you choose an intent, use the deployment guide to <a href="/ai-voice-agent-call-center-implementation" data-phase2-link="true">deploy into an existing call center</a> with a reversible route.</p>
+<p>Use the buyer’s guide to <a href="/best-ai-voice-agent-for-call-centers" data-phase2-link="true">evaluate contact center providers on the same pilot</a> when feasibility and support responsibilities are clear.</p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>Which call center tasks should I automate first?</h3><p>Choose a repetitive intent with clear rules, a current source of truth and a result the center can verify. Public information or bounded order-status requests can fit when eligibility and a staffed fallback are defined.</p></div>
+<div class="b2bv-faq-item"><h3>How is containment different from first-contact resolution?</h3><p>Containment counts eligible calls completing the automated path without live handoff. First-contact resolution requires a verified issue outcome on the first contact and no same-issue repeat during your stated observation window.</p></div>
+<div class="b2bv-faq-item"><h3>What counts as a successful human handoff?</h3><p>A transfer counts as a staffed connection once the caller reaches the intended staffed destination. Use a separate disposition for an attempted transfer, a callback request and a verified resolution.</p></div>
+<div class="b2bv-faq-item"><h3>How do I size voice AI for peak call volume?</h3><p>Use observed arrival bursts and call lengths, including transfers and overlaps. Verify the account, trunk, queue, business system and human team limits. Test that the overflow or return path can accept the agreed traffic.</p></div>
+<div class="b2bv-faq-item"><h3>Can automation support after-hours customer service?</h3><p>It can handle approved information and verified actions within its scope. Set a usable staffed or callback path for exceptions, with accurate hours and a named owner.</p></div>
+<div class="b2bv-faq-item"><h3>Can a BPO use voice automation for multiple clients?</h3><p>A BPO can evaluate it client by client. Verify each tenant's contract, policies, access, routing, data handling and fallback. Test that the route uses and exposes only the approved client's information.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Map one queue for a contact center pilot</h2>
+        <p>Bring an anonymized call type, an outcome your team can verify and the receiving queue. Use a B2B Voice demo to discuss the workflow and the evidence required.</p>
+        <a href="/demo">Request a call center demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html">Amazon Connect metric definitions</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/set-maximum-queue-limit.html">Amazon Connect queue contact limits</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon Connect service quotas</a> <span class="b2bv-source-note">(Amazon Web Services)</span></li>
+<li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <span class="b2bv-source-note">(NIST)</span></li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200">47 CFR § 64.1200 delivery restrictions</a> <span class="b2bv-source-note">(Electronic Code of Federal Regulations)</span></li>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>Call Center Automation</li>
+<li>First-Contact Resolution</li>
+<li>Human Handoff</li>
+<li>Peak Capacity</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

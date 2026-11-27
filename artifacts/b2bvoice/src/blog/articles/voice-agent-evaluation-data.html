@@ -1,0 +1,389 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Skip to article</a><header><h1 id="article-title">Voice Agent Evaluation Data: How to Build Reliable Test Datasets</h1>
+<p class="b2bv3-byline">By B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Reliable voice agent evaluation data describes the caller’s situation, what the agent is allowed to do, and what the business system should show after the call. A conversation script alone leaves too much open. The same closing sentence can accompany a successful reservation, a failed request, or a record saved under the wrong location. A useful test case can distinguish those outcomes.</p>
+<p>B2B Voice scopes custom voice agent implementations around decisions the customer’s staff already make. During scheduling discovery, that might mean defining when a request remains pending, when it becomes a booking, and which office owns an unresolved call. Those distinctions give an evaluation dataset its expected outcomes.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A fixture needs initial state, caller intent, allowed actions, and an independently verifiable outcome.</li>
+<li>Synthetic callers are useful for controlled variation. Consented human recordings add natural timing, delivery, and acoustic conditions.</li>
+<li>Keep related speakers, scripts, and incident-derived examples together when creating dataset splits.</li>
+<li>Record label policies, data rights, and changes alongside the cases themselves.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In this article</p>
+<ol>
+<li><a href="#design-scenarios-around-a-business-decision">Design scenarios around a business decision</a></li>
+<li><a href="#b2b-voice-evaluation-dataset-design-framework">B2B Voice Evaluation Dataset Design Framework</a></li>
+<li><a href="#a-fictional-evaluation-case-in-json">A fictional evaluation case in JSON</a></li>
+<li><a href="#choose-inputs-that-represent-the-calls-you-care-about">Choose inputs that represent the calls you care about</a></li>
+<li><a href="#protect-the-holdout-and-maintain-the-case-record">Protect the holdout and maintain the case record</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+<li><a href="#references-heading">References</a></li>
+</ol></nav><h2 id="design-scenarios-around-a-business-decision">Design scenarios around a business decision</h2>
+<h3 id="start-with-what-staff-must-resolve">Start with what staff must resolve</h3>
+<p>Well-designed voice agent test datasets map the decisions a business wants the agent to make. For an office scheduling workflow, those decisions may include finding an available slot, confirming the office and time zone, updating a permitted appointment, withholding restricted information, and routing a caller to staff. Each scenario should name the starting state and the actions the caller has authorized. Start with ordinary calls, then include mistakes and ambiguous cases that make the workflow expensive to repair.</p>
+<p>Define voice agent ground truth before a candidate responds. Separate what an annotator can hear from facts known only to the simulation. A caller might say “Thursday,” while only the fixture specifies that the East office is closed Thursday. Record spoken information as speech evidence, and use the seeded calendar to define which actions are available. Otherwise the evaluator may expect the agent to infer facts that the caller or integration never supplied.</p>
+<p>Define several valid paths when the workflow allows them. One agent might confirm the caller’s time zone immediately. Another might establish the location first and confirm the same slot afterward. Both can pass if they preserve the required facts, respect the same authorization rule, and finish with the expected record. When exact wording matters, such as distinguishing a request from an approved confirmation, document the meaning the response must communicate.</p>
+<h3 id="make-the-outcome-oracle-independent">Make the outcome oracle independent</h3>
+<p>An outcome oracle describes the evidence that decides whether a test passed. For a case that checks <a href="/ai-voice-agent-integrations">how a voice agent updates a CRM or calendar</a>, use a read from the sandbox calendar to check a booking, the approved queue event to check a transfer, or an ordered write log to check that the system never touched a prohibited record. An HTTP success response or a statement in the transcript can support the investigation. The oracle should use the observation closest to the actual consequence.</p>
+<p>The final record can also hide an intermediate mistake. An agent might book the first date, then delete it after the caller corrects the request. A test that only sees the final appointment may pass even though the earlier action triggered staff notifications. Keep forbidden operations and duplicate writes in the evidence requirements. The τ-Voice paper shows how a spoken benchmark can tie task success to an annotated database state. Apply that principle at the boundary that matters to the specific business. <a class="b2bv3-ref" href="#source-taum">τ-Voice methods</a></p>
+<h2 id="b2b-voice-evaluation-dataset-design-framework">B2B Voice Evaluation Dataset Design Framework</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Design and review decisions for an evaluation dataset</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Design decision</th>
+<th scope="col">What to capture</th>
+<th scope="col">Review question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Scope</th>
+<td>Caller intent, the business owner, workflow version, and permitted actions.</td>
+<td>Could someone who did not write the case explain what the test proves?</td>
+</tr>
+<tr class="even">
+<th scope="row">Starting state</th>
+<td>Appointment, location, account authority, hours, and integration behavior relevant to this case.</td>
+<td>Can the runner recreate the state for another release?</td>
+</tr>
+<tr class="odd">
+<th scope="row">Dialogue and audio conditions</th>
+<td>Caller wording, meaningful corrections, pauses, noise, channel, and language where relevant.</td>
+<td>Does the case sample the intended behavior without introducing irrelevant variation?</td>
+</tr>
+<tr class="even">
+<th scope="row">Ground truth</th>
+<td>Caller-confirmed entities, permitted reply meanings, and the approved set of actions.</td>
+<td>Can reviewers distinguish ambiguity from an incorrectly captured value?</td>
+</tr>
+<tr class="odd">
+<th scope="row">Business oracle</th>
+<td>Independent final state, action history, and prohibited events.</td>
+<td>Would the test catch a false confirmation or a duplicate write?</td>
+</tr>
+<tr class="even">
+<th scope="row">Provenance and maintenance</th>
+<td>Source type, rights, reviewer decision, split, case version, and owner.</td>
+<td>Can the team reproduce or retire the case without guessing who supplied it?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Treat this framework as a contract between whoever authors a case and whoever reads its result. A developer may know why a webhook failed. An operations owner supplies the distinction between a booking that exists and a callback that has merely been requested. Review those decisions together before collecting more audio.</p>
+<h3 id="give-an-evidence-gap-its-own-outcome">Give an evidence gap its own outcome</h3>
+<p>If the test runner loses a tool trace, the evaluator may still be able to verify the final record. The same run cannot verify that the agent avoided a write to the superseded date. State which evidence is mandatory, which observation can substitute for it, and who resolves an inconclusive case. Otherwise a missing artifact can be mistaken for a clean action history.</p>
+<p>For changes that affect release decisions, record the case version and the rule version separately. A business may intentionally change what a callback ticket must contain. Replaying old dialogue against the new contract can be useful, but retain the previous expectation when comparing historical results.</p>
+<h2 id="a-fictional-evaluation-case-in-json">A fictional evaluation case in JSON</h2>
+<p>This fixture describes a caller correcting the day before the agent writes. All identifiers, dates, and records are invented. The reply expectation deliberately accepts several ways to explain a confirmed result. The business outcome still requires a row in the sandbox calendar, and the history must show no write to the superseded slot.</p>
+<pre class="json" tabindex="0"><code>{
+  "test_case_id": "east-office-correction",
+  "scenario": "The caller requests Friday, pauses, and confirms Thursday.",
+  "language": "en-US",
+  "caller_intent": "book an appointment",
+  "initial_context": {
+    "customer_id": "fixture-caller",
+    "calendar_id": "sandbox-east",
+    "confirmed_candidate": "2030-06-13T10:00:00-04:00",
+    "superseded_candidate": "2030-06-14T10:00:00-04:00",
+    "existing_reservation": null
+  },
+  "audio_conditions": ["telephone audio", "pause before correction"],
+  "expected_entities": {
+    "location_id": "east-office",
+    "confirmed_slot": "2030-06-13T10:00:00-04:00"
+  },
+  "expected_tool_calls": [
+    {
+      "operation": "create_reservation",
+      "fixture_arguments": {
+        "calendar_id": "sandbox-east",
+        "slot": "2030-06-13T10:00:00-04:00"
+      }
+    }
+  ],
+  "expected_spoken_answer": "Confirm the Thursday booking only after read-back.",
+  "expected_business_outcome": "The sandbox calendar contains the confirmed reservation.",
+  "prohibited_actions": ["reserve Friday", "create a duplicate reservation"],
+  "acceptance_criteria": [
+    "The saved appointment matches the confirmed slot and office.",
+    "The action history contains no write to the Friday slot.",
+    "The caller hears a confirmation only after the result is verified."
+  ]
+}</code></pre>
+<p>Define whether the expected calls are required, optional, or forbidden. The fixture above requires a reservation write to the confirmed slot and can permit a lookup before that write. The operation name is a fictional fixture label. Map it to the actual sandbox adapter when implementing a runner. Apply a versioned schema to check the required fields and types. A JSON Schema validator can check the shape of the file. A separate workflow assertion must check whether the appointment exists under the right calendar identity. <a class="b2bv3-ref" href="#source-json">JSON Schema Draft 2020-12</a></p>
+<p>Create companion cases with the same caller intent and different initial states. When the slot is unavailable, the expected state may be a declined write and an offer of another appointment. When a confirmed request times out, the expected next step may be a read-back tied to the original operation. Reusing the same sentence across those cases reveals whether the agent reads system state or repeats a familiar answer.</p>
+<h2 id="choose-inputs-that-represent-the-calls-you-care-about">Choose inputs that represent the calls you care about</h2>
+<h3 id="combine-different-data-sources-with-a-clear-test-purpose">Combine different data sources with a clear test purpose</h3>
+<p>Synthetic voice data is useful for holding the wording constant while changing noise, pacing, or interruptions. A scripted synthetic caller can exercise larger groups of conversation test cases consistently. Give the caller simulator only the facts the role would know. A simulator that knows the intended answer or sees a hidden calendar result may rescue the agent in ways a real customer could never reproduce.</p>
+<p>With appropriate permission, commission human recordings to add natural repairs, variable speech rate, different devices, and speakers’ ordinary pronunciation. Replay representative cases over a controlled phone route when the release decision depends on what reaches a real telephone endpoint. A quiet studio recording and a real call under a poor connection exercise different parts of the system.</p>
+<p>For production-derived scenarios, prefer an incident pattern rebuilt with fictional identities and newly written dialogue. Keep the part that drove the problem, such as a correction after a long pause or a second person with a similar name. Avoid carrying original audio or private text into a fixture pipeline without explicit authority, verified access, and a retention plan. The guide to <a href="/voice-agent-testing-without-production-pii">privacy-preserving evaluation</a> covers the record copies that teams need to account for.</p>
+<h3 id="use-published-datasets-for-the-tasks-they-were-designed-to-support">Use published datasets for the tasks they were designed to support</h3>
+<p>SLURP pairs spoken English material with intent and entity annotations. It can help a reader understand how a spoken-language understanding dataset represents a single request. A single-turn example leaves the effects of a network handoff or transactional read-back outside the test. FLEURS supplies parallel read-speech material across languages, which is useful for comparable phrases and speech recognition research. A read passage does not represent spontaneous call repair. Check the rights for the exact subset and modality before reuse. A paper describing voice agent benchmark data does not automatically authorize commercial redistribution of its audio or recordings. <a class="b2bv3-ref" href="#source-slurp">Bastianelli and colleagues</a> <a class="b2bv3-ref" href="#source-flow">Conneau and colleagues</a></p>
+<h3 id="review-rights-for-each-input-and-each-use">Review rights for each input and each use</h3>
+<p>Before reusing public or commissioned material, identify the audio, transcript, annotations, and any model or generated voice used to make it. Check whether the terms permit internal testing, commercial use, modification, and redistribution for each item you plan to use. Keep the version and evidence of consent or permission with the dataset record. If the terms only authorize a narrower use, commission your own fixture or link to the publication without republishing its samples.</p>
+<p>Treat voice AI test data generation as a separate source type in the dataset. Version the generator instructions, settings, and audio transformations. If a release check depends on an actor’s specific pronunciation, freeze that recording so later generations do not quietly change the test. Preserve speaker or actor groups when sampling a holdout.</p>
+<h2 id="protect-the-holdout-and-maintain-the-case-record">Protect the holdout and maintain the case record</h2>
+<p>Split voice AI evaluation datasets by the source of similarity. Keep paraphrases of the same script, repeated takes by the same actor, and variants from one incident on the same side of the split whenever they would reveal the behavior the holdout is meant to test. A different filename or synthetic voice can still carry nearly identical content. If prompt development can see a benchmark’s exact examples, record that exposure and reserve independent cases for release decisions. For public benchmarks, document what you know about training or tuning overlap and leave uncertainty visible where the provider’s training data is unknown.</p>
+<p>Write an annotation guide with acceptable paraphrases, critical fields, and a state for unresolved meaning. Have a second reviewer check consequential or disputed cases. A caller who never confirmed an address belongs in an ambiguity case. A case in which a field was clearly spoken but omitted belongs in a recognition or state-handling case. The two may produce the same empty slot and still need different repairs.</p>
+<p>Give each fixture a stable identifier and version the initial state, intended labels, rights, and any audio transformation. Keep enduring failure cases in a regression dataset that can feed <a href="/voice-agent-regression-and-smoke-testing">automated regression and smoke tests</a>. Refresh the coverage set when call mix, products, business hours, channels, or languages change. A new service area can introduce unfamiliar addresses and different routing rules even though the old tests still pass. Record that distribution shift alongside the new cases. The datasheets approach provides a model for documenting composition, collection, intended uses, and maintenance. <a class="b2bv3-ref" href="#source-sheet">Gebru and colleagues</a></p>
+<h2 id="faq">Frequently asked questions</h2>
+<h3 id="how-is-an-evaluation-dataset-different-from-a-transcript-archive">How is an evaluation dataset different from a transcript archive?</h3>
+<p>An evaluation dataset specifies the allowed actions, expected state, evidence, and access rights for each test. An archive can preserve historical material without supplying those decisions or granting permission to reuse it.</p>
+<h3 id="can-synthetic-callers-replace-consented-human-recordings">Can synthetic callers replace consented human recordings?</h3>
+<p>Synthetic callers are useful for controlled variations and repeatable fixtures. Realistic pacing, live telephone behavior, overlapping speech, and speaker variation need evidence that resembles the intended caller population and channel.</p>
+<h3 id="what-if-several-different-agent-replies-are-acceptable">What if several different agent replies are acceptable?</h3>
+<p>Specify required meaning and prohibited promises. Use independent assertions for the resulting state and any write history. Let the agent choose a natural phrasing or clarification path that meets those conditions.</p>
+<h3 id="should-regression-cases-be-removed-when-the-bug-is-fixed">Should regression cases be removed when the bug is fixed?</h3>
+<p>Keep important cases while the workflow and risks still apply. Retire them with a documented reason when their policy or integration becomes obsolete. Preserve the version associated with past test results.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Discuss a workflow with concrete acceptance states</h2>
+<p>Bring a fictional example of a booking, a denied request, and a case staff must finish. <a href="/demo">Discuss your business-system requirements with B2B Voice</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">References</h2>
+<ul>
+<li id="source-taum">Annotated business state, voice interaction measures, and evaluation scope. <a href="https://arxiv.org/html/2603.13686v1">τ-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains</a>
+</li>
+<li id="source-json">Structural validation of versioned JSON documents. <a href="https://json-schema.org/draft/2020-12">Draft 2020-12</a>
+</li>
+<li id="source-slurp">An example of English speech with intent and entity annotations. <a href="https://aclanthology.org/2020.emnlp-main.588.pdf">SLURP: A Spoken Language Understanding Resource Package</a>
+</li>
+<li id="source-flow">Parallel read-speech benchmark design and coverage. <a href="https://arxiv.org/pdf/2205.12446">FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech</a>
+</li>
+<li id="source-sheet">Documentation for dataset composition, collection, intended use, and maintenance. <a href="https://arxiv.org/pdf/1803.09010">Datasheets for Datasets</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Topics">
+<li>Evaluation Data</li>
+<li>Test Fixtures</li>
+<li>Synthetic Speech</li>
+<li>Dataset Provenance</li>
+</ul></article>
+</main>

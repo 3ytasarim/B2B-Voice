@@ -1,0 +1,353 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Skip to article</a><header><h1 id="article-title">How to Evaluate AI Voice Agents: Metrics, Methods and Performance Criteria</h1>
+<p class="b2bv3-byline">By B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Effective AI voice agent evaluation follows the whole call through to its business outcome. Test speech and timing on the audio the caller would hear, verify requests against the integration contract, and read the outcome back from the system of record. For a booking agent, a pleasant “You’re all set” can coexist with an empty calendar. A caller who reaches the correct person after a failed booking can experience a useful recovery even though no appointment was created.</p>
+<p>For a custom implementation, B2B Voice scopes evaluation around the customer’s workflows. A scheduling manager can identify what counts as a confirmed appointment. A service desk can name the situations that must reach a person. These definitions tell engineers which traces, records, and listening samples a pilot needs.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Use component, conversation, and end-to-end evaluations to answer different questions.</li>
+<li>Match voice agent evaluation metrics to evidence the team can inspect.</li>
+<li>Verify critical business actions with deterministic assertions. Use human listening and carefully scoped model judgments for qualitative behavior.</li>
+<li>Define acceptance criteria before testing and retain missing evidence as a separate result.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In this article</p>
+<ol>
+<li><a href="#choose-the-level-of-evaluation-that-fits-the-decision">Choose the level of evaluation that fits the decision</a></li>
+<li><a href="#b2b-voice-voice-agent-evaluation-framework">B2B Voice Voice Agent Evaluation Framework</a></li>
+<li><a href="#decide-what-a-machine-can-check-and-what-a-person-should-hear">Decide what a machine can check and what a person should hear</a></li>
+<li><a href="#follow-a-fictional-appointment-that-sounded-successful">Follow a fictional appointment that sounded successful</a></li>
+<li><a href="#make-results-comparable-between-releases">Make results comparable between releases</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+<li><a href="#references-heading">References</a></li>
+</ol></nav><h2 id="choose-the-level-of-evaluation-that-fits-the-decision">Choose the level of evaluation that fits the decision</h2>
+<h3 id="evaluate-a-component-to-isolate-a-fault">Evaluate a component to isolate a fault</h3>
+<p>At the component level, test one boundary with a known input. The <a href="/what-is-an-ai-voice-agent">foundational guide to AI voice agents</a> identifies where speech, dialogue, and business actions fit. For automatic speech recognition (ASR), compare incoming audio and finalized transcription against a reference. For entity extraction, compare the date, office, or callback number the agent extracted with the caller-confirmed value. A familiar name spelled differently may be acceptable in an ordinary transcript. A name used to select an account may require exact matching or a confirmation step.</p>
+<p>An AI voice assessment focused on text-to-speech (TTS) begins with the words the agent actually played. A listening check can ask whether a reviewer understood the address or heard the difference between an available time and a confirmed appointment. Check pronunciation, intelligibility, and playback over the target channel. The International Telecommunication Union’s Telecommunication Standardization Sector (ITU-T) describes controlled subjective transmission-quality methods in Recommendation P.800. An informal listener review can help a pilot without being presented as a standardized test. <a class="b2bv3-ref" href="#source-mos">ITU-T P.800</a></p>
+<p>When looking for the source of a slow reply, compare the end of the caller’s turn, tool response time, and first audible agent audio. A log timestamp that marks when the model emitted text leaves out synthesis, transport, and playout. Agree on observable start and end events before comparing voice agent performance metrics across builds.</p>
+<h3 id="evaluate-complete-turns-and-recovery-behavior">Evaluate complete turns and recovery behavior</h3>
+<p>A conversation-level check asks how the agent handles changes, interruptions, silence, and ambiguous intent. Use a listener or timeline to check when the agent began speaking before the caller finished. During interruption recovery, listen for whether playback stopped and inspect whether the new caller request displaced the stale one. Score the clarification against its purpose. A focused request for a missing office name can help the caller; repeating the entire interaction can waste time.</p>
+<p>Read a transcript for policy language and meaning. Use audio when evidence depends on turn-taking, pronunciation, talk-over, missing words, or how long silence lasted at the caller’s end. Text can record the sentence the agent intended to play, even if an interruption stopped playback halfway through that sentence. Pair these observations when the information a caller actually heard matters.</p>
+<h3 id="evaluate-the-workflow-through-its-terminal-state">Evaluate the workflow through its terminal state</h3>
+<p>End-to-end voice evals start with an eligible caller request and end with a state staff can observe. That state may be a booking, a pending callback, a permitted refusal, or an answered transfer. Each has different evidence. An external transaction needs an authoritative read-back. A transfer needs evidence from the intended destination or a clearly defined fallback. A refusal can be the expected outcome for an action that exceeds the caller’s authority.</p>
+<p>The τ-Voice research benchmark evaluates full-duplex spoken interaction with grounded tasks whose outputs can be compared with annotated business goals. The researchers also document which quality dimensions their benchmark leaves outside its scope. Use the same idea when defining the boundaries of a pilot. A benchmark result by itself does not establish that a customer’s phone route or calendar integration works. <a class="b2bv3-ref" href="#source-tau">Ray and colleagues</a> <a class="b2bv3-ref" href="#source-taum">τ-Voice methods</a></p>
+<h2 id="b2b-voice-voice-agent-evaluation-framework">B2B Voice Voice Agent Evaluation Framework</h2>
+<p>Adapt this qualitative framework to the workflow and the evidence an approver can actually see. Set the acceptance criteria before comparing systems. An absent receipt leaves a booking unverified. A verified unauthorized action is a release-blocking failure when the workflow’s policy forbids it.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Six dimensions of a voice agent evaluation</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Dimension</th>
+<th scope="col">Acceptance criterion</th>
+<th scope="col">Evidence to inspect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Speech performance</th>
+<td>The listener understands information needed to act, and the agent correctly captures the caller-confirmed fields.</td>
+<td>Phone-path audio, reference entity labels, recognized text where available, and a listening review.</td>
+</tr>
+<tr class="even">
+<th scope="row">Conversation performance</th>
+<td>The agent lets the caller finish, manages interruptions, and communicates next steps at an acceptable pace.</td>
+<td>Turn boundaries, actual playback, caller corrections, and reviewer notes.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Action correctness</th>
+<td>The agent selects the permitted tool and supplies the confirmed values in the expected format.</td>
+<td>Versioned schema, ordered tool calls, and request and response status.</td>
+</tr>
+<tr class="even">
+<th scope="row">Recovery behavior</th>
+<td>The agent resolves uncertainty or follows the approved fallback after a failure.</td>
+<td>Error or timeout, clarification, queue or escalation events, and the receiving team’s observed outcome.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Security and authority</th>
+<td>The system follows the applicable caller authorization and disclosure policy.</td>
+<td>Policy decision, scoped access records, prohibited-action checks, and any committed change.</td>
+</tr>
+<tr class="even">
+<th scope="row">Verified business outcomes</th>
+<td>The actual calendar, ticket, or queue shows a permitted terminal state.</td>
+<td>Independent read-back or destination receipt tied to the same call.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Use a short disposition for each criterion, such as accepted, failed, or evidence missing. Write down why. When the contact center cannot confirm whether the transfer reached a person, keep the recovery open for review. A single quality label can hide a serious problem in one dimension.</p>
+<h2 id="decide-what-a-machine-can-check-and-what-a-person-should-hear">Decide what a machine can check and what a person should hear</h2>
+<h3 id="use-exact-assertions-when-the-business-rule-is-explicit">Use exact assertions when the business rule is explicit</h3>
+<p>A deterministic assertion compares a concrete observation with a rule established in advance. If a caller approves Thursday at the East office, assert that the tool submitted the East office identifier and Thursday’s confirmed slot. Assert that the calendar contains the expected appointment after the call. Inspect the action history for unauthorized or duplicate writes. A final correct record can hide an earlier incorrect write if a retry or correction overwrote it.</p>
+<p>Tool selection also deserves a separate check. An agent asked whether a slot is available should use the approved lookup path. A case can forbid a booking write during that inquiry. The caller might get a plausible answer in either path, so a review limited to the visible response can miss the difference. Use a <a href="/voice-agent-evaluation-data">fixture with an explicit outcome oracle</a> to make the rule reusable.</p>
+<h3 id="give-reviewers-clear-listening-criteria">Give reviewers clear listening criteria</h3>
+<p>Ask reviewers a concrete question about an observed event. “Did the agent let the caller finish correcting the date?” is more actionable than “Was the conversation good?” Have reviewers mark the relevant audio interval and what they heard. Give them examples of acceptable behavior and a way to flag an ambiguous case. Compare reviewer disagreements before interpreting a change as a model improvement.</p>
+<p>A large language model (LLM) acting as a judge can help review wording, such as whether a summary retained the stated next step. Give the judge a bounded rubric and the evidence it is allowed to cite. The MT-Bench and Chatbot Arena work documented that changing response order can change pairwise judgments in text evaluation. Compare automated judgments against approved human examples, review disagreement, and use a direct system check for actions with observable state. <a class="b2bv3-ref" href="#source-judge">Zheng and colleagues</a></p>
+<h2 id="follow-a-fictional-appointment-that-sounded-successful">Follow a fictional appointment that sounded successful</h2>
+<p>A caller asks a home service office to move an appointment to Thursday morning. The agent confirms the new slot in a clear, natural voice. The late response from the scheduling service causes the agent to assume the change went through. The test calendar still shows Wednesday.</p>
+<p>A component check can find that recognition and entity extraction correctly captured Thursday. A conversation review can find that the agent summarized the request accurately. The tool trace may show an attempted update followed by a timeout. The scheduling outcome fails because the calendar did not change. If a later update appears, the team still needs to reconcile the operation and verify what was communicated to the caller.</p>
+<p>The recovery expectation belongs in the evaluation contract. The agent can check the outcome by the original operation identifier, then confirm the change only after reading it back. If the result remains uncertain, the caller should hear that the change is pending or receive the approved handoff. A record showing Wednesday and a message promising Thursday can result in a missed visit even when the agent’s speech sounds natural.</p>
+<h2 id="make-results-comparable-between-releases">Make results comparable between releases</h2>
+<p>Freeze the case version, the business rules, the initial calendar state, tool contract, and the tested phone path. Record the agent, model, voice, and integration versions returned by the services, as well as any dependency a provider can change independently. Use the same conditions to compare a narrow change. Use intentionally different callers, phrasing, noise, and failure modes to test whether the conclusion holds beyond that comparison.</p>
+<p>Keep a clean set of routine calls alongside challenging cases. An enrichment set with many failed transfers is useful for debugging. Label it separately from a set intended to represent ordinary traffic. Tag the cases by action, caller eligibility, audio condition, and business risk. If only one actor reads the same script several ways, the examples can clarify repeatability while leaving broader caller coverage open.</p>
+<p>Record what happened on each attempted case, including unavailable data and reasons for an incomplete run. An audio-only check is suitable for some speech problems. A full controlled call is needed when the launch decision turns on media, routing, and an outside system’s outcome. The broader <a href="/how-to-test-an-ai-voice-agent">guide to testing a voice agent before production</a> helps teams choose where these evaluation criteria fit in the test process. Use <a href="/how-voice-ai-accuracy-is-measured">accuracy measures for specific speech, entity, and action failures</a> when a pilot needs more detail on those distinctions.</p>
+<h3 id="compare-two-releases-without-losing-the-callers-context">Compare two releases without losing the caller’s context</h3>
+<p>Suppose a team replaces a synthesized voice while keeping its appointment workflow. Run matched cases where the new voice says the same approved confirmation and several less predictable responses. Check whether listeners can tell which office and time they are being asked to accept. If speech quality improves but a higher share of the tested calls end before the confirmation plays, preserve those findings independently. A listening preference does not settle the release decision.</p>
+<p>In voice agent quality assurance, document who can approve an exception and what evidence can resolve it. A pronunciation issue on a low-risk menu greeting may qualify for a recorded follow-up. A voice AI testing report that omits incomplete phone calls cannot settle whether critical handoffs worked. Give reviewers the route, the expected destination, and the observation missing from the report.</p>
+<h2 id="faq">Frequently asked questions</h2>
+<h3 id="can-a-transcript-prove-a-customer-was-booked">Can a transcript prove a customer was booked?</h3>
+<p>A transcript records the words that were recognized or generated. Verify a booking by looking up the actual appointment and checking the confirmed date, time, location, and reservation reference.</p>
+<h3 id="when-should-i-use-a-human-evaluator">When should I use a human evaluator?</h3>
+<p>Use a listener when the outcome depends on turn-taking, intelligibility, pronunciation, or language that needs domain judgment. Ask for the relevant audio interval and a clear explanation of the decision.</p>
+<h3 id="can-i-use-a-model-to-judge-every-call">Can I use a model to judge every call?</h3>
+<p>A model can assist with specific qualitative reviews under a tested rubric. Appointment creation, tool arguments, unauthorized actions, and other observable facts should be checked against their authoritative records.</p>
+<h3 id="what-should-block-release-during-a-voice-agent-evaluation">What should block release during a voice agent evaluation?</h3>
+<p>Use the workflow’s approved acceptance criteria. A confirmed unauthorized write, false promise of a completed transaction, or missing required escalation should block release when the policy identifies it as a critical failure. Missing required evidence should hold the decision open.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Define a pilot your operations team can verify</h2>
+<p>Start with a call your team wants to automate, the system staff would check, and a failure that should block release. <a href="/demo">Discuss a custom voice agent implementation</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">References</h2>
+<ul>
+<li id="source-mos">Controlled subjective methods for assessing telephone transmission quality. <a href="https://www.itu.int/rec/dologin_pub.asp?id=T-REC-P.800-199608-I%21%21PDF-E&amp;lang=e&amp;type=items">Methods for subjective determination of transmission quality</a>
+</li>
+<li id="source-tau">Publisher record for the full-duplex grounded task benchmark. <a href="https://proceedings.mlr.press/v306/ray26a.html">τ-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains</a>
+</li>
+<li id="source-taum">Annotated business state, voice interaction measures, and evaluation scope. <a href="https://arxiv.org/html/2603.13686v1">τ-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains</a>
+</li>
+<li id="source-judge">Study of model judges, including answer-order sensitivity in text comparison. <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/91f18a1287b398d378ef22505bf41832-Paper-Datasets_and_Benchmarks.pdf">Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Topics">
+<li>Voice Agent Evaluation</li>
+<li>Speech Quality</li>
+<li>Tool Calls</li>
+<li>Acceptance Criteria</li>
+</ul></article>
+</main>

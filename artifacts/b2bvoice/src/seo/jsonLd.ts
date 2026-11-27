@@ -16,6 +16,9 @@ interface Post {
   category: string;
   tags: string[];
   coverImage: string;
+  seoTitle?: string;
+  metaDescription?: string;
+  faq?: { q: string; a: string }[];
 }
 
 /** Google's Rich Results Test flags a date-only value: it wants a full ISO 8601 datetime with a timezone. */
@@ -124,6 +127,21 @@ export function jsonLdFor(page: PageMeta, posts: Post[]): object[] {
           { name: post.title, path: page.path },
         ]),
       },
+      // The article's visible FAQ (same text as the FAQPage the content team supplied).
+      ...(post.faq?.length
+        ? [
+            {
+              ...ctx,
+              "@type": "FAQPage",
+              "@id": `${url}#faq`,
+              mainEntity: post.faq.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ]
+        : []),
     ];
   }
 

@@ -1,0 +1,295 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media (width > 37rem) {
+  .b2bv .b2bv-flow--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Industry Solutions</p>
+    <h1 id="b2bv-title">AI Voice Agents for Veterinary Clinics: Appointment Scheduling and Client Communication</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">A veterinary phone workflow must identify the right animal and the right clinic before it changes a visit. Medical questions and uncertain cases need a clear way to reach qualified staff even when the regular front desk is closed.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>Use a veterinary voice agent for routine office information and approved scheduling. Verify the caller's authority, animal record, site and appointment. Keep requests pending until the practice system confirms the visit, and route medical concerns through the veterinary team's approved staffed or after-hours procedure.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#front-desk">Choose routine phone tasks</a></li>
+<li><a href="#identity">Identify the owner and animal</a></li>
+<li><a href="#scheduling">Verify PIMS scheduling</a></li>
+<li><a href="#clinical-routing">Route medical concerns</a></li>
+<li><a href="#records">Handle call and record data</a></li>
+<li><a href="#measurement">Measure and test the pilot</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Match client, animal and location in the practice system before working on an existing appointment.</li>
+<li>Give each pending appointment or refill request a verified destination and owner.</li>
+<li>Test the clinic's clinical and after-hours routes alongside appointment writes and privacy controls.</li>
+        </ul>
+      </section>
+<section id="front-desk">
+  <h2>Which veterinary calls are good candidates for automation?</h2>
+  <p>A veterinary clinic's front desk may answer appointment questions while checking in patients, coordinating with the care team and speaking to worried owners. A voice agent can collect a routine appointment request, confirm office details or route a message to staff. The practice decides which visits and records the workflow can access. Build a clear route to the veterinary team for medical concerns, unclear intent and requests to talk with a person.</p>
+  <p>For a veterinary front desk, B2B Voice can scope a custom phone agent for routine office questions, appointment requests and staff callbacks. Bring the clinic's rules for matching an owner to a pet, the sites that offer each visit type and the route to the veterinary team. The practice can review each proposed administrative action and handoff before a pilot.</p>
+<p>Choose a high-volume administrative request with a reliable source of truth, such as changing the time of an established adult pet's approved wellness visit. Assign a person to maintain species, visit type, age, new-client and location rules. A clinic that sees dogs and cats at two sites and exotics at a third needs distinct rules for each site's schedule. Opening hours and provider availability may also depend on the day or holiday. Ask which site the owner means and confirm it aloud.</p>
+  <div class="b2bv-table" role="region" aria-label="Veterinary phone requests and workflow ownership" tabindex="0">
+    <table>
+      <caption>Decide who handles each category of veterinary call</caption>
+      <thead><tr><th scope="col">Caller need</th><th scope="col">Approved administrative action</th><th scope="col">Where responsibility sits</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Routine wellness visit</th><td>Check the permitted visit type and client, patient and location requirements.</td><td>The schedule confirms the visit, or staff own the request.</td></tr>
+        <tr><th scope="row">Refill request</th><td>Route the clinic's approved request fields to the medication queue.</td><td>The veterinary team checks the record, authorization and prescribing decision.</td></tr>
+        <tr><th scope="row">Records or test results</th><td>Explain the approved request process and connect the caller with staff.</td><td>Authorized staff verify the requester and disclosure before release.</td></tr>
+        <tr><th scope="row">New or concerning symptoms</th><td>Use the practice's approved live or after-hours route.</td><td>Qualified veterinary personnel assess the concern and advise the client.</td></tr>
+        <tr><th scope="row">Hours and accepted species</th><td>Read current site-specific information maintained by the clinic.</td><td>Practice staff handle questions beyond the approved source.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A request written to a queue and a refill approved by a clinician are different outcomes. An agent that records a message can give the owner the approved next step and recipient. Its schedule, reminders and messages should use clinic-approved descriptions and current hours. Ask staff to review the phrases callers actually use, including “I need more of her medicine” and “Is there an update on his tests?” Those should reach the correct people even if the caller never says “refill” or “lab.”</p>
+</section>
+
+<section id="identity">
+  <h2>How should the workflow identify the owner and pet?</h2>
+  <p>A caller may be the primary owner, a family member, a pet sitter or a rescue coordinator. The phone number can help find a candidate record. Separate that lookup from the clinic's decision about who can hear details, change an appointment or request documents. Ask only for the identifiers approved for the action and offer a human route if the caller cannot complete verification. A call about hours or services may need no account lookup at all.</p>
+  <p>In a practice information management system (PIMS), one client account can have multiple animal records and two clients can use the same pet name. Match the client reference, animal record, species, site and requested visit before reading or changing an appointment. Use a clinic-approved prompt to resolve ambiguity without listing another patient's appointment or record details. If no safe match exists, create a verification task for the appropriate site or transfer the caller.</p>
+  <p>Keep the client and animal identifiers distinct when saving a callback. A documented phone request can show which person called and whether their authority was verified. Staff should be able to find that context without creating a duplicate profile or seeing a recording that the clinic has no reason to keep. See <a href="/ai-voice-agent-security">security and data access for business phone actions</a>.</p>
+</section>
+
+<section id="scheduling">
+  <h2>How can an agent book and verify a visit in a PIMS?</h2>
+  <p>The B2B Voice Veterinary Front Desk Scheduling Workflow tracks the caller's request, the specific animal, the clinic's permitted slot and the final schedule record. Start with a clinic-maintained visit policy and access scoped to a single location. Expand to other sites or changes to existing appointments after the permissions and appointment states are proven.</p>
+  <ol class="b2bv-flow b2bv-flow--four" aria-label="Veterinary front desk scheduling workflow">
+    <li><strong>Identify the correct records</strong><span>Confirm the approved caller context, animal and location.</span></li>
+    <li><strong>Apply the visit rules</strong><span>Check the allowed visit type, eligible site and resources, hours and current openings.</span></li>
+    <li><strong>Verify the appointment</strong><span>Save the authorized change and confirm the returned or re-read appointment record.</span></li>
+    <li><strong>Give the caller the actual status</strong><span>State the confirmed details or assign a pending request and explain the follow-up.</span></li>
+  </ol>
+  <p>ezyVet, for example, documents a booking operation and the permissions it requires. A product API only establishes available operations. Review the clinic's subscription and access, the permissions for each location, the appointment type and status fields, and the actual provider or resource required. Read the state back if the integration does not have enough information in its response. For appointment changes, preserve the existing visit until the authorized change succeeds. For a timeout, check the result or ask staff to reconcile before issuing another write. <a href="https://developers.ezyvet.com/guides/booking.html">ezyVet booking appointments API guide</a></p>
+  <div class="b2bv-table" role="region" aria-label="Veterinary scheduling results and responses" tabindex="0">
+    <table>
+      <caption>Scheduling outcomes the clinic should distinguish on the call</caption>
+      <thead><tr><th scope="col">Result in the schedule</th><th scope="col">What to tell the owner</th><th scope="col">What staff can check</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Verified appointment</th><td>Confirm the date, local time, location and approved visit details.</td><td>Matched animal ID, location, appointment ID and confirmed status.</td></tr>
+        <tr><th scope="row">Appointment request assigned</th><td>Explain that the clinic will review the request and how the owner will hear back.</td><td>One owned task with the requested site, date window and permitted contact details.</td></tr>
+        <tr><th scope="row">Write timed out or status indeterminate</th><td>Say that the schedule is still being checked.</td><td>Request ID, lookup attempt and staff owner if uncertainty remains.</td></tr>
+        <tr><th scope="row">Record, staff or slot mismatch</th><td>Offer a permitted option or the appropriate human route.</td><td>The conflicting rule or record and the original request.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Take a fictional owner, Morgan, with a dog and a cat on the same account. Morgan asks to move the dog's wellness visit at the North Clinic and book a new exam for the cat at the East Clinic. The workflow verifies the caller and reads back each animal and site separately. The dog's record updates and returns a confirmed visit. The East Clinic requires staff approval for the cat's request, so the caller hears that the second request awaits follow-up. The two outcomes remain visible on separate records. A later call about the cat can check the saved request. For the integration mechanics, see <a href="/ai-voice-agent-integrations">connecting phone workflows to authoritative business systems</a>.</p>
+<p>Apply the integration guide to <a href="/how-to-integrate-ai-voice-agents" data-phase2-link="true">check practice-system readiness</a> before automating a write.</p>
+</section>
+
+<section id="clinical-routing">
+  <h2>What should happen when the caller has a medical concern?</h2>
+  <p>The clinic's medical leadership should define a staffed route for clinical questions and a separate after-hours procedure for possible urgent concerns. If the caller needs a veterinary professional or the phone workflow cannot confidently apply an administrative rule, use the appropriate approved route. Keep the exchange short and use the clinic's own script for the destination. The voice workflow should neither diagnose nor recommend treatment or doses, determine whether a caller can wait, or promise that a clinician will answer an unavailable number.</p>
+  <p>The American Animal Hospital Association's technician utilization guidelines describe task allocation among veterinary team members. The FDA also describes federal veterinarian-client-patient relationship requirements in specific contexts, including extralabel drug use and veterinary feed directives. State rules can impose their own requirements. The veterinary team should approve clinical responsibilities, refill routing and the after-hours procedure for its practice. <a href="https://www.aaha.org/wp-content/uploads/2023/09/2023-aaha-technician-utilization-guidelines-new.pdf">2023 AAHA Technician Utilization Guidelines</a> · <a href="https://www.fda.gov/animal-veterinary/product-safety-information/veterinarian-client-patient-relationships-prescribingdispensing-animal-drugs-and-telemedicine">FDA guidance on veterinary prescribing, VCPR and telemedicine</a></p>
+  <p>Track whether the staffed service answered and received the permitted context. If a transfer fails, the caller should hear the clinic-approved alternate path promptly. Keep the receiving clinic’s actual hours current in the routing policy. An urgent route should never depend on an ordinary mailbox as its only path. Run acceptance calls for staffed hours, closed hours, unavailable destinations, long hold times and a caller declining to share account data. See <a href="/ai-voice-agent-reliability">verification of human handoff and fallback</a>.</p>
+</section>
+
+<section id="records">
+  <h2>How should the clinic handle call and animal record data?</h2>
+  <p>HHS defines HIPAA-covered entities by their role and applicable activities in healthcare. Review the actual flow for a veterinary practice, including any human information it collects. State rules on veterinary records can separately govern disclosures. For example, Texas Occupations Code section 801.353 covers confidentiality and certain releases of information concerning an animal's care. The clinic should establish which people and processors can access call summaries, animal records and owner information under the requirements that apply to it. <a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> · <a href="https://tcss.legis.texas.gov/resources/OC/htm/OC.801.htm">Texas Occupations Code § 801.353</a></p>
+  <p>Decide in advance whether the workflow needs audio, a machine transcript, or an administrative summary. Set access permissions and retention for each copy across telephony, the agent and the PIMS or task system. Keep detailed symptom or treatment narratives out of routine scheduling notes. Limit reminders and follow-up to clinic-approved details and channels under applicable law and clinic policy. Test how records are protected if a carrier retries an event or a staff member forwards a summary.</p>
+</section>
+
+<section id="measurement">
+  <h2>What evidence supports expanding to more appointments?</h2>
+  <p>Reconcile eligible calls with the PIMS and task queue for a baseline and a comparable pilot window. Track verified bookings by visit type, incorrect patient or site assignments, duplicate visits, callback completion, repeated inquiries and time to a staffed connection for clinical routing. Keep after-hours and in-hours results available so a daytime average does not hide a failed overnight path. Review staffing time spent on corrections, rule maintenance and unresolved requests. A handled call becomes useful when the caller receives a verified outcome or an accountable next step.</p>
+  <p>Test an owner with two animals, a caller without authorization, an unavailable provider, a simultaneous request for the same slot, a failed transfer and a failed PIMS response. Start with request capture when access is still being evaluated. Rehearse routing calls away from the agent, retaining only allowed records and resolving unknown writes. Plan the test calls with the practice manager and the veterinary lead. See <a href="/how-to-test-an-ai-voice-agent">production testing for the acceptance and recovery checks</a>.</p>
+  <p>B2B Voice can discuss a custom administrative phone workflow for a veterinary practice. Bring a fictional client and pet, one visit type, a sample schedule state and the clinic's escalation process. The demonstration can show how the workflow handles an accepted visit, a pending request and a call that needs a veterinary professional.</p>
+<p>Use the staffing guide to <a href="/ai-receptionist-vs-human-receptionist" data-phase2-link="true">compare front desk coverage by task</a> before changing the way callers reach veterinary staff.</p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>Which calls should a veterinary clinic automate first?</h3><p>Try a well-defined administrative request, such as a routine appointment change or an office-hours question. Keep a clear route to the veterinary team for medical questions and exceptions.</p></div>
+<div class="b2bv-faq-item"><h3>Can an AI voice agent book into ezyVet?</h3><p>ezyVet documents appointment booking through its API. Verify the clinic's authorization, appointment rules, location, patient match and saved appointment status before enabling direct booking.</p></div>
+<div class="b2bv-faq-item"><h3>Can the agent handle a household with multiple pets?</h3><p>Yes, if it verifies the client relationship and selects each animal record and location separately. Ambiguous records should go to staff for verification.</p></div>
+<div class="b2bv-faq-item"><h3>Can the agent tell a caller whether their animal can wait for an appointment?</h3><p>A veterinary professional should make that decision. The phone workflow should use the clinic's approved staffed or after-hours escalation route.</p></div>
+<div class="b2bv-faq-item"><h3>Can the agent approve a prescription refill?</h3><p>It can route a properly collected refill request. The veterinary team verifies the record and handles prescribing and approval.</p></div>
+<div class="b2bv-faq-item"><h3>Does a veterinary voice agent have to follow HIPAA?</h3><p>HIPAA applicability depends on the entity and the information and activities involved. Review the actual data flow and applicable veterinary records, privacy and communications requirements for the practice.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Explore one veterinary front desk workflow</h2>
+        <p>Bring a fictional owner and pet, a visit type and your clinic's human escalation route. Use a B2B Voice demo to compare the possible call outcomes.</p>
+        <a href="/demo">Request a veterinary workflow demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="https://developers.ezyvet.com/guides/booking.html">ezyVet booking appointments API guide</a> <span class="b2bv-source-note">(ezyVet)</span></li>
+<li><a href="https://www.aaha.org/wp-content/uploads/2023/09/2023-aaha-technician-utilization-guidelines-new.pdf">2023 AAHA Technician Utilization Guidelines</a> <span class="b2bv-source-note">(American Animal Hospital Association)</span></li>
+<li><a href="https://www.fda.gov/animal-veterinary/product-safety-information/veterinarian-client-patient-relationships-prescribingdispensing-animal-drugs-and-telemedicine">FDA guidance on veterinary prescribing, VCPR and telemedicine</a> <span class="b2bv-source-note">(U.S. Food and Drug Administration)</span></li>
+<li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html">HIPAA covered entities and business associates</a> <span class="b2bv-source-note">(HHS Office for Civil Rights)</span></li>
+<li><a href="https://tcss.legis.texas.gov/resources/OC/htm/OC.801.htm">Texas Occupations Code § 801.353</a> <span class="b2bv-source-note">(Texas Legislature)</span></li>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>Veterinary Front Desk</li>
+<li>Practice Information Management</li>
+<li>Pet Appointment Scheduling</li>
+<li>Veterinary Handoff</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

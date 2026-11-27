@@ -1,0 +1,390 @@
+<style>
+.b2bv3-page {
+  margin: 0;
+  color: #172a3e;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+.b2bv3 {
+  --ink: #172a3e;
+  --muted: #42566d;
+  --link: #124f84;
+  --rule: #cbd9e7;
+  --light: #f0f5fa;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 58rem;
+  padding: 2.5rem clamp(1rem, 4.5vw, 3.25rem) 3.5rem;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  overflow-wrap: break-word;
+}
+.b2bv3 *, .b2bv3 *::before, .b2bv3 *::after { box-sizing: border-box; }
+.b2bv3 :where(h1, h2, h3, p, ul, ol, header, nav) { margin-block: 0; }
+.b2bv3 h1, .b2bv3 h2 { font-family: Georgia, Cambria, "Times New Roman", serif; }
+.b2bv3 h1 {
+  font-size: clamp(2.12rem, 5.4vw, 3.55rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  margin-block: .6rem .75rem;
+  text-wrap: balance;
+}
+.b2bv3 h2 {
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: 1.4rem;
+  margin-block: 2.25rem .6rem;
+  font-size: clamp(1.54rem, 3vw, 2rem);
+  line-height: 1.24;
+  letter-spacing: -.012em;
+}
+.b2bv3 h3 {
+  margin-block: 1.55rem .35rem;
+  font-size: 1.13rem;
+  line-height: 1.38;
+}
+.b2bv3 :where(h2,h3,li[id],#b2bv3-content) { scroll-margin-block-start: 1.25rem; }
+.b2bv3 p { margin-block-end: 1em; }
+.b2bv3 :where(ul,ol) { padding-inline-start: 1.4em; }
+.b2bv3 li + li { margin-block-start: .28em; }
+.b2bv3 :where(ul,ol) + p { margin-block-start: 1em; }
+.b2bv3 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .075em;
+  text-underline-offset: .15em;
+}
+.b2bv3 a:hover { color: #082c4d; }
+.b2bv3 :focus-visible { outline: 3px solid #134d88; outline-offset: 3px; }
+.b2bv3 .b2bv3-skip {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 2;
+  padding: .4rem .75rem;
+  background: #fff;
+  transform: translateY(-200%);
+}
+.b2bv3 .b2bv3-skip:focus { transform: none; }
+.b2bv3 .b2bv3-crumbs {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .18rem .6rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.b2bv3 .b2bv3-byline { font-size: .92rem; color: var(--muted); margin-block-end: 1.5rem; }
+.b2bv3 .b2bv3-lead {
+  max-inline-size: 64ch;
+  font-size: clamp(1.15rem, 2.25vw, 1.36rem);
+  line-height: 1.52;
+  color: #253d54;
+}
+.b2bv3 .b2bv3-toc {
+  margin-block: 1.55rem 2.0rem;
+  border: 1px solid var(--rule);
+  background: var(--light);
+  padding: .95rem 1.2rem 1.02rem;
+  border-radius: .28rem;
+}
+.b2bv3 .b2bv3-toc p { margin-block-end: .35rem; font-weight: 650; }
+.b2bv3 .b2bv3-toc ol {
+  font-size: .93rem;
+  columns: 2 17rem;
+  column-gap: 2rem;
+}
+.b2bv3 .b2bv3-toc li { break-inside: avoid; }
+.b2bv3 .b2bv3-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  margin-block: 1.1rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+.b2bv3 table {
+  width: 100%;
+  min-inline-size: 40rem;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.b2bv3 caption {
+  padding: .62rem .7rem;
+  text-align: start;
+  font-weight: 650;
+  color: #244863;
+  background: #f6f9fc;
+}
+.b2bv3 th, .b2bv3 td {
+  padding: .6rem .7rem;
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+.b2bv3 thead { background: #e5eef7; }
+.b2bv3 tbody th { font-weight: 620; }
+.b2bv3 tbody tr:nth-child(even) { background: #f8fafc; }
+.b2bv3 tbody tr:last-child > * { border-block-end: 0; }
+.b2bv3 :where(pre,code) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+.b2bv3 p code {
+  font-size: .92em;
+  background: var(--light);
+  padding: .08em .2em;
+  border-radius: .18rem;
+}
+.b2bv3 pre {
+  margin-block: 1.15rem;
+  max-inline-size: 100%;
+  overflow: auto;
+  padding: .86rem .94rem;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: #18354d;
+  background: #f1f5f8;
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+  overflow-wrap: normal;
+}
+.b2bv3 .b2bv3-ref { font-size: .87em; }
+.b2bv3 #sources li { margin-block: .28rem; }
+.b2bv3 .b2bv3-cta {
+  margin-block: 2rem 1.5rem;
+  padding: .85rem 1.15rem .95rem;
+  border-inline-start: .22rem solid var(--link);
+  background: var(--light);
+}
+.b2bv3 .b2bv3-cta h2 { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.b2bv3 .b2bv3-cta p:last-child { margin-block-end: 0; }
+.b2bv3 .b2bv3-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem .5rem;
+  align-items: center;
+  color: #2c4e70;
+  font-size: .9rem;
+}
+.b2bv3 .b2bv3-tags li {
+  margin: 0;
+  padding: .19rem .54rem;
+  background: var(--light);
+  border: 1px solid var(--rule);
+  border-radius: .25rem;
+}
+@media (max-width: 44rem) {
+  .b2bv3 { padding-block-start: 1.5rem; font-size: 1rem; }
+  .b2bv3 .b2bv3-toc ol { columns: 1; }
+  .b2bv3 th, .b2bv3 td { padding: .48rem .53rem; }
+}
+@media print {
+  .b2bv3-page, .b2bv3 { color: #000; background: #fff; }
+  .b2bv3 { max-inline-size: none; margin: 0; padding: 0; font-size: 10.5pt; }
+  .b2bv3 .b2bv3-skip, .b2bv3 .b2bv3-crumbs { display: none; }
+  .b2bv3 h1 { font-size: 26pt; }
+  .b2bv3 h2 { font-size: 16pt; margin-block-start: 16pt; padding-block-start: 8pt; }
+  .b2bv3 h3 { font-size: 12pt; }
+  .b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv3 caption { break-after: avoid; }
+  .b2bv3 p { widows: 3; orphans: 3; }
+  .b2bv3 .b2bv3-toc, .b2bv3 .b2bv3-cta { background: #fff; }
+  .b2bv3 .b2bv3-table, .b2bv3 pre { overflow: visible; }
+  .b2bv3 table { min-inline-size: 0; font-size: 8.8pt; }
+  .b2bv3 thead { display: table-header-group; }
+  .b2bv3 tr { break-inside: avoid; }
+  .b2bv3 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .b2bv3 a { color: #123654; }
+}
+
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main>
+<article class="b2bv3" aria-labelledby="article-title"><a href="#b2bv3-content" class="b2bv3-skip">Skip to article</a><header><h1 id="article-title">How to Test AI Voice Agents Without Exposing Production PII</h1>
+<p class="b2bv3-byline">By B2B Voice</p></header><div id="b2bv3-content" tabindex="-1">
+<p class="b2bv3-lead">Test an AI voice agent without exposing production personally identifiable information (PII) by building scenarios from business rules, using newly invented identities and values, and running them in an isolated environment. Preserve the decision the agent must make. For a scheduling test, that could be recognizing an authorized request and saving a confirmed slot. A real caller’s name, original recording, or account history rarely helps test that rule.</p>
+<p>When B2B Voice scopes a custom workflow, the business can identify which fields staff need to complete the call and which systems may receive them. That inventory also tells a quality assurance team what it can replace with fictional values and which outputs need a closer review.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Use independently invented callers and outcomes wherever they answer the test question.</li>
+<li>Review recordings, transcripts, tool arguments, logs, and exports as distinct places sensitive data can appear.</li>
+<li>Give test accounts and integrations their own permissions and destinations.</li>
+<li>Assign an owner to approve access, retention, deletion, and any use of production-derived material.</li>
+</ul>
+<nav class="b2bv3-toc" aria-labelledby="toc-heading"><p id="toc-heading">In this article</p>
+<ol>
+<li><a href="#can-synthetic-voice-agent-tests-avoid-exposing-production-pii">Can synthetic voice agent tests avoid exposing production PII?</a></li>
+<li><a href="#choose-a-treatment-that-fits-the-data">Choose a treatment that fits the data</a></li>
+<li><a href="#rebuild-test-cases-from-business-rules">Rebuild test cases from business rules</a></li>
+<li><a href="#b2b-voice-privacy-preserving-voice-agent-evaluation-framework">B2B Voice Privacy-Preserving Voice Agent Evaluation Framework</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+<li><a href="#references-heading">References</a></li>
+</ol></nav><h2 id="can-synthetic-voice-agent-tests-avoid-exposing-production-pii">Can synthetic voice agent tests avoid exposing production PII?</h2>
+<p>Yes, when the identities, dialogue, speaker inputs, and seeded records are independent of production customer data and the test cannot reach live systems. A scheduling team can invent a caller who needs to reschedule and a fake calendar with the same booking rules as the business. The fixture can exercise identity checks, an unavailable slot, and a confirmation without handling a customer record.</p>
+<p>Synthetic data is not automatically anonymous. A generated example can inherit identifying details when a real transcript is copied into the prompt, a generator is trained on private material, or a caller’s real voice is used as the basis for synthetic speech. A test can also introduce exposure after generation if an integration retrieves a real record or forwards output to a live system. NIST’s de-identification guidance discusses disclosure risk, synthetic data, and governance as related decisions. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<h3 id="inventory-where-the-identity-can-appear">Inventory where the identity can appear</h3>
+<p>PII can include a direct identifier or information that becomes identifying when linked with other information. In an invented support scenario, a distinctive problem, a named location, and the timing of a particular visit can narrow the identity even if the transcript omits the person’s name. Decide what information is necessary to exercise the policy before choosing the fixture’s values. <a class="b2bv3-ref" href="#source-pii">NIST SP 800-122</a> <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<p>Listen to recordings as well as reading text. Audio can retain a recognizable speaker, another person in the room, or background announcements the transcript did not capture. A recording and a biometric voiceprint are different artifacts. A voiceprint derives identifying features for recognition or verification. Audio containing ordinary conversation can still reveal identity through the spoken material or a recognizable voice. If a workflow uses actual voice biometrics, confirm the purpose, permission, processing destinations, and review requirements before involving such material in tests.</p>
+<p>A single interaction may also produce a call record, a transcript, model input and output, a summary, integration requests, a retry queue entry, a dashboard record, and a backup. Each may carry a different field. PII redaction in the QA dashboard can leave the same information in the raw tool argument, application trace, export, or original recording. Follow the data through each copy and check the examples the run actually created. <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h2 id="choose-a-treatment-that-fits-the-data">Choose a treatment that fits the data</h2>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-1-caption">
+<table>
+<caption id="table-1-caption">Data treatment and residual risk</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Treatment</th>
+<th scope="col">What it does</th>
+<th scope="col">What the test team still needs to verify</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Synthetic test data</th>
+<td>Creates new values, voices, or scenarios to exercise the workflow.</td>
+<td>Where inputs came from, whether the output retains unusual private details, and whether execution stays in a sandbox.</td>
+</tr>
+<tr class="even">
+<th scope="row">Redaction</th>
+<td>Removes selected material from a particular copy. Audio and text may require separate treatment.</td>
+<td>Whether the same material remains in other copies, metadata, backups, or a field that was not covered by the redaction.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Masking</th>
+<td>Hides or replaces part of a value for a given use, such as showing only a token reference in a test report.</td>
+<td>Whether anyone can retrieve the original, join records across systems, or infer the value from context.</td>
+</tr>
+<tr class="even">
+<th scope="row">Pseudonymization</th>
+<td>Substitutes a stable alias that may remain linked to an individual through context or a mapping.</td>
+<td>Who can access the link, whether it is needed, and how combining multiple records could identify a person.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Anonymization or formal de-identification</th>
+<td>Assesses residual identification risk under a defined method, data environment, and applicable rules.</td>
+<td>Scope, method, data recipients, and the evidence supporting use of the term.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Removing names does not guarantee anonymity. An exact location, rare transaction, and distinctive audio can still point to someone. Reducing fields and restricting access can help lower exposure. Whether a release satisfies a particular legal standard depends on its facts and applicable requirements. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a></p>
+<h2 id="rebuild-test-cases-from-business-rules">Rebuild test cases from business rules</h2>
+<h3 id="a-fictional-clinic-fixture">A fictional clinic fixture</h3>
+<p>Before, a sample design asks the test runner to replay a clinic call that contains a name, visit reason, original voice, and appointment details. The test question is whether the caller can reschedule an eligible appointment after verification. The diagnosis and original voice add sensitivity without deciding the branch.</p>
+<p>After, the runner uses a fictional caller token, a mock appointment, a sandbox calendar, and newly scripted audio. The permitted action is a reschedule after a successful synthetic verification. A second fixture leaves verification unresolved and checks that the agent withholds appointment details. Both tests preserve the business rule and can be repeated without retrieving the original call.</p>
+<h3 id="a-fictional-home-service-callback">A fictional home service callback</h3>
+<p>Before, a fixture includes a contact record shaped like the production export and points the callback tool to a customer contact field. Even if the sample uses invented names, the tool could still resolve the token in a live customer relationship management (CRM) system.</p>
+<p>After, use a sandbox contact identifier that resolves only to a test ticket or an approved internal endpoint. Capture the caller’s permission in the script and verify that the receiving sandbox contains the appropriate callback request. Route all outbound actions to test destinations. Keep the contact value out of broad logs if the case only needs an operation status and a trace identifier.</p>
+<p>These fixtures answer workflow and permission questions. When the test depends on natural hesitation, uncommon names, or realistic phone audio, commission fresh recordings with appropriate permission or use licensed voices. Review speaker rights separately from rights to the written script.</p>
+<h2 id="b2b-voice-privacy-preserving-voice-agent-evaluation-framework">B2B Voice Privacy-Preserving Voice Agent Evaluation Framework</h2>
+<p>Start with a data-flow inventory that names who can read each artifact and whose configuration controls retention. Use the framework during fixture design and again after the first complete run. The second review is where extra outputs, such as a retry payload or downstream transcript, often become visible to the test team.</p>
+<div class="b2bv3-table" tabindex="0" role="region" aria-labelledby="table-2-caption">
+<table>
+<caption id="table-2-caption">Privacy-preserving evaluation stages</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">Stage</th>
+<th scope="col">Action</th>
+<th scope="col">Evidence for release review</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th scope="row">Inventory</th>
+<td>Identify needed fields, sources, processors, logs, queues, exports, and backups.</td>
+<td>A map connects each field and recording to its business need and destination.</td>
+</tr>
+<tr class="even">
+<th scope="row">Minimize</th>
+<td>Use invented values and avoid unnecessary payloads. Keep only enough detail to exercise the rule.</td>
+<td>A reviewer can explain why each retained field is present and how it was created.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Isolate</th>
+<td>Use a dedicated test tenant, test credentials, and approved internal endpoints. Restrict writes and outbound contact to test destinations.</td>
+<td>Configuration review and safe preflight evidence show where a test write can go.</td>
+</tr>
+<tr class="even">
+<th scope="row">Validate</th>
+<td>Inspect audio, transcripts, metadata, summaries, and representative successful and failed tool calls.</td>
+<td>The team reviews both expected outputs and retries, including what happens when a task fails.</td>
+</tr>
+<tr class="odd">
+<th scope="row">Restrict</th>
+<td>Limit raw trace and recording access. Keep ordinary status logs free of unnecessary private values.</td>
+<td>Access rights and audit events are appropriate for the people and systems that need them.</td>
+</tr>
+<tr class="even">
+<th scope="row">Retire</th>
+<td>Document retention per artifact and verify how deletion, backup expiry, and external processor retention work.</td>
+<td>Reviewers can trace expiry and any approved exceptions across all stores.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="check-the-sandbox-and-the-error-path">Check the sandbox and the error path</h3>
+<p>Use dedicated test credentials and confirm the environment, account, and outbound destination before enabling a write. Ideally the test identity has no permission on production records at all. A sandbox label in the application does little if a shared service account can still reach the live calendar. Review tool arguments as a destination of sensitive data. A tool request may carry an account identifier, date of birth, or full address even where a transcript no longer does.</p>
+<p>Review failure paths as closely as successful calls. Exceptions may include raw payloads or request data. A failed workflow can send a copy to a retry or dead-letter queue that has different access and retention settings. A reviewer may export traces for debugging and create another durable copy. Follow the same handling rules for exported material. The OWASP Logging Cheat Sheet describes excluding or sanitizing sensitive data in logs and protecting log access. <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h3 id="apply-regulated-environment-requirements-to-the-actual-workflow">Apply regulated-environment requirements to the actual workflow</h3>
+<p>US healthcare, financial, legal, and other regulated settings can involve obligations that depend on the organization, the data, the use, and the providers involved. A privacy test can demonstrate that specific sandbox identities and fixtures remain isolated. It cannot establish the legal status of a production deployment. Have the responsible privacy or legal owner confirm the applicable rules, provider terms, rights, and retention policies before using protected material or making a compliance statement.</p>
+<p>Use the <a href="/ai-voice-agent-security">existing voice agent security guide</a> for production permissions and the <a href="/voice-agent-evaluation-data">evaluation dataset design guide</a> for case structure. Voice agent privacy testing asks a narrower question about what enters, exits, and remains in the evaluation environment. That scope helps a regulated business give each reviewer a concrete decision.</p>
+<h3 id="inspect-the-people-and-systems-that-can-retrieve-a-trace">Inspect the people and systems that can retrieve a trace</h3>
+<p>A secure voice agent testing workflow includes the people who review exceptions. A QA analyst may need a sanitized event sequence while a privacy owner needs access to an original authorized recording for a defined investigation. Give each role only the evidence it needs, and verify how access can be withdrawn. Apply the same controls when your team <a href="/voice-agent-regression-and-smoke-testing">retains automated regression evidence</a>. Treat a shared export as a new copy with its own access and expiration. A redacted application view does little for production PII protection if a broadly shared error report contains the original request.</p>
+<p>Voice AI data anonymization can involve different decisions for a transcript, a derived speaker representation, and a call recording. Record which artifact was changed and who can still link it to a person. A review for one format leaves the others open until the actual workflow shows what they contain. <a class="b2bv3-ref" href="#source-deid">NIST SP 800-188</a> <a class="b2bv3-ref" href="#source-log">OWASP Logging Cheat Sheet</a></p>
+<h2 id="faq">Frequently asked questions</h2>
+<h3 id="does-redacting-the-transcript-protect-an-original-recording">Does redacting the transcript protect an original recording?</h3>
+<p>Transcript redaction changes the text copy. The recording can still contain the same words, a recognizable voice, or background details. Apply the appropriate controls to both representations.</p>
+<h3 id="can-a-team-use-a-production-incident-to-design-a-fictional-test">Can a team use a production incident to design a fictional test?</h3>
+<p>A team can rebuild the behavior from an approved description of the failure, using newly written wording and invented records. Direct reuse of an original transcript or recording requires separate authority and handling appropriate to that material.</p>
+<h3 id="how-can-i-tell-whether-tests-reach-a-production-system">How can I tell whether tests reach a production system?</h3>
+<p>Review the actual credential permissions, account and tenant endpoints, and outbound destinations. Use an authorized preflight and verify the resulting test record in the intended sandbox.</p>
+<h3 id="which-logs-does-compliance-qa-for-voice-agents-need-to-inspect">Which logs does compliance QA for voice agents need to inspect?</h3>
+<p>Inspect routine logs, tool traces, error records, exports, and downstream copies that the approved workflow actually creates. Keep the evidence needed for the test while minimizing sensitive fields in broadly accessible records.</p>
+<section class="b2bv3-cta" aria-labelledby="next-step"><h2 id="next-step">Discuss a workflow using fictional caller details</h2>
+<p>Bring the actions the agent needs to take, the fields staff need to see, and the systems approved to receive those fields. <a href="/demo">Discuss an isolated test workflow for your custom implementation</a>.</p>
+</section><section aria-labelledby="references-heading"><h2 id="references-heading">References</h2>
+<ul>
+<li id="source-deid">De-identification methods, disclosure risk, synthetic data, and governance. <a href="https://csrc.nist.gov/pubs/sp/800/188/final">De-Identifying Government Datasets: Techniques and Governance</a>
+</li>
+<li id="source-pii">Context-based protection for identifiable or linkable information. <a href="https://csrc.nist.gov/pubs/sp/800/122/final">Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)</a>
+</li>
+<li id="source-log">Sensitive data exclusion, access, and log protection. <a href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html">Logging Cheat Sheet</a>
+</li>
+</ul></section>
+</div>
+<ul class="b2bv3-tags" aria-label="Topics">
+<li>Synthetic Test Data</li>
+<li>Data Minimization</li>
+<li>Voice Agent Privacy</li>
+<li>Test Isolation</li>
+</ul></article>
+</main>

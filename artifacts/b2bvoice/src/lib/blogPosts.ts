@@ -19,9 +19,25 @@ export interface BlogPost {
   tags: string[];
   excerpt: string;
   coverImage: string;
-  /** Raw HTML — rendered with dangerouslySetInnerHTML on the post page. */
+  /**
+   * Raw HTML - rendered with dangerouslySetInnerHTML on the post page. Empty for the posts
+   * imported from the content packages: their markup is loaded on demand (see blogContent.ts).
+   */
   content: string;
+  /** Group shown as a filter chip on the blog index (the original 11 posts all share category "AI"). */
+  topic?: string;
+  /** SEO <title> / meta description when they differ from the H1 / excerpt. */
+  seoTitle?: string;
+  metaDescription?: string;
+  /** Visible FAQ of the article, also emitted as FAQPage structured data. */
+  faq?: { q: string; a: string }[];
+  /** The article ships a small inline script (calculator / scorecard). */
+  hasScript?: boolean;
 }
+
+export type BlogPostMeta = Omit<BlogPost, "content">;
+
+import { newPostMeta } from "./blogNew";
 
 const whatIsB2bVoiceContent = `
 <style>
@@ -7738,7 +7754,7 @@ const testingMeta = {
   "coverImage": ""
 };
 
-export const blogPosts: BlogPost[] = [
+const baseline: BlogPost[] = [
   {
     id: 1,
     slug: "what-is-b2b-voice",
@@ -7806,6 +7822,33 @@ export const blogPosts: BlogPost[] = [
     content: testingContent,
   },
 ];
+
+// Topic chips for the 11 original posts (their data stays untouched).
+const ORIGINAL_TOPICS: Record<string, string> = {
+  "what-is-b2b-voice": "Fundamentals",
+  "what-is-an-ai-voice-agent": "Fundamentals",
+  "how-ai-voice-agents-work": "Fundamentals",
+  "ai-voice-agent-vs-ai-receptionist-vs-ivr": "Fundamentals",
+  "voice-ai-latency": "Technology",
+  "ai-voice-agent-turn-taking-interruptions": "Technology",
+  "rag-vs-tool-calling-vs-prompt-context": "Technology",
+  "ai-voice-agent-security": "Technology",
+  "ai-voice-agent-integrations": "Operations & Integrations",
+  "ai-voice-agent-reliability": "Testing & Quality",
+  "how-to-test-an-ai-voice-agent": "Testing & Quality",
+};
+
+export const blogPosts: BlogPost[] = [
+  ...baseline.map((p) => ({ ...p, topic: ORIGINAL_TOPICS[p.slug] ?? "Fundamentals" })),
+  ...newPostMeta.map((m) => ({ ...m, content: "" })),
+];
+
+export const TOPIC_ORDER = ["Fundamentals", "Technology", "Buyer Guides", "Industry Solutions", "Operations & Integrations", "Testing & Quality"];
+
+/** Topics that have posts, in a fixed order, with their counts. */
+export function getTopics(): { topic: string; count: number }[] {
+  return TOPIC_ORDER.map((topic) => ({ topic, count: blogPosts.filter((p) => p.topic === topic).length })).filter((t) => t.count > 0);
+}
 
 export const fmtDate = (d: string) =>
   new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });

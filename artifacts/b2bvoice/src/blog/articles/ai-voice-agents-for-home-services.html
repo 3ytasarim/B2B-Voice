@@ -1,0 +1,307 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+.b2bv .b2bv-results { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Industry Solutions</p>
+    <h1 id="b2bv-title">AI Voice Agents for Home Services: HVAC, Plumbing, Electrical and Service Businesses</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">For a contractor, a useful phone flow can take a service request while the dispatcher is busy, check the property and give the caller an accurate next step. The work has to reach the right branch with enough information for someone to act.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>Home services businesses can use AI voice agents to capture requests, check service areas, route calls and book permitted estimates when the scheduling system verifies the slot. A technician assignment requires its own confirmed record. Give urgent and safety-sensitive calls an approved staff or emergency route.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#first-workflows">Choose a first call type</a></li>
+<li><a href="#eligibility">Check eligibility and capacity</a></li>
+<li><a href="#dispatch">Verify dispatch status</a></li>
+<li><a href="#worked-estimate">Follow an estimate call</a></li>
+<li><a href="#after-hours">Design after-hours coverage</a></li>
+<li><a href="#pilot">Test the first route</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Set territory, trade, visit type and available capacity rules before offering a time.</li>
+<li>Keep received requests, booked visits, dispatch and completion distinct.</li>
+<li>Test after-hours intake and the emergency path before routing real callers.</li>
+        </ul>
+      </section>
+<section id="first-workflows">
+  <h2>Which home service calls are good first workflows?</h2>
+  <p>Start with one branch and one kind of call the contractor handles frequently. A nonurgent estimate request is a useful starting point when the business can define the covered area, job type and receiving team. Compare the call notes with the eventual booking and dispatch records. The first pilot can use request intake while the scheduling system's approval rules and phone route are tested.</p>
+  <p>B2B Voice designs custom phone workflows around a contractor's service territory, estimate rules and dispatch handoffs. Start with one branch and show how you route an eligible request today. This gives the implementation team a way to test the transfer to your dispatcher and verify the estimate or service record.</p>
+<p>Different trades ask for different information. An HVAC replacement estimate may need the property ZIP code and whether an on-site estimate is appropriate. A plumbing request for routine work may need a service address, unit and preferred contact details. An electrical estimate may need the caller to select a business-approved category such as an installation or a scheduled inspection. Keep the description at the administrative level and leave technical diagnosis to the appropriate trade professional.</p>
+  <div class="b2bv-table" role="region" aria-label="Home service calls and receiving staff" tabindex="0">
+    <table>
+      <caption>Match the intake questions and handoff to the work the contractor sells</caption>
+      <thead><tr><th scope="col">Business or call type</th><th scope="col">Reasonable first action</th><th scope="col">Staff-owned decision</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">HVAC estimate</th><td>Identify the site, territory and approved estimate category. Check estimator availability if authorized.</td><td>System selection, job price, nonstandard scope and any special approval.</td></tr>
+        <tr><th scope="row">Plumbing service request</th><td>Capture job type, property address, caller's callback number and a short description.</td><td>Priority for time-sensitive work, assignment and technician instructions.</td></tr>
+        <tr><th scope="row">Electrical appointment</th><td>Collect the property, routine request type and a suitable scheduling window.</td><td>Electrical safety assessment, permit questions and work authorization.</td></tr>
+        <tr><th scope="row">Roofing, cleaning or other field service</th><td>Confirm site eligibility and whether the caller wants an estimate or service. Capture any approved access constraints.</td><td>Roof or site inspection, equipment needs, pricing exceptions and recurring service commitments.</td></tr>
+        <tr><th scope="row">Existing booking or warranty request</th><td>Match an authorized caller to a known request and route to the branch or case owner.</td><td>Warranty determination, fee changes, reassignment and sensitive record disclosure.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Have the service owner distinguish a routine appointment from a time-sensitive job that might need the on-call team. Build a separate process for reports of possible immediate danger. Agree on the safe path before deployment and test it with a synthetic call.</p>
+</section>
+
+<section id="eligibility">
+  <h2>When can the agent offer a time?</h2>
+  <p>A confirmed appointment requires a verified service address or territory, an eligible job category and current capacity in the system that actually owns scheduling. Use the dispatcher's map or authorized business-unit rules. Ask for the ZIP early and collect the approved address fields when needed. A ZIP that overlaps territories can be an initial filter, with the street address or dispatcher needed for a final decision. Confirm the locality if the caller speaks an address that could fit multiple places.</p>
+  <p>Then check the type and length of the visit. A two-hour estimate scheduled for a suitable estimator differs from a repair needing a licensed technician, special equipment or time for travel. Separate the booking policy for new estimates, maintenance, existing-job follow-up and warranty work. If the property needs an access code or a tenant must get authorization, collect only the approved information required to route the request. Leave special cases and technician instructions with dispatch.</p>
+  <p>Field-service scheduling can depend on more than a shared calendar. For example, Microsoft Dynamics 365 Field Service documents scheduling filters that include work location, territory, resource types and characteristics. The contractor should confirm the same restrictions in its own system and tenant. A time exposed by one calendar could still fail the job's resource, branch or time-zone requirements. <a href="https://learn.microsoft.com/en-us/dynamics365/field-service/schedule-assistant">Microsoft Field Service scheduling filters</a></p>
+  <p>Keep a service area and capacity exception path. If the address is outside the approved area, give the caller the response the business authorizes or ask staff to review a borderline address. If the schedule is full, offer another permitted slot, an owned waitlist or a dispatcher callback. Say that a request is pending until the authoritative system records a valid booking.</p>
+</section>
+
+<section id="dispatch">
+  <h2>How does a call reach dispatch?</h2>
+  <p>Write down what evidence supports each status before scripting confirmations. A CRM entry can show that the caller's request was captured. The field-service system can show that a visit was booked or a technician assigned, if the corresponding record confirms it. A dispatcher may still need to acknowledge an exception, verify service or confirm a time window before the business can make a commitment.</p>
+  <div class="b2bv-table" role="region" aria-label="Request, appointment and dispatch milestones" tabindex="0">
+    <table>
+      <caption>Match the caller's confirmation to the saved state</caption>
+      <thead><tr><th scope="col">Status</th><th scope="col">Evidence</th><th scope="col">Safe wording for this workflow</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Request received</th><td>Saved request ID with an owning branch or worklist.</td><td>“I recorded your request for the dispatch team to review.”</td></tr>
+        <tr><th scope="row">Visit booked</th><td>Authoritative booking ID, confirmed date/window, location and correct category.</td><td>“Your estimate appointment is booked for the confirmed time window.”</td></tr>
+        <tr><th scope="row">Technician assigned</th><td>Field-service system confirms an approved resource assignment.</td><td>“Dispatch has assigned a technician.” Give only an authorized, current arrival estimate if available.</td></tr>
+        <tr><th scope="row">Work completed</th><td>Validated field-service completion record plus separate invoice or payment evidence as needed.</td><td>Staff uses the actual completion or billing record to follow up.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Microsoft documents work-order system statuses, work-order substatuses and booking statuses as parts of a field-service lifecycle. For your own integration, ask which records identify dispatch, arrival and completion. A queued notification shows that a message was sent for review. The worklist or dispatch record should show who took responsibility and what happened next. See <a href="/ai-voice-agent-integrations">how a voice workflow verifies a saved record</a>. <a href="https://learn.microsoft.com/en-us/dynamics365/field-service/work-order-status-booking-status">Microsoft Field Service work order and booking statuses</a></p>
+  <p>Preserve a request ID across repeats. One family might call twice after experiencing a phone disconnect. If the property and purpose match an open case under your rules, find that case for staff rather than create a second visit. If a call ends while the app is waiting for a booking write, give it a pending outcome until the system can reconcile the result. Keep openings, appointment changes and dispatch status separate so a duplicate phone event cannot send two technicians.</p>
+<p>Use the business tools guide to <a href="/how-to-integrate-ai-voice-agents" data-phase2-link="true">assess the field-service integration effort</a> by write action and tenant permissions.</p>
+</section>
+
+<section id="worked-estimate">
+  <h2>What does a completed estimate call look like?</h2>
+  <p>Consider a fictional local HVAC business with separate service and replacement teams. A caller requests a routine furnace replacement estimate. The workflow verifies a covered ZIP and address, confirms the location and asks for a callback number. It checks the allowed estimate category and looks up eligible estimator windows. The rule gives the estimator a single approved calendar and keeps repair or warranty decisions with staff.</p>
+  <ol class="b2bv-flow" aria-label="Validate the service, book the visit and show dispatch evidence">
+    <li><strong>Validate service</strong><span>Match the property and estimate type to the branch's rules.</span></li>
+    <li><strong>Verify the booking</strong><span>Commit a permitted window and check its ID and location.</span></li>
+    <li><strong>Notify the branch</strong><span>Show the request, booking and any follow-up in the staff worklist.</span></li>
+  </ol>
+  <p>If Wednesday afternoon is offered and the scheduling system confirms it, the caller gets the date and approved window. The integration saves or links the customer record and posts the booking ID where the branch can find it. If the offered time is taken before commit, try another eligible window. If the write outcome is uncertain, pause confirmation and create one owned reconciliation item. If the request is outside the service area, follow the branch's approved response and avoid reserving a visit.</p>
+  <p>Have the dispatcher test the same scenario with an existing customer, a new address and a full schedule. Check the primary record, the person or queue notified, the actual words spoken and what appears in any joined CRM note. A test can establish how this branch receives work; other branches may need different hours, service maps and job rules.</p>
+</section>
+
+<section id="after-hours">
+  <h2>What changes after hours or during a surge?</h2>
+  <h3>Make safety a different call path</h3>
+  <p>When a caller reports a possible immediate hazard such as a suspected gas leak, stop ordinary sales or scheduling intake and follow the locally approved emergency path. PHMSA tells people who smell gas to move to a safe location and call 911. Use approved language and a clear emergency destination. Keep troubleshooting and technical diagnosis out of the phone agent's scope. Escalation policies and on-call staff should be reviewed before enabling any live after-hours coverage. <a href="https://www.phmsa.dot.gov/incident-reporting">PHMSA incident reporting and pipeline emergency guidance</a></p>
+  <p>Separate an urgent service request from a report of immediate danger. The latter should reach the approved emergency message without waiting through routine questions. For a nonemergency service request the contractor considers urgent, check who is available and how they accept responsibility. When the on-call route cannot accept a call, follow the approved failed-transfer procedure. Give the caller a truthful next step and record the disposition. The <a href="/ai-voice-agent-reliability">fallback guide</a> describes where transfer and queue failures can occur.</p>
+  <h3>Match incoming demand to staff and crews</h3>
+  <p>BLS notes that HVAC technician schedules can include on-call, irregular or overtime work during peak heating and cooling seasons. Use your own arrival patterns and crew schedules to design overflow. A heat wave may produce a rush of calls at the same time as the crew is fully booked. Test simultaneous inbound traffic, the booking system's recovery behavior and the number of exceptions the dispatcher can handle. <a href="https://www.bls.gov/ooh/Installation-Maintenance-and-Repair/Heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm">BLS Occupational Outlook Handbook for HVAC technicians</a></p>
+  <p>Before closing, set which calls get immediate live help and which enter the first shift's queue. Give that worklist a named owner, approved response window and a way to sort long-waiting items. In the morning, distinguish service requests, confirmed visits, failed transfers and duplicates. Without that distinction, the team can spend more time cleaning up the queue than following up with callers.</p>
+  <p>Measure what the business can change. Useful pilot measures include time to dispatcher acknowledgment, fraction of eligible requests saved with the correct branch, confirmed slots with a valid record, fallbacks with a reachable owner and repeat contact for the same job. Review the pilot alongside technician capacity. An answered call may improve access even when capacity prevents a same-day appointment.</p>
+<p>Use the missed-call guide to <a href="/cost-of-missed-business-calls" data-phase2-link="true">estimate the cost of qualified missed calls</a> against the callbacks you already make.</p>
+<p>For a dispatcher who switches between field assignments and calls, <a href="/ai-receptionist-vs-human-receptionist" data-phase2-link="true">plan hybrid phone coverage</a> with a named backup.</p>
+</section>
+
+<section id="pilot">
+  <h2>How should a contractor test the first pilot?</h2>
+  <p>Start with a supervised test line, an overflow route or another agreed limited path. Give the agent the approved fields, coverage map, current scheduling rules and allowed actions for a single branch. Agree on who owns the phone route, service schedule and dispatch queue. Record what callers should hear when there is no confirmed booking or technician assignment.</p>
+  <div class="b2bv-table" role="region" aria-label="Acceptance tests for home services call intake" tabindex="0">
+    <table>
+      <caption>Acceptance calls to run before expanding the route</caption>
+      <thead><tr><th scope="col">Synthetic scenario</th><th scope="col">Required outcome</th><th scope="col">Evidence to inspect</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Eligible estimate and available window</th><td>One correct booking or an accurately described request.</td><td>Call disposition, confirmed record ID and receiving branch.</td></tr>
+        <tr><th scope="row">Full schedule or unknown booking result</th><td>Offer an authorized alternate or leave one pending item.</td><td>No duplicate appointments and a name or role responsible for recovery.</td></tr>
+        <tr><th scope="row">Wrong territory or wrong trade</th><td>Apply the published service rule or route to the approved owner.</td><td>Policy used, caller message and lead disposition.</td></tr>
+        <tr><th scope="row">Closed or busy dispatcher</th><td>Use the agreed fallback without implying a confirmed arrival.</td><td>Queue record, caller expectation and verified receipt when staffed.</td></tr>
+        <tr><th scope="row">Reported immediate hazard</th><td>Trigger the approved emergency path promptly.</td><td>Review the call with the safety owner and confirm ordinary intake stopped.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Use test records and add a duplicate call, a late response and a disconnected transfer. Confirm how staff can restore the original route if the pilot needs to stop. The guide to <a href="/how-to-test-an-ai-voice-agent">voice agent acceptance testing</a> can help organize the test and evidence.</p>
+  <p>B2B Voice designs custom AI phone workflows for business intake and follow-up. Bring one approved estimate or service-request scenario to a demo, along with the name of the system that holds the record and the branch that would receive it. Use the scenario to review service-area rules, the status the caller can hear and the exception your dispatcher needs to own. <a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>Can a single AI receptionist answer HVAC, plumbing and electrical calls?</h3><p>A shared business line can route by approved trade, territory and job type when the business defines the rules and receiving owners. Test each workflow and the safety path on the actual phone route.</p></div>
+<div class="b2bv-faq-item"><h3>Can an AI voice agent book a home service estimate?</h3><p>It can confirm an estimate only when the business authorizes booking and the authoritative system confirms the eligible slot. Otherwise it can record a request and state that review is pending.</p></div>
+<div class="b2bv-faq-item"><h3>Can it dispatch a technician automatically?</h3><p>That depends on the contractor's permissions and scheduling system. Confirm an assignment only after the authorized workflow sees an authoritative dispatch record. A received request or booked estimate can occur before assignment.</p></div>
+<div class="b2bv-faq-item"><h3>What should the agent say when the schedule is full?</h3><p>Offer an approved alternative or put the request in a worklist with a named owner. Explain the next step and set a callback expectation the team can meet.</p></div>
+<div class="b2bv-faq-item"><h3>How should it handle a report of a possible gas leak?</h3><p>Use the contractor's approved emergency path immediately. PHMSA advises people who smell gas to move to a safe location and call 911. End routine intake and use the approved escalation.</p></div>
+<div class="b2bv-faq-item"><h3>What should I ask for in a home services demo?</h3><p>Provide a fictional estimate request, the actual territory and job rules, and the fields dispatch needs. Ask to see the saved request or booking, then repeat the call with the schedule full and the dispatcher unavailable.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Follow one estimate request to dispatch</h2>
+        <p>Bring a fictional call, your service-area rules and the record a dispatcher should receive. B2B Voice can use the scenario to discuss a scoped intake or booking workflow.</p>
+        <a href="/demo">Request a home services demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="https://learn.microsoft.com/en-us/dynamics365/field-service/schedule-assistant">Microsoft Field Service scheduling filters</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/dynamics365/field-service/work-order-status-booking-status">Microsoft Field Service work order and booking statuses</a> <span class="b2bv-source-note">(Microsoft)</span></li>
+<li><a href="https://www.phmsa.dot.gov/incident-reporting">PHMSA incident reporting and pipeline emergency guidance</a> <span class="b2bv-source-note">(US Pipeline and Hazardous Materials Safety Administration)</span></li>
+<li><a href="https://www.bls.gov/ooh/Installation-Maintenance-and-Repair/Heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm">BLS Occupational Outlook Handbook for HVAC technicians</a> <span class="b2bv-source-note">(US Bureau of Labor Statistics)</span></li>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>Home Services</li>
+<li>Estimate Booking</li>
+<li>Dispatch Workflows</li>
+<li>After-Hours Intake</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

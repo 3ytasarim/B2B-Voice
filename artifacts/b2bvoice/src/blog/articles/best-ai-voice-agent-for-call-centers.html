@@ -1,0 +1,393 @@
+<style>
+.b2bv {
+  --b2bv-ink: #102344;
+  --b2bv-copy: #263a57;
+  --b2bv-muted: #4e6079;
+  --b2bv-blue: #1649ac;
+  --b2bv-light: #f4f7fc;
+  --b2bv-line: #d5dfef;
+  --b2bv-white: #fff;
+  --b2bv-focus: #1e53cc;
+  box-sizing: border-box;
+  max-inline-size: 69rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--b2bv-white);
+  color: var(--b2bv-copy);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: anywhere;
+}
+.b2bv *, .b2bv *::before, .b2bv *::after { box-sizing: inherit; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv p, .b2bv ul, .b2bv ol, .b2bv dl, .b2bv dd, .b2bv figure { margin: 0; }
+.b2bv h1, .b2bv h2, .b2bv h3, .b2bv strong { color: var(--b2bv-ink); }
+.b2bv h1 { max-inline-size: 24ch; font-size: clamp(2.1rem, 5vw, 3.55rem); line-height: 1.09; letter-spacing: -.045em; }
+.b2bv h2 { max-inline-size: 35ch; font-size: clamp(1.5rem, 3.35vw, 2.2rem); line-height: 1.2; letter-spacing: -.028em; }
+.b2bv h3 { font-size: 1.2rem; line-height: 1.36; letter-spacing: -.012em; }
+.b2bv a { color: var(--b2bv-blue); text-decoration: underline; text-underline-offset: .17em; }
+.b2bv a:hover { color: var(--b2bv-ink); }
+.b2bv :focus-visible { outline: 3px solid var(--b2bv-focus); outline-offset: 3px; }
+.b2bv [id] { scroll-margin-top: 5rem; }
+.b2bv [hidden] { display: none !important; }
+.b2bv .b2bv-skip { position: absolute; inset-inline-start: 1rem; top: -10rem; z-index: 2; background: var(--b2bv-white); padding: .6rem .9rem; }
+.b2bv .b2bv-skip:focus { top: .75rem; }
+.b2bv .b2bv-back { display: inline-flex; align-items: center; min-block-size: 2.75rem; font-size: .92rem; font-weight: 650; }
+.b2bv .b2bv-kicker { color: var(--b2bv-blue); font-weight: 700; font-size: .83rem; letter-spacing: .065em; text-transform: uppercase; margin: .9rem 0 .55rem; }
+.b2bv .b2bv-byline { margin-block: .85rem 1rem; color: var(--b2bv-muted); font-size: .95rem; }
+.b2bv .b2bv-lede { font-size: clamp(1.08rem, 1.85vw, 1.28rem); max-inline-size: 64ch; line-height: 1.55; }
+.b2bv .b2bv-cover { margin: 1.75rem 0 0; }
+.b2bv .b2bv-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--b2bv-line); border-radius: .9rem; }
+.b2bv .b2bv-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1.5rem; margin-block-start: 1.6rem; }
+.b2bv .b2bv-content { min-inline-size: 0; }
+.b2bv .b2bv-content > section { margin-block-start: 2.65rem; }
+.b2bv .b2bv-content > section:first-child { margin-block-start: 0; }
+.b2bv .b2bv-content section > * + *, .b2bv .b2bv-callout > * + * { margin-block-start: .9rem; }
+.b2bv .b2bv-content section > h3 { margin-block-start: 1.45rem; }
+.b2bv .b2bv-content p { max-inline-size: 76ch; }
+.b2bv ul, .b2bv ol { padding-inline-start: 1.3em; }
+.b2bv li + li { margin-block-start: .35rem; }
+.b2bv .b2bv-callout, .b2bv .b2bv-toc { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .8rem; padding: clamp(.9rem, 2.6vw, 1.4rem); }
+.b2bv .b2bv-header-answer { max-inline-size: 76ch; margin-block-start: 1.25rem; }
+.b2bv .b2bv-answer { border-inline-start: .26rem solid var(--b2bv-blue); }
+.b2bv .b2bv-toc p { color: var(--b2bv-ink); font-weight: 730; margin-block-end: .45rem; }
+.b2bv .b2bv-toc ol { padding-inline-start: 1.25rem; }
+.b2bv .b2bv-toc a { display: inline-block; min-block-size: 1.65rem; }
+.b2bv .b2bv-toc li { font-size: .93rem; }
+.b2bv .b2bv-table { overflow-x: auto; max-inline-size: 100%; border: 1px solid var(--b2bv-line); border-radius: .68rem; }
+.b2bv table { border-collapse: collapse; width: 100%; font-size: .94rem; line-height: 1.45; color: var(--b2bv-copy); }
+.b2bv .b2bv-table table { min-inline-size: 30rem; }
+.b2bv .b2bv-numeric table, .b2bv .b2bv-assess table { min-inline-size: 37rem; }
+.b2bv caption { text-align: start; color: var(--b2bv-muted); padding: .72rem .82rem; font-weight: 650; background: var(--b2bv-light); }
+.b2bv th, .b2bv td { padding: .66rem .82rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--b2bv-line); }
+.b2bv thead th { color: var(--b2bv-white); background: var(--b2bv-ink); }
+.b2bv tbody th { color: var(--b2bv-ink); font-weight: 680; }
+.b2bv tbody tr:nth-child(even) { background: #f8faff; }
+.b2bv tbody tr:last-child > * { border-block-end: 0; }
+.b2bv .b2bv-emphasis > * { background: #e8efff; color: var(--b2bv-ink); font-weight: 730; }
+.b2bv .b2bv-numeric { font-variant-numeric: tabular-nums; }
+.b2bv .b2bv-flow { padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.b2bv .b2bv-flow li { display: block; margin: 0; padding: .85rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-top: .22rem solid var(--b2bv-blue); border-radius: .65rem; }
+.b2bv .b2bv-flow span { display: block; font-size: .93rem; line-height: 1.45; }
+.b2bv .b2bv-faq-item { padding: .95rem 0 0; border-block-start: 1px solid var(--b2bv-line); }
+.b2bv .b2bv-faq-item p { margin-block-start: .35rem; }
+.b2bv .b2bv-cta { border-radius: .82rem; padding: clamp(1rem, 3.8vw, 1.65rem); background: var(--b2bv-ink); color: #e5eeff; }
+.b2bv .b2bv-cta h2 { color: var(--b2bv-white); }
+.b2bv .b2bv-cta :focus-visible { outline-color: #ffce66; }
+.b2bv .b2bv-cta a, .b2bv button { display: inline-flex; justify-content: center; align-items: center; min-block-size: 2.8rem; padding: .5rem .9rem; border-radius: .48rem; font: inherit; font-weight: 700; border: 1px solid transparent; text-decoration: none; line-height: 1.3; }
+.b2bv .b2bv-cta a { color: var(--b2bv-ink); background: var(--b2bv-white); }
+.b2bv .b2bv-cta a:hover { background: #e5eeff; }
+.b2bv .b2bv-tags { display: flex; flex-wrap: wrap; gap: .44rem; padding: 0; list-style: none; }
+.b2bv .b2bv-tags li { margin: 0; font-size: .85rem; padding: .25rem .65rem; background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: 2rem; color: var(--b2bv-ink); }
+.b2bv .b2bv-sources { font-size: .93rem; }
+.b2bv .b2bv-source-note { color: var(--b2bv-muted); }
+.b2bv .b2bv-calculator { background: var(--b2bv-light); border: 1px solid var(--b2bv-line); border-radius: .7rem; padding: clamp(.75rem, 2.75vw, 1.3rem); }
+.b2bv .b2bv-calculator > * + *, .b2bv .b2bv-calculator fieldset > * + * { margin-block-start: .75rem; }
+.b2bv .b2bv-calculator fieldset { padding: 0; border: 0; margin-inline: 0; min-inline-size: 0; }
+.b2bv .b2bv-calculator legend { padding: 0; font-weight: 730; color: var(--b2bv-ink); }
+.b2bv .b2bv-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+.b2bv .b2bv-field { display: grid; align-content: start; gap: .25rem; font-size: .91rem; font-weight: 660; }
+.b2bv .b2bv-field input, .b2bv .b2bv-field select, .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { display: block; width: 100%; min-inline-size: 0; min-block-size: 2.75rem; padding: .4rem .55rem; background: var(--b2bv-white); color: var(--b2bv-ink); font: inherit; border: 1px solid #637694; border-radius: .35rem; }
+.b2bv .b2bv-assess input { min-inline-size: 6rem; }
+.b2bv .b2bv-assess select { min-inline-size: 7.25rem; }
+.b2bv .b2bv-calculator [aria-invalid="true"] { border: 2px solid #a3292d; }
+.b2bv .b2bv-calculator button { background: var(--b2bv-blue); color: var(--b2bv-white); cursor: pointer; }
+.b2bv .b2bv-calculator button:hover { background: var(--b2bv-ink); }
+.b2bv .b2bv-results { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .65rem; font-variant-numeric: tabular-nums; color: var(--b2bv-ink); }
+.b2bv .b2bv-results dd { text-align: end; font-weight: 700; }
+.b2bv .b2bv-status { color: var(--b2bv-ink); font-size: .96rem; font-weight: 650; }
+@media (min-width: 58rem) {
+  .b2bv .b2bv-grid { grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 37rem) {
+  .b2bv .b2bv-flow, .b2bv .b2bv-fields { grid-template-columns: minmax(0, 1fr); }
+  .b2bv .b2bv-table table { font-size: .9rem; }
+}
+@media print {
+  .b2bv { max-inline-size: none; padding: 0; color: #111; font-size: 10pt; line-height: 1.45; }
+  .b2bv .b2bv-grid { display: block; }
+  .b2bv .b2bv-skip, .b2bv .b2bv-back, .b2bv .b2bv-toc, .b2bv .b2bv-calculator { display: none !important; }
+  .b2bv .b2bv-cover img { inline-size: auto; max-inline-size: 100%; max-block-size: 2.35in; }
+  .b2bv .b2bv-content > section { margin-block-start: 1rem; }
+  .b2bv h1 { font-size: 22pt; }
+  .b2bv h2 { font-size: 16pt; }
+  .b2bv h3 { font-size: 12pt; }
+  .b2bv h1, .b2bv h2, .b2bv h3 { break-after: avoid; }
+  .b2bv p, .b2bv li { orphans: 3; widows: 3; }
+  .b2bv .b2bv-table { overflow: visible; }
+  .b2bv .b2bv-table table { min-inline-size: 0; font-size: 9pt; }
+  .b2bv thead { display: table-header-group; }
+  .b2bv thead th, .b2bv .b2bv-cta, .b2bv .b2bv-cta h2, .b2bv .b2bv-cta a { background: #fff; color: #111; }
+  .b2bv tr, .b2bv .b2bv-cta { break-inside: avoid; }
+  .b2bv .b2bv-cta { border: 1px solid #777; }
+  .b2bv .b2bv-cta a { padding-inline: 0; text-decoration: underline; }
+}
+
+@media screen {
+  .b2bv .b2bv-table:not(.b2bv-assess) tbody th { min-inline-size: 8rem; overflow-wrap: normal; }
+}
+@media screen and (max-width: 37rem) {
+  .b2bv .b2bv-assess table { min-inline-size: 0; table-layout: fixed; font-size: .84rem; }
+  .b2bv .b2bv-assess th, .b2bv .b2bv-assess td { padding: .52rem .3rem; }
+  .b2bv .b2bv-assess thead th:first-child { width: 38%; }
+  .b2bv .b2bv-assess thead th:nth-child(2) { width: 22%; }
+  .b2bv .b2bv-assess input, .b2bv .b2bv-assess select { min-inline-size: 0; padding-inline: .27rem; }
+  .b2bv .b2bv-assess select { font-size: .79rem; }
+}
+
+/* --- B2BVoice site look (added on import) --- */
+.b2bv3, .b2bv { font-family: inherit; max-inline-size: 58rem; margin-inline: auto; }
+.b2bv3 { --ink: #0b1f3a; --link: #00357a; --muted: #44556b; --rule: #d3dcea; --light: #f3f6fb; }
+.b2bv { --b2bv-ink: #0b1f3a; --b2bv-copy: #263a57; --b2bv-blue: #00357a; --b2bv-focus: #00357a; --b2bv-light: #f3f6fb; --b2bv-line: #d3dcea; }
+.b2bv3 h1, .b2bv3 h2, .b2bv3 h3, .b2bv h1, .b2bv h2, .b2bv h3 { font-family: inherit; font-weight: 700; color: #0b1f3a; }
+.b2bv h1 { max-inline-size: none; }
+.b2bv h2 { max-inline-size: none; }
+.b2bv .b2bv-content p, .b2bv .b2bv-lede, .b2bv .b2bv-header-answer { max-inline-size: none; }
+.b2bv .b2bv-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+.b2bv thead th { background: #00357a; }
+.b2bv .b2bv-cta { background: #00357a; }
+.b2bv .b2bv-calculator button { background: #00357a; }
+.b2bv3-cta { background: #00357a !important; color: #e6eefb !important; }
+.b2bv3-cta h2, .b2bv3-cta a { color: #fff !important; }
+</style>
+<main id="b2bv-main">
+<article class="b2bv" aria-labelledby="b2bv-title">
+  <a class="b2bv-skip" href="#b2bv-article-content">Skip to the article</a>
+  <header>
+    
+    <p class="b2bv-kicker">Buyer Guides</p>
+    <h1 id="b2bv-title">How to Choose the Best AI Voice Agent for Your Call Center: A Complete Buyer's Guide</h1>
+    <p class="b2bv-byline">By <a rel="author" href="/what-is-b2b-voice">B2B Voice</a></p>
+    <p class="b2bv-lede">A contact center voice agent affects callers, data and the people responsible for the queue. Give shortlisted providers the same scenarios and ask each one to produce evidence from the systems your team will use.</p>
+      <section class="b2bv-callout b2bv-answer b2bv-header-answer" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">Quick Answer</h2>
+        <p>Choose a call center AI voice agent by comparing providers on the same queue, traffic and protected business actions. Verify successful outcomes, staffed handoff and rollback in a buyer-owned pilot. Use a weighted scorecard to compare evidence after setting mandatory gates and defining contract responsibility.</p>
+      </section>
+    
+  </header>
+  <div class="b2bv-grid">
+    <nav class="b2bv-toc" aria-label="Table of contents">
+      <p>In this guide</p>
+      <ol>
+<li><a href="#vendor-brief">Create a common vendor brief</a></li>
+<li><a href="#delivery-models">Compare delivery models</a></li>
+<li><a href="#scorecard">Use the evaluation scorecard</a></li>
+<li><a href="#pilot-evidence">Run a matched procurement pilot</a></li>
+<li><a href="#commercial">Compare quotes, support and exit</a></li>
+<li><a href="#decision">Make an evidence-based decision</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+    <div class="b2bv-content" id="b2bv-article-content" tabindex="-1">
+      <section id="key-takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+<li>Evaluate providers on identical scopes, routes and outcome evidence.</li>
+<li>Use weighted evidence ratings plus independent authorization, fallback and rollback gates.</li>
+<li>Compare operating costs, support and exit terms at the buyer's expected traffic.</li>
+        </ul>
+      </section>
+<section id="vendor-brief">
+  <h2>What should a call center give every shortlisted provider?</h2>
+  <p>Give every provider the same test brief. Name one queue and a small set of intents, such as checking shipment status, rescheduling within an approved policy and routing complex exceptions. Document the expected business outcome for each. A confirmed reschedule requires the correct new appointment in the source system. A transfer needs a caller connected to the intended staffed destination and an expected context record.</p>
+  <p>You can evaluate B2B Voice's managed custom implementation using that same brief. Bring the routing map, a set of representative calls, language requirements and the business records your team can verify. A scoped demonstration gives procurement, IT and operations a shared test of the proposed workflow.</p>
+<p>Include hours, languages, applicable caller identification and recording rules, incoming traffic and human staffing. Specify how many calls or active legs the center must support during the selected periods. Tell providers who owns the phone route, the application permissions and the fallback queues. Use an anonymized or synthetic scenario set with authorized test records. Give all providers the same opportunity to clarify scope before testing.</p>
+  <div class="b2bv-table" role="region" aria-label="Call center vendor evaluation brief" tabindex="0">
+    <table>
+      <caption>Put the same evidence requirements in every vendor brief</caption>
+      <thead><tr><th scope="col">Brief item</th><th scope="col">Evidence to request</th><th scope="col">Buyer owner</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Eligible callers and outcomes</th><td>Case catalog with permitted actions, business policies and completion fields.</td><td>Operations and system owner.</td></tr>
+        <tr><th scope="row">Existing phone path</th><td>Carrier, phone-system and queue relationships, transfer destination, fallback route, shift and peak call-leg information.</td><td>Telephony and workforce planning.</td></tr>
+        <tr><th scope="row">Data and authorization</th><td>Test identity flow, restricted actions, permitted fields, data processing boundaries and access review.</td><td>Security, privacy and compliance.</td></tr>
+        <tr><th scope="row">Success and commercial scope</th><td>Shared measurement definitions, test criteria, cost assumptions, support expectations and recovery requirements.</td><td>Operations, procurement and finance.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Prepare a test packet the buyer can reuse</h3>
+  <p>Reserve a dedicated sandbox with disposable appointments and orders. Include a truth record for each expected lookup or write, a set of different caller phrasings and approved synthetic audio where applicable. Test a happy path and a realistic variation, such as a corrected appointment date late in the call. Give the vendor the business rule and required environment while keeping independent buyer review of the final record. Record which data the staff receiving the handoff can see.</p>
+  <p>Have procurement hold the acceptance criteria while operations and IT collect observations from their own dashboards. Save the version of the workflow, caller route, language, destination coverage and downstream test conditions. If one provider uses a dedicated line while another uses the actual ACD pilot, record the scope difference and repeat the routing evidence on a comparable path before scoring the page.</p>
+  <p>Start from the service level the queue needs, then choose what to test. Consider which failures need a staffed handoff and which can safely remain pending with a named owner. Use the existing guide to <a href="/how-to-test-an-ai-voice-agent">voice agent acceptance testing</a> for the detailed design of repeatable test cases. Keep vendor claims and the buyer's observations in separate columns.</p>
+<p>Before scoring a vendor, use the opportunity matrix to <a href="/ai-voice-agents-for-call-centers" data-phase2-link="true">prioritize call center automation opportunities</a>.</p>
+<p>Use the <a href="/how-to-choose-an-ai-voice-agent" data-phase2-link="true">general AI voice agent buyer’s guide</a> for the first readiness screen, then ask for contact center evidence against actual traffic and queues.</p>
+</section>
+
+<section id="delivery-models">
+  <h2>Which delivery model fits your existing contact center?</h2>
+  <p>Establish whether the customer experience team can maintain this system and who will respond when it fails. A contact center as a service (CCaaS) platform may already support conversational automation in its routing and reporting. A managed implementation can make sense when the scope needs a delivery owner spanning the phone path, a CRM and a service application. An internal build can make sense when the team can own engineering, on-call response and release management.</p>
+  <div class="b2bv-table" role="region" aria-label="Contact center voice AI delivery options" tabindex="0">
+    <table>
+      <caption>Compare the work included in the delivery model</caption>
+      <thead><tr><th scope="col">Model</th><th scope="col">Buying condition</th><th scope="col">Responsibility to verify</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">CCaaS-native automation</th><td>The existing platform and licensed connectors can handle the target intents, reporting and handoff.</td><td>Feature entitlements, integration coverage, supported changes and whether exported reports provide the buyer's required evidence.</td></tr>
+        <tr><th scope="row">Managed implementation</th><td>The buyer needs a scoped implementation across multiple queues, business rules or applications.</td><td>Who delivers and maintains each integration, how releases are approved and which team runs support.</td></tr>
+        <tr><th scope="row">Internally operated platform</th><td>The buyer has developers, telephony ownership and operating capacity across the proposed scope.</td><td>Available engineering time, operating costs, rollback ownership, dependency contracts and changes over time.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Ask for a responsibility map for the carrier, AI application, business-system writes, queue return, incident communication and reversal. A vendor can operate its service while the buyer remains responsible for a failed downstream write. Identify those boundaries in a joint test. For the buyer, a tight integration and visible ownership can be more valuable than a long list of capabilities that apply to a different configuration.</p>
+  <p>Give the incumbent the same test and service objectives. Procurement should see what each option can complete in the real queue, how it behaves under the same traffic and who is expected to hold the pager. Check whether the vendor is offering a component, a supported end-to-end workflow or a delivery plan whose dependencies the buyer must coordinate.</p>
+</section>
+
+<section id="scorecard">
+  <h2>B2B Voice Call Center Evaluation Scorecard</h2>
+  <p>Use the scorecard to compare eight types of evidence for the same scope. Reviewers should record an evidence location, date, configuration and owner for each rating. Use the same weights under each offer and document any weight change before comparing results. Start with outcomes, handoff and data controls, then include performance, support, costs and the ability to leave.</p>
+  <div class="b2bv-callout">
+    <h3>Evidence ratings use a 0–5 scale</h3>
+    <ul class="b2bv-formulas">
+      <li><strong>0</strong> means the capability was confirmed absent.</li>
+      <li><strong>1</strong> means a verbal claim was supplied.</li>
+      <li><strong>2</strong> means the provider supplied written documentation.</li>
+      <li><strong>3</strong> means the capability was shown in a controlled demo.</li>
+      <li><strong>4</strong> means the buyer reproduced it in the pilot.</li>
+      <li><strong>5</strong> means the buyer reproduced it and reviewed supporting operating evidence.</li>
+    </ul>
+    <p>Leave an unassessed rating blank. Withhold the total until all eight ratings are assessed and the weights sum to 100%. Points = weight in percent × rating ÷ 5. Add the points to get a score out of 100.</p>
+  </div>
+  <div class="b2bv-table b2bv-numeric" role="region" aria-label="Contact center supplier scorecard defaults and evidence" tabindex="0">
+    <table>
+      <caption>Fictional candidate with starting weights and evidence ratings</caption>
+      <thead><tr><th scope="col">Dimension</th><th scope="col">Weight</th><th scope="col">Rating</th><th scope="col">Points</th><th scope="col">Evidence to inspect</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Business outcome fidelity</th><td>18%</td><td>4</td><td>14.4</td><td>Corrected request, authoritative result and a reconciled write with uncertain response.</td></tr>
+        <tr><th scope="row">Telephony and handoff</th><td>16%</td><td>4</td><td>12.8</td><td>Correct staffed destination, context received and tested busy or closed outcomes.</td></tr>
+        <tr><th scope="row">Security and data control</th><td>15%</td><td>3</td><td>9</td><td>Policy-scoped access, denied protected actions, retention and downstream data map.</td></tr>
+        <tr><th scope="row">Load, timing and language</th><td>12%</td><td>3</td><td>7.2</td><td>Documented test route, peak run, language samples and caller-side p95.</td></tr>
+        <tr><th scope="row">Recovery and observability</th><td>10%</td><td>4</td><td>8</td><td>Joined call, action and business IDs, recovery and named incident owner.</td></tr>
+        <tr><th scope="row">Delivery, SLA and support</th><td>10%</td><td>3</td><td>6</td><td>Contracted support and service-level definition plus a recovery exercise.</td></tr>
+        <tr><th scope="row">Commercial terms and TCO</th><td>10%</td><td>4</td><td>8</td><td>Representative invoice, capacity terms and full one-time and operating costs.</td></tr>
+        <tr><th scope="row">Portability and exit</th><td>9%</td><td>2</td><td>3.6</td><td>Usable data export, number control and transition obligations.</td></tr>
+        <tr class="b2bv-emphasis"><th scope="row">Total</th><td>100%</td><td></td><td>69</td><td>Hold while mandatory gates remain unassessed.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The 69/100 result is a fictional example of evidence maturity. A rating of four for business outcome fidelity gives 18 × 4 ÷ 5 = 14.4 points. The result can reveal which evidence to request next. Even a complete score requires separate decisions on protected actions and consent, verified human fallback, and rollback to the agreed route. For this example those three gates are unassessed, so the candidate stays on hold.</p>
+  <form id="b2bv-score" class="b2bv-calculator" novalidate hidden>
+  <fieldset>
+    <legend>Score a candidate</legend>
+    <p>Replace the fictional ratings with your evidence. Assess all eight rows, enter whole-number ratings and make the weights total 100%.</p>
+    <div class="b2bv-table b2bv-assess" role="region" aria-label="Editable call center provider scorecard" tabindex="0">
+      <table>
+        <caption>Weights and evidence ratings by dimension</caption>
+        <thead><tr><th scope="col">Dimension</th><th scope="col">Weight</th><th scope="col">Rating</th></tr></thead>
+        <tbody><tr><th scope="row">Business outcome fidelity</th><td><input type="number" data-weight aria-label="Weight for business outcome fidelity in percent" min="0" max="100" step="any" value="18.0" required></td><td><select data-rating aria-label="Rating for business outcome fidelity"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Telephony and handoff</th><td><input type="number" data-weight aria-label="Weight for telephony and handoff in percent" min="0" max="100" step="any" value="16.0" required></td><td><select data-rating aria-label="Rating for telephony and handoff"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Security and data control</th><td><input type="number" data-weight aria-label="Weight for security and data control in percent" min="0" max="100" step="any" value="15.0" required></td><td><select data-rating aria-label="Rating for security and data control"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Load, timing and language</th><td><input type="number" data-weight aria-label="Weight for load, timing and language in percent" min="0" max="100" step="any" value="12.0" required></td><td><select data-rating aria-label="Rating for load, timing and language"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Recovery and observability</th><td><input type="number" data-weight aria-label="Weight for recovery and observability in percent" min="0" max="100" step="any" value="10.0" required></td><td><select data-rating aria-label="Rating for recovery and observability"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Delivery, SLA and support</th><td><input type="number" data-weight aria-label="Weight for delivery, sla and support in percent" min="0" max="100" step="any" value="10.0" required></td><td><select data-rating aria-label="Rating for delivery, sla and support"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Commercial terms and TCO</th><td><input type="number" data-weight aria-label="Weight for commercial terms and tco in percent" min="0" max="100" step="any" value="10.0" required></td><td><select data-rating aria-label="Rating for commercial terms and tco"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option></select></td></tr>
+<tr><th scope="row">Portability and exit</th><td><input type="number" data-weight aria-label="Weight for portability and exit in percent" min="0" max="100" step="any" value="9.0" required></td><td><select data-rating aria-label="Rating for portability and exit"><option value="">Unassessed</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr></tbody>
+      </table>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Mandatory decision gates</legend>
+    <div class="b2bv-fields"><label class="b2bv-field"><span>Protected actions and consent</span><select data-gate><option value="" selected>Unassessed</option><option value="pass">Pass</option><option value="fail">Failed</option></select></label>
+<label class="b2bv-field"><span>Verified human fallback</span><select data-gate><option value="" selected>Unassessed</option><option value="pass">Pass</option><option value="fail">Failed</option></select></label>
+<label class="b2bv-field"><span>Rollback to approved route</span><select data-gate><option value="" selected>Unassessed</option><option value="pass">Pass</option><option value="fail">Failed</option></select></label></div>
+  </fieldset>
+  <button type="submit">Calculate score</button>
+  <div class="b2bv-status" role="status">
+    <p data-score-result></p>
+    <p data-gate-result></p>
+  </div>
+</form>
+</section>
+
+<section id="pilot-evidence">
+  <h2>What should the procurement pilot prove?</h2>
+  <p>Give each provider the same scenario set and a buyer-owned way to inspect results. Record expected and observed status for each action. Test a correctly authorized change, an ambiguous record that needs a person, a closed destination and a dependency that goes offline in the approved environment. A short pilot can find weaknesses and show whether a route meets the scope. Use the tested sample, conditions and limits when presenting the results to procurement.</p>
+  <div class="b2bv-table" role="region" aria-label="Procurement acceptance tests for contact center voice AI" tabindex="0">
+    <table>
+      <caption>Illustrative acceptance criteria for one bounded pilot</caption>
+      <thead><tr><th scope="col">Test family</th><th scope="col">Fictional buyer requirement</th><th scope="col">Proof to attach</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Business outcome and authorization</th><td>At least 95 verified outcomes in 100 eligible synthetic cases. Every protected-action test follows the approved rule, with zero unauthorized writes or disclosures observed.</td><td>Final system records, signed access results and reconciliation of uncertain writes.</td></tr>
+        <tr><th scope="row">Staffed transfer and fallback</th><td>At least 19 correct staffed connections across 20 staffed attempts. All 10 unavailable-destination cases use the agreed fallback.</td><td>Routing and staffed connection evidence, context receipt and final worklist disposition.</td></tr>
+        <tr><th scope="row">Timing, language and accessibility</th><td>Meet the buyer's caller-side p95 by turn type and language. Verify supported language review and an accessible human route.</td><td>Caller-side distributions, sample size, test mix and a verified human-access result.</td></tr>
+        <tr><th scope="row">Peak traffic and quota response</th><td>Exercise a test profile of 20 concurrent calls for 15 minutes plus an agreed overflow burst. Follow the approved response when the test limit is reached.</td><td>Active call legs over time, abandon and transfer events, and the receiving queue's capacity.</td></tr>
+        <tr><th scope="row">Destination failure and restoration</th><td>Buyer observes the approved alternate route, restoration and follow-up for unresolved cases under the agreed time and access constraints.</td><td>Timed exercise, named owner, result of an external test call and a list of pending items.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Check the weakest signals first. A transfer initiated in software may still end in a closed queue. A response-time average can conceal prolonged stalls at peak demand. Ask for the breakdown by route, tool usage, call type and language. Use identical start and end events. The <a href="/voice-ai-latency">voice AI latency guide</a> describes caller-side timing and the effect of upstream dependencies.</p>
+  <p>Use a scenario mix that exposes differences the buyer cares about. A combined percentile can mask a slower language or a route with more business-system activity. Record the observed distribution separately for the common cases and the complex turns that make customers wait. Verify the completed business action in each group. If the test has too few samples in a language or peak queue to support a comparison, retain the counts and request a narrower rerun before relying on a service-level commitment for that scope.</p>
+  <p>Have the authorized security and operations owners review the protected-action test, named receiving fallback and actual routing restore. Define an explicit failure for a write or disclosure without authority, an unreachable safety fallback or inability to restore the route. Withhold production traffic while a mandatory gate is unresolved. NIST's generative AI risk profile provides a reference for planning evaluation and monitoring, and OWASP's excessive agency guidance explains why limited tool permissions and approval boundaries matter. <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a></p>
+  <h3>Review borderline cases with the receiving team</h3>
+  <p>For a fictional rescheduling pilot, one caller finishes the booking after correcting the date. Review the authorized appointment record, whether there is one updated record and what the caller heard. A second call reaches the escalation route during a shift change. If the requested skill group is unavailable, the case must end in the approved staffed alternate or owned worklist. Listen for an accurate description of the next step and check it against the resulting record.</p>
+  <p>Repeat with two ordinary arrivals in close succession and an approved unavailable system condition. Record whether the center can see that the appointment is pending, then determine the final state without adding another write. Confirm where the vendor logs its part and where the buyer sees the business disposition. The procurement team can use these observations to score workflow evidence and separately sign the mandatory gates.</p>
+  <p>Make the decision reproducible. Record the number of cases attempted, the actual number that passed and the configuration under test. Save a transcript or recording only under applicable approval and retention rules, and keep enough non-sensitive evidence for the operations team to repeat the check. A requirement reached in a small synthetic set gives evidence for that test run. Review the pilot separately from claims about overall production performance or an availability guarantee.</p>
+<p>Use the deployment guide to <a href="/ai-voice-agent-call-center-implementation" data-phase2-link="true">test an existing carrier route</a> and observe staffed handoff and rollback.</p>
+</section>
+
+<section id="commercial">
+  <h2>How should you compare quotes and operating agreements?</h2>
+  <p>Give each provider the same workload, approved actions, integration list and support window. Include both typical and peak traffic so the quote reflects when callers need service. Have each bidder state its assumptions, the work it includes and the work the buyer retains. GAO guidance offers a method for documenting assumptions and a cost baseline for comparison. <a href="https://www.gao.gov/products/gao-20-195g">GAO cost estimating and assessment guide</a></p>
+  <p>Ask the provider to explain how the proposed agreement would classify a short inquiry, a transfer with two active call legs and a long tool lookup. Estimate the scope of each offer using your own traffic and staffing records. If the offers cover different responsibilities, list the work each one leaves with the buyer before comparing the signed terms.</p>
+  <div class="b2bv-table" role="region" aria-label="Qualitative comparison of call center quotations" tabindex="0">
+    <table>
+      <caption>Evaluate each quote against the same work and evidence</caption>
+      <thead><tr><th scope="col">Compare</th><th scope="col">Ask the provider to document</th><th scope="col">Verify with your team</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Included services</th><td>List discovery, call design, deployment, monitoring and changes included in scope. Identify pilot and production differences.</td><td>Match each service to a named owner and acceptance record.</td></tr>
+        <tr><th scope="row">Usage and billing</th><td>Define the metered units, transfer legs, idle or hold time, any minimum commitments and the treatment of overflow.</td><td>Trace representative calls through the unit definitions and ask how you can audit them.</td></tr>
+        <tr><th scope="row">Implementation and integration</th><td>Identify carrier coordination, credentials, API versions, permissions, write validation and rollout responsibilities.</td><td>Confirm who owns each system and who can maintain or approve changes.</td></tr>
+        <tr><th scope="row">Peak traffic and concurrency</th><td>State supported simultaneous calls or legs for the requested route, how peaks are handled and the fallback if a limit is reached.</td><td>Test the buyer's traffic mix and the receiving team's ability to absorb transfers.</td></tr>
+        <tr><th scope="row">Support, maintenance and SLA</th><td>Define covered hours, support channels, measurement point, maintenance windows, exclusions, response and restoration ownership.</td><td>Agree how to report an incident, verify impact on the caller, and restore service.</td></tr>
+        <tr><th scope="row">Additional fees and flexibility</th><td>Identify when extra work needs approval, any separate setup, support or change terms, renewal conditions and how scope can increase or decrease.</td><td>Make sure procurement can see changes before authorizing them and review the terms for adding, pausing or removing queues.</td></tr>
+        <tr><th scope="row">Data ownership and exit</th><td>Define control of phone numbers and configuration, data use, retention, export and deletion, transition support and open-case handover.</td><td>Verify the export and restoration procedures with IT and the receiving team.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Review any service-level agreement against the caller's end-to-end path. A component can be available while a specific queue, transfer or protected business action is unavailable. Locate each monitoring point and assign a dependency owner. Document who can pause the route or revoke permissions. The <a href="/ai-voice-agent-security">voice agent security guide</a> covers principles that help evaluate access and disclosure.</p>
+  <p>B2B Voice scopes pricing individually based on the call volume, workflow complexity, integration work and agreed responsibilities. Depending on the implementation, an upfront setup fee may not be required. Bring a defined route to the demo to discuss what the proposed deployment would include and how your team would evaluate it.</p>
+</section>
+
+<section id="decision">
+  <h2>How do you turn the evidence into a buying decision?</h2>
+  <ol class="b2bv-flow" aria-label="Decision sequence for evaluating an AI voice agent vendor">
+    <li><strong>Agree on the pilot</strong><span>Use the same variants, fallback and business records with each provider.</span></li>
+    <li><strong>Review the gates</strong><span>Get the responsible owners to verify consent, staffed access and restoration.</span></li>
+    <li><strong>Compare complete evidence</strong><span>Consider the score, costs and delivery ownership under the tested scope.</span></li>
+  </ol>
+  <p>Consider two eligible bids with similar evidence ratings. Ask which center team owns the test number, the receiving queue, the business-system permissions and the procedure for revoking access. A procurement decision can favor the offer with a supported export and clearly scoped responsibility when the weighted differences are small. Record the cost and workflow assumptions that could change the decision at renewal. Set a follow-up exercise to verify routing reversal and data export on the intended contract scope before migration starts.</p>
+  <p>Hold the decision if a gate is still unknown or a vendor is asking you to extrapolate from different traffic. Procurement can request a narrower pilot when the gap is material. Choose providers on evidence you can repeat, the terms you can maintain and what matters to your callers. Document responsibilities and the reasons for the selection before expanding access or moving queues.</p>
+  <p>B2B Voice designs custom AI phone workflows around the buyer's business rules. Bring an anonymized route and your acceptance criteria to a discussion about implementation fit. The provider and buyer can use the proposed test scope to identify the evidence they would need for authorized actions, queue handoff and recovery. <a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a></p>
+</section>
+
+      <section id="faq">
+        <h2>Frequently asked questions</h2>
+<div class="b2bv-faq-item"><h3>What is the best AI voice agent for a call center?</h3><p>The best fit is the provider that can complete your approved tasks under your actual call mix, routing and policies. Compare candidates on the same business records, transfers, failure cases and operating terms.</p></div>
+<div class="b2bv-faq-item"><h3>Should a call center use its existing CCaaS provider or a managed implementation?</h3><p>Test the same queue and integrations under both delivery models. Compare the licensed capabilities, integration responsibilities and the people available to support and recover the route.</p></div>
+<div class="b2bv-faq-item"><h3>How should a buyer score unproven features?</h3><p>Leave the rating unassessed until there is evidence. A zero is for a confirmed absence. Withhold the total until all eight ratings are assessed and the weights sum to 100%.</p></div>
+<div class="b2bv-faq-item"><h3>Can a high score override a failed pilot gate?</h3><p>Hold the decision if a protected-action, human-fallback or rollback gate fails or remains unassessed. Use the score to compare evidence only within the approved decision process.</p></div>
+<div class="b2bv-faq-item"><h3>What should a call center verify under peak load?</h3><p>Test the actual busy-hour call pattern, concurrent calls and legs, tail delay, integrations, transfer completion and staffed fallback. Check how each dependency and the receiving queue behaves at the agreed limit.</p></div>
+<div class="b2bv-faq-item"><h3>What should I ask for before signing a voice AI contract?</h3><p>Request tested scope, data handling and incident terms, capacity commitments, restoration procedures, a realistic cost comparison and usable export and number rights.</p></div>
+      </section>
+      <section id="demo" class="b2bv-cta">
+        <h2>Bring your call center acceptance criteria</h2>
+        <p>Share a synthetic call, the expected business record and your fallback requirements. Use a B2B Voice demo to discuss what a fair, bounded evaluation would require.</p>
+        <a href="/demo">Request a provider evaluation demo</a>
+      </section>
+      <section class="b2bv-sources" id="sources">
+        <h2>Sources</h2>
+        <ul>
+<li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative Artificial Intelligence Profile</a> <span class="b2bv-source-note">(NIST)</span></li>
+<li><a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">OWASP Excessive Agency guidance</a> <span class="b2bv-source-note">(OWASP)</span></li>
+<li><a href="https://www.gao.gov/products/gao-20-195g">GAO cost estimating and assessment guide</a> <span class="b2bv-source-note">(US Government Accountability Office)</span></li>
+<li><a href="/what-is-b2b-voice">B2B Voice company and implementation approach</a> <span class="b2bv-source-note">(B2B Voice)</span></li>
+        </ul>
+      </section>
+      <section id="topics">
+        <h2>Topics</h2>
+        <ul class="b2bv-tags">
+<li>Contact Center Procurement</li>
+<li>Voice AI Scorecard</li>
+<li>Pilot Acceptance</li>
+<li>Vendor Selection</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>
+</main>

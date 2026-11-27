@@ -26,6 +26,14 @@ export function loaderForPath(path: string): (() => Promise<unknown>) | null {
   if (p === "/legal-notice") return routeLoaders.legalNotice;
   if (p === "/demo") return routeLoaders.demo;
   if (p === "/blog") return routeLoaders.blog;
-  if (/^\/[^/]+$/.test(p)) return routeLoaders.blogPost;
+  if (/^\/[^/]+$/.test(p)) {
+    // A post page also needs its (separately loaded) article markup before it can hydrate.
+    const slug = p.slice(1);
+    return async () => {
+      await routeLoaders.blogPost();
+      const { preloadPostContent } = await import("@/lib/blogContent");
+      await preloadPostContent(slug);
+    };
+  }
   return routeLoaders.notFound;
 }

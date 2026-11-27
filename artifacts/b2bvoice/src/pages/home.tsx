@@ -98,7 +98,7 @@ const Waveform = () => (
   </div>
 );
 
-const DemoModalCtx = React.createContext<{ open: () => void }>({ open: () => {} });
+export const DemoModalCtx = React.createContext<{ open: () => void }>({ open: () => {} });
 const useDemoModal = () => useContext(DemoModalCtx);
 
 const GOOGLE_MEET_LINK = "https://calendar.app.google/aKu2n5KzGBrMMvBL8";
@@ -257,7 +257,7 @@ const NAV_LANG_OPTIONS = [
 ];
 
 // --- Navbar ---
-const Navbar = () => {
+export const Navbar = () => {
   const { open } = useDemoModal();
   const { t, lang, setLang } = useLanguage();
   const scrolled = useScrolledPast(20);
@@ -3003,7 +3003,7 @@ const FinalCTA2 = () => {
 };
 
 // --- Footer ---
-const Footer = () => {
+export const Footer = () => {
   const { t, lang } = useLanguage();
   const links = [
     { label: lang === "de" ? "Datenschutz" : lang === "es" ? "Privacidad" : "Privacy Policy", href: "/privacy-policy" },
