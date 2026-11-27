@@ -28,7 +28,7 @@ export default function BlogPage() {
   const chip = (active: boolean) =>
     `inline-flex min-h-11 items-center gap-2 rounded-full border px-5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
       active
-        ? "border-transparent bg-gradient-to-r from-[#00357a] to-[#0a84ff] text-white shadow-sm"
+        ? "border-primary bg-primary text-white shadow-sm"
         : "border-primary/40 bg-white text-primary hover:bg-primary/5"
     }`;
 
@@ -37,14 +37,14 @@ export default function BlogPage() {
       <Navbar />
       <main id="main-content" className="min-h-screen bg-white pt-[72px]">
         {/* Header */}
-        <section className="bg-gradient-to-b from-[#eef3fb] to-white px-4 sm:px-6 pb-12 pt-14 md:pt-20">
+        <section className="bg-gradient-to-b from-muted to-white px-4 sm:px-6 pb-12 pt-14 md:pt-20">
           <div className="mx-auto max-w-5xl text-center">
-            <span className="inline-block rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 text-sm font-semibold text-primary">
+            <span className="inline-block border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
               Blog
             </span>
             <h1 className="mt-7 text-[clamp(2.1rem,6.4vw,4.6rem)] leading-[1.05] tracking-tight text-gray-900">
               <span className="font-light">KNOWLEDGE &amp; </span>
-              <span className="font-extrabold bg-gradient-to-r from-[#00357a] to-[#0a84ff] bg-clip-text text-transparent">INSIGHTS.</span>
+              <span className="font-extrabold text-primary">INSIGHTS<span className="text-accent">.</span></span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-gray-600">
               Practical guides on AI voice agents: how they work, how to choose one, and how to test it before it takes your calls.
